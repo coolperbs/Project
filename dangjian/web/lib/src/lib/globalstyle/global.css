@@ -1,0 +1,446 @@
+*::-webkit-scrollbar{
+    width: 0;
+    display: none;
+}
+*::-webkit-scrollbar-thumb{
+  width : 0;
+  display: none;
+}
+.wx body {
+    -webkit-text-size-adjust: 100% !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 16px;
+    /*line-height: 1.4;*/
+    font-family: sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    background-color: #f6f6f6;
+    color: #333333;
+}
+
+/* 全站加入最大宽度 */
+.wx .max-cont{max-width: 750px;margin: 0 auto;position: relative;}
+.wx .max-cont-x{max-width: 750px;margin: 0 auto;}
+.wx .J_Link{cursor: pointer;}
+
+/* fade image in after load */
+.wx .lazyload,
+.wx .lazyloading {opacity: 0;}
+.wx .lazyloaded {opacity: 1;-webkit-transition: opacity 300ms;transition: opacity 300ms;}
+
+/*
+ * help class
+ */
+
+.wx .clearfix {
+    *zoom: 1;
+}
+
+.wx .clearfix:before,
+.wx .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.wx .clearfix:after {
+    clear: both;
+}
+
+.wx .hide {
+    display: none;
+}
+
+.wx .ellips {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: "Arial";
+}
+
+.wx .text-center {
+    text-align: center;
+}
+
+.wx .left,
+.wx .col-left {
+    float: left;
+}
+
+.wx .right,
+.wx .col-right {
+    float: right;
+}
+
+/*
+ *    1px hack
+ *    sample:<body class="wx"> ~
+ *                 <div class="border-1px border-all"></div>
+ *         ~</body>
+ */
+
+/*border all*/
+.wx .border-1px.border-all:after,
+.wx .border-1px.border-all{
+border: 1px solid  #f0f0f0;
+}
+/*border top bottom*/
+.wx .border-1px.border-t-b:after,
+.wx .border-1px.border-t-b{
+border-top: 1px solid  #f0f0f0;
+border-bottom: 1px solid  #f0f0f0;
+}
+/*border top*/
+.wx .border-1px.border-t:after,
+.wx .border-1px.border-t {
+border-top: 1px solid  #f0f0f0;
+}
+/*border bottom*/
+.wx .border-1px.border-b:after,
+.wx .border-1px.border-b {
+border-bottom: 1px solid #f0f0f0;
+}
+/*border left*/
+.wx .border-1px.border-l:after,
+.wx .border-1px.border-l {
+border-left: 1px solid  #f0f0f0;
+}
+/*border right*/
+.wx .border-1px.border-r:after,
+.wx .border-1px.border-r {
+border-right: 1px solid  #f0f0f0;
+}
+
+.wx .border-1px {
+  position: relative;
+  border: none !important;
+}
+.wx .border-1px:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transform-origin: 0 0;
+  -webkit-transform: scale(1);
+  pointer-events: none;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .wx .border-1px:after {
+    right: -100%;
+    bottom: -100%;
+    -webkit-transform: scale(0.5);
+  }
+}
+
+/*
+    icon css3 arrow
+    sample:<i class="icon-css icon-pre"></i>
+*/
+
+.wx .icon-css {
+    color: inherit;
+    position: absolute;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    top: 50%;
+    border: solid;
+    margin-top: -6px;
+    background: 0;
+    border-width: 0 2px 2px 0;
+    right: 15px
+}
+.wx .icon-next {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+.wx .icon-pre {
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: -9px
+}
+.wx .icon-top {
+    -webkit-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    margin-top: -3px
+}
+.wx .icon-bottom {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-top: -10px
+}
+
+
+/*
+ * icons
+ */
+.wx .icon{
+    background-image: url(./kayak-lib/src/kayak-lib/globalstyle/sprt.png?t=201702072136);
+    background-repeat: no-repeat;
+    background-size:400px auto;
+    width: 30px;height: 30px;
+    display: inline-block;
+}
+
+/*1 row*/
+.wx .icon-search-white{
+    background-position: 0 0;}
+.wx .icon-user{
+    background-position: -50px 0;}
+.wx .icon-all-cate{
+    background-position: -100px 0;}
+.wx .icon-share{
+    background-position: -150px 0;}
+.wx .icon-store{
+    background-position: -200px 0;}
+.wx .icon-home{
+    background-position: -250px 0;}
+.wx .icon-edit{
+    background-position: -300px 0;}
+.wx .icon-notice{
+    background-position: -350px 0;}
+
+/*2 row*/
+.wx .icon-search{
+    background-position:     0  -50px;}
+.wx .icon-trash{
+    background-position:  -50px -50px;}
+.wx .icon-orders{
+    background-position: -100px -50px;}
+.wx .icon-localtion{
+    background-position: -150px -50px;}
+.wx .icon-barcode{
+    background-position: -200px -50px;}
+.wx .icon-group-buying{
+    background-position: -250px -50px;}
+.wx .icon-scan-code{
+    background-position: -300px -51px;}
+.wx .icon-coupon{
+    background-position: -350px -50px;}
+.wx .icon-mycouponcode{
+    background-position: -350px -401px;}
+
+
+/*3 row*/
+.wx .icon-help{
+    background-position:     0  -100px;}
+.wx .icon-customer-service{
+    background-position:  -50px -100px;}
+.wx .icon-invite-friends{
+    background-position: -100px -100px;}
+.wx .icon-close{
+    background-position: -150px -100px;}
+.wx .icon-weixin-pay{
+    background-position: -200px -100px;}
+.wx .icon-others-pay{
+    background-position: -250px -100px;}
+.wx .icon-localtion-fill{
+    background-position: -300px -100px;}
+.wx .icon-gps{
+    background-position: -350px -100px;}
+
+
+/*4 row*/
+.wx .icon-arrow-left-white{
+    background-position:     0  -150px;}
+.wx .icon-close-white{
+    background-position:  -50px -150px;}
+.wx .icon-backtop-white{
+    background-position: -100px -150px;}
+.wx .icon-add-cart{
+    background-position: -150px -150px;}
+.wx .icon-checkbox-selected{
+    background-position: -200px -150px;}
+.wx .icon-checkbox-default{
+    background-position: -250px -150px;}
+.wx .icon-radio-selected{
+    background-position: -300px -150px;}
+.wx .icon-radio-default{
+    background-position: -350px -150px;}
+
+/*other row（5）*/
+.wx .icon-input-close,
+.wx .icon-input-search,
+.wx .icon-close-gray,
+.wx .icon-sort-asc,
+.wx .icon-sort-desc,
+.wx .icon-arrow-down,
+.wx .icon-deliver-rule,
+.wx .icon-deliver-ruwhite,
+.wx .icon-info-mark-gray,
+.wx .icon-info-mark,
+.wx .icon-add-presale,
+.wx .icon-add-new-address{
+    width: 20px;height: 20px;}
+.wx .icon-input-close{
+    background-position:  0  -200px;}
+.wx .icon-input-search{
+    background-position:  -50px -200px;}
+.wx .icon-close-gray{
+    background-position:  -100px -200px;}
+.wx .icon-sort-asc{
+    background-position:  -150px -200px;}
+.wx .icon-sort-desc{
+    background-position:  -200px -200px;}
+.wx .icon-arrow-down{
+    background-position:  -250px -200px;}
+.wx .icon-ok{   width: 20px;height: 15px;
+  background-position: -100px -230px;}
+.wx .icon-deliver-ruwhite{
+	background-position:  -300px -261px;
+}
+.wx .icon-deliver-rule,
+.wx .icon-info-mark-gray{
+  background-position:  -150px -230px;}
+.wx .icon-add-new-address{
+	background-position: -250px -230px;
+}
+
+.wx .icon-presale{
+  background-position: -300px -230px;
+}
+.wx .icon-info-mark{
+	background-position: -350px -230px;
+}
+.wx .icon-arrow-up{ background-position: -243px -254px;}
+
+/*icon cart*/
+.wx .icon-cart-empty,
+.wx .icon-cart,
+.wx .icon-cart-gray{
+    width: 40px;height: 40px;}
+.wx .icon-cart-empty{
+    background-position:     0  -250px;}
+.wx .icon-cart{
+    background-position:  -50px -250px;}
+.wx .icon-cart-gray{
+    background-position: -100px -250px;}
+
+/*icon no data */
+.wx .icon-cart-nodata{
+    width: 40px;height: 40px;}
+.wx .icon-cart-nodata{
+    background-position: 0 -300px;}
+
+/*new add 20151121*/
+.wx .icon-minus-cart{background-position: 0 -400px;}
+
+/*.wx .icon-cart-empty-large { display : inline-block; height : 128px; width : 80px; background: url( ./usercenter/src/usercenter/common/image/cart-empty.png?t=201604122057 ) 0 0 no-repeat; background-size: 100%; }*/
+
+/*8 row*/
+/*new add icon 11.21*/
+.wx .icon-home-white{
+	background-position: 0 -350px;}
+.wx .icon-group-buying-white{
+	background-position: -50px -350px;}
+.wx .icon-groupon-sucess-white{
+	background-position: -100px -350px;}
+.wx .icon-groupon-clock-white{
+	background-position: -150px -350px;}
+.wx .icon-groupon-failure-white{
+	background-position: -200px -350px;}
+.wx .icon-groupon-over-white{
+	background-position: -250px -350px;}
+.wx .icon-payment-sucess-white{
+	background-position: -300px -350px;}
+.wx .icon-warn-white{
+	background-position: -350px -350px;}
+
+/*9 row*/
+.wx .icon-detail-pay{ width: 40px;height: 20px;  background-position: -106px -408px;   vertical-align: middle;}
+.wx .icon-detail-send{width: 20px;height: 20px; background-position: -157px -408px; }
+/*.wx .icon-loading { background: url(./usercenter/src/usercenter/common/image/loading.gif) 0 0 no-repeat; background-size:16px auto; width: 16px;height: 16px;display: inline-block; }*/
+
+/* 11 row */
+.wx .icon-all-cate-orange{ background-position: 0 -440px; }
+.wx .icon-funnel { background-position: -50px -440px; }
+
+/* 12 row */
+.wx .icon-condition-price { background-position: -115px -475px; }
+.wx .icon-condition-price.selected { background-position: -145px -475px; }
+.wx .icon-condition-sales { background-position: -55px -475px; }
+.wx .icon-condition-sales.selected { background-position: -85px -475px; }
+.wx .icon-condition-multiple { background-position: 5px -475px; }
+.wx .icon-condition-multiple.selected { background-position: -25px -475px; }
+
+
+/* new add icon 12.12*/
+.wx .icon-add-cart-disabled{background-position: -200px -400px;}
+.wx .icon-app{background-position: -300px -400px; width: 30px;height: 30px;vertical-align: middle;}
+.wx .icon-modal-close{ background-position:  -56px -300px;  width: 30px;height: 33px;}
+/*new wallet icon 2016 3.7*/
+/*11 row*/
+.wx .icon-count-balance,.wx .icon-count-card,.wx .icon-count-set,.wx .icon-count-money,.wx .icon-count-member{ width: 30px;height: 30px;vertical-align: middle;margin-right: 5px;}
+.wx .icon-count-balance{ background-position: -100px -440px; }
+.wx .icon-count-card{ background-position: -150px -440px;   }
+.wx .icon-count-money{ background-position: -150px -470px;   }
+.wx .icon-count-set{  background-position: -200px -440px; }
+.wx .icon-count-vip{ background-position: -288px -480px;width:58px;height: 15px;vertical-align: middle;}
+.wx .icon-count-member{ background-position: -200px -470px;   }
+.wx .icon-count-download{ background-position: -250px -473px; width: 30px;height: 30px;vertical-align: middle;}
+.wx .icon-count-whitecode{ background-position: 0 -476px; width: 27px;height: 17px;vertical-align: middle; }
+.wx .icon-count-whitephone{ background-position: -353px -261px;width: 15px;height: 20px;vertical-align: -4px; }
+
+/* cashier */
+.wx .icon-cash-pay{ background-position: -50px -470px; }
+.wx .icon-alipay-pay{ background-position: -250px -440px; }
+.wx .icon-union-pay{ background-position: -300px -440px; }
+.wx .icon-mtcard-pay{ background-position: -350px -440px; }
+
+/*vipcard*/
+.wx .icon-wmcoupon-unused,.wx .icon-wmcoupon-used,.wx .icon-wmcoupon-past{ width: 40px;height: 30px;vertical-align: middle; }
+.wx .icon-wmcoupon-unused{ background-position: -245px -302px }
+.wx .icon-wmcoupon-used{ background-position: -295px -302px }
+.wx .icon-wmcoupon-past{ background-position:-345px -302px }
+
+/*toolbar*/
+
+.wx .toolbar { font-size : 16px; position: fixed; top : 0; width : 100%; box-shadow: 0px 0px 10px rgba( 0, 0, 0, 0.2 ); height : 44px; background-color: #fff; z-index : 999; line-height : 44px; text-align: center; }
+.wx .toolbar .back { position: absolute; top: 3px;left: 8px;width: 40px;height: 40px;padding: 4px;cursor:pointer;}
+.wx .toolbar .act { position: absolute; padding : 0 10px; right : 0; height : 44px; line-height : 44px; top : 0; }
+.wx .toolbar .act:active{-webkit-animation: breathing 2s ease-out;animation: breathing 2s ease-out;text-align: center;}
+.wx .toolbar .act a,
+.wx .toolbar .act span { font-size : 16px; color : #ff712b; }
+.wx .nobackBtnCls .toolbar .back {display:none}
+.wx .toolbar .back .icon{background-color: #333;padding: 1px;border-radius: 16px;width: 32px;height: 32px;background-position: 1px -150px;}
+.wx .toolbar i.icon{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+}
+.wx .toolbar i.icon:active{
+    transform: scale(.6);
+    -webkit-transform: scale(.6);
+}
+.wx .toolbar .back .icon:active{
+    background-color: #444;
+}
+
+/* has bottom bar */
+.wx.hasBottomBar{
+    padding-bottom: 50px;
+}
+/* 统一添加角标 */
+.wx .cornersign-wrapper{
+    position: relative;
+}
+.wx .cornersign-wrapper .cornersign{
+    position: absolute!important;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
