@@ -1,0 +1,56 @@
+/* 颜色变量 主题修改只用修改主色 然后其他颜色更具mixin 自动变化*/
+
+$color-main: #764ba2;
+$color-blue: #667eea;
+$color-warning: #FFBF0E;
+$color-deepBlue: #605DD4;
+$color-white: #fff;
+$color-border:#E1E0E0;
+$color-text:#666666;
+$background-white:#fff;
+/* cursor*/
+$cursor-disabled:not-allowed;
+
+  /* btn */
+$btn-default-color:$color-text;
+$btn-default-border:$color-border;
+$btn-background: #6B6ED3;
+$btn-color: $color-white;
+
+/* tags */
+$tag-color: $color-white;
+$tag-defalut: #BDBDBD;
+$tag-warning: $color-warning;
+$tag-blue: $color-deepBlue;
+
+/*input*/
+$input-color:#999999;
+$input-border:$color-border;
+$input-focus:$color-blue;
+$input-success:#50D166;
+$input-danger:#F13A30;
+
+/* table */
+$table-border-color:$color-border;
+$table-bg:$color-white;
+$table-color:$color-text;
+
+/*bread*/
+$bread-color:#999;
+$bread-color-active:#4A4A4A;
+
+/*checkbox*/
+$checkbox-color:#666666;
+$checkbox-background:#6B6ED3;
+$checkbox-background-white:#fff;
+$checkbox-border:#E1E0E0;
+
+/*stage*/
+$stage-bg:$color-white;
+$stage-color:#4A4A4A;
+$stage-flag:$btn-background;
+
+/*widgets loading*/
+$loading-cont:#c8cccd;;
+$loading-bg:rgba(107, 110, 211, 0.8);
+$mask-bg:rgba(0, 0, 0, 0.05);

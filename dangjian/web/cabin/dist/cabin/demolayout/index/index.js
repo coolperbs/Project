@@ -1,0 +1,1 @@
+define("cabin/demolayout/index/index",function(require,a,b){var c=require("cabin/layout/layout");require("cabin/modules/menu/menu"),require("cabin/modules/header/header");return c({name:"cabinindex",tpl:"cabin/layout/index/index.tpl",widgets:{menu:require("cabin/modules/menu/menu"),header:require("cabin/modules/header/header")}})});

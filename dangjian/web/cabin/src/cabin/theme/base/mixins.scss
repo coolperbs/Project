@@ -1,0 +1,77 @@
+/* 公共方法 设置透明度 定位 等 */
+
+/* user-select */
+@mixin userSelect($select) {
+  -webkit-user-select: $select;
+  -moz-user-select: $select;
+  -ms-user-select: $select; // IE10+
+  user-select: $select;
+}
+
+/* 单行禁止换行 超出... */
+@mixin ellipsis{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+/* 多行溢出... */
+@mixin muiltEllipsis($clamp){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $clamp;
+  overflow: hidden;
+}
+
+/*清除浮动*/
+@mixin clearFix{
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+/* 点击active高亮 */
+@mixin tapFocus{
+ /* outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;*/
+  outline: none;
+  outline-offset: -2px;
+}
+
+/*设置shaodow*/
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+/*table*/
+@mixin table-row-variant($state, $background) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.#{$state},
+    > th.#{$state},
+    &.#{$state} > td,
+    &.#{$state} > th {
+      background-color: $background;
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.#{$state}:hover,
+    > th.#{$state}:hover,
+    &.#{$state}:hover > td,
+    &:hover > .#{$state},
+    &.#{$state}:hover > th {
+      background-color: darken($background, 5%);
+    }
+  }
+}

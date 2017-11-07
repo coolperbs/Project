@@ -1,0 +1,270 @@
+.cabin {
+	.btn {
+		padding: 9px 36px;
+		border: 1px solid transparent;
+		border-radius: 4px;
+	}
+	.btn-icon {
+		padding: 9px 26px;
+	}
+	.btn:focus,
+	.btn:active:focus,
+	.btn.active:focus,
+	.btn.focus,
+	.btn:active.focus,
+	.btn.active.focus {
+		outline: none;
+		outline-offset: -2px;
+	}
+	.btn:hover,
+	.btn:focus,
+	.btn.focus {
+		color: $btn-color;
+		text-decoration: none;
+	}
+	.btn.disabled,
+	.btn[disabled],
+	fieldset[disabled] .btn {
+		cursor: not-allowed;
+		filter: alpha(opacity=65);
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		opacity: .65;
+	}
+	a.btn.disabled,
+	fieldset[disabled] a.btn {
+		pointer-events: none;
+	}
+	.btn-default {
+		color: $btn-default-color;
+		background-color: $btn-color;
+		border-color: $btn-default-border;
+	}
+	.btn-default:focus,
+	.btn-default.focus {
+		color: $btn-default-color;
+		background-color: $btn-color;
+		border-color: $btn-default-border;
+	}
+	.btn-default:hover {
+		color: $btn-default-color;
+		border-color: $btn-default-border;
+		background-color: darken($btn-color, 5%);
+	}
+	.btn-default:active,
+	.btn-default.active,
+	.open > .dropdown-toggle.btn-default {
+		color: $btn-default-color;
+		background-color: $btn-color;
+		border-color: $btn-default-border;
+	}
+	.btn-default:active:hover,
+	.btn-default.active:hover,
+	.open > .dropdown-toggle.btn-default:hover,
+	.btn-default:active:focus,
+	.btn-default.active:focus,
+	.open > .dropdown-toggle.btn-default:focus,
+	.btn-default:active.focus,
+	.btn-default.active.focus,
+	.open > .dropdown-toggle.btn-default.focus {
+		color: $btn-default-color;
+		background-color: $btn-color;
+		border-color: $btn-default-border;
+	}
+	.btn-default.disabled:hover,
+	.btn-default[disabled]:hover,
+	fieldset[disabled] .btn-default:hover,
+	.btn-default.disabled:focus,
+	.btn-default[disabled]:focus,
+	fieldset[disabled] .btn-default:focus,
+	.btn-default.disabled.focus,
+	.btn-default[disabled].focus,
+	fieldset[disabled] .btn-default.focus {
+		color: $btn-default-color;
+		background-color: lighten($btn-color, 3%);
+	}
+	.btn-default .badge {
+		color: $btn-default-color;
+		background-color: $btn-color;
+	}
+	.btn-primary {
+		color: $btn-color;
+		background-color: $btn-background;
+		border-color: $btn-background;
+	}
+	.btn-primary:focus,
+	.btn-primary.focus {
+		color: $btn-color;
+		background-color: $btn-background;
+		border-color: $btn-background;
+	}
+	.btn-primary:hover {
+		color: $btn-color;
+		background-color: darken($btn-background, 3%);
+		border-color: $btn-background;
+	}
+	.btn-primary:active,
+	.btn-primary.active,
+	.open > .dropdown-toggle.btn-primary {
+		color: $btn-color;
+		background-color: $btn-background;
+		border-color: $btn-background;
+	}
+	.btn-primary:active:hover,
+	.btn-primary.active:hover,
+	.open > .dropdown-toggle.btn-primary:hover,
+	.btn-primary:active:focus,
+	.btn-primary.active:focus,
+	.open > .dropdown-toggle.btn-primary:focus,
+	.btn-primary:active.focus,
+	.btn-primary.active.focus,
+	.open > .dropdown-toggle.btn-primary.focus {
+		color: $btn-color;
+		background-color: $btn-background;
+		border-color: $btn-background;
+	}
+	.btn-primary.disabled:hover,
+	.btn-primary[disabled]:hover,
+	fieldset[disabled] .btn-primary:hover,
+	.btn-primary.disabled:focus,
+	.btn-primary[disabled]:focus,
+	fieldset[disabled] .btn-primary:focus,
+	.btn-primary.disabled.focus,
+	.btn-primary[disabled].focus,
+	fieldset[disabled] .btn-primary.focus {
+		background-color: lighten($btn-background, 3%);
+		border-color: lighten($btn-background, 3%);
+	}
+	.btn-primary .badge {
+		color: $btn-background;
+		background-color: $btn-color;
+	}
+	.btn.danger {
+		border: 1px solid #F13A30;
+		background-image: url(cabin/src/cabin/common/img/input-error.png);
+		background-repeat: no-repeat;
+		background-position: 97% center;
+	}
+	.btn.circle-danger {
+		border: 1px solid #F13A30;
+		position: relative;
+	}
+	.btn.circle-danger b.icon {
+		background-image: url(cabin/src/cabin/common/img/delete-icon.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 24px;
+		height: 24px;
+		display: block;
+		position: absolute;
+		z-index: 10;
+		top: -8px;
+		right: -8px;
+	}
+	.btn.btn-default.circle-danger:hover,
+	.btn.btn-default.danger:hover {
+		background-color: #fff;
+		border: 1px solid #F13A30;
+	}
+	.btn.danger span,
+	.btn.circle-danger span {
+		font-size: 12px;
+		display: block;
+	}
+	.btn.disabled-circle-danger {
+		border: 1px solid #ADADAD;
+		position: relative;
+	}
+	.btn.disabled-circle-danger b.icon {
+		background-image: url(cabin/src/cabin/common/img/disdelete-icon.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 24px;
+		height: 24px;
+		display: block;
+		position: absolute;
+		z-index: 10;
+		top: -8px;
+		right: -8px;
+	}
+	.btn.btn-default.disabled-circle-danger:hover {
+		background-color: #fff;
+		border: 1px solid #ADADAD;
+	}
+	.btn.danger span,
+	.btn.disabled-circle-danger span {
+		font-size: 12px;
+		display: block;
+	}
+	.btn-outline {
+		color: $btn-background;
+		background-color: $btn-color;
+		border-color: $btn-background;
+	}
+	.btn-outline:focus,
+	.btn-outline.focus {
+		color: $btn-background;
+		background-color: $btn-color;
+		border-color: $btn-background;
+	}
+	.btn-outline:hover {
+		color: $btn-background;
+		border-color: $btn-background;
+		background-color: rgba(107, 110, 211, 0.16);
+	}
+	.btn-outline:active,
+	.btn-outline.active,
+	.open > .dropdown-toggle.btn-outline {
+		color: $btn-background;
+		background-color: $btn-color;
+		border-color: $btn-background;
+	}
+	.btn-outline:active:hover,
+	.btn-outline.active:hover,
+	.open > .dropdown-toggle.btn-outline:hover,
+	.btn-outline:active:focus,
+	.btn-outline.active:focus,
+	.open > .dropdown-toggle.btn-outline:focus,
+	.btn-outline:active.focus,
+	.btn-outline.active.focus,
+	.open > .dropdown-toggle.btn-outline.focus {
+		color: $btn-background;
+		background-color: $btn-color;
+		border-color: $btn-background;
+	}
+	.btn-outline.disabled:hover,
+	.btn-outline[disabled]:hover,
+	fieldset[disabled] .btn-outline:hover,
+	.btn-outline.disabled:focus,
+	.btn-outline[disabled]:focus,
+	fieldset[disabled] .btn-outline:focus,
+	.btn-outline.disabled.focus,
+	.btn-outline[disabled].focus,
+	fieldset[disabled] .btn-outline.focus {
+		color: $btn-background;
+		background-color: lighten($btn-color, 3%);
+	}
+	.btn-outline .badge {
+		color: $btn-background;
+		background-color: $btn-color;
+	}
+	.btn.danger {
+		border: 1px solid #F13A30;
+		background-image: url(cabin/src/cabin/common/img/input-error.png);
+		background-repeat: no-repeat;
+		background-position: 97% center;
+	}
+	.btn.file {
+		position: relative;
+		overflow: hidden;
+	}	
+	.btn.file input {
+		position: absolute;
+		font-size: 100px;
+		right: 0;
+		top: 0;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+	}
+}

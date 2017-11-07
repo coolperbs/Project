@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/search/search",
+    "pages/inputSearch/inputSearch",
+    "pages/city/city",
+    "pages/zhongjieDetail/zhongjieDetail",
+    "pages/detail/detail",
+    "pages/comment/comment"
+  ],
+
+  "window":{
+    "navigationBarBackgroundColor": "#1aac03",
+    "navigationBarTitleText" : "安X客",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh" : false,
+    "onReachBottomDistance" : 100
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

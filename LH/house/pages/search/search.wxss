@@ -1,0 +1,12 @@
+@import "../../widgets/search/search.wxss"
+@import "../../widgets/list/list.wxss"
+page{
+	height:100%;
+	position: relative;
+}
+.page-search{
+	position: relative;
+}
+/*.page-search .search-field{
+	border-bottom : 0;
+}*/
