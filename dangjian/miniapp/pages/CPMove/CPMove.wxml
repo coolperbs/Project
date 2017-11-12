@@ -1,0 +1,101 @@
+<view class="page-CPMove">
+
+
+
+	<view class="page-CPMove-wrapper form-wrapper">
+		<view class="form-header">
+			<view class="logo"></view>
+			基本信息
+			<view class="link" catchtap="redirect" data-pagename="rules" >详情>> </view>
+		</view>
+		<view class="form-content disabled">
+			<view class="field">
+				<view class="name">
+					<text>姓名</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="name" disabled="{{true}}" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>身份证号码</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>联系电话</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>挂靠组织</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value">
+					<picker bindchange="bindPickerChange" value="0" range="['一部','二部','三部','四部','五部','六部']">
+					    <view class="picker-value">
+					      	一部 >>
+					    </view>
+					 </picker>
+				</view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>流动类型</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value">
+					<!-- <input data-key="hometown" catchTap="changeInput"/> -->
+					<picker bindchange="bindPickerChange" value="0" range="['市内流动','跨省流动','省内跨市流动']">
+					    <view class="picker-value">
+					      	市内流动 >>
+					    </view>
+					 </picker>
+				</view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>流动原因</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>原职业</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>原党组织</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>原联系人</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>原联系方式</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+		</view>
+	</view>
+	<view class="btn-wrapper btns">
+		<view catchTap="submit btn" class="submit btn" data-type="submit">提交</view>
+		<view catchTap="cancel btn" class="cancel btn" data-type="cancel">取消</view>
+	</view>
+</view>

@@ -1,0 +1,14 @@
+@import '../../common/basestyle/module.wxss'
+page{
+	background-color: white;
+}
+.btn-wrapper .btn.rules{
+	width: 100%;
+	margin-top:100rpx;
+}
+.CPMove-wrapper,.CPApply-wrapper{
+	padding:20rpx;
+	font-size:36rpx;
+	padding-bottom: 100rpx;	
+}
+ 

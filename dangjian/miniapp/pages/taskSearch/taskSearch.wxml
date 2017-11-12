@@ -1,0 +1,31 @@
+<view class="page-tasksearch">
+	<template is="taskSearch-list"></template>
+	
+</view>
+
+<template name='taskitem-list'>
+	<view class="taskitem">
+		<view class="left">
+			<view class="image-wrapper">
+				<image class="blank" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+				<image class="user-imgae" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=326469165,4121406101&fm=27&gp=0.jpg"/>
+			</view>
+		</view>
+		<view class="right">
+			<view class="title">
+				<text>张三，在天府3街，丢失母猪一头</text>
+			</view>
+			<view class="type">
+				<text>A类申报</text>
+			</view>
+			<view class="status">
+				<text>处理中</text>
+			</view>
+			<view class="operation">
+				<text class="operation-user">认领人:李四</text>
+				<view class="operation-btn">我要认领</view>
+			</view>
+			<view class="time">07-31</view>
+		</view>
+	</view>
+</template>

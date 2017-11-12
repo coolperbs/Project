@@ -1,0 +1,154 @@
+/***文章列表CSS**/
+.artical{
+	display: flex;
+	width: 700rpx;
+	height: 150rpx;
+	padding: 20rpx;
+	background-color: white;
+	border-bottom: 1px solid #f0f0f0;
+}
+.artical .left{
+	width: 250rpx;
+	height: 100%;
+}
+.artical .right{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 450rpx;
+	padding-left: 20rpx;
+}
+.artical .left .artical-img{
+	width: 100%;
+	height: 100%
+}
+.artical .right .artical-title{
+	 overflow:hidden; 
+	 text-overflow:ellipsis; 
+	 display:-webkit-box; 
+	 -webkit-box-orient:vertical; 
+	 -webkit-line-clamp:2;
+	 font-size: 32rpx;
+	 color: #191919;
+}
+.artical .right .artical-date{
+	font-size: 24rpx;
+	color: #9e9e9e;
+}
+.artical .right .artical-type{
+	font-size: 24rpx;
+	color: #4375a0
+}
+/***表单css***/
+
+.form-wrapper{
+	width:700rpx;
+	margin:auto;
+	background-color:white;
+	border-radius:8rpx;
+	padding-bottom:10rpx;
+	box-shadow:0 8rpx 20rpx 0 rgba(0,0,0,0.1);
+
+}
+.form-wrapper .form-header{
+	height: 100rpx;
+	font-size: 38rpx;
+	color:#333333;
+	line-height: 100rpx;
+	padding:0 20rpx;
+	position: relative;
+	border-bottom:1px solid #f0f0f0;
+}
+.form-wrapper .form-header .logo{
+	background-color:#CC0033;
+	width: 10rpx;
+	height: 30rpx;
+	position: absolute;
+	left: 0;
+	top: 35rpx;
+}
+.form-wrapper .form-content{
+	display:flex;
+	flex-direction:column;
+	position:relative;
+	margin:0 20rpx;
+
+}
+.form-content .field{
+	display:flex;
+	align-items:center;
+	font-size:28rpx;
+	min-height:60rpx;
+	border-bottom:1px solid #f0f0f0;
+	padding:10rpx 0;
+
+}
+.form-content .field .notBlank{
+	position:absolute;
+	color:#CC0033;
+	font-size:20rpx;
+
+}
+.form-content .field .name{
+	width:100rpx;
+	text-align:right;
+	color:#333;
+	padding-right:20rpx;
+}
+.form-content .field .value{
+	width: 550rpx
+}
+.form-content.disabled input,
+.form-content .field textarea{
+	background-color: #fafafa;
+}
+.form-content .field input,
+.form-content .field textarea{
+	padding:0 10rpx;
+	border:1px solid #f0f0f0;
+	border-radius:10rpx;
+	height:75rpx;
+	margin-left:10rpx;
+	width: 500rpx;
+}
+.form-content .field textarea{
+
+}
+.form-content .field.inValid .name{
+	color: #CC0033
+}
+.form-content .field .notice{
+	color:#CC0033;
+	font-size:26rpx;
+	margin-left:10rpx;
+	margin-top:10rpx;
+}
+.form-content .field .picker-value{
+	margin-left: 10rpx;
+	width: 500rpx;
+	text-align: right;
+	color: #CCC;
+}
+.btn-wrapper{
+	width: 700rpx;
+	margin:auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.btn-wrapper .btn{
+	height: 80rpx;
+	line-height: 80rpx;
+	border-radius: 10rpx;
+	width: 340rpx;
+	text-align:center;
+}
+.btn-wrapper .btn.submit{
+	background-color: #CC0033;
+	color: white;
+}
+.btn-wrapper .btn.cancel{
+	background-color: #CCCCCC;
+	color:#333;
+	
+}

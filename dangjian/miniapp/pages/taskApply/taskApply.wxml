@@ -1,0 +1,36 @@
+<view class="page-taskApply">
+	<view class="page-taskApply-wrapper form-wrapper">
+		<view class="form-header">
+			<view class="logo"></view>
+			abcd
+		</view>
+		<view class="form-content disabled">
+			<view class="field inValid">
+				<view class="name">
+					<text>'111'</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="name" disabled="{{true}}" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>'111'</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+			</view>
+			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+				<view class="name">
+					<text>'111'</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="hometown" catchTap="changeInput"/></view>
+			</view>
+
+		</view>
+	</view>
+	<view class="btn-wrapper btns">
+		<view catchTap="submit btn" class="submit btn" data-type="submit">确认</view>
+		<view catchTap="cancel btn" class="cancel btn" data-type="cancel">取消</view>
+	</view>
+</view>

@@ -1,0 +1,12 @@
+@import '../../common/basestyle/module.wxss'
+page{
+	/*background-color: #F0f0f0;*/
+}
+.page-CPApply{
+	padding:20rpx 0;
+}
+.btn-wrapper.btns{
+	margin-top: 20rpx
+}
+
+

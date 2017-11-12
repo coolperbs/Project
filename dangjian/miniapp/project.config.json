@@ -1,0 +1,179 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true
+	},
+	"compileType": "weapp",
+	"libVersion": "1.5.4",
+	"appid": "wxb8feaae24558d59c",
+	"projectname": "dangjian",
+	"condition": {
+		"weapp": {
+			"list": [
+				{
+					"id": 0,
+					"name": "城市选择",
+					"pathName": "pages/city/city",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 3,
+					"name": "地址列表",
+					"pathName": "pages/addresslist/addresslist",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "地址",
+					"pathName": "pages/address/address",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "评论",
+					"pathName": "pages/comment/comment",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "我的收藏",
+					"pathName": "pages/favorite/favorite",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "售后申请",
+					"pathName": "pages/aftersale/aftersale",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/contact/contact",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "品牌加盟",
+					"pathName": "pages/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论列表",
+					"pathName": "pages/commentlist/commentlist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "售后列表",
+					"pathName": "pages/aftersalelist/aftersalelist",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "商详",
+					"pathName": "pages/detail/detail",
+					"query": "id=3"
+				},
+				{
+					"id": 13,
+					"name": "结算",
+					"pathName": "pages/checkout/checkout",
+					"query": "skuid=1&skunum=4"
+				},
+				{
+					"id": 16,
+					"name": "店铺首页",
+					"pathName": "pages/shop/shop",
+					"query": "shopid=1"
+				},
+				{
+					"id": 15,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "upperuid=2",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "优惠券-领取",
+					"pathName": "pages/coupon-fetch/coupon-fetch",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "优惠券-使用",
+					"pathName": "pages/coupon-use/coupon-use",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分销-我的团队",
+					"pathName": "pages/fx-team/fx-team",
+					"query": ""
+				},
+				{
+					"id": 19,
+					"name": "分销-我的金额",
+					"pathName": "pages/fx-money/fx-money",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分销-我要体现",
+					"pathName": "pages/fx-takemoney/fx-takemoney",
+					"query": ""
+				},
+				{
+					"id": -1,
+<<<<<<< HEAD
+					"name": "关系转移",
+					"pathName": "pages/CPMove/CPMove",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "文章详情",
+					"pathName": "pages/artical/artical",
+=======
+					"name": "钱包",
+					"pathName": "pages/wallet/wallet",
+					"query": ""
+				},
+				{
+					"id": 22,
+					"name": "余额详情",
+					"pathName": "pages/scoredetail/scoredetail",
+>>>>>>> 64b2d35da167ae9f1dea51c82e10c2bc4429c5af
+					"query": ""
+				}
+			]
+		},
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		}
+	}
+}

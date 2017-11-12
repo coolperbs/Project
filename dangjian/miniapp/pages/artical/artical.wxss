@@ -1,0 +1,88 @@
+page{
+	background-color: white;
+}
+
+
+.page-artical{
+	width:100%;
+	padding-bottom:100rpx;
+}
+.page-artical .header-image{
+	width: 750rpx;
+	height: 300rpx;
+}
+.page-artical .header-image image{
+	width: 750rpx;
+	height: 300rpx;
+}
+.page-artical .artical-info {
+	text-align:left;
+	border-bottom:1px solid #f0f0f0;
+	margin-top:30rpx;
+	padding:0 20rpx;
+
+}
+.page-artical .artical-info .title{
+	font-size: 40rpx;
+	color: black
+}
+.page-artical .artical-info .detail{
+	margin-top:20rpx;
+	color:#CCC;
+	font-size:24rpx;
+	margin-bottom:20rpx;
+}
+
+.page-artical  .artical{
+	padding:40rpx;
+	color:#333;
+	font-size:28rpx;
+
+}
+.page-artical .artical .artical-img{
+	width:100%;
+	height:300rpx;
+	margin:10px 0;
+}
+
+
+.page-artical .share-wrapper{
+
+}
+.page-artical .share-wrapper .title{
+	font-size:26rpx;
+	color:#CCC;
+	text-align:center;
+	height:100rpx;
+	line-height:100rpx;
+	position:relative;
+
+}
+.page-artical .share-wrapper .line{
+	height:1px;
+	background-color:#CCC;
+	position:absolute;
+	width:500rpx;
+	left:125rpx;
+	top:50rpx;
+	z-index:-1;
+
+}
+.page-artical .share-wrapper .txt{
+	width:100rpx;
+	margin:auto;
+	background-color:white;
+	z-index:20;
+}
+
+
+.page-artical .share-wrapper .image-wrapper{
+	display: flex;
+	justify-content: space-around;
+}
+.page-artical .share-wrapper .logo{
+	width: 50rpx;
+	height: 50rpx;
+}
+
+

@@ -1,0 +1,22 @@
+@import '../../common/basestyle/module.wxss'
+page{
+	/*background-color: #F0f0f0;*/
+}
+.page-CPMove{
+	padding:20rpx 0;
+}
+.btn-wrapper.btns{
+	margin-top: 20rpx
+}
+.link{
+	position:absolute;
+	top:0;
+	right:20rpx;
+	font-size:24rpx;
+	color:#0099cc;
+	
+}
+
+
+
+

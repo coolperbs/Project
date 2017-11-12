@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/CPMove/CPMove",
+    "pages/CPApply/CPApply",
+    "pages/taskApply/taskApply",
+    "pages/artical/artical",
+    "pages/taskSearch/taskSearch",
+    "pages/rules/rules"
+
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText" : " ",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh" : false,
+    "onReachBottomDistance" : 100
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

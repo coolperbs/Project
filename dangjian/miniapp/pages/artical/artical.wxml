@@ -1,0 +1,46 @@
+<view class="page-artical">
+	<view class="page-artical-wrapper">
+		<view class="header-image">
+			<image class="img" src="http://images.china.cn/attachement/jpg/site1000/20171024/f44d307c8fd21b58b48243.jpg"></image>
+		</view>
+
+		<view class="artical-info">
+			<text class="title">十九大今日上午闭幕 将举行正式选举</text>
+			<view class="detail">
+				<text>作者: 佚名</text>
+				<text>发布时间: 2017-10-24</text>
+			</view>
+		</view>
+
+
+		<view class="artical">
+			十九大闭幕会今日上午在人民大会堂举行，选举十九届中央委员会，选举十九届中央纪律检查委员会。
+
+			据新华社电中国共产党第十九次全国代表大会主席团22日晚和23日上午在人民大会堂举行第三次和第四次会议，通过十九届中央委员会委员、候补委员和中央纪律检查委员会委员候选人名单（草案），提交各代表团酝酿。
+
+			习近平同志主持会议。
+
+			会议通过了经各代表团差额预选产生的十九届中央委员会委员、候补委员和中央纪律检查委员会委员候选人名单（草案），决定将名单提交各代表团酝酿。
+			<image src="http://images.china.cn/attachement/jpg/site1000/20171025/c03fd55670881b5a65f704.jpg" class="artical-img"></image>
+
+			据了解，从10月21日开始，各代表团对十八届中央政治局提出并经大会主席团通过的十九届中央委员会委员、候补委员和中央纪律检查委员会委员候选人预备人选名单进行了认真酝酿。代表们认为，这个名单是经过严密的组织程序、充分发扬党内民主产生的，集中了各地区、各部门、各条战线、各个行业党的执政骨干和优秀代表，整体素质优良、结构比较合理、分布比较均衡，群众基础比较好，是一个考虑比较周全的方案。
+
+			10月22日下午和23日上午，大会举行各代表团全体会议，先后对中央委员、中央纪委委员和候补中央委员进行了预选。按照大会选举办法的规定，预选采用差额选举办法，差额比例均多于8%。整个预选工作在大会主席团的领导下，在监票人的监督下，严格按照大会选举办法进行，预选结果合法、有效。
+
+			根据大会选举办法规定和日程安排，23日下午，大会举行各代表团分组会议，酝酿主席团第三次、第四次会议通过的中央委员、候补中央委员、中央纪委委员候选人名单。
+
+			24日上午，大会将举行正式选举。
+		</view>
+	</view>
+	<view class="share-wrapper">
+		<view class="title">
+			<view class="line"></view>
+			<view class="txt">分享到</view>
+		</view>
+		<view class="image-wrapper">
+			<image class="logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510162835833&di=452cda584ce55242e1c8349128478aab&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F21%2F45%2F27%2F21g58PICXi8_1024.jpg"/>
+			<image class="logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510163039788&di=e76e60e6ccdbc6c8535710245a218168&imgtype=0&src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fimg_mp_itc_cn%2F9649a8f0f299656268a17f9f1fae0deb.png"/>
+			<image class="logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510163072271&di=caa8513ab3edb8393d69de80552da9cb&imgtype=0&src=http%3A%2F%2Fpic.nipic.com%2F2007-11-07%2F200711717213100_2.jpg"/>
+		</view>
+	</view>
+</view>
