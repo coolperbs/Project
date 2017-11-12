@@ -1,0 +1,25 @@
+@import '../../common/basestyle/module.wxss'
+.btn-wrapper{
+	margin-top: 40rpx;
+}
+.login-content{
+	position:fixed;
+	top:200rpx;
+	left:35rpx;
+}
+.login-wrapper .form-wrapper{
+	width: 680rpx
+}
+.login-wrapper .btn-wrapper{
+	width: 680rpx;
+}
+.login-wrapper .btn-wrapper .btn.long{
+	width: 680rpx;
+}
+
+.login-wrapper .form-content .field{
+	padding:40rpx 0;
+}
+.login-wrapper .form-wrapper .form-content{
+	margin: 0 30rpx
+}

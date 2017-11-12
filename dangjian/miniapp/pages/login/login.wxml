@@ -1,0 +1,34 @@
+<view class="page-login">
+	<view class="login-wrapper">
+		<view class="login-content">
+			<view class="page-CPApply-wrapper form-wrapper">
+				<view class="form-header">
+					<view class="logo"></view>
+					登录
+				</view>
+				<view class="form-content disabled">
+					<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+						<view class="name">
+							<text>登录账号</text>
+							<text class="notBlank">*</text>
+						</view>
+						<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+					</view>
+				</view>
+				<view class="form-content disabled">
+					<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+						<view class="name">
+							<text>密码</text>
+							<text class="notBlank">*</text>
+						</view>
+						<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+					</view>
+				</view>
+			</view>
+			<view class="btn-wrapper btns">
+				<view catchTap="submit" class="submit btn long" data-type="submit">登录</view>
+			</view>
+		</view>
+		
+	</view>
+</view>

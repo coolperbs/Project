@@ -48,11 +48,11 @@
 			<image class="logo" src=""></image>
 			<text class="text">项目申报</text>
 		</view>
-		<view class="button" bindtap="events" data-func="redirect">
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="meetingStudy">
 			<image class="logo" src=""></image>
 			<text class="text">三会一课</text>
 		</view>
-		<view class="button" bindtap="events" data-func="redirect">
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="CPStudyList">
 			<image class="logo" src=""></image>
 			<text class="text">党员学习</text>
 		</view>

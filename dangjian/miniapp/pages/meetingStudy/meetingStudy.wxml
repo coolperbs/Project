@@ -1,0 +1,49 @@
+<view class="page-meetingStudy">
+	<template is="meetingStudy-list"></template>
+</view>
+
+
+
+
+<template name="meetingStudy-list">
+	<scroll-view scroll-y="true" class="meetingStudy-list-wrapper">
+		<view class="artical-item artical">
+			<view class="left">
+				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
+			</view>
+			<view class="right">
+				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
+				<view class="artical-date">10-29</view>
+			</view>
+		</view>
+		<view class="artical-item artical">
+			<view class="left">
+				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
+			</view>
+			<view class="right">
+				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
+				<view class="artical-date">10-29</view>
+			</view>
+		</view>
+		<view class="artical-item artical">
+			<view class="left">
+				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
+			</view>
+			<view class="right">
+				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
+				<view class="artical-date">10-29</view>
+				<view class="artical-type">三会一课/党员学习/党务动态</view>
+			</view>
+		</view>
+		<view class="artical-item artical">
+			<view class="left">
+				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
+			</view>
+			<view class="right">
+				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
+				<view class="artical-date">10-29</view>
+			</view>
+		</view>
+	</scroll-view>
+	
+</template>

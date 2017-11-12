@@ -12,8 +12,32 @@
 	"projectname": "%E5%85%9A%E5%BB%BA",
 	"condition": {
 		"weapp": {
-			"current": -1,
-			"list": []
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "党员学习",
+					"pathName": "pages/CPStudyList/CPStudyList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "项目列表",
+					"pathName": "pages/taskSearch/taskSearch",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/signup/signup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login"
+				}
+			]
 		},
 		"search": {
 			"current": -1,
