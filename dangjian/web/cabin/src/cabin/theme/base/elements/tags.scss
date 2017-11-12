@@ -1,0 +1,19 @@
+.cabin{
+  .tags{
+    padding: 0 5px;
+    font-size: 11px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    display: inline-block;
+    background: $tag-defalut;
+    color:$tag-color;
+    text-align: center;
+    &.warning{
+      background: $tag-warning;
+    }
+    &.blue{
+      background: $color-deepBlue;
+    }
+  }
+}

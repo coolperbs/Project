@@ -73,10 +73,6 @@
 </head>
 
 <body ontouchstart>
-    <div class="layout">
-        <div style="font-size : 2rem">asdf</div>
-    </div>
-
     <script>
         // 绕过浏览器自身路由bug
         window.onload = function() {
@@ -104,12 +100,27 @@
                         }
                     });
                     seajs.use([
-                        'kayak/core/kayak'
+                        'kayak/core/kayak',
+                        'cabin/core/cabin',
+                        'wuhou/common/screen/screen',
+                        'wuhou/common/style/style.css'
                     ], function(kayak ) {
                         var timmer,
                             kRouter = kayak.router,
                             checkFn;
-
+                        kayak.router.on('parseMain', function(pathObj) {
+                            var projectName = pathObj.path.split('/')[1];
+                            pathObj.mainPath = projectName + '/main/main'
+                        });
+                        kRouter.on('parseActions', function(p) {
+                            var path = (p.path + '').split('/');
+                            if (path.length == 1) {
+                                p.actionPath = 'wuhou/layout/' + path[0] + '/' + path[0];
+                            }
+                            if (path.length == 3) {
+                                p.actionPath = path[1] + '/pages/' + path[2] + '/' + path[2];
+                            }
+                        });
                         kRouter.on( 'preJump', function( e ) {
                             if ( e.pathData && e.pathData.dmalllink == '' && e.pathData.web == '' ) {
                                 kRouter.replace( '#wuhou/view/home/home' );

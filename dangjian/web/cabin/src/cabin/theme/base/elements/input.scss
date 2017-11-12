@@ -1,0 +1,125 @@
+.cabin {
+  .form-control {
+    border: 1px solid $input-border;
+    box-shadow: none;
+    height: 40px;
+    color: #333333;
+    &:focus {
+      border-color: $input-focus;
+    }
+    &.success {
+      border: 1px solid $input-success;
+      background-image: url(cabin/src/cabin/common/img/input-success.png);
+      background-repeat: no-repeat;
+      background-position: 97% center;
+      &:focus {
+        border-color: $input-success;
+      }
+    }
+    &.danger {
+      border: 1px solid $input-danger;
+      background-image: url(cabin/src/cabin/common/img/input-error.png);
+      ;background-repeat: no-repeat;
+      background-position: 97% center;
+      &:focus {
+        border-color: $input-danger;
+      }
+    }
+  }
+  .cabin-group {
+    display: flex;
+    margin-left: 0;
+    margin-right: 25px;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    min-height: 50px;
+    .control-label {
+      margin-left: 0 !important;
+      font-size: 13px;
+      font-weight: normal;
+      min-width: 65px;
+    }
+    .control-label {
+      margin: 0 20px;
+    }
+    [class *='col-'] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .radio-inline {
+      margin-top: 0;
+    }
+    .form-control{
+      width: 180px;
+    }
+  }
+  .form-horizontal .cabin-group .control-label, .form-horizontal .cabin-group .radio, .form-horizontal .cabin-group .checkbox, .form-horizontal .cabin-group .radio-inline, .form-horizontal .cabin-group .checkbox-inline {
+    padding-top: 11px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .form-horizontal .cabin-group .radio, .form-horizontal .cabin-group .checkbox, .form-horizontal .cabin-group .radio-inline, .form-horizontal .cabin-group .checkbox-inline {
+    padding-top: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  hr {
+    border-top: 1px solid #eeeeee;
+    margin: 10px auto;
+  }
+
+  .icondate{
+    background-image: url(cabin/src/cabin/common/img/calendar-icon.png);
+    background-position: 95% center;
+    padding-right: 50px;
+    background-repeat: no-repeat;
+    &:read-only{
+      background-color: white;
+    }
+  }
+  .daterange,.daterange-row {
+    .dateInput{
+      width: 240px;
+      background-image: url(cabin/src/cabin/common/img/calendar-icon.png);
+      background-position: 93% center;
+      padding-right: 50px;
+      background-repeat: no-repeat;
+      background-color: white;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    width: 545px;
+    .control-label{
+      width: 40px;
+      margin: 0;
+      text-align: center;
+    }
+    .daterange-row {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .daterange-delete {
+          opacity: 1;
+        }
+      }
+      .daterange-delete {
+        cursor: pointer;
+        opacity: 0;
+        position: absolute;
+        right: 80px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 24px;
+        width: 24px;
+        background: url(cabin/src/cabin/common/img/delete-icon.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all .45s ease;
+      }
+    }
+  }
+  .daterange-row{
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,53 @@
+<import src="../../widgets/list/list.wxml"/>
+<view class="page-index">
+	<view>
+		<template is="tpl-search" data="{{...city}}"/>
+	</view>
+	<scroll-view scroll-y="{{true}}" style="height:{{height}}" bindscrolltolower="getNext">
+		<view>
+			<template is="tpl-munu"/>
+		</view>
+		<view wx:if="{{dataList && dataList.length>0}}">
+			<view class="header">猜你喜欢</view>
+			<block wx:for="{{dataList}}" wx:key="*this">
+				<template is="tpl-listitem-index" data='{{...item}}'></template>
+			</block>
+		</view>
+	</scroll-view>
+</view>
+
+
+<template name="tpl-munu">
+	<view class="tpl-menu">
+		<view class="menu-item" bindtap="toSearch" data-type="newHouse">
+			<image src="../../asset/new-house.png" class="menu-item-img"></image>
+			<text class="menu-item-txt">新房</text>
+		</view>
+		<view class="menu-item" bindtap="toSearch" data-type="oldHouse">
+			<image src="../../asset/old-house.png" class="menu-item-img"></image>
+			<text class="menu-item-txt">二手房</text>
+		</view>
+		<view class="menu-item" bindtap="toSearch" data-type="rentHouse">
+			<image src="../../asset/rent-house.png" class="menu-item-img"></image>
+			<text class="menu-item-txt">租房</text>
+		</view>
+		<view class="menu-item" bindtap="toSearch" data-type="xiaoqu">
+			<image src="../../asset/xiaoqu.png" class="menu-item-img"></image>
+			<text class="menu-item-txt">小区</text>
+		</view>
+		<view class="menu-item" bindtap="toSearch" data-type="zhongjie">
+			<image src="../../asset/zhongjie.png" class="menu-item-img"></image>
+			<text class="menu-item-txt">房产专家</text>
+		</view>
+	</view>
+</template>
+
+
+<template name="tpl-search">
+	<view class="tpl-search">
+		<view class="city" bindtap="toCity">{{name}}<image src="../../asset/loc.png" /></view>
+		<input placeholder="安心挑好房，当然安x客" class="input" bindfocus="toInputSearch"/>
+	</view>
+</template>
+
+

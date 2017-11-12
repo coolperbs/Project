@@ -1,0 +1,11 @@
+/*新增样式名称，bootstrap里面没有的*/
+
+.cabin {
+	.event {
+		cursor: pointer;
+		color: $color-deepBlue;
+	}
+	.event:hover {
+		color: $color-blue;
+	}
+}

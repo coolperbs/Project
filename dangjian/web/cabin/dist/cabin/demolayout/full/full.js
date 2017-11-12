@@ -1,0 +1,1 @@
+define("cabin/demolayout/full/full",function(require,a,b){var c=require("cabin/layout/layout");return c({name:"cabinfull",tpl:"cabin/layout/full/full.tpl",widgets:{menu:"",header:""}})});

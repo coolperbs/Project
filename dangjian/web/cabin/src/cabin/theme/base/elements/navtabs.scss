@@ -1,0 +1,87 @@
+.cabin{
+  .nav-tabs {
+    border-bottom: 1px solid #f3f3f3;
+    > li {
+      float: left;
+      // Make the list-items overlay the bottom border
+      margin-bottom: -1px;
+
+      // Actual tabs (as links)
+      > a {
+        margin-top: 4px;
+        margin-right: -1px;
+        border: 1px solid #f3f3f3;
+        border-radius: 0;
+        padding: 10px 50px;
+        background: #fff;
+        color: #808080;
+        &:hover {
+          border-color: #f3f3f3 #f3f3f3 #f3f3f3;
+          padding: 11px 50px;
+          //margin-left: 1px;
+          //margin-right: 1px;
+          margin-top: 0;
+          background-color: lighten($color-deepBlue,58%);
+          border-bottom: none;
+          border-top:4px solid $color-deepBlue;
+        }
+      }
+
+      // Active state, and its :hover to override normal :hover
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          padding: 11px 50px;
+          //margin-left: 1px;
+          //margin-right: 1px;
+          margin-top: 0;
+          color: #4A4A4A;
+          background-color: #fff;
+          border-left: 1px solid #f3f3f3;
+          border-right: 1px solid #f3f3f3;
+          border-bottom: none;
+          border-top:4px solid $color-deepBlue;
+          cursor: default;
+        }
+      }
+    }
+    // pulling this in mainly for less shorthand
+    &.nav-justified {
+      .nav-tabs-justified {
+        border-bottom: 0;
+
+        > li > a {
+          // Override margin from .nav-tabs
+          margin-right: 0;
+          border-radius: 0;
+        }
+
+        > .active > a,
+        > .active > a:hover,
+        > .active > a:focus {
+          border: 1px solid #979797;
+        }
+
+        @media (min-width:  768px) {
+          > li > a {
+            border-bottom: 1px solid #979797;
+            border-radius: 0;
+          }
+          > .active > a,
+          > .active > a:hover,
+          > .active > a:focus {
+            border-bottom-color: #979797;
+          }
+        }
+      }
+    }
+  }
+  &-page-tabchange {
+    background: #ebebeb !important;
+    &.white{
+      background: #fff !important;
+    }
+  }
+}
+
