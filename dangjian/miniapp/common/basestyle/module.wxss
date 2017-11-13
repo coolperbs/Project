@@ -13,11 +13,12 @@
 	height: 100%;
 }
 .artical .right{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 450rpx;
-	padding-left: 20rpx;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	width:450rpx;
+	padding-left:20rpx;
+	position:relative;
 }
 .artical .left .artical-img{
 	width: 100%;
@@ -33,12 +34,18 @@
 	 color: #191919;
 }
 .artical .right .artical-date{
-	font-size: 24rpx;
-	color: #9e9e9e;
+	font-size:24rpx;
+	color:#9e9e9e;
+	position:absolute;
+	bottom:0rpx;
 }
 .artical .right .artical-type{
-	font-size: 24rpx;
-	color: #4375a0
+	font-size:24rpx;
+	color:#4375a0;
+	position:absolute;
+	bottom:0rpx;
+	left:80px;
+
 }
 /***表单css***/
 
@@ -84,6 +91,10 @@
 	border-bottom:1px solid #f0f0f0;
 	padding:10rpx 0;
 
+}
+.form-wrapper .form-content .field:last-child{
+	border-bottom: none;
+	padding:20rpx 0;
 }
 .form-content .field .notBlank{
 	position:absolute;
@@ -165,4 +176,32 @@
 	background-color: #CCCCCC;
 	color:#333;
 	
+}
+
+
+
+/***搜索框***/
+.search-box {
+	font-size:28rpx;
+	display:flex;
+	height:100%;
+	align-items:center;
+	height: 100rpx;
+	background-color: white
+}
+.search-box .back{
+	color:#ccc;
+	width:115rpx;
+	text-align:center;
+
+}
+.search-box .search-wrapper{
+	width: 530rpx;
+}
+.search-box .search-wrapper .search-txt{
+	background-color:#f0f0f0;
+	border-radius:50rpx;
+	width:100%;
+	padding:0 20rpx;
+
 }

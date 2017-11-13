@@ -16,7 +16,7 @@
 		<image class="header-logo" src="https://wx.qlogo.cn/mmopen/vi_32/CGJ2ptYXgQ4AtKlxdcZZ2GfXrVC0qE726p9woacgdnibOdhHrYDtZ2T6S8ZqBfkCgrPaticDcVjWE9mSBLmg0uNA/0"></image>
 		<text class="user-name">张三</text>
 		<view class="jifen">
-			<image src="" class="jifen-logo"/>
+			<image src="../../asset/mine-jifen.png" class="jifen-logo"/>
 			<text class="jifen-val">100</text>
 		</view>
 	</view>
@@ -24,7 +24,7 @@
 <template name="mine-menu">
 	<view class="mine-menu-wrapper">
 		<view class="mine-menu-content">
-			<view class="menu-item">
+			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="taskApply">
 				<text class="text">创建申报</text>
 			</view>
 			<view class="menu-item">

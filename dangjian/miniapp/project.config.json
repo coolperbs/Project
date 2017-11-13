@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true
@@ -12,7 +12,7 @@
 	"projectname": "%E5%85%9A%E5%BB%BA",
 	"condition": {
 		"weapp": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
@@ -35,7 +35,8 @@
 				{
 					"id": -1,
 					"name": "登录",
-					"pathName": "pages/login/login"
+					"pathName": "pages/login/login",
+					"query": ""
 				}
 			]
 		},

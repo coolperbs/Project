@@ -2,7 +2,7 @@
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: #f0f0f0
+	background-color: #f0f0f0;
 }
 
 .view-mine .pannel{
@@ -71,7 +71,7 @@ width:710rpx;
 	font-size:24rpx;
 color:#a6a6a6;
 height:28rpx;
-line-height:28rpx
+line-height:28rpx;
 }
 .view-mine .user .header-img{
 	width:140rpx;
@@ -117,12 +117,13 @@ color:#9e9e9e;
 
 }
 .view-mine .mine-header-wrapper{
-	height: 300rpx;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background-color: red;
+	height:300rpx;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	background-color:#FF0033;
+
 }
 .view-mine .mine-header-wrapper .header-logo{
 	width: 150rpx;
@@ -132,12 +133,12 @@ color:#9e9e9e;
 .view-mine .mine-header-wrapper .header-logo image{
 	width: 150rpx;
 	height: 150rpx;
-	border-radius: 50%
+	border-radius: 50%;
 	border:1px solid #f0f0f0;
 }
 .view-mine .mine-header-wrapper .user-name{
-	color : #bababa;
-	font-size: 30rpx
+	color : #fff;
+	font-size: 30rpx;
 	margin-top:10rpx;
 }
 .view-mine .mine-header-wrapper .jifen{
@@ -148,11 +149,13 @@ color:#9e9e9e;
 }
 .view-mine .mine-header-wrapper .jifen-logo{
 	width: 30rpx;
-	height: 30rpx
+	height: 30rpx;
 }
 .view-mine .mine-header-wrapper .jifen-val{
-	font-size: 30rpx;
-	color:#bababa;
+	font-size:30rpx;
+	color:#f4ea2a;
+	margin-left:5rpx;
+
 }
 .view-mine .my-service .content{
 	display:flex;
@@ -279,7 +282,7 @@ flex-wrap:wrap;
 	margin:auto;*/
 	/*margin-top: 40rpx;*/
 	/*margin:20rpx;*/
-	border-bottom-right-radius:4rpx 
+	border-bottom-right-radius:4rpx;
 	border-bottom-left-radius:4rpx;
 }
 .view-mine .mine-menu-wrapper .mine-menu-content{

@@ -9,22 +9,22 @@
 	width:100%;
 
 }
-.header .task-search {
+.header .search-box {
 	font-size:28rpx;
 	display:flex;
 	height:100%;
 	align-items:center;
 }
-.header .task-search .back{
+.header .search-box .back{
 	color:#ccc;
 	width:115rpx;
 	text-align:center;
 
 }
-.header .task-search .search-wrapper{
+.header .search-box .search-wrapper{
 	width: 530rpx;
 }
-.header .task-search .search-wrapper .search-txt{
+.header .search-box .search-wrapper .search-txt{
 	background-color:#f0f0f0;
 	border-radius:50rpx;
 	width:100%;
@@ -96,7 +96,7 @@
 	
 }
 .taskitem .right .status.type1{
-	color: #cc0033
+	color: #cc0033;
 }
 .taskitem .right .status.type2{}
 

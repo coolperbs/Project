@@ -9,7 +9,7 @@
 
 
 <template name="task-search">
-	<view class="task-search">
+	<view class="search-box">
 		<text class="back">取消</text>
 		<view class="search-wrapper">
 			<input class="search-txt" placeholder="请输入想搜索的项目名称" />

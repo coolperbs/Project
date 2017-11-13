@@ -1,6 +1,5 @@
 @import '../../common/basestyle/module.wxss'
 page{
-	/*background-color: #F0f0f0;*/
 }
 .page-CPMove{
 	padding:20rpx 0;

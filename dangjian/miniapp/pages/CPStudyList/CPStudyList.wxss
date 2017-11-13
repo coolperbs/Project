@@ -11,7 +11,6 @@ page{}
 	background-color: #fff;
 }
 .menu-scroll .menu-wrapper{
-	/*width: 1125rpx;*/
 	display: flex;
 
 }
@@ -28,7 +27,9 @@ page{}
 	border-bottom:1px solid #f0f0f0;
 
 }
-.menu-scroll .box.current { color : #d6204b;  }
+.menu-scroll .box.current { 
+	color : #d6204b;  
+}
 .page-CPStudyList .CPStudyList-list-wrapper{
-	margin-top:110rpx;
+	margin-top:220rpx;
 }
