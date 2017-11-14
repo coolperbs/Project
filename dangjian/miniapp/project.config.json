@@ -12,7 +12,7 @@
 	"projectname": "%E5%85%9A%E5%BB%BA",
 	"condition": {
 		"weapp": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -37,6 +37,18 @@
 					"name": "登录",
 					"pathName": "pages/login/login",
 					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "文章详情",
+					"pathName": "pages/artical/artical",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "创建项目",
+					"pathName": "pages/taskApply/taskApply",
+					"query": "id=1"
 				}
 			]
 		},

@@ -60,6 +60,12 @@ Page({
 	loadMore:function(e){
 		var self = this;
 		self.List.next();
+	},
+	toDetail:function(e){
+		var id = e.currentTarget.dataset.id;
+		wx.navigateTo({
+			url:'../artical/artical?id='+id
+		});
 	}
 });
 
@@ -81,22 +87,23 @@ var _fn = {
 		page = page || {};
 		var searchParam = page.searchParam || {};
 		var keyWord = searchParam.keyWord||'';
-		var articalSubType = searchParam.articalSubType||1;
+		var type = searchParam.type||1;
 		var listConfig = {
-			url:host+'/act/search',
+			url:host.cms+'/act/search',
 			param:{
 				typeId:2,//1:三会一课 2:党课学习
-				subTypeId:articalSubType,//1:党员风采，2会议学习，3年底工作计划，4学习及恶化，5工作总结，6资料下载
+				subTypeId:type,//1:党员风采，2会议学习，3年底工作计划，4学习及恶化，5工作总结，6资料下载
 				title:keyWord,
 			},
 			getList:function(res){
 				var retList = res.data.news;
 				retList.map(function(v,k){
-					v.showCreateTime = utils.formateTime(v.created);
+					v.showCreateTime = utils.formateTime(v.modified);
 					v.showType = subtypeEnum[v.bussinessTypes.toString()];
+					// v.showType = subtypeEnum[type]
 					return v;
 				});
-				return retList.concat(retList).concat(retList).concat(retList).concat(retList);
+				return retList;
 			},
 			getHasMore:function(res){
 				return res.data.hasMore

@@ -1,19 +1,23 @@
 <view class="page-artical">
 	<view class="page-artical-wrapper">
 		<view class="header-image">
-			<image class="img" src="http://images.china.cn/attachement/jpg/site1000/20171024/f44d307c8fd21b58b48243.jpg"></image>
+			<image class="img" src="{{artical.imageUrl}}"></image>
 		</view>
 
 		<view class="artical-info">
-			<text class="title">十九大今日上午闭幕 将举行正式选举</text>
+			<text class="title">{{artical.title}}</text>
 			<view class="detail">
-				<text>作者: 佚名</text>
-				<text>发布时间: 2017-10-24</text>
+				<!-- <text>作者: 佚名 </text> -->
+				<text>发布时间: {{artical.showPublishDate}}</text>
+
+				<text class="showType">{{artical.showType}}</text>
+				<text class="showSubType">{{artical.showSubType}}</text>
+
 			</view>
 		</view>
 
 
-		<view class="artical">
+<!-- 		<view class="artical">
 			十九大闭幕会今日上午在人民大会堂举行，选举十九届中央委员会，选举十九届中央纪律检查委员会。
 
 			据新华社电中国共产党第十九次全国代表大会主席团22日晚和23日上午在人民大会堂举行第三次和第四次会议，通过十九届中央委员会委员、候补委员和中央纪律检查委员会委员候选人名单（草案），提交各代表团酝酿。
@@ -30,6 +34,24 @@
 			根据大会选举办法规定和日程安排，23日下午，大会举行各代表团分组会议，酝酿主席团第三次、第四次会议通过的中央委员、候补中央委员、中央纪委委员候选人名单。
 
 			24日上午，大会将举行正式选举。
+		</view> -->
+
+		<view class="artical">
+			<block wx:for="{{artical.moduleList}}">
+				<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===1}}">
+					<template is="word-tpl" data="{{...item}}"></template>
+				</view>
+				<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===2}}">
+					<template is="image-tpl" data="{{...item}}"></template>
+				</view>
+
+				<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===3}}">
+					<template is="swiper-tpl" data="{{...item}}"></template>
+				</view>
+				<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===4}}">
+					<template is="vedio-tpl" data="{{...item}}"></template>
+				</view> 
+			</block>
 		</view>
 	</view>
 	<view class="share-wrapper">
@@ -44,3 +66,30 @@
 		</view>
 	</view>
 </view>
+
+
+
+<template name="swiper-tpl">
+		<swiper class="swiper" 
+		indicator-dots='{{false}}'
+		autoplay='{{true}}
+		interval='3000'
+		circular='{{true}}'>
+			  <block wx:for="{{data}}">
+					<swiper-item class="swiper-item">
+					      <image src="{{item.url}}"/>
+					      <!-- <view class="slide-title">生活工作不操心,便宜到尖叫</view> -->
+				    </swiper-item>
+			  </block> 
+		</swiper>
+	
+</template>
+<template name="image-tpl">
+	<image src="{{data.url}}" class="artical-img"/>
+</template>
+<template name="word-tpl">
+	<block wx:for="{{data.contents}}">
+		<text class="paragraph">{{item}}</text>   
+	</block>
+</template>
+<template name="vedio-tpl"></template>

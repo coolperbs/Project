@@ -62,7 +62,11 @@
 					<text class="notBlank">*</text>
 				</view>
 				<view class="value">
-
+					<view class="btn-wrapper" >
+						<block wx:for="{{uploadData.btns}}">
+							<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" catchtap="changeFile"/>
+						</block>
+					</view>
 				</view>
 			</view>
 		</view>

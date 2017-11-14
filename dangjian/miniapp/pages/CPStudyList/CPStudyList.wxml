@@ -25,7 +25,7 @@
 			class="CPStudyList-list-wrapper"
 			bindscrolltolower="loadMore">
 				<block wx:for="{{listData}}">
-					<view class="artical-item artical">
+					<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
 						<view class="left">
 							<image class="artical-img" src="{{item.adImgUrl}}"></image>
 						</view>

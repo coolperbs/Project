@@ -4,44 +4,44 @@
 			<view class="logo"></view>
 			注册信息
 		</view>
-		<view class="form-content disabled">
+		<view class="form-content">
 			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
 				<view class="name">
-					<text>姓名</text>
+					<text>手机号码</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+				<view class="value"><input data-key="userPhone" bindinput="changeInput"/></view>
 			</view>
 		</view>
-		<view class="form-content disabled">
+		<view class="form-content">
 			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
 				<view class="name">
 					<text>身份证号码</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+				<view class="value"><input data-key="idCard" bindinput="changeInput"/></view>
 			</view>
 		</view>
-		<view class="form-content disabled">
+		<view class="form-content">
 			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
 				<view class="name">
 					<text>密码</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+				<view class="value"><input data-key="password" password="{{true}}" bindinput="changeInput"/></view>
 			</view>
 		</view>
-		<view class="form-content disabled">
+		<view class="form-content">
 			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
 				<view class="name">
-					<text>确认密码</text>
+					<text>再次输入密码</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+				<view class="value"><input data-key="cheackPassword" password="{{true}}" bindinput="changeInput"/></view>
 			</view>
 		</view>
 	</view>
 	<view class="btn-wrapper btns">
-		<view catchTap="submit" class="submit btn long" data-type="submit">注册</view>
+		<view catchtap="submit" class="submit btn long" data-type="submit">注册</view>
 	</view>
 </view>
