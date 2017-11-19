@@ -58,14 +58,22 @@ Page({
 		}
 	},
 	toggleRecordPop:function(e){
-		var self = this;
-		var recordPopStatus = self.recordPopStatus||false;
-		self.setData({recordPopStatus:!self.recordPopStatus});
+		var self =this;
+		var id = self.param.id;
+		wx.navigateTo({
+			url:'../taskComment/taskComment?id='+id
+		})
 	},
 	addNote:function(){
 		var self = this;
 		_fn.noteTask(self);
 
+	},
+	downloadFile:function(e){
+		var url = e.currentTarget.dataset.url;
+		wx.downloadFile({
+			url:url
+		});
 	}
 });
 
@@ -81,7 +89,7 @@ _fn = {
 			var pageType = 0;
 
 			if(flowStatus === 1){//待认领任务，只能飞本人的党员可以看到
-				if(userInfo.level!==1 || page.formData.userId === userInfo.id){
+				if(userInfo.level!==2 || page.formData.userId === userInfo.id){
 					pageType = 1000;
 				}else{
 					pageType = 1;

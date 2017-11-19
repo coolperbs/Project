@@ -10,7 +10,7 @@ var handle = {
 	checkLogin:function(param){
 		var needLogin = param.needLogin;
 		var userInfo = wx.getStorageSync('userinfo');
-		console.log(userInfo);
+		// console.log(userInfo);
 		if(!userInfo && needLogin){
 			wx.navigateTo({
 				url:'../../pages/register/register'

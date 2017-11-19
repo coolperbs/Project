@@ -32,15 +32,7 @@
 					<input disabled="{{pageType!==0}}" value="{{formData.name}}" data-key="name" bindinput="changeInput" placeholder="请输入项目名称" />
 				</view>
 			</view>
-			<view class="field ">
-				<view class="name">
-					<text>项目描述</text>
-					<text class="notBlank">*</text>
-				</view>
-				<view class="value">
-					<textarea data-key="desc" disabled="{{pageType!==0}}" value="{{formData.desc}}" bindinput="changeInput" placeholder="请输入项目描述" />
-				</view>
-			</view>
+
 			<view class="field ">
 				<view class="name">
 					<text>是否公开</text>
@@ -60,13 +52,32 @@
 
 			<view class="field ">
 				<view class="name">
+					<text>项目描述</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value">
+					<textarea data-key="desc" disabled="{{pageType!==0}}" value="{{formData.desc}}" bindinput="changeInput" placeholder="请输入项目描述" />
+				</view>
+			</view>
+
+
+			<view class="field ">
+				<view class="name">
 					<text>附件</text>
 					<text class="notBlank">*</text>
 				</view>
 				<view class="value">
 					<view class="btn-wrapper" >
-						<block wx:for="{{uploadData.btns}}">
-							<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" catchtap="changeFile"/>
+						<block wx:if="{{pageType===0}}">
+							<block wx:for="{{uploadData.btns}}">
+								<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" catchtap="changeFile"/>
+							</block>
+						</block>
+						<block wx:if="{{pageType!==0 && formData.attachUrl}}">
+								<image src="../../asset/filedownload.png" data-param="{{item.eventParam}}" class="logo" catchtap="downloadFile" data-url="{{formData.attachUrl}}"/>
+						</block>
+						<block wx:else>
+							<view>暂无附件</view>
 						</block>
 					</view>
 				</view>

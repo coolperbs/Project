@@ -17,11 +17,9 @@ Page({
 	onLoad:function(option){
 		var self = this;
 		var type = option.type || 0//0:查看全部，1查看自己
-		if(type === 1){
-			var userInfo = userService.checkLogin({
-				needLogin:true
-			})
-		}
+		self.userInfo = userService.checkLogin({needLogin:false})||{};
+		self.userInfo = self.userInfo.user;
+
 		self.pageType = type;
 		_fn.init(self);
 
@@ -80,6 +78,8 @@ var _fn = {
 		var searchParam = page.searchParam || {};
 		var keyWord = searchParam.keyWord||'';
 		var pageType = page.pageType//0:查看全部 1:查看自己
+		var userInfo = page.userInfo;
+		console.log(333,userInfo)
 		var listConfig = {
 			url:host.gw+'/app/project/search',
 			param:{
@@ -96,6 +96,10 @@ var _fn = {
 						v.showStatus = '处理中'
 					}else if (v.flowStatus/1 === 1){
 						v.showStatus = '未认领'
+						if(userInfo && userInfo.level ===2 && v.userId!==userInfo.id){
+							v.showGetBtn = true;
+						}
+
 					}
 					v.showflowFilishTime = utils.formateTime(v.flowFilishTime);
 					v.showFlowTime = utils.formateTime(v.flowTime);

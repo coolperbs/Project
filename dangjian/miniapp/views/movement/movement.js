@@ -40,6 +40,13 @@ var events = {
 			url:url
 		})
 	},
+	toArtical:function(caller,e){
+		var id = e.currentTarget.dataset.id;
+		wx.navigateTo({
+			url:'../artical/artical?id='+id
+		});
+	},
+
 	loadMore:function(caller,e){
 		var self = this;
 		self.List.next();

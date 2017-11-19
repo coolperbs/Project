@@ -54,7 +54,7 @@ class FileUploader{
         }
         if(renderData.btns.length<this.max){
             renderData.btns.push({
-                imgUrl:'../../asset/addimg-btn.png',
+                imgUrl:'../../asset/fileupload.png',
                 eventParam:JSON.stringify({
                     type:'add'
                 })

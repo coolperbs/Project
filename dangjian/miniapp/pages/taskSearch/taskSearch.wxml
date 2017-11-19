@@ -33,7 +33,7 @@
 								<text class="operation-user" wx:if="{{item.flowUserName}}">完成人:{{item.flowUserName}}</text>
 								<view class="operation-time">完成日期:{{item.showflowFilishTime}}</view>
 							</view>
-							<view class="operation" wx:if="{{item.flowStatus===1}}">
+							<view class="operation" wx:if="{{item.flowStatus===1 && item.showGetBtn}}">
 								<view class="operation-btn">我要认领</view>
 							</view>
 							<view class="time">{{item.showCreateTime}}</view>

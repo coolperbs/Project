@@ -11,18 +11,17 @@ page{
 	margin-top: 20rpx;
 }
 .page-taskApply .page-record-wrapper .addBtn{
-	/*width:50rpx;*/
-	height:50rpx;
-	background-color:#cc0033;
-	color:white;
-	/*float:right;*/
-	line-height:50rpx;
-	position:absolute;
-	right:20rpx;
-	font-size:24rpx;
-	padding:0 20rpx;
-	border-radius:10rpx;
 
+
+height:60rpx;
+background-color:#EA4834;
+color:white;
+line-height:60rpx;
+position:absolute;
+right:20rpx;
+font-size:24rpx;
+padding:0 30rpx;
+border-radius:10rpx;
 
 }
 
@@ -98,6 +97,15 @@ color:#333
 .note-record .time{
 font-size:24rpx;
 color:#ccc;
+
+}
+
+
+
+.btn-wrapper .logo{
+	width:150rpx;
+	height:150rpx;
+	margin-right:20rpx;
 
 }
 

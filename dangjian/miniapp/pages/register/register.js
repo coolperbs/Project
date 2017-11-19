@@ -136,12 +136,12 @@ var _loginfn = {
 		ajax.query({
 			url:url,
 			param:loginFormData
-		},function(res){
-			if(res.code === '0000'){
+		},function(resdata){
+			if(resdata.code === '0000'){
 				wx.showToast({
 					title:'登录成功'
 				})
-				userService.writeLoginInfo(res.data,function(res){
+				userService.writeLoginInfo(resdata.data,function(res){
 					if(res){
 						wx.navigateBack();
 					}
@@ -150,7 +150,7 @@ var _loginfn = {
 			}else{
 				wx.showModal({
 					title:'提示',
-					content:res.msg,
+					content:resdata.msg,
 					showCancel:true
 				})
 			}

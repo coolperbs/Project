@@ -3,7 +3,8 @@
 		<scroll-view scroll-y="true" 
 			style="height:{{scrollHeight}}"
 			class="CPStudyList-list-wrapper"
-			bindscrolltolower="loadMore">
+			data-func="loadMore"
+			bindscrolltolower="events">
 				<view class="banner">
 					<image class="banner-img" src="../../asset/CPmovement.png"/>
 				</view>
@@ -19,7 +20,7 @@
 <template name="movement-articals">
 	<view class="home-articals-wrapper">
 		<block wx:for="{{movementList}}" wx:key="id">
-			<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
+			<view class="artical-item artical" data-id="{{item.id}}" catchtap="events" data-func="toArtical">
 				<view class="left">
 					<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 				</view>

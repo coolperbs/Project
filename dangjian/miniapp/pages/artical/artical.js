@@ -195,13 +195,15 @@ var _fn = {
 		ajax.query({
 			url:url,
 			param:param,
-		},function(res){
-			if(res.code === '0000'){
+		},function(resdata){
+			if(resdata.code === '0000'){
 				wx.showModal({
 					title:'提示',
 					content:'评论成功',
 					showCancel:false,
 					success:function(){
+						var commentList = page.data.listData;
+						commentList.push(resdata.data);
 						// _fn.init(page);
 					}
 				});

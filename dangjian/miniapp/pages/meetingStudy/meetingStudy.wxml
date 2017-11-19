@@ -1,7 +1,7 @@
 <view class="page-meetingstudy">
 	<view class="header">
 		<view class="search-box">
-			<text class="back">取消</text>
+			<text class="back" catchtap="back">取消</text>
 			<view class="search-wrapper">
 				<input class="search-txt" bindinput=changeKeyword" placeholder="请输入想搜索的项目名称" value="{{searchParam.keyWord}}"/>
 			</view>

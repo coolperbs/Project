@@ -17,11 +17,11 @@
 <template name="mine-header">
 	<view class="mine-header-wrapper">
 		<image class="header-logo" src="https://wx.qlogo.cn/mmopen/vi_32/CGJ2ptYXgQ4AtKlxdcZZ2GfXrVC0qE726p9woacgdnibOdhHrYDtZ2T6S8ZqBfkCgrPaticDcVjWE9mSBLmg0uNA/0"></image>
-		<text class="user-name">张三</text>
-		<view class="jifen">
+		<text class="user-name">您好</text>
+		<!-- <view class="jifen">
 			<image src="../../asset/mine-jifen.png" class="jifen-logo"/>
 			<text class="jifen-val">100</text>
-		</view>
+		</view> -->
 	</view>
 </template>
 <template name="mine-menu">
@@ -38,13 +38,10 @@
 			</view>
 
 
-			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="login" data-param="type=1">
-				<text class="text">登录</text>
+			<view class="menu-item" catchtap="events" data-func="logout" data-pagename="taskSearch" data-param="type=1">
+				<text class="text">退出登录</text>
 			</view>
 
-			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="signup" data-param="type=1">
-				<text class="text">注册</text>
-			</view>
 		</view>
 	</view>
 </template>

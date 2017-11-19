@@ -25,7 +25,14 @@ var events = {
 		wx.navigateTo({
 			url:url
 		})
+	},
+	logout:function(){
+		userService.clearLoginInfo();
+		wx.reLaunch({
+			url:'../../pages/index/index'
+		});
 	}
+
 }
 
 var DataHandler = function(callerPage){

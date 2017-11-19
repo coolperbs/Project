@@ -11,7 +11,8 @@
     "pages/meetingStudy/meetingStudy",
     "pages/login/login",
     "pages/signup/signup",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/taskComment/taskComment"
 
   ],
   "window":{
