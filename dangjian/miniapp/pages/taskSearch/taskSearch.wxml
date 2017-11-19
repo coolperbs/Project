@@ -1,104 +1,49 @@
 <view class="page-tasksearch">
 	<view class="header">
-		<template is="task-search"></template>
+		<view class="search-box">
+			<text class="back" catchtap="back">取消</text>
+			<view class="search-wrapper">
+				<input class="search-txt" bindinput=changeKeyword" placeholder="请输入想搜索的项目名称" />
+			</view>
+		</view>
 	</view>
 	<view class="list">
-		<template is="taskitem-list"></template>
+		<scroll-view class="taskitem-list" scroll-y="{{true}}" style="height:{{scrollHeight}}" bindscrolltolower="loadMore">
+			<block wx:for="{{listData}}" wx:key="id">
+				<view class="taskitem" data-id="{{item.projectId}}" bindtap="toDetail">
+					<view class="left">
+						<view class="image-wrapper">
+							<image class="user-imgae" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=326469165,4121406101&fm=27&gp=0.jpg"/>
+							<image class="blank" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+						</view>
+					</view>
+					<view class="right">
+						<view class="right-wrapper">
+							<view class="title">
+								<text>{{item.name}}</text>
+							</view>
+							<view class="status type2">
+								<text>{{item.showStatus}}</text>
+							</view>
+							<view class="operation" wx:if="{{item.flowStatus===2}}">
+								<text class="operation-user" wx:if="{{item.flowUserName}}">认领人:{{item.flowUserName}}</text>
+								<view class="operation-time">认领日期:{{item.showFlowTime}}</view>
+							</view>
+							<view class="operation" wx:if="{{item.flowStatus===4}}">
+								<text class="operation-user" wx:if="{{item.flowUserName}}">完成人:{{item.flowUserName}}</text>
+								<view class="operation-time">完成日期:{{item.showflowFilishTime}}</view>
+							</view>
+							<view class="operation" wx:if="{{item.flowStatus===1}}">
+								<view class="operation-btn">我要认领</view>
+							</view>
+							<view class="time">{{item.showCreateTime}}</view>
+							
+						</view>
+					</view>
+				</view>	
+			</block>
+		</scroll-view>
 	</view>
 </view>
 
 
-<template name="task-search">
-	<view class="search-box">
-		<text class="back">取消</text>
-		<view class="search-wrapper">
-			<input class="search-txt" placeholder="请输入想搜索的项目名称" />
-		</view>
-	</view>
-</template>
-
-<template name='taskitem-list'>
-	<scroll-view class="taskitem-list" scroll-y="{{true}}">
-
-	<view class="taskitem">
-		<view class="left">
-			<view class="image-wrapper">
-				<image class="user-imgae" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=326469165,4121406101&fm=27&gp=0.jpg"/>
-				<image class="blank" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-			</view>
-		</view>
-		<view class="right">
-			<view class="right-wrapper">
-				<view class="title">
-					<text>张三，在天府3街，丢失母猪一头</text>
-				</view>
-				<view class="status type2">
-					<text>处理中</text>
-				</view>
-				<view class="operation">
-					<text class="operation-user">认领人:李四</text>
-					<view class="operation-time">认领日期:11-11</view>
-				</view>
-				<view class="time">07-31</view>
-				
-			</view>
-		</view>
-	</view>
-
-
-
-	<view class="taskitem">
-		<view class="left">
-			<view class="image-wrapper">
-				<image class="user-imgae" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=326469165,4121406101&fm=27&gp=0.jpg"/>
-				<image class="blank" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-			</view>
-		</view>
-		<view class="right">
-			<view class="right-wrapper">
-				<view class="title">
-					<text>张三，在天府3街，丢失母猪一头</text>
-				</view>
-				<view class="status type1">
-					<text>未认领</text>
-				</view>
-				<view class="operation">
-					<view class="operation-btn">我要认领</view>
-				</view>
-				<view class="time">07-31</view>
-				
-			</view>
-		</view>
-	</view>
-
-
-
-	<view class="taskitem">
-		<view class="left">
-			<view class="image-wrapper">
-				<image class="user-imgae" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=326469165,4121406101&fm=27&gp=0.jpg"/>
-				<image class="blank" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-			</view>
-		</view>
-		<view class="right">
-			<view class="right-wrapper">
-				<view class="title">
-					<text>张三，在天府3街，丢失母猪一头</text>
-				</view>
-				<view class="status type2">
-					<text>已完成</text>
-				</view>
-				<view class="operation">
-					<text class="operation-user">认领人:李四</text>
-					<view class="operation-time">完成日期:11-11</view>
-				</view>
-				<view class="time">07-31</view>
-				
-			</view>
-		</view>
-	</view>
-		
-</scroll-view>
-
-
-</template>

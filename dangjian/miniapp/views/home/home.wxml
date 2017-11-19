@@ -1,9 +1,9 @@
 <template name="home">
-	<view class="view-home">
-		<template is="home-banner"></template>
+	<view class="view-home" wx:if="{{home&&home.data}}">
+		<template is="home-banner" data="{{...home.data}}"></template>
 		<template is="home-menu"></template>
-		<template is="home-image"></template>
-		<template is="home-articals"></template>
+		<template is="home-image" data="{{...home.data}}"></template>
+		<template is="home-articals" data="{{...home.data}}"></template>
 	</view>
 </template>
 
@@ -15,92 +15,60 @@
 		autoplay='{{true}}
 		interval='3000'
 		circular='{{true}}'>
-			<swiper-item class="swiper-item">
-		      <image src="https://img.dmallcdn.com/mIndex/201710/66ec220b-e4c5-4ea4-bbd7-4481ab3d6ddd_750H" class="slide-image" catchtap="events" data-func="toArtical"/>
-		      <view class="slide-title">生活工作不操心,便宜到尖叫</view>
-		    </swiper-item>
-		    <swiper-item class="swiper-item">
-		      <image src="https://img.dmallcdn.com/mIndex/201711/17859e61-788e-4606-b232-ebbbf50a4c15_750H" class="slide-image" catchtap="events" data-func="toArtical"/>
-		      <view class="slide-title">多点君为你准备好了一切</view>
-		    </swiper-item>
-		    <swiper-item class="swiper-item">
-		      <image src="https://img.dmallcdn.com/mIndex/201711/42ebb5f6-dd5a-443c-a4b4-ae20b418ef47_750H" class="slide-image" catchtap="events" data-func="toArtical"/>
-		      <view class="slide-title">酒水饮料买一赠一</view>
-		    </swiper-item>
+			<block wx:for="{{swiperArtical}}" wx:key="id">
+				<swiper-item class="swiper-item">
+			      <image src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}" class="slide-image" data-id="{{item.id}}" catchtap="events" data-func="toArtical"/>
+			      <view class="slide-title">{{item.name}}</view>
+			    </swiper-item>
+			</block>
 		</swiper>
 	</view>
 </template>
 <template name="home-menu">
 	<view class="home-menu-wrapper">
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="CPMove">
-			<image class="logo" src=""></image>
+			<image class="logo" src="../../asset/menu-cpmove.png"></image>
 			<text class="text">转移党组织</text>
 		</view>
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="rules">
-			<image class="logo" src=""></image>
+			<image class="logo" src="../../asset/menu-cpapply.png"></image>
 			<text class="text">在线入党</text>
 		</view>
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="taskSearch">
-			<image class="logo" src=""></image>
+			<image class="logo" src="../../asset/menu-tasksearch.png"></image>
 			<text class="text">项目查询</text>
 		</view>
-		<view class="button" bindtap="events" data-func="redirect" data-pagename="taskApply">
-			<image class="logo" src=""></image>
+		<view class="button" bindtap="events" data-func="toTaskApply" data-pagename="taskApply">
+			<image class="logo" src="../../asset/menu-taskapply.png"></image>
 			<text class="text">项目申报</text>
 		</view>
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="meetingStudy">
-			<image class="logo" src=""></image>
+			<image class="logo" src="../../asset/menu-meetingstudy.png"></image>
 			<text class="text">三会一课</text>
 		</view>
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="CPStudyList">
-			<image class="logo" src=""></image>
+			<image class="logo" src="../../asset/menu-cpstudy.png"></image>
 			<text class="text">党员学习</text>
 		</view>
 	</view>
 </template>
 <template name="home-image">
-	<view class="home-image-wrapper">
-		<image src="http://www.gov.cn/govweb/c1293/201711/5237908/images/50ab9cf8a00d4e1488c5fe6fcc904368.jpg" class="image" catchtap="events" data-func="toArtical"/>
+	<view class="home-image-wrapper" wx:if="{{imgArtical}}" >
+		<image src="{{imgArtical.adImgUrl?imgArtical.adImgUrl:'../../asset/default.png'}}" class="image" data-id="{{imgArtical.id}}" catchtap="events" data-func="toArtical"/>
 	</view>
 </template>
 <template name="home-articals">
 	<view class="home-articals-wrapper">
-		<view class="artical-item artical">
-			<view class="left">
-				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
+		<block wx:for="{{swiperArtical}}" wx:key="id">
+			<view class="artical-item artical" catchtap="events" data-func="toArtical" data-id="{{item.id}}">
+				<view class="left">
+					<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+				</view>
+				<view class="right">
+					<view class="artical-title">{{item.name}}</view>
+					<view class="artical-date">{{item.showDate}}</view>
+				</view>
 			</view>
-			<view class="right">
-				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
-				<view class="artical-date">10-29</view>
-			</view>
-		</view>
-		<view class="artical-item artical">
-			<view class="left">
-				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
-			</view>
-			<view class="right">
-				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
-				<view class="artical-date">10-29</view>
-			</view>
-		</view>
-		<view class="artical-item artical">
-			<view class="left">
-				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
-			</view>
-			<view class="right">
-				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
-				<view class="artical-date">10-29</view>
-				<view class="artical-type">三会一课/党员学习/党务动态</view>
-			</view>
-		</view>
-		<view class="artical-item artical">
-			<view class="left">
-				<image class="artical-img" src="http://d.ifengimg.com/w182_h130/p1.ifengimg.com/cmpp/2017/10/29/87308b638da808df380b0f819449feea_size118_w300_h200.jpg"></image>
-			</view>
-			<view class="right">
-				<view class="artical-title">李强接替韩正兼任上海市委书记|简历</view>
-				<view class="artical-date">10-29</view>
-			</view>
-		</view>
+		</block>
 	</view>
 </template>

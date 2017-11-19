@@ -34,7 +34,8 @@ Page( {
 			list : [{
 				text : '首页',
 				className : 'footer-home',
-				view : 'home'
+				view : 'home',
+				active:true
 			},{
 				text : '动态',
 				className : 'footer-movement',
@@ -91,10 +92,22 @@ Page( {
 			return;
 		}
 
+		var tablist = this.data.tab.list;
+		tablist.forEach((v,k)=>{
+			if(v.view === viewName){
+				v.active = true;
+			}else{
+				v.active = false;
+			}
+			return v
+		})
+
+
 		// 请求数据，渲染对应页面
 		this.setData( {
 			currentView : viewName,
-			'tab.currentTab' : e.currentTarget.dataset.index
+			'tab.currentTab' : e.currentTarget.dataset.index,
+			'tab.list':tablist
 		} );
 		_fn.selectView.call( this, viewName, {type : 'changeTab'});
 

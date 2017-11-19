@@ -2,6 +2,13 @@ var config = require('../../config');
 var host = config.host;
 var ajax = require('../../common/ajax/ajax');
 var utils = require('../../common/utils/utils');
+var weigetUtil = require('../../common/utils/weigetUtil');
+var service = require('../../service/service');
+var userService = service.user;
+var List = weigetUtil.List;
+var Tab = weigetUtil.tab;
+
+
 
 var typeEnum = {
 	"1":'三会一课',
@@ -22,22 +29,89 @@ Page({
 		var id = option.id;
 		var self = this;
 		self.id = id;
-		_fn.getArticalDetail(self);
-
-
+		_fn.init(self);
 	},
 	onShow:function(){
-		console.log('artical')
+	},
+	toggleCommentPop:function(e){
+		var self = this;
+		var commentPopStatus = self.commentPopStatus||false;
+		self.setData({commentPopStatus:!self.commentPopStatus});
+	},
+	changeInput:function(e){
+		console.log('changeInput');
+		var dataset = e.currentTarget.dataset;
+		var key = dataset.key;
+		var value = e.detail.value;
+		var self =this;
+		
+		self.formData = self.formData || {};
+		self.formData[key] = value;
+		self.setData({formData:self.formData});
+	},
+	addComment:function(){
+		var self = this;
+		_fn.addComment(self);
+	},
+	loadMore:function(){
+		var self = this;
+		if(self.commentList){
+			self.commentList.next();
+		}
+	},
+	checkLogin:function(){
+		var self = this;
+		self.userInfo = userService.checkLogin({needLogin:false});
+		if(!self.userInfo){
+			wx.showModal({
+				title:'提示',
+				content:'请登录后再来评论哦~',
+				success:function(res){
+					if(res.confirm){
+						wx.navigateTo({
+							url:"../../pages/register/register"
+						})
+					}
+				}
+
+			});
+		}
+
+	},
+	showShareMenu:function(){
+		console.log(111);
+		wx.showShareMenu({
+		});
+	},
+	onShareAppMessage:function(){
+		var self = this;
+		var artical = self.data.artical;
+
+		return {
+			title:artical.title,
+			path:'/pages/artical/artical?id='+self.id,
+			imageUrl:artical.imageUrl,
+			success:function(res){
+				wx.showToast({
+					title:'分享成功'
+				})
+
+			}
+		};
+
 	}
 });
 
 
 var _fn = {
+	init:function(page){
+		_fn.getArticalDetail(page);
+		_fn.initArticalList(page);
+	},
 	getArticalDetail:function(page){
 		var id = page.id;
 		var url = host.cms + '/act/view/' + id;
 		ajax.query({url:url},function(res){
-
 			if(res.code === '0000'){
 				var artical = res.data;
 				artical.showPublishDate = utils.formateTime(artical.publishDate);
@@ -58,18 +132,89 @@ var _fn = {
 		})
 
 	},
-	initShare:function(page,artical){
-		page.onShareAppMessage({
-			title:artical.title,
-			path:'/pages/artical/artical?id='page.id,
-			imageUrl:artical.imageUrl,
+	initArticalList:function(page){
+		var url = host.gw + '/app/comment/list'
+		var param = {
+			newsId:page.id
+			// newsId:2
+		}
+		wx.getSystemInfo({
 			success:function(res){
-				wx.showToast({
-					title:'分享成功'
-				})
+				var scrollHeight = (utils.toRpx(res.windowHeight))+'rpx';
+				page.setData({
+					scrollHeight:scrollHeight
 
+				});
 			}
-		})
+		});
+
+		page.commentList = new List({
+			url:url,
+			param:param,
+			getList:function(res){
+				var retList = [];		
+				if(res.code === '0000'){
+					var retList = res.data.comments||[];
+					retList.map(function(v,k){
+						v.showTime = utils.formateTime(v.commentCreated);
+						// v.showType = subtypeEnum[v.bussinessTypes.toString()];
+						// v.showType = subtypeEnum[type]
+						return v;
+					});
+					console.log(retList);
+				}
+				return retList;
+			},
+			getHasMore:function(res){
+				var hasMore = false;
+				if(res.code === '0000'){
+					hasMore =res.data.hasMore;
+				}
+				return hasMore	
+				// return true;
+			},
+			render:function(data){
+				console.log(data);
+				page.setData({
+					listData:data.totalData,
+					isLast:data.isLast
+				});
+			}
+		});
+		page.commentList.next();
+
+	},
+	addComment:function(page){
+		var url = host.gw + '/app/comment/submit'
+		var param = {
+			newsId:page.id,
+			content:'111',
+			start:1,
+			type:1
+		}
+		ajax.query({
+			url:url,
+			param:param,
+		},function(res){
+			if(res.code === '0000'){
+				wx.showModal({
+					title:'提示',
+					content:'评论成功',
+					showCancel:false,
+					success:function(){
+						// _fn.init(page);
+					}
+				});
+			}else{
+				wx.showModal({
+					title:'提示',
+					content:res.msg,
+					showCancel:true
+				})
+			}		});
+	},
+	initShare:function(page,artical){
+		
 
 	}
 }

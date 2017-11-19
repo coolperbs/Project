@@ -49,6 +49,36 @@
 					"name": "创建项目",
 					"pathName": "pages/taskApply/taskApply",
 					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "入党申请",
+					"pathName": "pages/CPApply/CPApply",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "转移党组织",
+					"pathName": "pages/CPMove/CPMove",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "项目查询",
+					"pathName": "pages/taskSearch/taskSearch",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "样式修改",
+					"pathName": "pages/CPMoveTemp/CPMoveTemp",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录/注册",
+					"pathName": "pages/register/register",
+					"query": ""
 				}
 			]
 		},

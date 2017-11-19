@@ -49,7 +49,8 @@
 }
 .view-home .home-menu-wrapper .button .logo{
 	width: 50rpx;
-	height: 50rpx
+	height: 50rpx;
+	margin-bottom: 20rpx;
 }
 .view-home .home-menu-wrapper .button .text{
 	font-size: 28rpx;

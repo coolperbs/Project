@@ -10,7 +10,8 @@
     "pages/rules/rules",
     "pages/meetingStudy/meetingStudy",
     "pages/login/login",
-    "pages/signup/signup"
+    "pages/signup/signup",
+    "pages/register/register"
 
   ],
   "window":{

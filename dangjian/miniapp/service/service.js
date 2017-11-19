@@ -1,4 +1,6 @@
 var userService = require('./user/user');
+var cacheService = require('./cache/cache');
 module.exports = {
-	user:userService
+	user:userService,
+	cache:cacheService
 }

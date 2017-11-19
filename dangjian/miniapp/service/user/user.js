@@ -9,10 +9,11 @@ var handle = {
 
 	checkLogin:function(param){
 		var needLogin = param.needLogin;
-		var userInfo = wx.getStorageSync('userInfo');
+		var userInfo = wx.getStorageSync('userinfo');
+		console.log(userInfo);
 		if(!userInfo && needLogin){
 			wx.navigateTo({
-				url:'../../pages/login/login'
+				url:'../../pages/register/register'
 			});
 		}
 		return userInfo;
@@ -20,10 +21,17 @@ var handle = {
 
 
 	writeLoginInfo:function(loginInfo,callback){
-		wx.setStorageSync('userInfo',loginInfo);
+		wx.setStorageSync('userinfo',loginInfo);
+		wx.setStorageSync('token',loginInfo.token);
 		if(callback && typeof callback==='function'){
 			callback(true)
 		}
+	},
+
+
+	clearLoginInfo:function(){
+		wx.removeStorageSync('userinfo');
+		wx.removeStorageSync('token');
 	}
 
 }

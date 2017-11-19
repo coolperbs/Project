@@ -4,59 +4,61 @@
 			<view class="logo"></view>
 			项目信息
 		</view>
-		<view class="form-content disabled">
-			<view class="field inValid">
+		<view class="form-content {{pageType!==0?'disabled':''}}">
+			<view class="field">
 				<view class="name">
-					<text>基础信息</text>
+					<text>联系人</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="name" disabled="{{true}}" catchTap="changeInput"/></view>
+				<view class="value">
+					<input disabled="{{pageType!==0}}" value="{{formData.userName}}" data-key="userName" bindinput="changeInput" placeholder="请输入姓名" />
+				</view>
 			</view>
-			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+			<view class="field ">
 				<view class="name">
-					<text>姓名</text>
+					<text>联系电话</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
-			</view>
-			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
-				<view class="name">
-					<text>电话</text>
-					<text class="notBlank">*</text>
+				<view class="value">
+					<input disabled="{{pageType!==0}}" value="{{formData.userPhone}}" data-key="userPhone" bindinput="changeInput" placeholder="请输入联系电话" />
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
 			</view>
-			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+			<view class="field ">
 				<view class="name">
 					<text>项目名称</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value"><input data-key="phone" catchTap="changeInput"/></view>
+				<view class="value">
+					<input disabled="{{pageType!==0}}" value="{{formData.name}}" data-key="name" bindinput="changeInput" placeholder="请输入项目名称" />
+				</view>
 			</view>
-			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+			<view class="field ">
 				<view class="name">
 					<text>项目描述</text>
 					<text class="notBlank">*</text>
 				</view>
 				<view class="value">
-					<textarea data-key="phone" catchTap="changeInput"/>
+					<textarea data-key="desc" disabled="{{pageType!==0}}" value="{{formData.desc}}" bindinput="changeInput" placeholder="请输入项目描述" />
 				</view>
 			</view>
-			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+			<view class="field ">
 				<view class="name">
 					<text>是否公开</text>
 					<text class="notBlank">*</text>
 				</view>
 				<view class="value">
-					<picker mode = 'selector' bindchange="bindPickerChange" value="0" range="{{['是','否']}}">
-					    <view class="picker-value">
-					      	是
+					<picker mode = 'selector' disabled="{{pageType!==0}}" data-key="publiced" bindchange="changeInput" range="{{publicedSelection}}">
+						<view class="picker-view value" wx:if="{{formData.publicedStr}}">
+					      	{{formData.publicedStr}}
 					    </view>
+					    <view class="picker-view placeholder" wx:else>
+							请选择是否公开
+						</view>
 					 </picker>
 				</view>
 			</view>
 
-			<view class="field {{inValidField.indexOf('name')>0?'inValid':''}}">
+			<view class="field ">
 				<view class="name">
 					<text>附件</text>
 					<text class="notBlank">*</text>
@@ -73,36 +75,94 @@
 	</view>
 
 
-		<view class="page-taskApply-wrapper form-wrapper">
+	<view wx:if="{{pageType==2}}" class="page-record-wrapper form-wrapper">
 		<view class="form-header">
 			<view class="logo"></view>
-			处理
+			<text class="title">处理记录</text>
+			<view class="addBtn" bindtap="toggleRecordPop">添加</view> 
 		</view>
-		<view class="form-content disabled">
-			<view class="field inValid">
+		<view class="form-content">
+			<!-- <view class="field inValid">
 				<view class="name">
 					<text>处理记录</text>
 					<text class="notBlank">*</text>
 				</view>
 				<view class="value">
-					<textarea class="" data-key="name" disabled="{{true}}" catchTap="changeInput"></textarea>
+					<textarea class="" data-key="name"  catchTap="changeInput"></textarea>
 				</view>
-			</view>
+			</view> -->
+			<block wx:for="{{formData.flowNote}}" wx:key="projectId">
+				<view class="note-record">
+					<view class="content ellipsis-2">{{item.note}}</view>
+					<view class="time">{{item.showNoteTime}}</view> 
+				</view> 
+			</block>
 		</view>
 	</view>
 
 
-	<view class="btn-wrapper btns">
-		<view catchTap="submit btn" class="submit btn" data-type="submit">确认</view>
-		<view catchTap="cancel btn" class="cancel btn" data-type="cancel">取消</view>
+	<view wx:if="{{pageType===0}}" class="btn-wrapper btns">
+		<view catchtap="submit" class="submit btn" data-type="createTask">确认</view>
+		<view catchtap="cancel" class="cancel btn" data-type="">取消</view>
 	</view>
 
 
-	<view class="btn-wrapper btns">
-		<view catchTap="submit btn" class="submit btn long" data-type="submit">认领</view>
+	<view wx:if="{{pageType===1}}" class="btn-wrapper btns">
+		<view catchtap="submit" class="submit btn long" data-type="getTask">认领</view>
 	</view>
 
-	<view class="btn-wrapper btns">
-		<view catchTap="submit btn" class="submit btn long" data-type="submit">结束</view>
+	<view wx:if="{{pageType===2}}" class="btn-wrapper btns">
+		<view catchtap="submit" class="submit btn long" data-type="finishTask">结束</view>
 	</view>
+
+
+	<block wx:if="{{recordPopStatus}}">
+		<template is="recordPop"></template>
+	</block>
 </view>
+
+
+
+
+<template name="recordPop">
+	<view class="pop-wrapper">
+		<view class="pop-bg"></view>
+		<view class="pop-content">
+			<view class="pop-detail">
+				<text>添加处理记录</text>
+				<view class="input-wrapper">
+					<textarea class="recordInput" placeholder="请输入内容" bindinput="changeInput" data-key="newNote"></textarea>
+				</view>
+				<view class="button addRecord" bindtap='addNote'>提交</view>
+			</view>
+		</view>
+	</view>  
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

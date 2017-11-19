@@ -35,7 +35,7 @@
 				</view>
 			</view>
 			<view class="btn-wrapper btns">
-				<view catchtap="submit" class="submit btn long" data-type="submit">登录</view>
+				<view catchtap="submit" class="submit btn long" data-type="login">登录</view>
 			</view>
 		</view>
 		

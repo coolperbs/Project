@@ -42,6 +42,6 @@
 		</view>
 	</view>
 	<view class="btn-wrapper btns">
-		<view catchtap="submit" class="submit btn long" data-type="submit">注册</view>
+		<view catchtap="submit" class="submit btn long" data-type="signup">注册</view>
 	</view>
 </view>

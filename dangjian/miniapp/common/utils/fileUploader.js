@@ -79,7 +79,7 @@ class FileUploader{
                     },function(res){
                         wx.hideLoading();
                         if(res.code === '0000'){
-                            var imgUrl = res.data.imgUri;
+                            var imgUrl = res.data.fileUri;
                             self.files.push(imgUrl);
                             callback();
                         }

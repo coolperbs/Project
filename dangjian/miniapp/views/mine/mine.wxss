@@ -300,3 +300,39 @@ flex-wrap:wrap;
 .view-mine .mine-menu-wrapper .menu-item .text{
 	font-size: 30rpx;
 }
+
+
+
+.view-mine .goLogin-wrapper{
+	position:relative;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	/*background-color: #F8F8F8*/
+
+}
+.view-mine .goLogin-wrapper .login-logo{
+	width:150rpx;
+	height:160rpx;
+	margin-bottom:140rpx;
+}
+.view-mine .goLogin-wrapper .login-msg{
+	font-size:32rpx;
+	color:#999999;
+	margin-bottom:112rpx;
+}
+.view-mine .goLogin-wrapper .login-btn{
+	font-size:34rpx;
+	color:#FFFFFF;
+	background:#EA4834;
+	box-shadow:0 5px 10px 0 rgba(0,0,0,0.20);
+	border-radius:160rpx;
+	width:320rpx;
+	height:100rpx;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-bottom:200rpx;
+}

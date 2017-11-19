@@ -1,3 +1,4 @@
+
 /***文章列表CSS**/
 .artical{
 	display: flex;
@@ -50,13 +51,13 @@
 /***表单css***/
 
 .form-wrapper{
-	width:700rpx;
+	width:730rpx;
 	margin:auto;
 	background-color:white;
 	border-radius:8rpx;
 	padding-bottom:10rpx;
-	box-shadow:0 8rpx 20rpx 0 rgba(0,0,0,0.1);
-	margin-top: 20rpx;
+	box-shadow:0 2rpx 2rpx 0 rgba(0,0,0,0.1);
+	margin-top:20rpx;
 
 }
 .form-wrapper .form-header{
@@ -67,9 +68,11 @@
 	padding:0 20rpx;
 	position: relative;
 	border-bottom:1px solid #f0f0f0;
+	display: flex;
+	align-items: center;
 }
 .form-wrapper .form-header .logo{
-	background-color:#CC0033;
+	background-color:#EA4834;
 	width: 10rpx;
 	height: 30rpx;
 	position: absolute;
@@ -80,16 +83,16 @@
 	display:flex;
 	flex-direction:column;
 	position:relative;
-	margin:0 20rpx;
+	margin:0 30rpx;
 
 }
 .form-content .field{
 	display:flex;
-	align-items:center;
 	font-size:28rpx;
 	min-height:60rpx;
-	border-bottom:1px solid #f0f0f0;
-	padding:20rpx 0;
+	padding:10rpx 0;
+	flex-direction:column;
+
 
 }
 .form-wrapper .form-content:last-child .field{
@@ -97,83 +100,100 @@
 }
 .form-content .field .notBlank{
 	position:absolute;
-	color:#CC0033;
+	color:#EA4834;
 	font-size:20rpx;
-	top: 0;
-	right: 5rpx;
-
+	top:8rpx;
+	left:2rpx;
 }
 .form-content .field .name{
-	width:100rpx;
-	text-align:right;
-	color:#333;
-	padding-right:20rpx;
+	color:#434552;
+	padding-left:10px;
 	position:relative;
+	margin-bottom: 10rpx;
 
 }
+
+.form-content .field picker{
+	position:absolute;
+	width:100%;
+	text-align:left;
+}
+.form-content .field picker .picker-view{
+	margin-left: 3%;
+}
+.form-content .field picker .picker-view.placeholder{
+	color:#898989;
+}
+
+
 .form-content .field .value{
-	width: 550rpx
+	/*width: 550rpx*/
+	background-color:#f5f5f5;
+	min-height:75rpx;
+	border-radius:8rpx;
+	position:relative;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	border:1px solid #f0f0f0;
+
 }
 .form-content.disabled input,
-.form-content .field textarea{
-	background-color: #fafafa;
+.form-content.disabled textarea{
+	/*background-color: #fafafa;*/
+	color: #bababa;
 }
 .form-content .field input,
 .form-content .field textarea{
-	padding:0 10rpx;
-	border:1px solid #f0f0f0;
-	border-radius:10rpx;
+	/*padding:0 10rpx;*/
+	/*border-bottom:1px solid #f0f0f0;*/
 	height:75rpx;
-	margin-left:10rpx;
-	width: 500rpx;
+	padding-left:3%;
+	width: 100%;
 }
 .form-content .field textarea{
 	height: 200rpx;
+	padding-top: 10rpx;
 
 }
 .form-content .field.inValid .name{
-	color: #CC0033
+	color: #EA4834
 }
 .form-content .field .notice{
-	color:#CC0033;
+	color:#EA4834;
 	font-size:26rpx;
 	margin-left:10rpx;
 	margin-top:10rpx;
 }
-.form-content .field .picker-value{
-	margin-left: 10rpx;
-	width: 500rpx;
-	text-align: right;
-	color: #CCC;
-}
 .btn-wrapper{
-	width: 700rpx;
+	width:730rpx;
 	margin:auto;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
 }
 .btn-wrapper .btn{
-	height: 80rpx;
-	line-height: 80rpx;
-	border-radius: 10rpx;
-	width: 340rpx;
+	height:80rpx;
+	line-height:80rpx;
+	border-radius:10rpx;
+	width:360rpx;
 	text-align:center;
+
 }
 .btn-wrapper .btn.long{
 	height: 80rpx;
 	line-height: 80rpx;
 	border-radius: 10rpx;
-	width: 700rpx;
+	width: 100%;
 	text-align:center;
 }
 .btn-wrapper .btn.submit{
-	background-color: #CC0033;
+	background-color: #EA4834;
 	color: white;
 }
 .btn-wrapper .btn.cancel{
-	background-color: #CCCCCC;
-	color:#333;
+	background-color: #e0e0e0;
+	color:#898989;
 	
 }
 

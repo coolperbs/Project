@@ -1,7 +1,7 @@
 <view class="page-CPStudyList">
 	<view class="header">
 		<view class="search-box">
-			<text class="back">取消</text>
+			<text class="back" catchtap="back">取消</text>
 			<view class="search-wrapper">
 				<input class="search-txt" bindinput=changeKeyword" placeholder="请输入想搜索的项目名称" value="{{searchParam.keyWord}}"/>
 			</view>
@@ -24,10 +24,10 @@
 			style="height:{{scrollHeight}}"
 			class="CPStudyList-list-wrapper"
 			bindscrolltolower="loadMore">
-				<block wx:for="{{listData}}">
+				<block wx:for="{{listData}}" wx:key="id">
 					<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
 						<view class="left">
-							<image class="artical-img" src="{{item.adImgUrl}}"></image>
+							<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 						</view>
 						<view class="right">
 							<view class="artical-title">{{item.name}}</view>
