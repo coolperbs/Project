@@ -1,4 +1,32 @@
-<div class="cabin-page-tabchange content-container"><div class="container-scroll"><ul class="nav nav-tabs" role="tablist" id="myTab"><li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">标签1</a></li><li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">标签2</a></li></ul><div class="tab-content"><div role="tabpanel" class="tab-pane active" id="home"><div class="stage"><div class="stage-title flag">门店／围栏时效查询1</div></div></div><div role="tabpanel" class="tab-pane" id="profile"><div class="stage"><div class="stage-title flag">门店／围栏时效查询2</div></div></div></div><pre><code>
+<!--页面最外层 必须添加 content-container 类-->
+<div class="cabin-page-tabchange content-container">
+    <!--滚动内容 需要添加 container-scroll 类-->
+    <div class="container-scroll">
+        <!--tab导航-->
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">标签1</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">标签2</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div class="stage">
+                    <div class="stage-title flag">
+                        门店／围栏时效查询1
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <div class="stage">
+                    <div class="stage-title flag">
+                        门店／围栏时效查询2
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--示例代码-->
+
+        <pre><code>
 
             &lt;!--页面最外层 必须添加 content-container 类-->
 &lt;div class="cabin-page-tabchange content-container">
@@ -46,4 +74,6 @@
 
             // 选取第三个标签页（从 0 开始索引）
             $('#myTab li:eq(2) a').tab('show')
-        </code></pre></div></div>
+        </code></pre>
+    </div>
+</div>

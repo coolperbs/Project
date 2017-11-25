@@ -1,4 +1,10 @@
-<div class="cabin-page-menu content-container"><div class="container-scroll"><div id="myMenu" style="background:#333;width:180px"></div><pre>
+<div class="cabin-page-menu content-container">
+    <div class="container-scroll">
+        <div id="myMenu" style="background: #333333;width: 180px">
+
+        </div>
+
+        <pre>
         <code>
             &lt;!--1级菜单图标样式-->
              .cabin-widgets-menu .menu-icon-你想要的名字 {background-image: url(cabin/src/cabin/common/img/input-success.png);}
@@ -73,4 +79,7 @@
             })
 
         </code>
-    </pre></div></div>
+    </pre>
+    </div>
+
+</div>

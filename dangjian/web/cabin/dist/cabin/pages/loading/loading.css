@@ -1,1 +1,17 @@
-.pages-cabin-loading{width:100%;height:100%;padding:20px;background:#fff;position:relative;overflow:auto}.pages-cabin-loading .loading-content{width:70%;margin:0 auto;min-width:700px;position:relative}.pages-cabin-loading .hljs{background:0 0!important}
+.pages-cabin-loading {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	background: #fff;
+	position: relative;
+	overflow: auto;
+}
+.pages-cabin-loading .loading-content {
+	width: 70%;
+	margin: 0 auto;
+	min-width: 700px;
+	position: relative;
+}
+.pages-cabin-loading .hljs {
+	background: none!important;
+}

@@ -1,1 +1,25 @@
-define("cabin/pages/tips/tips",function(require,a,b){var c,d,e,f,g;return e=require("cabin/page/page"),f=e({nodeClass:"pages-cabin-tips",parentClass:"J_Main",source:["cabin/pages/tips/tips.tpl","cabin/pages/tips/tips.css"],show:function(){c.jView=this.jView,$("pre code").each(function(a,b){hljs.highlightBlock(b)})},hide:function(){},on:{"click .J_demo":function(){g.show("提示信息！")}}}),c={},d={},g=require("cabin/widgets/tips/tips"),f});
+define('cabin/pages/tips/tips', function (require, exports, module) {
+	var handle, _fn, Page, page, TIPS;
+	Page = require('cabin/page/page');
+	page = Page({
+		nodeClass: 'pages-cabin-tips',
+		parentClass: 'J_Main', // 没有就直接插入body，或者不插入
+		source: ['cabin/pages/tips/tips.tpl', 'cabin/pages/tips/tips.css'],
+		show: function () {
+			handle.jView = this.jView;
+			$('pre code').each(function (i, block) {
+				hljs.highlightBlock(block);
+			});
+		},
+		hide: function () {},
+		on: {
+			'click .J_demo': function () {
+				TIPS.show('提示信息！');
+			}
+		}
+	});
+	handle = {}
+	_fn = {}
+	TIPS = require('cabin/widgets/tips/tips');
+	return page;
+});

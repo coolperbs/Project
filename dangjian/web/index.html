@@ -11,11 +11,10 @@
     <title>标题</title>
     <link rel="icon" href="" type="image/x-icon">
     <link data-href="??lib/dist/lib/basestyle/reset.css" rel="stylesheet" type="text/css" />
-    <script data-src="??lib/dist/lib/jquery2.2.3/jquery-2.2.3.js,lib/dist/lib/seajs3.0/sea-debug.js,lib/dist/lib/seajs3.0/config.js,lib/dist/lib/arttemplate3.0/template-native.js,lib/dist/lib/fastclick/fastclick.js,kayak/dist/kayak/plugin/plugin.js"></script>
+    <script data-src="??lib/dist/lib/jquery2.2.3/jquery-2.2.3.js,lib/dist/lib/seajs3.0/sea-debug.js,lib/dist/lib/seajs3.0/config.js,lib/dist/lib/arttemplate3.0/template-native.js,lib/dist/lib/fastclick/fastclick.js,kayak/dist/kayak/plugin/plugin.js,lib/dist/lib/echarts/echarts.min.js"></script>
     <script>
         (function() {
             document.getElementsByTagName('html')[0].style.fontSize = '6px';
-            document.domain = 'dmall.com';
             // 这里进行项目替换
             window.kayak = window.kayak || {};
             window.kayak.root = getSourceRoot();
@@ -72,7 +71,8 @@
     <script src="//local.dmall.com/Project/dangjian/web/lib/dist/lib/jsloader/jsloader.js"></script>
 </head>
 
-<body ontouchstart>
+<body style="position:relative;">
+<img class="sun" src="wuhou/src/wuhou/layout/index/images/tyslogo.png"/>
     <script>
         // 绕过浏览器自身路由bug
         window.onload = function() {
@@ -123,7 +123,7 @@
                         });
                         kRouter.on( 'preJump', function( e ) {
                             if ( e.pathData && e.pathData.dmalllink == '' && e.pathData.web == '' ) {
-                                kRouter.replace( '#wuhou/view/home/home' );
+                                kRouter.replace( '#index/wuhou/home' );
                                 return;
                             }
                         } );

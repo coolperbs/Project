@@ -1,0 +1,17 @@
+.w-p-pdetail { color : #896F5E; background-color: #fff; height : 7.6rem; width : 100%; overflow-x: hidden; overflow-y: auto;  display: flex; display: -webkit-flex; align-items : flex-end; }
+.w-p-pdetail .head { margin-top : 0.3rem; width : 100%; height: 0.8rem; display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; }
+.w-p-pdetail .head .title { font-size : 0.4rem; height : 0.6rem; border-left : solid 0.1rem #EA4834; padding : 0 0.4rem; height: 0.6rem; line-height: 0.6rem; }
+
+.w-p-pdetail .cont { padding : 0.3rem 0.6rem; }
+
+.w-p-pdetail .cont .title { font-size : 0.28rem; }
+.w-p-pdetail .cont .sub-info { color : #C3AE91; margin-top : 0.4rem; font-size : 0.16rem; display: flex; display: -webkit-flex; }
+.w-p-pdetail .cont .sub-info .mod { margin-left: 0.4rem; }
+.w-p-pdetail .cont .sub-info .mod:first-child { margin-left : 0; }
+.w-p-pdetail .cont .detail { margin-top : 0.2rem; font-size : 0.2rem; }
+.w-p-pdetail .cont .more { margin-top : 0.2rem; font-size: 0.2rem; }
+.w-p-pdetail .cont .remark-list { border-top : dashed 1px rgba( 137, 111, 94, 0.3 ); margin-top : 0.3rem; padding-top : 0.3rem; font-size : 0.2rem; }
+.w-p-pdetail .cont .remark-list .mod { margin-top : 0.2rem; }
+.w-p-pdetail .cont .remark-list .c-detail { padding : 0 0.4rem; }
+.w-p-pdetail .cont .act { justify-content: flex-end; margin-top: 0.4rem; }
+ 

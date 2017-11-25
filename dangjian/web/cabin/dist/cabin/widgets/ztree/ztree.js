@@ -1,1 +1,204 @@
-!function(){function a(a,c,d){this.id=null,this.setting=null,this.treeNode=null,this.zTree=null,b.init.call(this,a,c,d)}var b,c,d={view:{dblClickExpand:!1,showLine:!1,showIcon:!1,addDiyDom:function(a,c){b.addDiyDom(a,c)}},search:!0,check:{enable:!0,checkAll:!0},data:{simpleData:{enable:!0}},callback:{onClick:function(a,c,d,e){b.singleClick(a,c,d),e&&e(a,c,d)},onCheck:function(a,c,d,e){b.allCheck(a,c,d),e&&e(a,c,d)}}};a.prototype={getFistClassChecked:function(){var a=this.zTree.getCheckedNodes(),b=[];return $.each(a,function(a,c){null===c.pId&&b.push({id:c.id,pId:c.pId,name:c.name})}),b}},b={init:function(a,c,e){if(""!=a&&(null!=a||void 0!=a)){this.id=a,this.treeNode=e;var f=JSON.parse(JSON.stringify(c));f.view=f.view?f.view:d.view,f.check=f.check?f.check:d.check,f.data=f.data?f.data:d.data,f.callback=f.callback?f.callback:{},f.check.checkAll=!!f.check.enable&&!(!f.check.checkAll&&"boolean"==typeof f.check.checkAll),f.view.addDiyDom=function(a,d){b.addDiyDom(a,d);var e=c.view&&c.view.addDiyDom?c.view.addDiyDom:null;e&&e(a,d)},f.callback.onClick=function(a,d,e){b.singleClick(a,d,e);var f=c.callback&&c.callback.onClick?c.callback.onClick:null;f&&f(a,d,e)},f.callback.onCheck=function(a,d,e){b.allCheck(a,d,e);var f=c.callback&&c.callback.onCheck?c.callback.onCheck:null;f&&f(a,d,e)},f.search=d.search;var g=$("#"+this.id);if(f.check.checkAll&&e.push({checked:!1,id:new Date,name:"全选",parent:!1,type:"allcheck"}),this.zTree=$.fn.zTree.init(g,f,e),f.search){var h='<input type="text" class="ztree-search form-control" placeholder="搜索">';g.prepend($(h)),b.bind.apply(this)}}},addDiyDom:function(a,b){var c=20,d=$("#"+b.tId+"_check"),e=$("#"+b.tId+"_switch"),f=$("#"+b.tId+"_ico");if(d.remove(),e.remove(),f.before(e),f.before(d),b.level>0){var g="<span style='display: inline-block;width:"+c*b.level+"px'></span>";e.before(g)}},singleClick:function(a,b,c){var d=$.fn.zTree.getZTreeObj(b);d.expandNode(c)},allCheck:function(a,b,c){var d=$.fn.zTree.getZTreeObj(b);if("allcheck"==c.type)c.checked?d.checkAllNodes(!0):d.checkAllNodes(!1);else if(c.checked){if(d.getCheckedNodes().length==c.length-1){var e=d.getNodeByParam("type","allcheck",null);if(!e)return;d.checkNode(d.getNodeByParam("type","allcheck",null),!0,!0)}}else{var e=d.getNodeByParam("type","allcheck",null);if(!e)return;d.checkNode(e,!1,!0)}},search:function(a){var b=$(a.target).val(),d=$.fn.zTree.getZTreeObj(this.id),e=[];if(b)return e=d.getNodesByParamFuzzy("name",b,null),!e||e.length<1?void c.show("暂无数据！"):void d.selectNode(e[0])},bind:function(){var a=this;$("#"+this.id).find(".ztree-search").on("keyup",function(c){b.search.call(a,c)})}},$.fn.CabinZtree=function(b,c){var d=this.prop("id");return new a(d,b,c)},define("cabin/widgets/ztree/ztree",function(require,b,d){require("cabin/lib/ztree/jquery.ztree.all.js"),c=require("medusa/widgets/tips/tips"),d.exports=function(b,c,d){return new a(b,c,d)}})}();
+(function () {
+	var _fn, TIPS, OPTIONS = {
+		view: {
+			dblClickExpand: false, //是否双击打开
+			showLine: false, //是否显示虚线
+			showIcon: false,
+			addDiyDom: function (treeId, treeNode) {
+				_fn.addDiyDom(treeId, treeNode);
+			}
+		},
+		search: true, //是否打开查询功能
+		check: {
+			enable: true, //是否打开CheckBox
+			checkAll: true //是否打开全选功能（CheckBox必须先打开）
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		},
+		callback: {
+			onClick: function (e, treeId, treeNode, callback) {
+				_fn.singleClick(e, treeId, treeNode); //单击节点展开
+				if (callback) {
+					callback(e, treeId, treeNode);
+				}
+			},
+			onCheck: function (e, treeId, treeNode, callback) {
+				_fn.allCheck(e, treeId, treeNode); //全选交互实现
+				if (callback) {
+					callback(e, treeId, treeNode);
+				}
+			}
+		}
+	};
+
+	function CabinZtree(id, setting, treeNode) {
+		this.id = null;
+		this.setting = null;
+		this.treeNode = null;
+		this.zTree = null;
+		_fn.init.call(this, id, setting, treeNode);
+	}
+
+	CabinZtree.prototype = {
+		getFistClassChecked: function () {
+			var nodes = this.zTree.getCheckedNodes();
+			var results = [];
+			$.each(nodes, function (index, el) {
+				if (el.pId === null) {
+					results.push({
+						id: el.id,
+						pId: el.pId,
+						name: el.name
+					})
+				}
+			})
+			return results
+		}
+	};
+
+	_fn = {
+		init: function (id, setting, treeNode) {
+			if (id == '' || id == null && id == undefined) {
+				console.warn('ztree id必填');
+				return
+			}
+			this.id = id;
+			this.treeNode = treeNode;
+			//todo 同步settings
+			var settings = JSON.parse(JSON.stringify(setting));
+
+			settings.view = settings.view ? settings.view : OPTIONS.view;
+			settings.check = settings.check ? settings.check : OPTIONS.check;
+			settings.data = settings.data ? settings.data : OPTIONS.data;
+			settings.callback = settings.callback ? settings.callback : {};
+
+			settings.check.checkAll = settings.check.enable ? !settings.check.checkAll && (typeof settings.check.checkAll == 'boolean') ? false : true : false;
+			settings.view.addDiyDom = function (treeId, treeNode) {
+				_fn.addDiyDom(treeId, treeNode);
+				var addDiyDomEvt = setting.view ? setting.view.addDiyDom ? setting.view.addDiyDom : null : null;
+				if (addDiyDomEvt) {
+					addDiyDomEvt(treeId, treeNode);
+				}
+			};
+			settings.callback.onClick = function (e, treeId, treeNode) {
+				debugger
+				_fn.singleClick(e, treeId, treeNode); //单击节点展开
+				var onClickEvt = setting.callback ? setting.callback.onClick ? setting.callback.onClick : null : null;
+				if (onClickEvt) {
+					onClickEvt(e, treeId, treeNode);
+				}
+			};
+			settings.callback.onCheck = function (e, treeId, treeNode) {
+				_fn.allCheck(e, treeId, treeNode); //全选交互实现
+				var onCheckEvt = setting.callback ? setting.callback.onCheck ? setting.callback.onCheck : null : null;
+				if (onCheckEvt) {
+					onCheckEvt(e, treeId, treeNode);
+				}
+			};
+			settings.search = OPTIONS.search;
+
+			var ztreeNode = $('#' + this.id);
+			if (settings.check.checkAll) {
+				treeNode.push({
+					checked: false,
+					id: new Date(),
+					name: "全选",
+					parent: false,
+					type: 'allcheck'
+				});
+			}
+			this.zTree = $.fn.zTree.init(ztreeNode, settings, treeNode);
+			if (settings.search) {
+				var template = '<input type="text" class="ztree-search form-control" placeholder="搜索">';
+				ztreeNode.prepend($(template));
+				_fn.bind.apply(this);
+			}
+		},
+		//样式优化
+		addDiyDom: function (treeId, treeNode) {
+			var spaceWidth = 20;
+			var checkObj = $("#" + treeNode.tId + "_check"),
+				switchObj = $("#" + treeNode.tId + "_switch"),
+				icoObj = $("#" + treeNode.tId + "_ico");
+			checkObj.remove();
+			switchObj.remove();
+			icoObj.before(switchObj);
+			icoObj.before(checkObj);
+
+			if (treeNode.level > 0) {
+				var spaceStr = "<span style='display: inline-block;width:" + (spaceWidth * treeNode.level) + "px'></span>";
+				switchObj.before(spaceStr);
+			}
+		},
+		//单击节点展开
+		singleClick: function (e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj(treeId);
+			zTree.expandNode(treeNode);
+		},
+		//全选交互实现
+		allCheck: function (e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj(treeId);
+			if (treeNode.type == 'allcheck') { //选择的是全选CheckBox
+				if (!treeNode.checked) {
+					zTree.checkAllNodes(false); //反选
+				} else {
+					zTree.checkAllNodes(true); //全选
+				}
+			} else { //选择的不是全选CheckBox
+				if (treeNode.checked) { //选中当前选项
+					if (zTree.getCheckedNodes().length == treeNode.length - 1) {
+						var checkAll = zTree.getNodeByParam('type', 'allcheck', null);
+						if (!checkAll) {
+							return;
+						}
+						zTree.checkNode(zTree.getNodeByParam('type', 'allcheck', null), true, true); //找到全选并选中
+					}
+				} else { //取消当前选中状态
+					var checkAll = zTree.getNodeByParam('type', 'allcheck', null);
+					if (!checkAll) {
+						return;
+					}
+					zTree.checkNode(checkAll, false, true); //找到全选并选中
+				}
+			}
+		},
+		//查询节点
+		search: function (e) {
+			var searchValue = $(e.target).val(),
+				zTree = $.fn.zTree.getZTreeObj(this.id),
+				nodes = [];
+			if (!searchValue) {
+				return;
+			}
+			nodes = zTree.getNodesByParamFuzzy("name", searchValue, null);
+			//zTree.expandAll(false); //节点全部折叠
+			if (!nodes || nodes.length < 1) {
+				TIPS.show('暂无数据！');
+				return;
+			}
+			zTree.selectNode(nodes[0]); //选中第一个节点
+		},
+		bind: function () {
+			debugger
+			var that = this;
+			$('#' + this.id).find('.ztree-search').on('keyup', function (e) {
+				debugger
+				_fn.search.call(that, e); //查询节点
+			})
+		}
+	};
+	$.fn.CabinZtree = function (setting, treeNode) {
+		var id = this.prop('id');
+		return new CabinZtree(id, setting, treeNode);
+	};
+	define('cabin/widgets/ztree/ztree', function (require, exports, module) {
+		require('cabin/lib/ztree/jquery.ztree.all.js');
+		TIPS = require('medusa/widgets/tips/tips');
+		module.exports = function (id, setting, treeNode) {
+			return new CabinZtree(id, setting, treeNode);
+		}
+	})
+})();

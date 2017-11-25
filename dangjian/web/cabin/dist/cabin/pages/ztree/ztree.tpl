@@ -1,6 +1,11 @@
-<div class="pages-cabin-ztree"><div class="ztree-content"><ul id="treeDemo" class="ztree"></ul></div><pre style="margin-top:20px"><code>
+<div class="pages-cabin-ztree">
+	<div class="ztree-content">
+		<ul id="treeDemo" class="ztree"></ul>
+	</div>
+	<pre style="margin-top: 20px;"><code>
 		&lt;ul id="treeDemo" class="ztree">&lt;/ul>
-	</code></pre><pre><code>
+	</code></pre>
+	<pre><code>
 		//引入插件资源
 		require('cabin/widgets/ztree/ztree');
 		//初始化配置项
@@ -157,4 +162,6 @@
 		}];
 		//初始化
 		$("#treeDemo").CabinZtree(setting, zNodes);
-	</code></pre></div>
+	</code></pre>
+
+</div>

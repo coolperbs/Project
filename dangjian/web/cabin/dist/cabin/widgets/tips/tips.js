@@ -1,1 +1,68 @@
-!function(){var a,b,c,d,e;d={SHOWTIME:2e3},c={className:"cabin-widgets-tips",jView:null,initView:!1,timmer:null,show:function(a,b){e.initView(),c.jView.kInsert();var f=c.jView,b=b||d.SHOWTIME;clearTimeout(c.timmer),f.show().animate({opacity:1},400).find("span").html(a),c.timmer=setTimeout(function(){c.hide()},b)},hide:function(){var a=c.jView;a&&a.animate({opacity:0},{duration:400,complete:function(){e.exit()}})}},e={initView:function(){c.initView||(c.jView=b.get(c.className,a.jBody),c.initView=!0)},exit:function(){var a=c.jView;a.hide(),a.kRemove()}},define("cabin/widgets/tips/tips",function(require,d,e){require("cabin/widgets/tips/tips.tpl"),require("cabin/widgets/tips/tips.css"),a=require("kayak/core/kayak"),b=a.dom,e.exports=c})}();
+;
+(function () {
+	var kayak, kDom, ROUTER, handle, CFG, _fn;
+
+	CFG = {
+		SHOWTIME: 2000
+	}
+
+	handle = {
+		className: 'cabin-widgets-tips',
+		jView: null,
+		initView: false,
+		timmer: null,
+		show: function (text, time) {
+			_fn.initView();
+			handle.jView.kInsert();
+			var jView = handle.jView,
+				time = time || CFG.SHOWTIME;
+
+			clearTimeout(handle.timmer);
+			jView.show().animate({
+				opacity: 1
+			}, 400).find('span').html(text);
+			handle.timmer = setTimeout(function () {
+				handle.hide();
+			}, time);
+		},
+
+		hide: function () {
+			var jView = handle.jView;
+
+			if (jView) {
+				jView.animate({
+					opacity: 0
+				}, {
+					duration: 400,
+					complete: function () {
+						_fn.exit();
+					}
+				});
+			}
+		}
+	}
+	_fn = {
+		initView: function () {
+			if (handle.initView) {
+				return;
+			}
+			handle.jView = kDom.get(handle.className, kayak.jBody);
+			handle.initView = true;
+		},
+		exit: function () {
+			var jView = handle.jView;
+			jView.hide();
+			jView.kRemove();
+		}
+	}
+
+	define('cabin/widgets/tips/tips', function (require, exports, module) {
+		require('cabin/widgets/tips/tips.tpl');
+		require('cabin/widgets/tips/tips.css');
+
+		kayak = require('kayak/core/kayak');
+		kDom = kayak.dom;
+
+		module.exports = handle;
+	});
+})();

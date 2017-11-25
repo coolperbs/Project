@@ -1,1 +1,179 @@
-!function(){var a,b,c,d,e={};d={TIMEOUT:1e4},b={setGlobalParam:function(a){e=$.extend(e,a)},query:function(){var b,c,e,f;if(3==arguments.length)b=arguments[0],e="json",c=arguments[1],f=arguments[2];else{if(4!=arguments.length)return;b=arguments[0],e=arguments[1],c=arguments[2],f=arguments[3]}c=c||{},c=a.decorateParam(c),$.ajax({url:b,dataType:"json",data:c,xhrFields:{withCredentials:!0},type:"GET",cache:!1,timeout:d.TIMEOUT,success:function(b){"function"==typeof f&&a.callbackProxy(b,f)},error:function(){var b={code:"-1",result:"加载数据失败",data:{}};"function"==typeof f&&a.callbackProxy(b,f)}})},post:function(){var b,c,e,f;3==arguments.length&&(b=arguments[0],e="json",c=arguments[1],f=arguments[2],c=c||{},c=a.decorateParam(c),$.ajax({url:b,dataType:"json",data:c,xhrFields:{withCredentials:!0},type:"POST",cache:!1,timeout:d.TIMEOUT,success:function(b){"function"==typeof f&&a.callbackProxy(b,f)},error:function(){var b={code:"-1",message:"加载数据失败",data:{}};"function"==typeof f&&a.callbackProxy(b,f)}}))},postFile:function(b){var c=b.url,d=b.file,e=b.callback,f=new FormData;f.append("file",d),$.ajax({url:c,type:"POST",data:f,xhrFields:{withCredentials:!0},contentType:!1,processData:!1,success:function(b){"function"==typeof e&&a.callbackProxy(b,e)},error:function(b){"function"==typeof e&&a.callbackProxy(b,e)}})}},a={decorateParam:function(a){return a},callbackProxy:function(a,b){"function"==typeof b&&b(a)}},define("cabin/common/data/ajax",function(require,a,d){c=require("kayak/core/router/router"),d.exports=b})}();
+/*
+	依赖jquery 
+	jun.li@dmall.com 2016-05-24
+*/
+
+
+;
+(function () {
+	var _fn,
+		handle, ROUTER,
+		globalParam = {},
+		CFG;
+
+	CFG = {
+		TIMEOUT: 10000 // 超时时间
+	}
+
+	handle = {
+		setGlobalParam: function (param) {
+			globalParam = $.extend(globalParam, param);
+		},
+		query: function () {
+			var url,
+				param,
+				type,
+				callback;
+			if (arguments.length == 3) {
+				url = arguments[0];
+				type = 'json';
+				param = arguments[1];
+				callback = arguments[2];
+			} else if (arguments.length == 4) {
+				url = arguments[0];
+				type = arguments[1];
+				param = arguments[2];
+				callback = arguments[3];
+			} else {
+				return;
+			}
+
+			param = param || {};
+			param = _fn.decorateParam(param);
+			$.ajax({
+				url: url,
+				dataType: 'json',
+				data: param,
+				xhrFields: {
+					withCredentials: true
+				},
+				type: 'GET',
+				cache: false,
+				timeout: CFG.TIMEOUT,
+				success: function (res) {
+					if (typeof callback == 'function') {
+						_fn.callbackProxy(res, callback);
+					}
+				},
+				error: function () {
+					var data = {
+						code: '-1',
+						result: '加载数据失败',
+						data: {}
+					};
+					if (typeof callback == 'function') {
+						_fn.callbackProxy(data, callback);
+					}
+				}
+			});
+		},
+		post: function () {
+			var url,
+				param,
+				type,
+				callback;
+			if (arguments.length == 3) {
+				url = arguments[0];
+				type = 'json';
+				param = arguments[1];
+				callback = arguments[2];
+			} else {
+				return;
+			}
+			param = param || {};
+			param = _fn.decorateParam(param);
+			$.ajax({
+				url: url,
+				dataType: 'json',
+				data: param,
+				xhrFields: {
+					withCredentials: true
+				},
+				type: 'POST',
+				cache: false,
+				timeout: CFG.TIMEOUT,
+				success: function (res) {
+					if (typeof callback == 'function') {
+						_fn.callbackProxy(res, callback);
+					}
+				},
+				error: function () {
+					var data = {
+						code: '-1',
+						message: '加载数据失败',
+						data: {}
+					};
+					if (typeof callback == 'function') {
+						_fn.callbackProxy(data, callback);
+					}
+				}
+			});
+		},
+		postFile: function (option) {
+			var url = option.url;
+			var file = option.file;
+			var callback = option.callback;
+			var formData = new FormData();
+			formData.append("file", file);
+			$.ajax({
+				url: url,
+				type: "POST",
+				data: formData,
+				xhrFields: {
+					withCredentials: true
+				},
+				/**
+				 *必须false才会自动加上正确的Content-Type
+				 */
+				contentType: false,
+				/**
+				 * 必须false才会避开jQuery对 formdata 的默认处理
+				 * XMLHttpRequest会对 formdata 进行正确的处理
+				 */
+				processData: false,
+				success: function (res) {
+					if (typeof callback == 'function') {
+						_fn.callbackProxy(res, callback);
+					}
+				},
+				error: function (res) {
+					if (typeof callback == 'function') {
+						_fn.callbackProxy(res, callback);
+					}
+				}
+			});
+
+		}
+	};
+
+	_fn = {
+		// 装饰参数
+		decorateParam: function (param) {
+			return param;
+		},
+		// 统一回调方案
+		callbackProxy: function (data, callback) {
+			//			if (data.code + '' == '0001') { //用户未登录                        
+			//				var returnUrl = '';
+			//				returnUrl = encodeURIComponent(window.location.href);
+			//				ROUTER.go('#full/promise/login:returnUrl=' + returnUrl);
+			//				return;
+			//			}
+			//			if (data.code == '0002') { //用户没有权限
+			//				ROUTER.go('#full/promise/nopermissions');
+			//				return;
+			//			}
+
+			// 这里可以做统一拦截方案
+			if (typeof callback == 'function') {
+				callback(data);
+			}
+		}
+	}
+
+	define('cabin/common/data/ajax', function (require, exports, module) {
+		ROUTER = require('kayak/core/router/router');
+		module.exports = handle;
+	});
+
+})();

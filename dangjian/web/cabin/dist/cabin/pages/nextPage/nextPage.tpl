@@ -1,4 +1,13 @@
-<div class="cabin-page-nextPage content-container"><div class="container-scroll"><div class="stage"><div id="mypage"></div></div><pre><code>
+
+<div class="cabin-page-nextPage content-container">
+    <div class="container-scroll">
+        <div class="stage">
+            <div id="mypage">
+
+            </div>
+        </div>
+        <!--示例代码-->
+        <pre><code>
             &lt;!--html 模板-->
             &lt;div id="mypage">&lt;/div>
 
@@ -12,4 +21,8 @@
                 position: null, //位置 left right center
                 callback: function (data) {}
             });
-        </code></pre></div></div>
+        </code></pre>
+    </div>
+</div>
+
+

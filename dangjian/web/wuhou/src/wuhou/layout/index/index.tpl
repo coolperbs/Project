@@ -1,20 +1,6 @@
 <div class="index">
-	<div class="cont">
-		<div class="sub">asdf</div>
-		<div class="main">asd</div>
-		<div class="menu">
-			<div class="tab">1</div>
-			<div class="tab">2</div>
-			<div class="tab">3</div>
-			<div class="tab">4</div>
-			<div class="tab">5</div>
-			<div class="tab">6</div>
-			<div class="tab">7</div>
-			<div class="tab">8</div>
-			<div class="tab">9</div>
-			<div class="tab">10</div>
-			<div class="tab">11</div>
-			<div class="tab">12</div>
-		</div>
+	<div class="layout-cont">
+		<div class="layout-header J_Header"></div>
+		<div class="layout-main J_Main"></div>
 	</div>
 </div>

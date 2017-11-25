@@ -5,7 +5,7 @@
             kDom = kayak.dom,
             _fn,
             //默认白名单方法
-            whiteList = ['enter', 'exit', 'render', 'temps'];
+            whiteList = ['render', 'temps'];
 
         function PageClass(opt) {
             //opt key 依次拷贝

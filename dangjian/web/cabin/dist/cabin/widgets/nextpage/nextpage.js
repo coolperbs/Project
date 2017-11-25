@@ -1,1 +1,327 @@
-!function(){function a(a,b){this.opt=null,this.id=a,this.spin={head:1,end:9},this.init(b)}var b,c,d={pageSize:30,currentPage:1,totalCount:0,callback:null,container:null,pageRange:9,select:[30,60,100],showTotal:!1,position:null};a.prototype={init:function(a){if(this.id&&"function"==typeof a.callback){var e=$("#"+this.id),f=$(b).clone();this.opt={pageSize:a.pageSize?a.pageSize:d.pageSize,currentPage:a.currentPage?a.currentPage:d.currentPage,totalCount:a.totalCount?a.totalCount:d.totalCount,callback:a.callback?a.callback:d.callback,select:a.select?a.select:d.select,pageRange:a.pageRange?a.pageRange:d.pageRange,position:a.position?a.position:d.position,showTotal:a.showTotal?a.showTotal:d.showTotal},e.html(""),this.opt.position&&f.addClass(this.opt.position),e.append(f),c.formatOptions.apply(this),c.updateSpin.apply(this),c.render.apply(this),c.bind.apply(this)}},update:function(a){for(k in a)this.opt[k]=a[k];c.formatOptions.apply(this),c.updateSpin.apply(this),c.render.apply(this)},next:function(a){if(!$(a.target).hasClass("disabled")){var b=Math.ceil(this.opt.totalCount/this.opt.pageSize);this.opt.currentPage+1>b?this.opt.currentPage=b:this.opt.currentPage+=1,c.updateSpin.apply(this),c.render.apply(this,[!0])}},prev:function(a){$(a.target).hasClass("disabled")||(this.opt.currentPage-1<1?this.opt.currentPage=1:this.opt.currentPage-=1,c.updateSpin.apply(this),c.render.apply(this,[!0]))}},c={bind:function(){var a=$("#"+this.id),b=a.find(".nextpage-pagelist"),d=a.find(".nextpage-input"),e=a.find(".prev"),f=a.find(".next"),g=a.find(".nextpage-select-input"),h=a.find(".nextpage-select-chosen"),i=this;b.on("click",function(a){a.stopPropagation(),c.checkPage.apply(i,[a])}),e.on("click",function(a){a.stopPropagation(),i.prev(a)}),f.on("click",function(a){a.stopPropagation(),i.next(a)}),d.on("click",function(a){a.stopPropagation()}),d.on("keyup",function(a){c.setCurrentPage.apply(i,[a])}),g.on("click",function(a){a.stopPropagation(),c.showSelect.apply(i,[a])}),h.on("click",function(a){a.stopPropagation(),c.chosenCheck.apply(i,[a])}),$("body").on("click",function(a){a.stopPropagation(),c.hideSelect.apply(i,[a])})},render:function(a){var b=$("#"+this.id),c=b.find(".nextpage-pagelist"),d=b.find(".nextpage-select-input"),e=b.find(".nextpage-input"),f=b.find(".prev"),g=b.find(".next"),h=b.find(".nextpage-select-chosen"),i=b.find(".total"),j=Math.ceil(this.opt.totalCount/this.opt.pageSize),k="",l="",m=1;if(j>10){for(m=this.spin.head;m<this.spin.end+1;m++)k+=this.opt.currentPage===m?'<li class="active" data-page="'+m+'">'+m+"</li>":'<li data-page="'+m+'">'+m+"</li>";this.opt.currentPage<this.opt.pageRange?(k+="<li>...</li>",k+='<li data-page="'+j+'">'+j+"</li>",c.html(""),c.html(k)):this.spin.end<j?(k='<li data-page="1">1</li></li><li data-page="'+m+'">...</li>'+k,k+="<li>...</li>",k+='<li data-page="'+j+'">'+j+"</li>",c.html(""),c.html(k)):(k='<li data-page="1">1</li></li><li>...</li>'+k,c.html(""),c.html(k))}else{for(m=1;m<=j;m++)k+=this.opt.currentPage===m?'<li class="active" data-page="'+m+'">'+m+"</li>":'<li data-page="'+m+'">'+m+"</li>";c.html(""),c.html(k)}for(m=0;m<this.opt.select.length;m++)l+=this.opt.pageSize===this.opt.select[m]?'<li class="active" data-size="'+this.opt.select[m]+'">'+this.opt.select[m]+"</li>":'<li data-size="'+this.opt.select[m]+'">'+this.opt.select[m]+"</li>";e.val(this.opt.currentPage),d.html(this.opt.pageSize),h.html(l),this.opt.showTotal&&i.html("共"+this.opt.totalCount+"条"),f.removeClass("disabled"),g.removeClass("disabled"),1===this.opt.currentPage&&f.addClass("disabled"),this.opt.currentPage===j&&g.addClass("disabled"),a&&this.opt.callback(JSON.parse(JSON.stringify(this.opt)))},checkPage:function(a){var b=$(a.target),d=b.attr("data-page");d&&(d=Number(d),isNaN(d)&&(d=1),this.opt.currentPage!==d&&(this.opt.currentPage=d,c.updateSpin.apply(this),c.render.apply(this,[!0])))},updateSpin:function(){var a=Math.ceil(this.opt.totalCount/this.opt.pageSize);this.opt.currentPage>this.opt.pageRange-1?(this.spin.head=this.opt.currentPage-4,this.spin.end=this.opt.currentPage+4,this.spin.end>a&&(this.spin.end=a,this.spin.head=this.spin.end-8)):(this.spin.head=1,this.spin.end=9)},setCurrentPage:function(a){var b=Math.ceil(this.opt.totalCount/this.opt.pageSize),d=$(a.target),e=d.val();e&&(e=Number(e),isNaN(e)&&(e=1),13===a.keyCode&&(e>b&&(e=b),this.opt.currentPage=e,c.updateSpin.apply(this),c.render.apply(this,[!0])))},showSelect:function(a){var b=$("#"+this.id),c=b.find(".nextpage-select-input"),d=b.find(".nextpage-select-chosen"),e=c.offset().top,f=$(document).height(),g=f-e;d.removeClass("top bottom"),g>150?d.addClass("bottom active"):d.addClass("top active")},hideSelect:function(a){var b=$("#"+this.id),c=b.find(".nextpage-select-chosen");c.removeClass("active")},chosenCheck:function(a){var b=$(a.target),d=b.attr("data-size");d&&(d=Number(d),isNaN(d)&&(d=this.opt.select[0]),this.opt.pageSize!==d&&(this.opt.pageSize=d,this.opt.currentPage=1,c.updateSpin.apply(this),c.render.apply(this,[!0]),c.hideSelect.apply(this)))},formatOptions:function(){this.opt.pageSize=isNaN(Number(this.opt.pageSize))?d.pageSize:Number(this.opt.pageSize),this.opt.currentPage=isNaN(Number(this.opt.currentPage))?d.currentPage:Number(this.opt.currentPage),this.opt.totalCount=isNaN(Number(this.opt.totalCount))?d.totalCount:Number(this.opt.totalCount),this.opt.pageRange=isNaN(Number(this.opt.pageRange))?d.pageRange:Number(this.opt.pageRange);var a=this;$.each(this.opt.select,function(b,c){isNaN(Number(c))?a.opt.select[b]=d.select[b]:a.opt.select[b]=Number(c)})}},$.fn.NextPage=function(b){var c=this.prop("id");return new a(c,b)},define("cabin/widgets/nextpage/nextpage",function(require,c,d){b=require("cabin/widgets/nextpage/nextpage.tpl"),d.exports=function(b,c){return new a(b,c)}})}();
+/*同时满足 jq插件 和 全局插件*/
+(function () {
+    var template, _fn,
+        OPTION = {
+            pageSize: 30, //每页大小,
+            currentPage: 1, //当前页
+            totalCount: 0, //总条数
+            callback: null, //点击回调
+            container: null, //插入id
+            pageRange: 9, //间隔多少个
+            select: [30, 60, 100], //下拉选项
+            showTotal:false,//显示同条数
+            position: null //位置
+        };
+
+    function NextPage(id, option) {
+        this.opt = null;
+        this.id = id;
+        this.spin = {
+            head: 1,
+            end: 9
+        };
+        this.init(option);
+    }
+
+    NextPage.prototype = {
+        init: function (option) {
+            if (!this.id) {
+                console.warn('请设置分页id');
+                return
+            }
+            if (typeof option.callback !== 'function') {
+                console.warn('分页配置callback 不是一个方法');
+                return
+            }
+            var container = $('#' + this.id);
+            var DOM = $(template).clone();
+            this.opt = {
+                pageSize: option.pageSize ? option.pageSize : OPTION.pageSize,
+                currentPage: option.currentPage ? option.currentPage : OPTION.currentPage,
+                totalCount: option.totalCount ? option.totalCount : OPTION.totalCount,
+                callback: option.callback ? option.callback : OPTION.callback,
+                select: option.select ? option.select : OPTION.select,
+                pageRange: option.pageRange ? option.pageRange : OPTION.pageRange,
+                position: option.position ? option.position : OPTION.position,
+                showTotal:option.showTotal?option.showTotal:OPTION.showTotal
+            };
+            container.html('');
+            if (this.opt.position) {
+                DOM.addClass(this.opt.position)
+            }
+            container.append(DOM);
+            _fn.formatOptions.apply(this);
+            _fn.updateSpin.apply(this);
+            _fn.render.apply(this);
+            _fn.bind.apply(this);
+        },
+        update: function (option) {
+            for (k in option) {
+                this.opt[k] = option[k];
+            }
+            _fn.formatOptions.apply(this);
+            _fn.updateSpin.apply(this);
+            _fn.render.apply(this);
+        },
+        next: function (e) {
+            if ($(e.target).hasClass('disabled')) {
+                return
+            }
+            var totalPage = Math.ceil(this.opt.totalCount / this.opt.pageSize);
+            if (this.opt.currentPage + 1 > totalPage) {
+                this.opt.currentPage = totalPage;
+            } else {
+                this.opt.currentPage += 1;
+            }
+            _fn.updateSpin.apply(this);
+            _fn.render.apply(this, [true]);
+        },
+        prev: function (e) {
+            if ($(e.target).hasClass('disabled')) {
+                return
+            }
+            if (this.opt.currentPage - 1 < 1) {
+                this.opt.currentPage = 1;
+            } else {
+                this.opt.currentPage -= 1;
+            }
+            _fn.updateSpin.apply(this);
+            _fn.render.apply(this, [true]);
+        }
+    };
+    _fn = {
+        bind: function () {
+            var container = $('#' + this.id);
+            var pageContainer = container.find('.nextpage-pagelist');
+            var input = container.find('.nextpage-input');
+            var prev = container.find('.prev');
+            var next = container.find('.next');
+            var select = container.find('.nextpage-select-input');
+            var chosen = container.find('.nextpage-select-chosen');
+            var that = this;
+            pageContainer.on('click', function (e) {
+                e.stopPropagation();
+                _fn.checkPage.apply(that, [e])
+            });
+            prev.on('click', function (e) {
+                e.stopPropagation();
+                that.prev(e)
+            });
+            next.on('click', function (e) {
+                e.stopPropagation();
+                that.next(e);
+            });
+            input.on('click', function (e) {
+                e.stopPropagation();
+            });
+            input.on('keyup', function (e) {
+                _fn.setCurrentPage.apply(that, [e])
+            });
+            select.on('click', function (e) {
+                e.stopPropagation();
+                _fn.showSelect.apply(that, [e]);
+            });
+            chosen.on('click', function (e) {
+                e.stopPropagation();
+                _fn.chosenCheck.apply(that, [e]);
+            });
+            $('body').on('click', function (e) {
+                e.stopPropagation();
+                _fn.hideSelect.apply(that, [e]);
+            });
+        },
+        render: function (isCallback) {
+            var container = $('#' + this.id
+            );
+            var pageContainer = container.find('.nextpage-pagelist');
+            var select = container.find('.nextpage-select-input');
+            var input = container.find('.nextpage-input');
+            var prev = container.find('.prev');
+            var next = container.find('.next');
+            var chosen = container.find('.nextpage-select-chosen');
+            var total = container.find('.total');
+            var totalPage = Math.ceil(this.opt.totalCount / this.opt.pageSize);
+            var pages = '';
+            var chosens = '';
+            var i = 1;
+            if (totalPage > 10) {
+                for (i = this.spin.head; i < this.spin.end + 1; i++) {
+                    if (this.opt.currentPage === i) {
+                        pages += '<li class="active" data-page="' + i + '">' + i + '</li>';
+                    } else {
+                        pages += '<li data-page="' + i + '">' + i + '</li>';
+                    }
+                }
+                if (this.opt.currentPage < this.opt.pageRange) {
+                    pages += '<li>...</li>';
+                    pages += '<li data-page="' + totalPage + '">' + totalPage + '</li>';
+                    pageContainer.html('');
+                    pageContainer.html(pages);
+                } else {
+                    if (this.spin.end < totalPage) {
+                        pages = '<li data-page="1">1</li></li><li data-page="' + i + '">...</li>' + pages;
+                        pages += '<li>...</li>';
+                        pages += '<li data-page="' + totalPage + '">' + totalPage + '</li>';
+                        pageContainer.html('');
+                        pageContainer.html(pages);
+                    } else {
+                        pages = '<li data-page="1">1</li></li><li>...</li>' + pages;
+                        pageContainer.html('');
+                        pageContainer.html(pages)
+                    }
+                }
+            } else {
+                for (i = 1; i <= totalPage; i++) {
+                    if (this.opt.currentPage === i) {
+                        pages += '<li class="active" data-page="' + i + '">' + i + '</li>';
+                    } else {
+                        pages += '<li data-page="' + i + '">' + i + '</li>';
+                    }
+                }
+                pageContainer.html('');
+                pageContainer.html(pages)
+            }
+
+
+            for (i = 0; i < this.opt.select.length; i++) {
+                if (this.opt.pageSize === this.opt.select[i]) {
+                    chosens += '<li class="active" data-size="' + this.opt.select[i] + '">' + this.opt.select[i] + '</li>';
+                } else {
+                    chosens += '<li data-size="' + this.opt.select[i] + '">' + this.opt.select[i] + '</li>';
+                }
+
+            }
+            input.val(this.opt.currentPage);
+            select.html(this.opt.pageSize);
+            chosen.html(chosens);
+            if(this.opt.showTotal){
+                total.html('共'+this.opt.totalCount+'条');
+            }
+            prev.removeClass('disabled');
+            next.removeClass('disabled');
+            if (this.opt.currentPage === 1) {
+                prev.addClass('disabled')
+            }
+            if (this.opt.currentPage === totalPage) {
+                next.addClass('disabled')
+            }
+            if (isCallback) {
+                this.opt.callback(JSON.parse(JSON.stringify(this.opt)));
+            }
+        },
+        checkPage: function (e) {
+            var li = $(e.target);
+            var value = li.attr('data-page');
+            if (!value) {
+                return
+            }
+            value = Number(value);
+            if (isNaN(value)) {
+                value = 1
+            }
+            if (this.opt.currentPage === value) {
+                return
+            }
+            this.opt.currentPage = value;
+            _fn.updateSpin.apply(this);
+            _fn.render.apply(this, [true]);
+        },
+        updateSpin: function () {
+            var totalPage = Math.ceil(this.opt.totalCount / this.opt.pageSize);
+            if (this.opt.currentPage > this.opt.pageRange - 1) {
+                this.spin.head = this.opt.currentPage - 4;
+                this.spin.end = this.opt.currentPage + 4;
+                if (this.spin.end > totalPage) {
+                    this.spin.end = totalPage;
+                    this.spin.head = this.spin.end - 8;
+                }
+            } else {
+                this.spin.head = 1;
+                this.spin.end = 9
+            }
+        },
+        setCurrentPage: function (e) {
+            var totalPage = Math.ceil(this.opt.totalCount / this.opt.pageSize);
+            var input = $(e.target);
+            var value = input.val();
+            if (!value) {
+                return
+            }
+            value = Number(value);
+            if (isNaN(value)) {
+                value = 1
+            }
+            if (e.keyCode === 13) {
+                if (value > totalPage) {
+                    value = totalPage
+                }
+                this.opt.currentPage = value;
+                _fn.updateSpin.apply(this);
+                _fn.render.apply(this, [true]);
+            }
+        },
+        showSelect: function (e) {
+            var container = $('#' + this.id);
+            var select = container.find('.nextpage-select-input');
+            var chosen = container.find('.nextpage-select-chosen');
+            var top = select.offset().top;
+            var height = $(document).height();
+            var border = height - top;
+            chosen.removeClass('top bottom');
+            if (border > 150) {
+                chosen.addClass('bottom active')
+            } else {
+                chosen.addClass('top active')
+            }
+        },
+        hideSelect: function (e) {
+            var container = $('#' + this.id);
+            var chosen = container.find('.nextpage-select-chosen');
+            chosen.removeClass('active');
+        },
+        chosenCheck: function (e) {
+            var li = $(e.target);
+            var value = li.attr('data-size');
+            if (!value) {
+                return
+            }
+            value = Number(value);
+            if (isNaN(value)) {
+                value = this.opt.select[0];
+            }
+            if (this.opt.pageSize === value) {
+                return
+            }
+            this.opt.pageSize = value;
+            this.opt.currentPage = 1;
+            _fn.updateSpin.apply(this);
+            _fn.render.apply(this, [true]);
+            _fn.hideSelect.apply(this);
+        },
+        formatOptions: function () {
+            this.opt.pageSize = isNaN(Number(this.opt.pageSize)) ? OPTION.pageSize : Number(this.opt.pageSize);
+            this.opt.currentPage = isNaN(Number(this.opt.currentPage)) ? OPTION.currentPage : Number(this.opt.currentPage);
+            this.opt.totalCount = isNaN(Number(this.opt.totalCount)) ? OPTION.totalCount : Number(this.opt.totalCount);
+            this.opt.pageRange = isNaN(Number(this.opt.pageRange)) ? OPTION.pageRange : Number(this.opt.pageRange);
+            var that = this;
+            $.each(this.opt.select, function (index, el) {
+                if (isNaN(Number(el))) {
+                    that.opt.select[index] = OPTION.select[index];
+                } else {
+                    that.opt.select[index] = Number(el)
+                }
+            })
+        }
+    };
+    $.fn.NextPage = function (option) {
+        var id = this.prop('id');
+        return new NextPage(id, option);
+    };
+    define('cabin/widgets/nextpage/nextpage', function (require, exports, module1) {
+        template = require('cabin/widgets/nextpage/nextpage.tpl');
+        //require('cabin/widgets/nextpage/nextpage.css');
+        module1.exports = function (id, option) {
+            return new NextPage(id, option);
+        }
+    });
+})();

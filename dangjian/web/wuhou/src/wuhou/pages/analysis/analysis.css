@@ -1,0 +1,8 @@
+.w-p-analysis { color : #896f5e; height: 100%; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+.w-p-analysis .cont { flex-wrap: wrap; background-color: #fff; height : 7.6rem; width : 100%; display: flex; display: -webkit-flex; justify-content: space-between; }
+.w-p-analysis .cont .mod { width : 50%; height : 50%; border-right : solid 1px #EFE9DF; border-bottom : solid 1px #EFE9DF; position: relative; }
+.w-p-analysis .cont .mod .charts { width: 100%; height : 100%; }
+.w-p-analysis .cont .mod .title { position: absolute; left : 0.4rem; top : 0.2rem; font-size : 0.32rem; color : #896F5E; }
+
+

@@ -1,0 +1,18 @@
+.w-p-ndetail { color : #896f5e; height: 8rem; display: flex; display: -webkit-flex; align-items : center; font-size : 0.16rem;  position: absolute; bottom : 0; left : 0; width : 100%; }
+
+
+.w-p-ndetail .cont { height : 7.6rem; width : 100%; display: flex; display: -webkit-flex; justify-content: space-between; }
+
+/* 菜单 */
+.w-p-ndetail .cont .menu { width : 4.5rem; height : 100%; overflow-y: auto; }
+.w-p-ndetail .cont .menu > section { background-color: #fff; padding : 0.2rem 0.2rem 0.2rem 0.1rem; width : 100%; height : 1.4rem; border-left : solid 0.1rem #fff; display: flex; display: -webkit-flex; align-items: center; justify-content: space-between; }
+.w-p-ndetail .cont .menu > section.current { border-left-color : #EA4834; }
+.w-p-ndetail .cont .menu > section .pic { width : 1.6rem; background-color: #f0f0f0; overflow: hidden; height: 0.9rem; display: flex; display: -webkit-flex; align-items: center; }
+.w-p-ndetail .cont .menu > section .pic img { width : 100%; }
+.w-p-ndetail .cont .menu > section .info { flex-flow: 1; width: 100%; height: 100%; margin-left : 0.15rem; display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; }
+.w-p-ndetail .cont .menu > section .info .title { font-size : 0.2rem; }
+.w-p-ndetail .cont .menu > section .info .sub { font-size : 0.16rem; color : #C3AE91; }
+
+.w-p-ndetail .cont .main {padding : 0 2rem;  background-color: #fff; overflow-y: auto; overflow-x: hidden; }
+
+

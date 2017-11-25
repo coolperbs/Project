@@ -1,1 +1,11 @@
-.pages-cabin-ztree{background:#fff;width:100%;height:100%;position:relative;padding:20px;overflow:auto}.pages-cabin-ztree .hljs{background:0 0!important}
+.pages-cabin-ztree {
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 20px;
+	overflow: auto;
+}
+.pages-cabin-ztree .hljs {
+	background: none!important;
+}

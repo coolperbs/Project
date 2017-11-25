@@ -1,4 +1,8 @@
-<div class="pages-cabin-pop"><div class="pop-content"><button class="btn btn-defualt J_demo">demo1</button><p style="padding:15px 0">代码如下</p><pre>
+<div class="pages-cabin-pop">
+	<div class="pop-content">
+		<button class="btn btn-defualt J_demo">demo1</button>
+		<p style="padding:15px 0;">代码如下</p>
+		<pre>
 			<code class="xml">
 				&lt;!DOCTYPE html&gt;
 				&lt;html&gt;
@@ -10,7 +14,8 @@
 					&lt;/body&gt;		
 				&lt;/html&gt;		
 			</code>
-		</pre><pre>
+		</pre>
+		<pre>
 			<code>
 				POP = require('cabin/widgets/pop/pop');
 				var popConfig = {
@@ -32,7 +37,13 @@
 
 				POP.show(popConfig);
 			</code>				
-			</pre><button class="btn btn-defualt J_miniDemo">minipop</button><p style="padding:15px 0">代码如下(包含全部参数)</p><pre>
+			</pre>
+
+		<button class="btn btn-defualt J_miniDemo">
+			minipop
+		</button>
+		<p style="padding:15px 0;">代码如下(包含全部参数)</p>
+		<pre>
 			<code>
 				MINIPOP = require('cabin/widgets/minipop/minipop');
 				MINIPOP.show({
@@ -48,7 +59,12 @@
 					}
 				});
 			</code>				
-			</pre><button class="btn btn-defualt J_miniDemo1">简单minipop</button><p style="padding:15px 0">代码如下(基础配置)</p><pre>
+			</pre>
+		<button class="btn btn-defualt J_miniDemo1">
+			简单minipop
+		</button>
+		<p style="padding:15px 0;">代码如下(基础配置)</p>
+		<pre>
 			<code>
 				MINIPOP = require('cabin/widgets/minipop/minipop');
 				MINIPOP.show({
@@ -61,7 +77,12 @@
 					}
 				});
 			</code>				
-			</pre><button class="btn btn-defualt J_miniDemo2">minipop（一个按钮）</button><p style="padding:15px 0">代码如下(只有一个按钮)</p><pre>
+			</pre>
+		<button class="btn btn-defualt J_miniDemo2">
+			minipop（一个按钮）
+		</button>
+		<p style="padding:15px 0;">代码如下(只有一个按钮)</p>
+		<pre>
 			<code>
 				MINIPOP = require('cabin/widgets/minipop/minipop');
 				MINIPOP.show({
@@ -70,4 +91,6 @@
 					cancel: '我知道了'
 				});
 			</code>				
-			</pre></div></div>
+			</pre>
+	</div>
+</div>

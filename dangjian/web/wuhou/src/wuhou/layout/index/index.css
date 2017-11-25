@@ -1,7 +1,5 @@
-.index { height : 100%; min-width : 950px; border : solid 1px; display: flex; display: -webkit-flex; align-items : center; font-size : 0.16rem; }
-.index .cont { height : 10rem; border : solid 1px; width : 100%; display: flex; display: -webkit-flex; }
-.index .cont .menu { width : 2rem; background-color: #ccc; display: flex; display: -webkit-flex; flex-wrap : wrap; align-content : flex-start; justify-content : space-between; }
-.index .cont .menu .tab { margin-top : 0.05rem; width : 0.977rem; height: 0.9rem; background-color: #999; }
-.index .cont .menu .tab:nth-child(1),
-.index .cont .menu .tab:nth-child(2) { margin-top : 0; }
-.index .cont .main { display: flex; display: -webkit-flex; flex-grow : 1; border : solid 1px; margin-right : 0.2rem; }
+.index { position: relative; height : 100%; width: 100%; min-width : 10.8rem; display: flex; display: -webkit-flex; align-items: center; justify-content: center; }
+.index .layout-cont { z-index: 1; padding : 0.8rem; height : 10.8rem; width : 19.2rem; display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; }
+.index .layout-cont .layout-header { font-size : 0.2rem; height : 0.8rem; }
+.index .layout-cont .layout-main { position: relative; }
+

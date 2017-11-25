@@ -1,1 +1,97 @@
-!function(){var a,b,c,d,e;e={SHOWTIME:2e3,HIDETIME:800,TIMESTEP:1500,SHOW_CLS:"show"},c={className:"cabin-widgets-loading",initView:!1,jView:null,jBox:null,timmer:null,startTime:null,show:function(a){a=a||0,d.initView(),c.jView.kInsert();var b=c.jView,f=c.jBox||b.find(".vertical-box");return c.jView=b,c.jBox=f,a>0?void(c.timmer=setTimeout(function(){c.startTime=(new Date).getTime(),b.addClass(e.SHOW_CLS)},a)):(c.startTime=(new Date).getTime(),void b.addClass(e.SHOW_CLS))},hide:function(){var a,b=c.jView,f=c.jBox||b&&b.find(".vertical-box")||null;c.timmer&&clearTimeout(c.timmer),a=0,setTimeout(function(){b&&f?(b.removeClass(e.SHOW_CLS),setTimeout(function(){d.exit()},e.HIDETIME)):d.exit()},a)}},d={initView:function(){c.initView||(c.jView=b.get(c.className,a.jBody),c.initView=!0)},exit:function(){var a=c.jView;a&&a.kRemove()}},define("cabin/widgets/loading/loading",function(require,d,e){require("cabin/widgets/loading/loading.tpl"),require("cabin/widgets/loading/loading.css"),a=require("kayak/core/kayak"),b=a.dom,e.exports=c})}();
+;
+(function () {
+	var kayak, kDom, handle, _fn, CFG;
+
+	CFG = {
+		SHOWTIME: 2000,
+		HIDETIME: 800,
+		TIMESTEP: 1500,
+		SHOW_CLS: 'show'
+	}
+
+	handle = {
+		className: 'cabin-widgets-loading',
+		initView: false,
+		jView: null,
+		jBox: null,
+		timmer: null,
+		startTime: null,
+		show: function (time) {
+			time = time || 0;
+			_fn.initView();
+			handle.jView.kInsert();
+
+			var jView = handle.jView,
+				jBox = handle.jBox || jView.find('.vertical-box');
+
+			handle.jView = jView;
+			handle.jBox = jBox;
+			if (time > 0) {
+				handle.timmer = setTimeout(function () {
+					handle.startTime = (new Date()).getTime();
+					jView.addClass(CFG.SHOW_CLS);
+				}, time);
+				return;
+			}
+			handle.startTime = (new Date()).getTime();
+			jView.addClass(CFG.SHOW_CLS);
+
+		},
+
+		hide: function () {
+			var jView = handle.jView,
+				jBox = handle.jBox || jView && jView.find('.vertical-box') || null,
+				time;
+
+			if (handle.timmer) {
+				clearTimeout(handle.timmer);
+			}
+			/*			time = ( new Date() ).getTime();
+						time = time - handle.startTime;
+						time = time >= CFG.TIMESTEP ? 0 : CFG.TIMESTEP;*/
+			time = 0;
+			// 至少动画显示一秒,让动画播放完毕
+			setTimeout(function () {
+				if (!jView || !jBox) {
+
+					_fn.exit();
+
+				} else {
+					jView.removeClass(CFG.SHOW_CLS);
+
+					//fix 有可能没有触发 transitionend 情况 出现不能关闭情况
+					setTimeout(function () {
+						_fn.exit();
+					}, CFG.HIDETIME);
+				}
+			}, time);
+		}
+	}
+
+	_fn = {
+		initView: function () {
+			if (handle.initView) {
+				return;
+			}
+			handle.jView = kDom.get(handle.className, kayak.jBody);
+			handle.initView = true;
+		},
+		exit: function () {
+			var jView = handle.jView;
+			if (!jView) {
+				return;
+			}
+			jView.kRemove();
+		}
+	}
+
+	define('cabin/widgets/loading/loading', function (require, exports, module) {
+		require('cabin/widgets/loading/loading.tpl');
+		require('cabin/widgets/loading/loading.css');
+
+		kayak = require('kayak/core/kayak');
+		kDom = kayak.dom;
+
+		module.exports = handle;
+	});
+})();

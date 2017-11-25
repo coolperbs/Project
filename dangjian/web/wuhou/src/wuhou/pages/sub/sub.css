@@ -1,0 +1,11 @@
+.w-p-sub { color : #896f5e; height: 7.6rem; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; /*position: absolute; bottom : 0; left : 0; width : 100%;*/ }
+
+
+.w-p-sub .sub-cont { height : 7.6rem; display: flex; display: -webkit-flex; justify-content: space-between; }
+
+/* 菜单 */
+.w-p-sub .sub-cont .sub-menu { width : 2.4rem; height : 100%; overflow-y: auto; position: relative; }
+
+.w-p-sub .sub-cont .sub-main { position: relative; margin-left : 0.2rem; width: 15rem; overflow: hidden; }
+
+

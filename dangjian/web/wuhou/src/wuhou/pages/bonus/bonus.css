@@ -1,0 +1,35 @@
+.w-p-bonus { color : #896f5e; height: 100%; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+
+.w-p-bonus .cont { height : 7.6rem; width : 100%; display: flex; display: -webkit-flex; justify-content: space-between; }
+
+/* 菜单 */
+.w-p-bonus .cont .menu { width : 6rem; padding : 0.55rem; height : 100%; position: relative; overflow-y: hidden; display: flex; flex-direction: column; justify-content: space-between; background-image:linear-gradient(to top,#380404,#421C2B,#2E1414);}
+.w-p-bonus .cont .menu .emblem { position: absolute; top : 0; right :0; height : 5.5rem; width : 4.2rem; }
+.w-p-bonus .cont .menu .name { font-size : 0.6rem; color : #C3AE91; }
+.w-p-bonus .cont .menu .cell { margin-top : 0.5rem; }
+.w-p-bonus .cont .menu .cell .key { font-size : 0.24rem; color : #896F5E; }
+.w-p-bonus .cont .menu .cell .value { font-size : 0.32rem; color : #C3AE91; }
+
+.w-p-bonus .cont .main { background-color: #fff; padding : 0 0.5rem; width : 11.6rem; overflow-y: auto; overflow-x: hidden; }
+.w-p-bonus .cont .main .nav { display: flex; align-items: center; height: 1rem; border-bottom: solid 1px #CEB997; }
+.w-p-bonus .cont .main .nav .tab { transition: all 0.2s ease; cursor : pointer; font-size : 0.24rem; color : #896F5E; margin-left : 0.75rem; height: 100%; display: flex; align-items: center; }
+.w-p-bonus .cont .main .nav .tab.current { position: relative; top : 1px; font-size : 0.32rem; border-bottom : solid 0.1rem #EA4834; }
+.w-p-bonus .cont .main .nav .tab:first-child { margin-left : 0; }
+
+.w-p-bonus .main .list { overflow-y : auto; overflow-x : hidden; height: 6.6rem; display: flex; display: -webkit-flex; flex-wrap: wrap; justify-content: space-between; }
+.w-p-bonus .main .list .project { height : 4rem; overflow: hidden; position: relative; cursor: pointer; width : 100%; background-color : #FCFAF7; padding : 0.35rem; margin-bottom : 0.4rem; }
+.w-p-bonus .main .list .project:first-child { margin-top : 0.4rem; }
+.w-p-bonus .main .list .project .title { font-size : 0.32rem; height : 0.86rem; }
+.w-p-bonus .main .list .project .sub-info { color : #C3AE91; font-size: 0.14rem; margin-top : 0.1rem; display: flex; display: -webkit-flex; justify-content: space-between; }
+.w-p-bonus .main .list .project .detail { height : 0.85rem; line-height: 0.3rem; margin-top : 0.2rem; font-size : 0.18rem; }
+.w-p-bonus .main .list .project .act { cursor: default; margin-top : 0.3rem;font-size : 0.22rem; display: flex; display: -webkit-flex; justify-content: flex-end; align-items: center; }
+.w-p-bonus .main .list .project .act .status { background-color: #c2ae90; color : #fff; font-size : 0.18rem; height : 0.9rem; width : 2rem; text-align: center; position: absolute; bottom : -0.25rem; left : -0.85rem; padding-top : 0.1rem; transform : rotateZ( 45deg ); }
+.w-p-bonus .main .list .project .act .status.wait { background-color: #EA4834; }
+.w-p-bonus .main .list .project .act .status.working { color : #fff; }
+.w-p-bonus .main .list .project .act .btns { display: flex; display: -webkit-flex; }
+.w-p-bonus .main .list .project .act .btns .btn { color : #EA4834; border : solid 1px #EA4834; margin-left : 0.2rem; font-size: 0.24rem; line-height: 0.6rem; cursor : pointer; height : 0.6rem; width : 1.6rem; text-align: center; }
+.w-p-bonus .main .list .project .act .btns .btn.primary { background-color: #EA4834; color : #fff; }
+
+
+

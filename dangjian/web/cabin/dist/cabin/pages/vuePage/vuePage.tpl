@@ -1,4 +1,75 @@
-<div class="cabin-page-vuepage content-container"><div class="container-scroll" id="app"><div class="stage"><div class="stage-title flag">门店／围栏时效查询</div><div class="search-content form-horizontal clearfix"><div class="form-horizontal clearfix"><div class="cabin-group pull-left"><label class="control-label">时间</label><input type="text" class="form-control icondate" v-timepicker:range:result.date="dateOpt" v-model="result.date"></div><div class="cabin-group pull-left"><label class="control-label">时间</label><input type="text" class="form-control icondate" v-timepicker:datepicker:result.date2="datepicker" v-model="result.date2"></div><div class="cabin-group pull-left"><label class="control-label">下拉</label><select class="form-control" v-timepicker:chosen:result.chose="chosenOpt" v-model="result.chose" data-placeholder="请选择"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div><div class="cabin-group pull-left"><label class="control-label">输入项去掉头尾空格 使用 v-model.trim</label><input type="text" class="form-control" v-model.trim="valueB"></div></div></div><hr><div class="stage-search right"><button class="btn btn-outline">查询</button></div></div><div class="stage"><table class="cabinTable table table-hover"><thead><tr><th><div class="checkbox"><input type="checkbox" id="checkall" v-model="checkAll"><label for="checkall">全选</label></div></th><th>规则id</th></tr></thead><tbody><tr v-for="el,index in dataList"><td><div class="checkbox"><input type="checkbox" :id="'tablecheck'+index" v-model="el.checked"><label :for="'tablecheck'+index">el.id</label></div></td><td>{{el.id}}</td></tr></tbody></table></div><pre><code>
+<!--页面最外层 必须添加 content-container 类-->
+<div class="cabin-page-vuepage content-container">
+    <!--滚动内容 需要添加 container-scroll 类-->
+    <div class="container-scroll" id="app">
+        <!--页面分块类 stage-->
+        <div class="stage">
+            <div class="stage-title flag">
+                门店／围栏时效查询
+            </div>
+            <!--搜索条件-->
+            <div class="search-content form-horizontal clearfix">
+                <div class="form-horizontal clearfix">
+                    <div class="cabin-group pull-left">
+                        <label class="control-label">时间</label>
+                        <input type="text" class="form-control icondate" v-timepicker:range:result.date="dateOpt"
+                               v-model="result.date"/>
+                    </div>
+                    <div class="cabin-group pull-left">
+                        <label class="control-label">时间</label>
+                        <input type="text" class="form-control icondate"
+                               v-timepicker:datepicker:result.date2="datepicker"
+                               v-model="result.date2"/>
+                    </div>
+                    <div class="cabin-group pull-left">
+                        <label class="control-label">下拉</label>
+                        <select class="form-control" v-timepicker:chosen:result.chose="chosenOpt" v-model="result.chose"
+                                data-placeholder="请选择">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="cabin-group pull-left">
+                        <label class="control-label">输入项去掉头尾空格 使用 v-model.trim</label>
+                        <input type="text" class="form-control" v-model.trim="valueB"/>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="stage-search right">
+                <button class="btn btn-outline">查询</button>
+            </div>
+        </div>
+        <!--表格全选反选-->
+        <div class="stage">
+            <table class="cabinTable table table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="checkbox">
+                            <input type="checkbox" id="checkall" v-model="checkAll">
+                            <label for="checkall">全选</label>
+                        </div>
+                    </th>
+                    <th>规则id</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="el,index in dataList">
+                    <td>
+                        <div class="checkbox">
+                            <input type="checkbox" :id="'tablecheck'+index" v-model="el.checked">
+                            <label :for="'tablecheck'+index">el.id</label>
+                        </div>
+                    </td>
+                    <td>{{el.id}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <pre><code>
  define('cabin/pages/vuePage/vuePage', function (require, exports, module) {
     var handle, page;
     //这里必须引用这2个VUE的插件 VUE 可以在main里面全局引入 这里只是示例
@@ -140,7 +211,8 @@
     return page;
 });
 
-        </code></pre><pre><code>
+        </code></pre>
+        <pre><code>
 
 
 &lt;!--页面最外层 必须添加 content-container 类-->
@@ -209,4 +281,6 @@
         &lt;/div>
     &lt;/div>
 &lt;/div>
-        </code></pre></div></div>
+        </code></pre>
+    </div>
+</div>

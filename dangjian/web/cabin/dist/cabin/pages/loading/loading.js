@@ -1,1 +1,28 @@
-define("cabin/pages/loading/loading",function(require,a,b){var c,d,e,f,g;return e=require("cabin/page/page"),f=e({nodeClass:"pages-cabin-loading",parentClass:"J_Main",source:["cabin/pages/loading/loading.tpl","cabin/pages/loading/loading.css"],show:function(){c.jView=this.jView,$("pre code").each(function(a,b){hljs.highlightBlock(b)})},hide:function(){},on:{"click .J_demo":function(){g.show(),setTimeout(function(){g.hide()},2e3)}}}),c={},d={},g=require("cabin/widgets/loading/loading"),f});
+define('cabin/pages/loading/loading', function (require, exports, module) {
+	var handle, _fn, Page, page, LOADING;
+	Page = require('cabin/page/page');
+	page = Page({
+		nodeClass: 'pages-cabin-loading',
+		parentClass: 'J_Main', // 没有就直接插入body，或者不插入
+		source: ['cabin/pages/loading/loading.tpl', 'cabin/pages/loading/loading.css'],
+		show: function () {
+			handle.jView = this.jView;
+			$('pre code').each(function (i, block) {
+				hljs.highlightBlock(block);
+			});
+		},
+		hide: function () {},
+		on: {
+			'click .J_demo': function () {
+				LOADING.show();
+				setTimeout(function () {
+					LOADING.hide();
+				}, 2000);
+			}
+		}
+	});
+	handle = {}
+	_fn = {}
+	LOADING = require('cabin/widgets/loading/loading');
+	return page;
+});
