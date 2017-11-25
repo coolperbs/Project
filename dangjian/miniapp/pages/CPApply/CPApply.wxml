@@ -1,0 +1,166 @@
+<view class="page-CPApply">
+	<view class="page-CPApply-wrapper form-wrapper">
+		<view class="form-header">
+			<view class="logo"></view>
+			基本信息
+		</view>
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>姓名</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="userName" bindinput="changeInput" placeholder="请输入姓名" /></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>联系电话</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="userPhone" bindinput="changeInput" placeholder="请输入联系电话"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>身份证号</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="idCard" bindinput="changeInput" placeholder="请输入身份证号码"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>性别</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value">
+					<picker bindchange="changeInput" data-key="gender"  range="{{genderSelection}}" placeholder="请选择性别">
+						<view class="picker-view value" wx:if="{{formData.gender}}">
+					      	{{formData.gender}}
+					    </view>
+					    <view class="picker-view placeholder" wx:else>
+							请选择性别
+						</view>
+					 </picker>
+				</view>
+			</view>
+		</view>
+
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>民族</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="nation" bindinput="changeInput" placeholder="请输入民族"/></view>
+			</view>
+		</view>
+
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>意愿加入组织</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="organization" bindinput="changeInput" placeholder="请输入意愿加入组织"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>籍贯</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="placeOrigin" bindinput="changeInput" placeholder="请输入籍贯"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>职业</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="occupation" bindinput="changeInput" placeholder="请输入职业"/></view>
+			</view>
+		</view>
+
+
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>行业</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="industry" bindinput="changeInput" placeholder="请输入行业"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>学历</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="education" bindinput="changeInput" placeholder="请输入学历"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>毕业院校</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="school" bindinput="changeInput" placeholder="请输入毕业院校"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>擅长</text>
+				</view>
+				<view class="value"><input data-key="goodat" bindinput="changeInput" placeholder="请输入擅长"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>现居住地</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><input data-key="livingPlace" bindinput="changeInput" placeholder="请输入现居住地"/></view>
+			</view>
+		</view>
+
+		<view class="form-content ">
+			<view class="field ">
+				<view class="name">
+					<text>其他说明</text>
+					<text class="notBlank">*</text>
+				</view>
+				<view class="value"><textarea data-key="otherInfo" bindinput="changeInput" placeholder="其他说明"/></view>
+			</view>
+		</view>
+
+		
+
+	</view>
+	<view class="btn-wrapper btns">
+		<view catchtap="submit" class="submit btn" data-type="submit">确认</view>
+		<view catchtap="cancel" class="cancel btn" data-type="cancel">取消</view>
+	</view>
+</view>

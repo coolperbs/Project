@@ -1,0 +1,49 @@
+@import '../../common/basestyle/module.wxss'
+page{
+}
+.page-CPApply{
+	padding:20rpx 0;
+}
+.btn-wrapper.btns{
+	margin-top: 20rpx
+}
+/*
+转党组织
+userPhone
+userName
+idCard
+anchoredOrganization//挂靠组织
+transferType//流动类型
+transferReason//流动原因
+originalOccupation//原职业
+originalOrganization//原党组织
+originalLinkman//员联系人
+originalContact//原联系方式
+note//备注
+*/
+/*
+
+
+入党
+userPhone
+userName
+idCard
+gender//性别
+nation//名族
+organization//意愿加入组织
+placeOrigin//籍贯
+occupation//职业
+industry//行业
+education//学历
+school//毕业学校
+goodat//擅长
+livingPlace//现居地
+otherInfo//其他说明
+
+
+/app/party/apply/add  申请入党
+/app/party/transfer/add 申请转党
+
+
+
+*/

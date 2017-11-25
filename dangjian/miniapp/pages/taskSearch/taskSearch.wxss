@@ -1,0 +1,130 @@
+.taskitem-list{
+	margin-top: 110rpx;
+}
+.header{
+	position:fixed;
+	top:0;
+	height:100rpx;
+	background-color:white;
+	width:100%;
+
+}
+.header .search-box {
+	font-size:28rpx;
+	display:flex;
+	height:100%;
+	align-items:center;
+}
+.header .search-box .back{
+	color:#ccc;
+	width:115rpx;
+	text-align:center;
+
+}
+.header .search-box .search-wrapper{
+	width: 530rpx;
+}
+.header .search-box .search-wrapper .search-txt{
+	background-color:#f0f0f0;
+	border-radius:50rpx;
+	width:100%;
+	padding:10rpx 20rpx;
+
+}
+
+
+
+
+
+.taskitem{
+	display:flex;
+	width:700rpx;
+	margin:auto;
+	background-color:white;
+	padding:10rpx 10rpx 20rpx 10rpx;
+	border-bottom:1px solid #f0f0f0;
+	font-size: 26rpx;
+
+}
+.taskitem .left{
+	width: 200rpx;
+	/*height: 150rpx;*/
+}
+.taskitem .left image{
+	width:200rpx;
+	height:190rpx;
+}
+.taskitem .left image.user-imgae{
+	position: absolute;
+	top: 0;
+	height: 0;
+}
+.taskitem .right{
+	width:500rpx;
+	position:relative;
+	display:flex;
+	padding-left:20rpx
+}
+.taskitem .right .title{
+	overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 360rpx;
+	font-size: 28rpx;
+	color: #333;
+}
+.taskitem .right .time{
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size:26rpx;
+	color: #CCC;
+}
+.taskitem .right .type{
+	position: absolute;
+	top: 80rpx;
+	left: 0;
+	color: #333;
+	font-size:26rpx;
+}
+.taskitem .right .status{
+	position: absolute;
+	bottom: 70rpx;
+	left: 0;
+	color: #CCC;
+	
+}
+.taskitem .right .status.type1{
+	color: #cc0033;
+}
+.taskitem .right .status.type2{}
+
+.taskitem .right .operation{
+	position:absolute;
+	bottom:0;
+	left:0;
+	color:#333;
+	display:flex;
+	width:100%;
+	align-items:flex-end;
+	/*justify-content:space-between;*/
+}
+.taskitem .right .operation .operation-user{
+	color:#CCC;
+}
+.taskitem .right .operation .operation-btn{
+	height:40rpx;
+	border:1px solid #CC0033;
+	color:#cc0033;
+	line-height:40rpx;
+	padding:10rpx;
+	border-radius:10rpx;
+	position: absolute;
+	right: 0;
+}
+.taskitem .right .operation .operation-time{
+	position: absolute;
+	right: 0;
+	color: #ccc;
+}

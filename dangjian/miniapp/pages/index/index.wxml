@@ -1,0 +1,20 @@
+<import src="../../views/home/home.wxml"/>
+<import src="../../views/movement/movement.wxml"/>
+<import src="../../views/mine/mine.wxml"/>
+<!-- <import src="../../views/cart/cart.wxml"/> -->
+<!-- <import src="../../views/distribution/distribution.wxml"/> -->
+<!-- <import src="../../views/mine/mine.wxml"/> -->
+
+
+<!--<view class="content">-->
+	<template wx:if="{{currentView}}" is="{{currentView}}" data="{{ ...viewData }}"></template>
+<!--</view>-->
+
+
+
+<view class="base toolbar">
+	<view wx:for="{{tab.list}}" data-view="{{item.view}}" wx:key="index" data-index="{{index}}" bindtap="changeTab" class="tab">
+		<image src="../../asset/{{item.className}}-active.png" mode="widthFix" class="icon bar {{ item.view == currentView ? 'current' : ''}}"></image>
+	</view>
+	<view class="line" style="display:none;left : {{ tab.currentTab * 150 + 35 }}rpx"></view>
+</view>

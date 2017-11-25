@@ -1,0 +1,35 @@
+<template name="movement">
+	<view class="view-movement">
+		<scroll-view scroll-y="true" 
+			style="height:{{scrollHeight}}"
+			class="CPStudyList-list-wrapper"
+			data-func="loadMore"
+			bindscrolltolower="events">
+				<view class="banner">
+					<image class="banner-img" src="../../asset/CPmovement.png"/>
+				</view>
+				<view class="view-movement-wrapper" wx:if="{{movement}}">
+					<template is="movement-articals" data="{{...movement}}"></template>
+				</view>
+		</scroll-view>
+	</view>
+</template>
+
+
+
+<template name="movement-articals">
+	<view class="home-articals-wrapper">
+		<block wx:for="{{movementList}}" wx:key="id">
+			<view class="artical-item artical" data-id="{{item.id}}" catchtap="events" data-func="toArtical">
+				<view class="left">
+					<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+				</view>
+				<view class="right">
+					<view class="artical-title">{{item.name}}</view>
+					<view class="artical-date">{{item.showCreateTime}}</view>
+					<view class="artical-type">{{item.showType}}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</template>
