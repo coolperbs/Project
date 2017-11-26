@@ -1,10 +1,11 @@
 <view class="page-CPStudyList">
 	<view class="header">
 		<view class="search-box">
-			<text class="back" catchtap="back">取消</text>
+			<!--<text class="back" catchtap="back">取消</text>-->
 			<view class="search-wrapper">
 				<input class="search-txt" bindinput=changeKeyword" placeholder="请输入想搜索的项目名称" value="{{searchParam.keyWord}}"/>
 			</view>
+			<view class="search-botton" catchtap="search">搜索</view>
 		</view>
 		<scroll-view scroll-x="{{true}}" class="menu-scroll" >
 			<view class="menu-wrapper">
@@ -16,7 +17,7 @@
 					style="{{item.style}}">{{item.name}}</view>
 				</block>
 			</view> 
-	</scroll-view>
+		</scroll-view>
 
 	</view>
 	<view class="list">
@@ -24,18 +25,19 @@
 			style="height:{{scrollHeight}}"
 			class="CPStudyList-list-wrapper"
 			bindscrolltolower="loadMore">
-				<block wx:for="{{listData}}" wx:key="id">
+				<block wx:if="{{listData && listData.length}}" wx:for="{{listData}}" wx:key="id">
 					<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
 						<view class="left">
 							<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 						</view>
 						<view class="right">
-							<view class="artical-title">{{item.name}}</view>
-							<view class="artical-date">{{item.showCreateTime}}</view>
-							<view class="artical-type">{{item.showType}}</view>
+							<view class="artical-title ellipsis-1">{{item.name}}</view>
+							<view class="artical-date">{{item.showCreateTime}}<view class="artical-type">{{item.showType}}</view></view>
+							<view class="artical-cont ellipsis-2">{{item.description}}</view>
 						</view>
 					</view>
 				</block> 
+				<view class="empty-list" wx:if="{{!listData || !listData.length}}">没有数据</view>
 		</scroll-view>
 	</view>  
 </view>

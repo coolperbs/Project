@@ -10,6 +10,10 @@ page{}
 	width: 750rpx;
 	background-color: #fff;
 }
+.menu-scroll {
+	border-top : solid 1px #f0f0f0;
+	border-bottom : solid 1px #f0f0f0;
+}
 .menu-scroll .menu-wrapper{
 	display: flex;
 
@@ -22,13 +26,12 @@ page{}
 	font-size:28rpx;
 	min-width:187.5rpx;
 	background-color:#fff;
-	border-left:1px solid #f0f0f0;
-	border-top:1px solid #f0f0f0;
-	border-bottom:1px solid #f0f0f0;
-
 }
 .menu-scroll .box.current { 
-	color : #d6204b;  
+	color : #da3633;  
+	font-size : 32rpx;
+	border-bottom : solid 10rpx #da3633;
+	/*background-image:linear-gradient(180deg,#da3633,#e05e39);*/
 }
 .page-CPStudyList .CPStudyList-list-wrapper{
 	margin-top:220rpx;

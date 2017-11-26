@@ -1,13 +1,14 @@
+<view class="shadowline"></view>
 <view class="page-CPMove">
 
 
 
 	<view class="page-CPMove-wrapper form-wrapper">
-		<view class="form-header">
+		<!--<view class="form-header">
 			<view class="logo"></view>
 			基本信息
-			<view class="link" bindinput="redirect" data-pagename="rules" >详情>> </view>
-		</view>
+			<view class="link" catchtap="redirect" data-pagename="rules" >了解详情</view>
+		</view>-->
 		<view class="form-content ">
 			<view class="field">
 				<view class="name">
@@ -109,7 +110,7 @@
 		</view>
 	</view>
 	<view class="btn-wrapper btns">
-		<view catchtap="submit" class="submit btn" data-type="submit">提交</view>
 		<view catchtap="cancel" class="cancel btn" data-type="cancel">取消</view>
+		<view catchtap="submit" class="submit btn" data-type="submit">提交</view>
 	</view>
 </view>

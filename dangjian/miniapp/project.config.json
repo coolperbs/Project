@@ -42,13 +42,13 @@
 					"id": 4,
 					"name": "文章详情",
 					"pathName": "pages/artical/artical",
-					"query": "id=1"
+					"query": "id=11"
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "创建项目",
 					"pathName": "pages/taskApply/taskApply",
-					"query": "id=1"
+					"query": ""
 				},
 				{
 					"id": -1,
@@ -79,6 +79,30 @@
 					"name": "登录/注册",
 					"pathName": "pages/register/register",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "三会一课",
+					"pathName": "pages/meetingStudy/meetingStudy",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "找党组织",
+					"pathName": "pages/CPMove/CPMove",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "流动党组织简介",
+					"pathName": "pages/rules/rules",
+					"query": ""
+				},
+				{
+					"id": 14,
+					"name": "党章",
+					"pathName": "pages/rules/rules",
+					"query": "type=CPApply"
 				}
 			]
 		},

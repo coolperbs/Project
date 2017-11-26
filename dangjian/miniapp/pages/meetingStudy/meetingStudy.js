@@ -20,8 +20,14 @@ var subtypeEnum = {
 
 Page({
 	onShow:function(){
-		console.log('CPStudyList')
 		var self = this;
+		self.searchParam = self.searchParam || {};
+		self.searchParam = {
+			keyWord : ''
+		};
+		self.setData({
+			searchParam:self.searchParam
+		});
 		_fn.init(self);
 	},
 	changeKeyword:function(e){
@@ -34,7 +40,9 @@ Page({
 		self.setData({
 			searchParam:self.searchParam
 		});
-		_fn.updateList(self);
+	},
+	search : function() {
+		_fn.updateList(this);
 	},
 	back:function(){
 		wx.navigateBack();

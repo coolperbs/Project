@@ -107,7 +107,7 @@ var _fn = {
 				if(res.code==='0000'){
 					if(res.data && res.data.news){
 						list = res.data.news.map((v,k)=>{
-							v.showDate = utils.formateTime(v.modified);
+							v.showDate = utils.formateTime(v.modified, true);
 							return v;
 						});
 					}
@@ -122,6 +122,7 @@ var _fn = {
 	},
 	getRenderData:function(dataList){
 		var renderData = {};
+		console.log( dataList );
 		if(dataList && dataList.length>0){
 			dataList.forEach((v,k)=>{
 				if(v.list && v.list.length>0){
@@ -134,10 +135,13 @@ var _fn = {
 					v.list.splice(0,1);
 
 					renderData.listArtical = renderData.listArtical || [];
-					renderData.listArtical.concat(v.list);
+					if ( v.list && v.list.length ) {
+						renderData.listArtical = renderData.listArtical.concat(v.list);
+					}
 				}
 			})
 		}
+		console.log( renderData );
 		return renderData;
 	}
 }

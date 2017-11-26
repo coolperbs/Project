@@ -12,7 +12,13 @@ var cacheService = service.cache;
 
 Page({
 	onShow:function(){
-		console.log('task search')
+		var self = this;
+		self.searchParam = {
+			keyWord : ''
+		};
+		self.setData({
+			searchParam:self.searchParam
+		});
 	},
 	onLoad:function(option){
 		var self = this;
@@ -38,7 +44,9 @@ Page({
 		self.setData({
 			searchParam:self.searchParam
 		});
-		_fn.updateList(self);
+	},
+	search : function() {
+		_fn.updateList( this );
 	},
 	back:function(){
 		wx.navigateBack();

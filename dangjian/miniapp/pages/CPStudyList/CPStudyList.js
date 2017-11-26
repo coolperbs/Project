@@ -14,14 +14,19 @@ var subtypeEnum = {
 	'2':'会议学习',
 	'3':'年底工作计划',
 	'4':'学习计划',
-	'5':'工作总结',
-	'6':'资料下载'
+	'5':'工作总结'
+	// '6':'资料下载'
 }
 
 Page({
 	onShow:function(){
-		console.log('CPStudyList')
 		var self = this;
+		self.searchParam = {
+			keyWord : ''
+		};
+		self.setData({
+			searchParam:self.searchParam
+		});		
 		_fn.init(self);
 	},
 	changeKeyword:function(e){
@@ -34,7 +39,10 @@ Page({
 		self.setData({
 			searchParam:self.searchParam
 		});
-		_fn.updateList(self);
+	},
+	search : function() {
+
+		_fn.updateList(this);
 	},
 	back:function(){
 		wx.navigateBack();
@@ -145,10 +153,7 @@ var _fn = {
 			},{
 				name:'工作总结',
 				extra:JSON.stringify({type:5}),
-			},{
-				name:'资料下载',
-				extra:JSON.stringify({type:6}),
-			},]
+			}]
 
 		});
 		var tabData = page.tab.change();

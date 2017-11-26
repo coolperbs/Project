@@ -17,7 +17,7 @@
   ],
   "window":{
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText" : " ",
+    "navigationBarTitleText" : "",
     "navigationBarTextStyle":"black",
     "enablePullDownRefresh" : false,
     "onReachBottomDistance" : 100

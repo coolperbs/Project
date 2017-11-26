@@ -1,4 +1,4 @@
-
+/* 下拉加载没处理 */
 var service = require('../../service/service');
 var userService = service.user;
 var config = require('../../config');

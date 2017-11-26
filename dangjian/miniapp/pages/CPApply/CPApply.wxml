@@ -1,6 +1,7 @@
+<view class="shadowline"></view>
 <view class="page-CPApply">
 	<view class="page-CPApply-wrapper form-wrapper">
-		<view class="form-header">
+		<!--<view class="form-header">
 			<view class="logo"></view>
 			基本信息
 		</view>
@@ -12,7 +13,7 @@
 				</view>
 				<view class="value"><input data-key="userName" bindinput="changeInput" placeholder="请输入姓名" /></view>
 			</view>
-		</view>
+		</view>-->
 
 		<view class="form-content ">
 			<view class="field ">
@@ -160,7 +161,7 @@
 
 	</view>
 	<view class="btn-wrapper btns">
-		<view catchtap="submit" class="submit btn" data-type="submit">确认</view>
 		<view catchtap="cancel" class="cancel btn" data-type="cancel">取消</view>
+		<view catchtap="submit" class="submit btn" data-type="submit">确认</view>
 	</view>
 </view>

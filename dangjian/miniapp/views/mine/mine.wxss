@@ -2,7 +2,6 @@
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: #f0f0f0;
 }
 
 .view-mine .pannel{
@@ -122,13 +121,14 @@ color:#9e9e9e;
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
-	background-color:#FF0033;
-
+	background-image:linear-gradient(90deg,#da3633,#e05e39);
 }
 .view-mine .mine-header-wrapper .header-logo{
 	width: 150rpx;
 	height: 150rpx;
-	border-radius: 50%
+	border-radius: 50%;
+	border : solid 1px rgba( 0, 0, 0, 0.5 );
+	box-shadow: 0 10rpx 20rpx rgba( 0, 0, 0, 0.3 );
 }
 .view-mine .mine-header-wrapper .header-logo image{
 	width: 150rpx;
@@ -282,21 +282,25 @@ flex-wrap:wrap;
 	margin:auto;*/
 	/*margin-top: 40rpx;*/
 	/*margin:20rpx;*/
-	border-bottom-right-radius:4rpx;
-	border-bottom-left-radius:4rpx;
 }
 .view-mine .mine-menu-wrapper .mine-menu-content{
 	display: flex;
 	flex-direction: column;
-	padding:0 20rpx;
 	background-color: white;
 	border:1px solid #f0f0f0;
 }
 .view-mine .mine-menu-wrapper .menu-item{
-	height: 88rpx;
-	line-height: 88rpx;
+	height:60rpx;
+	display: flex;
+	align-items: center;
+	padding : 20rpx;
+	font-size : 32rpx;
+	background-image:linear-gradient(0deg,#fafafa,#ffffff);
 	border-bottom: 1px solid #f0f0f0;
 }
+
+.view-mine .mine-menu-wrapper .menu-item:last-child { border-bottom: 0; }
+
 .view-mine .mine-menu-wrapper .menu-item .text{
 	font-size: 30rpx;
 }

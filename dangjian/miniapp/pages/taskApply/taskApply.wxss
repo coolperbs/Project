@@ -5,7 +5,8 @@ page{
 }
 .page-taskApply{
 	/*padding:20rpx 0;*/
-	padding-bottom: 20rpx;
+	margin-top :40rpx;
+	padding-bottom: 120rpx;
 }
 .page-taskApply .btn-wrapper.btns{
 	margin-top: 20rpx;
@@ -39,12 +40,12 @@ border-radius:10rpx;
 }
 .page-taskApply .pop-wrapper .pop-content{
 	width:600rpx;
-height:750rpx;
-position:absolute;
-left:75rpx;
-top:250rpx;
-background-color:white;
-border-radius: 10rpx;
+	height:750rpx;
+	position:absolute;
+	left:75rpx;
+	top:250rpx;
+	background-color:white;
+	border-radius: 10rpx;
 
 }
 .page-taskApply .pop-wrapper .pop-detail{

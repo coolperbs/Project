@@ -37,6 +37,10 @@
 				<text class="text">我创建的申报</text>
 			</view>
 
+			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="taskSearch" data-param="type=1">
+				<text class="text">我认领的申报</text>
+			</view>
+
 
 			<view class="menu-item" catchtap="events" data-func="logout" data-pagename="taskSearch" data-param="type=1">
 				<text class="text">退出登录</text>

@@ -1,18 +1,42 @@
 @import '../../common/basestyle/module.wxss'
 page{
 }
+.page-CPMove-wrapper {
+	margin-bottom : 120rpx;
+}
+
 .page-CPMove{
-	padding:20rpx 0;
+	padding-bottom:20rpx;
 }
-.btn-wrapper.btns{
-	margin-top: 20rpx
+.btn-wrapper{
+	height : 100rpx;
+	background-color: #fff;
+	position: fixed; 
+	bottom : 0;
+	left : 0;
+	width : 100%;
+	z-index: 10;
+	border-top : solid 1px #f0f0f0;
 }
+
+.btn-wrapper .btn {
+	width : 50%;
+	border-radius: 0;
+	font-size : 32rpx;
+	height: 100%;
+}
+
+.btn-wrapper .btn.cancel {
+	background-color: #fff;
+}
+
+
 .link{
 	position:absolute;
 	top:0;
 	right:20rpx;
-	font-size:24rpx;
-	color:#0099cc;
+	font-size:28rpx;
+	color:#888;
 	
 }
 

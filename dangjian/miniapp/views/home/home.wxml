@@ -17,7 +17,7 @@
 		circular='{{true}}'>
 			<block wx:for="{{swiperArtical}}" wx:key="id">
 				<swiper-item class="swiper-item">
-			      <image src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}" class="slide-image" data-id="{{item.id}}" catchtap="events" data-func="toArtical"/>
+			      <image mode="aspectFill" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}" class="slide-image" data-id="{{item.id}}" catchtap="events" data-func="toArtical"/>
 			      <view class="slide-title">{{item.name}}</view>
 			    </swiper-item>
 			</block>
@@ -28,7 +28,7 @@
 	<view class="home-menu-wrapper">
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="CPMove">
 			<image class="logo" src="../../asset/menu-cpmove.png"></image>
-			<text class="text">转移党组织</text>
+			<text class="text">找党组织</text>
 		</view>
 		<view class="button" bindtap="events" data-func="redirect" data-pagename="rules">
 			<image class="logo" src="../../asset/menu-cpapply.png"></image>
@@ -38,6 +38,8 @@
 			<image class="logo" src="../../asset/menu-tasksearch.png"></image>
 			<text class="text">项目查询</text>
 		</view>
+	</view>
+	<view class="home-menu-wrapper">
 		<view class="button" bindtap="events" data-func="toTaskApply" data-pagename="taskApply">
 			<image class="logo" src="../../asset/menu-taskapply.png"></image>
 			<text class="text">项目申报</text>
@@ -54,21 +56,23 @@
 </template>
 <template name="home-image">
 	<view class="home-image-wrapper" wx:if="{{imgArtical}}" >
-		<image src="{{imgArtical.adImgUrl?imgArtical.adImgUrl:'../../asset/default.png'}}" class="image" data-id="{{imgArtical.id}}" catchtap="events" data-func="toArtical"/>
+		<image mode="aspectFill" src="{{imgArtical.adImgUrl?imgArtical.adImgUrl:'../../asset/default.png'}}" class="image" data-id="{{imgArtical.id}}" catchtap="events" data-func="toArtical"/>
 	</view>
 </template>
 <template name="home-articals">
 	<view class="home-articals-wrapper">
-		<block wx:for="{{swiperArtical}}" wx:key="id">
+		<block wx:for="{{listArtical}}" wx:key="id">
 			<view class="artical-item artical" catchtap="events" data-func="toArtical" data-id="{{item.id}}">
-				<view class="left">
-					<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+				<view class="left" wx:if="{{ item.adImgUrl }}">
+					<image mode="aspectFill" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 				</view>
 				<view class="right">
-					<view class="artical-title">{{item.name}}</view>
-					<view class="artical-date">{{item.showDate}}</view>
+					<view class="artical-title ellipsis-1">{{item.name}}</view>
+					<view class="artical-date">{{item.showDate}}<view class="artical-type">{{item.showType}}</view></view>
+					<view class="artical-cont ellipsis-2">{{item.description}}</view>
 				</view>
 			</view>
 		</block>
+		<view class="empty-list" wx:if="{{!listArtical || !listArtical.length}}">没有数据</view>
 	</view>
 </template>

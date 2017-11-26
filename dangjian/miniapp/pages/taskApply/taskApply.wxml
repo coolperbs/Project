@@ -1,9 +1,10 @@
+<view class="shadowline"></view>
 <view class="page-taskApply">
 	<view class="page-taskApply-wrapper form-wrapper">
-		<view class="form-header">
+		<!--<view class="form-header">
 			<view class="logo"></view>
 			项目信息
-		</view>
+		</view>-->
 		<view class="form-content {{pageType!==0?'disabled':''}}">
 			<view class="field">
 				<view class="name">
@@ -66,20 +67,18 @@
 					<text>附件</text>
 					<text class="notBlank">*</text>
 				</view>
-				<view class="value">
-					<view class="btn-wrapper" >
-						<block wx:if="{{pageType===0}}">
-							<block wx:for="{{uploadData.btns}}">
-								<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" catchtap="changeFile"/>
-							</block>
+				<view class="value upload">
+					<block wx:if="{{pageType===0}}">
+						<block wx:for="{{uploadData.btns}}">
+							<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" catchtap="changeFile"/>
 						</block>
-						<block wx:if="{{pageType!==0 && formData.attachUrl}}">
-								<image src="../../asset/filedownload.png" data-param="{{item.eventParam}}" class="logo" catchtap="downloadFile" data-url="{{formData.attachUrl}}"/>
-						</block>
-						<block wx:else>
-							<view>暂无附件</view>
-						</block>
-					</view>
+					</block>
+					<block wx:if="{{pageType!==0 && formData.attachUrl}}">
+							<image src="../../asset/filedownload.png" data-param="{{item.eventParam}}" class="logo" catchtap="downloadFile" data-url="{{formData.attachUrl}}"/>
+					</block>
+					<block wx:else>
+						<view>暂无附件</view>
+					</block>
 				</view>
 			</view>
 		</view>
@@ -113,8 +112,8 @@
 
 
 	<view wx:if="{{pageType===0}}" class="btn-wrapper btns">
-		<view catchtap="submit" class="submit btn" data-type="createTask">确认</view>
 		<view catchtap="cancel" class="cancel btn" data-type="">取消</view>
+		<view catchtap="submit" class="submit btn" data-type="createTask">确认</view>
 	</view>
 
 

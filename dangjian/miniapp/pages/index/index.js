@@ -37,11 +37,11 @@ Page( {
 				view : 'home',
 				active:true
 			},{
-				text : '动态',
+				text : '党务动态',
 				className : 'footer-movement',
 				view : 'movement'
 			},{
-				text : '我的',
+				text : '个人中心',
 				className:'footer-mine',
 				view:'mine'
 			}]

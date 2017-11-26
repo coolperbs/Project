@@ -210,13 +210,13 @@ define( 'wuhou/pages/news/news', function( require, exports, module ) {
                 param = {};
 
             if ( pageType == 2 ) {
-                param.typeId = 2;
+                param.type = 2;
                 param.subType = subType;
             } else if ( pageType == 3 ) {
-                param.typeId = 3;
+                param.type = 3;
                 param.subType = subType;
             } else {
-                param.typeId = 1;
+                param.type = 1;
             }
             param.currentPage = page;
             param.title = searchKey;

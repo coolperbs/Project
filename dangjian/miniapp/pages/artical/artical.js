@@ -25,11 +25,32 @@ var subtypeEnum = {
 
 
 Page({
+	data : {
+		showPop : false,
+		comment : ''
+	},
+	empty : function() {},
+	showPop : function() {
+		var self = this;
+		self.checkLogin( function() {
+			self.setData( {
+				showPop : true
+			} );
+		} );
+	},
+	hidePop : function() {
+		this.setData( {
+			showPop : false
+		} );
+	},	
 	onLoad:function(option){
 		var id = option.id;
 		var self = this;
 		self.id = id;
 		_fn.init(self);
+	},
+	setComment : function( e ) {
+		this.setData( {comment : e.detail.value } );
 	},
 	onShow:function(){
 	},
@@ -59,7 +80,7 @@ Page({
 			self.commentList.next();
 		}
 	},
-	checkLogin:function(){
+	checkLogin:function( callback ){
 		var self = this;
 		self.userInfo = userService.checkLogin({needLogin:false});
 		if(!self.userInfo){
@@ -75,8 +96,9 @@ Page({
 				}
 
 			});
+			return;
 		}
-
+		callback();
 	},
 	showShareMenu:function(){
 		console.log(111);
@@ -188,7 +210,7 @@ var _fn = {
 		var url = host.gw + '/app/comment/submit'
 		var param = {
 			newsId:page.id,
-			content:'111',
+			content: page.data.comment,
 			start:1,
 			type:1
 		}
@@ -204,16 +226,21 @@ var _fn = {
 					success:function(){
 						var commentList = page.data.listData;
 						commentList.push(resdata.data);
-						// _fn.init(page);
+						_fn.init(page);
 					}
 				});
 			}else{
 				wx.showModal({
 					title:'提示',
-					content:res.msg,
+					content:resdata.msg,
 					showCancel:true
 				})
-			}		});
+			}	
+			page.setData( {
+				commnet : ''
+			} );	
+			page.hidePop();
+		});
 	},
 	initShare:function(page,artical){
 		

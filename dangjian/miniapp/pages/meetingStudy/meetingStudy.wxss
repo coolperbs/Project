@@ -28,6 +28,7 @@ page{}
 	border-bottom:1px solid #f0f0f0;
 
 }
+
 .menu-scroll .box.current { 
 	color : #d6204b;  
 }

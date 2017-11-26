@@ -4,7 +4,7 @@
 		<view class="scroll-wrapper">
 			<view class="page-artical-wrapper">
 				<view class="header-image">
-					<image class="img" src="{{artical.imageUrl}}"></image>
+					<image class="img" mode="widthFix" src="{{artical.imageUrl}}"></image>
 				</view>
 
 				<view class="artical-info">
@@ -44,7 +44,6 @@
 			<view class="form-wrapper comment-wrapper">
 
 				<view class="form-header">
-					<view class="logo"></view>
 					<text class="title">文章评论</text>
 				</view>
 
@@ -53,9 +52,8 @@
 				<view class="form-content">
 					<block wx:for="{{listData}}" wx:key="id">
 						<view class="note-record">
-							<view class="tl">{{item.userPhone}}</view>    
+							<view class="tl"><view>{{item.userPhone}}</view> <view>{{item.showTime}}</view></view>    
 							<view class="bl">{{item.content}}</view>
-							<view class="tr">{{item.showTime}}</view> 
 						</view> 
 					</block>
 				</view>
@@ -63,7 +61,7 @@
 					查看更多
 				</view>
 
-				<view class="form-header">
+				<!--<view class="form-header">
 					<view class="logo"></view>
 					<text class="title">添加评论</text>
 				</view>
@@ -71,12 +69,12 @@
 				<view class="form-content add-comment" bindtap="checkLogin">
 					<textarea class="comment-ta" placeholder="写点想法吧"></textarea>
 					<view class="addBtn" bindtap="addComment">提交</view>
-				</view>
+				</view>-->
 			</view>
 
 
 
-			<view class="share-wrapper" catchtap="showShareMenu">
+			<!--<view class="share-wrapper" catchtap="showShareMenu">
 				<view class="title">
 					<view class="line"></view>
 					<view class="txt">分享到</view>
@@ -86,7 +84,7 @@
 						<image class="logo" src="../../asset/wx.png"/>
 					</button>
 				</view>
-			</view>
+			</view>-->
 
 
 				
@@ -96,6 +94,30 @@
 	<block wx:if="{{commentPopStatus}}">
 		<template is="commentPop"></template>
 	</block>
+	<view class="btn-wrapper btns">
+		<view catchtap="showPop" wx:if="{{!showPop}}" class="submit btn" data-type="submit">评论</view>
+		<view class="cancel btn" wx:if="{{showPop}}" catchtap="hidePop">取消</view>
+		<view class="submit btn" wx:if="{{showPop}}" bindtap="addComment">提交</view>
+	</view>
+</view>
+<view class="pop-area {{ showPop ? 'show' : '' }}" catchtap="hidePop">
+	<view class="pop {{ showPop ? 'show' : '' }}" catchtap="empty">
+		<view class="title">添加评论</view>
+		<view class="cont">
+			<textarea bindinput="setComment" class="comment-ta" placeholder="写点想法吧"></textarea>
+		</view>
+		<!--
+		<view class="form-header">
+			<view class="logo"></view>
+			<text class="title">添加评论</text>
+		</view>
+
+		<view class="form-content add-comment" bindtap="checkLogin">
+			<textarea class="comment-ta" placeholder="写点想法吧"></textarea>
+			<view class="addBtn" bindtap="addComment">提交</view>
+		</view>
+		-->
+	</view>
 </view>
 
 
@@ -108,7 +130,7 @@
 		circular='{{true}}'>
 			  <block wx:for="{{data}}" wx:key="index">
 					<swiper-item class="swiper-item">
-					      <image src="{{item.url}}"/>
+					      <image mode="aspectFill" src="{{item.url}}"/>
 					      <!-- <view class="slide-title">生活工作不操心,便宜到尖叫</view> -->
 				    </swiper-item>
 			  </block> 
@@ -116,7 +138,7 @@
 </template>
 
 <template name="image-tpl">
-	<image src="{{data.url}}" class="artical-img"/>
+	<image src="{{data.url}}" mode="aspectFill" class="artical-img"/>
 </template>
 
 <template name="word-tpl">
