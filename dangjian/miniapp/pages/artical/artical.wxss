@@ -15,11 +15,13 @@ page{
 	top : 0;
 	overflow: hidden;
 	bottom : 0;
+	opacity :0;
 	background-color: rgba( 0, 0, 0, 0.3 )
 }
 
 .pop-area.show {
 	width : 100%;
+	opacity: 1;
 	display: block;
 }
 .pop-area .pop {
