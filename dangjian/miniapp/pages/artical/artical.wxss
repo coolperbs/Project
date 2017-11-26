@@ -19,6 +19,8 @@ page{
 	background-color: rgba( 0, 0, 0, 0.3 )
 }
 
+.pop-area textarea { display: none; }
+.pop-area.show textarea { display: block; }
 .pop-area.show {
 	width : 100%;
 	opacity: 1;
