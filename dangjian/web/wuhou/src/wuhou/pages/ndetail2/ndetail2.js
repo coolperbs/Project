@@ -23,6 +23,7 @@ define( 'wuhou/pages/ndetail2/ndetail2', function( require, exports, module ) {
             commentIndex = 0;
             commentIsLoading = false;        	
         	header.showSub( { title : '文章详情' } );
+            self.jView.find( '.J_NewsCont' ).html('' );
         	_fn.renderDetail( kRouter.requestParam.id, true );
         },
         hide : function() {

@@ -67,7 +67,7 @@
 			<div class="news-list">
 				<% for ( var i = 1; i < 4; ++i ) { %>
 					<a href="#index/wuhou/ndetail2:id=<%= news[i].id%>" class="small news">
-						<div class="pic"><img src="<%= news[i].adImgUrl%>"/></div>
+						<div class="pic" style="background-image:url(<%= news[i].adImgUrl%>); background-size:cover; background-position : center center;"></div>
 						<div class="n-cont">
 							<div class="title ellipsis-2"><%= news[i].name%></div>
 							<div class="sub-title ellipsis-1"><%= date( news[i].created, true )%></div>
