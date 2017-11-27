@@ -9,6 +9,7 @@ define( 'wuhou/pages/ndetail2/ndetail2', function( require, exports, module ) {
         ajax = require( 'wuhou/common/ajax/ajax' ),
         config = require( 'wuhou/config/config' ),		
 		header = require( 'wuhou/widgets/header/header' ),
+        pop = require( 'wuhou/widgets/pop/pop' ),
 		commentIsLoading = false,
 		commentObj = { list : [], total : 0 }, commentIsLoading = false,
         commentIndex = 0, commentHasmore = true
@@ -24,6 +25,10 @@ define( 'wuhou/pages/ndetail2/ndetail2', function( require, exports, module ) {
             commentIsLoading = false;        	
         	header.showSub( { title : '文章详情' } );
             self.jView.find( '.J_NewsCont' ).html('' );
+            if ( !kRouter.requestParam.id ) {
+                pop.show( { msg : '缺少新闻id' } );
+                return;
+            }
         	_fn.renderDetail( kRouter.requestParam.id, true );
         },
         hide : function() {

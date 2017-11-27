@@ -43,13 +43,13 @@
 
 			<view class="form-wrapper comment-wrapper">
 
-				<view class="form-header">
-					<text class="title">文章评论</text>
+				<view class="form-header" wx:if="{{listData && listData.length}}">
+					<text class="title">文章评论 ({{totalComment}})</text>
 				</view>
 
 
 
-				<view class="form-content">
+				<view class="form-content" wx:if="{{listData && listData.length}}">
 					<block wx:for="{{listData}}" wx:key="id">
 						<view class="note-record">
 							<view class="tl"><view>{{item.userPhone}}</view> <view>{{item.showTime}}</view></view>    
@@ -104,7 +104,7 @@
 	<view class="pop {{ showPop ? 'show' : '' }}" catchtap="empty">
 		<view class="title">添加评论</view>
 		<view class="cont">
-			<textarea bindinput="setComment" class="comment-ta" placeholder="写点想法吧"></textarea>
+			<textarea wx:if="{{showPop}}" bindinput="setComment" class="comment-ta" placeholder="写点想法吧"></textarea>
 		</view>
 		<!--
 		<view class="form-header">

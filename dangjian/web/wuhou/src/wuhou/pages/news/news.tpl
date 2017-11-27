@@ -5,12 +5,14 @@
 		<script class="J_ListTemp" type="text/html">
 			<% for ( var i = 0, n; n = news[i]; ++i ) { %>
 				<section class="<%= n.id == selected.id ? 'current' : ''%> J_Item" data-id="<%= n.id%>">
+					<% if ( n.adImgUrl ) { %>
 					<div class="pic">
 						<img src="<%= n.adImgUrl%>"/>
 					</div>
+					<% } %>
 					<div class="info">
 						<div class="title ellipsis-2"><%= n.name%></div>
-						<div class="sub">2017-11-02 10:57</div>
+						<div class="sub"><%= date( publishDate, true)%></div>
 					</div>
 				</section>
 			<% } %>
@@ -28,7 +30,7 @@
 				<% } %>
 				<div class="detail">
 					<div class="title ellipsis-2"><%= title%></div>
-					<div class="sub-title"><%= date( publishDate, true)%> <em>来源：{{缺数据}}</em></div>
+					<div class="sub-title"><%= date( publishDate, true)%> <!--<em>来源：{{缺数据}}</em>--></div>
 					<% if ( moduleList && moduleList.length ) { %>
 						<% for ( var j = 0, m; m = moduleList[j]; ++j) { %>
 							<% if ( m.modulePrototypeId == 1 && m.data.contents && m.data.contents.length ) { %>	<!-- 文字 -->
@@ -56,15 +58,17 @@
 			</script>
 
 			<script type="text/html" class="J_CommentTemp">
-				<div class="title">评论<span>(<%= total%>)</span></div>
-				<div class="c-list">
-					<% for ( var i = 0, c; c = list[i]; ++i ) { %>
-					<div class="mod">
-						<div class="user"><%= c.userPhone%> <span><%= date( c.commentCreated, true )%></span></div>
-						<div class="c-text"><%= c.content%></div>
-					</div>
-					<% } %>
-				</div>				
+				<% if ( total * 1 > 0 ) { %>
+					<div class="title">评论<span>(<%= total%>)</span></div> 
+					<div class="c-list">
+						<% for ( var i = 0, c; c = list[i]; ++i ) { %>
+						<div class="mod">
+							<div class="user"><%= c.userPhone%> <span><%= date( c.commentCreated, true )%></span></div>
+							<div class="c-text"><%= c.content%></div>
+						</div>
+						<% } %>
+					</div>				
+				<% } %>
 			</script>
 		</div>
 	</div>

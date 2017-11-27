@@ -6,7 +6,7 @@
 			<img src="wuhou/src/wuhou/widgets/header/images/logo.png"/>
 		</div>
 		<div class="info">
-		 	<div class="mod">现有党组织<em><%= info.partyCount%></em>个</div>
+		 	<div class="mod">现有党支部<em><%= info.partyCount%></em>个</div>
 		 	<div class="mod">现有党员<em><%= info.partyMemberCount%></em>个</div>
 		 	<% if ( !token ) { %>
 		 		<div class="mod login J_Login">登录</div>

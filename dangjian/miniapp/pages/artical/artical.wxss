@@ -15,25 +15,27 @@ page{
 	top : 0;
 	overflow: hidden;
 	bottom : 0;
+	left : -1000rpx;
 	opacity :0;
 	background-color: rgba( 0, 0, 0, 0.3 )
 }
 
-.pop-area textarea { display: none; }
-.pop-area.show textarea { display: block; }
+
 .pop-area.show {
 	width : 100%;
 	opacity: 1;
+	left : 0;
 	display: block;
 }
 .pop-area .pop {
 	height : 600rpx;
-	width : 100%;
 	background-color: #fff;
 	bottom : 100rpx;
 	left : 0;
 	position: absolute;
-	transition: all 0.3s ease;
+	overflow: hidden;
+	width : 100%;
+	transition: all  0.3s ease;
 	transform: translate3d( 0, 600rpx, 0 );
 }
 

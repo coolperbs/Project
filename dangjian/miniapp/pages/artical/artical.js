@@ -137,8 +137,12 @@ var _fn = {
 			if(res.code === '0000'){
 				var artical = res.data;
 				artical.showPublishDate = utils.formateTime(artical.publishDate);
-				artical.showType = typeEnum[artical.type.toString()];
-				artical.showSubType = subtypeEnum[artical.subTpye.toString()];
+				if ( artical.type ) {
+					artical.showType = typeEnum[artical.type.toString()];
+				}
+				if ( artical.showSubType ) {
+					artical.showSubType = subtypeEnum[artical.subTpye.toString()];
+				}
 				page.setData({
 					artical:res.data
 				})
@@ -183,6 +187,9 @@ var _fn = {
 						// v.showType = subtypeEnum[type]
 						return v;
 					});
+					page.setData( {
+						totalComment : res.data.totalCount
+					} );
 					console.log(retList);
 				}
 				return retList;

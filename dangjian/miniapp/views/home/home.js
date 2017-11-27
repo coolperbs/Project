@@ -68,7 +68,7 @@ var _fn = {
 		var dataList = [];
 		var articalParam = [
 			{type:1},
-			{type:2,subType:1},
+			/*{type:2,subType:1},*/
 			{type:2,subType:2},
 			{type:2,subType:3},
 			{type:2,subType:4},

@@ -5,16 +5,18 @@
 		</div>
 		<script type="text/html" class="J_MenuTemp">
 			<img class="emblem" src="wuhou/src/wuhou/pages/bonus/images/danghui.png"/>
-			<div class="name"><%= userInfo.partyMember.userName%></div>
+			<div class="name"><%= userInfo.partyMember ? userInfo.partyMember.userName : userInfo.phoneNumber%></div>
 			<div class="info">
 				<div class="cell">
 					<div class="key">积分</div>
 					<div class="value"><%= userInfo.userPoint%></div>
 				</div>
+				<% if ( userInfo && userInfo.partyMember ) { %>
 				<div class="cell">
 					<div class="key">党龄</div>
-					<div class="value">缺</div>
+					<div class="value"><%= userInfo.partyMemberorganizationCount%</div>
 				</div>
+				<% } %>
 				<div class="cell">
 					<div class="key">身份证号</div>
 					<div class="value"><%= userInfo.idCard%></div>

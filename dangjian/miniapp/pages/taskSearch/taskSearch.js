@@ -85,15 +85,25 @@ var _fn = {
 		page = page || {};
 		var searchParam = page.searchParam || {};
 		var keyWord = searchParam.keyWord||'';
-		var pageType = page.pageType//0:查看全部 1:查看自己
+		var pageType = page.pageType;//0:查看全部 1:查看自己
 		var userInfo = page.userInfo;
-		console.log(333,userInfo)
+		var param;
+
+
+		if ( pageType == 'mine' ) {
+			param = {
+				name : keyWord,
+				querySelfFlow : 1
+			}
+		} else {
+			param = {
+				name : keyWord,
+				querySelf : 1
+			}
+		}
 		var listConfig = {
 			url:host.gw+'/app/project/search',
-			param:{
-				name:keyWord,
-				querySelf:pageType
-			},
+			param:param,
 			getList:function(res){
 				var retList = res.data.projects||[];
 				retList.map(function(v,k){
