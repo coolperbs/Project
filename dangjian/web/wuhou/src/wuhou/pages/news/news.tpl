@@ -12,7 +12,7 @@
 					<% } %>
 					<div class="info">
 						<div class="title ellipsis-2"><%= n.name%></div>
-						<div class="sub"><%= date( publishDate, true)%></div>
+						<div class="sub"><%= date( n.created, true)%></div>
 					</div>
 				</section>
 			<% } %>

@@ -11,4 +11,9 @@
 .w-p-sub-apply .act .btn { min-width : 2rem; height : 0.8rem; background-color: #EA4834; color : #fff; }
 
 
+.w-p-sub-apply .d-title { margin : 0.2rem 0; font-size : 0.36rem; text-align: center; }
+.w-p-sub-apply .d-title.sub { font-size : 0.28rem; }
+.w-p-sub-apply .p { font-size : 0.24rem; text-indent : 0.48rem; }
+
+
 
