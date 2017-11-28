@@ -127,12 +127,15 @@ var _fn = {
 			dataList.forEach((v,k)=>{
 				if(v.list && v.list.length>0){
 					if(v.type/1===1){
-						renderData.imgArtical = v.list[0]
+						renderData.imgArtical = v.list[0];
+						v.list.splice(0,1);
 					}else{
 						renderData.swiperArtical = renderData.swiperArtical || [];
-						renderData.swiperArtical.push(v.list[0]);
+						if ( v.list[0].adImgUrl ) {
+							renderData.swiperArtical.push(v.list[0]);
+						}
+						v.list.splice(0,1);
 					}
-					v.list.splice(0,1);
 
 					renderData.listArtical = renderData.listArtical || [];
 					if ( v.list && v.list.length ) {
