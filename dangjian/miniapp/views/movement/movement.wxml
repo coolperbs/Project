@@ -6,9 +6,9 @@
 			class="CPStudyList-list-wrapper"
 			data-func="loadMore"
 			bindscrolltolower="events">
-				<view class="banner">
+				<!--<view class="banner">
 					<image mode="widthFix" class="banner-img" src="../../asset/CPmovement.png"/>
-				</view>
+				</view>-->
 				<view class="view-movement-wrapper" wx:if="{{movement}}">
 				<template is="movement-articals" data="{{...movement}}"></template>
 				</view>
