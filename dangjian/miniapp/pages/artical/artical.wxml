@@ -4,7 +4,7 @@
 		<view class="scroll-wrapper">
 			<view class="page-artical-wrapper">
 				<view class="header-image">
-					<image class="img" mode="widthFix" src="{{artical.imageUrl}}"></image>
+					<image wx:if="{{artical.imageUrl && artical.imageUrl != 'http://yimeiimage.oss-cn-shenzhen.aliyuncs.com/'}}" class="img" mode="widthFix" src="{{artical.imageUrl}}"></image>
 				</view>
 
 				<view class="artical-info">
@@ -138,7 +138,7 @@
 </template>
 
 <template name="image-tpl">
-	<image src="{{data.url}}" mode="aspectFill" class="artical-img"/>
+	<image src="{{data.url}}" mode="aspectFit" class="artical-img"/>
 </template>
 
 <template name="word-tpl">

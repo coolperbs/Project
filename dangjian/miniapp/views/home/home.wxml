@@ -64,7 +64,7 @@
 		<block wx:for="{{listArtical}}" wx:key="id">
 			<view class="artical-item artical" catchtap="events" data-func="toArtical" data-id="{{item.id}}">
 				<view class="left" wx:if="{{ item.adImgUrl }}">
-					<image mode="aspectFill" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+					<image mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 				</view>
 				<view class="right">
 					<view class="artical-title ellipsis-1">{{item.name}}</view>

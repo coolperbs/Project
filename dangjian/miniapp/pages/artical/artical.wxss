@@ -74,7 +74,6 @@ page{
 }
 .page-artical .header-image image{
 	width: 750rpx;
-	height: 300rpx;
 }
 .page-artical .artical-info {
 	text-align:left;

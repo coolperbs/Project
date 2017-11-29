@@ -28,7 +28,7 @@
 				<block wx:if="{{listData && listData.length}}" wx:for="{{listData}}" wx:key="id">
 					<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
 						<view class="left" wx:if="{{ item.adImgUrl }}">
-							<image class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+							<image  mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 						</view>
 						<view class="right">
 							<view class="artical-title ellipsis-1">{{item.name}}</view>
