@@ -24,7 +24,7 @@
 					"id": 1,
 					"name": "项目列表",
 					"pathName": "pages/taskSearch/taskSearch",
-					"query": "type=mine"
+					"query": ""
 				},
 				{
 					"id": -1,

@@ -58,6 +58,9 @@ define( 'wuhou/pages/home/home', function( require, exports, module ) {
 
             temp = template.compile( jView.find( '.J_HomeTemp' ).text() );
             jCont.html( temp( data ) );            
+
+            temp = template.compile( jView.find( '.J_IntroTemp' ).text() );
+            jView.find( '.J_IntroCont' ).html( temp( data ) );  
         }
     }
 

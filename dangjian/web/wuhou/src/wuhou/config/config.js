@@ -14,6 +14,7 @@ define('wuhou/config/config', function( require ) {
 			partyChange : host + '/app/party/transfer/add',
 			newsList : newsHost + '/act/search',
 			newsDetail : newsHost + '/act/view',
+			innerNews : newsHost + '/act/inner/view',
 			projectClaim : host + '/app/project/claim',
 			projectFinish : host + '/app/project/filish',
 			projectNote : host + '/app/project/note',

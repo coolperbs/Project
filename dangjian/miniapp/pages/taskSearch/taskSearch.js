@@ -89,16 +89,19 @@ var _fn = {
 		var userInfo = page.userInfo;
 		var param;
 
-
 		if ( pageType == 'mine' ) {
 			param = {
 				name : keyWord,
 				querySelfFlow : 1
 			}
-		} else {
+		} else if ( pageType == 1 ) {
 			param = {
 				name : keyWord,
 				querySelf : 1
+			}
+		} else {
+			param = {
+				name : keyWord
 			}
 		}
 		var listConfig = {
