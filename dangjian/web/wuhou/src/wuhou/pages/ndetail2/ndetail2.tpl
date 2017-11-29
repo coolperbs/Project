@@ -1,6 +1,6 @@
 <div class="w-p-ndetail2">
 	<div class="cont">
-		<div class="menu" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510066795643&di=d1f6c0d130dcdbe093fe36500195b919&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3Df9388509ba7eca80060831a4f94afda8%2F64380cd7912397ddea6dbb2e5382b2b7d0a28787.jpg)">
+		<div class="menu" style="background-image:url( ./wuhou/src/wuhou/pages/ndetail2/images/back.jpg )">
 		</div>
 		<div class="main">
 			<div class="news news-wrap">

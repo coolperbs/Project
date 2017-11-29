@@ -1,11 +1,11 @@
 <div class="w-p-home">
 	<div class="cont">
 		<div class="sub">
-			<a href="#index/wuhou/ndetail2" class="mod">
+			<a href="#index/wuhou/ndetail2:id=1" class="mod">
 				<div class="big title">社区简介</div>
 				<div class="intro">
 					<div class="pic">
-						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511613488002&di=8e53dbd771091df447400688c6a984d0&imgtype=0&src=http%3A%2F%2Fwww.longfor.com%2FUploadFiles%2F2015-01%2Flongfor%2F2015010518405076582.jpg"/>
+						<img src="./wuhou/src/wuhou/pages/home/images/jy.jpeg"/>
 					</div>
 					<div class="text">
 						<div class="ellipsis-2">
@@ -90,43 +90,43 @@
 					</div>
 					<div class="text">双找、双报到</div>
 				</a>
-				<a href="#index/wuhou/news:type=3" class="tab">
+				<a href="#index/wuhou/news:type=3" class="tab" style="background-color : rgba(68, 42, 69, 0.5);">
 					<div class="icon">
-						<img src="wuhou/src/wuhou/pages/home/images/icon1.png"/>
+						<img src="wuhou/src/wuhou/pages/home/images/icon10.png"/>
 					</div>
 					<div class="text">廉洁晋阳</div>
 				</a>
-				<a href="#index/wuhou/ndetail2" class="tab">
+				<a href="#index/wuhou/ndetail2:id=2" class="tab" style="background-color : rgba( 84, 56, 31, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon2.png"/>
 					</div>
 					<div class="text">党组织信息</div>
 				</a>
-				<a href="#index/wuhou/analysis" class="tab">
+				<a href="#index/wuhou/analysis" class="tab" style="background-color : rgba( 97, 62, 57, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon3.png"/>
 					</div>
 					<div class="text">党员信息</div>
 				</a>
-				<a href="#index/wuhou/news:type=1" class="tab">
+				<a href="#index/wuhou/news:type=1" class="tab" style="background-color : rgba( 73, 81, 122, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon4.png"/>
 					</div>
 					<div class="text">三会一课</div>
 				</a>
-				<a href="#index/wuhou/news:type=2" class="tab">
+				<a href="#index/wuhou/news:type=2" class="tab" style="background-color : rgba( 84, 31, 61, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon5.png"/>
 					</div>
 					<div class="text">党员学习平台</div>
 				</a>
-				<div class="tab J_Bonus">
+				<div class="tab J_Bonus" style="background-color : rgba( 39, 31, 84, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon6.png"/>
 					</div>
 					<div class="text">党员积分</div>
 				</div>
-				<a href="#index/wuhou/links" class="tab">
+				<a href="#index/wuhou/links" class="tab" style="background-color : rgba( 73, 122, 104, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon7.png"/>
 					</div>

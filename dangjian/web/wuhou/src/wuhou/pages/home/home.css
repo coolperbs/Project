@@ -8,7 +8,7 @@
 .w-p-home .cont .menu .title { font-size : 0.30rem; color : #fff; margin-bottom : 0.17rem; }
 .w-p-home .cont .menu .title.big { height : 0.36rem; margin-top: -0.53rem; }
 .w-p-home .cont .menu .list { height : 100%; width: 3.76rem; display: flex; display: -webkit-flex; flex-wrap : wrap; align-content : space-between; justify-content : space-between; }
-.w-p-home .cont .menu .tab { cursor : pointer; color : #896f5e;  display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; padding : 0.1rem; width : 1.84rem; height: 1.84rem; background-color: #fff; }
+.w-p-home .cont .menu .tab { cursor : pointer; color : #fff;  display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; padding : 0.1rem; width : 1.84rem; height: 1.84rem; background-color: #fff; }
 .w-p-home .cont .menu .tab:nth-child(1),
 .w-p-home .cont .menu .tab:nth-child(2) { margin-top : 0; }
 .w-p-home .cont .menu .tab.red { color : #fff; background-color : #EA4834;  }

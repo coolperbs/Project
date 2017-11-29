@@ -24,6 +24,8 @@ define( 'wuhou/pages/news/news', function( require, exports, module ) {
             self = this;
         	_fn.init( this );
             pageType = kRouter.requestParam.type;
+            self.jView.find( '.J_List' ).html( '' );
+            self.jView.find( '.J_NewsCont' ).html( '' );
             pageType = pageType || 1;   // 1三会一课，2党员学习平台
             if ( pageType == 2 ) {
                 headParam = {

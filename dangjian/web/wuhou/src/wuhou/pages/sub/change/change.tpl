@@ -38,9 +38,10 @@
 							<option value="第一支部">第一支部</option>
 							<option value="第二支部">第二支部</option>
 							<option value="第三支部">第三支部</option>
-							<option value="第五支部">第四支部</option>
+							<option value="第四支部">第四支部</option>
 							<option value="第五支部">第五支部</option>
 							<option value="第六支部">第六支部</option>
+							<option value="第七支部">第七支部</option>
 						</select>
 					</div>
 				</div>

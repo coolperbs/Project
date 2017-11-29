@@ -55,14 +55,17 @@ define( 'wuhou/pages/analysis/analysis', function( require, exports, module ) {
 			var data = [], key = [], i, len;
 
 			for ( i = 0, len = ageInfo.length; i < len; ++i ) {
-				data.push( { value : utils.mul( ageInfo[i].scale, 100 ), name : ageInfo[i].levelName } );
+				if ( ageInfo[i].levelName != '其他' ) {	
+					data.push( { value : utils.mul( ageInfo[i].scale, 100 ), name : ageInfo[i].levelName } );
+				}
 				key.push( ageInfo[i].levelName );
+
 			}
 			var option = {
 				color : [ '#FF502E ', '#FFC107', '#41C9CB', '#DBC095', '#FFE4B5', '#ccc' ],
 			    tooltip: {
 			        trigger: 'item',
-			        formatter: "{a} <br/>{b}: {c} ({d}%)"
+			        formatter: "{a} <br/>{b}: {d}%"
 			    },
 			    series: [
 			        {
