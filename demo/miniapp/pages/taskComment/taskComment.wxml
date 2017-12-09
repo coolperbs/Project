@@ -1,0 +1,28 @@
+<view class="page-taskComment">
+	<view class="page-taskApply">
+		<view class="page-taskApply-wrapper form-wrapper">
+			<view class="form-header">
+				<view class="logo"></view>
+				任务记录
+			</view>
+			<view class="form-content">
+				<view class="field ">
+					<view class="name">
+						<text>记录内容</text>
+						<text class="notBlank">*</text>
+					</view>
+					<view class="value">
+						<textarea data-key="desc" value="{{formData.desc}}" bindinput="changeInput" placeholder="任务记录" />
+					</view>
+				</view>
+			</view>
+		</view>
+
+		
+	</view>
+
+
+	<view  class="btn-wrapper btns">
+		<view catchtap="addComment" class="submit btn long">提交</view>
+	</view>
+</view>

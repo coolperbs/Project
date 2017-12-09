@@ -1,0 +1,12 @@
+<view class="index">
+	<view class="info">
+		<view class="logo">logo</view>
+		<view class="des">房屋租住信息公示系统</view>
+		<view class="act">
+			<view class="btn" catchtap="goInfo">基本信息公示</view>
+			<view class="btn" catchtap="goList">房屋租住信息公示</view>
+		</view>
+	</view>
+
+	<!--<view class="info">技术支持:华辰智慧</view>-->
+</view>

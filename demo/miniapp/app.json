@@ -1,0 +1,49 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/CPMove/CPMove",
+    "pages/CPApply/CPApply",
+    "pages/CPStudyList/CPStudyList",
+    "pages/taskApply/taskApply",
+    "pages/artical/artical",
+    "pages/taskSearch/taskSearch",
+    "pages/rules/rules",
+    "pages/meetingStudy/meetingStudy",
+    "pages/login/login",
+    "pages/signup/signup",
+    "pages/register/register",
+    "pages/taskComment/taskComment",
+    "pages/info/info",
+    "pages/list/list"
+
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText" : "",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh" : false,
+    "onReachBottomDistance" : 100
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+<template name="home">
+	<view class="view-home" wx:if="{{home&&home.data}}">
+		<template is="home-banner" data="{{...home.data}}"></template>
+		<template is="home-menu"></template>
+		<template is="home-image" data="{{...home.data}}"></template>
+		<template is="home-articals" data="{{...home.data}}"></template>
+	</view>
+</template>
+
+
+<template name="home-banner">
+	<view class="home-banner-wrapper">
+		<swiper class="banner" 
+		indicator-dots='{{false}}'
+		autoplay='{{true}}
+		interval='3000'
+		circular='{{true}}'>
+			<block wx:for="{{swiperArtical}}" wx:key="id">
+				<swiper-item class="swiper-item">
+			      <image mode="aspectFill" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}" class="slide-image" data-id="{{item.id}}" catchtap="events" data-func="toArtical"/>
+			      <view class="slide-title">{{item.name}}</view>
+			    </swiper-item>
+			</block>
+		</swiper>
+	</view>
+</template>
+<template name="home-menu">
+	<view class="home-menu-wrapper">
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="CPMove">
+			<image class="logo" src="../../asset/menu-cpmove.png"></image>
+			<text class="text">找党组织</text>
+		</view>
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="rules">
+			<image class="logo" src="../../asset/menu-cpapply.png"></image>
+			<text class="text">在线入党</text>
+		</view>
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="taskSearch">
+			<image class="logo" src="../../asset/menu-tasksearch.png"></image>
+			<text class="text">项目查询</text>
+		</view>
+	</view>
+	<view class="home-menu-wrapper">
+		<view class="button" bindtap="events" data-func="toTaskApply" data-pagename="taskApply">
+			<image class="logo" src="../../asset/menu-taskapply.png"></image>
+			<text class="text">项目申报</text>
+		</view>
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="meetingStudy">
+			<image class="logo" src="../../asset/menu-meetingstudy.png"></image>
+			<text class="text">三会一课</text>
+		</view>
+		<view class="button" bindtap="events" data-func="redirect" data-pagename="CPStudyList">
+			<image class="logo" src="../../asset/menu-cpstudy.png"></image>
+			<text class="text">党员学习</text>
+		</view>
+	</view>
+</template>
+<template name="home-image">
+	<view class="home-image-wrapper" wx:if="{{imgArtical}}" >
+		<image mode="aspectFill" src="{{imgArtical.adImgUrl?imgArtical.adImgUrl:'../../asset/default.png'}}" class="image" data-id="{{imgArtical.id}}" catchtap="events" data-func="toArtical"/>
+	</view>
+</template>
+<template name="home-articals">
+	<view class="home-articals-wrapper">
+		<block wx:for="{{listArtical}}" wx:key="id">
+			<view class="artical-item artical" catchtap="events" data-func="toArtical" data-id="{{item.id}}">
+				<view class="left" wx:if="{{ item.adImgUrl }}">
+					<image mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+				</view>
+				<view class="right">
+					<view class="artical-title ellipsis-1">{{item.name}}</view>
+					<view class="artical-date">{{item.showDate}}<view class="artical-type">{{item.showType}}</view></view>
+					<view class="artical-cont ellipsis-2">{{item.description}}</view>
+				</view>
+			</view>
+		</block>
+		<view class="empty-list" wx:if="{{!listArtical || !listArtical.length}}">没有数据</view>
+	</view>
+</template>

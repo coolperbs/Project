@@ -1,0 +1,4 @@
+@import '../../common/basestyle/module.wxss'
+.btn-wrapper{
+	margin-top: 20rpx;
+}

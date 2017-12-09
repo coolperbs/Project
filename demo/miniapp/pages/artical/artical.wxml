@@ -1,0 +1,158 @@
+
+<view class="page-artical">
+	<view class="page-artical" >
+		<view class="scroll-wrapper">
+			<view class="page-artical-wrapper">
+				<view class="header-image">
+					<image wx:if="{{artical.imageUrl && artical.imageUrl != 'http://yimeiimage.oss-cn-shenzhen.aliyuncs.com/'}}" class="img" mode="widthFix" src="{{artical.imageUrl}}"></image>
+				</view>
+
+				<view class="artical-info">
+					<text class="title">{{artical.title}}</text>
+					<view class="detail">
+						<!-- <text>作者: 佚名 </text> -->
+						<text>发布时间: {{artical.showPublishDate}}</text>
+
+						<text class="showType">{{artical.showType}}</text>
+						<text class="showSubType">{{artical.showSubType}}</text>
+
+					</view>
+				</view>
+
+
+				<view class="artical-detial">
+					<block wx:for="{{artical.moduleList}}" wx:key="id">
+						<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===1}}">
+							<template is="word-tpl" data="{{...item}}"></template>
+						</view>
+						<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===2}}">
+							<template is="image-tpl" data="{{...item}}"></template>
+						</view>
+
+<!-- 						<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===3}}">
+							<template is="swiper-tpl" data="{{...item}}"></template>
+						</view> -->
+						<view class="moduleWrapper" wx:if="{{item.modulePrototypeId===4}}">
+							<template is="video-tpl" data="{{...item}}"></template>
+						</view> 
+					</block>
+				</view>
+			</view>
+			
+
+
+			<view class="form-wrapper comment-wrapper">
+
+				<view class="form-header" wx:if="{{listData && listData.length}}">
+					<text class="title">文章评论 ({{totalComment}})</text>
+				</view>
+
+
+
+				<view class="form-content" wx:if="{{listData && listData.length}}">
+					<block wx:for="{{listData}}" wx:key="id">
+						<view class="note-record">
+							<view class="tl"><view>{{item.userPhone}}</view> <view>{{item.showTime}}</view></view>    
+							<view class="bl">{{item.content}}</view>
+						</view> 
+					</block>
+				</view>
+				<view class="loadmore" catchtap="loadMore" wx:if="{{!isLast}}">
+					查看更多
+				</view>
+
+				<!--<view class="form-header">
+					<view class="logo"></view>
+					<text class="title">添加评论</text>
+				</view>
+
+				<view class="form-content add-comment" bindtap="checkLogin">
+					<textarea class="comment-ta" placeholder="写点想法吧"></textarea>
+					<view class="addBtn" bindtap="addComment">提交</view>
+				</view>-->
+			</view>
+
+
+
+			<!--<view class="share-wrapper" catchtap="showShareMenu">
+				<view class="title">
+					<view class="line"></view>
+					<view class="txt">分享到</view>
+				</view>
+				<view class="image-wrapper">
+					<button open-type="share" class="share">
+						<image class="logo" src="../../asset/wx.png"/>
+					</button>
+				</view>
+			</view>-->
+
+
+				
+		</view>
+
+	</view>
+	<block wx:if="{{commentPopStatus}}">
+		<template is="commentPop"></template>
+	</block>
+	<view class="btn-wrapper btns">
+		<view catchtap="showPop" wx:if="{{!showPop}}" class="submit btn" data-type="submit">评论</view>
+		<view class="cancel btn" wx:if="{{showPop}}" catchtap="hidePop">取消</view>
+		<view class="submit btn" wx:if="{{showPop}}" bindtap="addComment">提交</view>
+	</view>
+</view>
+<view class="pop-area {{ showPop ? 'show' : '' }}" catchtap="hidePop">
+	<view class="pop {{ showPop ? 'show' : '' }}" catchtap="empty">
+		<view class="title">添加评论</view>
+		<view class="cont">
+			<textarea wx:if="{{showPop}}" bindinput="setComment" class="comment-ta" placeholder="写点想法吧"></textarea>
+		</view>
+		<!--
+		<view class="form-header">
+			<view class="logo"></view>
+			<text class="title">添加评论</text>
+		</view>
+
+		<view class="form-content add-comment" bindtap="checkLogin">
+			<textarea class="comment-ta" placeholder="写点想法吧"></textarea>
+			<view class="addBtn" bindtap="addComment">提交</view>
+		</view>
+		-->
+	</view>
+</view>
+
+
+
+<template name="swiper-tpl">
+		<swiper class="swiper" 
+		indicator-dots='{{false}}'
+		autoplay='{{true}}
+		interval='3000'
+		circular='{{true}}'>
+			  <block wx:for="{{data}}" wx:key="index">
+					<swiper-item class="swiper-item">
+					      <image mode="aspectFill" src="{{item.url}}"/>
+					      <!-- <view class="slide-title">生活工作不操心,便宜到尖叫</view> -->
+				    </swiper-item>
+			  </block> 
+		</swiper>
+</template>
+
+<template name="image-tpl">
+	<image src="{{data.url}}" mode="aspectFit" class="artical-img"/>
+</template>
+
+<template name="word-tpl">
+	<block wx:for="{{data.contents}}" wx:key="index">
+		<view class="paragraph">{{item}}</view>   
+	</block>
+</template>
+
+<template name="video-tpl">
+	<view class="video-tpl-wrapper">
+		<video src="{{data.code}}" class="artical-video"></video>
+		<view class="artical-video-title">{{data.title}}</view>
+	</view>
+</template>
+
+
+

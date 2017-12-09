@@ -1,0 +1,127 @@
+<view class="search">
+	<view class="row">
+		<view class="cell">选择楼宇：</view>
+		<picker range="{{range}}" mode="multiSelector" class="value">一期 7栋 2单元 (可点击)</picker>
+	</view>
+	<view class="tips">这里可以加各种维度的搜索条件</view>
+</view>
+
+
+<view class="list">
+	<view class="title row">
+		<view class="cell">房号</view>
+		<view class="cell">租用</view>
+		<view class="cell">自住</view>
+		<view class="cell">空闲</view>
+	</view>
+	<scroll-view class="body" scroll-y="{{true}}">
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">102</view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/blue.png"></image></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">103</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">104</view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/blue.png"></image></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/green.png"></image></view>			
+		</view>
+		<view class="row">
+			<view class="cell">201</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">202</view>
+			<view class="cell"></view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/green.png"></image></view>			
+		</view>
+		<view class="row">
+			<view class="cell">203</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">204</view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/blue.png"></image></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/green.png"></image></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/green.png"></image></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/blue.png"></image></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/green.png"></image></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/blue.png"></image></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"></view>
+			<view class="cell"><image src="../../asset/blue.png"></image></view>
+			<view class="cell"></view>			
+		</view>
+		<view class="row">
+			<view class="cell">101</view>
+			<view class="cell"><image src="../../asset/red.png"></image></view>
+			<view class="cell"></view>
+			<view class="cell"></view>			
+		</view>						
+	</scroll-view>
+</view>
