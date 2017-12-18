@@ -1,3 +1,4 @@
 module.exports = {
-	user : require( './user/user.js' )
+	user : require( './user/user.js' ),
+	loc : require( './loc/loc.js' )
 }

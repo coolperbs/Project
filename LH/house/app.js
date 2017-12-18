@@ -31,7 +31,8 @@ var handle = {
 	onLaunch:function(){
 		_fn.setDate();
 		_fn.setCity();
-		_fn.getLocation();
+		wx.removeStorageSync( 'city' );
+		//_fn.getLocation();
 	}
 };
 

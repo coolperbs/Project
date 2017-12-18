@@ -6,6 +6,7 @@ var xiaoquService = service.xiaoqu;
 var oldhouseService = service.oldhouse;
 var newhouseService = service.newhouse;
 var renthouseService = service.rentHouse
+var service = require( '../../service/service' );
 var _fn;
 
 Page({
@@ -62,7 +63,7 @@ _fn = {
 	init:function(page){
 		var city = wx.getStorageSync('city');
 		var orgCity = page.data.city||{};
-		if(city.code === orgCity.code){
+		if(city.code === orgCity.code && city.code ) {
 			return;
 		}
 
@@ -73,10 +74,14 @@ _fn = {
 			dataList:[]
 		});
 
-		_fn.getPageData(page);
-		page.setData({
-			city:city
-		})
+		utils.showLoading( { title : '定位中...' }, 300 );
+		service.loc.getLocInfo( function( city ) {
+			utils.hideLoading();
+			_fn.getPageData(page);
+			page.setData({
+				city:city
+			})
+		});
 	},
 	getPageData:function(page){
 		page.isLock = true;
