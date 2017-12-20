@@ -1,10 +1,11 @@
 
-
+<import src="../../widgets/contact/contact.wxml"/>
 <template name="mine">
 	<view wx:if="{{mine.userInfo}}" class="view-mine">
 		<view class="view-mine-wrapper">
 			<template is="mine-header"></template>
 			<template is="mine-menu"></template>
+			<template is="module-concat"></template>
 		</view>
 	</view>
 	<view wx:else class="view-mine">
@@ -16,7 +17,7 @@
 
 <template name="mine-header">
 	<view class="mine-header-wrapper">
-		<image class="header-logo" src="https://wx.qlogo.cn/mmopen/vi_32/CGJ2ptYXgQ4AtKlxdcZZ2GfXrVC0qE726p9woacgdnibOdhHrYDtZ2T6S8ZqBfkCgrPaticDcVjWE9mSBLmg0uNA/0"></image>
+		<image class="header-logo" src="/asset/mine-header.png"></image>
 		<text class="user-name">您好</text>
 		<!-- <view class="jifen">
 			<image src="../../asset/mine-jifen.png" class="jifen-logo"/>

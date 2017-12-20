@@ -1,6 +1,7 @@
 <import src="../../views/home/home.wxml"/>
 <import src="../../views/movement/movement.wxml"/>
 <import src="../../views/mine/mine.wxml"/>
+<import src="../../widgets/contact/contact.wxml"/>
 <!-- <import src="../../views/cart/cart.wxml"/> -->
 <!-- <import src="../../views/distribution/distribution.wxml"/> -->
 <!-- <import src="../../views/mine/mine.wxml"/> -->

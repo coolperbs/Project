@@ -228,7 +228,7 @@ var _signupfn = {
 			}else{
 				wx.showModal({
 					title:'提示',
-					content:res.msg,
+					content:resdate.msg,
 					showCancel:true
 				})
 			}
