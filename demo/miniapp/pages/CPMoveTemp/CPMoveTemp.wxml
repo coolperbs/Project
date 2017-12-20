@@ -1,0 +1,114 @@
+<view class="page-CPMove">
+
+
+
+	<view class="page-CPMove-wrapper form-wrapper">
+		<view class="form-header">
+			<view class="logo"></view>
+			基本信息
+			<view class="link" bindinput="redirect" data-pagename="rules" >详情>> </view>
+		</view>
+		<view class="form-content ">
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>姓名</text>
+				</view>
+				<view class="value"><input placeholder="请输入您的姓名" data-key="userName" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>联系电话</text>
+				</view>
+				<view class="value"><input placeholder="请输入您的联系电话" data-key="userPhone" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>身份证号码</text>
+				</view>
+				<view class="value"><input placeholder="请输入身份证号码" data-key="idCard" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>挂靠组织</text>
+				</view>
+				<view class="value">
+					
+					<picker data-key="anchoredOrganization" bindchange="changeInput" range="{{anchoredOrganizationSelection}}">
+					    <view class="picker-view value" wx:if="{{formData.anchoredOrganization}}">
+					      	{{formData.anchoredOrganization}}
+					    </view>
+					    <view class="picker-view placeholder" wx:else>
+							请选择挂靠组织
+						</view>
+					 </picker>
+				</view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>流动类型</text>
+				</view>
+				<view class="value">
+					<!-- <input data-key="hometown" bindinput="changeInput"/> -->
+					<picker data-key="transferType" bindchange="changeInput" range="{{transferTypeSelection}}">
+					    <view class="picker-value">
+					      	{{formData.transferType}} 
+					    </view>
+					 </picker>
+				</view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>流动原因</text>
+				</view>
+				<view class="value"><input data-key="transferReason" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>原职业</text>
+				</view>
+				<view class="value"><input data-key="originalOccupation" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>原党组织</text>
+				</view>
+				<view class="value"><input data-key="originalOrganization" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>原联系人</text>
+				</view>
+				<view class="value"><input data-key="originalLinkman" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>原联系方式</text>
+				</view>
+				<view class="value"><input data-key="originalContact" bindinput="changeInput"/></view>
+			</view>
+			<view class="field">
+				<view class="name">
+					<text class="notBlank">*</text>
+					<text>备注</text>
+				</view>
+				<view class="value">
+					<textarea data-key="note" bindinput="changeInput"></textarea>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="btn-wrapper btns">
+		<view catchtap="submit" class="submit btn" data-type="submit">提交</view>
+		<view catchtap="cancel" class="cancel btn" data-type="cancel">取消</view>
+	</view>
+</view>

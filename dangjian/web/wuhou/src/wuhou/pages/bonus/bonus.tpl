@@ -14,7 +14,7 @@
 				<% if ( userInfo && userInfo.partyMember ) { %>
 				<div class="cell">
 					<div class="key">党龄</div>
-					<div class="value"><%= userInfo.partyMemberorganizationCount%</div>
+					<div class="value"><%= userInfo.partyMember.organizationCount%></div>
 				</div>
 				<% } %>
 				<div class="cell">

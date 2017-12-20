@@ -5,5 +5,6 @@ module.exports = {
 	rentHouse:require( './renthouse/renthouse' ),
 	oldhouse:require( './oldhouse/oldhouse' ),
 	newhouse:require( './newhouse/newhouse' ),
-	zhongjie:require('./zhongjie/zhongjie')
+	zhongjie:require('./zhongjie/zhongjie'),
+	loc : require( './loc/loc' ),
 }

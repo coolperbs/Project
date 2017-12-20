@@ -1,0 +1,6 @@
+page{ height : 100%; width : 100%; display: flex; justify-content: center; align-items: center; color : #aaa; font-size : 28rpx; }
+ 
+.info { height : 100%; width : 100%; display: flex; flex-wrap: wrap; }
+.info .mod { width : 50%; height: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.info .mod image { width : 300rpx; height: 350rpx; background-color: #f0f0f0; }
+.info .mod .des { font-size : #ccc; margin-top: 10rpx; }

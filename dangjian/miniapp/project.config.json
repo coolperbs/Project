@@ -24,7 +24,7 @@
 					"id": 1,
 					"name": "项目列表",
 					"pathName": "pages/taskSearch/taskSearch",
-					"query": "type=mine"
+					"query": ""
 				},
 				{
 					"id": -1,
@@ -42,7 +42,7 @@
 					"id": 4,
 					"name": "文章详情",
 					"pathName": "pages/artical/artical",
-					"query": "id=61"
+					"query": "id=66"
 				},
 				{
 					"id": 5,

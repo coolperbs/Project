@@ -76,6 +76,14 @@ define( 'wuhou/pages/news/news', function( require, exports, module ) {
             _fn.clear();
             commentIndex = 0;
             newsId = 0;
+            subType = 1; 
+            hasMore = true;
+            pageIndex = 1;
+            commentObj = { list : [], total : 0 };
+            commentIsLoading = false;
+            commentIndex = 0;
+            commentHasmore = true;
+            newsId = 0;            
             commentIsLoading = false;
             _fn.loadMore( 1 );
         },

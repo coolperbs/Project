@@ -107,7 +107,10 @@ var _fn = {
 				var retList = res.data.news||[];
 				retList.map(function(v,k){
 					v.showCreateTime = utils.formateTime(v.modified);
-					v.showType = subtypeEnum[v.type.toString()];
+
+					if ( v.bussinessTypes && typeof v.bussinessTypes.toString == 'function' ) {
+						v.showType = subtypeEnum[v.bussinessTypes.toString()];
+					}
 					// v.showType = subtypeEnum[type]
 					return v;
 				});

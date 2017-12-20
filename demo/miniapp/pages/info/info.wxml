@@ -1,0 +1,26 @@
+<view class="info">
+	<view class="mod">
+		<image src=""></image>
+		<view class="des">网格员 : 李先生</view>
+		<view class="name">电话 : 13480113759</view>
+	</view>
+	<view class="mod">
+		<image src=""></image>
+		<view class="des">社区民警 : 李先生</view>
+		<view class="name">电话 : 13480113759</view>
+	</view>
+	<view class="mod">
+		<image src=""></image>
+		<view class="des">社区医生 : 李先生</view>
+		<view class="name">电话 : 13480113759</view>
+	</view>
+	<view class="mod">
+		<image src=""></image>
+		<view class="des">社区律师 : 李先生</view>
+		<view class="name">电话 : 13480113759</view>
+	</view>
+</view>
+
+
+
+

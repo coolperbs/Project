@@ -38,7 +38,11 @@ define( 'wuhou/pages/ndetail2/ndetail2', function( require, exports, module ) {
 
 	_fn = {
         renderDetail : function( id, toTop ) {
-            ajax.query( config.url.newsDetail + '/' + id, {}, function( res ) {
+            var url = config.url.newsDetail;
+            if ( id == 1 || id == 2 ) {
+                url = config.url.innerNews;
+            }
+            ajax.query( url + '/' + id, {}, function( res ) {
                 var temp, jView = self.jView,
                     jCont = jView.find( '.J_NewsCont' );
 

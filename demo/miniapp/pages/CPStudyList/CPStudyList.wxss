@@ -1,0 +1,38 @@
+
+@import "../../common/basestyle/module.wxss"
+page{}
+.page-CPStudyList .header{
+	position: fixed;
+	top: 0;
+	box-shadow: 0 8rpx 20rpx 0 rgba(0,0,0,0.05);
+}
+.page-CPStudyList .menu-scroll{
+	width: 750rpx;
+	background-color: #fff;
+}
+.menu-scroll {
+	border-top : solid 1px #f0f0f0;
+	border-bottom : solid 1px #f0f0f0;
+}
+.menu-scroll .menu-wrapper{
+	display: flex;
+
+}
+.menu-scroll .box{ 
+	text-align:center;
+	height:100rpx;
+	line-height:100rpx;
+	padding:0 20rpx;
+	font-size:28rpx;
+	min-width:187.5rpx;
+	background-color:#fff;
+}
+.menu-scroll .box.current { 
+	color : #da3633;  
+	font-size : 32rpx;
+	border-bottom : solid 10rpx #da3633;
+	/*background-image:linear-gradient(180deg,#da3633,#e05e39);*/
+}
+.page-CPStudyList .CPStudyList-list-wrapper{
+	margin-top:220rpx;
+}

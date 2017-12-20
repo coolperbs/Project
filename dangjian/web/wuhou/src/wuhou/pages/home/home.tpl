@@ -3,15 +3,18 @@
 		<div class="sub">
 			<a href="#index/wuhou/ndetail2:id=1" class="mod">
 				<div class="big title">社区简介</div>
-				<div class="intro">
+				<div class="intro J_IntroCont">
+
+				</div>
+				<script class="J_IntroTemp" type="text/html">
 					<div class="pic">
-						<img src="./wuhou/src/wuhou/pages/home/images/jy.jpeg"/>
+						<img src="<%= shequ.adImgUrl%>"/>
 					</div>
 					<div class="text">
 						<div class="ellipsis-2">
-						武侯区晋阳社区成立于2002年9月，所辖面积0.85平方公里，现有居民小组23个，居民住户15138户，居民近4万人。社区党委下设7个党支部，15个党小组，共有直管党员372名。</div>
-					</div>
-				</div>
+						<%= shequ.description%></div>
+					</div>					
+				</script>
 			</a>
 
 			<div class="mod">
