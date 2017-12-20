@@ -30,8 +30,8 @@ Page( {
   toLocation:function(event){
     var data = this.data;
      wx.openLocation({
-        latitude: data.shopInfo.lat,
-        longitude: data.shopInfo.lng,
+        latitude: data.shopInfo.lat * 1,
+        longitude: data.shopInfo.lng * 1,
         scale:16
       });
   }  

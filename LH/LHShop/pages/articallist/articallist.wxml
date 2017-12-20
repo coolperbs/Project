@@ -1,5 +1,5 @@
 <view class="articallist">
-	<view class="header">
+	<!--<view class="header">
 		<view class="h-head">
 			<view catchtap="homeClickProxy" data-fn="goCity" class="city">
 				<view class="ellipsis-1">{{city.name}}</view>
@@ -23,7 +23,7 @@
 			</view> 
 		</scroll-view>
 
-	</view>
+	</view>-->
 	<view class="list">
 		<scroll-view scroll-y="true" 
 			style="height:{{scrollHeight}}"
@@ -35,9 +35,9 @@
 							<image  mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 						</view>
 						<view class="right">
-							<view class="artical-title ellipsis-1">{{item.name}}</view>
-							<view class="artical-date">{{item.showCreateTime}}<view class="artical-type">{{item.showType}}</view></view>
-							<view class="artical-cont ellipsis-2">{{item.description}}</view>
+							<view class="artical-title ellipsis-1">名称{{index}}{{item.name}}</view>
+							<!--<view class="artical-date">date{{item.showCreateTime}}<view class="artical-type">type{{item.showType}}</view></view>-->
+							<view class="artical-cont ellipsis-2">描述{{item.description}}</view>
 						</view>
 					</view>
 				</block> 

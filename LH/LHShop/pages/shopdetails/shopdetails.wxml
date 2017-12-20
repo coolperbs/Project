@@ -12,10 +12,10 @@
 			</view>
 		</view>
 		<view class="shop-detail">
-			<!--<view class="msg">
+			<view class="msg">
 				<text class="label">店铺简介:</text>
-				<text class="value">{{shopInfo.shop_desc}}</text>
-			</view>-->
+				<text class="value">{{shopInfo.introduce}}</text>
+			</view>
 			<view class="msg">
 				<text class="label">联系电话:</text>
 				<text class="value" bindtap="onmake">{{shopInfo.telphone}}</text>

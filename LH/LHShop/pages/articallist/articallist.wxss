@@ -38,5 +38,58 @@ page{}
 	/*background-image:linear-gradient(180deg,#da3633,#e05e39);*/
 }
 .articallist .CPStudyList-list-wrapper{
-	margin-top:220rpx;
+	margin-top:20rpx;
+}
+
+
+/***文章列表CSS**/
+.artical{
+	display: flex;
+	width: 700rpx;
+	padding: 20rpx;
+	background-color: white;
+	border-bottom: 1px solid #f0f0f0;
+}
+.artical:last-child { border-bottom : none; }
+.artical .left{
+	width: 170rpx;
+	height: 170rpx;
+}
+.artical .right{
+	width:450rpx;
+	padding-left:20rpx;
+	position:relative;
+}
+.artical .left .artical-img{
+	width: 100%;
+	height: 100%;
+	background-color: #f9f9f9;
+	border : solid 1px #f0f0f0;
+	box-shadow : 10rpx 10rpx 10rpx rgba( 0, 0, 0, 0.05 );
+}
+.artical .right .artical-title{
+	 overflow:hidden; 
+	 font-size: 34rpx;
+}
+.artical .right .artical-cont{
+	 overflow:hidden; 
+	 font-size: 26rpx;
+	 margin-top : 20rpx;
+	 color : #444;
+}
+.artical .right .artical-date{
+	font-size:20rpx;
+	color : #9b9b9b;
+}
+.artical .right .artical-type{
+	font-size:20rpx;
+	margin-left : 20rpx;
+	display: inline;
+}
+
+.empty-list {
+	width : 100%;
+	padding-top : 100rpx;
+	text-align: center;
+	font-size : 28rpx;
 }

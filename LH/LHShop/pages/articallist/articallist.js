@@ -2,8 +2,8 @@ var weigetUtil = require('../../common/utils/weigetUtil');
 var utils = require('../../common/utils/utils');
 var List = weigetUtil.List;
 var Tab = weigetUtil.tab;
-var config = require('../../config');
-var host = config.host;
+var App = getApp();
+var config = App.config;
 
 var typeEnum = {
 	"1":'三会一课',
@@ -83,7 +83,7 @@ var _fn = {
 		_fn.createTab(page);
 		wx.getSystemInfo({
 			success:function(res){
-				var scrollHeight = (utils.toRpx(res.windowHeight)-220)+'rpx';
+				var scrollHeight = (utils.toRpx(res.windowHeight)-20)+'rpx';
 				page.setData({
 					scrollHeight:scrollHeight
 
@@ -97,7 +97,7 @@ var _fn = {
 		var keyWord = searchParam.keyWord||'';
 		var type = searchParam.type||1;
 		var listConfig = {
-			url:host.cms+'/act/search',
+			url: config.actHost+'/article/search',
 			param:{
 				type:2,//1:三会一课 2:党课学习
 				subType:type,//1:党员风采，2会议学习，3年底工作计划，4学习及恶化，5工作总结，6资料下载
@@ -118,6 +118,9 @@ var _fn = {
 				// return true;
 			},
 			render:function(data){
+				// data = {
+				// 	totalData : [1,2,3,4,5,6,7,8,9,0,11]
+				// };
 				page.setData({
 					listData:data.totalData
 
