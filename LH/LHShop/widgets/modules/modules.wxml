@@ -134,7 +134,7 @@
 	<view class="m-6-9">
 		<block wx:if="{{ shops && shops.length }}">
 			<view class="shops">
-				<view class="shop" wx:for="{{[shops[0], shops[1], shops[2]]}}" wx:key="index">
+				<view class="shop" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{item.id}}" data-type="8" wx:for="{{[shops[0], shops[1], shops[2]]}}" wx:key="index">
 					<image mode="aspectFit" class="logo" src="{{item.logo}}"></image>
 					<view class="name ellipsis-1">{{item.name}}asdfasfas</view>
 				</view>

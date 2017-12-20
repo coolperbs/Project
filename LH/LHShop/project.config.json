@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -38,8 +38,8 @@
 				},
 				{
 					"id": 2,
-					"name": "地址",
-					"pathName": "pages/address/address",
+					"name": "文章列表",
+					"pathName": "pages/articallist/articallist",
 					"query": "",
 					"scene": "1001"
 				},
@@ -70,10 +70,11 @@
 					"scene": "1001"
 				},
 				{
-					"id": -1,
-					"name": "关于我们",
-					"pathName": "pages/contact/contact",
-					"query": ""
+					"id": 7,
+					"name": "店铺详情",
+					"pathName": "pages/shopdetails/shopdetails",
+					"query": "shopid=100001",
+					"scene": "1001"
 				},
 				{
 					"id": 8,
@@ -109,17 +110,10 @@
 					"scene": "1001"
 				},
 				{
-					"id": 13,
-					"name": "结算",
-					"pathName": "pages/checkout/checkout",
-					"query": "shopid=100000",
-					"scene": "1001"
-				},
-				{
 					"id": 14,
 					"name": "店铺首页",
 					"pathName": "pages/shop/shop",
-					"query": "shopid=1",
+					"query": "shopid=100001",
 					"scene": "1001"
 				},
 				{

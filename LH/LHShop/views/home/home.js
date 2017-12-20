@@ -25,7 +25,9 @@ handle = {
 			for ( i = 0, len = shopsList.length; i < len; ++i ) {
 				shops.push( shopsList[i].id );
 			}
+			utils.showLoading( { title : '正在加载...' }, 300 );
 			service.active.getHome( { shops : shops.length ? shops.join( ',' ) : -1 }, function( res ) {
+				utils.hideLoading();
 				var city = wx.getStorageSync( 'city' );
 				if ( utils.isErrorRes( res ) ) {
 					callerPage.setData( {

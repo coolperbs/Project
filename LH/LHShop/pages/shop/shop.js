@@ -25,6 +25,9 @@ Page( {
 	},
 	onShow : function() {
 	},
+	goShopDetail : function() {
+		wx.navigateTo( { url : '../shopdetails/shopdetails?shopid=' + pageParam.shopid } );
+	},
 	changeTab : function( e ) {
 		var data = e.currentTarget.dataset;
 

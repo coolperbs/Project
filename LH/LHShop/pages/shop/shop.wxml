@@ -33,7 +33,8 @@
 	<view class="tab {{ tab.currentTab.name == 'home' ? 'current' : '' }}" catchtap="changeTab" data-index="1" data-name="home">店铺首页</view>
 	<view class="tab {{ tab.currentTab.name == 'all' ? 'current' : '' }}" catchtap="changeTab" data-index="2" data-name="all">全部宝贝</view>
 	<view class="tab {{ tab.currentTab.name == 'new' ? 'current' : '' }}" catchtap="changeTab" data-index="3" data-name="new">新品上架</view>
-	<view class="line" style="width : {{750/3}}rpx;transform: translate3d( {{ 750 / 3 * ( tab.currentTab.index - 1 ) }}rpx, 0, 0);"></view>
+	<view class="tab" catchtap="goShopDetail" data-index="4">店铺信息</view>
+	<view class="line" style="width : {{750/4}}rpx;transform: translate3d( {{ 750 / 4 * ( tab.currentTab.index - 1 ) }}rpx, 0, 0);"></view>
 </view>
 
 <scroll-view class="cont" scroll-top="{{scrollTop}}" scroll-y="{{ true }}" bindscrolltolower="getMore">

@@ -1,0 +1,32 @@
+<view class="page-showdetail">
+	<view class="header">
+		<image mode="aspectFill" src="{{shopInfo.backLogo}}" class="bg-img"></image>
+	</view>
+	<view class="body">
+		<view class="shop-logo-wrapper">
+			<image src="{{shopInfo.logo}}" mode="widthFix" class="shop-img"></image>
+			<text class="shop-txt">{{shopInfo.name}}</text>
+			<view class="btn-wrapper">
+				<!-- <text class="shop-btn collect">收藏店铺</text> -->
+				<text class="shop-btn location" bindtap="toLocation">查看位置</text>
+			</view>
+		</view>
+		<view class="shop-detail">
+			<!--<view class="msg">
+				<text class="label">店铺简介:</text>
+				<text class="value">{{shopInfo.shop_desc}}</text>
+			</view>-->
+			<view class="msg">
+				<text class="label">联系电话:</text>
+				<text class="value" bindtap="onmake">{{shopInfo.telphone}}</text>
+				<!--<image src="../../assets/icons/call.png" bindtap="onmake" class="call"></image>-->
+			</view>
+			<view class="msg">
+				<text class="label">联系地址</text>
+				<text class="value">{{shopInfo.address}}</text>
+			</view>
+		</view>
+		
+	</view>
+	
+</view>
