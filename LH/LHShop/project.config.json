@@ -1,0 +1,184 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.5.4",
+	"appid": "wxaccdda8d2e9e827e",
+	"projectname": "LHShop",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "城市选择",
+					"pathName": "pages/city/city",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 3,
+					"name": "地址列表",
+					"pathName": "pages/addresslist/addresslist",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "地址",
+					"pathName": "pages/address/address",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "评论",
+					"pathName": "pages/comment/comment",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "我的收藏",
+					"pathName": "pages/favorite/favorite",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "订单详情",
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "orderid=10000005",
+					"scene": "1001"
+				},
+				{
+					"id": 6,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": "catid=3",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/contact/contact",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "活动首页有",
+					"pathName": "pages/active/active",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 9,
+					"name": "积分",
+					"pathName": "pages/scoredetail/scoredetail",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "评论列表",
+					"pathName": "pages/commentlist/commentlist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "售后列表",
+					"pathName": "pages/aftersalelist/aftersalelist",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "商详",
+					"pathName": "pages/detail/detail",
+					"query": "id=100026",
+					"scene": "1001"
+				},
+				{
+					"id": 13,
+					"name": "结算",
+					"pathName": "pages/checkout/checkout",
+					"query": "shopid=100000",
+					"scene": "1001"
+				},
+				{
+					"id": 14,
+					"name": "店铺首页",
+					"pathName": "pages/shop/shop",
+					"query": "shopid=1",
+					"scene": "1001"
+				},
+				{
+					"id": 15,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1013"
+				},
+				{
+					"id": 16,
+					"name": "优惠券-领取",
+					"pathName": "pages/coupon-fetch/coupon-fetch",
+					"query": "shopId=100000",
+					"scene": "1001"
+				},
+				{
+					"id": 17,
+					"name": "优惠券-使用",
+					"pathName": "pages/coupon-use/coupon-use",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分销-我的团队",
+					"pathName": "pages/fx-team/fx-team",
+					"query": ""
+				},
+				{
+					"id": 19,
+					"name": "分销-我的金额",
+					"pathName": "pages/fx-money/fx-money",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分销-我要体现",
+					"pathName": "pages/fx-takemoney/fx-takemoney",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "钱包",
+					"pathName": "pages/wallet/wallet",
+					"query": ""
+				},
+				{
+					"id": 22,
+					"name": "余额详情",
+					"pathName": "pages/scoredetail/scoredetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "积分换余额",
+					"pathName": "pages/pointToMoney/pointToMoney",
+					"query": ""
+				}
+			]
+		}
+	}
+}
