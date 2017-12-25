@@ -36,7 +36,10 @@
     "pages/cashdetail/cashdetail",
     "pages/scoredetail/scoredetail",
     "pages/wallet/wallet",
-    "pages/pointToMoney/pointToMoney"
+    "pages/pointToMoney/pointToMoney",
+
+    "pages/gp-index/gp-index",
+    "pages/gp-detail/gp-detail"
   ],
 
   "window":{

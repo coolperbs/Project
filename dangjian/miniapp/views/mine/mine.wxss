@@ -127,14 +127,15 @@ color:#9e9e9e;
 	width: 150rpx;
 	height: 150rpx;
 	border-radius: 50%;
-	border : solid 1px rgba( 0, 0, 0, 0.5 );
+	/*border : solid 1px rgba( 0, 0, 0, 0.5 );*/
 	box-shadow: 0 10rpx 20rpx rgba( 0, 0, 0, 0.3 );
 }
 .view-mine .mine-header-wrapper .header-logo image{
 	width: 150rpx;
 	height: 150rpx;
 	border-radius: 50%;
-	border:1px solid #f0f0f0;
+	/*border:1px solid #f0f0f0;*/
+	background-color: white;
 }
 .view-mine .mine-header-wrapper .user-name{
 	color : #fff;

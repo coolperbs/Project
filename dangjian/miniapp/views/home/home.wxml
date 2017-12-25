@@ -1,9 +1,11 @@
+<import src="../../widgets/contact/contact.wxml"/>
 <template name="home">
 	<view class="view-home" wx:if="{{home&&home.data}}">
 		<template is="home-banner" data="{{...home.data}}"></template>
 		<template is="home-menu"></template>
 		<template is="home-image" data="{{...home.data}}"></template>
 		<template is="home-articals" data="{{...home.data}}"></template>
+		<template is="module-concat"></template>
 	</view>
 </template>
 

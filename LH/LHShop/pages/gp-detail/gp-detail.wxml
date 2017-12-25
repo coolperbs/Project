@@ -1,0 +1,86 @@
+<view class="page-gp-detail">
+    <view class="group-info">
+            <view class="ware-detail">
+                <view class="img-wrapper">
+                    <image src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1841004364,244945169&fm=58&bpow=121&bpoh=75"/>
+                </view>
+                <view class="ware-info">
+                    <view class="title ellipsis-2">【营养美味】三只松鼠 森林大礼包 零食干果礼盒6袋 1283g 休闲坚果</view>
+                    <text class='sub-title'>营养美味/拼团省1元</text>
+                    <text class="group-count">10人团</text>
+                    <text class="price">￥100</text>
+                </view>
+                    
+            </view>
+        
+            <view class="user-list">
+                <view class="gp-user join">
+                    <image src= "https://wx.qlogo.cn/mmopen/vi_32/OpxWr4p95ta38iaKvfCcMVFpxXibpRGn9mLgd3fiax7fj5eRz5mMw7A6Vdx6XaQxlQibJC19vIytuaMrcxaygPQgXA/0" class="head"></image>
+                    <image src= "../../asset/gp-leader-logo.png" class="gp-leader"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                <view class="gp-user">
+                    <image src= "../../asset/gp-join.png" class="head"></image>
+                </view>
+                
+            </view>
+        
+            <view class="buybtn-wrapper">
+                <view class="notice">
+                        <image src= "../../asset/gp-notice.png" class="notice-logo"></image>
+                        <text class="notice-msg">拼团不成功，款项将原路返还</text>
+                </view>
+                <view class="buybtn">￥0.01团好货</view>
+            </view>
+    </view>
+
+    <view class="recommond">
+        <view class="menu">
+            <view class="menu-btn">
+                <image src="../../asset/home.png" class="logo"></image>
+                <text class="txt">首页逛逛</text>
+                
+            </view>
+            <view class="menu-btn">
+                <image src="../../asset/gp-gplist.png" class="logo"></image>
+                <text class="txt">更多拼团</text>
+                
+            </view>
+            <view class="menu-btn">
+                <image src="../../asset/fx-tm-submit.png" class="logo"></image>
+                <text class="txt">我的拼团</text>
+            </view>
+        </view>
+        <view class="recommond-wares"></view>
+    </view>
+    
+</view>

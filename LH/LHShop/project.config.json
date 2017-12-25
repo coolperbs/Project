@@ -12,6 +12,23 @@
 	"appid": "wxaccdda8d2e9e827e",
 	"projectname": "LHShop",
 	"condition": {
+		"weapp": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "拼团首页",
+					"pathName": "pages/gp-index/gp-index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "拼团详情",
+					"pathName": "pages/gp-detail/gp-detail",
+					"query": ""
+				}
+			]
+		},
 		"search": {
 			"current": -1,
 			"list": []
