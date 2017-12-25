@@ -1,5 +1,4 @@
-var data = require( './data.js' ),
-	modules = require( '../../widgets/modules/modules.js' ),
+var modules = require( '../../widgets/modules/modules.js' ),
 	utils = require( '../../common/utils/utils' ),
 	service = require( '../../service/service' ),
 	handle,
@@ -44,7 +43,7 @@ handle = {
 					'viewData.showShops' : false,
 					'viewData.shops' : shopsList,
 					'viewData.city' : city,
-					shops : shopsList
+					shops : shopsList || []
 				} );
 			} );
 		} );

@@ -98,7 +98,6 @@ page{
 }
 .page-artical .artical .artical-img{
 	width:100%;
-	height:300rpx;
 	margin:10px 0;
 }
 

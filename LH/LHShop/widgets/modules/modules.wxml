@@ -32,7 +32,7 @@
 <!-- 普通图片 -->
 <template name="2-3">
 	<view class="normal-image">
-		<image mode="widthFix" src="{{data.url}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{item.content}}" data-type="{{item.type}}"></image>
+		<image mode="widthFix" src="{{data.url}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content}}" data-type="{{data.type}}"></image>
 	</view>
 </template>
 
@@ -132,12 +132,16 @@
 
 <template name="6-9">
 	<view class="m-6-9">
-		<block wx:if="{{ shops && shops.length }}">
+		<block wx:if="{{ shops && shops.length > 0 }}">
 			<view class="shops">
-				<view class="shop" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{item.id}}" data-type="8" wx:for="{{[shops[0], shops[1], shops[2]]}}" wx:key="index">
-					<image mode="aspectFit" class="logo" src="{{item.logo}}"></image>
-					<view class="name ellipsis-1">{{item.name}}asdfasfas</view>
-				</view>
+				<block wx:for="{{ [0,1,2] }}" wx:key="index">
+					<view class="shop" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{shops[item].id}}" data-type="8" wx:if="{{shops[item].id}}">
+						<image mode="aspectFit" class="logo" src="{{shops[item].logo}}"></image>
+						<view class="name ellipsis-1">{{shops[item].name}}</view>
+					</view>
+				</block>
+
+
 			</view>
 			<view class="more" catchtap="moduleClickProxy" data-fn="showShops">
 				<view class="big">MORE</view>

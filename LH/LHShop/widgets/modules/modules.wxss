@@ -99,7 +99,7 @@
 .modules .m-6-9 .shops { width : 562rpx; display: flex; justify-content: space-between; }
 .modules .m-6-9 .shops .shop { font-size : 20rpx; padding : 0 20rpx; width : 134rpx; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .modules .m-6-9 .shops .shop .logo { width : 114rpx; height : 114rpx; }
-.modules .m-6-9 .shops .shop .name { width : 134rpx; margin-top : 20rpx; }
+.modules .m-6-9 .shops .shop .name { text-align: center; width : 134rpx; margin-top : 20rpx; }
 .modules .m-6-9 .more { display: none; width : 167rpx; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size : 24rpx; color : #999; }
 .modules .m-6-9 .more .big { margin-bottom : 10rpx; font-size : 36rpx; }
 .modules .m-6-9 .empty { width : 100%; height: 134rpx; color : #999; display: flex; justify-content: center; align-items: center; }

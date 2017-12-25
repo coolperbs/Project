@@ -31,11 +31,11 @@
 			bindscrolltolower="loadMore">
 				<block wx:if="{{listData && listData.length}}" wx:for="{{listData}}" wx:key="id">
 					<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
-						<view class="left" wx:if="{{ item.adImgUrl }}">
+						<view class="left mod" wx:if="{{ item.adImgUrl }}">
 							<image  mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
 						</view>
-						<view class="right">
-							<view class="artical-title ellipsis-1">名称{{index}}{{item.name}}</view>
+						<view class="right mod">
+							<view class="artical-title ellipsis-1">{{index}}{{item.name}}</view>
 							<!--<view class="artical-date">date{{item.showCreateTime}}<view class="artical-type">type{{item.showType}}</view></view>-->
 							<view class="artical-cont ellipsis-2">描述{{item.description}}</view>
 						</view>

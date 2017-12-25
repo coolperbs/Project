@@ -1,5 +1,5 @@
-var config = require('../../config');
-var host = config.host;
+var App = getApp();
+var config = App.config;
 var ajax = require('../../common/ajax/ajax');
 var utils = require('../../common/utils/utils');
 var weigetUtil = require('../../common/utils/weigetUtil');
@@ -128,12 +128,17 @@ Page({
 var _fn = {
 	init:function(page){
 		_fn.getArticalDetail(page);
-		_fn.initArticalList(page);
+		//_fn.initArticalList(page);
 	},
 	getArticalDetail:function(page){
 		var id = page.id;
-		var url = host.cms + '/act/view/' + id;
-		ajax.query({url:url},function(res){
+		var url = config.actHost + '/article/render';
+		ajax.query({
+			url:url,
+			param : {
+				actId : id
+			}
+		},function(res){
 			if(res.code === '0000'){
 				var artical = res.data;
 				artical.showPublishDate = utils.formateTime(artical.publishDate);
@@ -143,10 +148,11 @@ var _fn = {
 				if ( artical.showSubType ) {
 					artical.showSubType = subtypeEnum[artical.subTpye.toString()];
 				}
+				console.log( res.data );
 				page.setData({
-					artical:res.data
+					pageData:res.data
 				})
-				_fn.initShare(page,artical);
+				//_fn.initShare(page,artical);
 			}else{
 				wx.showModal({
 					title:'提示',

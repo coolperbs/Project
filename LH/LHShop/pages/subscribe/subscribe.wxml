@@ -1,0 +1,26 @@
+<import src="../../widgets/modules/modules.wxml"/>
+
+<view class="head">
+	<view class="tab current">提交</view>
+	<view class="tab">等待处理</view>
+</view>
+
+<view wx:if="{{pageData.moduleList}}" class="modules">
+	<block wx:for="{{pageData.moduleList}}" wx:key="index">
+		<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{...item, index}}"></template>
+	</block>
+</view>
+
+<view>
+	<view class="row">
+		<view class="key">asdf:</view>
+		<view class="value"><input/></view>
+	</view>	
+</view>
+
+
+<view class="bottom">立即预约</view>
+
+<view class="list">
+	<view class="item"></view>
+</view>
