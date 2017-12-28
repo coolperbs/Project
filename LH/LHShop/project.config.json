@@ -44,12 +44,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
-					"name": "城市选择",
-					"pathName": "pages/city/city",
+					"name": "预约",
+					"pathName": "pages/subscribe/subscribe",
 					"query": "",
 					"scene": "1001"
 				},
@@ -67,10 +67,11 @@
 					"scene": "1001"
 				},
 				{
-					"id": -1,
-					"name": "评论",
-					"pathName": "pages/comment/comment",
-					"query": ""
+					"id": 3,
+					"name": "文章详情",
+					"pathName": "pages/artical/artical",
+					"query": "id=92",
+					"scene": "1001"
 				},
 				{
 					"id": 6,

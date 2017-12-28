@@ -1,0 +1,7 @@
+@import "../../widgets/modules/modules.wxss";
+
+page { height : 100%; }
+.head { display: flex; height : 100rpx; font-size : 32rpx; }
+.head .tab { border-bottom : solid 8rpx transparent; width : 100%; display: flex; align-items: center; justify-content: center; }
+.head .tab.current { border-bottom-color : #df393c; color : #df393c; }
+.modules { height : auto; }

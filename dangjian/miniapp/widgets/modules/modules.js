@@ -46,6 +46,10 @@ handle.events = {
 			case 8 : // 跳店铺 shopid
 				url = '../shop/shop?shopid=' + jumpCont;
 				break;
+			case 9 : // 文章列表
+				url = '';
+				break;
+			case 10 : // 文章详情
 		}
 
 		if ( !url ) {

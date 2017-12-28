@@ -99,15 +99,15 @@ var _fn = {
 		var listConfig = {
 			url: config.actHost+'/article/search',
 			param:{
-				type:2,//1:三会一课 2:党课学习
-				subType:type,//1:党员风采，2会议学习，3年底工作计划，4学习及恶化，5工作总结，6资料下载
-				title:keyWord,
+				//type:2,//1:三会一课 2:党课学习
+				//subType:type,//1:党员风采，2会议学习，3年底工作计划，4学习及恶化，5工作总结，6资料下载
+				title:keyWord
 			},
 			getList:function(res){
 				var retList = res.data.news||[];
 				retList.map(function(v,k){
 					v.showCreateTime = utils.formateTime(v.modified);
-					v.showType = subtypeEnum[v.bussinessTypes.toString()];
+					//v.showType = subtypeEnum[v.bussinessTypes.toString()];
 					// v.showType = subtypeEnum[type]
 					return v;
 				});

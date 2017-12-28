@@ -54,12 +54,16 @@ page{}
 .artical .left{
 	width: 170rpx;
 	height: 170rpx;
+	position : relative;
 }
 .artical .right{
-	width:450rpx;
 	padding-left:20rpx;
 	position:relative;
+	width : 550rpx;
+	flex-grow : 1;
 }
+
+
 .artical .left .artical-img{
 	width: 100%;
 	height: 100%;
