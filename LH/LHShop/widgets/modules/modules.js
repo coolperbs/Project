@@ -14,6 +14,13 @@ handle.events = {
 		}
 		wx.navigateTo( { url : '../detail/detail?id=' + id } );
 	},
+	jumpGrouponDetail : function( e ) {
+		var id = e.currentTarget.dataset.id;
+		if ( !id ){
+			return;
+		}
+		wx.navigateTo( { url : '../gp-waredetail/gp-waredetail?id=' + id } );
+	},
 
 	showShops : function( e ) {
 		this.setData( {

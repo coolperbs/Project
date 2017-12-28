@@ -9,12 +9,15 @@ var app = getApp();
 Page({
 	onShareAppMessage : app.shareFunc,
 	onLoad:function(option){
-		console.log('orderList');
+		// console.log('orderList');
 		var self = this;
 		var status = option.status;
+		var bizType = option.bizType;
 		self.param = {
-			status :status
+			status :status,
+			bizType:bizType
 		}
+		self.setData({param:self.param})
 		_fn.init(self);
 	},
 	changeTab:function(e){
@@ -44,9 +47,11 @@ Page({
 		var orderId = e.currentTarget.dataset.orderid;
 		var eventParam = e.currentTarget.dataset.param;
 		var self = this;
+		var bizType = self.param.bizType;
 		self.updateParam = eventParam;
+
 		wx.navigateTo({
-			url:'../orderdetail/orderdetail?orderid='+orderId
+			url:'../orderdetail/orderdetail?orderid='+orderId+"&bizType="+bizType
 		});
 	},
 	toIndexHome:function(e){
@@ -59,11 +64,21 @@ Page({
 
 	},
 	payOrder:function(e){
+		var self = this;
 		var orderId = e.currentTarget.dataset.orderid;
 		orderService.pay({
 			orderId:orderId,
 			callback:function(res){
 				console.log(res);
+				if(self.param.bizType === 'groupon'){
+					var orderInfo = self.data.orderList.filter((v,k)=>{
+						return v.orderId = orderId;
+					})[0];
+					var grouponId = orderInfo.grouponId;
+					wx.navigateTo({
+						url:'/pages/gp-detail/gp-detail?grouponId='+grouponId
+					});
+				}
 			}
 		})
 
@@ -138,7 +153,7 @@ var _fn = {
 			page.param = page.param || {};
 			var status = page.param.status || 1
 			_fn.getTabWeiget(page);
-			page.list = _fn.getListWeiget(page,{status:status});
+			page.list = _fn.getListWeiget(page,page.param);
 			page.list.next();
 		}else{
 			_fn.updateList(page);//回退本页面时刷新数据
@@ -185,9 +200,17 @@ var _fn = {
 
 	},
 	getListWeiget:function(page,param){
+		console.log(333);
+		var url;
+		var bizType = page.param.bizType;
+		if(bizType==='groupon'){
+			url = host+'/app/groupon/order/list';
+		}else{
+			url = host+'/app/order/list';
+		}
 		var status = param.status || 1;
 		var dataList = new List({
-			url:host+'/app/order/list',
+			url:url,
 			param:{
 				type:status
 			},
@@ -204,6 +227,18 @@ var _fn = {
 								vSku.showPrice = utils.fixPrice(vSku.price);
 								return vSku
 							});
+						}
+						if(bizType === 'groupon' && v.grouponStatus){;//-1过期，1进行中，2完成
+							if(v.grouponStatus === -1){
+								v.grouponStatusStr = '未成团';
+
+							}else if(v.grouponStatus === 1){
+								v.grouponStatusStr = '拼团中';
+
+							}else if(v.grouponStatus === 1){
+								v.grouponStatusStr = '已成团'
+
+							}
 						}
 						return v;
 					});

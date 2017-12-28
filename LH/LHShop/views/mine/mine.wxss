@@ -164,6 +164,7 @@ border-radius:50%;
 
 
 .view-mine .order{ margin-top : 300rpx; }
+.view-mine .order.groupon{ margin-top : 20rpx; }
 .view-mine .order .header{
 	display:flex;
 	justify-content:space-between;

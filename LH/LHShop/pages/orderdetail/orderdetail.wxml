@@ -118,7 +118,12 @@
 										<view class="ware-name ellipsis-2">{{item.title}}</view>
 										<view class="ware-feature ellipsis-1">{{item.subTitel}}</view>
 										<text class="price">{{item.price ? item.price / 100 : item.originPrice / 100}}</text> 
-										<view class="ware-count">x{{item.skuNum}}</view>
+										<block   wx:if="{{ grouponStatusStr }}">
+											<view class="groupon-status {{grouponStatus===1?'active':''}}"  >{{grouponStatusStr}}</view>
+										</block>
+										<block wx:else>
+											<view class="ware-count">x{{item.skuNum}}</view>
+										</block>
 									</view>
 								</view>
 								<view class="btn-wrapper">

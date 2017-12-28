@@ -1,5 +1,8 @@
+@import '../../widgets/modules/modules.wxss';
+page { width: 100%; height : 100%; font-size : 28rpx; background-color: #efefef; }
 .page-gp-detail{
     background-color: #f2f2f2;
+    height: 100%;
 }
 .page-gp-detail .group-info{
     background-color: #f2f2f2;
@@ -31,7 +34,7 @@
     color: #474747;
     font-size: 26rpx;
     height: 80rpx;
-    margin-bottom: 10rpx;
+    margin-bottom: 50rpx;
 }
 .page-gp-detail .group-info .ware-detail .ware-info .sub-title{
     color: #dbdbdb;
@@ -42,10 +45,10 @@
 .page-gp-detail .group-info .ware-detail .ware-info .group-count{
     color: #474747;
     font-size: 26rpx;
-    margin-bottom: 10rpx;
+    margin-bottom: 50rpx;
 }
 .page-gp-detail .group-info .ware-detail .ware-info .price{
-    color: #d04032;
+    color: #df393c;
     font-size: 32rpx;
     font-weight: bold;
 }
@@ -66,11 +69,12 @@
     position: relative;
 }
 .page-gp-detail .group-info .user-list .gp-user.join{
-    border:1px solid #d81e06;
+    border:1px solid #df393c;
 }
 .page-gp-detail .group-info .user-list .gp-user .head{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 .page-gp-detail .group-info .user-list .gp-user .gp-leader{
     width:30rpx;
@@ -104,17 +108,18 @@
 }
 .page-gp-detail .buybtn-wrapper .notice text{
     font-size: 30rpx;
-    color:#d81e06;
+    color:#df393c;
     margin-left: 20rpx;
 }
-.page-gp-detail .buybtn-wrapper .buybtn{
+.page-gp-detail .buybtn-wrapper .pagebtn{
     color:white;
     width:710rpx;
     border-radius:10rpx;
     text-align:center;
-    padding:25rpx 0;
-    background-color:#d81e06;
+    /* padding:25rpx 0; */
+    background-color:#df393c;
     margin:auto;
+    margin-top: 10rpx;
     
 }
 .page-gp-detail .recommond{
@@ -143,5 +148,12 @@
 .page-gp-detail .recommond .menu .menu-btn .txt{
     color:#5e5f61;
     font-size:26rpx;
+}
+.page-gp-detail .left-time{
+    text-align: center;
+    height: 50rpx;
+}
+.page-gp-detail .more.modules{
+    padding-bottom: 0;
 }
 

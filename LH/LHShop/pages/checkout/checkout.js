@@ -21,9 +21,18 @@ Page({
 		var self = this;
 
 		SCoupon = couponService.cache();
-		couponService.cache( null );   
+		couponService.cache( null );  
+		var bizType = pageParam.bizType;
+		var getDataFunc;
+		if(bizType === 'groupon'){
+			getDataFunc = _fn.getPageDataGroupon;
+			
+		}else{
+			getDataFunc = _fn.getPageData;
+
+		}
 		// 获取页面信息
-		_fn.getPageData( function( res ) {
+		getDataFunc( function( res ) {
 			if ( utils.isErrorRes( res ) ) {
 				return;
 			}
@@ -227,6 +236,25 @@ _fn = {
 			url : url
 		}, callback );
 	},
+	getPageDataGroupon:function(callback){
+		var url = "";
+		var productId = pageParam.productId;
+		var grouponId = pageParam.grouponId;
+		var city  = wx.getStorageSync( 'city' );
+		var cityCode = city.code||'028';
+		var url = app.host + '/app/trade/groupon/' +  cityCode;
+		
+		ajax.query( {
+			url : url,
+			param:{
+				productId:productId,
+				grouponId:grouponId
+				// grouponId:grouponId||null
+			}
+		}, callback);
+
+
+	},
 	initAddress : function( caller, address ) {
 		if ( !address ) {
 			return;
@@ -304,9 +332,16 @@ _fn = {
 	submit : function( caller ) {
 		var data = caller.data;
 		// 验证表单数据
+		var createOrderFunc;
+		if(pageParam.bizType==='groupon'){
+			createOrderFunc = _fn.createOrderGroupon
+		}else{
+			createOrderFunc = _fn.createOrder	
+		}
 
 		// 1.创建订单
-		_fn.createOrder( caller, function( orderRes ) {
+		createOrderFunc( caller, function( orderRes ) {
+			console.log('完成订单创建',orderRes);
 			if ( utils.isErrorRes( orderRes ) ) {
 				return;
 			}
@@ -318,7 +353,12 @@ _fn = {
 			}
 
 			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
-				wx.redirectTo( { url : '../orderdetail/orderdetail?orderid=' + orderId  } );
+				if(pageParam.bizType === 'groupon'){
+					var grouponId = orderRes.data.grouponId;
+					wx.redirectTo( { url : '../gp-detail/gp-detail?grouponId=' + grouponId  } );
+				}else{
+					wx.redirectTo( { url : '../orderdetail/orderdetail?orderid=' + orderId  } );
+				}
 				return;
 			}
 
@@ -342,11 +382,16 @@ _fn = {
 					nonceStr : payRes.data.nonceStr,
 					package : 'prepay_id=' + payRes.data.prepayId,
 					paySign : payRes.data.sign					
-				}, function() {
+				}, function(res) {
 					wx.showLoading( { title : '正在更新支付结果...' } );
 					setTimeout( function() {
 						wx.hideLoading();
-						wx.redirectTo( { url : '../orderdetail/orderdetail?orderid=' + orderId  } );
+						if(pageParam.bizType === 'groupon'&&res!==false){
+							var grouponId = orderRes.data.grouponId;
+							wx.redirectTo( { url : '../gp-detail/gp-detail?grouponId=' + grouponId  } );
+						}else{
+							wx.redirectTo( { url : '../orderdetail/orderdetail?orderid=' + orderId +"&bizType="+pageParam.bizType } );
+						}
 					}, 2000 );
 				} );
 			} );
@@ -402,6 +447,66 @@ _fn = {
 			url : url,
 			param : param
 		}, callback );
+	},
+	createOrderGroupon:function(caller, callback){
+		var data = caller.data;
+		var type;
+		var address = data.address || {};
+		var param = {};
+		var url;
+		var city = wx.getStorageSync( 'city' )||{code:'028'};
+
+
+
+		address.addressId = address.id || '';
+		// if ( pageParam.skunum && pageParam.skuid ) {
+		// 	param.skuNum = pageParam.skunum;
+		// 	param.skuId = pageParam.skuid;
+		// 	param.shopId = 1;
+		// } else if ( pageParam.shopid ) {
+		// 	param.shopId = pageParam.shopid;
+		// } else {
+		// 	wx.showToast( { title : '缺少页面相关参数' } );
+		// 	return;
+		// }
+		if ( !city || !city.code ) {
+			wx.showToast( { title : '缺少地址信息' } );
+			return;
+		}
+		if(!pageParam.productId){
+			wx.showToast( { title : '缺少拼团信息' } );
+			return;
+		}
+		
+		if ( caller.data.selectedCoupon && caller.data.selectedCoupon.id ) {
+			param.couponId = caller.data.selectedCoupon.id;
+		}
+
+
+		// if ( pageParam.skuid && pageParam.skunum ) {
+		// 	url = app.host + '/app/order/buynow/submit';
+		// }
+		// else if ( pageParam.shopid ) {  // 门店购买
+		// 	url = app.host + '/app/order/cart/submit';
+		// } else {
+		// 	wx.showToast( { title : '缺少页面相关参数' } );
+		// 	return;
+		// }
+
+		url = app.host + '/app/order/groupon/submit';
+
+		param.citycode = city.code;
+		param.address = address;
+		param.payType = data.paymentType;
+		param.userPoint = data.pointPrice;
+		param.productId = pageParam.productId;
+		param.grouponId = pageParam.grouponId
+		//param.userMoney = data.
+		ajax.query( {
+			url : url,
+			param : param
+		}, callback );
+		
 	},
 
 	payOrder : function( param, callback ) {

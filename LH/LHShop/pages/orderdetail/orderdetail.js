@@ -9,6 +9,9 @@ Page({
 		var self =this; 
 		self.param = param
 		console.log('orderdetail');
+		self.setData({
+			param:param
+		})
 		_fn.init(self);
 	},
 	toAddressList:function(){
@@ -17,11 +20,19 @@ Page({
 		});
 	},
 	payOrder:function(e){
+		var self = this;
 		var orderId = e.currentTarget.dataset.orderid;
 		orderService.pay({
 			orderId:orderId,
 			callback:function(res){
-				_fn.init(self);
+				var bizType = self.param.bizType;
+				if(bizType === 'groupon'){
+					var grouponId = self.data.detail.order.grouponId;
+					wx.navigateTo({
+						url:'/pages/gp-detail/gp-detail?grouponId='+grouponId
+	
+					});
+				}
 			}
 		})
 
@@ -92,7 +103,16 @@ var _fn = {
 	},
 	getData:function(page,callback){
 		var orderId = page.param.orderid;
-		orderService.getOrderDetail({
+		var bizType = page.param.bizType;
+		var getDataFunc;
+		if(bizType === 'groupon'){
+			getDataFunc = orderService.getGrouponOrderDetail;
+		}else{
+			getDataFunc = orderService.getOrderDetail;
+		}
+		
+
+		getDataFunc({
 			orderId:orderId,
 			callback:function(res){
 				if(res.code === '0000'){
@@ -110,6 +130,22 @@ var _fn = {
 						v.showOriginPrice = utils.fixPrice(v.originPrice);
 						return v;
 					});
+					var bizType = page.param.bizType;
+					if(bizType === 'groupon' && resDattOrder.grouponStatus){;//-1过期，1进行中，2完成
+						
+						if(resDattOrder.grouponStatus === -1){
+							resDattOrder.grouponStatusStr = '未成团';
+
+						}else if(resDattOrder.grouponStatus === 1){
+							resDattOrder.grouponStatusStr = '拼团中';
+
+						}else if(resDattOrder.grouponStatus === 1){
+							resDattOrder.grouponStatusStr = '已成团'
+						}else{
+							resDattOrder.grouponStatusStr = 'abc'
+						}
+						
+					}
 				}
 				if(callback && typeof callback==='function'){
 					callback(res);

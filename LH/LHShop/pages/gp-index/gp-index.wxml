@@ -12,33 +12,41 @@
 <template name="gouponitem-tpl">
 	<view class="gouponitem-tpl">
 		<view class="wrapper">
-			<view class="ware-img" data-sku="{{wareSkuId}}" bindtap="toDetail">
+			<view class="ware-img"  data-sku="{{wareSkuId}}" data-id="{{id}}" bindtap="toDetail">
 				<image src="{{bannerImage}}"></image>
 			</view>
-			<view class="ware-name">
-				<text>{{skuTitle}}</text>
+			<view class="ware-name ellipsis-2">
+				{{skuTitle}}
 			</view>
-			<view class="ware-desc ellipsis-2">
-				<text>{{skuDesc}}</text>
-			</view>
+			<!-- <view class="ware-desc ellipsis-2">
+				{{skuDesc}}
+			</view> -->
 			<view class="ware-detail">
 				<view class="left-side">
-					<view class="price-wrapper">
-						<text class="unitPrice">￥{{skuPrice}}</text>
+					<view class="quantity-wrapper">
+						<text class="quantity">{{quantity}}人团</text>
 					</view>
-					<view class="basic-wrapper">
-						<text class="finished">已成团38万件</text>
+					<view class="left-side-bottom">
+							<!-- <view class="price-wrapper"> -->
+									<text class="unitPrice">￥{{skuPrice}}</text>
+									<text class="finished">成团期:{{activityHour}}小时</text>
+								<!-- </view> -->
+								<!-- <view class="basic-wrapper">
+									
+								</view> -->
 					</view>
+					
 				</view>
 				<view class="btn-wrapper">
 					
-					<view class="finished-people">
+					<!-- <view class="finished-people">
 						<image src="http://img3.imgtn.bdimg.com/it/u=634098145,264198475&fm=214&gp=0.jpg" class="user-head"></image>
 						<image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2523342981,456767842&fm=27&gp=0.jpg" class="user-head"></image>
 						<image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3456403917,3492521682&fm=27&gp=0.jpg" class="user-head"></image>
-					</view>
+					</view> -->
 
-					<text class="buybtn"  data-sku="{{wareSkuId}}" bindtap="toDetail">去开团({{quantity}}人团)</text>
+					<text class="buybtn"  data-sku="{{wareSkuId}}" data-id="{{id}}" bindtap="toDetail">去开团</text>
+					<image class="addCart" src="../../asset/cart-white.png"></image>
 				</view>
 			</view>
 		</view>
