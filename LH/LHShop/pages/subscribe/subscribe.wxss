@@ -1,7 +1,19 @@
 @import "../../widgets/modules/modules.wxss";
 
 page { height : 100%; }
-.head { display: flex; height : 100rpx; font-size : 32rpx; }
+.head { display: flex; height : 100rpx; width : 100%; background-color: #fff; z-index: 10; font-size : 32rpx; position: fixed; top : 0; left : 0; }
 .head .tab { border-bottom : solid 8rpx transparent; width : 100%; display: flex; align-items: center; justify-content: center; }
 .head .tab.current { border-bottom-color : #df393c; color : #df393c; }
 .modules { height : auto; }
+.form { padding : 120rpx 0; }
+.submit { position: fixed; border-radius: 0; bottom : 0; left : 0; height : 100rpx; background-color: #df393c; width : 100%; display: flex; justify-content: center; align-items: center; color : #fff; font-size : 32rpx; }
+
+.list { padding-top : 120rpx;}
+.list .empty { text-align: center; margin-top : 100rpx; }
+.list.no-head { padding-top : 0; }
+.list .item { border-bottom : solid 1px #f0f0f0;  }
+.list .title { font-size : 32rpx; margin-top : 20rpx; padding : 0 20rpx; margin : 10rpx 0; }
+.list .sub { display: flex; justify-content: space-between; margin : 20rpx 0; padding : 0 20rpx; }
+.list .sub .status-1 { color : red; }
+.list .sub .status-2 { color : green; }
+

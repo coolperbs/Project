@@ -32,7 +32,7 @@
     "pages/active/active",
     "pages/shop/shop",
     "pages/subscribe/subscribe",
-
+    "pages/subscribeinfo/subscribeinfo",
     "pages/cashdetail/cashdetail",
     "pages/scoredetail/scoredetail",
     "pages/wallet/wallet",

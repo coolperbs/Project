@@ -116,6 +116,25 @@
 .modules .module-1 .item .price .current { font-size : 26rpx; height: 28rpx; line-height: 28rpx;  color : #f5692e; }
 .modules .module-1 .item .add-cart { position: absolute; right : 14rpx; bottom : 5rpx; }
 
+
+/* 表格输入相关 */
+.modules .m-row { display: flex; align-items: flex-start; flex-direction: column; padding : 10rpx 30rpx 20rpx 30rpx; border-bottom : solid 1px #f9f9f9; }
+.modules .m-row .m-key { padding : 10rpx 0; display: flex; position: relative; width : 100%; align-items: center; font-size : 30rpx; }
+.modules .m-row .m-key.must { padding-left : 20rpx; }
+.modules .m-row .m-key.must:before { content : '*'; color : red; position: absolute; left : 0rpx; }
+.modules .m-row .m-key:after { content : ':'; margin-left : 10rpx; }
+.modules .m-row .m-value { width : 100%; flex-grow: 1; display: flex; }
+.modules .m-row .m-value input,
+.modules .m-row .m-value textarea,
+.modules .m-row .m-value .picker { display: block; padding : 0 10rpx; flex-grow: 1; border : solid 1px #f0f0f0; border-radius: 8rpx; }
+.modules .m-row .m-value input { height : 60rpx; }
+.modules .m-row .m-value .picker { height: 60rpx; line-height: 60rpx; background-image : linear-gradient(0deg,#f4f4f4,#fff); padding-right : 20rpx; position: relative; overflow: hidden; }
+.modules .m-row .m-value .picker:after { content : ''; width: 0;height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid #888; position: absolute; right : 10rpx; top : 24rpx; }
+.modules .m-row .m-value .picker picker { width : 100%; height: 100%; }
+.modules .m-row .m-value textarea { height : 120rpx; }
+.modules .m-row .m-value input.input-hidden { display: none;  }
+
+
 .modules .module-2 { margin-bottom : 10px; height : 440rpx; }
 .modules .module-2 .row { height : 220rpx; }
 .modules .module-2 image,

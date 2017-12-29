@@ -77,10 +77,31 @@ handle.events = {
 			return;
 		}
 		_fn.addOut( this, id );
-	}	
+	},
+
+	changeSelector : function( e ) {
+		_fn.changeData( e.currentTarget.dataset.instanceid, e.detail.value, this );
+	}
 }
 
 _fn = {
+	changeData : function( instanceid, value, caller ){
+		var moduleList, i, len;
+
+		if ( !caller.data || !caller.data.pageData || !caller.data.pageData.moduleList ) {
+			return;
+		}	
+		moduleList = caller.data.pageData.moduleList;
+		for ( i = 0, len = moduleList.length; i < len; ++i ) {
+			if ( moduleList[i].moduleInstanceId == instanceid ) {
+				moduleList[i].data.selectedValue = value;
+				break;
+			}
+		}
+		caller.setData( {
+			'pageData.moduleList' : moduleList
+		} );
+	},
 	addOut : function( caller, id ) {
 		service.cart.addOut( caller, {
 			skuId : id

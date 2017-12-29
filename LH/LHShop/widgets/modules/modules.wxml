@@ -157,8 +157,68 @@
 </template>
 
 
+<!-- 表单相关 START -->
+<!-- 下拉 -->
+<template name="9-12">
+	<view class="m-9-12 m-row">
+		<view class="m-key {{ data.must == 1 ? 'must' : '' }}">{{data.content}}</view>
+		<view class="m-value">
+			<view class="picker"><picker data-instanceid="{{moduleInstanceId}}" bindchange="moduleClickProxy" data-fn="changeSelector" range="{{data.selectValue}}" mode="selector">{{ data.selectValue[data.selectedValue] || '请选择'}}</picker></view>
+			<input class="input-hidden" value="{{ data.selectedValue || ''}}" name="{{ data.must + '_' + data.content}}" type=""></input>
+		</view>
+	</view>
+</template>
+
+<!-- 单行文本框 -->
+<template name="10-13">
+	<view class="m-10-13 m-row">
+		<view class="m-key {{ data.must == 1 ? 'must' : '' }}">{{data.content}}</view>
+		<view class="m-value"><input name="{{ data.must + '_' + data.content}}" type="text"/></view>
+	</view>
+</template>
+
+<!-- 多行文本框 -->
+<template name="11-14">
+	<view class="m-11-14 m-row">
+		<view class="m-key {{ data.must == 1 ? 'must' : '' }}">{{data.content}}</view>
+		<view class="m-value"><textarea name="{{ data.must + '_' + data.content}}"></textarea></view>
+	</view>
+</template>
 
 
+<!-- 日期、时间、日期+时间 -->
+<template name="12-15">
+	<view class="m-12-15 m-row">
+		<view class="m-key {{ data.must == 1 ? 'must' : '' }}">{{data.content}}</view>
+		<view class="m-value">
+			<!-- 日期 -->
+			<view wx:if="{{ data.type == 1 }}" class="picker">
+				<picker data-instanceid="{{moduleInstanceId}}" bindchange="moduleClickProxy" data-fn="changeSelector" range="{{data.selectValue}}" mode="date">{{ data.selectedValue || '请选择'}}</picker>
+			</view>
+
+			<!-- 时间 -->
+			<view wx:if="{{ data.type == 2 }}" class="picker">
+				<picker data-instanceid="{{moduleInstanceId}}" bindchange="moduleClickProxy" data-fn="changeSelector" range="{{data.selectValue}}" mode="time">{{ data.selectedValue || '请选择'}}</picker>
+			</view>
+
+			<input class="input-hidden" value="{{ data.selectedValue || ''}}" name="{{ data.must + '_' + data.content}}" type=""></input>
+		</view>
+	</view>
+</template>
+
+<!-- 城市选择 -->
+<template name="13-16">
+	<view class="m-13-16 m-row">
+		<view class="m-key {{ data.must == 1 ? 'must' : '' }}">{{data.content}}</view>
+		<view class="m-value">
+			<view class="m-value">
+			<view class="picker"><picker data-instanceid="{{moduleInstanceId}}" bindchange="moduleClickProxy" data-fn="changeSelector" range="{{data.selectValue}}" mode="region">{{ data.selectedValue || '请选择'}}</picker></view>
+			<input class="input-hidden" name="{{ data.must + '_' + data.content}}" value="{{ data.selectedValue || ''}}" type=""></input>
+		</view>
+		</view>
+	</view>
+</template>
+<!-- 表单相关 END -->
 
 
 

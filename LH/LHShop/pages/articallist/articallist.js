@@ -71,8 +71,10 @@ Page({
 	},
 	toDetail:function(e){
 		var id = e.currentTarget.dataset.id;
+		// 之后统一到活动页，考虑模板拓展的问题
 		wx.navigateTo({
 			url:'../artical/artical?id='+id
+			//url : '../active/active?actid=' + id
 		});
 	}
 });
