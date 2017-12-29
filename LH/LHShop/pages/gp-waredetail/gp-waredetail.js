@@ -92,15 +92,7 @@ Page({
 		}
 
 		if ( buyType == 2 ) {	// 立即购买
-			var productId = pageParam.id;
-			var grouponId = pageParam.grouponId;
-			var url = '../checkout/checkout?bizType=groupon&productId=' + pageParam.id;
-			if(grouponId){
-				url = '../checkout/checkout?bizType=groupon&productId=' + pageParam.id + '&grouponId='+grouponId;
-			}
-			wx.navigateTo( {
-				url : url
-			} );
+			_fn.toCheckout();
 		} else if ( buyType == 1 ) { //加购
 			service.cart.addOut( this, {
 				skuId : pageData.skuId,
@@ -234,7 +226,7 @@ _fn = {
 		param = param || {};
 		param.currentPage = param.currentPage || 1;
 		param.citycode = wx.getStorageSync('city').code||'010';
-		param.shopId = data.pageData.shopId;
+		// param.shopId = data.pageData.shopId;
 
 		utils.showLoading( 300 );
 		ajax.query( {
@@ -401,7 +393,7 @@ _fn = {
 					if(timeObj.day/1>0){
 						leftTimeStr = leftTimeStr + timeObj.day+'天'	
 					}
-					leftTimeStr = leftTimeStr + timeObj.hours + ":"+timeObj.minutes+":"+timeObj.seconds;
+					leftTimeStr = leftTimeStr + timeObj.hoursStr + ":"+timeObj.minutesStr+":"+timeObj.secondsStr;
 					v.leftTimeStr = leftTimeStr;
 				}else{
 					v.leftTimeStr = '已结束';
@@ -411,9 +403,45 @@ _fn = {
 			caller.setData({grouponList:grouponList});
 		},1000);
 	},
-	grouponRecomond:function(){
+	toCheckout:function(callback){
+		var url = "";
+		var productId = pageParam.id;
+		var grouponId = pageParam.grouponId;
+		var city  = wx.getStorageSync( 'city' );
+		var cityCode = city.code||'028';
+		var url = app.host + '/app/trade/groupon/' +  cityCode;
 		
-	}
+		ajax.query( {
+			url : url,
+			param:{
+				productId:productId,
+				grouponId:grouponId
+				// grouponId:grouponId||null
+			}
+		}, function(res){
+			if(res.code==='0000'){
+				var productId = pageParam.id;
+				var grouponId = pageParam.grouponId;
+				var redirectUrl ='../checkout/checkout?bizType=groupon&productId=' + pageParam.id
+				if(grouponId){
+					redirectUrl = redirectUrl+ '&grouponId='+grouponId;
+				}
+				wx.navigateTo( {
+					url : redirectUrl
+				} );
+			}else if(res.code==='1000'){
+				wx.navigateTo( { url : '../login/login' } );
+			}else{
+				wx.showModal({
+					title:'提示',
+					content:res.msg,
+					showCancel:false
+				})
+			}
+		});
+
+
+	},
 }
 
 

@@ -127,7 +127,7 @@
 									</view>
 								</view>
 								<view class="btn-wrapper">
-									<view wx:if="{{detail.order.orderStatus=='256' && !item.commentId}}"
+									<view wx:if="{{(orderStatus/1==256 || orderStatus/1==512) && !item.commentId}}"
 									class="toComment btn" 
 									catchtap="toComment" 
 									data-orderId='{{orderId}}' 
@@ -135,7 +135,7 @@
 										评论
 									</view>
 
-									<view wx:if="{{(detail.order.orderStatus=='32' || detail.order.orderStatus=='256') && !item.aftersaleId}}"
+									<view wx:if="{{(orderStatus/1==32 || orderStatus/1==256 || orderStatus/1==512) && !item.aftersaleId}}"
 									class="toComment btn" 
 									catchtap="toAftersale" 
 									data-orderId='{{orderId}}' 

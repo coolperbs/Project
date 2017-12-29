@@ -1,4 +1,8 @@
 @import "../../widgets/modules/modules.wxss";
+
+page{
+	height: 100%;
+}
 .page-gouponindex{
 	background-color: #f2f2f2;
 }
@@ -68,6 +72,13 @@
 	font-size: 25rpx;
 	margin-left: 20rpx;
 	margin-bottom: 6rpx;
+}
+.gouponitem-tpl .wrapper .ware-detail .orgPrice{
+	color:#9f9f9f;
+	font-size: 25rpx;
+	margin-left: 20rpx;
+	margin-bottom: 6rpx;
+	text-decoration:line-through;
 }
 .gouponitem-tpl .wrapper .ware-detail .btn-wrapper{
 	display:flex;

@@ -10,7 +10,10 @@
                     <view class="title ellipsis-2">{{pageData.skuTitle}}</view>
                     <!-- <text class='sub-title'>{{pageData.skuDesc}}</text> -->
                     <text class="group-count">{{pageData.quantity}}人团</text>
-                    <text class="price">￥{{pageData.skuPrice}}</text>
+                    <view class="price-wrapper">
+                        <text class="price">￥{{pageData.skuPrice}}</text>
+                        <text class="orgPrice">￥{{pageData.skuOriPrice}}</text>
+                    </view>
                 </view>
                     
             </view>

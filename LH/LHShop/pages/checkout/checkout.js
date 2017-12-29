@@ -33,6 +33,10 @@ Page({
 		}
 		// 获取页面信息
 		getDataFunc( function( res ) {
+			if(res.code/1 === 1000){
+				wx.navigateTo( { url : '../login/login' } );
+				return;
+			}
 			if ( utils.isErrorRes( res ) ) {
 				return;
 			}
