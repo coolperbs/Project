@@ -57,6 +57,12 @@ handle = {
 				url:'../../pages/orderlist/orderlist?status='+status
 			});
 		},
+		goGrouponOrderList : function( caller, e ) {
+			var status = e.currentTarget.dataset.status;
+			wx.navigateTo({
+				url:'../../pages/orderlist/orderlist?status='+status+'&bizType=groupon'
+			});
+		},
 		goMyCoupon :function(){
 			wx.navigateTo({
 				url:'../../pages/coupon-mine/coupon-mine'

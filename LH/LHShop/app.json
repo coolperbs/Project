@@ -39,7 +39,8 @@
     "pages/pointToMoney/pointToMoney",
 
     "pages/gp-index/gp-index",
-    "pages/gp-detail/gp-detail"
+    "pages/gp-detail/gp-detail",
+    "pages/gp-waredetail/gp-waredetail"
   ],
 
   "window":{

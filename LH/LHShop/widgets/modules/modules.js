@@ -14,6 +14,13 @@ handle.events = {
 		}
 		wx.navigateTo( { url : '../detail/detail?id=' + id } );
 	},
+	jumpGrouponDetail : function( e ) {
+		var id = e.currentTarget.dataset.id;
+		if ( !id ){
+			return;
+		}
+		wx.navigateTo( { url : '../gp-waredetail/gp-waredetail?id=' + id } );
+	},
 
 	showShops : function( e ) {
 		this.setData( {
@@ -57,6 +64,9 @@ handle.events = {
 				break;
 			case 10 : // 文章详情
 				url = '../artical/cartical?id=' + jumpCont;
+				break;
+			case 12 : // 拼团首页
+				url = '../gp-index/gp-index';
 				break;
 		}
 

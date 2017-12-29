@@ -95,7 +95,8 @@ page{
 	width: 498rpx;
 
 }
-.view-orders .order-wrapper .body .ware-detail .ware-count{
+.view-orders .order-wrapper .body .ware-detail .ware-count,
+.view-orders .order-wrapper .body .ware-detail .groupon-status{
 	font-family:PingFangSC-Regular;
 	font-size:28rpx;
 	color:#4a4a4a;
@@ -105,7 +106,12 @@ page{
 	right:0;
 	bottom:20rpx;
 }
-
+.view-orders .order-wrapper .body .ware-detail .groupon-status{
+	color:#f4f4f4;
+}
+.view-orders .order-wrapper .body .ware-detail .groupon-status.active{
+	color: #d6204b;
+}
 .view-orders .order-wrapper .body .ware-detail .price:before{
 	content:"¥";
 }

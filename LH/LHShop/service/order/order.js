@@ -16,6 +16,19 @@ var handle = {
 			}
 		})
 	},
+	getGrouponOrderDetail:function(param){
+		var orderId = param.orderId;
+		var callback = param.callback;
+		ajax.query({
+			url:host+'/app/groupon/order/info',
+			param:{orderId:orderId}
+
+		},function(res){
+			if(callback && typeof callback === 'function'){
+				callback(res);
+			}
+		})
+	},
 	deleteOrder:function(param){
 		var orderId = param.orderId;
 		var callback = param.callback;

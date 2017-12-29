@@ -100,7 +100,10 @@ handle = {
       week : weeks_ch[date.getDay()],
       hours : date.getHours(),
       minutes : date.getMinutes(),
-      seconds : date.getSeconds()
+      seconds : date.getSeconds(),
+      hoursStr: (date.getHours()/100).toFixed(2).split('.')[1],
+      minutesStr: (date.getMinutes()/100).toFixed(2).split('.')[1],
+      secondsStr: (date.getSeconds()/100).toFixed(2).split('.')[1]
     };   
   },
   formateTime :function(time,isContainTime){
