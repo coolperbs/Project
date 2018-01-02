@@ -65,6 +65,9 @@ handle.events = {
 			case 10 : // 文章详情
 				url = '../artical/cartical?id=' + jumpCont;
 				break;
+			case 11 : 
+				url = '../subscribe/subscribe?actid=' + jumpCont;
+				break;
 			case 12 : // 拼团首页
 				url = '../gp-index/gp-index';
 				break;

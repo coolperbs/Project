@@ -1,7 +1,7 @@
 <import src="../../widgets/modules/modules.wxml"/>
 
 <view class="head" wx:if="{{!hideHead}}">
-	<view class="tab {{ tab == 1 ? 'current' : '' }}" catchtap="changeTab" data-type="1">{{pageData.title}}</view>
+	<view class="tab {{ tab == 1 ? 'current' : '' }}" catchtap="changeTab" data-type="1">{{pageData.renderData.title}}</view>
 	<view class="tab {{ tab == 2 ? 'current' : '' }}" catchtap="changeTab" data-type="2">等待处理</view>
 </view>
 

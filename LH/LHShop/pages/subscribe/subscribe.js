@@ -33,14 +33,16 @@ Page( {
 	},
 	submit : function( e ) {
 		var form = e.detail.value,
+			tData = this.data,
 			data;
+
 		data = _fn.checkForm( form );
 		if ( !data ) {
 			return;
 		}
 		service.subscribe.submit( {
-			shopId : pageParam.shopid,
-			bespeakTitle : this.data.pageData.title,
+			shopId : tData.pageData.bespeak.shopId,
+			bespeakTitle : tData.pageData.renderData.title,
 			bespeakId : pageParam.actid,
 			jsonData : JSON.stringify( data )
 		}, function( res ) {
@@ -74,9 +76,16 @@ Page( {
 	},
 
 	showList : function() {
-		var self = this;
+		var self = this,
+			tData = this.data,
+			shopId = '';
+
+
+		if ( tData && tData.pageData && tData.pageData.bespeak ){
+			shopId = tData.pageData.bespeak.shopId;
+		}
 		service.subscribe.getList( {
-			shopId : pageParam.shopid,
+			shopId : shopId,
 			status : 4
 		}, function( res ) {
 			if ( utils.isErrorRes( res ) ) {
@@ -132,7 +141,7 @@ _fn = {
 		for ( i = 0, len = shopsList.length; i < len; ++i ) {
 			shops.push( shopsList[i].id );
 		}		
-		service.active.getActive( {
+		service.subscribe.query( {
 			actId : pageParam.actid,
 			shops : shops.join( ',' )
 		}, function( res ) {
@@ -141,8 +150,10 @@ _fn = {
 				return;
 			}
 			wx.setNavigationBarTitle( { title : res.data.title || '' } );
+			console.log( res.data );
 			caller.setData( {
-				pageData : res.data || {}
+				pageData : res.data || {},
+				'pageData.moduleList' : res.data.renderData.moduleList
 			} );
 		} );
 	},

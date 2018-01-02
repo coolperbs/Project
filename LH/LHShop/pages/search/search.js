@@ -95,6 +95,7 @@ var _fn = {
 				})
 			},
 			getList:function(res){
+				console.log( res );
 				return res.data.wareSkus;
 			},
 			getHasMore:function(res){

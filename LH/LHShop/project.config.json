@@ -27,7 +27,7 @@
 					"id": 0,
 					"name": "预约",
 					"pathName": "pages/subscribe/subscribe",
-					"query": "actid=106&shopid=100042",
+					"query": "actid=106",
 					"scene": "1001"
 				},
 				{
