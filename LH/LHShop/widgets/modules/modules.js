@@ -4,7 +4,13 @@ var utils = require( '../../common/utils/utils.js' ),
 	_fn,
 	handle;
 
-handle = {}
+handle = {
+	initData : function( caller ) {
+		return;
+		if ( !caller || !caller.data || !caller.data.pageData || !caller.data.pageData.moduleList ) { return }; 
+		// 处理业务，包括秒杀啥的
+	}
+}
 
 handle.events = {
 	jumpDetail : function( e ) {

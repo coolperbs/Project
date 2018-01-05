@@ -148,3 +148,34 @@
 .modules .module-4 { height : 300rpx; }
 .modules .module-4 image,
 .modules .module-4 navigator { width : 100%; height : 100%; }
+
+/* 秒杀 */
+.modules .m-14-17{ border-top : solid 1px #f0f0f0; }
+.modules .m-14-17 .item { padding : 20rpx; display: flex; border-bottom : solid 1px #f0f0f0; }
+.modules .m-14-17 .item .pic { width : 240rpx; height : 240rpx; position: relative; }
+.modules .m-14-17 .item .pic .tags { position : absolute; left : 10rpx; top : 10rpx; padding : 6rpx 16rpx; border-radius: 50rpx; background-color: #09BB07; color : #fff; font-size :20rpx; }
+.modules .m-14-17 .item .pic image { width : 100%; height : 100%; }
+.modules .m-14-17 .item .info { margin-left : 20rpx; padding : 20rpx 0; width : 450rpx; display: flex; flex-direction: column; justify-content: space-between; }
+.modules .m-14-17 .item .info .title { font-size : 32rpx; line-height: 38rpx; }
+.modules .m-14-17 .item .info .sub-title { font-size : 26rpx; line-height: 32rpx; color : #9B9B9B; }
+.modules .m-14-17 .item .info .origin-price { margin-left: 20rpx; }
+.modules .m-14-17 .item .info .info-act { position: relative; height : 42rpx; }
+.modules .m-14-17 .item .info .info-act .add { background-color: #161823; color : #fff; border-radius: 8rpx; padding : 0 20rpx; height : 50rpx; line-height: 50rpx; font-size : 28rpx; position: absolute; right : 0; top : 0; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,7 +10,9 @@ handle = {
 		_fn.init( callerPage );
 
 		// 定位获取门店信息
-		utils.showLoading( { title : '定位中...' }, 300 );
+		if ( !callerPage.data || !callerPage.data.viewData || !callerPage.data.viewData.city ) {
+			utils.showLoading( { title : '定位中...' }, 300 );
+		}
 		service.loc.getShops( function( shops ) {
 			utils.hideLoading();
 			//if ( !city || !city.code ) {
@@ -24,7 +26,10 @@ handle = {
 			for ( i = 0, len = shopsList.length; i < len; ++i ) {
 				shops.push( shopsList[i].id );
 			}
-			utils.showLoading( { title : '正在加载...' }, 300 );
+
+			if ( !callerPage.data || !callerPage.data.viewData || !callerPage.data.viewData.pageData || !callerPage.data.viewData.pageData.moduleList ) {
+				utils.showLoading( { title : '正在加载...' }, 300 );
+			}
 			service.active.getHome( { shops : shops.length ? shops.join( ',' ) : -1 }, function( res ) {
 				utils.hideLoading();
 				var city = wx.getStorageSync( 'city' );

@@ -49,6 +49,7 @@ _fn = {
 				return;
 			}
 			wx.setNavigationBarTitle( { title : res.data.title || '' } );
+			modules.initData( caller );
 			caller.setData( {
 				pageData : res.data || {}
 			} );

@@ -247,6 +247,30 @@
 <!-- 表单相关 END -->
 
 
+<template name="14-17">
+	<view class="m-14-17">
+		<block wx:for="{[1,2]}">
+			<view>秒杀时间</view>
+			<view class="item" wx:key="index">
+				<view class="pic" catchtap="moduleClickProxy" data-fn="" data-id="{{item.skuId}}">
+					<view wx:if="{{item.tags && item.tags.length}}" class="tags">{{item.tags[0]}}</view>
+					<image src="https://img.alicdn.com/imgextra/i3/1087432861/TB2ebtLc6gy_uJjSZLeXXaPlFXa_!!1087432861-0-beehive-scenes.jpg_360x360xzq90.jpg_.webp" srcd="{{item.mainImage}}"></image>
+				</view>
+				<view class="info">
+					<view class="title ellipsis-2" catchtap="moduleClickProxy" data-fn="jumpDetail" data-id="{{item.skuId}}">{{item.title}}标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</view>
+					<view class="sub-title ellipsis-2" catchtap="moduleClickProxy" data-fn="jumpDetail" data-id="{{item.skuId}}">{{item.subTitle}}副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题</view>
+					<view class="info-act">
+						<view class="price"><view class="sub">¥</view>{{ item.price ? item.price / 100 : item.originPrice / 100 }}现价</view>
+						<view class="origin-price" wx:if="{{item.originPrice}}">¥{{ item.originPrice / 100 }}原价</view>
+						<view class="add" catchtap="moduleClickProxy" data-fn="addCart" data-id="{{item.skuId}}">立即加购</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</template>
+
+
 
 
 

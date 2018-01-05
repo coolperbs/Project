@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -82,7 +82,7 @@
 					"id": 8,
 					"name": "活动首页有",
 					"pathName": "pages/active/active",
-					"query": "",
+					"query": "actid=1",
 					"scene": "1001"
 				},
 				{
