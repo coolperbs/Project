@@ -56,6 +56,19 @@ var handle = {
 			}
 		})
 	},
+	confirmOrder:function(param){
+		var orderId = param.orderId;
+		var callback = param.callback;
+		ajax.query({
+			url:host+'/app/order/received',
+			param:{orderId:orderId}
+
+		},function(res){
+			if(callback && typeof callback === 'function'){
+				callback(res);
+			}
+		})
+	},
 	getOrderStatusMining:function(status){
 		let statusDict = [
 			{code:8,status:'WaitingPay',label:'待支付'},

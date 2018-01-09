@@ -97,6 +97,34 @@ Page({
 		wx.redirectTo({
 			url:'../gp-detail/gp-detail?grouponId='+grouponId
 		});
+	},
+	confirm:function(e){
+		var orderId = e.currentTarget.dataset.orderid;
+		var eventParam = e.currentTarget.dataset.param;
+		var self = this;
+		wx.showModal({
+			title:'提示',
+			content:'您确定已收到宝贝?',
+			success:function(res){
+				if(res.confirm){
+					orderService.confirmOrder({
+						orderId:orderId,
+						callback:function(res){
+							if(res.code==='0000'){
+								_fn.init(self);
+							}else{
+								wx.showModal({
+									title:'提示',
+									content:res.msg,
+									showCancel:false
+								})
+							}
+						}
+					});
+				}
+			}
+		});
+
 	}
 });
 var _fn = {
@@ -132,6 +160,7 @@ var _fn = {
 					resDattOrder.showSheepPrice = utils.fixPrice(resDattOrder.sheepPrice);
 					resDattOrder.showPayPrice = utils.fixPrice(resDattOrder.payPrice);
 					resDattOrder.showOrderStatus = orderService.getOrderStatusMining(resDattOrder.orderStatus).label;
+					
 					resDattOrder.skus = resDattOrder.skus.map((v,k)=>{
 						v.showOriginPrice = utils.fixPrice(v.originPrice);
 						return v;
