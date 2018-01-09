@@ -37,7 +37,7 @@
     "pages/scoredetail/scoredetail",
     "pages/wallet/wallet",
     "pages/pointToMoney/pointToMoney",
-
+    "pages/seckilllist/seckilllist",
     "pages/gp-index/gp-index",
     "pages/gp-detail/gp-detail",
     "pages/gp-waredetail/gp-waredetail"

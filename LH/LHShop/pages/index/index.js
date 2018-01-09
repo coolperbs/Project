@@ -61,6 +61,12 @@ Page( {
 		// 	title : app.config.title 
 		// } );
 	},
+	onHide : function() {
+		modules.stopKill( this );
+	},
+	onUnload : function() {
+		modules.stopKill( this );
+	},
 
 	moduleClickProxy : function( e ) {
 		var target = e.currentTarget;
@@ -91,6 +97,7 @@ Page( {
 		currentView = viewName ? viewName : currentView;
 		wx.removeStorageSync( 'homeView' );
 		_fn.selectView.call( self, currentView, { type : 'show' } );
+		modules.startKill( this, 'viewData.pageData.moduleList' );
 		//} );
 	},
 

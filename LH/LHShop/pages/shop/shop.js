@@ -24,6 +24,13 @@ Page( {
 		_fn.changeTab( this, { index : 1, name : 'home' } );
 	},
 	onShow : function() {
+		modules.startKill( this, 'pageData.moduleList' );
+	},
+	onHide : function() {
+		modules.stopKill( this );
+	},
+	onUnload : function() {
+		modules.stopKill( this );
 	},
 	goShopDetail : function() {
 		wx.navigateTo( { url : '../shopdetails/shopdetails?shopid=' + pageParam.shopid } );
