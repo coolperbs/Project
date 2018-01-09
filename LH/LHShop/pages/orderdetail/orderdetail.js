@@ -91,6 +91,12 @@ Page({
 		wx.navigateTo({
 			url:'../aftersale/aftersale?orderId='+orderId+'&skuId='+skuId
 		})
+	},
+	toGrouponDetail:function(e){
+		var grouponId = e.currentTarget.dataset.grouponid;
+		wx.redirectTo({
+			url:'../gp-detail/gp-detail?grouponId='+grouponId
+		});
 	}
 });
 var _fn = {

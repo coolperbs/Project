@@ -47,7 +47,7 @@
 					</view> -->
 
 					<text class="buybtn"  data-sku="{{wareSkuId}}" data-id="{{id}}">去开团</text>
-					<image class="addCart" src="../../asset/cart-white.png"></image>
+					<image class="addCart" src="../../asset/gp-cart.png"></image>
 				</view>
 			</view>
 		</view>

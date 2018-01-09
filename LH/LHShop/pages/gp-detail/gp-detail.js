@@ -56,12 +56,12 @@ Page({
           })          
     },
     toGrouponIndex:function(){
-        wx.navigateTo({
-            url:'/pages/gp-index/gp-index'
-        })
+        wx.reLaunch({
+            url:'../index/index'
+        });
     },
     toGrouponOrders:function(){
-        wx.navigateTo({
+        wx.redirectTo({
             url:'../../pages/orderlist/orderlist?status=1&bizType=groupon'
         })
 
@@ -121,6 +121,7 @@ var _fn = {
                         pageType = 2;
                     }
                 }
+                pageType = 1;
                 caller.setData({
                     pageData:pageData,
                     isUserInGroup:isUserinGroup,

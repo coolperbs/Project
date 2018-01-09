@@ -79,19 +79,19 @@
 						</view>
 						<view class="content">
 							<view class="item" data-status="2" catchtap="events" data-func="goGrouponOrderList">
-								<image src="../../asset/pay.png" class="item-logo"/>
+								<image src="../../asset/gp-pay.png" class="item-logo"/>
 								<text class="item-txt">待付款</text>
 							</view>
 							<view class="item" data-status="3" catchtap="events" data-func="goGrouponOrderList">
-								<image src="../../asset/deliver.png" class="item-logo"/>
+								<image src="../../asset/gp-deliver.png" class="item-logo"/>
 								<text class="item-txt">代发货</text>
 							</view>
 							<view class="item" data-status="4" catchtap="events" data-func="goGrouponOrderList">
-								<image src="../../asset/send.png" class="item-logo"/>
+								<image src="../../asset/gp-send.png" class="item-logo"/>
 								<text class="item-txt">待收货</text>
 							</view>
 							<view class="item" data-status="5" catchtap="events" data-func="goGrouponOrderList">
-								<image src="../../asset/finish.png" class="item-logo"/>
+								<image src="../../asset/gp-finish.png" class="item-logo"/>
 								<text class="item-txt">已完成</text>
 							</view>
 						</view>
