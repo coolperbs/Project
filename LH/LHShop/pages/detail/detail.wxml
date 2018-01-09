@@ -9,6 +9,41 @@
         </swiper> 
 
         <view class="desc">
+            <view class="time-info" wx:if="{{ pageData.seckillObj.status == 0 }}">
+                距离秒杀开始还有
+                <view class="time">
+                    <view class="s">{{ pageData.seckillObj.startTime.day }}</view>
+                    <view class="t">天</view>
+                    <view class="s">{{ pageData.seckillObj.startTime.hours }}</view>
+                    <view class="t">时</view>
+                    <view class="s">{{ pageData.seckillObj.startTime.minutes }}</view>
+                    <view class="t">分</view>
+                    <view class="s">{{ pageData.seckillObj.startTime.seconds }}</view>
+                    <view class="t">秒</view>
+                </view>
+            </view>
+
+
+            <view class="time-info" wx:if="{{ pageData.seckillObj.status == 1 }}">
+                距离秒杀结束还有
+                <view class="time">
+                    <view class="s">{{ pageData.seckillObj.endTime.day }}</view>
+                    <view class="t">天</view>
+                    <view class="s">{{ pageData.seckillObj.endTime.hours }}</view>
+                    <view class="t">时</view>
+                    <view class="s">{{ pageData.seckillObj.endTime.minutes }}</view>
+                    <view class="t">分</view>
+                    <view class="s">{{ pageData.seckillObj.endTime.seconds }}</view>
+                    <view class="t">秒</view>
+                </view>
+            </view>
+
+            <view class="time-info" wx:if="{{ pageData.seckillObj.status == 2 }}">
+                秒杀已经结束
+            </view>
+
+
+
             <view class="title ellipsis-2">{{pageData.title}}</view>
             <view class="sub-title">{{pageData.subTitle}}</view>
             <view class="price-info">
@@ -151,7 +186,11 @@
                 <image wx:else src="../../asset/heart-line.png"></image>
             </view>
         </view>
-        <view class="buttons">
+        <view class="buttons" wx:if="{{ pageData && pageData.seckillObj.status == 1 }}">
+            <view class="btn primary" catchtap="buyNow">立即抢购</view>
+        </view>
+
+        <view class="buttons" wx:if="{{ !pageData.seckillVO }}">
             <view class="btn" catchtap="addCart">加入购物车</view>
             <view class="btn primary" catchtap="buyNow">马上购买</view>
         </view>

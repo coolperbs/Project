@@ -9,6 +9,23 @@ handle = {
 		return;
 		if ( !caller || !caller.data || !caller.data.pageData || !caller.data.pageData.moduleList ) { return }; 
 		// 处理业务，包括秒杀啥的
+	},
+	// 开始计算秒杀
+	startKill : function( caller, listKey ) {
+		if ( caller.killTimmer ) {
+			return;
+		}
+		caller.killTimmer = setInterval( function() {
+			_fn.setKillModule( caller, listKey )
+		}, 1000 );
+	},
+	// 停止计算秒杀
+	stopKill : function( caller ) {
+		if ( !caller.killTimmer ) {
+			return;
+		}
+		clearInterval( caller.killTimmer );
+		caller.killTimmer = null;
 	}
 }
 
@@ -104,6 +121,95 @@ handle.events = {
 }
 
 _fn = {
+	setKillModule : function( caller, key ) {
+		var list = _fn.getValueByChain( caller.data, key ),
+			i, len, data = {};
+
+		if ( !list || !list.length ) {
+			return;
+		}
+		for ( i = 0, len = list.length; i < len; ++i ) {
+			if ( list[i] && list[i].modulePrototypeId == 14 && list[i].templatePrototypeId == 17 ) {
+				list[i] = _fn.setKillItem( list[i] );
+			}
+		}
+		data[key] = list
+		caller.setData( data );
+	},
+
+	setKillItem : function( obj ) {
+		var i,len, item;
+
+		if ( !obj || !obj.data || !obj.data.seckillSku ) {
+			return obj;
+		}
+		for ( i = 0, len = obj.data.seckillSku.length; i < len; ++i ) {
+			item = obj.data.seckillSku[i];
+			item = _fn.setKillObj( item );
+		}
+		return obj;
+	},
+
+	setKillObj : function( item ) {
+		var obj = {}, current, status = 0, startTime, endTime;
+
+		current = new Date().getTime();
+		startTime = item.seckill.effictiveStartDate - current;
+		endTime = item.seckill.effictiveEndDate - current;
+		// 计算状态
+		if ( startTime > 0 && endTime > 0 ) {
+			status = 0;
+		} else if ( startTime <= 0 && endTime >= 0 ) {
+			status = 1;
+		} else if ( startTime < 0 && endTime < 0  ) {
+			status = 2;
+		}
+
+		obj.status = status;
+		obj.startTime = _fn.formatSeckillTime( item.seckill.effictiveStartDate, current );
+		obj.endTime = _fn.formatSeckillTime( item.seckill.effictiveEndDate, current );
+		item.seckillObj = obj;
+		return item;
+	},
+
+	formatSeckillTime : function( time, current ) {
+		var day, hours, minutes, seconds, result;
+
+		day = Math.floor(( time - current )/(24*60*60*1000));
+		hours = Math.floor(( time - current - day*24*60*60*1000 )/(60*60*1000));
+		minutes = Math.floor(( time - current - day*24*60*60*1000 - hours*60*60*1000 )/(60*1000));
+		seconds = Math.floor(( time - current - day*24*60*60*1000 - hours*60*60*1000 - minutes*60*1000 )/(1000));
+
+		result = {
+			day : day > 0 ? day : 0,
+			hours : hours > 0 ? hours : 0,
+			minutes : minutes > 0 ? minutes : 0,
+			seconds : seconds > 0 ? seconds : 0,
+		}
+
+
+		result.hours = result.day >= 10 ? result.hours : '0' + result.hours;
+		result.hours = result.hours >= 10 ? result.hours : '0' + result.hours;
+		result.minutes = result.minutes >= 10 ? result.minutes : '0' + result.minutes;
+		result.seconds = result.seconds >= 10 ? result.seconds : '0' + result.seconds;
+		return result;
+	},
+
+	getValueByChain : function( data, keys ) {
+		keys = keys || '';
+		var list = keys.split( '.' ),
+			i, len, result;
+
+		result = data || {};
+		for ( i = 0, len = list.length; i< len; ++i ) {
+			result = result[list[i]];
+			if ( result === undefined || result === null ) {
+				return result;
+			}
+		}
+		return result;
+	},
+
 	changeData : function( instanceid, value, caller ){
 		var moduleList, i, len;
 

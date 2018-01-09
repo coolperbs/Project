@@ -20,6 +20,15 @@ Page( {
 		
 		_fn.getStoreInfo( this );
 	},
+	onShow : function() {
+		modules.startKill( this, 'pageData.moduleList' );
+	},
+	onHide : function() {
+		modules.stopKill( this );
+	},
+	onUnload : function() {
+		modules.stopKill( this );
+	},
 	onShareAppMessage : app.shareFunc,
 	moduleClickProxy : function( e ) {
 		var target = e.currentTarget;

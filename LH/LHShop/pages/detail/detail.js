@@ -48,6 +48,15 @@ Page({
 		service.cart.refreshNum( this );
 		_fn.getPageData( this );
 		_fn.getComment( this );
+		_fn.startKill( this );
+	},
+
+	onHide : function() {
+		_fn.stopKill( this );
+	},
+
+	onUnload : function() {
+		_fn.stopKill( this );
 	},
 
 	// 添加购物车
@@ -208,6 +217,74 @@ Page({
 });
 
 _fn = {
+	startKill : function ( caller ) {
+		if ( caller.killTimmer ) {
+			return;
+		}
+		caller.killTimmer = setInterval( function() {
+			caller.setData( {
+				'pageData.seckillObj' : _fn.setKillObj( caller )
+			} ); 
+		}, 1000 );
+	},
+
+	stopKill : function( caller ) {
+		if ( !caller.killTimmer ) {
+			return;
+		}
+		clearInterval( caller.killTimmer );
+		caller.killTimmer = null;
+	},
+
+	setKillObj : function( caller ) {
+		if ( !caller || !caller.data || !caller.data.pageData || !caller.data.pageData.seckillVO ) {
+			return;
+		}	
+		var obj = {}, current, status = 0, startTime, endTime,
+			item = caller.data.pageData;
+
+		current = new Date().getTime();
+		startTime = item.seckillVO.effictiveStartDate - current;
+		endTime = item.seckillVO.effictiveEndDate - current;
+		// 计算状态
+		if ( startTime > 0 && endTime > 0 ) {
+			status = 0;
+		} else if ( startTime <= 0 && endTime >= 0 ) {
+			status = 1;
+		} else if ( startTime < 0 && endTime < 0  ) {
+			status = 2;
+		}
+
+
+		obj.status = status;
+		obj.startTime = _fn.formatSeckillTime( item.seckillVO.effictiveStartDate, current );
+		obj.endTime = _fn.formatSeckillTime( item.seckillVO.effictiveEndDate, current );
+		return obj;
+	},
+
+	formatSeckillTime : function( time, current ) {
+		var day, hours, minutes, seconds, result;
+
+		day = Math.floor(( time - current )/(24*60*60*1000));
+		hours = Math.floor(( time - current - day*24*60*60*1000 )/(60*60*1000));
+		minutes = Math.floor(( time - current - day*24*60*60*1000 - hours*60*60*1000 )/(60*1000));
+		seconds = Math.floor(( time - current - day*24*60*60*1000 - hours*60*60*1000 - minutes*60*1000 )/(1000));
+
+		result = {
+			day : day > 0 ? day : 0,
+			hours : hours > 0 ? hours : 0,
+			minutes : minutes > 0 ? minutes : 0,
+			seconds : seconds > 0 ? seconds : 0,
+		}
+
+
+		result.hours = result.day >= 10 ? result.hours : '0' + result.hours;
+		result.hours = result.hours >= 10 ? result.hours : '0' + result.hours;
+		result.minutes = result.minutes >= 10 ? result.minutes : '0' + result.minutes;
+		result.seconds = result.seconds >= 10 ? result.seconds : '0' + result.seconds;
+		return result;
+	},
+
 	getLike : function( caller, param ) {
 		var data = caller.data;
 
@@ -281,7 +358,6 @@ _fn = {
 			list[attributes[i]] = true;
 		}
 		data.attributesObj = list;
-		console.log( data );
 		return data;
 	},
 	follow : function( param, callback ) {
@@ -314,7 +390,6 @@ _fn = {
 				comments : res.data.comments,
 				allcomments : res.data.totalCount
 			} );
-			console.log( res );
 		} );
 	},
 
