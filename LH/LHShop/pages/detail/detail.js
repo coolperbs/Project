@@ -11,7 +11,20 @@ var ajax = require( '../../common/ajax/ajax' ),
 	_fn;
 
 Page({
-	onShareAppMessage : app.shareFunc,
+	onShareAppMessage : function() {
+		var upperuid = wx.getStorageSync( 'upperuid' ),
+			data = this.data,
+			url = 'pages/detail/detail';
+
+		url += '?id=' + data.pageData.skuId;
+		if ( upperuid ) {
+			url += '&upperuid=' + upperuid
+		}
+		return {
+			title : conf.title,
+			path : url
+		}
+	},
 	data : {
 		favorite : {},
 		buyNum : 1,
