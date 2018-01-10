@@ -51,8 +51,8 @@
 	
 </template>
 <template name="ware">
-	<view class="ware" bindtap="toDetail" data-id="{{skuId}}" data-type="sku">
-		<view class="left">
+	<view class="ware"  data-id="{{skuId}}" data-type="sku">
+		<view class="left" bindtap="toDetail">
 			<image src="{{mainImage}}"/>
 		</view>
 		<view class="right">

@@ -12,6 +12,38 @@
 	"appid": "wxaccdda8d2e9e827e",
 	"projectname": "LHShop",
 	"condition": {
+<<<<<<< HEAD
+		"weapp": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "拼团首页",
+					"pathName": "pages/gp-index/gp-index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "拼团详情",
+					"pathName": "pages/gp-detail/gp-detail",
+					"query": "grouponId=44"
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/orderlist/orderlist",
+					"query": "bizType=groupon"
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/favorite/favorite",
+					"query": "grouponId=44"
+				}
+			]
+		},
+=======
+>>>>>>> 72394a5e8eecb41e74adf0708c4b7dd93bf49904
 		"search": {
 			"current": -1,
 			"list": []
