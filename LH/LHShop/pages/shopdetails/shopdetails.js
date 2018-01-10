@@ -40,9 +40,12 @@ Page( {
 _fn = {
 
   getStoreInfo : function( caller ) {
+    var storeId = pageParam.shopid || '', url;
+
+    url = !!storeId ? app.host + '/app/store/info' : app.host + '/app/store/master/info';
     ajax.query( {
-      param : { storeId : pageParam.shopid },
-      url : app.host + '/app/store/info'
+      param : { storeId : storeId },
+      url : url
     }, function( res ) {
       if ( utils.isErrorRes( res ) ) {
         return;

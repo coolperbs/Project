@@ -258,7 +258,7 @@
 				<view class="s">13</view>
 			</view>-->
 			<view class="item">
-				<view class="pic"  mode="aspectFit" catchtap="moduleClickProxy" data-fn="" data-id="{{item.skuId}}">
+				<view class="pic"  mode="aspectFit" catchtap="moduleClickProxy" data-fn="jumpDetail" data-id="{{item.skuId}}">
 					<view class="tags">限时秒杀</view>
 					<image src="{{item.mainImage}}"></image>
 				</view>

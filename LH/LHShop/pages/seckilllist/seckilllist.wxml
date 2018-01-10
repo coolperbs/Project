@@ -6,7 +6,7 @@
 			bindscrolltolower="loadMore">
 				<block wx:if="{{listData && listData.length}}" wx:for="{{listData}}" wx:key="id">
 					<view class="item">
-						<view class="pic" data-id="{{item.skuId}}">
+						<view class="pic" catchtap="jumpDetail" data-fn="jumpDetail" data-id="{{item.skuId}}" data-id="{{item.skuId}}">
 							<view class="tags">限时秒杀</view>
 							<image mode="aspectFit" src="{{item.mainImage}}"></image>
 						</view>
