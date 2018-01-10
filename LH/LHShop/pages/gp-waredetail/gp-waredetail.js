@@ -367,7 +367,7 @@ _fn = {
 					grouponId:v.id,
 					overdueTime:v.overdueTime,
 					master:v.userList.filter((v,k)=>{
-						return v.master = 1;
+						return v.master === 1;
 					})[0],
 					left:v.quantity-v.userList.length
 				});
