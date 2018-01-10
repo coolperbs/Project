@@ -22,7 +22,7 @@
 				<!--<image src="../../assets/icons/call.png" bindtap="onmake" class="call"></image>-->
 			</view>
 			<view class="msg">
-				<text class="label">联系地址</text>
+				<text class="label">联系地址:</text>
 				<text class="value">{{shopInfo.address}}</text>
 			</view>
 		</view>

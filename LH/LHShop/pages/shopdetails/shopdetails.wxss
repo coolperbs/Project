@@ -1,4 +1,4 @@
-.page-showdetail{}
+.page-showdetail{padding-bottom : 100rpx;}
 .header{
 	width:750rpx;
 	height:350rpx;
@@ -49,16 +49,16 @@ line-height:50rpx
 	border:1px solid #df393c;
 }
 .msg{
-height:100rpx;
-line-height:100rpx;
 border-bottom:1px solid #f0f0f0;
 font-size:14px;
 color:#b9b9b9;
-padding:0 20rpx;
-
+padding:20rpx;
+display : flex;
+justify-content: space-between;
 }
+.msg .label { width : 160rpx; }
 .msg .value{
-	margin-left:15rpx;
+	width : 500rpx;
 }
 .msg .call{
 

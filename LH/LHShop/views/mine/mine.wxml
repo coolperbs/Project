@@ -54,7 +54,7 @@
 						</view>
 						<view class="item" data-status="3" catchtap="events" data-func="goOrderList">
 							<image src="../../asset/deliver.png" class="item-logo"/>
-							<text class="item-txt">代发货</text>
+							<text class="item-txt">待发货</text>
 						</view>
 						<view class="item" data-status="4" catchtap="events" data-func="goOrderList">
 							<image src="../../asset/send.png" class="item-logo"/>
@@ -175,6 +175,10 @@
 						<view class="item" data-status="1" catchtap="events" data-func="goJoin">
 							<image src="../../asset/join.png" class="item-logo"/>
 							<text class="item-txt">品牌加盟</text>
+						</view>
+						<view class="item" data-status="1" catchtap="events" data-func="goShopDetails">
+							<image src="../../asset/aboutus.png" class="item-logo"/>
+							<text class="item-txt">关于我们</text>
 						</view>
 					</view>
 				</view>
