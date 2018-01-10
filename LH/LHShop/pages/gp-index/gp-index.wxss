@@ -32,7 +32,8 @@ page{
 	margin:auto;
 	font-size:34rpx;
 	color:#535353;
-	height:98rpx;	
+	height:98rpx;
+	margin-top: 14rpx;	
 }
 .gouponitem-tpl .wrapper .ware-desc{
 	height: 100rpx;
@@ -43,7 +44,7 @@ page{
 	width:710rpx;
 	margin:auto;
 	align-items:flex-end;
-	margin-top:20rpx;	
+	/*margin-top:20rpx;	*/
 	
 }
 .gouponitem-tpl .wrapper .ware-detail .left-side{
@@ -99,8 +100,8 @@ page{
 	
 }
 .gouponitem-tpl .addCart{
-	width: 35rpx;
-	height: 35rpx;
+	width: 50rpx;
+	height: 50rpx;
 	margin-left: 10rpx;
 }
 .gouponitem-tpl .wrapper .ware-detail .finished-people{

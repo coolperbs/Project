@@ -42,7 +42,7 @@ handle.events = {
 		if ( !id ){
 			return;
 		}
-		wx.navigateTo( { url : '../gp-waredetail/gp-waredetail?id=' + id } );
+		wx.redirectTo( { url : '../gp-waredetail/gp-waredetail?id=' + id } );
 	},
 
 	showShops : function( e ) {

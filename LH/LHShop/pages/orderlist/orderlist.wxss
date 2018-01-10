@@ -54,7 +54,8 @@ page{
 .view-orders .order-wrapper .header .header-left .orderId{
 	font-size: 28rpx;
 	color: #4A4A4A;
-	line-height: 34rpx
+	line-height: 34rpx;
+	display:flex;
 }
 .view-orders .order-wrapper .header .orderState{
 	/*font-family: PingFangSC-Regular;*/
@@ -107,7 +108,7 @@ page{
 	bottom:20rpx;
 }
 .view-orders .order-wrapper .body .ware-detail .groupon-status{
-	color:#f4f4f4;
+	color:#bababa;
 }
 .view-orders .order-wrapper .body .ware-detail .groupon-status.active{
 	color: #d6204b;
@@ -384,6 +385,28 @@ page{
 	bottom:0;
 	width:90rpx;
 	transition: all .3s;
+
+}
+.view-orders .order-typelogo{
+	font-size:28rpx;
+	border:1px solid;
+	width:30rpx;
+	height:30rpx;
+	line-height:30rpx;
+	line-height:30rpx;
+	border-radius:6rpx;
+	margin-right:10rpx;
+	text-align:center;
+
+
+}
+.view-orders .order-typelogo.tuan{
+	color:#d6204b;
+	border-color:#d6204b;
+}
+.view-orders .order-typelogo.miao{
+	color:#2e7cd7;
+	border-color:#2e7cd7;
 
 }
 /*.view-orders .delete{

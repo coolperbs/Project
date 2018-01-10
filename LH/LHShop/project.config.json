@@ -12,6 +12,29 @@
 	"appid": "wxaccdda8d2e9e827e",
 	"projectname": "LHShop",
 	"condition": {
+		"weapp": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "拼团首页",
+					"pathName": "pages/gp-index/gp-index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "拼团详情",
+					"pathName": "pages/gp-detail/gp-detail",
+					"query": "grouponId=44"
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/orderlist/orderlist",
+					"query": "bizType=groupon"
+				}
+			]
+		},
 		"search": {
 			"current": -1,
 			"list": []

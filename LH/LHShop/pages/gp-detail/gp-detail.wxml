@@ -38,21 +38,31 @@
                         <block wx:if="{{pageType===1 || pageType===2}}">
                             <text class="notice-msg">拼团不成功，款项将原路返还</text>
                         </block>
-                        <block wx:if="{{pageType===3 || pageType===4}}">
-                            <text class="notice-msg">拼团已结束</text>
+                        <block wx:if="{{pageType===3}}">
+                            <text class="notice-msg">拼团成功</text>
                         </block>
-                        
+                        <block wx:if="{{ pageType===4}}">
+                            <text class="notice-msg">拼团失败</text>
+                        </block>
                 </view>
                 <view class="left-time">{{pageData.leftTimeStr}}</view>
-                <button wx:if="{{pageType===2}}" catchtap="join" class="toBuy pagebtn">￥{{pageData.skuPrice}}团好货</button>
-                <button wx:if="{{pageType===1}}" catchtap="share" class="toShare pagebtn" open-type="share">马上邀请小伙伴</button>
-                <button wx:if="{{pageType===4}}" catchtap="toGrouponIndex" class="toHome pagebtn">未成团,再去看看其他活动吧</button>
-                <button wx:if="{{pageType===3}}" catchtap="toGrouponIndex" class="toHome pagebtn">以成团,再去看看其他活动吧</button>
+                <view class="page-btn-wrapper">
+                    <block wx:if="{{pageType===2}}">
+                        <button wx:if="{{pageType===2}}" catchtap="join" class="toBuy pagebtn half">￥{{pageData.skuPrice}}团好货</button>
+                        <button class="pagebtn half" catchtap="toIndex">其他活动</button>
+                    </block>
+                    <block wx:if="{{pageType===1}}">
+                        <button wx:if="{{pageType===1}}" catchtap="share" class="toShare pagebtn half" open-type="share">马上邀请小伙伴</button>
+                        <button class="pagebtn half" catchtap="toIndex">其他活动</button>
+                    </block>
+                    <button wx:if="{{pageType===4}}" catchtap="toGrouponIndex" class="toHome pagebtn">未成团,再去看看其他活动吧</button>
+                    <button wx:if="{{pageType===3}}" catchtap="toGrouponIndex" class="toHome pagebtn">以成团,再去看看其他活动吧</button>
+                </view>
             </view>
     </view>
 
     <view class="recommond">
-        <view class="menu">
+<!--         <view class="menu">
             <view class="menu-btn"  catchtap="toIndex">
                 <image src="../../asset/home.png" class="logo"></image>
                 <text class="txt">首页逛逛</text>
@@ -67,12 +77,12 @@
                 <image src="../../asset/fx-tm-submit.png" class="logo"></image>
                 <text class="txt">我的拼团</text>
             </view>
-        </view>
-        <view class="more modules" wx:if="{{ moduleList && moduleList.length }}">
+        </view> -->
+       <!--  <view class="more modules" wx:if="{{ moduleList && moduleList.length }}">
             <block wx:for="{{moduleList}}" wx:key="modulePrototypeId">
                 <template is="gp-1-2" data="{{...item, index}}"></template>
             </block>
-        </view>
+        </view> -->
     </view>
     
 </scroll-view>

@@ -55,7 +55,8 @@ page{
 .view-orders .order-wrapper .header .header-left .orderId{
 	font-size: 28rpx;
 	color: #4A4A4A;
-	line-height: 34rpx
+	line-height: 34rpx;
+	display: flex;
 }
 .view-orders .order-wrapper .header .orderState{
 	/*font-family: PingFangSC-Regular;*/
@@ -104,7 +105,7 @@ page{
 	/*width:498rpx;*/
 	position:absolute;
 	right:0;
-	bottom:40rpx;
+	bottom:10rpx;
 }
 
 .view-orders .order-wrapper .body .ware-detail .price:before{
@@ -113,7 +114,8 @@ page{
 
 .view-orders .order-wrapper .body .ware-detail .price{
 	position:absolute;
-	bottom:40rpx;
+	/*bottom:40rpx;*/
+	bottom: 10rpx;
 	font-size:28rpx;
 	color:#4A4A4A;
 }
@@ -474,5 +476,28 @@ page{
 .cost-container .item .cost-count.total{
 	color:#d24942;
 }
+.view-orders .order-typelogo{
+	font-size:28rpx;
+	border:1px solid;
+	width:30rpx;
+	height:30rpx;
+	line-height:30rpx;
+	line-height:30rpx;
+	border-radius:6rpx;
+	margin-right:10rpx;
+	text-align:center;
+
+
+}
+.view-orders .order-typelogo.tuan{
+	color:#d6204b;
+	border-color:#d6204b;
+}
+.view-orders .order-typelogo.miao{
+	color:#2e7cd7;
+	border-color:#2e7cd7;
+
+}
+
 
 
