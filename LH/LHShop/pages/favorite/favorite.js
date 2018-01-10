@@ -72,8 +72,10 @@ Page({
 		}
 	},
 	addCart:function(e){
+		var self = this;
 		var id = e.currentTarget.dataset.id;
-		cartService.addOut({
+		// console.log(333,id)
+		cartService.addOut(self,{
 			skuId:id,
 			skuNum:1
 		},function(res){
@@ -139,7 +141,7 @@ var _fn = {
 					if(res.data && res.data.skus){
 						listData = res.data.skus;
 						listData = listData.map((v,k)=>{
-							v.showPrice = utils.fixPrice(v.originPrice);
+							v.showPrice = utils.fixPrice(v.price);
 							v.priceZS = v.showPrice.split('.')[0]+'.';//整数
 							v.priceXS = v.showPrice.split('.')[1]//小数
 							return v;
