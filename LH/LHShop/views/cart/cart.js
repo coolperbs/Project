@@ -43,6 +43,13 @@ events = {
       _fn.refreshPage( callerPage, res );
     } );
   },
+  goDetail : function( e ){
+    var skuid = e.currentTarget.dataset.skuid;
+    if ( !skuid ) {
+      return;
+    }
+    wx.navigateTo( { url : '../detail/detail?id=' + skuid } );
+  },
   check : function( e ) {
     var cartId = e.currentTarget.dataset.cartid,
         checked = e.currentTarget.dataset.checked,

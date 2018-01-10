@@ -67,6 +67,7 @@
                 48小时快速退款
             </view>
         </view>
+        <navigator wx:if="{{ pageData.shopId }}" class="entrance" url="../shop/shop?shopid={{pageData.shopId}}">进店逛逛</navigator>
     </view>
 
     <view class="comment-list">

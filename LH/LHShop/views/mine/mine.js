@@ -68,6 +68,11 @@ handle = {
 				url:'../../pages/coupon-mine/coupon-mine'
 			});
 		},
+		goShopDetails : function( ){
+			wx.navigateTo( {
+				url : '../shopdetails/shopdetails'
+			} );
+		},
 		goAddressList:function(){
 			wx.navigateTo({
 				url:'../../pages/addresslist/addresslist'

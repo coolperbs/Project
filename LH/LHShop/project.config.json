@@ -12,6 +12,7 @@
 	"appid": "wxaccdda8d2e9e827e",
 	"projectname": "LHShop",
 	"condition": {
+<<<<<<< HEAD
 		"weapp": {
 			"current": 3,
 			"list": [
@@ -41,6 +42,8 @@
 				}
 			]
 		},
+=======
+>>>>>>> 72394a5e8eecb41e74adf0708c4b7dd93bf49904
 		"search": {
 			"current": -1,
 			"list": []

@@ -23,13 +23,13 @@
 						<image class="on" src="../../asset/checked.png"></image>
 					</view>
 					<view class="cont">
-						<image class="pics" src="{{cart.skuImg}}"></image>
+						<image class="pics" catchtap="cartClickProxy" data-fn="goDetail" data-skuid="{{cart.skuId}}" src="{{cart.skuImg}}"></image>
 						<view class="info">
-							<view class="name ellipsis-2">{{cart.skuTitle}}</view>
-							<view class="sub-info">{{cart.skuSubTitle}}</view>
+							<view catchtap="cartClickProxy" data-fn="goDetail" data-skuid="{{cart.skuId}}" class="name ellipsis-2">{{cart.skuTitle}}</view>
+							<view catchtap="cartClickProxy" data-fn="goDetail" data-skuid="{{cart.skuId}}" class="sub-info">{{cart.skuSubTitle}}</view>
 							<view class="count">
 								<view>
-								 	<view class="price"><view class="sub">¥</view>{{cart.skuPrice / 100}}</view> × 1
+								 	<view catchtap="cartClickProxy" data-fn="goDetail" data-skuid="{{cart.skuId}}" class="price"><view class="sub">¥</view>{{cart.skuPrice / 100}}</view> × 1
 								</view>
 								<view class="cart-act">
 					                <view class="minus" id="{{cart.skuId}}" catchtap="cartClickProxy" data-fn="cut" data-num="{{cart.skuNum}}" data-cartid="{{cart.id}}">-</view>
