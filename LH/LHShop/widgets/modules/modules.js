@@ -86,7 +86,7 @@ handle.events = {
 				url = '../articallist/articallist';
 				break;
 			case 10 : // 文章详情
-				url = '../artical/cartical?id=' + jumpCont;
+				url = '../artical/artical?id=' + jumpCont;
 				break;
 			case 11 : 
 				url = '../subscribe/subscribe?actid=' + jumpCont;
