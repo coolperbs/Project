@@ -34,12 +34,13 @@
         
             <view class="buybtn-wrapper">
                 <view class="notice">
-                        <image src= "../../asset/gp-notice.png" class="notice-logo"></image>
+                        <image wx:if="{{pageType===3}}" src= "../../asset/gp-sucess.png" class="notice-logo"></image>
+                        <image wx:else src= "../../asset/gp-notice.png" class="notice-logo"></image>
                         <block wx:if="{{pageType===1 || pageType===2}}">
                             <text class="notice-msg">拼团进行中</text>
                         </block>
                         <block wx:if="{{pageType===3}}">
-                            <text class="notice-msg">拼团成功</text>
+                            <text class="notice-msg suc">拼团成功</text>
                         </block>
                         <block wx:if="{{ pageType===4}}">
                             <text class="notice-msg">拼团失败</text>
