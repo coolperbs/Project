@@ -34,12 +34,13 @@
         
             <view class="buybtn-wrapper">
                 <view class="notice">
-                        <image src= "../../asset/gp-notice.png" class="notice-logo"></image>
+                        <image wx:if="{{pageType===3}}" src= "../../asset/gp-sucess.png" class="notice-logo"></image>
+                        <image wx:else src= "../../asset/gp-notice.png" class="notice-logo"></image>
                         <block wx:if="{{pageType===1 || pageType===2}}">
                             <text class="notice-msg">拼团进行中</text>
                         </block>
                         <block wx:if="{{pageType===3}}">
-                            <text class="notice-msg">拼团成功</text>
+                            <text class="notice-msg suc">拼团成功</text>
                         </block>
                         <block wx:if="{{ pageType===4}}">
                             <text class="notice-msg">拼团失败</text>
@@ -56,7 +57,7 @@
                         <button class="pagebtn half" catchtap="toIndex">其他活动</button>
                     </block>
                     <button wx:if="{{pageType===4}}" catchtap="toGrouponIndex" class="toHome pagebtn">未成团,再去看看其他活动吧</button>
-                    <button wx:if="{{pageType===3}}" catchtap="toGrouponIndex" class="toHome pagebtn">以成团,再去看看其他活动吧</button>
+                    <button wx:if="{{pageType===3}}" catchtap="toGrouponIndex" class="toHome pagebtn">已成团,再去看看其他活动吧</button>
                 </view>
             </view>
     </view>
