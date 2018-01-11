@@ -36,7 +36,7 @@
                 <view class="notice">
                         <image src= "../../asset/gp-notice.png" class="notice-logo"></image>
                         <block wx:if="{{pageType===1 || pageType===2}}">
-                            <text class="notice-msg">拼团不成功，款项将原路返还</text>
+                            <text class="notice-msg">拼团进行中</text>
                         </block>
                         <block wx:if="{{pageType===3}}">
                             <text class="notice-msg">拼团成功</text>
@@ -45,7 +45,7 @@
                             <text class="notice-msg">拼团失败</text>
                         </block>
                 </view>
-                <view class="left-time">{{pageData.leftTimeStr}}</view>
+                <view class="left-time" wx:if="{{pageType===1 || pageType===2}}">{{pageData.leftTimeStr}}</view>
                 <view class="page-btn-wrapper">
                     <block wx:if="{{pageType===2}}">
                         <button wx:if="{{pageType===2}}" catchtap="join" class="toBuy pagebtn half">￥{{pageData.skuPrice}}团好货</button>

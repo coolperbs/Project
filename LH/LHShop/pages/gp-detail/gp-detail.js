@@ -121,7 +121,6 @@ var _fn = {
                         pageType = 2;
                     }
                 }
-                pageType = 1;
                 caller.setData({
                     pageData:pageData,
                     isUserInGroup:isUserinGroup,
@@ -147,6 +146,7 @@ var _fn = {
             var user = userList.filter((v,k)=>{
                 return v.id === userId;
             })[0];
+            debugger;
             return user;
         }
     },

@@ -10,12 +10,7 @@
 	"libVersion": "1.5.4",
 	"appid": "wxaccdda8d2e9e827e",
 	"projectname": "LHShop",
-	"svr": "",
-	"client": "",
-	"qcloudRoot": "",
-	"miniprogramRoot": "",
 	"condition": {
-<<<<<<< HEAD
 		"weapp": {
 			"current": -1,
 			"list": [
@@ -29,7 +24,7 @@
 					"id": 1,
 					"name": "拼团详情",
 					"pathName": "pages/gp-detail/gp-detail",
-					"query": "grouponId=44"
+					"query": "grouponId=75"
 				},
 				{
 					"id": -1,
@@ -45,8 +40,6 @@
 				}
 			]
 		},
-=======
->>>>>>> ab6e9fc18bce5b80c3014eb36e50efa0337c9625
 		"search": {
 			"current": -1,
 			"list": []
