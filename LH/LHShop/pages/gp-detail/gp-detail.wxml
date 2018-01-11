@@ -57,7 +57,7 @@
                         <button class="pagebtn half" catchtap="toIndex">其他活动</button>
                     </block>
                     <button wx:if="{{pageType===4}}" catchtap="toGrouponIndex" class="toHome pagebtn">未成团,再去看看其他活动吧</button>
-                    <button wx:if="{{pageType===3}}" catchtap="toGrouponIndex" class="toHome pagebtn">以成团,再去看看其他活动吧</button>
+                    <button wx:if="{{pageType===3}}" catchtap="toGrouponIndex" class="toHome pagebtn">已成团,再去看看其他活动吧</button>
                 </view>
             </view>
     </view>
