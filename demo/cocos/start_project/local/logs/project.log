@@ -1,0 +1,60 @@
+2018-01-24T06:34:21.964Z - normal: Load ~/.CocosCreator/settings.json
+2018-01-24T06:34:21.968Z - normal: checking language setting...
+2018-01-24T06:34:21.968Z - normal: Language: zh
+2018-01-24T06:34:23.751Z - success: protocol editor-framework registered
+2018-01-24T06:34:23.752Z - success: protocol app registered
+2018-01-24T06:34:23.752Z - success: protocol theme registered
+2018-01-24T06:34:23.752Z - success: protocol packages registered
+2018-01-24T06:34:23.752Z - success: protocol unpack registerred
+2018-01-24T06:34:23.752Z - success: protocol disable-commonjs registerred
+2018-01-24T06:34:24.096Z - normal: connected!
+2018-01-24T06:34:24.102Z - normal: Check project E:\work\Project\demo\cocos\start_project
+2018-01-24T06:34:24.121Z - normal: Initializing Cocos2d
+2018-01-24T06:34:24.324Z - normal: Initializing Asset Database
+2018-01-24T06:34:24.356Z - success: protocol uuid registerred
+2018-01-24T06:34:24.356Z - success: protocol db registerred
+2018-01-24T06:34:24.356Z - success: protocol thumbnail registerred
+2018-01-24T06:34:24.356Z - normal: Loading editor/builtin packages
+2018-01-24T06:34:24.374Z - success: anysdk loaded
+2018-01-24T06:34:24.479Z - success: assets loaded
+2018-01-24T06:34:24.481Z - success: builder loaded
+2018-01-24T06:34:24.483Z - success: cocos-analytics loaded
+2018-01-24T06:34:24.486Z - success: console loaded
+2018-01-24T06:34:24.488Z - success: hierarchy loaded
+2018-01-24T06:34:24.491Z - success: inspector loaded
+2018-01-24T06:34:24.492Z - success: keystore loaded
+2018-01-24T06:34:24.494Z - success: node-library loaded
+2018-01-24T06:34:24.496Z - success: package-asset loaded
+2018-01-24T06:34:24.498Z - success: preferences loaded
+2018-01-24T06:34:24.499Z - success: project-exporter loaded
+2018-01-24T06:34:24.514Z - success: project-importer loaded
+2018-01-24T06:34:24.516Z - success: project-settings loaded
+2018-01-24T06:34:24.517Z - success: ui-kit loaded
+2018-01-24T06:34:24.519Z - success: ui-grid loaded
+2018-01-24T06:34:24.521Z - success: scene loaded
+2018-01-24T06:34:24.522Z - success: sprite-editor loaded
+2018-01-24T06:34:24.525Z - success: store loaded
+2018-01-24T06:34:24.534Z - success: timeline loaded
+2018-01-24T06:34:24.534Z - normal: Loading builtin packages
+2018-01-24T06:34:24.536Z - success: asset-db-debugger loaded
+2018-01-24T06:34:24.538Z - success: code-editor loaded
+2018-01-24T06:34:24.538Z - success: color-picker loaded
+2018-01-24T06:34:24.540Z - success: package-manager loaded
+2018-01-24T06:34:24.543Z - success: sdkbox loaded
+2018-01-24T06:34:24.546Z - success: tester loaded
+2018-01-24T06:34:24.547Z - success: ui-kit-preview-extra loaded
+2018-01-24T06:34:24.549Z - success: ui-kit-preview loaded
+2018-01-24T06:34:24.550Z - success: ui-tree loaded
+2018-01-24T06:34:25.546Z - normal: Initializing project E:\work\Project\demo\cocos\start_project
+2018-01-24T06:34:25.548Z - normal: Loading packages
+2018-01-24T06:34:25.552Z - normal: Watching packages
+2018-01-24T06:34:25.564Z - normal: Run Application
+2018-01-24T06:34:25.924Z - success: preview server running at http://localhost:7456
+2018-01-24T06:34:29.981Z - normal: 1.8.1
+2018-01-24T07:39:48.241Z - error: TypeError: Cannot read property 'frameEL' of null
+    at HTMLElement.addEventListener.e (D:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ui\panel\panel.js:1:1687)
+2018-01-24T08:19:32.767Z - warn: The Asset used is missing. Detailed information:
+Missing uuid: "7052e9b8-9b18-46a9-9fe7-0ebb585a4552"
+
+2018-01-24T08:25:44.674Z - warn: The 'type' attribute of 'Game.ground' is undefined when loading script
+2018-01-24T08:25:44.676Z - warn: The 'type' attribute of 'Game.player' is undefined when loading script
