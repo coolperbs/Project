@@ -49,7 +49,8 @@ var handle = {
 			upperuid = query.upperuid,
 			str;
 
-		scene = query.scene ? decodeURIComponent( query.scene ) : '';
+		scene = query.scene || options.scene || '';
+		scene = scene ? decodeURIComponent( scene ) : '';
 		// 如果scene有值则用scene覆盖
 		// 处理分销逻辑
         if ( scene.indexOf( 'upperuid_' ) == 0 ) {
@@ -63,14 +64,13 @@ var handle = {
 
         upperuid = wx.getStorageSync( 'upperuid' ) || upperuid;
         wx.setStorageSync( 'upperuid', upperuid );
-        this.bindUpperUid();
+        this.bindUpperUid( upperuid );
 		// _fn.setDate();
 		// _fn.setCity();
 		// _fn.getLocation();
 	},
-	bindUpperUid : function() {
+	bindUpperUid : function( upperuid ) {
 		var hasBind = wx.getStorageSync( 'hasBind' ),
-			upperuid =wx.getStorageSync( 'upperuid' ),
 			userInfo = wx.getStorageSync( 'userinfo' ) || {};
 
 		if ( !upperuid || !userInfo || !userInfo.token ) {

@@ -88,6 +88,8 @@ _fn = {
 				} );
 				return;
 			}
+
+			wx.setStorageSync( 'upperuid', userInfo.user.id + '' );
 			caller.setData( {
 				'viewData.userInfo' : userInfo.user || {},
 				'viewData.traderInfo' : res.data,
