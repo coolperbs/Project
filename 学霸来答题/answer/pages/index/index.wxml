@@ -1,1 +1,18 @@
-<view>test</view>
+<view class="head">
+	最强学霸
+	<view class="btn">活动规则</view>
+</view>
+
+<view class="entry">
+	<view class="season">第4期</view>
+	<view class="title">清华北大专场</view>
+	<view class="sub-info">*仅限清华北大同学参加，其他高校的同学可以围观哦~</view>
+	<!--<view class="act">
+		<view class="btn">立即进入</view>
+	</view>-->
+
+	<view class="act">
+		<view class="time"></view>
+		<view class="money"></view>
+	</view>
+</view>
