@@ -1,0 +1,12 @@
+Page{ background-color: #149eff; }
+
+.entry { width : 670rpx; height : 440rpx; background-color: #fff; border-radius: 10rpx; margin : 0 auto; display: flex; flex-direction : column; justify-content : space-between; align-items : center; }
+.entry .info { margin-top : 40rpx; display: flex; align-items : center; flex-direction : column; }
+.entry .info .season { font-size : 26rpx; color : #ff8800; }
+.entry .info .title { font-size : 40rpx; color : #149eff; margin-top : 10rpx; }
+.entry .info .sub-title { font-size : 22rpx; color : #ccc; margin-top : 20rpx; }
+.entry .act { border-top : solid 1px #f0f0f0; margin : 0 44rpx; height : 235rpx; width : 576rpx; display : flex; align-items : center; justify-content : space-between; }
+.entry .act .cell { display:flex; flex-direction : column; justify-content : center; align-items : center; padding : 0 15rpx; margin-top : -28rpx; }
+.entry .act .cell .name { font-size : 34rpx; color : #ccc; letter-spacing : 6rpx;}
+.entry .act .cell .text { font-size : 72rpx; color : #149eff; margin-top : 10rpx; letter-spacing : 9rpx; }
+.entry .act .cell .text.orange { color : #ff8800; }

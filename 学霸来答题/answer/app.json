@@ -4,9 +4,9 @@
   ],
 
   "window":{
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText" : " ",
-    "navigationBarTextStyle":"black",
+    "navigationBarBackgroundColor": "#149eff",
+    "navigationBarTitleText" : "最强学霸 ",
+    "navigationBarTextStyle":"white",
     "enablePullDownRefresh" : false
   }
 }
