@@ -26,6 +26,10 @@ cc.Class({
         player : {
             default : null,
             type: cc.Node
+        },
+        scoreDisplay : {
+            default : null,
+            type : cc.Label
         }
     },
 
@@ -33,7 +37,10 @@ cc.Class({
 
     onLoad () {
         this.groundY = this.ground.y + this.ground.height / 2;
-        this.spawnNewStar()
+        this.timer = 0;
+        this.starDuration = 0;
+        this.spawnNewStar();
+        this.score = 0;
     },
 
     start () {
@@ -47,6 +54,8 @@ cc.Class({
         newStar.setPosition( this.getNewStarPosition() );
 
         newStar.getComponent( 'Star' ).game = this; // 感觉是反射
+        this.starDuration = this.minStarDuration + cc.random0To1() * (this.maxStarDuration - this.minStarDuration);
+        this.timer = 0;
     },
 
     getNewStarPosition : function() {
@@ -58,7 +67,23 @@ cc.Class({
         randX = cc.randomMinus1To1() * maxX;
         // 返回星星坐标
         return cc.p(randX, randY); 
-    }
+    },
 
-    // update (dt) {},
+    gainScore : function() {
+        this.score += 1;
+        this.scoreDisplay.string = 'Score: ' + this.score.toString();
+    },
+
+    update : function (dt) {
+        if ( this.timer > this.starDuration ) {
+            console.log( 'asdf' );
+            this.gameOver();
+            return;
+        }
+        this.timer += dt;
+    },
+    gameOver : function() {
+        this.player.stopAllActions();
+        cc.director.loadScene( 'game' ); // 从头开始游戏
+    }
 });

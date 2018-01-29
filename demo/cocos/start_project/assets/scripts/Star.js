@@ -12,7 +12,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        pickRadius : 0
+        pickRadius : 60
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -29,16 +29,20 @@ cc.Class({
             this.onPicked();
             return;
         }
+        var op = 1 - this.game.timer / this.game.starDuration;
+        var minOp = 50;
+        this.node.opacity = minOp + Math.floor( op * ( 255 - minOp ) );
     },
 
     getPlayerDistance : function() {
         var playerPos = this.game.player.getPosition(); 
-        var dist = cc.pDistance( this.ndoe.position, playerPos );
+        var dist = cc.pDistance( this.node.position, playerPos );
         return dist;
     },
 
     onPicked :function() {
         this.game.spawnNewStar(); // 创建新的星星
+        this.game.gainScore();
         this.node.destroy(); // 销毁当前节点
     }
 });

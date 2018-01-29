@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 689.984375,
+                "height": 649,
                 "type": "panel",
                 "width": 311
               },
@@ -27,7 +27,7 @@
                 "children": [
                   "assets"
                 ],
-                "height": 356,
+                "height": 397,
                 "type": "panel",
                 "width": 311
               }
@@ -78,9 +78,9 @@
         "console",
         "inspector",
         "hierarchy",
+        "assets",
         "scene",
-        "timeline",
-        "assets"
+        "timeline"
       ]
     }
   },
@@ -96,6 +96,18 @@
       "y": 569,
       "width": 220,
       "height": 321
+    },
+    "builder": {
+      "x": 732,
+      "y": 299,
+      "width": 516,
+      "height": 738
+    },
+    "preferences": {
+      "x": 672,
+      "y": 301,
+      "width": 580,
+      "height": 564
     }
   }
 }

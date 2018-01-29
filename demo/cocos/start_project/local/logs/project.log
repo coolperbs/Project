@@ -1,60 +1,325 @@
-2018-01-24T06:34:21.964Z - normal: Load ~/.CocosCreator/settings.json
-2018-01-24T06:34:21.968Z - normal: checking language setting...
-2018-01-24T06:34:21.968Z - normal: Language: zh
-2018-01-24T06:34:23.751Z - success: protocol editor-framework registered
-2018-01-24T06:34:23.752Z - success: protocol app registered
-2018-01-24T06:34:23.752Z - success: protocol theme registered
-2018-01-24T06:34:23.752Z - success: protocol packages registered
-2018-01-24T06:34:23.752Z - success: protocol unpack registerred
-2018-01-24T06:34:23.752Z - success: protocol disable-commonjs registerred
-2018-01-24T06:34:24.096Z - normal: connected!
-2018-01-24T06:34:24.102Z - normal: Check project E:\work\Project\demo\cocos\start_project
-2018-01-24T06:34:24.121Z - normal: Initializing Cocos2d
-2018-01-24T06:34:24.324Z - normal: Initializing Asset Database
-2018-01-24T06:34:24.356Z - success: protocol uuid registerred
-2018-01-24T06:34:24.356Z - success: protocol db registerred
-2018-01-24T06:34:24.356Z - success: protocol thumbnail registerred
-2018-01-24T06:34:24.356Z - normal: Loading editor/builtin packages
-2018-01-24T06:34:24.374Z - success: anysdk loaded
-2018-01-24T06:34:24.479Z - success: assets loaded
-2018-01-24T06:34:24.481Z - success: builder loaded
-2018-01-24T06:34:24.483Z - success: cocos-analytics loaded
-2018-01-24T06:34:24.486Z - success: console loaded
-2018-01-24T06:34:24.488Z - success: hierarchy loaded
-2018-01-24T06:34:24.491Z - success: inspector loaded
-2018-01-24T06:34:24.492Z - success: keystore loaded
-2018-01-24T06:34:24.494Z - success: node-library loaded
-2018-01-24T06:34:24.496Z - success: package-asset loaded
-2018-01-24T06:34:24.498Z - success: preferences loaded
-2018-01-24T06:34:24.499Z - success: project-exporter loaded
-2018-01-24T06:34:24.514Z - success: project-importer loaded
-2018-01-24T06:34:24.516Z - success: project-settings loaded
-2018-01-24T06:34:24.517Z - success: ui-kit loaded
-2018-01-24T06:34:24.519Z - success: ui-grid loaded
-2018-01-24T06:34:24.521Z - success: scene loaded
-2018-01-24T06:34:24.522Z - success: sprite-editor loaded
-2018-01-24T06:34:24.525Z - success: store loaded
-2018-01-24T06:34:24.534Z - success: timeline loaded
-2018-01-24T06:34:24.534Z - normal: Loading builtin packages
-2018-01-24T06:34:24.536Z - success: asset-db-debugger loaded
-2018-01-24T06:34:24.538Z - success: code-editor loaded
-2018-01-24T06:34:24.538Z - success: color-picker loaded
-2018-01-24T06:34:24.540Z - success: package-manager loaded
-2018-01-24T06:34:24.543Z - success: sdkbox loaded
-2018-01-24T06:34:24.546Z - success: tester loaded
-2018-01-24T06:34:24.547Z - success: ui-kit-preview-extra loaded
-2018-01-24T06:34:24.549Z - success: ui-kit-preview loaded
-2018-01-24T06:34:24.550Z - success: ui-tree loaded
-2018-01-24T06:34:25.546Z - normal: Initializing project E:\work\Project\demo\cocos\start_project
-2018-01-24T06:34:25.548Z - normal: Loading packages
-2018-01-24T06:34:25.552Z - normal: Watching packages
-2018-01-24T06:34:25.564Z - normal: Run Application
-2018-01-24T06:34:25.924Z - success: preview server running at http://localhost:7456
-2018-01-24T06:34:29.981Z - normal: 1.8.1
-2018-01-24T07:39:48.241Z - error: TypeError: Cannot read property 'frameEL' of null
-    at HTMLElement.addEventListener.e (D:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ui\panel\panel.js:1:1687)
-2018-01-24T08:19:32.767Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "7052e9b8-9b18-46a9-9fe7-0ebb585a4552"
-
-2018-01-24T08:25:44.674Z - warn: The 'type' attribute of 'Game.ground' is undefined when loading script
-2018-01-24T08:25:44.676Z - warn: The 'type' attribute of 'Game.player' is undefined when loading script
+2018-01-26T08:31:32.635Z - normal: Load ~/.CocosCreator/settings.json
+2018-01-26T08:31:32.639Z - normal: checking language setting...
+2018-01-26T08:31:32.639Z - normal: Language: zh
+2018-01-26T08:31:34.446Z - success: protocol editor-framework registered
+2018-01-26T08:31:34.446Z - success: protocol app registered
+2018-01-26T08:31:34.446Z - success: protocol theme registered
+2018-01-26T08:31:34.446Z - success: protocol packages registered
+2018-01-26T08:31:34.447Z - success: protocol unpack registerred
+2018-01-26T08:31:34.447Z - success: protocol disable-commonjs registerred
+2018-01-26T08:31:35.001Z - normal: connected!
+2018-01-26T08:31:35.002Z - normal: Check project E:\work\Project\demo\cocos\start_project
+2018-01-26T08:31:35.004Z - normal: Initializing Cocos2d
+2018-01-26T08:31:35.203Z - normal: Initializing Asset Database
+2018-01-26T08:31:35.239Z - success: protocol uuid registerred
+2018-01-26T08:31:35.239Z - success: protocol db registerred
+2018-01-26T08:31:35.239Z - success: protocol thumbnail registerred
+2018-01-26T08:31:35.239Z - normal: Loading editor/builtin packages
+2018-01-26T08:31:35.259Z - success: anysdk loaded
+2018-01-26T08:31:35.376Z - success: assets loaded
+2018-01-26T08:31:35.377Z - success: builder loaded
+2018-01-26T08:31:35.379Z - success: cocos-analytics loaded
+2018-01-26T08:31:35.382Z - success: console loaded
+2018-01-26T08:31:35.384Z - success: hierarchy loaded
+2018-01-26T08:31:35.387Z - success: inspector loaded
+2018-01-26T08:31:35.388Z - success: keystore loaded
+2018-01-26T08:31:35.390Z - success: node-library loaded
+2018-01-26T08:31:35.391Z - success: package-asset loaded
+2018-01-26T08:31:35.393Z - success: preferences loaded
+2018-01-26T08:31:35.394Z - success: project-exporter loaded
+2018-01-26T08:31:35.415Z - success: project-importer loaded
+2018-01-26T08:31:35.417Z - success: project-settings loaded
+2018-01-26T08:31:35.419Z - success: ui-kit loaded
+2018-01-26T08:31:35.420Z - success: ui-grid loaded
+2018-01-26T08:31:35.423Z - success: scene loaded
+2018-01-26T08:31:35.424Z - success: sprite-editor loaded
+2018-01-26T08:31:35.426Z - success: store loaded
+2018-01-26T08:31:35.430Z - success: timeline loaded
+2018-01-26T08:31:35.430Z - normal: Loading builtin packages
+2018-01-26T08:31:35.431Z - success: asset-db-debugger loaded
+2018-01-26T08:31:35.433Z - success: code-editor loaded
+2018-01-26T08:31:35.433Z - success: color-picker loaded
+2018-01-26T08:31:35.435Z - success: package-manager loaded
+2018-01-26T08:31:35.438Z - success: sdkbox loaded
+2018-01-26T08:31:35.442Z - success: tester loaded
+2018-01-26T08:31:35.443Z - success: ui-kit-preview-extra loaded
+2018-01-26T08:31:35.444Z - success: ui-kit-preview loaded
+2018-01-26T08:31:35.445Z - success: ui-tree loaded
+2018-01-26T08:31:36.526Z - normal: Initializing project E:\work\Project\demo\cocos\start_project
+2018-01-26T08:31:36.528Z - normal: Loading packages
+2018-01-26T08:31:36.532Z - normal: Watching packages
+2018-01-26T08:31:36.543Z - normal: Run Application
+2018-01-26T08:31:36.936Z - success: preview server running at http://localhost:7456
+2018-01-26T08:31:41.146Z - normal: 1.8.1
+2018-01-26T08:58:52.915Z - normal: Start building with options : {
+  "androidStudio": true,
+  "apiLevel": "",
+  "appABIs": [],
+  "appKey": "",
+  "appSecret": "",
+  "buildPath": "E:\\work\\Project\\demo\\cocos\\start_project\\build",
+  "debug": false,
+  "dest": "E:\\work\\Project\\demo\\cocos\\start_project\\build\\jsb-link",
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [],
+  "includeAnySDK": false,
+  "includeEruda": false,
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "jailbreakPlatform": false,
+  "md5Cache": false,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.start_project",
+  "platform": "win32",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "privateKey": "",
+  "renderMode": "0",
+  "scenes": [
+    "7a6750f9-db47-46ab-8af6-384134a9da6b"
+  ],
+  "sourceMaps": false,
+  "startScene": "7a6750f9-db47-46ab-8af6-384134a9da6b",
+  "template": "link",
+  "title": "start_project",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "appid": "",
+    "orientation": "portrait"
+  },
+  "xxteaKey": "9af9e444-4595-4b",
+  "zipCompressJs": true,
+  "project": "E:\\work\\Project\\demo\\cocos\\start_project",
+  "projectName": "start_project",
+  "debugBuildWorker": false
+}
+2018-01-26T08:58:52.918Z - normal: Building E:\work\Project\demo\cocos\start_project
+2018-01-26T08:58:52.918Z - normal: Destination E:\work\Project\demo\cocos\start_project\build\jsb-link
+2018-01-26T08:58:53.300Z - normal: Delete E:\work\Project\demo\cocos\start_project\build\jsb-link\res/**/*,E:\work\Project\demo\cocos\start_project\build\jsb-link\src/*/
+2018-01-26T08:58:54.694Z - normal: Creating native cocos project to  E:\work\Project\demo\cocos\start_project\build\jsb-link
+2018-01-26T08:59:16.072Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:39798
+2018-01-26T08:59:16.076Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:39802
+2018-01-26T08:59:17.767Z - normal: Compiled project javascript file successfully
+2018-01-26T08:59:17.767Z - normal: Start building assets
+2018-01-26T08:59:17.768Z - normal: Start spawn build-worker
+2018-01-26T08:59:18.451Z - normal: Finish spawn build-worker
+2018-01-26T08:59:18.451Z - normal: Start init build-worker
+2018-01-26T08:59:20.512Z - normal: 1.8.1
+2018-01-26T08:59:20.578Z - normal: Finish init build-worker
+2018-01-26T08:59:20.578Z - normal: Start build-assets in worker
+2018-01-26T08:59:20.693Z - info: Enable "内联所有 SpriteFrame" in native platform will increase the package size used in hot update.
+2018-01-26T08:59:20.803Z - normal: Finish build-assets in worker
+2018-01-26T08:59:20.807Z - normal: Finish building assets
+2018-01-26T08:59:20.822Z - normal: Start building raw assets
+2018-01-26T08:59:20.823Z - normal: Start building plugin scripts
+2018-01-26T08:59:20.875Z - normal: Finish building raw assets
+2018-01-26T08:59:20.885Z - normal: Generating main.js from D:\CocosCreator\resources\static\build-templates\shares\main.js
+2018-01-26T08:59:22.145Z - normal: Built to "E:\work\Project\demo\cocos\start_project\build\jsb-link" successfully
+2018-01-26T08:59:32.302Z - normal: Start to compile native project. Please wait...
+2018-01-26T08:59:32.302Z - normal: The log file path [ C:\Users\dmall\.CocosCreator\logs\native.log ]
+2018-01-26T08:59:33.493Z - failed: Error: Compile failed. The log file path [ C:\Users\dmall\.CocosCreator\logs\native.log ]
+    at ChildProcess.handleChildProcess (D:\CocosCreator\resources\app.asar\editor\core\native-utils.js:1:20297)
+    at ChildProcess.e.on (D:\CocosCreator\resources\app.asar\editor\core\native-utils.js:1:7685)
+    at emitTwo (events.js:106:13)
+    at ChildProcess.emit (events.js:194:7)
+    at maybeClose (internal/child_process.js:899:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+2018-01-26T09:00:45.510Z - normal: Start to run project
+2018-01-26T09:00:46.628Z - normal: Start to run project. Please wait...
+2018-01-26T09:00:46.629Z - normal: The log file path [ C:\Users\dmall\.CocosCreator\logs\native.log ]
+2018-01-26T09:00:46.642Z - error: Error: spawn E:\work\Project\demo\cocos\start_project\build\jsb-link\publish\win32\start_project.exe ENOENT
+    at exports._errnoException (util.js:1050:11)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:193:32)
+    at onErrorNT (internal/child_process.js:367:16)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:128:9)
+    at process.on.t (D:\CocosCreator\resources\app.asar\editor\core\editor-init.js:1:1068)
+    at emitOne (events.js:101:20)
+    at process.emit (events.js:191:7)
+    at process._fatalException (bootstrap_node.js:308:26)
+2018-01-26T09:00:51.159Z - normal: Start to run project
+2018-01-26T09:00:52.292Z - normal: Start to run project. Please wait...
+2018-01-26T09:00:52.292Z - normal: The log file path [ C:\Users\dmall\.CocosCreator\logs\native.log ]
+2018-01-26T09:00:52.299Z - error: Error: spawn E:\work\Project\demo\cocos\start_project\build\jsb-link\publish\win32\start_project.exe ENOENT
+    at exports._errnoException (util.js:1050:11)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:193:32)
+    at onErrorNT (internal/child_process.js:367:16)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:128:9)
+    at process.on.t (D:\CocosCreator\resources\app.asar\editor\core\editor-init.js:1:1068)
+    at emitOne (events.js:101:20)
+    at process.emit (events.js:191:7)
+    at process._fatalException (bootstrap_node.js:308:26)
+2018-01-26T09:01:01.023Z - normal: Start building with options : {
+  "androidStudio": true,
+  "apiLevel": "",
+  "appABIs": [],
+  "appKey": "",
+  "appSecret": "",
+  "buildPath": "E:\\work\\Project\\demo\\cocos\\start_project\\build",
+  "debug": false,
+  "dest": "E:\\work\\Project\\demo\\cocos\\start_project\\build\\jsb-link",
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [],
+  "includeAnySDK": false,
+  "includeEruda": false,
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "jailbreakPlatform": false,
+  "md5Cache": false,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.start_project",
+  "platform": "win32",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "privateKey": "",
+  "renderMode": "0",
+  "scenes": [
+    "7a6750f9-db47-46ab-8af6-384134a9da6b"
+  ],
+  "sourceMaps": false,
+  "startScene": "7a6750f9-db47-46ab-8af6-384134a9da6b",
+  "template": "link",
+  "title": "start_project",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "appid": "",
+    "orientation": "portrait"
+  },
+  "xxteaKey": "9af9e444-4595-4b",
+  "zipCompressJs": true,
+  "project": "E:\\work\\Project\\demo\\cocos\\start_project",
+  "projectName": "start_project",
+  "debugBuildWorker": false
+}
+2018-01-26T09:01:01.025Z - normal: Building E:\work\Project\demo\cocos\start_project
+2018-01-26T09:01:01.025Z - normal: Destination E:\work\Project\demo\cocos\start_project\build\jsb-link
+2018-01-26T09:01:01.026Z - normal: Delete E:\work\Project\demo\cocos\start_project\build\jsb-link\res/**/*,E:\work\Project\demo\cocos\start_project\build\jsb-link\src/*/
+2018-01-26T09:01:03.828Z - normal: Compiled project javascript file successfully
+2018-01-26T09:01:03.828Z - normal: Start building assets
+2018-01-26T09:01:03.829Z - normal: Start spawn build-worker
+2018-01-26T09:01:04.497Z - normal: Finish spawn build-worker
+2018-01-26T09:01:04.497Z - normal: Start init build-worker
+2018-01-26T09:01:06.553Z - normal: 1.8.1
+2018-01-26T09:01:06.621Z - normal: Finish init build-worker
+2018-01-26T09:01:06.621Z - normal: Start build-assets in worker
+2018-01-26T09:01:06.732Z - info: Enable "内联所有 SpriteFrame" in native platform will increase the package size used in hot update.
+2018-01-26T09:01:06.831Z - normal: Finish build-assets in worker
+2018-01-26T09:01:06.835Z - normal: Finish building assets
+2018-01-26T09:01:06.844Z - normal: Start building raw assets
+2018-01-26T09:01:06.845Z - normal: Start building plugin scripts
+2018-01-26T09:01:06.855Z - normal: Finish building raw assets
+2018-01-26T09:01:06.862Z - normal: Generating main.js from D:\CocosCreator\resources\static\build-templates\shares\main.js
+2018-01-26T09:01:08.142Z - normal: Built to "E:\work\Project\demo\cocos\start_project\build\jsb-link" successfully
+2018-01-26T09:01:13.481Z - normal: Start to compile native project. Please wait...
+2018-01-26T09:01:13.481Z - normal: The log file path [ C:\Users\dmall\.CocosCreator\logs\native.log ]
+2018-01-26T09:01:14.678Z - failed: Error: Compile failed. The log file path [ C:\Users\dmall\.CocosCreator\logs\native.log ]
+    at ChildProcess.handleChildProcess (D:\CocosCreator\resources\app.asar\editor\core\native-utils.js:1:20297)
+    at ChildProcess.e.on (D:\CocosCreator\resources\app.asar\editor\core\native-utils.js:1:7685)
+    at emitTwo (events.js:106:13)
+    at ChildProcess.emit (events.js:194:7)
+    at maybeClose (internal/child_process.js:899:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+2018-01-26T09:01:30.590Z - normal: Start building with options : {
+  "androidStudio": true,
+  "apiLevel": "",
+  "appABIs": [],
+  "appKey": "",
+  "appSecret": "",
+  "buildPath": "E:\\work\\Project\\demo\\cocos\\start_project\\build",
+  "debug": false,
+  "dest": "E:\\work\\Project\\demo\\cocos\\start_project\\build\\web-mobile",
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [],
+  "includeAnySDK": false,
+  "includeEruda": false,
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "jailbreakPlatform": false,
+  "md5Cache": false,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.start_project",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "privateKey": "",
+  "renderMode": "0",
+  "scenes": [
+    "7a6750f9-db47-46ab-8af6-384134a9da6b"
+  ],
+  "sourceMaps": false,
+  "startScene": "7a6750f9-db47-46ab-8af6-384134a9da6b",
+  "template": "link",
+  "title": "start_project",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "appid": "",
+    "orientation": "portrait"
+  },
+  "xxteaKey": "9af9e444-4595-4b",
+  "zipCompressJs": true,
+  "project": "E:\\work\\Project\\demo\\cocos\\start_project",
+  "projectName": "start_project",
+  "debugBuildWorker": false
+}
+2018-01-26T09:01:30.590Z - normal: Building E:\work\Project\demo\cocos\start_project
+2018-01-26T09:01:30.590Z - normal: Destination E:\work\Project\demo\cocos\start_project\build\web-mobile
+2018-01-26T09:01:30.591Z - normal: Delete E:\work\Project\demo\cocos\start_project\build\web-mobile\**\*
+2018-01-26T09:02:22.272Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:43054
+2018-01-26T09:02:22.274Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:43057
+2018-01-26T09:02:22.274Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:43060
+2018-01-26T09:02:22.275Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:43062
+2018-01-26T09:02:22.275Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:43064
+2018-01-26T09:02:23.963Z - normal: Compiled project javascript file successfully
+2018-01-26T09:02:23.963Z - normal: Start building assets
+2018-01-26T09:02:23.963Z - normal: Start spawn build-worker
+2018-01-26T09:02:24.622Z - normal: Finish spawn build-worker
+2018-01-26T09:02:24.622Z - normal: Start init build-worker
+2018-01-26T09:02:26.678Z - normal: 1.8.1
+2018-01-26T09:02:26.745Z - normal: Finish init build-worker
+2018-01-26T09:02:26.745Z - normal: Start build-assets in worker
+2018-01-26T09:02:26.971Z - normal: Finish build-assets in worker
+2018-01-26T09:02:26.977Z - normal: Finish building assets
+2018-01-26T09:02:26.986Z - normal: Start building raw assets
+2018-01-26T09:02:26.987Z - normal: Start building plugin scripts
+2018-01-26T09:02:27.046Z - normal: Finish building raw assets
+2018-01-26T09:02:27.081Z - normal: Generating main.js from D:\CocosCreator\resources\static\build-templates\shares\main.js
+2018-01-26T09:02:27.100Z - normal: Generating html from D:\CocosCreator\resources\static\build-templates\web-mobile\template\index.html
+2018-01-26T09:02:27.107Z - normal: Built to "E:\work\Project\demo\cocos\start_project\build\web-mobile" successfully
+2018-01-26T13:37:34.022Z - info: shutdown preview server

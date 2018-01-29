@@ -23,7 +23,11 @@ cc.Class({
         jumpHeight: 0,
         jumpDuration: 0, // 跳跃持续时间
         maxMoveSpeed: 0, // 最大加速度
-        accel: 0
+        accel: 0,
+        jumpAudio: {
+            default: null,
+            url: cc.AudioClip
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -62,7 +66,14 @@ fn = {
 
         var jumpUp = cc.moveBy(caller.jumpDuration, cc.p(0, caller.jumpHeight)).easing(cc.easeCubicActionOut());
         var jumpDown = cc.moveBy(caller.jumpDuration, cc.p(0, -caller.jumpHeight)).easing(cc.easeCubicActionIn());
-        return cc.repeatForever(cc.sequence(jumpUp, jumpDown));
+
+        var callback = cc.callFunc(fn.playJumpSound, caller);
+        return cc.repeatForever(cc.sequence(jumpUp, jumpDown, callback));
+    },
+
+    playJumpSound: function playJumpSound() {
+        //this.jumpAudio.play();
+        cc.audioEngine.playEffect(this.jumpAudio, false);
     },
 
     setInputControl: function setInputControl(caller) {
