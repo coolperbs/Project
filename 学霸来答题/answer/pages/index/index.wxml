@@ -1,5 +1,5 @@
 <view class="head">
-	最强学霸
+	<!--最强学霸-->
 	<view class="btn">活动规则</view>
 </view>
 
@@ -24,3 +24,44 @@
 		</view>
 	</view>
 </view>
+
+<view class="entry">
+	<view class="info">
+		<view class="season">第3期</view>
+		<view class="title">复旦专场(共12题)</view>
+		<view class="sub-title">*仅限复旦同学参加，其他高校的同学可以围观哦~</view>
+	</view>
+	<view class="act btns">
+		<view class="btn">已经开始，立即进入</view>
+	</view>
+</view>
+
+<view class="entry">
+	<view class="info">
+		<view class="season">第2期</view>
+		<view class="title">复旦专场(共12题)</view>
+		<view class="sub-title">*仅限复旦同学参加，其他高校的同学可以围观哦~</view>
+	</view>
+	<view class="act btns">
+		<view class="btn now">马上开始(60s)，立即进入</view>
+	</view>
+</view>
+
+<view class="entry">
+	<view class="info">
+		<view class="season">第2期</view>
+		<view class="title">复旦专场(共12题)</view>
+		<view class="sub-title">*仅限复旦同学参加，其他高校的同学可以围观哦~</view>
+	</view>
+	<view class="act btns">
+		<view class="btn finish">已经结束</view>
+	</view>
+</view>
+
+
+
+
+
+
+
+
