@@ -1,0 +1,37 @@
+Page{ background-color: #149eff; height : 100%; }
+
+.container {  display: flex; height : 100%; flex-direction : column; justify-content : space-between; align-items : center; }
+
+.card { position: relative; height : 840rpx; width : 670rpx; background-color: #fff; margin : 0 auto; border-radius: 10rpx; }
+.card .favor { position: absolute; left : 40rpx; padding : 0 25rpx; height : 50rpx; top : 40rpx; border : solid 1px #ccc; color : #999; font-size : 26rpx; display: flex; align-items : center; justify-content : center; border-radius : 30rpx; }
+.card .favor image { width : 26rpx; height : 32rpx; margin-right : 10rpx; }
+.card .num { right : 40rpx; top : 40rpx; height : 50rpx; display: flex; align-items : center; position: absolute; font-size : 26rpx; color : #ccc; }
+.card .num image { height : 32rpx; width : 28rpx; margin-right : 16rpx; }
+
+.wait { display: flex; justify-content : center; align-items : center; }
+.wait .info { text-align: center; margin-top : -20rpx; }
+.wait .info .season { font-size : 40rpx; color : #ff8800; font-weight : bold; }
+.wait .info .logo image { width : 239rpx; height : 66rpx; margin-top : 35rpx; }
+.wait .info .title { font-size : 48rpx; color : #ff8800; margin-top : 35rpx; font-weight : bold; }
+.wait .info .time { font-size : 90rpx; color : #149eff; margin-top : 80rpx; }
+
+.question { display: flex; flex-direction : column; align-items : center;  }
+.question .info { margin-top : 62rpx; width : 120rpx; height : 120rpx; border-radius: 50%; background-color: #ccc; }
+.question .text { font-size : 36rpx; margin : 77rpx 62rpx 0 62rpx; text-align: center; }
+.question .options { margin-top : 70rpx; }
+.question .options .cell { overflow: hidden; position: relative; font-size : 28rpx; border-radius: 60rpx; line-height: 100rpx; margin-bottom : 20rpx; padding : 0 45rpx; width : 460rpx; height : 100rpx; border : solid 4rpx #e4e4e4; }
+.question .options .cell .txt { z-index: 1; position: relative; }
+.question .options .cell .col { width : 50%; height : 100%; background-color : #ccc; position: absolute; left : 0; top : 0;  }
+
+.container .comments { font-size : 24rpx; height : 1rpx; flex-grow : 1; margin-top : 25rpx; margin-bottom : 110rpx; width : 650rpx; }
+.container .comments .text { display: flex; color : #fff; text-shadow : 0 6rpx 6rpx rgba( 0, 0, 0, 0.28 ); margin-bottom : 20rpx; }
+.container .comments .text .name { color : #ffe28b; margin-right : 15rpx; }
+.container .comments .text .word { width : 1rpx; flex-grow : 1; }
+
+
+.toolbar { height : 70rpx; left : 40rpx; position: fixed; bottom : 30rpx; width : 670rpx; display: flex; justify-content : space-between; align-items : center; }
+.toolbar input { font-size : 30rpx; width : 510rpx; height : 70rpx; line-height: 70rpx; padding : 0 30rpx; color : #a6c5e6; background-color: #107ecc; border-radius: 40rpx; }
+.toolbar .btn { position: relative; width : 70rpx; height : 70rpx; border-radius: 50%; background-color: #107ecc; }
+.toolbar .btn:after { content : ''; height : 14rpx; width : 14rpx; background-color: #a6c5e6; position: absolute; border-radius: 50%; left : 30rpx; top : 30rpx; }
+.toolbar .btn:before { width : 28rpx; height : 28rpx; content: ''; background-color: transparent; position: absolute; left : 17rpx; top : 17rpx; border-radius: 50%; border : solid 6rpx #a6c5e6; }
+

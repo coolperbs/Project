@@ -1,0 +1,86 @@
+<view class="container">
+	<view class="card question">
+		<view class="favor">
+			<image src="../../images/favor.png"></image>
+			10
+		</view>
+		<view class="num">
+			<image src="../../images/number.png"></image>
+			5892
+		</view>		
+		<view class="info"></view>
+		<view class="text">
+			1.下列哪个不是美国保洁公司旗下的品牌？
+		</view>
+		<view class="options">
+			<view class="cell">
+				<view class="txt ellipsis-1">舒肤佳</view>
+			</view>
+			<view class="cell">
+				<view class="txt ellipsis-1">潘婷</view>
+			</view>
+			<view class="cell">
+				<view class="txt ellipsis-1">纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯</view>
+				<view class="col"></view>
+			</view>
+		</view>
+	</view>
+
+
+	<view class="card wait" style="display:none;">
+		<view class="favor">
+			<image src="../../images/favor.png"></image>
+			10
+		</view>
+		<view class="num">
+			<image src="../../images/number.png"></image>
+			5892
+		</view>
+		<view class="info">
+			<view class="season">第3期</view>
+			<view class="logo"><image src="../../images/logo.png"></image></view>
+			<view class="title">清华北大专场还有</view>
+			<view class="time">00:59</view>
+		</view>
+	</view>
+
+
+	<scroll-view class="comments" scroll-y="{{ true }}">
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+		<view class="text">
+			<view class="name">乐乐:</view>
+			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+		</view>
+	</scroll-view>
+	<view class="toolbar">
+		<input placeholder="参与热评" placeholder-style="color : #a6c5e6;"/>
+		<view class="btn"></view>
+	</view>
+</view>
