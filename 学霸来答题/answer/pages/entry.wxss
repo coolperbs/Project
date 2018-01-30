@@ -1,0 +1,31 @@
+/* pages/entry.wxss */
+
+Page {
+  background-color: #36a3fb;
+  height: 100%;
+  overflow: hidden;
+}
+
+.login-bg {
+  height: inherit;
+  width: inherit;
+}
+
+.login-btn {
+  position: absolute;
+  left: 45rpx;
+  right: 45rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  bottom: 300rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-btn .btn-text {
+  margin-left: 30rpx;
+}
