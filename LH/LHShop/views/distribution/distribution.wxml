@@ -47,7 +47,7 @@
 
 		<view class="agentinfo">
 		  <view class="title">分销规则 : </view>
-		  <view class="cont">一级提交{{traderInfo.firstCommission}}，二级提交{{traderInfo.sencondCommission}}</view>
+		  <view class="cont">一级提成{{traderInfo.firstCommission}}，二级提成{{traderInfo.sencondCommission}}</view>
 		</view>
 	</view>
 

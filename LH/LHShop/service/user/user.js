@@ -152,6 +152,7 @@ _fn = {
 	},
 	wxLogin : function( callback ) {
 		wx.login( {
+			lang : 'zh_CN',
 			success : function( res ) {
 				callback && callback( utils.merge( error.success, { data : res } ) );
 			},

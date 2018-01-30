@@ -31,7 +31,9 @@ Page({
 				return;
 			}
 			utils.hideLoading();
-			app.bindUpperUid();
+			setTimeout( function() {
+				app.bindUpperUid();
+			}, 10 );
 			_fn.next();
 		} );
 	},

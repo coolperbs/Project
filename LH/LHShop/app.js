@@ -73,13 +73,14 @@ var handle = {
 		var hasBind = wx.getStorageSync( 'hasBind' ),
 			userInfo = wx.getStorageSync( 'userinfo' ) || {};
 
+		upperuid = upperuid || wx.getStorageSync( 'upperuid' );
 		if ( !upperuid || !userInfo || !userInfo.token ) {
 			return;
 		}
 
-		if ( hasBind ) {
-			return;
-		}
+		// if ( hasBind ) {
+		// 	return;
+		// }
 
 		// upperuid是自己的情况，自己成为分销商就能分享了
 		// if ( userInfo && userInfo.user && userInfo.user.id == upperuid  ) {
@@ -89,9 +90,10 @@ var handle = {
 		ajax.query( {
 			url : this.host + '/app/binding',
 			param : {
-				ParentUserId : upperuid
+				parentUserId : upperuid
 			}
 		}, function( res ) {
+			console.log( '绑定请求返回:' + res.code + ',msg:' + res.msg );
 			if ( res.code == '0000' || res.code == '1003' ) {
 				wx.setStorageSync( 'hasBind', true );
 			}
