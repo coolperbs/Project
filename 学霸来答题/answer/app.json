@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+
+  "window":{
+    "navigationBarBackgroundColor": "#149eff",
+    "navigationBarTitleText" : "最强学霸 ",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh" : false
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
