@@ -84,3 +84,34 @@
 		<view class="btn"></view>
 	</view>
 </view>
+
+<!-- 复活
+<view class="pop-area">
+	<view class="pop">
+		<image src="../../images/close.png" class="cross"></image>
+		<view class="info">
+			<image class="icon" src="../../images/favor-card.png"></image>
+			<view class="title">复活机会</view>
+			<view class="desc">确定要使用1张复活卡继续答题吗？</view>
+		</view>
+		<view class="act">
+			<view class="btn">确定</view>
+		</view>
+	</view>
+</view>
+-->
+<view class="pop-area">
+	<!--  670 h705 -->
+	<view class="pop">
+		<image src="../../images/close.png" class="cross"></image>
+		<view class="info">
+			<image class="icon" src="../../images/favor-card.png"></image>
+			<view class="title">复活机会</view>
+			<view class="desc">确定要使用1张复活卡继续答题吗？</view>
+		</view>
+		<view class="act">
+			<view class="btn">确定</view>
+		</view>
+	</view>
+</view>
+
