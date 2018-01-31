@@ -2,7 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/match/match",
-    "pages/entry"
+    "pages/entry/entry"
   ],
 
   "window":{
