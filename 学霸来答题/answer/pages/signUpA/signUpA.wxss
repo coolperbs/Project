@@ -1,0 +1,63 @@
+/* pages/sign-upA/sign-upA.wxss */
+
+.sign-up-input {
+  padding-top: 70rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.sign-up-input .input-box {
+  height: 100rpx;
+  background: #f4f4f4;
+  font-size: 28rpx;
+  border-radius: 5rpx;
+  margin-bottom: 40rpx;
+    padding-right: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sign-up-input .input-box .input-icon {
+  height: 50rpx;
+  width: 50rpx;
+    margin-left:30rpx;
+    margin-right:10rpx;
+}
+.sign-up-input .input-box .chose-area{
+    padding-right: 30rpx;
+    margin-right: 20rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-right: 0.5px solid #ccc;
+}
+.sign-up-input .input-box .get-code{
+    margin-left: auto;
+    color: #ccc;
+    font-size: 28rpx;
+    padding-left: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-left: 0.5px solid #ccc;
+}
+
+.sign-up-input .input-box .input-placeholder {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.sign-up-input .input-box .phone, .regCode {
+  height: inherit;
+  min-height: inherit;
+}
+
+.sign-up-btn{
+    height: 90rpx;
+    background: #36a3fb;
+    color: white;
+    border-radius: 45rpx;
+    position: absolute;
+    left: 45rpx;
+    right: 45rpx;
+    bottom: 40rpx;
+}

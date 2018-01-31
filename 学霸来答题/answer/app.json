@@ -1,11 +1,14 @@
 {
   "pages":[
+    "pages/entry/entry",
     "pages/index/index",
-    "pages/match/match"
+    "pages/match/match",
+    "pages/signUpA/signUpA",
+    "pages/signUpB/signUpB"
   ],
 
   "window":{
-    "navigationBarBackgroundColor": "#149eff",
+    "navigationBarBackgroundColor": "#36a3fb",
     "navigationBarTitleText" : "最强学霸 ",
     "navigationBarTextStyle":"white",
     "enablePullDownRefresh" : false
