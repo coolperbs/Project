@@ -64,5 +64,15 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+    /**
+     * 自定义事件 去登陆
+     * */
+    nextStep: function () {
+        //todo 这里需要验证判断判断
+
+        wx.navigateTo({
+            url:'../signUpB/signUpB'
+        });
+    }
 })
