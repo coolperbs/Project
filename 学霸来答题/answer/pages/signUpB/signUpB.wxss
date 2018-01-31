@@ -1,13 +1,101 @@
 /* pages/sign-upB/sign-upB.wxss */
 
+.head-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 30rpx;
+  position: relative;
+}
 
-.sign-up-btn{
-    height: 90rpx;
-    background: #36a3fb;
-    color: white;
-    border-radius: 45rpx;
-    position: absolute;
-    left: 45rpx;
-    right: 45rpx;
-    bottom: 40rpx;
+.head-box .head-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.head-box .head-camera {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  bottom: 0;
+  transform: translateX(70rpx);
+}
+
+.head-desc {
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 20rpx;
+}
+
+.sign-up-info-box {
+  margin: 50rpx 136rpx 0 136rpx;
+}
+
+.sign-up-info-box .info-inline {
+  border-bottom: 1rpx solid #ddd;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 20rpx;
+}
+
+.sign-up-info-box .info-inline, .sign-up-info-box .info-group {
+  margin-bottom: 30rpx;
+}
+
+.sign-up-info-box .info-inline .info-label {
+  font-size: 26rpx;
+  color: #1a1b1e;
+  margin-right: 36rpx;
+  white-space: nowrap;
+}
+
+.sign-up-info-box .info-group .info-label {
+  font-size: 26rpx;
+  color: #1a1b1e;
+  margin-bottom: 15rpx;
+  white-space: nowrap;
+  display: block;
+}
+
+.sign-up-info-box .info-inline .info-input {
+  font-size: 28rpx;
+  width: 100%;
+  margin-bottom: -2rpx;
+}
+.sign-up-info-box .info-group .info-radio{
+  display: flex;
+  justify-content: center;
+  border-radius: 4rpx;
+  border:1rpx solid #ddd;
+}
+.sign-up-info-box .info-group .info-radio .info-radio-item{
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #fff;
+
+}
+.sign-up-info-box .info-group .info-radio .info-radio-item.active{
+  background: #36a3fb;
+  color: white;
+  border-radius: 4rpx;
+}
+.info-placeholder {
+  color: #ccc;
+}
+
+.sign-up-btn {
+  height: 90rpx;
+  background: #36a3fb;
+  color: white;
+  border-radius: 45rpx;
+  position: absolute;
+  left: 45rpx;
+  right: 45rpx;
+  bottom: 40rpx;
 }

@@ -12,5 +12,5 @@
   </view>
 </view>
 <button class="sign-up-btn" bindtap="nextStep">
-下一步
+  下一步
 </button>

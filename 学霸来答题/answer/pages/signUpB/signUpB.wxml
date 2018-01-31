@@ -1,7 +1,40 @@
 <!--pages/signUpB/signUpB.wxml-->
-<view>
-
+<view class='head-box'>
+  <image class='head-img' src="../../images/image_head_sample@2x.png"></image>
+  <image class='head-camera' src="../../images/image_head_camera@2x.png"></image>
+</view>
+<view class='head-desc'>
+  上传真实头像更利于审核通过。
+</view>
+<view class='sign-up-info-box'>
+  <view class='info-inline'>
+    <text class='info-label'>昵称</text>
+    <input class='info-input' placeholder-class='info-placeholder' placeholder='请输入1-20位字符的昵称'></input>
+  </view>
+  <view class='info-group'>
+    <text class='info-label'>性别</text>
+    <view class='info-radio'>
+      <view class='info-radio-item active'>男</view>
+      <view class='info-radio-item'>女</view>
+    </view>
+  </view>
+  <view class='info-group'>
+    <text class='info-label'>感情状态</text>
+    <view class='info-radio'>
+      <view class='info-radio-item active'>单身</view>
+       <view class='info-radio-item'>恋爱中</view>
+      <view class='info-radio-item'>保密</view>
+    </view>
+  </view>
+  <view class='info-inline'>
+    <text class='info-label'>生日</text>
+    <input class='info-input'></input>
+  </view>
+  <view class='info-inline'>
+    <text class='info-label'>家乡</text>
+    <input class='info-input'></input>
+  </view>
 </view>
 <button class="sign-up-btn" bindtap="showImageChoice">
-下一步
+  确 认
 </button>
