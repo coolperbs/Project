@@ -21,12 +21,31 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "答题",
-					"pathName": "pages/match/match"
+					"pathName": "pages/match/match",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "登陆",
+					"pathName": "pages/entry/entry",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "注册步骤A",
+					"pathName": "pages/signUpA/signUpA",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册步骤B",
+					"pathName": "pages/signUpB/signUpB",
+					"query": ""
 				}
 			]
 		}

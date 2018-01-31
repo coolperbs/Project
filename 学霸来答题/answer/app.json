@@ -1,8 +1,10 @@
 {
   "pages":[
+    "pages/entry/entry",
     "pages/index/index",
     "pages/match/match",
-    "pages/entry/entry"
+    "pages/signUpA/signUpA",
+    "pages/signUpB/signUpB"
   ],
 
   "window":{
