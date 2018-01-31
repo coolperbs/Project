@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/match/match"，
+    "pages/match/match",
     "pages/entry"
   ],
 
