@@ -1,3 +1,3 @@
 /**app.wxss**/
-/*@import "/common/basestyle/basestyle.wxss";
-@import '/common/basestyle/base.wxss';*/
+@import "/common/style/style.wxss";
+/*@import '/common/basestyle/base.wxss';*/
