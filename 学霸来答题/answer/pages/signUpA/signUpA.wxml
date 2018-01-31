@@ -11,6 +11,6 @@
     <view class="get-code">获取验证码</view>
   </view>
 </view>
-<button class="sign-up-btn">
+<button class="sign-up-btn" bindtap="nextStep">
 下一步
 </button>
