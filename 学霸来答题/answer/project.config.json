@@ -53,14 +53,31 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "排行榜",
 					"pathName": "pages/rank/rank",
+=======
+					"name": "注册C",
+					"pathName": "pages/signUpC/signUpC",
+>>>>>>> 11add62e5bff7e256dd1f4f27b5ec953f3030a4a
 					"query": ""
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "个人中心",
 					"pathName": "pages/mine/mine"
+=======
+					"name": "身份认证",
+					"pathName": "pages/signUpC1/signUpC1",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "学校认证",
+					"pathName": "pages/signUpC2/signUpC2",
+					"query": ""
+>>>>>>> 11add62e5bff7e256dd1f4f27b5ec953f3030a4a
 				}
 			]
 		}
