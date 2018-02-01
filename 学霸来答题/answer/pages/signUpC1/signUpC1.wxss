@@ -1,0 +1,75 @@
+/* pages/signUpC1/signUpC1.wxss */
+.author-desc{
+   font-size: 28rpx;
+    color: #1a1b1e;
+    margin: 40rpx 30rpx 40rpx 30rpx;
+    line-height: 1.8;
+}
+.author-desc .desc-inline{
+    font-size: 28rpx;
+    line-height: 1.8;
+    color: #ff7c24;
+}
+.upload-box{
+    margin:  0 30rpx 40rpx 30rpx;
+}
+.upload-box .upload-box-label{
+    font-size: 28rpx;
+    color: #1a1b1e;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+.upload-box .album-box{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.upload-box .album-item{
+    width: 226rpx;
+    height: 226rpx;
+    position: relative;
+    margin-right: 5rpx;
+}
+.upload-box .album-item:last-child{
+    margin-right: 0;
+}
+.upload-box .album-item.add{
+    background: #f4f4f4;
+    border:1rpx solid #cccccc;
+}
+.upload-box .album-item .album-add{
+    height: 55rpx;
+    width: 55rpx;
+    border:2rpx solid #cccccc;
+    border-radius: 50%;
+    color: #ccc;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.upload-box .album-item .album-image{
+    width: 226rpx;
+    height: 226rpx;
+    position: absolute;
+}
+.upload-box .album-item .album-delete{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    margin: 10rpx;
+}
+.sample-image{
+    width: 430rpx;
+    height: 346rpx;
+    margin-bottom: 30rpx;
+}
+.sample-text{
+    font-size: 24rpx;
+    color: #999;
+}

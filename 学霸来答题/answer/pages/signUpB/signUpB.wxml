@@ -35,6 +35,6 @@
     <input class='info-input'></input>
   </view>
 </view>
-<button class="sign-up-btn" bindtap="showImageChoice">
+<button class="sign-up-btn" bindtap="nextStep">
   确 认
 </button>

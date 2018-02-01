@@ -1,0 +1,27 @@
+<!--pages/signUpC1/signUpC1.wxml-->
+<view class='author-desc' >
+   <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text> Summer是一款校园专属的社交应用,为了保证用户学生身份的真实性,我们需要您的配合上传能够证明学生身份的证件照片,包括
+    <text class="desc-inline">学生卡、学生证、录取通知书</text>和
+    <text class="desc-inline">毕业证书</text>均可,30岁以下的校友用户上传校友卡即可认证。
+</view>
+<view class="upload-box">
+    <view class="upload-box-label">请上传认证图片</view>
+    <view class="album-box">
+        <view class="album-item">
+            <image class="album-image" src="../../images/upload_sample.jpg"></image>
+            <image catchtap="deleteEvt" class="album-delete" src="../../images/image_delete@2x.png"></image>
+        </view>
+        <view class="album-item">
+            <image class="album-image" src="../../images/upload_sample.jpg"></image>
+            <image catchtap="deleteEvt" class="album-delete" src="../../images/image_delete@2x.png"></image>
+        </view>
+        <view catchtap="startChooseEvt" class="album-item add" >
+            <image class="album-add" src="../../images/image_add@2x.png"></image>
+        </view>
+    </view>
+</view>
+<view class="upload-box">
+    <view class="upload-box-label">认证照片示范</view>
+    <image class="sample-image" src="../../images/image_id_card_example@2x.png"></image>
+    <view class="sample-text">*我们会进行严格的人工审核,审核通过后会第一时间通知您</view>
+</view>

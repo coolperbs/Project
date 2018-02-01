@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -49,6 +49,24 @@
 					"id": -1,
 					"name": "注册步骤B",
 					"pathName": "pages/signUpB/signUpB",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册C",
+					"pathName": "pages/signUpC/signUpC",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "身份认证",
+					"pathName": "pages/signUpC1/signUpC1",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "学校认证",
+					"pathName": "pages/signUpC2/signUpC2",
 					"query": ""
 				}
 			]

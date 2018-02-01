@@ -1,4 +1,4 @@
-// pages/signUpB/signUpB.js
+// pages/signUpC1/signUpC1.js
 Page({
 
   /**
@@ -12,9 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '完善个人信息(2/3)'
-    })
+
   },
 
   /**
@@ -65,41 +63,46 @@ Page({
   onShareAppMessage: function () {
 
   },
-  nextStep:function(){
-    wx.navigateTo({
-      url: '../signUpC/signUpC'
-    });
+  /**
+   * 删除用户上传的某张图片
+   * */
+  deleteEvt: function () {
+    console.log(1111)
   },
-  chooseImageEvt: function () {
-    // var _this = this;
-    // wx.chooseImage({
-    //     count: 1, // 默认9
-    //     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-    //     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-    //     success: function (res) {
-    //         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-    //        console.log(res);
-    //     }
-    // })
-    wx.showActionSheet({
-      itemList: ['A', 'B', 'C'],
-      success: function (res) {
-        console.log(res.tapIndex)
-      },
-      fail: function (res) {
-        console.log(res.errMsg)
-      }
-    })
-  },
-  showImageChoice:function(){
+  /**
+   * 添加图片方式
+   * */
+  startChooseEvt: function () {
+    var that = this;
     wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
       success: function (res) {
-        console.log(res.tapIndex)
+        var type = ['album', 'camera'];
+        that.chooseRealImage(type[res.tapIndex]);
       },
       fail: function (res) {
         console.log(res.errMsg)
       }
     })
+  },
+  /**
+   * 选择图片
+   * */
+  chooseRealImage: function (type) {
+    var _this = this;
+    var tempType=[];
+    tempType.push(type);
+    wx.chooseImage({
+      count: 3, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: tempType, // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        console.log(res.tempFilePaths);
+      },
+      fail: function (res) {
+        console.log(res.tempFilePaths);
+      }
+    })
   }
-})
+});

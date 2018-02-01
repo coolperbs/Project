@@ -4,7 +4,10 @@
     "pages/index/index",
     "pages/match/match",
     "pages/signUpA/signUpA",
-    "pages/signUpB/signUpB"
+    "pages/signUpB/signUpB",
+    "pages/signUpC/signUpC",
+    "pages/signUpC1/signUpC1",
+    "pages/signUpC2/signUpC2"
   ],
 
   "window":{
