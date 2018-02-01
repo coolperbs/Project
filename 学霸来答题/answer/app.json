@@ -3,6 +3,8 @@
     "pages/entry/entry",
     "pages/index/index",
     "pages/match/match",
+    "pages/rank/rank",
+    "pages/mine/mine",
     "pages/signUpA/signUpA",
     "pages/signUpB/signUpB"
   ],

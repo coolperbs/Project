@@ -1,0 +1,62 @@
+
+<view class="top">
+	<view class="user">
+		<view class="head">
+			<view class="title">2</view>
+			<image class="logo" src=""></image>
+		</view>
+		<view class="info">
+			<view class="name">用户名称</view>		
+			<view class="price">¥99.00</view>
+		</view>
+	</view>
+
+	<view class="user first">
+		<view class="head">
+			<view class="title">
+				<image src="../../images/champion.png"></image>
+			</view>
+			<image class="logo" src=""></image>
+		</view>
+		<view class="info">
+			<view class="name">用户名称</view>		
+			<view class="price">¥99.00</view>
+		</view>
+	</view>
+
+	<view class="user">
+		<view class="head">
+			<view class="title">3</view>
+			<image class="logo" src=""></image>
+		</view>
+		<view class="info">
+			<view class="name">用户名称</view>		
+			<view class="price">¥99.00</view>
+		</view>
+	</view>
+</view>
+
+<view class="list">
+	<view class="user" wx:for="{[1,2,3,5]}">
+		<view class="info">
+			<view class="num">{{ index + 3 }}</view>
+			<image class="logo"></image>
+			<view class="name">用户名称</view>
+		</view>
+		<view class="price">
+			¥323.00
+		</view>
+	</view>	
+</view>
+
+<view class="toolbar">
+	<view class="info">
+		<view class="dot"></view>
+		<image class="logo" src=""></image>
+		<view class="name">我</view>
+	</view>
+	<view class="status">
+		暂未上榜
+	</view>
+</view>
+

@@ -1,0 +1,23 @@
+Page{ background-color: #149eff; height : 100%; }
+
+.container { margin : 85rpx 44rpx 0 44rpx; background-color: #fff; border-radius: 10rpx; display: flex; flex-direction : column; align-items : center; }
+.container .user { display: flex; flex-direction : column; align-items : center; margin-top : -75rpx; }
+.container .user .logo { position: relative; }
+.container .user .logo image { width : 150rpx;height : 150rpx; background-color: #efefef; border-radius: 50%; }
+.container .user .logo .status { width : 35rpx; height : 35rpx; border-radius: 50%; position: absolute; bottom : 10rpx; right : 10rpx; background-color: #48e9d0; font-size : 20rpx; color : #fff; text-align: center; line-height: 35rpx; }
+.container .user .name { font-size : 48rpx; margin-top : 40rpx; }
+.container .user .tags { margin-top : 20rpx; display: flex; align-items : center; }
+.container .user .tags .label { margin-right : 8rpx; display: flex; justify-content : center; align-items : center; width : 75rpx; height : 30rpx;font-size : 20rpx; border-radius : 4rpx; color : #fff; background-color: #ffc518; }
+.container .user .tags .label:last-child { margin-right : 0; }
+.container .user .tags .label.age { background-color: #89ddff; }
+.container .user .desc { font-size : 24rpx; color : #aaa; margin-top : 20rpx; }
+
+.container .school { font-size : 30rpx; margin : 50rpx 96rpx 0 96rpx; width : 478rpx; display: flex; align-items: center; justify-content : space-between; }
+.container .school .auth { color : #ccc; }
+
+.container .rank { padding : 46rpx 0; display: flex; justify-content : space-between; align-items : center; margin-top : 50rpx; width : 550rpx; border : solid 1px #e4e4e4; border-width : 1px 0; }
+.container .rank .cell { width : 50%; border-right : solid 1px #e4e4e4; height : 106rpx; display: flex; flex-direction : column; align-items : center; justify-content : space-between; }
+.container .rank .cell:last-child { border-right : 0; }
+.container .rank .cell .key { font-size : 36rpx; color : #ccc; }
+.container .rank .cell .value { font-size : 60rpx; color : #149eff; }
+

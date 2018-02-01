@@ -1,0 +1,28 @@
+Page{ background-color: #149eff; height : 100%; }
+
+.top { display: flex; justify-content : space-between; margin : 0 44rpx; }
+.top .user { display: flex; flex-direction : column; justify-content : space-between; align-items : center; }
+.top .user .head { margin-top : 90rpx; position: relative; }
+.top .user.first .head { margin-top : 60rpx; }
+.top .user .head .logo { width : 180rpx; height : 180rpx; background-color: #fff; border-radius: 50%; }
+.top .user.first .head .logo { width : 230rpx; height : 230rpx; }
+.top .user .head .title { left : 50%; margin-left : -40rpx; top : -50rpx; position: absolute; width : 80rpx; height : 80rpx; border-radius: 50%; background-color: #ffd200; color : #fff; display: flex; justify-content : center; align-items : center; font-size : 42rpx; }
+.top .user .head .title image { width : 50rpx; height : 40rpx; }
+.top .user .info { display: flex; flex-direction : column; justify-content : center; align-items : center; margin-top : 10rpx; }
+.top .user .info .name { color : #fff; font-size : 30rpx; }
+.top .user .info .price { margin-top : 30rpx; background-color: #ffd200; width : 190rpx; height : 60rpx; text-align: center; color : #fff; border-radius : 40rpx; line-height : 60rpx; }
+
+.list { margin-top : 86rpx; margin-bottom : 120rpx; }
+.list .user { margin-top : 30rpx; display: flex; justify-content : space-between; align-items : center; padding : 0 44rpx; }
+.list .user:first-child { margin-top : 0; }
+.list .user .info { display: flex; align-items : center; font-size : 32rpx; color : #fff; }
+.list .user .info .logo { margin : 0 30rpx; width : 80rpx; height : 80rpx; background-color: #f0f0f0; border-radius: 50%; }
+.list .user .info .num { width : 30rpx; }
+.list .user .price { display: flex; justify-content : center; align-items : center; border-radius: 40rpx; font-size : 32rpx; height : 60rpx; min-width : 150rpx; background-color: #88dcff; color : #fff; padding : 0 20rpx; }
+
+
+.toolbar { display: flex; justify-content : space-between; align-items : center; height : 116rpx; background-color: #fff; width : 100%; z-index: 100;  position: fixed; bottom : 0; left : 0; }
+.toolbar .info { margin-left : 44rpx; display: flex; align-items : center; color : #999; }
+.toolbar .info .dot { width : 16rpx; height : 8rpx; background-color: #149eff; }
+.toolbar .info .logo { width : 80rpx; height : 80rpx; background-color: #efefef; border-radius: 50%; margin : 0 40rpx; }
+.toolbar .status { margin-right : 44rpx; color : #fff; background-color: #149eff; height : 60rpx; width : 190rpx; display: flex; justify-content : center; align-items : center; font-size : 32rpx; border-radius : 40rpx; }

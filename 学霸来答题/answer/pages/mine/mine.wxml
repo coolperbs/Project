@@ -1,0 +1,44 @@
+<view class="container">
+	<view class="user">
+		<view class="logo">
+			<image src=""></image>
+			<view class="status">单</view>
+		</view>
+		<view class="name">用户名称</view>
+		<view class="tags">
+			<view class="label age">♀ 27</view><!-- ♂ -->
+			<view class="label">摩羯座</view>
+		</view>
+		<view class="desc">自我介绍</view>
+	</view>
+
+	<view class="school">
+		<view class="name">学校信息</view>
+		<view class="auth">认证通过 ></view>
+	</view>
+
+	<view class="rank">
+		<view class="cell">
+			<view class="key">获得奖金</view>
+			<view class="value">
+				¥ 0
+			</view>
+		</view>
+		<view class="cell">
+			<view class="key">排名</view>
+			<view class="value">
+				100+
+			</view>			
+		</view>
+	</view>
+
+	<view class="card">
+		<view class="num"></view>
+		<view class="desc">
+			<view class="em">复活卡:</view>
+			额外机会，答题不被淘汰
+		</view>
+		<view class="btn">邀好友得复活卡</view>
+	</view>
+
+</view>
