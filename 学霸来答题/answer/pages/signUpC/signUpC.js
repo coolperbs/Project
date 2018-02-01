@@ -64,5 +64,19 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  goPage:function(event){
+  
+    var URL ='../signUpC1/signUpC1';
+    var type = event.currentTarget.dataset.type;
+    if(type=='school'){
+      URL = '../signUpC2/signUpC2'
+    }
+    wx.navigateTo({
+      url: URL
+    });
   }
 })

@@ -16,6 +16,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  min-width: 60%;
 }
 .tab-box .tab-item .tab-item-label {
   font-size: 30rpx;

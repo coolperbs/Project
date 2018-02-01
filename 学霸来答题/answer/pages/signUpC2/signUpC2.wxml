@@ -42,6 +42,6 @@
   </view>
 </view>
 
-<button class="sign-up-btn" bindtap="showImageChoice">
+<button class="sign-up-btn" bindtap="submitEvt">
   确 认
 </button>

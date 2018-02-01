@@ -70,35 +70,39 @@ Page({
       url: '../signUpC/signUpC'
     });
   },
-  chooseImageEvt: function () {
-    // var _this = this;
-    // wx.chooseImage({
-    //     count: 1, // 默认9
-    //     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-    //     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-    //     success: function (res) {
-    //         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-    //        console.log(res);
-    //     }
-    // })
+  /**
+  * 添加图片方式
+  * */
+  startChooseEvt: function () {
+    var that = this;
     wx.showActionSheet({
-      itemList: ['A', 'B', 'C'],
+      itemList: ['从相册中选择', '拍照'],
       success: function (res) {
-        console.log(res.tapIndex)
+        var type = ['album', 'camera'];
+        that.chooseRealImage(type[res.tapIndex]);
       },
       fail: function (res) {
         console.log(res.errMsg)
       }
     })
   },
-  showImageChoice:function(){
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
+  /**
+   * 选择图片
+   * */
+  chooseRealImage: function (type) {
+    var _this = this;
+    var tempType = [];
+    tempType.push(type);
+    wx.chooseImage({
+      count: 3, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: tempType, // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        console.log(res.tapIndex)
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        console.log(res.tempFilePaths);
       },
       fail: function (res) {
-        console.log(res.errMsg)
+        console.log(res.tempFilePaths);
       }
     })
   }

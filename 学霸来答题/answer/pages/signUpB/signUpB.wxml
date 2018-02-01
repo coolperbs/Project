@@ -1,7 +1,7 @@
 <!--pages/signUpB/signUpB.wxml-->
 <view class='head-box'>
   <image class='head-img' src="../../images/image_head_sample@2x.png"></image>
-  <image class='head-camera' src="../../images/image_head_camera@2x.png"></image>
+  <image class='head-camera' catchtap='startChooseEvt' src="../../images/image_head_camera@2x.png"></image>
 </view>
 <view class='head-desc'>
   上传真实头像更利于审核通过。

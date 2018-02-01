@@ -64,5 +64,8 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  submitEvt:function(){
+    
   }
 })
