@@ -1,2 +1,47 @@
 <!--pages/signUpC2/signUpC2.wxml-->
-<text>pages/signUpC2/signUpC2.wxml</text>
+<view class='tab-box'>
+  <view class='tab-item'>
+    <text class='tab-item-label'>真实姓名</text>
+    <view class="tab-item-right">
+      <input placeholder-class='place-text' placeholder="仅用于身份审核" class='tab-item-input'></input>
+    </view>
+  </view>
+  <view class='tab-item'>
+    <text class='tab-item-label'>学校</text>
+    <view class="tab-item-right">
+      <text class='tab-item-desc ellipsis-1'></text>
+      <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
+    </view>
+  </view>
+  <view class='tab-item'>
+    <text class='tab-item-label'>学院</text>
+    <view class="tab-item-right">
+      <text class='tab-item-desc ellipsis-1'></text>
+      <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
+    </view>
+  </view>
+  <view class='tab-item'>
+    <text class='tab-item-label'>专业</text>
+    <view class="tab-item-right">
+      <input placeholder-class='place-text' placeholder="仅用于身份审核" class='tab-item-input'></input>
+    </view>
+  </view>
+  <view class='tab-item'>
+    <text class='tab-item-label'>入校时间</text>
+    <view class="tab-item-right">
+      <text class='tab-item-desc ellipsis-1'></text>
+      <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
+    </view>
+  </view>
+  <view class='tab-item'>
+    <text class='tab-item-label'>学位</text>
+    <view class="tab-item-right">
+      <text class='tab-item-desc ellipsis-1'></text>
+      <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
+    </view>
+  </view>
+</view>
+
+<button class="sign-up-btn" bindtap="showImageChoice">
+  确 认
+</button>
