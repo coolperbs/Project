@@ -1,87 +1,87 @@
 {
-  "description": "项目配置文件。",
-  "setting": {
-    "urlCheck": true,
-    "es6": true,
-    "postcss": true,
-    "minified": true,
-    "newFeature": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "1.6.4",
-  "appid": "wx231cd2c1d563e87f",
-  "projectname": "answer",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": 5,
-      "list": [
-        {
-          "id": 1,
-          "name": "答题",
-          "pathName": "pages/match/match",
-          "query": ""
-        },
-        {
-          "id": 2,
-          "name": "登陆",
-          "pathName": "pages/entry/entry",
-          "query": ""
-        },
-        {
-          "id": 3,
-          "name": "注册步骤A",
-          "pathName": "pages/signUpA/signUpA",
-          "query": ""
-        },
-        {
-          "id": 4,
-          "name": "注册步骤B",
-          "pathName": "pages/signUpB/signUpB",
-          "query": ""
-        },
-        {
-          "id": 5,
-          "name": "注册C",
-          "pathName": "pages/signUpC/signUpC",
-          "query": ""
-        },
-        {
-          "id": 6,
-          "name": "身份认证",
-          "pathName": "pages/signUpC1/signUpC1",
-          "query": ""
-        },
-        {
-          "id": 7,
-          "name": "学校认证",
-          "pathName": "pages/signUpC2/signUpC2",
-          "query": ""
-        },
-        {
-          "id": 8,
-          "name": "排行榜",
-          "pathName": "pages/rank/rank",
-          "query": ""
-        },
-        {
-          "id": 9,
-          "name": "个人中心",
-          "pathName": "pages/mine/mine",
-          "query": ""
-        }
-      ]
-    }
-  }
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.6.4",
+	"appid": "wx231cd2c1d563e87f",
+	"projectname": "answer",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": 1,
+					"name": "答题",
+					"pathName": "pages/match/match",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "登陆",
+					"pathName": "pages/entry/entry",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "注册步骤A",
+					"pathName": "pages/signUpA/signUpA",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "注册步骤B",
+					"pathName": "pages/signUpB/signUpB",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "注册C",
+					"pathName": "pages/signUpC/signUpC",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "身份认证",
+					"pathName": "pages/signUpC1/signUpC1",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "学校认证",
+					"pathName": "pages/signUpC2/signUpC2",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "排行榜",
+					"pathName": "pages/rank/rank",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "个人中心",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				}
+			]
+		}
+	}
 }

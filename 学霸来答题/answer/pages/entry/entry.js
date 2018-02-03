@@ -1,18 +1,23 @@
 // pages/entry.js
+import service from '../../service/service'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pageDpr: 2
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  //拿后台接口 校验用户登陆没有 如果有 走主页 没有走登陆注册页面
+    //拿后台接口 校验用户登陆没有 如果有 走主页 没有走登陆注册页面
+    service.user.isLogin(res=>{
+      if(!res){
+        service.user.login();
+      }
+    })
   },
 
   /**
@@ -67,27 +72,20 @@ Page({
    * 自定义事件 去登陆/注册
    * */
   goLogin: function () {
-    //todo 会去先校验登陆时效性,如果已经登陆 就去答题主页,否则 进行授权 或者登陆注册
-    var that = this
-    wx.login({
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    });
-
     //获取用户授权
     wx.getUserInfo({
       success: function (userinfo) {
         console.log(userinfo);
         wx.navigateTo({
-          url: '../signUpA/signUpA'
+          url: '../signUpA/signUpA?a=1'
         });
       }
     });
-    
+    wx.login({
+      success:function (res) {
+        console.log(res)
+      }
+    })
     // wx.navigateTo({
     //   url: '../signUpA/signUpA'
     // });

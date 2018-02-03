@@ -2,15 +2,22 @@
 <view class='sign-up-input'>
   <view class="input-box">
     <image class="input-icon" src="../../images/image_phone@2x.png"></image>
-    <view class="chose-area">+86</view>
-    <input type="number" placeholder-class="input-placeholder" class="phone" placeholder='输入您的手机号码'></input>
+    <view class="chose-area">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{range}}">
+            <view class="picker">
+                {{areacode}}
+            </view>
+        </picker>
+    </view>
+    <input type="number" value="{{phone}}" data-type="phone" bindinput="bindKeyInput" placeholder-class="input-placeholder" class="phone" placeholder='输入您的手机号码'></input>
   </view>
   <view class="input-box">
     <image class="input-icon" src="../../images/image_reg_code@2x.png"></image>
-    <input type="number" placeholder-class="input-placeholder" class="phone" placeholder='输入您的手机号码'></input>
-    <view class="get-code">获取验证码</view>
+    <input bindinput="bindKeyInput" data-type="regcode" placeholder-class="input-placeholder" class="phone" placeholder='验证码'></input>
+    <view class="get-code" catchtap="getRegCodeEvt">获取验证码</view>
   </view>
 </view>
+
 <button class="sign-up-btn" bindtap="nextStep">
   确 认
 </button>
