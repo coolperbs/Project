@@ -103,8 +103,8 @@ var handle = {
           }
         }, function (userInfo) {
           // 保存信息
-          if (userInfo && userInfo.code == '0000' && userInfo.success == true) {
-            _fn.setStoreInfo(userInfo.data);
+          if (userInfo /*&& userInfo.code == '0000' && userInfo.success == true*/) {
+            _fn.setStoreInfo(userInfo);
           }
           callback && callback(userInfo);
         });

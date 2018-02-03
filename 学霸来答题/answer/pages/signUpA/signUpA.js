@@ -124,6 +124,8 @@ Page({
       ]
     },
     range: [],
+    regText: '获取验证码',
+    count: 60,
     areacode: '+86',
     phone: '',
     regcode: '',
@@ -218,6 +220,7 @@ Page({
    * 获取验证码
    * */
   getRegCodeEvt: function () {
+    var that = this;
     this.checkInput('show');
     if (this.data.phone == '') {
       wx.showModal({
@@ -226,8 +229,31 @@ Page({
       });
       return
     }
+    if(!that.data.count){
+      return
+    }
     server.signUp.getRegCode(this.data.phone, function (res) {
-      debugger
+      if (res.code == '0') {
+        wx.showToast({
+          title: '验证码发送成功',
+          icon: 'success'
+        });
+        setTimeout(function () {
+          that.setData({
+            regText: '获取验证码',
+            count: true
+          });
+        },50000);
+        that.setData({
+          regText: '已发送验证码',
+          count: false
+        });
+      } else {
+        wx.showToast({
+          title: '验证码发送失败',
+          icon: 'none'
+        })
+      }
     });
   },
   /**
@@ -245,8 +271,13 @@ Page({
   nextStep: function () {
     //todo 这里需要验证判断判断
     this.checkRegCode(function (res) {
-      debugger
-      //todo 验证判断
+      if(res.code==-1){
+        wx.showModal({
+          title: '提示',
+          content: '请输入正确的验证码'
+        });
+        return
+      }
       if (res) {
         wx.navigateTo({
           url: '../signUpB/signUpB'

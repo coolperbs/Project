@@ -15,7 +15,12 @@ Page({
     //拿后台接口 校验用户登陆没有 如果有 走主页 没有走登陆注册页面
     service.user.isLogin(res=>{
       if(!res){
-        service.user.login();
+        service.user.login(res=>{
+          debugger
+          if(res.user){
+            //todo 已经登陆了 跳转主页面去
+          }
+        });
       }
     })
   },
@@ -72,20 +77,9 @@ Page({
    * 自定义事件 去登陆/注册
    * */
   goLogin: function () {
-    //获取用户授权
-    wx.getUserInfo({
-      success: function (userinfo) {
-        console.log(userinfo);
-        wx.navigateTo({
-          url: '../signUpA/signUpA?a=1'
-        });
-      }
+    wx.navigateTo({
+      url: '../signUpA/signUpA?a=1'
     });
-    wx.login({
-      success:function (res) {
-        console.log(res)
-      }
-    })
     // wx.navigateTo({
     //   url: '../signUpA/signUpA'
     // });

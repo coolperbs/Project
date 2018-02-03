@@ -7,9 +7,10 @@ host = {
 };
 
 url={
-  POST_LOGIN:"api/answer_v1/auths",//微信登录认证接口
+  POST_LOGIN:"api/answer_v1/wechat_auths",//微信登录认证接口
   POST_verification_requests:"api/answer_v1/auth/verification_requests",//注册发送验证码
   POST_verification:"api/answer_v1/auth/verifications",//验证码校验
+  userInfo:'api/answer_v1/user',//get 获取 put 更新
 };
 
 App( {
