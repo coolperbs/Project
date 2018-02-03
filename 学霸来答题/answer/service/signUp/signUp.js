@@ -88,6 +88,13 @@ module.exports = {
       callback && callback(result);
     })
   },
+  GetAreaInfo(callback){
+    ajax.query({
+      url: App.GET_API('GET_cities'),
+    }, function (result) {
+      callback && callback(result);
+    })
+  },
   GetUserInfo (callback) {
     ajax.post({
       url: App.GET_API('userInfo'),

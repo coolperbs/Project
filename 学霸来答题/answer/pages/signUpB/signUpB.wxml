@@ -1,40 +1,48 @@
 <!--pages/signUpB/signUpB.wxml-->
 <view class='head-box'>
-  <image class='head-img' src="{{avatar}}"></image>
-  <image class='head-camera' catchtap='startChooseEvt' src="../../images/image_head_camera@2x.png"></image>
+    <image class='head-img' src="{{avatar}}"></image>
+    <image class='head-camera' catchtap='startChooseEvt' src="../../images/image_head_camera@2x.png"></image>
 </view>
 <view class='head-desc'>
-  上传真实头像更利于审核通过。
+    上传真实头像更利于审核通过。
 </view>
 <view class='sign-up-info-box'>
-  <view class='info-inline'>
-    <text class='info-label'>昵称</text>
-    <input class='info-input' placeholder-class='info-placeholder' placeholder='请输入1-20位字符的昵称'></input>
-  </view>
-  <view class='info-group'>
-    <text class='info-label'>性别</text>
-    <view class='info-radio'>
-      <view class='info-radio-item active'>男</view>
-      <view class='info-radio-item'>女</view>
+    <view class='info-inline'>
+        <text class='info-label'>昵称</text>
+        <input class='info-input' value="{{nickname}}" placeholder-class='info-placeholder' placeholder='请输入1-20位字符的昵称'></input>
     </view>
-  </view>
-  <view class='info-group'>
-    <text class='info-label'>感情状态</text>
-    <view class='info-radio'>
-      <view class='info-radio-item active'>单身</view>
-       <view class='info-radio-item'>恋爱中</view>
-      <view class='info-radio-item'>保密</view>
+    <view class='info-group'>
+        <text class='info-label'>性别</text>
+        <view class='info-radio'>
+            <view catchtap="changeGender" data-gender="0" class="{{gender==0?'info-radio-item active':'info-radio-item'}}">男</view>
+            <view catchtap="changeGender" data-gender="1" class="{{gender==1?'info-radio-item active':'info-radio-item'}}">女</view>
+        </view>
     </view>
-  </view>
-  <view class='info-inline'>
-    <text class='info-label'>生日</text>
-    <input class='info-input'></input>
-  </view>
-  <view class='info-inline'>
-    <text class='info-label'>家乡</text>
-    <input class='info-input'></input>
-  </view>
+    <view class='info-group'>
+        <text class='info-label'>感情状态</text>
+        <view class='info-radio'>
+            <view catchtap="changeStatus" data-status="0" class="{{relationship_status==0?'info-radio-item active':'info-radio-item'}}">单身</view>
+            <view catchtap="changeStatus" data-status="1" class="{{relationship_status==1?'info-radio-item active':'info-radio-item'}}">恋爱中</view>
+            <view catchtap="changeStatus" data-status="2" class="{{relationship_status==2?'info-radio-item active':'info-radio-item'}}">保密</view>
+        </view>
+    </view>
+    <view class='info-inline'>
+        <text class='info-label'>生日</text>
+        <picker class="info-input" mode="date" value="{{birthday}}" start="1900-01-01" end="2217-12-01" bindchange="bindDateChange">
+            <view class="picker">
+                {{birthday}}
+            </view>
+        </picker>
+    </view>
+    <view class='info-inline'>
+        <text class='info-label'>家乡</text>
+        <picker class='info-input' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArr}}">
+            <view class="picker">
+              {{province.name}}-{{city.name}}
+            </view>
+        </picker>
+    </view>
 </view>
 <button class="sign-up-btn" bindtap="nextStep">
-  确 认
+    确 认
 </button>
