@@ -63,20 +63,6 @@ Page({
           cityArr: city,
           provinceArr: province
         })
-
-        setTimeout(function () {
-          that.setData({
-            province:{
-              id:'69052434-cd0f-4637-aba4-e2730236e880',
-              name:'河北'
-            },
-            city:{
-              id:"c54ed9b4-7586-4c0e-b211-731555c43361",
-              name:'石家庄'
-            }
-          });
-          that.setMultiArr();
-        },5000)
       }
     });
     if (options.edit) {
