@@ -28,7 +28,7 @@
     </view>
     <view class='info-inline'>
         <text class='info-label'>生日</text>
-        <picker class="info-input" mode="date" value="{{birthday}}" start="1900-01-01" end="2217-12-01" bindchange="bindDateChange">
+        <picker class="info-input" mode="date" value="{{birthday}}" start="1918-01-01" end="{{today}}" bindchange="bindDateChange">
             <view class="picker">
                 {{birthday}}
             </view>
@@ -43,6 +43,6 @@
         </picker>
     </view>
 </view>
-<button class="sign-up-btn" bindtap="nextStep">
+<button class="sign-up-btn" bindtap="saveBasicInfo">
     确 认
 </button>
