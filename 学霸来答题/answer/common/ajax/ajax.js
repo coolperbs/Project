@@ -15,12 +15,40 @@ whiteList = [
 
 handle = {
   query : function( object, callback ) {
+    var userInfo = JSON.parse( wx.getStorageSync( 'userinfo' ) || '{}' );
+    var token = userInfo.auth_token || '';
     var param = _fn.wrapParam( object );
+    var header = object.header || {
+      Authorization: token || 'ssY4iu3vSrwZBcrHvpYSPcgR'
+    };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
       url : object.url,
       data : param,
       method : 'get',
+      header : header,
+      success : function( res ) {
+        _fn.responseWrapper( res, callback );
+      },
+      fail : function( res ) {
+        _fn.responseWrapper( res, callback );
+      }
+    });
+  },
+  post : function( object, callback ) {
+    var userInfo = JSON.parse( wx.getStorageSync( 'userinfo' ) || '{}' );
+    var token = userInfo.auth_token || '';
+    //todo 看这里是否需要调整统一
+    var param = _fn.wrapParam( object );
+    var header = object.header || {
+      Authorization: token || 'ssY4iu3vSrwZBcrHvpYSPcgR'
+    };
+    wx.request({
+      //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
+      url : object.url,
+      data : object.param||{},
+      method : 'post',
+      header: header,
       success : function( res ) {
         _fn.responseWrapper( res, callback );
       },
@@ -58,21 +86,21 @@ _fn = {
   },
 
   responseWrapper : function( res, callback ) {
-    if ( !res || res.statusCode != 200 ) {
-      callback( {
-        errCode : -1,
-        msg : '网络问题',
-        data : {}
-      } );
-      return;
-    }
-
-    // 一些特殊登录统一拦截，如未登录等情况
-    if ( res.data.code == 'GW1004' || res.data.msg == 'GW1004' ) {
-      // 跳转到登录页
-      wx.removeStorageSync( 'userinfo' );
-      //wx.navigateTo( { url : '../login/login' } );
-    }
+    // if ( !res || res.statusCode != 200 ) {
+    //   callback( {
+    //     errCode : -1,
+    //     msg : '网络问题',
+    //     data : {}
+    //   } );
+    //   return;
+    // }
+    //
+    // // 一些特殊登录统一拦截，如未登录等情况
+    // if ( res.data.code == 'GW1004' || res.data.msg == 'GW1004' ) {
+    //   // 跳转到登录页
+    //   wx.removeStorageSync( 'userinfo' );
+    //   //wx.navigateTo( { url : '../login/login' } );
+    // }
     if ( typeof callback == 'function' ) {
       callback( res.data );
     }

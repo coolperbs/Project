@@ -3,7 +3,7 @@
 	<view class="btn">活动规则</view>
 </view>
 
-<view class="entry">
+<view class="entry" catchtap="goMatch">
 	<view class="info">
 		<view class="season">第4期</view>
 		<view class="title">清华北大专场(共15题)</view>
@@ -58,6 +58,9 @@
 	</view>
 </view>
 
+<view class="mine">
+	<image src="../../images/mine.png"></image>
+</view>
 
 
 
