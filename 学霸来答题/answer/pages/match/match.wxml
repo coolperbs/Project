@@ -100,7 +100,7 @@
 	</view>
 </view>
 -->
-<view class="pop-area">
+<view class="pop-area" style="display:none">
 	<!--  670 h705 -->
 	<view class="pop">
 		<image src="../../images/close.png" class="cross"></image>

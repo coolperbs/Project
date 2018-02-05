@@ -6,6 +6,8 @@ host = {
 	test : 'https://summer.buluotech.com/'
 };
 
+
+// 这个URI可以封装在services里，这样便于每个业务模块自己管理。
 url={
   POST_LOGIN:"api/answer_v1/wechat_auths",//微信登录认证接口
   POST_verification_requests:"api/answer_v1/auth/verification_requests",//注册发送验证码

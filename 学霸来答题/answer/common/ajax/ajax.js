@@ -15,12 +15,18 @@ whiteList = [
 
 handle = {
   query : function( object, callback ) {
+    var userInfo = JSON.parse( wx.getStorageSync( 'userinfo' ) || '{}' );
+    var token = userInfo.auth_token || '';
     var param = _fn.wrapParam( object );
+    var header = object.header || {
+      Authorization: token || 'ssY4iu3vSrwZBcrHvpYSPcgR'
+    };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
       url : object.url,
       data : param,
       method : 'get',
+      header : header,
       success : function( res ) {
         _fn.responseWrapper( res, callback );
       },
@@ -30,14 +36,19 @@ handle = {
     });
   },
   post : function( object, callback ) {
+    var userInfo = JSON.parse( wx.getStorageSync( 'userinfo' ) || '{}' );
+    var token = userInfo.auth_token || '';
     //todo 看这里是否需要调整统一
     var param = _fn.wrapParam( object );
+    var header = object.header || {
+      Authorization: token || 'ssY4iu3vSrwZBcrHvpYSPcgR'
+    };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
       url : object.url,
       data : object.param||{},
       method : 'post',
-      header:object.header||{},
+      header: header,
       success : function( res ) {
         _fn.responseWrapper( res, callback );
       },
