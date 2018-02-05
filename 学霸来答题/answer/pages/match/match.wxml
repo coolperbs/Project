@@ -1,5 +1,5 @@
 <view class="container">
-	<view class="card question">
+	<view class="card question" wx:if="{{ pageData.timeStatus == 2 }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
 			10
@@ -8,26 +8,29 @@
 			<image src="../../images/number.png"></image>
 			5892
 		</view>		
-		<view class="info"></view>
+		<view wx:if="{{ pageData.quesInfo.status == 0 }}" class="info {{ pageData.quesInfo.count <= 3 ? 'warn' : ''}}">{{ pageData.quesInfo.count }}</view>
+
+		<view wx:if="{{ pageData.quesInfo.status == 1 }}" class="info timeup">时间到</view>
+
+		<view wx:if="{{ pageData.quesInfo.status == 2 }}" class="info answer">
+			<image src="../../images/correct.png" mode="widthFix"></image>
+			<view class="sub-count">倒计时{{pageData.quesInfo.count}}</view>
+		</view>
+
 		<view class="text">
-			1.下列哪个不是美国保洁公司旗下的品牌？
+			{{ pageData.quesInfo.index + 1 }}.{{ pageData.paper.questions[pageData.quesInfo.index].name }}
 		</view>
 		<view class="options">
-			<view class="cell">
-				<view class="txt ellipsis-1">舒肤佳</view>
-			</view>
-			<view class="cell">
-				<view class="txt ellipsis-1">潘婷</view>
-			</view>
-			<view class="cell">
-				<view class="txt ellipsis-1">纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯纳爱斯</view>
-				<view class="col"></view>
-			</view>
+			<block wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
+				<view class="cell {{ userAnswer['a' + pageData.quesInfo.index].id == option.id ? 'selected' : ''}}" data-optionid="{{ option.id }}" data-optionindex="{{ optionindex }}" data-quesindex="{{pageData.quesInfo.index}}" catchtap="selectAnswer">
+					<view class="txt ellipsis-1">{{ option.name }}</view>
+				</view>
+			</block>
 		</view>
 	</view>
 
 
-	<view class="card wait" style="display:none;">
+	<view class="card wait" wx:if="{{ pageData.timeStatus == 1 }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
 			10
@@ -37,10 +40,10 @@
 			5892
 		</view>
 		<view class="info">
-			<view class="season">第3期</view>
+			<view class="season">{{ pageData.title }}</view>
 			<view class="logo"><image src="../../images/logo.png"></image></view>
-			<view class="title">清华北大专场还有</view>
-			<view class="time">00:59</view>
+			<view class="title">{{ pageData.name }}还有</view>
+			<view class="time">00:{{ pageData.startCount < 10 ? '0' + pageData.startCount : pageData.startCount }}</view>
 		</view>
 	</view>
 

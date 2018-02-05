@@ -9,7 +9,22 @@ handle = {
       showCancel : false
     } );
   },
+  timeToDateObj : function( time ) {
+    var date = new Date();
 
+    date.setTime( time );
+
+    return {
+      time : time,
+      day : date.getDate(),
+      month : date.getMonth() + 1,
+      year : date.getFullYear(),
+      //week : weeks_ch[date.getDay()],
+      hours : date.getHours(),
+      minutes : date.getMinutes(),
+      seconds : date.getSeconds()
+    };   
+  },
   showLoading : function() {
     var param, time;
     if ( arguments.length == 1 ) {
@@ -29,15 +44,17 @@ handle = {
 
     wx.showLoading( param );
   },
+  
   hideLoading : function() {
     clearTimeout( loadingTimmer );
     wx.hideLoading();
   }, 
+
   countTime : function( startTime, endTime, currentTime, sysTime ) {
     if ( !startTime || !endTime || !currentTime || !sysTime ) {
       return undefined;
     }
-    return endTime - startTime;
+    return Math.ceil( ( endTime - startTime + ( sysTime - currentTime ) ) / 1000 );
   } 
 }
 

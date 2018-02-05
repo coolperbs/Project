@@ -25,13 +25,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 0,
 			"list": [
 				{
-					"id": 1,
+					"id": 0,
 					"name": "答题",
 					"pathName": "pages/match/match",
-					"query": ""
+					"query": "id=6b40aaf2-4fe7-4d0a-82ea-2a7109763d92"
 				},
 				{
 					"id": 2,
@@ -84,37 +84,8 @@
 				{
 					"id": -1,
 					"name": "列表",
-					"pathName": "pages/list/list",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "列表",
 					"pathName": "pages/index/index",
 					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "列表",
-					"pathName": "pages/index/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "列表",
-					"pathName": "pages/index/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "列表",
-					"pathName": "pages/list/list",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "列表",
-					"pathName": "pages/index/index"
 				}
 			]
 		}

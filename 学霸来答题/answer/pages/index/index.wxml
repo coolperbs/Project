@@ -3,28 +3,38 @@
 	<view class="btn">活动规则</view>
 </view>
 
-<view class="entry" catchtap="goMatch">
+<view class="entry" wx:for="{{ pageData.list }}" wx:key="index">
 	<view class="info">
-		<view class="season">第4期</view>
-		<view class="title">清华北大专场(共15题)</view>
-		<view class="sub-title">*仅限清华北大同学参加，其他高校的同学可以围观哦~</view>
+		<view class="season">{{item.title }}</view>
+		<view class="title">{{ item.name }}</view>
+		<view class="sub-title">{{ item.description }}</view>
 	</view>
-	<!--<view class="act">
-		<view class="btn">立即进入</view>
-	</view>-->
 
-	<view class="act">
+	<view class="act" wx:if="{{ item.timeStatus === 0 }}">
 		<view class="cell">
 			<view class="name">时间</view>
-			<view class="text">12:30</view>
+			<view class="text">{{ item.actStartTime }}</view>
 		</view>
 		<view class="cell">
 			<view class="name">奖金</view>
-			<view class="text orange">20万</view>
+			<view class="text orange">{{ item.bonus }}元</view>
 		</view>
+	</view>
+
+	<view class="act btns" wx:if="{{ item.timeStatus === 1 }}">
+		<view class="btn now" catchtap="goMatch" data-id="{{item.id}}">马上开始({{item.startCount}}s)，立即进入</view>
+	</view>
+
+	<view class="act btns" wx:if="{{ item.timeStatus === 2 }}">
+		<view class="btn" catchtap="goMatch" data-id="{{item.id}}">已经开始，立即进入</view>
+	</view>
+
+	<view class="act btns" wx:if="{{ item.timeStatus === 3 }}">
+		<view class="btn finish" catchtap="goMatch" data-id="{{item.id}}">已经结束</view>
 	</view>
 </view>
 
+<!--
 <view class="entry">
 	<view class="info">
 		<view class="season">第3期</view>
@@ -57,8 +67,9 @@
 		<view class="btn finish">已经结束</view>
 	</view>
 </view>
+-->
 
-<view class="mine">
+<view class="mine" catchtap="goMine">
 	<image src="../../images/mine.png"></image>
 </view>
 
