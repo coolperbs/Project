@@ -182,43 +182,7 @@ var handle = {
       url: URL['userInfo'],
       method: 'put',
       param: {
-        "phone": object.phone,
-        "nickname": object.nickname,
-        "avatar": object.avatar,
-        "gender": object.gender,
-        "birthday": object.birthday,
-        "relationship_status": object.relationship_status,
-        "province": object.province,
-        "city": object.city
-        // "school": {
-        //   "id": "string",
-        //   "name": "string"
-        // },
-        // "department": {
-        //   "id": "string",
-        //   "name": "string"
-        // },
-        // "name": "string",
-        // "major": "string",
-        // "enroll": 0,
-        // "degree": 0,
-        // "certification_status": 0,
-        // "movies": [
-        //   "string"
-        // ],
-        // "music": [
-        //   "string"
-        // ],
-        // "books": [
-        //   "string"
-        // ],
-        // "hobbies": [
-        //   "string"
-        // ],
-        // "characters": [
-        //   "string"
-        // ],
-        // "bio": "string"
+        ApiAnswerV1User:object
       },
       header: {
         Authorization: token
@@ -227,10 +191,7 @@ var handle = {
       if (!result.code) {
         //这里返回的只有user数据
         var userInfo = that.getStoreInfo() || {};
-        var newUserInfo = _fn.merge(result, {
-          "province": object.province,
-          "city": object.city
-        });
+        var newUserInfo = _fn.merge(result, object);
         userInfo.user = newUserInfo;
         _fn.setStoreInfo(userInfo);
       }
