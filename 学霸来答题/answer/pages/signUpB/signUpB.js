@@ -20,8 +20,13 @@ Page({
     gender: 0,
     relationship_status: 0,
     birthday: tody,
+    today: tody,
     AreaData: [],
     province: {
+      id: '',
+      name: ''
+    },
+    city: {
       id: '',
       name: ''
     },
@@ -36,6 +41,31 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    service.user.isLogin(res => {
+      if (!res) {
+        service.user.login(res => {
+          debugger
+          //初始化页面数据
+
+          if (res) {
+            that.setData({
+              "nickname": res.user.nickname,
+              "avatar": res.user.avatar,
+              "gender": res.user.gender,
+              "birthday": res.user.birthday,
+              "relationship_status": res.user.relationship_status,
+            })
+          }
+          that.onLoadEvt(options);
+        });
+      }
+    })
+  },
+  /*
+  * 近页面做的事
+  * */
+  onLoadEvt: function (options) {
+    var that = this;
     //获取 地区列表
     service.signUp.GetAreaInfo(res => {
       if (res.constructor == Array) {
@@ -48,18 +78,23 @@ Page({
             return v2.name
           });
         });
+        var otherData = service.signUp.getOtherData();
+        var newCity = {
+          id: res[0].cities[0].id,
+          name: res[0].cities[0].name
+        };
+        var newProvince = {
+          id: res[0].id,
+          name: res[0].name
+        };
+        var recity = otherData ? otherData.city ? otherData.city : newCity : newCity;
+        var reprovince = otherData ? otherData.province ? otherData.province : newProvince : newProvince;
         debugger
         that.setData({
           AreaData: res,
           multiArr: [province, city[0]],
-          city: {
-            id: res[0].cities[0].id,
-            name: res[0].cities[0].name
-          },
-          province: {
-            id: res[0].id,
-            name: res[0].name
-          },
+          city: recity,
+          province: reprovince,
           cityArr: city,
           provinceArr: province
         })
@@ -85,7 +120,6 @@ Page({
       title: '完善个人信息(2/3)'
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -140,7 +174,6 @@ Page({
   setMultiArr: function () {
     var provinceId = this.data.province.id;
     var cityId = this.data.city.id;
-    debugger
     for (var i = 0; i < this.data.AreaData.length; i++) {
       var province = this.data.AreaData[i];
       if (province.id == provinceId) {
@@ -161,7 +194,7 @@ Page({
    * 选择地区
    * */
   bindMultiPickerChange: function (e) {
-    debugger
+
     var provinceIndex = e.detail.value[0];
     var cityIndex = e.detail.value[1];
     var province = this.data.AreaData[provinceIndex];
@@ -181,7 +214,7 @@ Page({
     if (e.detail.column == 0) {
       var province = this.data.provinceArr;
       var index = e.detail.value;
-      debugger
+
 
       this.setData({
         multiArr: [province, this.data.cityArr[index]],
@@ -215,14 +248,6 @@ Page({
     })
   },
   /**
-   * 提交
-   * */
-  nextStep: function () {
-    wx.navigateTo({
-      url: '../signUpC/signUpC'
-    });
-  },
-  /**
    * 添加图片方式
    * */
   startChooseEvt: function () {
@@ -250,7 +275,7 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: tempType, // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        debugger
+
         if (res.tempFilePaths.length > 0) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           that.setData({
@@ -262,5 +287,35 @@ Page({
         console.log(res.tempFilePaths);
       }
     })
+  },
+  /**
+   * 保存用户基本数据
+   * */
+  saveBasicInfo: function () {
+    if (this.data.nickname == '') {
+
+      return
+    }
+    service.signUp.PutUserInfo({
+      "nickname": this.data.nickname,
+      "avatar": this.data.avatar,
+      "gender": this.data.gender,
+      "birthday": this.data.birthday,
+      "relationship_status": this.data.relationship_status,
+      "province": this.data.province,
+      "city": this.data.city,
+    }, function (res) {
+      if (res.code) {
+        wx.showModal({
+          title: '提示',
+          content: '保存失败'
+        });
+      } else {
+        // wx.navigateTo({
+        //   url: '../signUpC/signUpC'
+        // });
+      }
+
+    })
   }
-})
+});

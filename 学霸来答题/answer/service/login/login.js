@@ -92,10 +92,10 @@ var handle = {
           callback && callback(wxUserInfo);
           return;
         }
-        debugger
         // 3.调取服务端数据
-        ajax.post({
+        ajax.getPost({
           url: App.GET_API('POST_LOGIN'),
+          method:'post',
           param: {
             code: loginInfo.data.code,
             iv: wxUserInfo.data.iv,

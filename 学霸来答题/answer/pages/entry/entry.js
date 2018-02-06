@@ -16,9 +16,11 @@ Page({
     service.user.isLogin(res=>{
       if(!res){
         service.user.login(res=>{
-          debugger
           if(res.user){
             //todo 已经登陆了 跳转主页面去
+            // wx.redirectTo({
+            //   url:'../index/index'
+            // })
           }
         });
       }
@@ -80,12 +82,5 @@ Page({
     wx.navigateTo({
       url: '../signUpA/signUpA?a=1'
     });
-    // wx.navigateTo({
-    //   url: '../signUpA/signUpA'
-    // });
-    //todo 已经登陆的 直接走主页面 这个逻辑需要放到onload 里面处理 只有非登陆的才能看到 登陆界面 ?
-    // wx.redirectTo({
-    //     url:'../signUpA/signUpA'
-    // })
   }
 });
