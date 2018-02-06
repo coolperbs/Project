@@ -18,14 +18,14 @@ Page( {
 			}
 
 			// 模拟数据
-			res.start_timestamp = new Date().getTime() - 1000;
+			res.start_timestamp = new Date().getTime() - 20000 * 9;
 
 			res.currentTime = new Date().getTime();
 			res = _fn.setStatus( res, res.currentTime );
 			caller.setData( {
 				pageData : res
 			} );
-		} );
+		});
 	},
 	selectAnswer : function( e ) {
 		var data = e.currentTarget.dataset,
@@ -65,16 +65,20 @@ _fn = {
 			return;
 		}
 
+		// 设置答题信息
 	 	data = _fn.setStatus( caller.data.pageData, caller.data.pageData.currentTime );
+	 	// 设置结束倒计时
 		caller.setData( {
 			'pageData' : data
 		} );
 		//console.log( caller.data );
 	},
+
+	// 设置页面状态
 	setStatus : function( act, currentTime ) {
 		var now = new Date().getTime(),
 			endCount, startCount, startTime,
-			remainder, status;
+			remainder, status, index, answerAll;
 
 		startCount = utils.countTime( now, act.start_timestamp, currentTime, act.system_timestamp );
 		endCount = utils.countTime( now, act.end_timestamp, currentTime, act.system_timestamp );
@@ -91,6 +95,7 @@ _fn = {
 		// 已结束
 		} else if ( startCount < 0 && endCount < 0 ) {
 			act.timeStatus = 3;
+			// 这里如果严谨，可以停止计数
 		} else {
 			act.timeStatus = 0; // 其余都作为未开始计算
 		}
@@ -109,11 +114,28 @@ _fn = {
 		} else if ( remainder > 10 ) {
 			status = 2;
 		}
+
+		index = Math.floor( Math.abs( startCount ) / 20 )
+
+		// 如果题数答完，则结束
+		answerAll = index >= act.paper.questions.length ? true : false;
 		act.quesInfo = {
-			index : Math.floor( Math.abs( startCount ) / 20 ),
+			index : index,
 			count : remainder >= 10 ? 20 - remainder : 10 - remainder, // 每个阶段的倒计时
-			status :status // 0为答题阶段，1为时间到,2为答案展示阶段
+			status :status, // 0为答题阶段，1为时间到,2为答案展示阶段
+			answerAll : answerAll,
+			endCountInfo : _fn.getEndCount( endCount )
 		}
 		return act;
+	},
+
+	getEndCount : function( time ) {
+		var result = {};
+
+		result.hours = Math.floor( time / 60 );
+		result.minutes = time % 60;
+		result.hours = result.hours < 10 ? '0' + result.hours : result.hours;
+		result.minutes = result.minutes < 10 ? '0' + result.minutes : result.minutes;
+		return result;
 	}
 }

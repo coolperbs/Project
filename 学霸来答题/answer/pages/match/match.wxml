@@ -1,5 +1,5 @@
 <view class="container">
-	<view class="card question" wx:if="{{ pageData.timeStatus == 2 }}">
+	<view class="card question" wx:if="{{ pageData.timeStatus == 2 && !pageData.quesInfo.answerAll }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
 			10
@@ -8,28 +8,66 @@
 			<image src="../../images/number.png"></image>
 			5892
 		</view>		
+
+		<!-- 倒计时区域 START -->
 		<view wx:if="{{ pageData.quesInfo.status == 0 }}" class="info {{ pageData.quesInfo.count <= 3 ? 'warn' : ''}}">{{ pageData.quesInfo.count }}</view>
 
 		<view wx:if="{{ pageData.quesInfo.status == 1 }}" class="info timeup">时间到</view>
 
-		<view wx:if="{{ pageData.quesInfo.status == 2 }}" class="info answer">
+		<view wx:if="{{ pageData.quesInfo.status == 2 && userAnswer['a' + pageData.quesInfo.index].correct }}" class="info answer correct">
 			<image src="../../images/correct.png" mode="widthFix"></image>
 			<view class="sub-count">倒计时{{pageData.quesInfo.count}}</view>
 		</view>
+		<view wx:if="{{ pageData.quesInfo.status == 2 && !userAnswer['a' + pageData.quesInfo.index].correct }}" class="info answer wron">
+			<image src="../../images/wron.png" mode="widthFix"></image>
+			<view class="sub-count">倒计时{{pageData.quesInfo.count}}</view>
+		</view>
+		<!-- 倒计时区域 END -->
 
 		<view class="text">
 			{{ pageData.quesInfo.index + 1 }}.{{ pageData.paper.questions[pageData.quesInfo.index].name }}
 		</view>
-		<view class="options">
+
+		<!-- 选择阶段 START -->
+		<view class="options" wx:if="{{ pageData.quesInfo.status == 0 }}">
 			<block wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
 				<view class="cell {{ userAnswer['a' + pageData.quesInfo.index].id == option.id ? 'selected' : ''}}" data-optionid="{{ option.id }}" data-optionindex="{{ optionindex }}" data-quesindex="{{pageData.quesInfo.index}}" catchtap="selectAnswer">
 					<view class="txt ellipsis-1">{{ option.name }}</view>
 				</view>
 			</block>
 		</view>
+		<!-- 选择阶段 END -->
+
+		<!-- 时间到 START -->
+		<view class="options" wx:if="{{ pageData.quesInfo.status == 1 }}">
+			<block wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
+				<view class="cell {{ userAnswer['a' + pageData.quesInfo.index].id == option.id ? 'selected' : ''}}" data-optionid="{{ option.id }}" data-optionindex="{{ optionindex }}" data-quesindex="{{pageData.quesInfo.index}}">
+					<view class="txt ellipsis-1">{{ option.name }}</view>
+				</view>
+			</block>
+		</view>
+		<!-- 时间到 END -->
+
+		<!-- 答案展示阶段 START -->
+		<view class="options" wx:if="{{ pageData.quesInfo.status == 2 }}">
+			<block wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
+				<block wx:if="{{ userAnswer['a' + pageData.quesInfo.index].id == option.id }}">
+					<view class="cell {{userAnswer['a' + pageData.quesInfo.index].correct ? 'correct' : 'wron' }}" >
+						<view class="txt ellipsis-1">{{ option.name }}</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="cell {{option.correct == true ? 'correct' : ''}}" >
+						<view class="txt ellipsis-1">{{ option.name }}</view>
+					</view>
+				</block>
+			</block>
+		</view>
+		<!-- 答案展示阶段 END -->
+
 	</view>
 
-
+	<!-- 未开始 -->
 	<view class="card wait" wx:if="{{ pageData.timeStatus == 1 }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
@@ -44,6 +82,24 @@
 			<view class="logo"><image src="../../images/logo.png"></image></view>
 			<view class="title">{{ pageData.name }}还有</view>
 			<view class="time">00:{{ pageData.startCount < 10 ? '0' + pageData.startCount : pageData.startCount }}</view>
+		</view>
+	</view>
+
+	<!-- 答题结束等待 -->
+	<view class="card wait" wx:if="{{ pageData.timeStatus >= 2 && pageData.quesInfo.answerAll }}">
+		<view class="favor">
+			<image src="../../images/favor.png"></image>
+			10
+		</view>
+		<view class="num">
+			<image src="../../images/number.png"></image>
+			5892
+		</view>
+		<view class="info">
+			<view class="season">{{ pageData.title }}</view>
+			<view class="logo"><image src="../../images/logo.png"></image></view>
+			<view class="title">已结束，正在提交答卷...</view>
+			<view class="time">{{ pageData.quesInfo.endCountInfo.hours }}:{{pageData.quesInfo.endCountInfo.minutes }}</view>
 		</view>
 	</view>
 
