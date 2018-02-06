@@ -19,13 +19,20 @@ Page{ background-color: #149eff; height : 100%; }
 .question .info { position: relative; overflow: visible; margin-top : 62rpx; width : 120rpx; height : 120rpx; border-radius: 50%; background-color: #ccc; color : #fff; font-size : 60rpx; display: flex; align-items : center; justify-content : center; }
 .question .info.warn { background-color: #ff8800; }
 .question .info.timeup { background-color: #ff6161; font-size : 30rpx; }
-.question .info.answer {  }
+.question .info.answer {}
 .question .info.answer image { width : 60rpx; }
 .question .info.answer .sub-count { font-weight : bold; font-size : 24rpx; position: absolute; bottom : -42rpx; color : red; }
+.question .info.answer.correct { background-color: #6cd983; }
+.question .info.answer.correct .sub-count { color: #6cd983; }
+.question .info.answer.wron { background-color: #ff6767; }
+.question .info.answer.wron .sub-count { color: #ff6767; }
+
 .question .text { font-size : 36rpx; margin : 77rpx 62rpx 0 62rpx; text-align: center; }
 .question .options { margin-top : 70rpx; }
 .question .options .cell { overflow: hidden; position: relative; font-size : 28rpx; border-radius: 60rpx; line-height: 100rpx; margin-bottom : 20rpx; padding : 0 45rpx; width : 460rpx; height : 100rpx; border : solid 4rpx #e4e4e4; }
 .question .options .cell.selected { color : #fff; background-color: #1493ff; }
+.question .options .cell.correct { background-color: #6cd983; color : #fff; }
+.question .options .cell.wron { background-color: #ff6767; color : #fff; }
 .question .options .cell .txt { z-index: 1; position: relative; }
 .question .options .cell .col { width : 50%; height : 100%; background-color : #ccc; position: absolute; left : 0; top : 0;  }
 
