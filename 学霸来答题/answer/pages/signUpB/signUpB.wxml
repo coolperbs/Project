@@ -14,8 +14,8 @@
     <view class='info-group'>
         <text class='info-label'>性别</text>
         <view class='info-radio'>
-            <view catchtap="changeGender" data-gender="0" class="{{gender==0?'info-radio-item active':'info-radio-item'}}">男</view>
-            <view catchtap="changeGender" data-gender="1" class="{{gender==1?'info-radio-item active':'info-radio-item'}}">女</view>
+            <view catchtap="changeGender" data-gender="0" class="{{gender==0?'info-radio-item active':'info-radio-item'}}">女</view>
+            <view catchtap="changeGender" data-gender="1" class="{{gender==1?'info-radio-item active':'info-radio-item'}}">男</view>
         </view>
     </view>
     <view class='info-group'>

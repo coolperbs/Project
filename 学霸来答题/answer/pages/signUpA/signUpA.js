@@ -232,7 +232,7 @@ Page({
     if(!that.data.count){
       return
     }
-    server.signUp.getRegCode(this.data.phone, function (res) {
+    server.user.getRegCode(this.data.phone, function (res) {
       if (res.code == '0') {
         wx.showToast({
           title: '验证码发送成功',
@@ -270,6 +270,7 @@ Page({
    * */
   nextStep: function () {
     //todo 这里需要验证判断判断
+      debugger
     this.checkRegCode(function (res) {
       if(res.code==-1){
         wx.showModal({
@@ -300,9 +301,7 @@ Page({
       });
       return
     }
-    debugger
-    server.signUp.checkRegCode(this.data.regcode, function (res) {
-      debugger
+    server.user.checkRegCode(this.data.regcode, function (res) {
       callback(res)
     })
   },
