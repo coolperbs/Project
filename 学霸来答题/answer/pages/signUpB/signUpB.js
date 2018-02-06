@@ -34,8 +34,6 @@ Page({
         multiArr: [],
         multiIndex: [0, 0]
     },
-    //todo 待确定 gender 表示意思
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -46,10 +44,11 @@ Page({
         if (!userInfo) {
             service.user.login(userData => {
                 userInfo = userData.user;
+                debugger
                 that.initData(options,userInfo);
             });
         } else {
-            that.initData(options,userInfo);
+            that.initData(options,userInfo.user);
         }
 
     },
@@ -66,9 +65,9 @@ Page({
                         return v2.name
                     });
                 });
-                debugger
-                var tempCity = utils.getValueByPath(userInfo, 'user.city');
-                var tempProvince = utils.getValueByPath(userInfo, 'user.province');
+
+                var tempCity = utils.getValueByPath(userInfo, 'city');
+                var tempProvince = utils.getValueByPath(userInfo, 'province');
                 debugger
                 var newCity = {
                     id: res[0].cities[0].id,
@@ -92,21 +91,22 @@ Page({
         });
 
         that.setData({
-            "nickname": utils.getValueByPath(userInfo, 'user.nickname'),
-            "avatar": utils.getValueByPath(userInfo, 'user.avatar'),
-            "gender": utils.getValueByPath(userInfo, 'user.gender'),
-            "birthday": utils.getValueByPath(userInfo, 'user.birthday'),
-            "relationship_status": utils.getValueByPath(userInfo, 'user.relationship_status')
+            "nickname": utils.getValueByPath(userInfo, 'nickname'),
+            "avatar": utils.getValueByPath(userInfo, 'avatar'),
+            "gender": utils.getValueByPath(userInfo, 'gender'),
+            "birthday": utils.getValueByPath(userInfo, 'birthday'),
+            "relationship_status": utils.getValueByPath(userInfo, 'relationship_status')
         });
         if (options.edit) {
             //todo 编辑状态
-
+          wx.setNavigationBarTitle({
+            title: '个人信息'
+          });
         } else {
             wx.getUserInfo({
                 success(res) {
                     if (res.errMsg = 'etUserInfo:ok') {
                         var wxInfo = res.userInfo || {};
-                        debugger
                         that.setData({
                             avatar: wxInfo.avatarUrl,
                             nickname: wxInfo.nickName,
@@ -118,7 +118,6 @@ Page({
             wx.setNavigationBarTitle({
                 title: '完善个人信息(2/3)'
             });
-
         }
     },
     /**
@@ -276,11 +275,14 @@ Page({
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: tempType, // 可以指定来源是相册还是相机，默认二者都有
             success: function (res) {
-
                 if (res.tempFilePaths.length > 0) {
                     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                     that.setData({
                         avatar: res.tempFilePaths[0]
+                    });
+                    //todo 待确定 如何使用
+                    service.user.upLoadFile(that.data.avatar,function (res) {
+                      debugger
                     })
                 }
             },
@@ -308,9 +310,9 @@ Page({
                     content: '保存失败'
                 });
             } else {
-                // wx.navigateTo({
-                //   url: '../signUpC/signUpC'
-                // });
+                wx.navigateTo({
+                  url: '../signUpC/signUpC'
+                });
             }
 
         })
