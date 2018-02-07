@@ -30,8 +30,14 @@
 
 		<!-- 选择阶段 START -->
 		<view class="options" wx:if="{{ pageData.quesInfo.status == 0 }}">
-			<block wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
+			<block wx:if="{{ !pageData.visitorMode }}" wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
 				<view class="cell {{ userAnswer['a' + pageData.quesInfo.index].id == option.id ? 'selected' : ''}}" data-optionid="{{ option.id }}" data-optionindex="{{ optionindex }}" data-quesindex="{{pageData.quesInfo.index}}" catchtap="selectAnswer">
+					<view class="txt ellipsis-1">{{ option.name }}</view>
+				</view>
+			</block>
+
+			<block wx:if="{{ pageData.visitorMode }}" wx:for="{{pageData.paper.questions[pageData.quesInfo.index].options}}" wx:key="optionindex" wx:for-item="option" wx:for-index="optionindex" >
+				<view class="cell {{ userAnswer['a' + pageData.quesInfo.index].id == option.id ? 'selected' : ''}}" data-optionid="{{ option.id }}" data-optionindex="{{ optionindex }}" data-quesindex="{{pageData.quesInfo.index}}">
 					<view class="txt ellipsis-1">{{ option.name }}</view>
 				</view>
 			</block>
@@ -144,32 +150,62 @@
 	</view>
 </view>
 
-<!-- 复活
-<view class="pop-area">
+<!-- 复活卡 -->
+<view class="pop-area" wx:if="{{ pageData.showRestart && !bonus }}">
 	<view class="pop">
-		<image src="../../images/close.png" class="cross"></image>
+		<image  catchtap="closeRestartPop" src="../../images/close.png" class="cross"></image>
 		<view class="info">
 			<image class="icon" src="../../images/favor-card.png"></image>
 			<view class="title">复活机会</view>
 			<view class="desc">确定要使用1张复活卡继续答题吗？</view>
 		</view>
 		<view class="act">
-			<view class="btn">确定</view>
+			<view class="btn" catchtap="restart">确定</view>
 		</view>
 	</view>
 </view>
--->
-<view class="pop-area" style="display:none">
+
+
+<!-- 答题错误 -->
+<view class="pop-area allright" wx:if="{{ pageData.showEnd && !bonus }}">
 	<!--  670 h705 -->
 	<view class="pop">
-		<image src="../../images/close.png" class="cross"></image>
+		<image src="../../images/close.png" catchtap="closeEndPop" class="cross"></image>
 		<view class="info">
-			<image class="icon" src="../../images/favor-card.png"></image>
-			<view class="title">复活机会</view>
-			<view class="desc">确定要使用1张复活卡继续答题吗？</view>
+			<image class="icon favor" src="../../images/favor-card.png"></image>
+			<view class="title">您被淘汰了~</view>
+			<view class="desc">邀请好友参加得复活卡</view>
+			<view class="sub-desc">下一次离大奖更近一步</view>
 		</view>
 		<view class="act">
-			<view class="btn">确定</view>
+			<view class="share-msg">分享到</view>
+			<view class="line"></view>
+			<view class="share-btn">
+				<image class="share-icon" src="../../images/wechat.png"></image>
+				微信
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 答题正确 -->
+<view class="pop-area allright" wx:if="{{ bonus }}">
+	<!--  670 h705 -->
+	<view class="pop">
+		<image catchtap="back" src="../../images/close.png" class="cross"></image>
+		<view class="info">
+			<image class="icon" src="../../images/bonus.png"></image>
+			<view class="title">恭喜你！全答对了~</view>
+			<view class="desc">太厉害了！您本期获得<view class="balance">{{bonus.balance}}</view>元</view>
+			<view class="sub-desc">快去炫耀一下吧</view>
+		</view>
+		<view class="act">
+			<view class="share-msg">分享到</view>
+			<view class="line"></view>
+			<view class="share-btn">
+				<image class="share-icon" src="../../images/wechat.png"></image>
+				微信
+			</view>
 		</view>
 	</view>
 </view>
