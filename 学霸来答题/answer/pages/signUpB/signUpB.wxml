@@ -21,9 +21,9 @@
   <view class='info-group'>
     <text class='info-label'>感情状态</text>
     <view class='info-radio'>
-      <view catchtap="changeStatus" data-status="0" class="{{relationship_status==0?'info-radio-item active':'info-radio-item'}}">单身</view>
-      <view catchtap="changeStatus" data-status="1" class="{{relationship_status==1?'info-radio-item active':'info-radio-item'}}">恋爱中</view>
+      <view catchtap="changeStatus" data-status="1" class="{{relationship_status==1?'info-radio-item active':'info-radio-item'}}">单身</view>
       <view catchtap="changeStatus" data-status="2" class="{{relationship_status==2?'info-radio-item active':'info-radio-item'}}">保密</view>
+      <view catchtap="changeStatus" data-status="3" class="{{relationship_status==3?'info-radio-item active':'info-radio-item'}}">恋爱中</view>
     </view>
   </view>
   <view class='info-inline'>

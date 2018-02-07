@@ -184,20 +184,23 @@ var handle = {
         ajax.getPost({
             url: URL['userInfo'],
             method: 'put',
-            param: {
-                ApiAnswerV1User: object
-            },
+            param: object,
             header: {
                 Authorization: token
             }
         }, function (result) {
-            if (!result.code) {
+            if (result.code) {
                 //这里返回的只有user数据
-                var userInfo = that.getStoreInfo() || {};
-                var newUserInfo = _fn.merge(result, object);
-                userInfo.user = newUserInfo;
-                _fn.setStoreInfo(userInfo);
+                wx.showModal({
+                    title: '提示',
+                    content: '保存失败'
+                });
+                return
             }
+            var userInfo = that.getStoreInfo() || {};
+            var newUserInfo = _fn.merge(result, object);
+            userInfo.user = newUserInfo;
+            _fn.setStoreInfo(userInfo);
             callback && callback(result);
         })
     },
@@ -223,7 +226,7 @@ var handle = {
     },
     myUpload(obj, callback) {
         var userInfo = handle.getStoreInfo() || {};
-        var token =  utils.getValueByPath(userInfo, 'user.token') || '';
+        var token =  utils.getValueByPath(userInfo, 'user.id') || '';
         var keyArr = ['Avatar', 'Certification'];
         var key = token + '/' + keyArr[obj.key] + '/' + new Date().getTime();
         handle.getUploadToken(uptoken => {
@@ -235,16 +238,23 @@ var handle = {
                 //    "key": "gogopher.jpg"
                 //  }
                 // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-                /* that.setData({
-                   'imageURL': res.imageURL,
-                 });*/
-                debugger
-                callback(res);
+                if(!res.imageURL){
+                    //上传错误提示
+                    wx.showModal({
+                        title: '提示',
+                        content: '图片保存失败,请重试'
+                    });
+                    return
+                }
+                callback(res.imageURL);
             }, (error) => {
-                console.log('error: ' + error);
+                wx.showModal({
+                    title: '提示',
+                    content: '图片保存失败,请重试'
+                });
             }, {
                 region: 'NCN',
-                domain: 'bzkdlkaf.bkt.clouddn.com', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
+                domain: 'static.imsummer.cn', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
                 key: key, // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
                 // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
                 uptoken: uptoken // 由其他程序生成七牛 uptoken
@@ -257,7 +267,7 @@ var handle = {
         var token =  utils.getValueByPath(userInfo, 'user.token') || '';
         ajax.getPost({
             url: URL['GET_uploadToken'],
-            method: 'get',
+            method: 'post',
             header: {
                 Authorization: token
             }
