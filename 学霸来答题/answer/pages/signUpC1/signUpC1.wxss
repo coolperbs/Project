@@ -73,3 +73,13 @@
     font-size: 24rpx;
     color: #999;
 }
+.sign-up-btn {
+    height: 90rpx;
+    background: #36a3fb;
+    color: white;
+    border-radius: 45rpx;
+    position: absolute;
+    left: 45rpx;
+    right: 45rpx;
+    bottom: 40rpx;
+}

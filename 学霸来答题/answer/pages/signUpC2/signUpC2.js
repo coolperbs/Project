@@ -28,6 +28,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      debugger
         wx.setNavigationBarTitle({
             title: '学校信息'
         });
@@ -50,8 +51,8 @@ Page({
             that.getDepartment(function () {
                 that.setData({
                     name:userInfo.name,
-                    school:userInfo.school,
-                    department:userInfo.department,
+                    school:userInfo.school||that.data.school,
+                    department:userInfo.department||that.data.department,
                     major:userInfo.major,
                     enroll:userInfo.enroll
                 });

@@ -21,7 +21,7 @@ handle = {
     if ( userInfo && userInfo.user && userInfo.user.token ) {
       token = userInfo.user.token;
     }
-    var token = userInfo.auth_token || '';
+    var token = token || '';
     var param = _fn.wrapParam(object);
     var header = object.header || {
       Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'

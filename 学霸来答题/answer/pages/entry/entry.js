@@ -18,9 +18,9 @@ Page({
         service.user.login(res=>{
           if(res.user){
             //todo 已经登陆了 跳转主页面去
-            // wx.redirectTo({
-            //   url:'../index/index'
-            // })
+            wx.redirectTo({
+              url:'../index/index'
+            })
           }
         });
       }

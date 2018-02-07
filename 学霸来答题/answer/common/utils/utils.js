@@ -88,12 +88,12 @@ handle = {
     /**
      * 添加图片方式
      * */
-    startChooseEvt: function (callback) {
+    startChooseEvt: function (count,callback) {
         wx.showActionSheet({
             itemList: ['从相册中选择', '拍照'],
             success: function (res) {
                 var type = ['album', 'camera'];
-                handle.chooseRealImage(type[res.tapIndex], callback);
+                handle.chooseRealImage(type[res.tapIndex], count,callback);
             },
             fail: function (res) {
                 console.log(res.errMsg)
@@ -103,11 +103,11 @@ handle = {
     /**
      * 选择图片
      * */
-    chooseRealImage: function (type, callback) {
+    chooseRealImage: function (type,count, callback) {
         var tempType = [];
         tempType.push(type);
         wx.chooseImage({
-            count: 1, // 默认9
+            count: count||1, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: tempType, // 可以指定来源是相册还是相机，默认二者都有
             success: function (res) {

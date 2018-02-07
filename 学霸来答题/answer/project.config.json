@@ -34,6 +34,12 @@
 					"query": "id=6b40aaf2-4fe7-4d0a-82ea-2a7109763d92"
 				},
 				{
+					"id": 1,
+					"name": "列表",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
 					"id": 2,
 					"name": "登陆",
 					"pathName": "pages/entry/entry",
@@ -79,12 +85,6 @@
 					"id": 9,
 					"name": "个人中心",
 					"pathName": "pages/mine/mine",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "列表",
-					"pathName": "pages/index/index",
 					"query": ""
 				}
 			]
