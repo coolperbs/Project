@@ -18,7 +18,7 @@ Page( {
 			}
 
 			// 模拟数据
-			res.start_timestamp = new Date().getTime() - 20000 * 8 - 18000;
+			res.start_timestamp = new Date().getTime();
 
 			res.currentTime = new Date().getTime();
 			res = _fn.setStatus( res, res.currentTime );
