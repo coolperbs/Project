@@ -233,17 +233,14 @@ Page({
       return
     }
     server.user.getRegCode(this.data.phone, function (res) {
+      console.log(res)
       if (res.code == '0') {
-        wx.showToast({
-          title: '验证码发送成功',
-          icon: 'success'
-        });
         setTimeout(function () {
           that.setData({
             regText: '获取验证码',
             count: true
           });
-        }, 50000);
+        }, 30000);
         that.setData({
           regText: '已发送验证码',
           count: false

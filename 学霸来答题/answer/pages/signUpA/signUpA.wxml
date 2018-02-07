@@ -14,7 +14,7 @@
   <view class="input-box">
     <image class="input-icon" src="../../images/image_reg_code@2x.png"></image>
     <input bindinput="bindKeyInput" data-type="regcode" placeholder-class="input-placeholder" class="phone" placeholder='验证码'></input>
-    <view class="get-code" catchtap="getRegCodeEvt">{{regText}}</view>
+    <view class="get-code" bindtap="getRegCodeEvt">{{regText}}</view>
   </view>
 </view>
 

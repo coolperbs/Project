@@ -253,7 +253,7 @@ Page({
      * */
     startChooseEvt: function () {
         var that = this;
-        utils.startChooseEvt(function (res) {
+        utils.startChooseEvt(null,function (res) {
             var filePath = res.tempFilePaths[0];
             that.setData({
                 avatar: filePath,
