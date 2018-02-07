@@ -3,27 +3,35 @@
   <view class='tab-item'>
     <text class='tab-item-label'>真实姓名</text>
     <view class="tab-item-right">
-      <input placeholder-class='place-text' placeholder="仅用于身份审核" class='tab-item-input'></input>
+      <input bindinput="bindKeyInput" data-type="name" placeholder-class='place-text' placeholder="仅用于身份审核" value="{{name}}" class='tab-item-input'></input>
     </view>
   </view>
   <view class='tab-item'>
     <text class='tab-item-label'>学校</text>
     <view class="tab-item-right">
-      <text class='tab-item-desc ellipsis-1'></text>
+      <picker class="tab-item-desc ellipsis-1" mode="selector" value="{{schoolIndex}}" range="{{schoolList}}" range-key="name" bindchange="bindSchoolChange">
+        <view class="picker">
+          {{school.name}}
+        </view>
+      </picker>
       <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
     </view>
   </view>
   <view class='tab-item'>
     <text class='tab-item-label'>学院</text>
     <view class="tab-item-right">
-      <text class='tab-item-desc ellipsis-1'></text>
+      <picker class="tab-item-desc ellipsis-1" mode="selector" value="{{departmentIndex}}" range="{{departmentList}}" range-key="name" bindchange="bindDptChange">
+        <view class="picker">
+          {{department.name}}
+        </view>
+      </picker>
       <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
     </view>
   </view>
   <view class='tab-item'>
     <text class='tab-item-label'>专业</text>
     <view class="tab-item-right">
-      <input placeholder-class='place-text' placeholder="仅用于身份审核" class='tab-item-input'></input>
+      <input bindinput="bindKeyInput" data-type="major" placeholder-class='place-text' placeholder="仅用于身份审核" value="{{major}}" class='tab-item-input'></input>
     </view>
   </view>
   <view class='tab-item'>
@@ -42,6 +50,6 @@
   </view>
 </view>
 
-<button class="sign-up-btn" bindtap="submitEvt">
+<button class="sign-up-btn" bindtap="saveBasicInfo">
   确 认
 </button>

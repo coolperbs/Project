@@ -229,10 +229,10 @@ Page({
       });
       return
     }
-    if(!that.data.count){
+    if (!that.data.count) {
       return
     }
-    server.signUp.getRegCode(this.data.phone, function (res) {
+    server.user.getRegCode(this.data.phone, function (res) {
       if (res.code == '0') {
         wx.showToast({
           title: '验证码发送成功',
@@ -243,7 +243,7 @@ Page({
             regText: '获取验证码',
             count: true
           });
-        },50000);
+        }, 50000);
         that.setData({
           regText: '已发送验证码',
           count: false
@@ -270,8 +270,9 @@ Page({
    * */
   nextStep: function () {
     //todo 这里需要验证判断判断
+    debugger
     this.checkRegCode(function (res) {
-      if(res.code==-1){
+      if (res.code == -1) {
         wx.showModal({
           title: '提示',
           content: '请输入正确的验证码'
@@ -300,9 +301,7 @@ Page({
       });
       return
     }
-    debugger
-    server.signUp.checkRegCode(this.data.regcode, function (res) {
-      debugger
+    server.user.checkRegCode(this.data.regcode, function (res) {
       callback(res)
     })
   },

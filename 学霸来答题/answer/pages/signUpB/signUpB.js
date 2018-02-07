@@ -2,7 +2,7 @@
 
 
 import service from '../../service/service'
-
+import utils from '../../common/utils/utils';
 
 var time = new Date();
 var year = time.getFullYear();
@@ -34,40 +34,27 @@ Page({
     multiArr: [],
     multiIndex: [0, 0]
   },
-  //todo 待确定 gender 表示意思
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    service.user.isLogin(res => {
-      if (!res) {
-        service.user.login(res => {
-          debugger
-          //初始化页面数据
-
-          if (res) {
-            that.setData({
-              "nickname": res.user.nickname,
-              "avatar": res.user.avatar,
-              "gender": res.user.gender,
-              "birthday": res.user.birthday,
-              "relationship_status": res.user.relationship_status,
-            })
-          }
-          that.onLoadEvt(options);
-        });
-      }
-    })
-  },
-  /*
-  * 近页面做的事
-  * */
-  onLoadEvt: function (options) {
-    var that = this;
     //获取 地区列表
-    service.signUp.GetAreaInfo(res => {
+    var userInfo = service.user.getStoreInfo();
+    if (!userInfo) {
+      service.user.login(userData => {
+        userInfo = userData.user;
+
+        that.initData(options, userInfo);
+      });
+    } else {
+      that.initData(options, userInfo.user);
+    }
+
+  },
+  initData: function (options, userInfo) {
+    var that = this;
+    service.user.getAreaInfo(res => {
       if (res.constructor == Array) {
 
         var province = (res || []).map(v => {
@@ -78,7 +65,10 @@ Page({
             return v2.name
           });
         });
-        var otherData = service.signUp.getOtherData();
+
+        var tempCity = utils.getValueByPath(userInfo, 'city');
+        var tempProvince = utils.getValueByPath(userInfo, 'province');
+
         var newCity = {
           id: res[0].cities[0].id,
           name: res[0].cities[0].name
@@ -87,9 +77,8 @@ Page({
           id: res[0].id,
           name: res[0].name
         };
-        var recity = otherData ? otherData.city ? otherData.city : newCity : newCity;
-        var reprovince = otherData ? otherData.province ? otherData.province : newProvince : newProvince;
-        debugger
+        var recity = tempCity ? tempCity : newCity;
+        var reprovince = tempProvince ? tempProvince : newProvince;
         that.setData({
           AreaData: res,
           multiArr: [province, city[0]],
@@ -100,25 +89,36 @@ Page({
         })
       }
     });
+
+    that.setData({
+      "nickname": utils.getValueByPath(userInfo, 'nickname'),
+      "avatar": utils.getValueByPath(userInfo, 'avatar'),
+      "gender": utils.getValueByPath(userInfo, 'gender'),
+      "birthday": utils.getValueByPath(userInfo, 'birthday'),
+      "relationship_status": utils.getValueByPath(userInfo, 'relationship_status')
+    });
     if (options.edit) {
       //todo 编辑状态
+      wx.setNavigationBarTitle({
+        title: '个人信息'
+      });
     } else {
       wx.getUserInfo({
-        success (res) {
+        success(res) {
           if (res.errMsg = 'etUserInfo:ok') {
-            var userInfo = res.userInfo || {};
+            var wxInfo = res.userInfo || {};
             that.setData({
-              avatar: userInfo.avatarUrl,
-              nickname: userInfo.nickName,
-              gender: userInfo.gender
+              avatar: wxInfo.avatarUrl,
+              nickname: wxInfo.nickName,
+              gender: wxInfo.gender
             })
           }
         }
-      })
+      });
+      wx.setNavigationBarTitle({
+        title: '完善个人信息(2/3)'
+      });
     }
-    wx.setNavigationBarTitle({
-      title: '完善个人信息(2/3)'
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -252,58 +252,29 @@ Page({
    * */
   startChooseEvt: function () {
     var that = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      success: function (res) {
-        var type = ['album', 'camera'];
-        that.chooseRealImage(type[res.tapIndex]);
-      },
-      fail: function (res) {
-        console.log(res.errMsg)
-      }
-    })
-  },
-  /**
-   * 选择图片
-   * */
-  chooseRealImage: function (type) {
-    var that = this;
-    var tempType = [];
-    tempType.push(type);
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: tempType, // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-
-        if (res.tempFilePaths.length > 0) {
-          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          that.setData({
-            avatar: res.tempFilePaths[0]
-          })
-        }
-      },
-      fail: function (res) {
-        console.log(res.tempFilePaths);
-      }
+    utils.startChooseEvt(function (res) {
+      debugger
+      that.setData({
+        avatar: res.tempFilePaths[0]
+      });
+      //todo 待确定 如何使用
+      service.user.myUpload(that.data.avatar, function (res) {
+        debugger
+      })
     })
   },
   /**
    * 保存用户基本数据
    * */
   saveBasicInfo: function () {
-    if (this.data.nickname == '') {
-
-      return
-    }
-    service.signUp.PutUserInfo({
+    service.user.putUserInfo({
       "nickname": this.data.nickname,
       "avatar": this.data.avatar,
       "gender": this.data.gender,
       "birthday": this.data.birthday,
       "relationship_status": this.data.relationship_status,
       "province": this.data.province,
-      "city": this.data.city,
+      "city": this.data.city
     }, function (res) {
       if (res.code) {
         wx.showModal({
@@ -311,9 +282,9 @@ Page({
           content: '保存失败'
         });
       } else {
-        // wx.navigateTo({
-        //   url: '../signUpC/signUpC'
-        // });
+        wx.navigateTo({
+          url: '../signUpC/signUpC'
+        });
       }
 
     })
