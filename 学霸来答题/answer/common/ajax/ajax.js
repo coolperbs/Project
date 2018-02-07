@@ -36,8 +36,11 @@ handle = {
     });
   },
   post: function (object, callback) {
-    var userInfo = JSON.parse(wx.getStorageSync('userinfo') || '{}');
-    var token = userInfo.auth_token || '';
+    var userInfo = JSON.parse(wx.getStorageSync('userinfo') || '{}'),
+        token = '';
+    if ( userInfo && userInfo.user && userInfo.user.token ) {
+      token = userInfo.user.token;
+    }
     //todo 看这里是否需要调整统一
     var param = _fn.wrapParam(object);
     var header = object.header || {
