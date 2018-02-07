@@ -62,7 +62,7 @@ Page({
   },
   getDepartment: function (callback) {
     var that = this;
-    service.user.getDepartmentList({school_id: this.data.school.id}, function (res) {
+    service.user.getDepartmentList({ school_id: this.data.school.id }, function (res) {
       that.setData({
         departmentList: res,
         department: res[0]
@@ -99,7 +99,7 @@ Page({
   /*
   * 输入框事件
   * */
-  bindKeyInput:function (e) {
+  bindKeyInput: function (e) {
     var value = e.detail.value;
     if (e.currentTarget.dataset.type == 'name') {
       this.setData({
@@ -162,35 +162,35 @@ Page({
   },
   saveBasicInfo: function () {
     debugger
-    if(!/^[\u4e00-\u9fa5]+$/gi.test(this.data.name)){
+    if (!/^[\u4e00-\u9fa5]+$/gi.test(this.data.name)) {
       wx.showModal({
         title: '提示',
         content: '真实姓名请使用中文'
       });
       return
     }
-    if(!/^[\u4e00-\u9fa5]+$/gi.test(this.data.major)){
+    if (!/^[\u4e00-\u9fa5]+$/gi.test(this.data.major)) {
       wx.showModal({
         title: '提示',
         content: '专业请使用中文'
       });
       return
     }
-    if(this.data.name.length>10){
+    if (this.data.name.length > 10) {
       wx.showModal({
         title: '提示',
         content: '姓名限制10个汉字'
       });
       return
     }
-    if(this.data.major.length>20){
+    if (this.data.major.length > 20) {
       wx.showModal({
         title: '提示',
         content: '专业限制20个汉字'
       });
       return
     }
-    service.user.PutUserInfo({
+    service.user.putUserInfo({
       "name": this.data.name,
       "school": this.data.school,
       "department": this.data.department,

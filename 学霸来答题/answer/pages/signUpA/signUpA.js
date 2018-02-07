@@ -229,7 +229,7 @@ Page({
       });
       return
     }
-    if(!that.data.count){
+    if (!that.data.count) {
       return
     }
     server.user.getRegCode(this.data.phone, function (res) {
@@ -243,7 +243,7 @@ Page({
             regText: '获取验证码',
             count: true
           });
-        },50000);
+        }, 50000);
         that.setData({
           regText: '已发送验证码',
           count: false
@@ -270,9 +270,9 @@ Page({
    * */
   nextStep: function () {
     //todo 这里需要验证判断判断
-      debugger
+    debugger
     this.checkRegCode(function (res) {
-      if(res.code==-1){
+      if (res.code == -1) {
         wx.showModal({
           title: '提示',
           content: '请输入正确的验证码'

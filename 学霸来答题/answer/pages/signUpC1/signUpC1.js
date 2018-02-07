@@ -90,7 +90,7 @@ Page({
    * */
   chooseRealImage: function (type) {
     var _this = this;
-    var tempType=[];
+    var tempType = [];
     tempType.push(type);
     wx.chooseImage({
       count: 3, // 默认9

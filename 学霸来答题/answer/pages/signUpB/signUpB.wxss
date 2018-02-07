@@ -62,16 +62,18 @@
 .sign-up-info-box .info-inline .info-input {
   font-size: 28rpx;
   width: 100%;
-    height: 40rpx;
+  height: 40rpx;
   margin-bottom: -2rpx;
 }
-.sign-up-info-box .info-group .info-radio{
+
+.sign-up-info-box .info-group .info-radio {
   display: flex;
   justify-content: center;
   border-radius: 4rpx;
-  border:1rpx solid #ddd;
+  border: 1rpx solid #ddd;
 }
-.sign-up-info-box .info-group .info-radio .info-radio-item{
+
+.sign-up-info-box .info-group .info-radio .info-radio-item {
   width: 100%;
   text-align: center;
   font-size: 28rpx;
@@ -79,13 +81,14 @@
   height: 70rpx;
   line-height: 70rpx;
   background: #fff;
-
 }
-.sign-up-info-box .info-group .info-radio .info-radio-item.active{
+
+.sign-up-info-box .info-group .info-radio .info-radio-item.active {
   background: #36a3fb;
   color: white;
   border-radius: 4rpx;
 }
+
 .info-placeholder {
   color: #ccc;
 }
