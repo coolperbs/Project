@@ -15,11 +15,16 @@ whiteList = [
 
 handle = {
   query: function (object, callback) {
-    var userInfo = JSON.parse(wx.getStorageSync('userinfo') || '{}');
+    var userInfo = wx.getStorageSync('userinfo') || {},
+        token = '';
+
+    if ( userInfo && userInfo.user && userInfo.user.token ) {
+      token = userInfo.user.token;
+    }
     var token = userInfo.auth_token || '';
     var param = _fn.wrapParam(object);
     var header = object.header || {
-      Authorization: token || 'ssY4iu3vSrwZBcrHvpYSPcgR'
+      Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'
     };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
@@ -36,12 +41,15 @@ handle = {
     });
   },
   post: function (object, callback) {
-    var userInfo = JSON.parse(wx.getStorageSync('userinfo') || '{}');
-    var token = userInfo.auth_token || '';
+    var userInfo = wx.getStorageSync('userinfo') || '{}',
+        token = '';
+    if ( userInfo && userInfo.user && userInfo.user.token ) {
+      token = userInfo.user.token;
+    }
     //todo 看这里是否需要调整统一
     var param = _fn.wrapParam(object);
     var header = object.header || {
-      Authorization: token || 'ssY4iu3vSrwZBcrHvpYSPcgR'
+      Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'
     };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题

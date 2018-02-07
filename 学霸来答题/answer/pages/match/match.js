@@ -18,7 +18,7 @@ Page( {
 			}
 
 			// 模拟数据
-			res.start_timestamp = new Date().getTime() - 20000 * 9;
+			res.start_timestamp = new Date().getTime() - 20000 * 8 - 18000;
 
 			res.currentTime = new Date().getTime();
 			res = _fn.setStatus( res, res.currentTime );
@@ -51,6 +51,7 @@ _fn = {
 		// 第一次先计算下
 		STATUSTIMMER = setInterval( function() {
 			_fn.formatStatus( caller );
+			_fn.postAnswer( caller );
 		}, 1000 );
 	},
 	stopRefresh : function() {
@@ -119,13 +120,12 @@ _fn = {
 
 		// 如果题数答完，则结束
 		answerAll = index >= act.paper.questions.length ? true : false;
-		act.quesInfo = {
-			index : index,
-			count : remainder >= 10 ? 20 - remainder : 10 - remainder, // 每个阶段的倒计时
-			status :status, // 0为答题阶段，1为时间到,2为答案展示阶段
-			answerAll : answerAll,
-			endCountInfo : _fn.getEndCount( endCount )
-		}
+		act.quesInfo = act.quesInfo || {};
+		act.quesInfo.index = index,
+		act.quesInfo.count = remainder >= 10 ? 20 - remainder : 10 - remainder, // 每个阶段的倒计时
+		act.quesInfo.status = status, // 0为答题阶段，1为时间到,2为答案展示阶段
+		act.quesInfo.answerAll = answerAll,
+		act.quesInfo.endCountInfo = _fn.getEndCount( endCount )
 		return act;
 	},
 
@@ -137,5 +137,18 @@ _fn = {
 		result.hours = result.hours < 10 ? '0' + result.hours : result.hours;
 		result.minutes = result.minutes < 10 ? '0' + result.minutes : result.minutes;
 		return result;
+	},
+
+	postAnswer : function( caller ) {
+		var data = caller.data;
+
+		// 答题完成或已提交过数据都不处理
+		if ( !data || !data.pageData || !data.pageData.quesInfo || !data.pageData.quesInfo.answerAll || data.pageData.quesInfo.hasPost ) {
+			return;
+		}
+		data.pageData.quesInfo.hasPost = true;
+		caller.setData( {
+			'pageData.quesInfo.hasPost' : true
+		} );
 	}
 }
