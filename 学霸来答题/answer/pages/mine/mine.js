@@ -35,7 +35,7 @@ Page({
         wx.setNavigationBarTitle({
             title: '最强学霸'
         });
-        this.initPage();
+
     },
     initData: function (userInfo) {
         var that = this;

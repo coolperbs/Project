@@ -34,7 +34,7 @@ Page({
         wx.setNavigationBarTitle({
             title: '身份认证'
         });
-        this.initPage();
+
     },
     initPage: function () {
 

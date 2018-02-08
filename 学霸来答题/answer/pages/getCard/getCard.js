@@ -28,7 +28,6 @@ Page({
               userId:options.userId
           })
       }
-      this.initPage();
       wx.setNavigationBarTitle({
           title: '最强学霸答题赢现金'
       })

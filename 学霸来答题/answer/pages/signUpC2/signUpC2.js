@@ -46,8 +46,7 @@ Page({
         wx.setNavigationBarTitle({
             title: '学校信息'
         });
-        //先拿local 没有就去登陆
-        this.initPage();
+
     },
     initPage: function () {
         var that = this;

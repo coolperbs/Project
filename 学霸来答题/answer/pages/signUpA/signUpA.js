@@ -40,7 +40,7 @@ Page({
         if (options) {
             //todo 有参数 就展示详情信息？
         }
-        this.initPage();
+
         wx.setNavigationBarTitle({
             title: '手机验证(1/3)'
         })

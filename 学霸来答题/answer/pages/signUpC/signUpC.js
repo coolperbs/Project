@@ -18,7 +18,7 @@ Page({
      */
     onLoad: function (options) {
 
-        this.initPage()
+
         if(options.edit){
             this.setData({
                 edit:true
