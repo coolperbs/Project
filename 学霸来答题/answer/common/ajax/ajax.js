@@ -67,9 +67,7 @@ handle = {
   },
   getPost: function (object, callback) {
     //todo 看这里是否需要调整统一
-    var param = _fn.wrapParam(object);
     wx.request({
-      //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
       url: object.url,
       data: object.param || {},
       method: object.method || 'get',
@@ -86,6 +84,7 @@ handle = {
 
 _fn = {
   wrapParam: function (object) {
+    return object.param || {};
     var userInfo = wx.getStorageSync('userinfo') || {},
       result;
 
@@ -109,7 +108,6 @@ _fn = {
     }
     return false;
   },
-
   responseWrapper: function (res, callback) {
     // if ( !res || res.statusCode != 200 ) {
     //   callback( {

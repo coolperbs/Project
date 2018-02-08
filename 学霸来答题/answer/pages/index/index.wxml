@@ -1,6 +1,6 @@
 <view class="head">
 	<!--最强学霸-->
-	<view class="btn">活动规则</view>
+	<view class="btn" catchtap="goRule">活动规则</view>
 </view>
 
 <view class="entry" wx:for="{{ pageData.list }}" wx:key="index">

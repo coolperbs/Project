@@ -1,50 +1,38 @@
-// pages/signUpA/signUpA.js
+// pages/getCard/getCard.js
 import server from '../../service/service'
 import  areaCode from '../../common/areaCode/areaCode'
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        AREA_CODE:areaCode ,
-        range: [],
-        regText: '获取验证码',
-        count: true,
-        areacode: '+86',
-        phone: '',
-        regcode: '',
-        index: 0
-    },
-    onShareAppMessage : function() {
-        var userId,
-            userInfo = service.user.getStoreInfo(),
-            path;
+  /**
+   * 页面的初始数据
+   */
+  data: {
+      AREA_CODE:areaCode ,
+      range: [],
+      regText: '获取验证码',
+      count: true,
+      areacode: '+86',
+      phone: '',
+      regcode: '',
+      index: 0,
+      userId:''
+  },
 
-        userId = userInfo || {};
-        userId = userId.user || {};
-        userId = userId.id;
-        path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
-        return {
-            path : path,
-        };
-    },
-    onPullDownRefresh:function () {
-        this.initPage();
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        if (options) {
-            //todo 有参数 就展示详情信息？
-        }
-        this.initPage();
-        wx.setNavigationBarTitle({
-            title: '手机验证(1/3)'
-        })
-    },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+      if (options) {
+          //todo 有参数 就展示详情信息？
+          this.setData({
+              userId:options.userId
+          })
+      }
+      this.initPage();
+      wx.setNavigationBarTitle({
+          title: '最强学霸答题赢现金'
+      })
+  },
     initPage:function () {
         var result = [];
         for (let i = 0; i < this.data.AREA_CODE.districtArr.length; i++) {
@@ -55,13 +43,15 @@ Page({
             range: result
         });
     },
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
+    onPullDownRefresh:function () {
         this.initPage();
     },
-
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+      this.initPage();
+  },
     /**
      * 用户输入处理
      * */
@@ -101,7 +91,7 @@ Page({
             return
         }
         var phone = this.data.areacode + this.data.phone;
-        server.user.getRegCode(phone, function (res) {
+        server.user.getShareCode({phone:phone,userId:this.data.userId}, function (res) {
             console.log(res)
             if (res.code == '0') {
                 that.setData({
@@ -131,21 +121,7 @@ Page({
             areacode: this.data.AREA_CODE.districtArr[e.detail.value].number
         })
     },
-    /**
-     * 自定义事件 去登陆
-     * */
-    nextStep: function () {
-        //todo 这里需要验证判断判断
 
-        this.checkRegCode(function (res) {
-            if (res) {
-                wx.navigateTo({
-                    url: '../signUpB/signUpB'
-                });
-            }
-        })
-
-    },
     /**
      * 验证手机验证码
      * */
@@ -160,7 +136,7 @@ Page({
             });
             return
         }
-        server.user.checkRegCode(this.data.regcode, function (res) {
+        server.user.checkShareCode({code:this.data.regcode,userId:this.data.userId,phone:this.data.phone}, function (res) {
             callback(res)
         })
     },
@@ -186,5 +162,17 @@ Page({
             }
         }
         return result;
-    }
+    },
+    nextStep: function () {
+
+        this.checkRegCode(function (res) {
+            if (res) {
+              //todo  需要新接口
+              //   wx.navigateTo({
+              //       url: '../signUpB/signUpB'
+              //   });
+            }
+        })
+
+    },
 });

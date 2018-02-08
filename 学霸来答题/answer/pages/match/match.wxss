@@ -13,6 +13,8 @@ Page{ background-color: #149eff; height : 100%; }
 .wait .info .season { font-size : 40rpx; color : #ff8800; font-weight : bold; }
 .wait .info .logo image { width : 239rpx; height : 66rpx; margin-top : 35rpx; }
 .wait .info .title { font-size : 48rpx; color : #ff8800; margin-top : 35rpx; font-weight : bold; }
+.wait .info .title.end { margin-top : 60rpx; }
+.wait .info .text { margin : 0 44rpx; margin-top : 20rpx; font-size : 32rpx; }
 .wait .info .time { font-size : 90rpx; color : #149eff; margin-top : 80rpx; }
 
 .question { display: flex; flex-direction : column; align-items : center;  }
@@ -45,7 +47,7 @@ Page{ background-color: #149eff; height : 100%; }
 .toolbar { height : 70rpx; left : 40rpx; position: fixed; bottom : 30rpx; width : 670rpx; display: flex; justify-content : space-between; align-items : center; }
 .toolbar input { font-size : 30rpx; width : 510rpx; height : 70rpx; line-height: 70rpx; padding : 0 30rpx; color : #a6c5e6; background-color: #107ecc; border-radius: 40rpx; }
 .toolbar .btn { position: relative; width : 70rpx; height : 70rpx; border-radius: 50%; background-color: #107ecc; }
-.toolbar .btn:after { content : ''; height : 14rpx; width : 14rpx; background-color: #a6c5e6; position: absolute; border-radius: 50%; left : 30rpx; top : 30rpx; }
+.toolbar .btn:after { content : ''; height : 14rpx; width : 14rpx; background-color: #a6c5e6; position: absolute; border-radius: 50%; left : 32rpx; top : 32rpx; }
 .toolbar .btn:before { width : 28rpx; height : 28rpx; content: ''; background-color: transparent; position: absolute; left : 17rpx; top : 17rpx; border-radius: 50%; border : solid 6rpx #a6c5e6; }
 
 
@@ -67,7 +69,8 @@ Page{ background-color: #149eff; height : 100%; }
 .pop-area.allright .pop .balance { display: inline; color : #fa5452; }
 .pop-area.allright .pop .share-icon { margin-bottom : 25rpx; display: block; width : 88rpx; height : 88rpx; }
 .pop-area.allright .pop .act { margin-top : 66rpx; position: relative; }
-.pop-area.allright .pop .share-btn { font-size : 24rpx; color : #95a3a7; text-align: center; }
+.pop-area.allright .pop .share-btn { font-size : 24rpx; background-color: transparent; color : #95a3a7; text-align: center; border:none; position: relative; }
+.pop-area.allright .pop .share-btn button { width : 100%; height : 100%; left : 0; top : 0; position: absolute; opacity: 0; }
 .pop-area.allright .pop .share-msg { width : 150rpx; position: absolute; top : 0; left : 50%; margin-left : -75rpx; text-align: center; font-size : 24rpx; color : #95a3a7; z-index : 20; background-color: #fff; }
 .pop-area.allright .pop .line { content : ''; border-bottom : solid 1px #95a3a7; width : 476rpx; margin-left : -238rpx; position: absolute; left : 50%; top : 16rpx; z-index: 1;  }
 

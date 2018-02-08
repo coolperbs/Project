@@ -4,14 +4,33 @@ var _fn, STATUSTIMMER;
 
 
 Page( {
+	onShareAppMessage : function() {
+		var userId,
+			userInfo = service.user.getStoreInfo(),
+			path;
+
+		userId = userInfo || {};
+		userId = userId.user || {};
+		userId = userId.id;
+		path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+		return {
+			path : path,
+		};
+	},
 	onReady : function() {
-		console.log( new Date().getTime() );
 		var caller = this;
 		utils.showLoading( 300 );
 		service.questions.getList( function( list ) {
 			utils.hideLoading();
 			if ( list && list.code ) {
-				utils.showError( list.message || '获取信息错误' );
+				wx.showModal( {
+					title : '提示',
+					content : list.message || '获取信息错误',
+					showCancel : false,
+					complete : function() {
+						wx.reLaunch( { url : '../entry/entry' } );
+					}
+				} );
 				return;
 			}
 
@@ -61,6 +80,9 @@ Page( {
 	},
 	onHide : function() {
 		_fn.stopRefresh();
+	},
+	goRule : function() {
+		wx.navigateTo( { url : '../pageRule/pageRule' } );
 	}
 } );
 

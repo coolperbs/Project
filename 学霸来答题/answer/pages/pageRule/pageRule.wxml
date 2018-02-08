@@ -1,0 +1,4 @@
+<!--pages/pageRule/pageRule.wxml-->
+<view class="login-bg">
+    <image lazy-load="true" mode="widthFix" style="width: 100%; height: 100%" src="https://static.imsummer.cn/xueba_rule.png" />
+</view>

@@ -9,6 +9,7 @@ Page {
 .login-bg {
   height: inherit;
   width: inherit;
+  overflow: hidden;
 }
 
 .login-btn {

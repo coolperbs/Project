@@ -12,49 +12,66 @@ Page({
         departmentList: [],
         schoolIndex: 0,
         departmentIndex: 0,
-        school:{},
-        department:{},
+        school: {},
+        department: {},
         name: '',
         major: '',
         degree: {id: 1, name: "本科"},
         degreeIndex: 0,
-        degreeArr: [{id: 1, name: "本科"},{id: 2, name: "硕士"},{id: 3, name: "博士"}],
+        degreeArr: [{id: 1, name: "本科"}, {id: 2, name: "硕士"}, {id: 3, name: "博士"}],
         enroll: '',
         enrollIndex: 0,
         enrollArr: []
     },
+    onShareAppMessage : function() {
+        var userId,
+            userInfo = service.user.getStoreInfo(),
+            path;
 
+        userId = userInfo || {};
+        userId = userId.user || {};
+        userId = userId.id;
+        path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+        return {
+            path : path,
+        };
+    },
+    onPullDownRefresh:function () {
+        this.initPage();
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      debugger
         wx.setNavigationBarTitle({
             title: '学校信息'
         });
         //先拿local 没有就去登陆
+        this.initPage();
+    },
+    initPage: function () {
         var that = this;
         //获取 地区列表
         var userInfo = service.user.getStoreInfo();
         if (!userInfo) {
             service.user.login(userData => {
                 userInfo = userData.user;
-                that.initData(options, userInfo);
+                that.initData(userInfo);
             });
         } else {
-            that.initData(options, userInfo.user);
+            that.initData(userInfo.user);
         }
     },
-    initData: function (options, userInfo) {
+    initData: function (userInfo) {
         var that = this;
         that.getSchool(function (res) {
             that.getDepartment(function () {
                 that.setData({
-                    name:userInfo.name,
-                    school:userInfo.school||that.data.school,
-                    department:userInfo.department||that.data.department,
-                    major:userInfo.major,
-                    enroll:userInfo.enroll
+                    name: userInfo.name,
+                    school: userInfo.school || that.data.school,
+                    department: userInfo.department || that.data.department,
+                    major: userInfo.major,
+                    enroll: userInfo.enroll
                 });
             });
         });
@@ -70,12 +87,6 @@ Page({
             enrollArr: enrollArr,
             enroll: start
         });
-        //todo 填充默认数据
-        if (options.edit) {
-
-        } else {
-
-        }
 
     },
     getSchool: function (callback) {
@@ -113,7 +124,7 @@ Page({
     /*
     * 学位选择
     * */
-    bindDegreeChange:function (e) {
+    bindDegreeChange: function (e) {
         var that = this;
         var degreeIndex = e.detail.value;
         var degree = that.data.degreeArr[degreeIndex];
@@ -133,7 +144,6 @@ Page({
             school: school,
             schoolIndex: schoolIndex
         });
-        debugger
         that.getDepartment();
     },
     /**
@@ -154,6 +164,17 @@ Page({
     bindKeyInput: function (e) {
         var value = e.detail.value;
         if (e.currentTarget.dataset.type == 'name') {
+            var userInfo=service.user.getStoreInfo();
+            if(userInfo.user.certification_status==2){
+                wx.showModal({
+                    title: '提示',
+                    content: '已认证用户不能修改名称'
+                });
+                this.setData({
+                    name: this.data.name
+                });
+                return
+            }
             this.setData({
                 name: value
             })
@@ -165,52 +186,10 @@ Page({
         }
     },
     /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+        this.initPage();
     },
     saveBasicInfo: function () {
         if (!/^[\u4e00-\u9fa5]+$/gi.test(this.data.name)) {
@@ -247,7 +226,7 @@ Page({
             "department": this.data.department,
             "major": this.data.major,
             "degree": this.data.degree.id,
-            "enroll":this.data.enroll
+            "enroll": this.data.enroll
         }, function (res) {
             wx.navigateBack({
                 delta: 1

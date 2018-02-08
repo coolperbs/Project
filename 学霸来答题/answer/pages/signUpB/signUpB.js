@@ -33,27 +33,44 @@ Page({
         cityArr: [],
         multiArr: [],
         multiIndex: [0, 0],
-        changeAvatar: false
+        changeAvatar: false,
+        edit:false
+    },
+    onShareAppMessage : function() {
+        var userId,
+            userInfo = service.user.getStoreInfo(),
+            path;
+
+        userId = userInfo || {};
+        userId = userId.user || {};
+        userId = userId.id;
+        path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+        return {
+            path : path,
+        };
+    },
+    onPullDownRefresh:function () {
+        this.initPage();
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this;
-        //获取 地区列表
-        var userInfo = service.user.getStoreInfo();
-        if (!userInfo) {
-            service.user.login(userData => {
-                userInfo = userData.user;
-
-                that.initData(options, userInfo);
+        this.initPage();
+        if(options.edit){
+            wx.setNavigationBarTitle({
+                title: '个人信息'
             });
-        } else {
-            that.initData(options, userInfo.user);
+            this.setData({
+                edit:true
+            });
+            return
         }
-
+        wx.setNavigationBarTitle({
+            title: '完善个人信息(2/3)'
+        });
     },
-    initData: function (options, userInfo) {
+    initData: function (userInfo) {
         var that = this;
         service.user.getAreaInfo(res => {
             if (res.constructor == Array) {
@@ -98,12 +115,7 @@ Page({
             "birthday": utils.getValueByPath(userInfo, 'birthday'),
             "relationship_status": utils.getValueByPath(userInfo, 'relationship_status')
         });
-        if (options.edit) {
-            //todo 编辑状态
-            wx.setNavigationBarTitle({
-                title: '个人信息'
-            });
-        } else {
+        if(that.data.avatar==''){
             wx.getUserInfo({
                 success(res) {
                     if (res.errMsg = 'etUserInfo:ok') {
@@ -116,58 +128,25 @@ Page({
                     }
                 }
             });
-            wx.setNavigationBarTitle({
-                title: '完善个人信息(2/3)'
-            });
         }
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    initPage:function () {
+        var that = this;
+        //获取 地区列表
+        var userInfo = service.user.getStoreInfo()||{};
+        if (!userInfo.user) {
+            service.user.login(userData => {
+                that.initData( userData.user||{});
+            });
+        } else {
+            that.initData(userInfo.user);
+        }
     },
-
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+        this.initPage();
     },
     /**
      * 根据 city province id 设置 multiArr: [],multiIndex: [0, 0]
@@ -195,7 +174,6 @@ Page({
      * 选择地区
      * */
     bindMultiPickerChange: function (e) {
-
         var provinceIndex = e.detail.value[0];
         var cityIndex = e.detail.value[1];
         var province = this.data.AreaData[provinceIndex];
@@ -281,6 +259,7 @@ Page({
         }
     },
     saveInfo: function () {
+        var that=this;
         service.user.putUserInfo({
             "nickname": this.data.nickname,
             "avatar": this.data.avatar,
@@ -290,9 +269,16 @@ Page({
             "province": this.data.province,
             "city": this.data.city
         }, function (res) {
-            wx.navigateTo({
-                url: '../signUpC/signUpC'
-            });
+            if(!that.data.edit){
+                wx.navigateTo({
+                    url: '../signUpC/signUpC'
+                });
+            }else {
+                wx.navigateBack({
+                    delta: 1
+                });
+            }
+
         })
     }
 });
