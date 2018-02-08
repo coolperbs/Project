@@ -164,6 +164,14 @@ Page({
     bindKeyInput: function (e) {
         var value = e.detail.value;
         if (e.currentTarget.dataset.type == 'name') {
+            var userInfo=service.user.getStoreInfo();
+            if(userInfo.user.certification_status==2){
+                wx.showModal({
+                    title: '提示',
+                    content: '已认证用户不能修改名称'
+                });
+                return
+            }
             this.setData({
                 name: value
             })
