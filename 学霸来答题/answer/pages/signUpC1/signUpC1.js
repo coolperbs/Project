@@ -133,8 +133,8 @@ Page({
         service.user.putUserInfo({
             "certificates": this.data.certificates
         }, function (res) {
-            wx.navigateTo({
-                url: '../signUpC/signUpC'
+            wx.navigateBack({
+                delta: 1
             });
         })
     }

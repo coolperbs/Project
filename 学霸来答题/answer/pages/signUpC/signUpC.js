@@ -9,29 +9,40 @@ Page({
      */
     data: {
         userInfo: {},
-        school: ''
+        school: '',
+        edit:false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.setNavigationBarTitle({
-            title: '完善个人信息(3/3)'
-        });
-        this.initPage(options)
+
+        this.initPage()
+        if(options.edit){
+            this.setData({
+                edit:true
+            });
+            wx.setNavigationBarTitle({
+                title: '完善个人信息'
+            });
+        }else {
+            wx.setNavigationBarTitle({
+                title: '完善个人信息(3/3)'
+            });
+        }
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function (options) {
-        this.initPage(options)
+    onShow: function () {
+        this.initPage()
     },
     /**
      * 更新页面数据
      * */
-    initPage: function (options) {
+    initPage: function () {
         //先拿local 没有就去登陆
         var that = this;
         //获取 地区列表
@@ -55,14 +66,7 @@ Page({
         var URL = '../signUpC1/signUpC1';
         var type = event.currentTarget.dataset.type;
         if (type == 'school') {
-            if (this.data.school) {
-                return
-            }
             URL = '../signUpC2/signUpC2'
-        } else {
-            if (this.data.userInfo.certification_status == 2) {
-                return
-            }
         }
         wx.navigateTo({
             url: URL
@@ -101,8 +105,14 @@ Page({
             });
             return
         }
-        wx.redirectTo({
-            url: '../index/index'
-        })
+        if(this.data.edit){
+            wx.navigateBack({
+                delta: 1
+            });
+        }else {
+            wx.redirectTo({
+                url: '../index/index'
+            })
+        }
     }
 });
