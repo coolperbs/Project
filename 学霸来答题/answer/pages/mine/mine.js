@@ -12,7 +12,8 @@ Page({
             2: '保密',
             3: '恋爱中'
         },
-        userInfo: {}
+        userInfo: {},
+        myRank:{}
     },
     /**
      * 生命周期函数--监听页面加载
@@ -29,6 +30,11 @@ Page({
             userInfo: userInfo
         });
         that.getAstro();
+        service.questions.getRank(res => {
+            that.setData({
+                myRank:res.my_ranking,
+            })
+        })
     },
     initPage: function () {
         var that = this;

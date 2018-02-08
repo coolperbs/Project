@@ -21,13 +21,13 @@
 		<view class="cell">
 			<view class="key">获得奖金</view>
 			<view class="value">
-				¥ 0
+				¥ {{myRank.balance}}
 			</view>
 		</view>
 		<view class="cell">
 			<view class="key">排名</view>
 			<view class="value">
-				100+
+				{{myRank.ranking}}
 			</view>			
 		</view>
 	</view>

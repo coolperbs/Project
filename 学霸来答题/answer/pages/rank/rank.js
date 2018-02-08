@@ -19,20 +19,8 @@ Page({
         });
         this.initPage();
     },
-    initData: function (userInfo) {
-        var that = this;
-    },
     initPage: function () {
         var that = this;
-        //获取 地区列表
-        var userInfo = service.user.getStoreInfo() || {};
-        if (!userInfo.user) {
-            service.user.getUserInfo(userData => {
-                that.initData(userData.user || {});
-            });
-        } else {
-            that.initData(userInfo.user);
-        }
         service.questions.getRank(res => {
             that.setData({
                 myRank:res.my_ranking,
