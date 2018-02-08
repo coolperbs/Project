@@ -14,7 +14,8 @@ Page({
       areacode: '+86',
       phone: '',
       regcode: '',
-      index: 0
+      index: 0,
+      userId:''
   },
 
   /**
@@ -23,10 +24,13 @@ Page({
   onLoad: function (options) {
       if (options) {
           //todo 有参数 就展示详情信息？
+          this.setData({
+              userId:options.userId
+          })
       }
       this.initPage();
       wx.setNavigationBarTitle({
-          title: '手机验证(1/3)'
+          title: '最强学霸答题赢现金'
       })
   },
     initPage:function () {
@@ -85,7 +89,7 @@ Page({
             return
         }
         var phone = this.data.areacode + this.data.phone;
-        server.user.getRegCode(phone, function (res) {
+        server.user.getShareCode({phone:phone,userId:this.data.userId}, function (res) {
             console.log(res)
             if (res.code == '0') {
                 that.setData({
@@ -130,7 +134,7 @@ Page({
             });
             return
         }
-        server.user.checkRegCode(this.data.regcode, function (res) {
+        server.user.checkShareCode({code:this.data.regcode,userId:this.data.userId,phone:this.data.phone}, function (res) {
             callback(res)
         })
     },

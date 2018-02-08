@@ -11,7 +11,9 @@ var URL = {
     userInfo: HOST + 'api/answer_v1/user',//get 获取 put 更新
     GET_cities: HOST + 'api/answer_v1/cities',//获取城市列表
     GET_school: HOST + 'api/answer_v1/schools',//学校/学院列表
-    GET_uploadToken: HOST + 'api/answer_v1/upload_requests'
+    GET_uploadToken: HOST + 'api/answer_v1/upload_requests',//上传七牛token
+    POST_share_verification_requests:HOST+'api/web/xueba_shares/verification_requests',//分享信息校验并且获取验证码
+    POST_share_verifications:HOST+'api/web/xueba_shares/verifications',//获取分享的卡
 
 };
 var CONF = {
@@ -381,6 +383,58 @@ var handle = {
         } else {
             return true
         }
+    },
+    /*---------------*/
+    getShareCode:function (object,callback) {
+        wx.showLoading({
+            title: '获取验证码...',
+            mask: true
+        });
+        debugger
+        ajax.getPost({
+            url: URL['POST_share_verification_requests'],
+            method: 'post',
+            param: {
+                phone:object.phone,
+                user_id:object.userId
+            }
+        }, res => {
+            wx.hideLoading();
+            if(res.code!=0){
+                wx.showModal({
+                    title: '提示',
+                    content: res.message||res.error
+                });
+                return
+            }
+            callback(res);
+        })
+    },
+    checkShareCode:function (object,callback) {
+        wx.showLoading({
+            title: '验证中...',
+            mask: true
+        });
+        debugger
+        ajax.getPost({
+            url: URL['POST_share_verifications'],
+            method: 'post',
+            param:{
+                "code": object.code,
+                "user_id": object.userId,
+                "phone": object.phone
+            },
+        }, res => {
+            wx.hideLoading();
+            if(res.code!=0){
+                wx.showModal({
+                    title: '提示',
+                    content: res.message||res.error
+                });
+                return
+            }
+            callback(res);
+        })
     }
 };
 module.exports = handle;
