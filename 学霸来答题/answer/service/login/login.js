@@ -80,14 +80,11 @@ var handle = {
             handle.updateInfo(callback);
             return;
         }
-
-        // 如果失效需要重新登录唤醒微信登录态
         wx.checkSession({
             success: function () {
                 callback && callback(_fn.merge(error.success, {data: userInfo}));
             },
             fail: function () {
-                // 这里是走流程还是直接wx.login就行？
                 handle.updateInfo(callback);
             }
         });
@@ -99,7 +96,7 @@ var handle = {
                 callback && callback(loginInfo);
                 return;
             }
-            // 2.获取微信侧登录信息
+            // 2.获取微信登录信息
             _fn.getWxUserInfo(function (wxUserInfo) {
                 if (_fn.isErrorRes(wxUserInfo)) {
                     callback && callback(wxUserInfo);
@@ -115,8 +112,16 @@ var handle = {
                         encryptedData: wxUserInfo.data.encryptedData
                     }
                 }, function (userInfo) {
+                    if (userInfo.errMsg || userInfo.error) {
+                        wx.showModal({
+                            title: '提示',
+                            content: userInfo.errMsg || userInfo.error || '微信授权失败请稍候重试',
+                            confirmText: '确定'
+                        });
+                        return
+                    }
                     // 保存信息
-                    if (userInfo /*&& userInfo.code == '0000' && userInfo.success == true*/) {
+                    if (userInfo) {
                         _fn.setStoreInfo(userInfo);
                     }
                     callback && callback(userInfo);
@@ -126,7 +131,8 @@ var handle = {
     },
     isLogin(callback) {
         let userInfo = wx.getStorageSync(CONF.storeName) || {};
-        if (!userInfo.token) {
+        //判断用户登陆没有 有user 就是老用户,没有user 就是新用户
+        if (!userInfo.user) {
             callback(false);
             return
         }
@@ -142,12 +148,12 @@ var handle = {
 
     /*-------------------------*/
     getRegCode(phone, callback) {
-        var userInfo = this.getStoreInfo();
+        var userInfo = this.getStoreInfo() || {};
         var token = userInfo.auth_token || '';
-      wx.showLoading({
-        title:'发送验证码...',
-        mask:true
-      });
+        wx.showLoading({
+            title: '发送验证码...',
+            mask: true
+        });
         ajax.getPost({
             url: URL['POST_verification_requests'],
             method: 'post',
@@ -158,18 +164,29 @@ var handle = {
                 phone: phone
             }
         }, function (result) {
-          wx.hideLoading();
+            wx.hideLoading();
+            if (!handle.dealTokenDate(result)) {
+                return
+            }
+            if (result.error || result.code!=0) {
+                wx.showModal({
+                    title: '提示',
+                    content: result.errMsg || result.message.detail || '获取验证码失败',
+                    confirmText: '确定'
+                });
+                return
+            }
             callback && callback(result);
+
         })
     },
     checkRegCode(regCode, callback) {
-        debugger
         var userInfo = this.getStoreInfo() || {};
         var token = userInfo.auth_token || '';
-      wx.showLoading({
-        title:'保存中...',
-        mask:true
-      });
+        wx.showLoading({
+            title: '保存中...',
+            mask: true
+        });
         ajax.getPost({
             url: URL['POST_verification'],
             method: 'post',
@@ -180,9 +197,20 @@ var handle = {
                 code: regCode
             }
         }, function (result) {
-          wx.hideLoading();
+            wx.hideLoading();
+            if (!handle.dealTokenDate(result)) {
+                return
+            }
+            if(result.code!=0){
+                wx.showModal({
+                    title: '提示',
+                    content: result.errMsg || result.message || '获取验证码失败',
+                    confirmText: '确定'
+                });
+                return
+            }
             _fn.setStoreInfo(result);
-            callback && callback(result);
+            callback && callback(true);
         })
     },
     putUserInfo(object, callback) {
@@ -190,10 +218,10 @@ var handle = {
         var userInfo = this.getStoreInfo() || {};
         var token = utils.getValueByPath(userInfo, 'user.token') || '';
         //错误判断 todo
-      wx.showLoading({
-        title:'保存中...',
-        mask:true
-      });
+        wx.showLoading({
+            title: '保存中...',
+            mask: true
+        });
         ajax.getPost({
             url: URL['userInfo'],
             method: 'put',
@@ -202,7 +230,10 @@ var handle = {
                 Authorization: token
             }
         }, function (result) {
-          wx.hideLoading();
+            wx.hideLoading();
+            if (!handle.dealTokenDate(result)) {
+                return
+            }
             if (result.code) {
                 //这里返回的只有user数据
                 wx.showModal({
@@ -226,12 +257,12 @@ var handle = {
         })
     },
     getUserInfo(callback) {
-      wx.showLoading({
-        title:'加载中...',
-        mask:true
-      });
+        wx.showLoading({
+            title: '加载中...',
+            mask: true
+        });
         var userInfo = handle.getStoreInfo() || {};
-        var token =  utils.getValueByPath(userInfo, 'user.token') || '';
+        var token = utils.getValueByPath(userInfo, 'user.token') || '';
         ajax.getPost({
             url: URL['userInfo'],
             method: 'get',
@@ -239,19 +270,22 @@ var handle = {
                 Authorization: token
             }
         }, function (result) {
-          wx.hideLoading();
+            if (!handle.dealTokenDate(result)) {
+                return
+            }
+            wx.hideLoading();
             callback && callback(result);
         })
     },
     myUpload(obj, callback) {
         var userInfo = handle.getStoreInfo() || {};
-        var token =  utils.getValueByPath(userInfo, 'user.id') || '';
+        var token = utils.getValueByPath(userInfo, 'user.id') || '';
         var keyArr = ['Avatar', 'Certification'];
         var key = token + '/' + keyArr[obj.key] + '/' + new Date().getTime();
-      wx.showLoading({
-        title:'上传图片中...',
-        mask:true
-      });
+        wx.showLoading({
+            title: '上传图片中...',
+            mask: true
+        });
         handle.getUploadToken(uptoken => {
             qiniuUploader.upload(obj.filePath, (res) => {
                 // 每个文件上传成功后,处理相关的事情
@@ -261,9 +295,9 @@ var handle = {
                 //    "key": "gogopher.jpg"
                 //  }
                 // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-                if(!res.imageURL){
+                if (!res.imageURL) {
                     //上传错误提示
-                  wx.hideLoading();
+                    wx.hideLoading();
                     wx.showModal({
                         title: '提示',
                         content: '图片保存失败,请重试'
@@ -272,7 +306,7 @@ var handle = {
                 }
                 callback(res.imageURL);
             }, (error) => {
-              wx.hideLoading();
+                wx.hideLoading();
                 wx.showModal({
                     title: '提示',
                     content: '图片保存失败,请重试'
@@ -289,7 +323,7 @@ var handle = {
     },
     getUploadToken(callback) {
         var userInfo = handle.getStoreInfo() || {};
-        var token =  utils.getValueByPath(userInfo, 'user.token') || '';
+        var token = utils.getValueByPath(userInfo, 'user.token') || '';
         ajax.getPost({
             url: URL['GET_uploadToken'],
             method: 'post',
@@ -325,6 +359,24 @@ var handle = {
             }
             callback(res);
         })
+    },
+    dealTokenDate: function (result) {
+        if (result.code == 401) {
+            wx.showModal({
+                title: '提示',
+                content: '微信登陆失效',
+                confirmText: '重新授权',
+                success: function (res) {
+                    if (!res.confirm) {
+                        return;
+                    }
+                    handle.login();
+                }
+            });
+            return false
+        } else {
+            return true
+        }
     }
 };
 module.exports = handle;
