@@ -39,7 +39,8 @@ Page( {
 		var caller = this;
 		utils.showLoading( 300 );
 		service.questions.getQuestion( pageParam.id, function( res ) {
-			var userInfo;
+			var userInfo,
+				endTime;
 
 			utils.hideLoading();
 			if ( res && res.code ) {
@@ -48,8 +49,9 @@ Page( {
 			}
 
 			// 模拟数据
-			//res.start_timestamp = new Date().getTime() + 9000;
-			res.end_timestamp = new Date().getTime() + 20000 * res.paper.questions.length + 60000;
+			//res.start_timestamp = new Date().getTime() + 20000 * res.paper.questions.length - 1000;
+			endTime = new Date().getTime() + 20000 * res.paper.questions.length + 60000;
+			res.end_timestamp = endTime <= res.end_timestamp ? endTime : res.end_timestamp;
 			res.currentTime = new Date().getTime();
 			//res.resurrection_count = 2;
 
@@ -131,10 +133,10 @@ _fn = {
 	restart : function( caller ) {
 		var data = caller.data, userAnswer;
 
-		if ( !data.pageData || data.pageData.resurrection_count <= 0 ) {
-			caller.setData( { 'pageData.showRestart' : false } );
-			return;
-		}
+		// if ( !data.pageData || data.pageData.resurrection_count <= 0 ) {
+		// 	caller.setData( { 'pageData.showRestart' : false } );
+		// 	return;
+		// }
 
 		userAnswer = data.userAnswer || {};
 		userAnswer[ 'a' + data.pageData.quesInfo.index ] = userAnswer[ 'a' + data.pageData.quesInfo.index ] || {};
@@ -401,11 +403,12 @@ _fn = {
 		if ( data.pageData.resurrection_count <= 0 ) {
 			showEnd = true;
 		}
-		if ( data.pageData.resurrection_count > 0) {
+		if ( data.pageData.resurrection_count > 0 && data.pageData.currentTime < data.pageData.end_timestamp ) {
 			_fn.restart( caller );
 			wx.showToast( { 
 				title : '已使用一张复活卡'
 			} );
+			visitorMode = false;
 			//showRestart = true;
 		}
 		caller.setData( {
