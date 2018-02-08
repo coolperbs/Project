@@ -18,10 +18,10 @@ Page( {
 			}
 
 			// 模拟数据
-			//res.start_timestamp = new Date().getTime();// - 9000 ;
+			res.start_timestamp = new Date().getTime();// - 9000 ;
 			//res.end_timestamp = new Date().getTime() - 20000 * 9;
 			res.currentTime = new Date().getTime();
-			//res.resurrection_count = 1;
+			res.resurrection_count = 1;
 
 			res = _fn.setStatus( res, res.currentTime );
 			caller.setData( {
