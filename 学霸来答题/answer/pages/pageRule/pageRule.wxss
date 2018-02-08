@@ -1,0 +1,12 @@
+/* pages/pageRule/pageRule.wxss */
+Page {
+    background-color: white;
+    height: 100%;
+    overflow: hidden;
+}
+.login-bg {
+    height: inherit;
+    width: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
