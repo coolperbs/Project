@@ -2,11 +2,11 @@
 	<view class="card question" wx:if="{{ pageData.timeStatus == 2 && !pageData.quesInfo.answerAll }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
-			10
+			{{ pageData.resurrection_count }}
 		</view>
-		<view class="num">
+		<view class="num" wx:if="{{ onlines }}">
 			<image src="../../images/number.png"></image>
-			5892
+			{{onlines}}
 		</view>		
 
 		<!-- 倒计时区域 START -->
@@ -77,11 +77,11 @@
 	<view class="card wait" wx:if="{{ pageData.timeStatus == 1 }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
-			10
+			{{ pageData.resurrection_count }}
 		</view>
-		<view class="num">
+		<view class="num" wx:if="{{ onlines }}">
 			<image src="../../images/number.png"></image>
-			5892
+			{{onlines}}
 		</view>
 		<view class="info">
 			<view class="season">{{ pageData.title }}</view>
@@ -95,21 +95,22 @@
 	<view class="card wait" wx:if="{{ pageData.timeStatus >= 2 && pageData.quesInfo.answerAll }}">
 		<view class="favor">
 			<image src="../../images/favor.png"></image>
-			10
+			{{ pageData.resurrection_count }}
 		</view>
-		<view class="num">
+		<view class="num" wx:if="{{ onlines }}">
 			<image src="../../images/number.png"></image>
-			5892
+			{{onlines}}
 		</view>
 		<view class="info">
 			<view class="season">{{ pageData.title }}</view>
 			<view class="logo"><image src="../../images/logo.png"></image></view>
-			<block wx:if="{{ pageData.quesInfo.endCountInfo.hours >= 0 ||  pageData.quesInfo.endCountInfo.minutes >= 0}}">
+			<block wx:if="{{ pageData.quesInfo.endCountInfo.hours > 0 ||  pageData.quesInfo.endCountInfo.minutes > 0}}">
 				<view class="title">已结束，正在提交答卷...</view>
 				<view class="time">{{ pageData.quesInfo.endCountInfo.hours }}:{{pageData.quesInfo.endCountInfo.minutes }}</view>
 			</block>
 			<block wx:if="{{ pageData.quesInfo.endCountInfo.hours == 0 &&  pageData.quesInfo.endCountInfo.minutes == 0}}">
 				<view class="title">已结束</view>
+				<view class="text">{{pageData.bonus_results}}</view>
 			</block>
 		</view>
 	</view>
@@ -169,7 +170,7 @@
 </view>
 
 <!-- 答题正确 -->
-<view class="pop-area allright" wx:if="{{ bonus }}">
+<view class="pop-area allright" wx:if="{{ bonus && pageData.currentTime < pageData.end_timestamp }}">
 	<!--  670 h705 -->
 	<view class="pop">
 		<image catchtap="back" src="../../images/close.png" class="cross"></image>

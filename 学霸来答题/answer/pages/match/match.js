@@ -48,7 +48,7 @@ Page( {
 			}
 
 			// 模拟数据
-			res.start_timestamp = new Date().getTime() - 9000;
+			//res.start_timestamp = new Date().getTime() - 9000;
 			//res.end_timestamp = new Date().getTime() - 20000 * 9;
 			res.currentTime = new Date().getTime();
 			//res.resurrection_count = 2;
@@ -59,7 +59,9 @@ Page( {
 			// 不在学校或验证没通过都是观战模式
 			if ( res['in_schools'] == false || !userInfo || !userInfo.user || userInfo.user['certification_status'] < 2 ) {
 				res.visitorMode = true;
-				wx.showToast( { title : '观战模式' } );
+				if ( res.currentTime > res.start_timestamp && res.currentTime < ( res.start_timestamp + 20000 * res.paper.questions.length ) ) {
+					wx.showToast( { title : '观战模式' } );
+				}
 			}
 			caller.setData( {
 				pageData : res
@@ -80,6 +82,9 @@ Page( {
 		_fn.startRefresh( this );
 	},
 	onHide : function() {
+		_fn.stopRefresh();
+	},
+	onUnload : function() {
 		_fn.stopRefresh();
 	},
 	closeEndPop : function() {
@@ -125,9 +130,11 @@ _fn = {
 			_fn.postAnswer( caller );
 			_fn.getBonus( caller );
 			_fn.getComment( caller );
+			_fn.getOnline( caller );
 		}, 1000 );
 	},
 	stopRefresh : function() {
+		console.log( 'f' );
 		if ( STATUSTIMMER ) {
 			clearInterval( STATUSTIMMER );
 			STATUSTIMMER = null;
@@ -195,7 +202,13 @@ _fn = {
 		// 如果题数答完，则结束
 		answerAll = index >= act.paper.questions.length ? true : false;
 		// 大于10秒则进入观战模式
-		if ( act.currentTime > act.start_timestamp + 10000 && !act.visitorMode ) {
+		act.quesInfo = act.quesInfo || {};
+		act.quesInfo.index = index,
+		act.quesInfo.count = remainder >= 10 ? 20 - remainder : 10 - remainder, // 每个阶段的倒计时
+		act.quesInfo.status = status, // 0为答题阶段，1为时间到,2为答案展示阶段
+		act.quesInfo.answerAll = answerAll,
+		act.quesInfo.endCountInfo = _fn.getEndCount( endCount )
+		if ( act.currentTime > act.start_timestamp + 10000 && !act.visitorMode && act.currentTime < act.end_timestamp && ( act.timeStatus < 2 || !act.quesInfo.answerAll ) ) {
 			act.visitorMode = true;
 			wx.showModal( {
 				title : '提示',
@@ -203,12 +216,6 @@ _fn = {
 				showCancel : false
 			} );
 		}
-		act.quesInfo = act.quesInfo || {};
-		act.quesInfo.index = index,
-		act.quesInfo.count = remainder >= 10 ? 20 - remainder : 10 - remainder, // 每个阶段的倒计时
-		act.quesInfo.status = status, // 0为答题阶段，1为时间到,2为答案展示阶段
-		act.quesInfo.answerAll = answerAll,
-		act.quesInfo.endCountInfo = _fn.getEndCount( endCount )
 		return act;
 	},
 
@@ -230,6 +237,11 @@ _fn = {
 
 		// 答题完成或已提交过数据都不处理
 		if ( !data || !data.pageData || !data.pageData.quesInfo || !data.pageData.quesInfo.answerAll || data.pageData.quesInfo.hasPost ) {
+			return;
+		}
+
+		// 进入时间大于结束时间
+		if ( data.pageData.currentTime >= data.pageData.end_timestamp ) {
 			return;
 		}
 		answers = _fn.getAnswers( caller );
@@ -297,6 +309,9 @@ _fn = {
 			return;
 		}
 
+		if ( data.pageData.currentTime >= data.pageData.end_timestamp ) {
+			return;
+		}
 		// 延迟1秒，给后台留有空间
 		utils.showLoading( 300 );
 		setTimeout( function() {
@@ -390,6 +405,18 @@ _fn = {
 
 			caller.setData( {
 				comments : res
+			} );
+		} );
+	},
+	getOnline : function( caller ) {
+		var caller;
+		service.questions.getOnline( caller.data.pageData.id, function( res ) {
+			var onlines = 0;
+			if ( res && res.onlines ) {
+				onlines = res.onlines;
+			}
+			caller.setData( { 
+				onlines : onlines
 			} );
 		} );
 	}

@@ -47,6 +47,12 @@ var handle = {
             //todo 错误处理
             callback(res)
         });
+    },
+    getOnline : function( actId, callback ) {
+        ajax.query({
+            url: url.bonus + '/' + actId + '/onlines',
+            param: {}
+        }, callback);
     }
 
 };
