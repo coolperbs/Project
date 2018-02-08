@@ -5,13 +5,19 @@ var _fn, STATUSTIMMER;
 
 Page( {
 	onReady : function() {
-		console.log( new Date().getTime() );
 		var caller = this;
 		utils.showLoading( 300 );
 		service.questions.getList( function( list ) {
 			utils.hideLoading();
 			if ( list && list.code ) {
-				utils.showError( list.message || '获取信息错误' );
+				wx.showModal( {
+					title : '提示',
+					content : list.message || '获取信息错误',
+					showCancel : false,
+					complete : function() {
+						wx.reLaunch( { url : '../entry/entry' } );
+					}
+				} );
 				return;
 			}
 
