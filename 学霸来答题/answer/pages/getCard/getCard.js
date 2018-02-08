@@ -1,34 +1,34 @@
-// pages/signUpA/signUpA.js
+// pages/getCard/getCard.js
 import server from '../../service/service'
 import  areaCode from '../../common/areaCode/areaCode'
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        AREA_CODE:areaCode ,
-        range: [],
-        regText: '获取验证码',
-        count: true,
-        areacode: '+86',
-        phone: '',
-        regcode: '',
-        index: 0
-    },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+      AREA_CODE:areaCode ,
+      range: [],
+      regText: '获取验证码',
+      count: true,
+      areacode: '+86',
+      phone: '',
+      regcode: '',
+      index: 0
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        if (options) {
-            //todo 有参数 就展示详情信息？
-        }
-        this.initPage();
-        wx.setNavigationBarTitle({
-            title: '手机验证(1/3)'
-        })
-    },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+      if (options) {
+          //todo 有参数 就展示详情信息？
+      }
+      this.initPage();
+      wx.setNavigationBarTitle({
+          title: '手机验证(1/3)'
+      })
+  },
     initPage:function () {
         var result = [];
         for (let i = 0; i < this.data.AREA_CODE.districtArr.length; i++) {
@@ -39,13 +39,13 @@ Page({
             range: result
         });
     },
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-        this.initPage();
-    },
 
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+      this.initPage();
+  },
     /**
      * 用户输入处理
      * */
@@ -115,21 +115,7 @@ Page({
             areacode: this.data.AREA_CODE.districtArr[e.detail.value].number
         })
     },
-    /**
-     * 自定义事件 去登陆
-     * */
-    nextStep: function () {
-        //todo 这里需要验证判断判断
 
-        this.checkRegCode(function (res) {
-            if (res) {
-                wx.navigateTo({
-                    url: '../signUpB/signUpB'
-                });
-            }
-        })
-
-    },
     /**
      * 验证手机验证码
      * */
@@ -170,5 +156,17 @@ Page({
             }
         }
         return result;
-    }
+    },
+    nextStep: function () {
+
+        this.checkRegCode(function (res) {
+            if (res) {
+              //todo  需要新接口
+              //   wx.navigateTo({
+              //       url: '../signUpB/signUpB'
+              //   });
+            }
+        })
+
+    },
 });

@@ -35,7 +35,7 @@
 
 .sign-up-input .input-box .get-code {
   margin-left: auto;
-  color: #ccc;
+  color: #36a2fb;
   font-size: 28rpx;
   padding-left: 30rpx;
   height: 60rpx;

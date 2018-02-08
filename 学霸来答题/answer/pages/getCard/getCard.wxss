@@ -1,0 +1,75 @@
+/* pages/getCard/getCard.wxss */
+Page {
+    background-color: #36a3fb;
+    height: 100%;
+    overflow: hidden;
+}
+
+.login-bg {
+    height: inherit;
+    width: inherit;
+    overflow: hidden;
+}
+.get-box{
+    position: absolute;
+    left: 13rpx;
+    right: 13rpx;
+    bottom: 40rpx;
+    background: white;
+    border-radius: 14rpx;
+}
+ .input-box {
+    height: 100rpx;
+    background: #f4f4f4;
+    font-size: 28rpx;
+    border-radius: 5rpx;
+    margin-bottom: 40rpx;
+     margin-right: 17rpx;
+     margin-left: 17rpx;
+    padding-right: 30rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+ .input-box .input-icon {
+    height: 50rpx;
+    width: 50rpx;
+    margin-left: 30rpx;
+    margin-right: 10rpx;
+}
+
+ .input-box .chose-area {
+    padding-right: 30rpx;
+    margin-right: 20rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-right: 0.5px solid #ccc;
+}
+
+ .input-box .get-code {
+    margin-left: auto;
+    color: #36a2fb;
+    font-size: 28rpx;
+    padding-left: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-left: 0.5px solid #ccc;
+}
+
+ .input-box .input-placeholder {
+    color: #ccc;
+    font-size: 28rpx;
+}
+
+ .input-box .phone, .regCode {
+    height: inherit;
+    min-height: inherit;
+}
+.btn{
+    height: 90rpx;
+    background: #36a3fb;
+    color: white;
+    border-radius: 45rpx;
+    margin:0  13rpx 80rpx 13rpx;
+}

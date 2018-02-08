@@ -1,0 +1,31 @@
+<!--pages/getCard/getCard.wxml-->
+<view class="login-bg">
+    <image lazy-load="true" mode="aspectFit" style="width: 100%; height: 100%" src="../../images/image_background@2x.png" />
+    <view class="get-box">
+        <view>
+            <image lazy-load="true" mode="aspectFit" style="width: 100%; height: 270rpx" src="../../images/image_words_hello@2x.png" />
+        </view>
+        <!--<view>-->
+            <!--<image lazy-load="true" mode="aspectFit" style="width: 100%; height: 270rpx" src="../../images/image_words_congratulate@2x.png" />-->
+        <!--</view>-->
+        <view class="input-box">
+            <image class="input-icon" src="../../images/image_phone@2x.png"></image>
+            <view class="chose-area">
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{range}}">
+                    <view class="picker">
+                        {{areacode}}
+                    </view>
+                </picker>
+            </view>
+            <input type="number" value="{{phone}}" data-type="phone" bindinput="bindKeyInput" placeholder-class="input-placeholder" class="phone" placeholder='输入您的手机号码'></input>
+        </view>
+        <view class="input-box">
+            <image class="input-icon" src="../../images/image_reg_code@2x.png"></image>
+            <input bindinput="bindKeyInput" data-type="regcode" placeholder-class="input-placeholder" class="phone" placeholder='验证码'></input>
+            <view class="get-code" bindtap="getRegCodeEvt">{{regText}}</view>
+        </view>
+        <button class="btn" bindtap="nextStep">
+            确 认
+        </button>
+    </view>
+</view>

@@ -9,7 +9,8 @@
     "pages/signUpB/signUpB",
     "pages/signUpC/signUpC",
     "pages/signUpC1/signUpC1",
-    "pages/signUpC2/signUpC2"
+    "pages/signUpC2/signUpC2",
+    "pages/getCard/getCard"
   ],
 
   "window":{
