@@ -124,10 +124,6 @@ var handle = {
                     }
                     // 保存信息
                     if (userInfo) {
-                        var oldUserInfo = handle.getStoreInfo() || {};
-                        var oldUser = oldUserInfo.user || {};
-                        var newUser = _fn.merge(oldUser, userInfo.user);
-                        userInfo.user = newUser;
                         _fn.setStoreInfo(userInfo);
                     }
                     callback && callback(userInfo);
@@ -171,7 +167,7 @@ var handle = {
             if (!handle.dealTokenDate(result)) {
                 return
             }
-            if (result.error || result.code != 0) {
+            if (result.error) {
                 wx.showModal({
                     title: '提示',
                     content: result.errMsg || result.message.detail || '获取验证码失败',

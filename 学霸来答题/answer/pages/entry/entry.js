@@ -32,6 +32,7 @@ Page({
     },
     initPage: function () {
         service.user.isLogin(res => {
+          debugger
             if (!res) {
                 service.user.login(res => {
                     if (res.user) {
