@@ -156,10 +156,7 @@ var handle = {
     getRegCode(phone, callback) {
         var userInfo = this.getStoreInfo() || {};
         var token = userInfo.auth_token || '';
-        wx.showLoading({
-            title: '发送验证码...',
-            mask: true
-        });
+       
         ajax.getPost({
             url: URL['POST_verification_requests'],
             method: 'post',
@@ -170,7 +167,7 @@ var handle = {
                 phone: phone
             }
         }, function (result) {
-            wx.hideLoading();
+            
             if (!handle.dealTokenDate(result)) {
                 return
             }
@@ -189,10 +186,7 @@ var handle = {
     checkRegCode(regCode, callback) {
         var userInfo = this.getStoreInfo() || {};
         var token = userInfo.auth_token || '';
-        wx.showLoading({
-            title: '保存中...',
-            mask: true
-        });
+       
         ajax.getPost({
             url: URL['POST_verification'],
             method: 'post',
@@ -203,7 +197,7 @@ var handle = {
                 code: regCode
             }
         }, function (result) {
-            wx.hideLoading();
+            
             if (!handle.dealTokenDate(result)) {
                 return
             }
@@ -224,10 +218,6 @@ var handle = {
         var userInfo = this.getStoreInfo() || {};
         var token = utils.getValueByPath(userInfo, 'user.token') || '';
         //错误判断 todo
-        wx.showLoading({
-            title: '保存中...',
-            mask: true
-        });
         ajax.getPost({
             url: URL['userInfo'],
             method: 'put',
@@ -236,7 +226,6 @@ var handle = {
                 Authorization: token
             }
         }, function (result) {
-            wx.hideLoading();
             if (!handle.dealTokenDate(result)) {
                 return
             }
@@ -263,10 +252,6 @@ var handle = {
         })
     },
     getUserInfo(callback) {
-        wx.showLoading({
-            title: '加载中...',
-            mask: true
-        });
         var userInfo = handle.getStoreInfo() || {};
         var token = utils.getValueByPath(userInfo, 'user.token') || '';
         ajax.getPost({
@@ -279,7 +264,6 @@ var handle = {
             if (!handle.dealTokenDate(result)) {
                 return
             }
-            wx.hideLoading();
             callback && callback(result);
         })
     },
@@ -288,10 +272,7 @@ var handle = {
         var token = utils.getValueByPath(userInfo, 'user.id') || '';
         var keyArr = ['Avatar', 'Certification'];
         var key = token + '/' + keyArr[obj.key] + '/' + new Date().getTime();
-        wx.showLoading({
-            title: '上传图片中...',
-            mask: true
-        });
+      
         handle.getUploadToken(uptoken => {
             qiniuUploader.upload(obj.filePath, (res) => {
                 // 每个文件上传成功后,处理相关的事情
@@ -303,7 +284,6 @@ var handle = {
                 // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
                 if (!res.imageURL) {
                     //上传错误提示
-                    wx.hideLoading();
                     wx.showModal({
                         title: '提示',
                         content: '图片保存失败,请重试'
@@ -312,7 +292,7 @@ var handle = {
                 }
                 callback(res.imageURL);
             }, (error) => {
-                wx.hideLoading();
+               
                 wx.showModal({
                     title: '提示',
                     content: '图片保存失败,请重试'
@@ -376,7 +356,9 @@ var handle = {
                     if (!res.confirm) {
                         return;
                     }
-                    handle.login();
+                    handle.login(res=>{
+                        wx.startPullDownRefresh({})
+                    });
                 }
             });
             return false
@@ -386,10 +368,6 @@ var handle = {
     },
     /*---------------*/
     getShareCode:function (object,callback) {
-        wx.showLoading({
-            title: '获取验证码...',
-            mask: true
-        });
         debugger
         ajax.getPost({
             url: URL['POST_share_verification_requests'],
@@ -399,7 +377,6 @@ var handle = {
                 user_id:object.userId
             }
         }, res => {
-            wx.hideLoading();
             if(res.code!=0){
                 wx.showModal({
                     title: '提示',
@@ -411,10 +388,7 @@ var handle = {
         })
     },
     checkShareCode:function (object,callback) {
-        wx.showLoading({
-            title: '验证中...',
-            mask: true
-        });
+       
         ajax.getPost({
             url: URL['POST_share_verifications'],
             method: 'post',
@@ -424,7 +398,7 @@ var handle = {
                 "phone": object.phone
             },
         }, res => {
-            wx.hideLoading();
+            
             if(res.code!=0){
                 wx.showModal({
                     title: '提示',
