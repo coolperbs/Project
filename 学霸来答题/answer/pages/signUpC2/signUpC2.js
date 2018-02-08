@@ -170,6 +170,9 @@ Page({
                     title: '提示',
                     content: '已认证用户不能修改名称'
                 });
+                this.setData({
+                    name: this.data.name
+                });
                 return
             }
             this.setData({
