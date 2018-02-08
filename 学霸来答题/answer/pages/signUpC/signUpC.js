@@ -121,6 +121,7 @@ Page({
             });
             return
         }
+        debugger
         if(this.data.edit){
             wx.navigateBack({
                 delta: 1

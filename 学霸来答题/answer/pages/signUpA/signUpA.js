@@ -108,6 +108,10 @@ Page({
                     regText: '已发送验证码',
                     count: false
                 });
+              wx.showToast({
+                title: '验证码已发送',
+                icon: 'success'
+              })
             } else {
                 wx.showToast({
                     title: '验证码发送失败',

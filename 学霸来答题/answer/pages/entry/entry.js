@@ -27,31 +27,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        //拿后台接口 校验用户登陆没有 如果有 走主页 没有走登陆注册页面
-        this.initPage();
+
     },
     initPage: function () {
-        service.user.isLogin(res => {
-          debugger
-            if (!res) {
-                service.user.login(res => {
-                    if (res.user) {
-                        //todo 已经登陆了 跳转主页面去
-                        wx.redirectTo({
-                            url: '../index/index'
-                        })
-                    }
-                });
-            } else {
-                var userInfo = service.user.getStoreInfo();
-                if (userInfo.user) {
-                    //todo 已经登陆了 跳转主页面去
-                    wx.redirectTo({
-                        url: '../index/index'
-                    })
-                }
-            }
-        })
+      service.user.login(res => {
+        if (res.user) {
+          //todo 已经登陆了 跳转主页面去
+          wx.redirectTo({
+            url: '../index/index'
+          })
+        }
+      });
     },
 
     /**
