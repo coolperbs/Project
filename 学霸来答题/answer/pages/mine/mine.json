@@ -1,4 +1,5 @@
 {
 	"navigationBarTitleText" : "最强学霸",
-	"backgroundColor" : "#149eff"
+	"backgroundColor" : "#149eff",
+	"enablePullDownRefresh":true
 }

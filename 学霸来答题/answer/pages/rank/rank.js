@@ -10,6 +10,22 @@ Page({
         myRank:{},
         allRank:[]
     },
+    onShareAppMessage : function() {
+        var userId,
+            userInfo = service.user.getStoreInfo(),
+            path;
+
+        userId = userInfo || {};
+        userId = userId.user || {};
+        userId = userId.id;
+        path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+        return {
+            path : path,
+        };
+    },
+    onPullDownRefresh:function () {
+        this.initPage();
+    },
     /**
      * 生命周期函数--监听页面加载
      */

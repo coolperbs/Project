@@ -42,7 +42,7 @@
 			<view class="em">复活卡:</view>
 			额外机会，答题不被淘汰
 		</view>
-		<view class="btn">邀好友得复活卡</view>
+		<button open-type="share" class="btn" >邀好友得复活卡</button>
 	</view>
 	<view class="adv">
 		<image class="adv-image" src="../../images/image_summer_introduce@2x.png"></image>

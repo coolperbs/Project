@@ -24,13 +24,29 @@ Page({
                 edit:true
             });
             wx.setNavigationBarTitle({
-                title: '完善个人信息'
+                title: '个人信息'
             });
         }else {
             wx.setNavigationBarTitle({
                 title: '完善个人信息(3/3)'
             });
         }
+    },
+    onShareAppMessage : function() {
+        var userId,
+            userInfo = service.user.getStoreInfo(),
+            path;
+
+        userId = userInfo || {};
+        userId = userId.user || {};
+        userId = userId.id;
+        path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+        return {
+            path : path,
+        };
+    },
+    onPullDownRefresh:function () {
+        this.initPage();
     },
 
     /**
