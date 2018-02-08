@@ -80,6 +80,9 @@ Page( {
 	},
 	onHide : function() {
 		_fn.stopRefresh();
+	},
+	goRule : function() {
+		wx.navigateTo( { url : '../pageRule/pageRule' } );
 	}
 } );
 
