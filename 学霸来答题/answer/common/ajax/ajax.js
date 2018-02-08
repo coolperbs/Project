@@ -24,7 +24,8 @@ handle = {
     var token = token || '';
     var param = _fn.wrapParam(object);
     var header = object.header || {
-      Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'
+      //Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'，
+      Authorization: token || ''
     };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
@@ -49,7 +50,8 @@ handle = {
     //todo 看这里是否需要调整统一
     var param = _fn.wrapParam(object);
     var header = object.header || {
-      Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'
+      //Authorization: token || 'YDXtixRfT4u3Wm8cRRTzJr5d'，
+      Authorization: token || ''
     };
     wx.request({
       //url : protocol + object.url, // 这个组装放这里有问题，如果传入完整地址就会有问题
