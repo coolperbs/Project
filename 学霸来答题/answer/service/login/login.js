@@ -415,7 +415,6 @@ var handle = {
             title: '验证中...',
             mask: true
         });
-        debugger
         ajax.getPost({
             url: URL['POST_share_verifications'],
             method: 'post',

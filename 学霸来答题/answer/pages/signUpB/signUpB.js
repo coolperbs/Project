@@ -33,7 +33,8 @@ Page({
         cityArr: [],
         multiArr: [],
         multiIndex: [0, 0],
-        changeAvatar: false
+        changeAvatar: false,
+        edit:false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -43,6 +44,9 @@ Page({
         if(options.edit){
             wx.setNavigationBarTitle({
                 title: '个人信息'
+            });
+            this.setData({
+                edit:true
             });
             return
         }
@@ -239,6 +243,7 @@ Page({
         }
     },
     saveInfo: function () {
+        var that=this;
         service.user.putUserInfo({
             "nickname": this.data.nickname,
             "avatar": this.data.avatar,
@@ -248,9 +253,16 @@ Page({
             "province": this.data.province,
             "city": this.data.city
         }, function (res) {
-            wx.navigateTo({
-                url: '../signUpC/signUpC'
-            });
+            if(!that.data.edit){
+                wx.navigateTo({
+                    url: '../signUpC/signUpC'
+                });
+            }else {
+                wx.navigateBack({
+                    delta: 1
+                });
+            }
+
         })
     }
 });

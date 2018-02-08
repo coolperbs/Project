@@ -1,20 +1,20 @@
 <view class="container">
 	<view class="user">
-		<view class="logo">
-			<image src=""></image>
-			<view class="status">单</view>
+		<view class="logo" catchtap="goPersonal">
+			<image src="{{userInfo.avatar}}"></image>
+			<view class="status">{{statusArr[userInfo.relationship_status]}}</view>
 		</view>
-		<view class="name">用户名称</view>
+		<view class="name">{{userInfo.name||userInfo.nickname}}</view>
 		<view class="tags">
-			<view class="label age">♀ 27</view><!-- ♂ -->
-			<view class="label">摩羯座</view>
+			<view class="label age">{{userInfo.gender=='1'?'♀':'♂'}} {{userInfo.age}}</view><!-- ♂ -->
+			<view class="label">{{userInfo.astro}}</view>
 		</view>
-		<view class="desc">自我介绍</view>
+		<view class="desc">{{userInfo.bio}}</view>
 	</view>
 
 	<view class="school">
 		<view class="name">学校信息</view>
-		<view class="auth">认证通过 ></view>
+		<view class="auth" catchtap="goSchool">{{userInfo.certification_status==2?'认证通过':'待认证'}} ></view>
 	</view>
 
 	<view class="rank">
@@ -33,12 +33,18 @@
 	</view>
 
 	<view class="card">
-		<view class="num"></view>
+		<view class="num">
+			<image class="favor" src="../../images/favor-card.png"></image>
+			<view class="text">x</view>
+			<view class="text">0</view>
+		</view>
 		<view class="desc">
 			<view class="em">复活卡:</view>
 			额外机会，答题不被淘汰
 		</view>
 		<view class="btn">邀好友得复活卡</view>
 	</view>
-
+	<view class="adv">
+		<image class="adv-image" src="../../images/image_summer_introduce@2x.png"></image>
+	</view>
 </view>
