@@ -39,6 +39,8 @@ Page( {
 		var caller = this;
 		utils.showLoading( 300 );
 		service.questions.getQuestion( pageParam.id, function( res ) {
+			var userInfo;
+
 			utils.hideLoading();
 			if ( res && res.code ) {
 				utils.showError( res.message || '获取信息错误' );
@@ -52,6 +54,13 @@ Page( {
 			//res.resurrection_count = 2;
 
 			res = _fn.setStatus( res, res.currentTime );
+			// 如果用户审核没通过，使用观战模式
+			userInfo = service.user.getStoreInfo();
+			// 不在学校或验证没通过都是观战模式
+			if ( res['in_schools'] == false || !userInfo || !userInfo.user || userInfo.user['certification_status'] < 2 ) {
+				res.visitorMode = true;
+				wx.showToast( { title : '观战模式' } );
+			}
 			caller.setData( {
 				pageData : res
 			} );
