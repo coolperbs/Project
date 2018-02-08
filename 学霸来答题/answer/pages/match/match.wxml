@@ -104,8 +104,13 @@
 		<view class="info">
 			<view class="season">{{ pageData.title }}</view>
 			<view class="logo"><image src="../../images/logo.png"></image></view>
-			<view class="title">已结束，正在提交答卷...</view>
-			<view class="time">{{ pageData.quesInfo.endCountInfo.hours }}:{{pageData.quesInfo.endCountInfo.minutes }}</view>
+			<block wx:if="{{ pageData.quesInfo.endCountInfo.hours >= 0 ||  pageData.quesInfo.endCountInfo.minutes >= 0}}">
+				<view class="title">已结束，正在提交答卷...</view>
+				<view class="time">{{ pageData.quesInfo.endCountInfo.hours }}:{{pageData.quesInfo.endCountInfo.minutes }}</view>
+			</block>
+			<block wx:if="{{ pageData.quesInfo.endCountInfo.hours == 0 &&  pageData.quesInfo.endCountInfo.minutes == 0}}">
+				<view class="title">已结束</view>
+			</block>
 		</view>
 	</view>
 

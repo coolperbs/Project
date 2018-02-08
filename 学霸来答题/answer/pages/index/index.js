@@ -4,6 +4,19 @@ var _fn, STATUSTIMMER;
 
 
 Page( {
+	onShareAppMessage : function() {
+		var userId,
+			userInfo = service.user.getStoreInfo(),
+			path;
+
+		userId = userInfo || {};
+		userId = userId.user || {};
+		userId = userId.id;
+		path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+		return {
+			path : path,
+		};
+	},
 	onReady : function() {
 		var caller = this;
 		utils.showLoading( 300 );
