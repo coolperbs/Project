@@ -4,8 +4,36 @@ import utils from '../../common/utils/utils';
 var pageParam, _fn, STATUSTIMMER;
 
 Page( {
+	onShareAppMessage : function() {
+		var userId,
+			userInfo = service.user.getStoreInfo(),
+			path;
+
+		userId = userInfo || {};
+		userId = userId.user || {};
+		userId = userId.id;
+		path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+		return {
+			path : path,
+		};
+	},
 	onLoad : function( param ) {
 		pageParam = param;
+	},
+	share : function( e ) {
+
+		wx.showShareMenu( {} );
+	},
+	comment : function(e ) {
+		service.comment.postComment( this.data.pageData.id, e.detail.value.comment, function( res ) {
+			if ( res || res.id ) {
+				wx.showToast( { title : '评论成功' } );
+			}
+		} );
+		// 清空评论
+		this.setData( {
+			commentValue : ''
+		} );
 	},
 	onReady : function() {
 		var caller = this;
@@ -18,10 +46,10 @@ Page( {
 			}
 
 			// 模拟数据
-			//res.start_timestamp = new Date().getTime();// - 9000 ;
+			res.start_timestamp = new Date().getTime() - 9000;
 			//res.end_timestamp = new Date().getTime() - 20000 * 9;
 			res.currentTime = new Date().getTime();
-			//res.resurrection_count = 1;
+			//res.resurrection_count = 2;
 
 			res = _fn.setStatus( res, res.currentTime );
 			caller.setData( {
@@ -59,15 +87,21 @@ Page( {
 		wx.navigateBack();
 	},
 	restart : function() {
-		var data = this.data;
+		var data = this.data, userAnswer;
+
 		if ( !data.pageData || data.pageData.resurrection_count <= 0 ) {
 			this.setData( { 'pageData.showRestart' : false } );
 			return;
 		}
+
+		userAnswer = data.userAnswer || {};
+		userAnswer[ 'a' + data.pageData.quesInfo.index ] = userAnswer[ 'a' + data.pageData.quesInfo.index ] || {};
+		userAnswer[ 'a' + data.pageData.quesInfo.index ].restart = true;
 		this.setData( {
 			'pageData.resurrection_count' : data.pageData.resurrection_count - 1,
 			'pageData.visitorMode' : false,
-			'pageData.showRestart' : false
+			'pageData.showRestart' : false,
+			'userAnswer' : userAnswer
 		} );
 		service.questions.useCard(  );
 	}
@@ -81,6 +115,7 @@ _fn = {
 			_fn.formatStatus( caller );
 			_fn.postAnswer( caller );
 			_fn.getBonus( caller );
+			_fn.getComment( caller );
 		}, 1000 );
 	},
 	stopRefresh : function() {
@@ -236,8 +271,8 @@ _fn = {
 				} );
 			} else {
 				result.push( {
-					'option_id' : o.id,
-					'question_id' : o['question_id'],
+					'option_id' : o.id || '',
+					'question_id' : questions[i].id,
 					'resurrection' : ( o.correct ? true : false )
 				} );
 			}
@@ -308,12 +343,13 @@ _fn = {
 		answer = userAnswer['a' + quesInfo.index] || {};
 
 		// 正确则什么都不管
-		if ( answer.correct ) {
+		if ( answer.correct || answer.restart ) {
 			return;
 		}
 
 		// 答错先开启观战模式
 		visitorMode = true;
+		// 没有复活卡，且当前题没有复活过
 		if ( data.pageData.resurrection_count <= 0 ) {
 			showEnd = true;
 		}
@@ -324,6 +360,28 @@ _fn = {
 			'pageData.visitorMode' : visitorMode,
 			'pageData.showEnd' : showEnd,
 			'pageData.showRestart' : showRestart
+		} );
+	},
+	getComment : function( caller ) {
+		var oComments;
+		if ( !caller.data || !caller.data.pageData || !caller.data.pageData.id ) {
+			return;
+		}
+		service.comment.getComment( caller.data.pageData.id, function( res ) {
+			res = res || [];
+			if ( !res.length ) {
+				return;
+			}
+			res.reverse();
+			oComments = caller.data.comments || [];
+			// 数据没有变化，则返回
+			if ( oComments.length && res.length && oComments[oComments.length - 1].id == res[res.length - 1].id ) {
+				return;
+			}
+
+			caller.setData( {
+				comments : res
+			} );
 		} );
 	}
 }

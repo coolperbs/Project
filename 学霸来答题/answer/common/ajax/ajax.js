@@ -84,6 +84,7 @@ handle = {
 
 _fn = {
   wrapParam: function (object) {
+    return object.param || {};
     var userInfo = wx.getStorageSync('userinfo') || {},
       result;
 

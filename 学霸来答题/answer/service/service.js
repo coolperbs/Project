@@ -4,4 +4,5 @@
 module.exports = {
   user : require( './login/login.js' ),
   questions : require( './questions/questions' ),
+  comment : require( './comment/comment' )
 }

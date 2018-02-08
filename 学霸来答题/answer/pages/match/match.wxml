@@ -110,44 +110,18 @@
 	</view>
 
 
-	<scroll-view class="comments" scroll-y="{{ true }}">
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
-		</view>
-		<view class="text">
-			<view class="name">乐乐:</view>
-			<view class="word">乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话乐乐说的话</view>
+	<scroll-view class="comments" scroll-y="{{ true }}" scroll-into-view="c{{comments.length - 1}}">
+		<view class="text" id="c{{index}}" wx:for="{{ comments }}" wx:key="index">
+			<view class="name">{{ item.user.nickname }}:</view>
+			<view class="word">{{ item.content }}</view>
 		</view>
 	</scroll-view>
+	<form bindsubmit="comment">
 	<view class="toolbar">
-		<input placeholder="参与热评" placeholder-style="color : #a6c5e6;"/>
-		<view class="btn"></view>
+			<input name="comment" value="{{ commentValue }}" placeholder="参与热评" placeholder-style="color : #a6c5e6;"/>
+			<button class="btn" form-type="submit"></button>
 	</view>
+	</form>
 </view>
 
 <!-- 复活卡 -->
@@ -181,6 +155,7 @@
 			<view class="share-msg">分享到</view>
 			<view class="line"></view>
 			<view class="share-btn">
+				<button open-type="share"></button>
 				<image class="share-icon" src="../../images/wechat.png"></image>
 				微信
 			</view>
@@ -203,6 +178,7 @@
 			<view class="share-msg">分享到</view>
 			<view class="line"></view>
 			<view class="share-btn">
+				<button open-type="share"></button>
 				<image class="share-icon" src="../../images/wechat.png"></image>
 				微信
 			</view>
