@@ -410,6 +410,9 @@ _fn = {
 	},
 	getOnline : function( caller ) {
 		var caller;
+		if ( !caller.data.pageData || !caller.data.pageData.id ) {
+			return;
+		}
 		service.questions.getOnline( caller.data.pageData.id, function( res ) {
 			var onlines = 0;
 			if ( res && res.onlines ) {
