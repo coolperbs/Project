@@ -48,8 +48,8 @@ Page( {
 			}
 
 			// 模拟数据
-			//res.start_timestamp = new Date().getTime() - 9000;
-			//res.end_timestamp = new Date().getTime() - 20000 * 9;
+			//res.start_timestamp = new Date().getTime() + 9000;
+			res.end_timestamp = new Date().getTime() + 20000 * res.paper.questions.length + 60000;
 			res.currentTime = new Date().getTime();
 			//res.resurrection_count = 2;
 
@@ -60,7 +60,11 @@ Page( {
 			if ( res['in_schools'] == false || !userInfo || !userInfo.user || userInfo.user['certification_status'] < 2 ) {
 				res.visitorMode = true;
 				if ( res.currentTime > res.start_timestamp && res.currentTime < ( res.start_timestamp + 20000 * res.paper.questions.length ) ) {
-					wx.showToast( { title : '观战模式' } );
+					wx.showModal( { 
+						title : '提示',
+						content : '不符合答题条件，进入观战模式。',
+						showCancel : false 
+					} );
 				}
 			}
 			caller.setData( {
@@ -101,28 +105,48 @@ Page( {
 		wx.navigateBack();
 	},
 	restart : function() {
-		var data = this.data, userAnswer;
+		_fn.restart( this );
+		// var data = this.data, userAnswer;
+
+		// if ( !data.pageData || data.pageData.resurrection_count <= 0 ) {
+		// 	this.setData( { 'pageData.showRestart' : false } );
+		// 	return;
+		// }
+
+		// userAnswer = data.userAnswer || {};
+		// userAnswer[ 'a' + data.pageData.quesInfo.index ] = userAnswer[ 'a' + data.pageData.quesInfo.index ] || {};
+		// userAnswer[ 'a' + data.pageData.quesInfo.index ].restart = true;
+		// this.setData( {
+		// 	'pageData.resurrection_count' : data.pageData.resurrection_count - 1,
+		// 	'pageData.visitorMode' : false,
+		// 	'pageData.showRestart' : false,
+		// 	'userAnswer' : userAnswer
+		// } );
+		// service.questions.useCard(  );
+	}
+} );
+
+
+_fn = {
+	restart : function( caller ) {
+		var data = caller.data, userAnswer;
 
 		if ( !data.pageData || data.pageData.resurrection_count <= 0 ) {
-			this.setData( { 'pageData.showRestart' : false } );
+			caller.setData( { 'pageData.showRestart' : false } );
 			return;
 		}
 
 		userAnswer = data.userAnswer || {};
 		userAnswer[ 'a' + data.pageData.quesInfo.index ] = userAnswer[ 'a' + data.pageData.quesInfo.index ] || {};
 		userAnswer[ 'a' + data.pageData.quesInfo.index ].restart = true;
-		this.setData( {
+		caller.setData( {
 			'pageData.resurrection_count' : data.pageData.resurrection_count - 1,
 			'pageData.visitorMode' : false,
 			'pageData.showRestart' : false,
 			'userAnswer' : userAnswer
 		} );
 		service.questions.useCard(  );
-	}
-} );
-
-
-_fn = {
+	},
 	startRefresh : function( caller ) {
 		// 第一次先计算下
 		STATUSTIMMER = setInterval( function() {
@@ -378,7 +402,11 @@ _fn = {
 			showEnd = true;
 		}
 		if ( data.pageData.resurrection_count > 0) {
-			showRestart = true;
+			_fn.restart( caller );
+			wx.showToast( { 
+				title : '已使用一张复活卡'
+			} );
+			//showRestart = true;
 		}
 		caller.setData( {
 			'pageData.visitorMode' : visitorMode,

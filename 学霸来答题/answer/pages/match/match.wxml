@@ -153,7 +153,7 @@
 		<image src="../../images/close.png" catchtap="closeEndPop" class="cross"></image>
 		<view class="info">
 			<image class="icon favor" src="../../images/favor-card.png"></image>
-			<view class="title">您被淘汰了~</view>
+			<view class="title">您被淘汰了,进入观战模式~</view>
 			<view class="desc">邀请好友参加得复活卡</view>
 			<view class="sub-desc">下一次离大奖更近一步</view>
 		</view>
