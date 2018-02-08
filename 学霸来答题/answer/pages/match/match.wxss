@@ -13,6 +13,8 @@ Page{ background-color: #149eff; height : 100%; }
 .wait .info .season { font-size : 40rpx; color : #ff8800; font-weight : bold; }
 .wait .info .logo image { width : 239rpx; height : 66rpx; margin-top : 35rpx; }
 .wait .info .title { font-size : 48rpx; color : #ff8800; margin-top : 35rpx; font-weight : bold; }
+.wait .info .title.end { margin-top : 60rpx; }
+.wait .info .text { margin : 0 44rpx; margin-top : 20rpx; font-size : 32rpx; }
 .wait .info .time { font-size : 90rpx; color : #149eff; margin-top : 80rpx; }
 
 .question { display: flex; flex-direction : column; align-items : center;  }
