@@ -52,14 +52,14 @@ Page({
         var that = this;
         //获取 地区列表
         var userInfo = service.user.getStoreInfo();
-        if (!userInfo) {
-            service.user.login(userData => {
-                userInfo = userData.user;
-                that.initData(userInfo);
-            });
-        } else {
+        // if (!userInfo) {
+        //     service.user.login(userData => {
+        //         userInfo = userData.user;
+        //         that.initData(userInfo);
+        //     });
+        // } else {
             that.initData(userInfo.user);
-        }
+        // }
     },
     initData: function (userInfo) {
         var that = this;

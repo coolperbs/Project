@@ -42,19 +42,18 @@ Page({
         var that = this;
         //获取 地区列表
         var userInfo = service.user.getStoreInfo();
-        debugger
-        if (!userInfo) {
-            service.user.login(userData => {
-                userInfo = userData.user;
-                that.setData({
-                    certificates: userInfo.certificates || []
-                });
-            });
-        } else {
+        // if (!userInfo) {
+        //     service.user.login(userData => {
+        //         userInfo = userData.user;
+        //         that.setData({
+        //             certificates: userInfo.certificates || []
+        //         });
+        //     });
+        // } else {
             that.setData({
                 certificates: utils.getValueByPath(userInfo,'user.certificates') || []
             });
-        }
+        // }
     },
     /**
      * 生命周期函数--监听页面显示
