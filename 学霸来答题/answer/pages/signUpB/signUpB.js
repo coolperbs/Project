@@ -261,14 +261,25 @@ Page({
       "province": this.data.province,
       "city": this.data.city
     }, function (res) {
+        wx.showToast({
+            title:'保存成功',
+            icon:'success'
+        });
+
       if (!that.data.edit) {
-        wx.navigateTo({
-          url: '../signUpC/signUpC'
-        });
+          setTimeout(()=>{
+              wx.navigateTo({
+                  url: '../signUpC/signUpC'
+              });
+          },1500)
+
       } else {
-        wx.navigateBack({
-          delta: 1
-        });
+          setTimeout(()=>{
+              wx.navigateBack({
+                  delta: 1
+              });
+          },1500)
+
       }
 
     })

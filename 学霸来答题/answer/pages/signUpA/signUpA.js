@@ -143,9 +143,15 @@ Page({
 
         this.checkRegCode(function (res) {
             if (res) {
-                wx.navigateTo({
-                    url: '../signUpB/signUpB'
+                wx.showToast({
+                    title:'保存成功',
+                    icon:'success'
                 });
+                setTimeout(()=>{
+                    wx.navigateTo({
+                        url: '../signUpB/signUpB'
+                    });
+                },1500)
             }
         })
 

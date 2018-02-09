@@ -25,12 +25,22 @@ Page({
     },
     initPage: function () {
       service.user.login(res => {
-        if (res.user) {
-          //todo 已经登陆了 跳转主页面去
-          wx.redirectTo({
-            url: '../index/index'
-          })
-        }
+          if (res.user) {
+              if (res.user.phone&&!res.user.avatar) {
+                  wx.redirectTo({
+                      url: '../signUpB/signUpB'
+                  })
+              } else if (res.user.avatar) {
+                  wx.redirectTo({
+                      url: '../signUpC/signUpC'
+                  })
+              } else {
+                  wx.redirectTo({
+                      url: '../index/index'
+                  })
+              }
+          }
+
       });
     },
 

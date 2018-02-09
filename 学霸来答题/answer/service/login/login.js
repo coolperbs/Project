@@ -104,6 +104,13 @@ var handle = {
           callback && callback(wxUserInfo);
           return;
         }
+          wx.showLoading({
+              title:'加载中...',
+              mask:true
+          });
+        setTimeout(()=>{
+            wx.hideLoading();
+        },2000);
         // 3.调取服务端数据
         ajax.getPost({
           url: URL['POST_LOGIN'],

@@ -13,9 +13,16 @@ Page({
             3: '恋爱中'
         },
         userInfo: {},
-        myRank:{}
+        myRank: {},
+        statusArr2:{
+            0:'待提交认证',
+            1:'待提交认证',
+            2:'认证中',
+            3:'认证通过',
+            4:'认证失败'
+        }
     },
-    onShareAppMessage : function() {
+    onShareAppMessage: function () {
         var userId,
             userInfo = service.user.getStoreInfo(),
             path;
@@ -25,7 +32,7 @@ Page({
         userId = userId.id;
         path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
         return {
-            path : path,
+            path: path
         };
     },
     /**
@@ -45,11 +52,11 @@ Page({
         that.getAstro();
         service.questions.getRank(res => {
             that.setData({
-                myRank:res.my_ranking,
+                myRank: res.my_ranking
             })
         })
     },
-    onPullDownRefresh:function () {
+    onPullDownRefresh: function () {
         this.initPage();
     },
     initPage: function () {
@@ -65,7 +72,12 @@ Page({
         }
     },
     getAstro: function () {
-        var birthday = this.data.userInfo.birthday;
+        var time = new Date();
+        var tyear = time.getFullYear();
+        var tmonth = time.getMonth() + 1;
+        var tday = time.getDate();
+        var tody = tyear + '-' + tmonth + '-' + tday;
+        var birthday = this.data.userInfo.birthday || tody;
         var year = birthday.split('-')[0];
         var month = birthday.split('-')[1];
         var day = birthday.split('-')[2];
@@ -73,7 +85,7 @@ Page({
         var arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
         var result = s.substr(month * 2 - (day < arr[month - 1] ? 2 : 0), 2);
         var userInfo = this.data.userInfo;
-        userInfo.astro = result+'座';
+        userInfo.astro = result + '座';
         userInfo.age = new Date().getFullYear() - year;
         this.setData({
             userInfo: userInfo
@@ -85,12 +97,12 @@ Page({
     onShow: function () {
         this.initPage();
     },
-    goSchool:function () {
+    goSchool: function () {
         wx.navigateTo({
             url: '../signUpC/signUpC?edit=true'
         });
     },
-    goPersonal:function () {
+    goPersonal: function () {
         wx.navigateTo({
             url: '../signUpB/signUpB?edit=true'
         });

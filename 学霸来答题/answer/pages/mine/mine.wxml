@@ -14,7 +14,7 @@
 
 	<view class="school">
 		<view class="name">学校信息</view>
-		<view class="auth" catchtap="goSchool">{{userInfo.certification_status==2?'认证通过':'待认证'}} ></view>
+		<view class="auth" catchtap="goSchool">{{statusArr2[userInfo.certification_status]}} ></view>
 	</view>
 
 	<view class="rank">

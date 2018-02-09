@@ -161,19 +161,22 @@ Page({
     * 输入框事件
     * */
     bindKeyInput: function (e) {
+        var that=this;
         var value = e.detail.value;
         if (e.currentTarget.dataset.type == 'name') {
             var userInfo=service.user.getStoreInfo();
-            if(userInfo.user.certification_status==2){
-                wx.showModal({
-                    title: '提示',
-                    content: '已认证用户不能修改名称'
-                });
-                this.setData({
-                    name: this.data.name
-                });
-                return
-            }
+            // if(userInfo.user.certification_status==3){
+            //     wx.showModal({
+            //         title: '提示',
+            //         content: '已认证用户不能修改名称',
+            //         complete:function () {
+            //             that.setData({
+            //                 name: userInfo.user.name||''
+            //             });
+            //         }
+            //     });
+            //     return
+            // }
             this.setData({
                 name: value
             })

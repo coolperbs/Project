@@ -10,7 +10,14 @@ Page({
     data: {
         userInfo: {},
         school: '',
-        edit:false
+        edit:false,
+        statusArr:{
+            0:'待提交认证',
+            1:'待提交认证',
+            2:'认证中',
+            3:'认证通过',
+            4:'认证失败'
+        }
     },
 
     /**
@@ -63,20 +70,10 @@ Page({
         var that = this;
         //获取 地区列表
         var userInfo = service.user.getStoreInfo();
-        if (!userInfo) {
-            service.user.login(userData => {
-                userInfo = userData.user;
-                that.setData({
-                    userInfo: userInfo,
-                    school: utils.getValueByPath(userInfo, 'school.name')
-                })
-            });
-        } else {
-            that.setData({
-                userInfo: userInfo.user,
-                school: utils.getValueByPath(userInfo, 'user.school.name')
-            })
-        }
+        that.setData({
+            userInfo: userInfo.user,
+            school: utils.getValueByPath(userInfo, 'user.school.name')
+        })
     },
     goPage: function (event) {
         var URL = '../signUpC1/signUpC1';
@@ -89,13 +86,24 @@ Page({
         });
     },
     saveBasicInfo: function () {
-        if (this.data.userInfo.certification_status != 2) {
+        var that=this;
+        if (this.data.userInfo.certification_status != 3) {
             wx.showModal({
                 title: '提示',
                 content: '请认证学生信息',
                 confirmText: '现在就去',
+                cancelText:'稍后认证',
                 success: function (res) {
                     if (!res.confirm) {
+                        if(that.data.edit){
+                            wx.navigateBack({
+                                delta: 1
+                            });
+                        }else {
+                            wx.redirectTo({
+                                url: '../index/index'
+                            })
+                        }
                         return;
                     }
                     wx.navigateTo({
@@ -110,8 +118,18 @@ Page({
                 title: '提示',
                 content: '请认证学校信息',
                 confirmText: '现在就去',
+                cancelText:'稍后认证',
                 success: function (res) {
                     if (!res.confirm) {
+                        if(that.data.edit){
+                            wx.navigateBack({
+                                delta: 1
+                            });
+                        }else {
+                            wx.redirectTo({
+                                url: '../index/index'
+                            })
+                        }
                         return;
                     }
                     wx.navigateTo({
@@ -121,15 +139,15 @@ Page({
             });
             return
         }
-        debugger
-        if(this.data.edit){
+        wx.showToast({
+            title:'保存成功',
+            icon:'success'
+        });
+        setTimeout(()=>{
             wx.navigateBack({
                 delta: 1
             });
-        }else {
-            wx.redirectTo({
-                url: '../index/index'
-            })
-        }
+        },1500)
+
     }
 });

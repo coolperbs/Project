@@ -59,7 +59,7 @@ Page( {
 			// 如果用户审核没通过，使用观战模式
 			userInfo = service.user.getStoreInfo();
 			// 不在学校或验证没通过都是观战模式
-			if ( res['in_schools'] == false || !userInfo || !userInfo.user || userInfo.user['certification_status'] < 2 ) {
+			if ( res['in_schools'] == false || !userInfo || !userInfo.user || userInfo.user['certification_status'] != 3 ) {
 				res.visitorMode = true;
 				if ( res.currentTime > res.start_timestamp && res.currentTime < ( res.start_timestamp + 20000 * res.paper.questions.length ) ) {
 					wx.showModal( { 

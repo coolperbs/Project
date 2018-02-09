@@ -4,7 +4,7 @@
     <text class='tab-item-label'>学生认证</text>
     <image class='must-icon' src="../../images/image_must@2x.png"></image>
     <view class="tab-item-right" data-type="author" catchtap='goPage'>
-      <text class='tab-item-desc ellipsis-1'>{{userInfo.certification_status==2?'已认证':'去认证'}}</text>
+      <text class='tab-item-desc ellipsis-1'>{{statusArr[userInfo.certification_status]}}</text>
       <image class='arrow-icon' src="../../images/image_arrow@2x.png"></image>
     </view>
   </view>
