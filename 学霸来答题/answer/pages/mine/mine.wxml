@@ -18,13 +18,13 @@
 	</view>
 
 	<view class="rank">
-		<view class="cell">
+		<view class="cell" catchtap="showTips">
 			<view class="key">获得奖金</view>
 			<view class="value">
 				¥ {{myRank.balance}}
 			</view>
 		</view>
-		<view class="cell">
+		<view class="cell" catchtap="showTips">
 			<view class="key">排名</view>
 			<view class="value">
 				{{myRank.ranking}}

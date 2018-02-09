@@ -37,6 +37,17 @@ Page({
             imageUrl:'../../images/share_bg.png'
         };
     },
+    showTips:function () {
+      wx.showModal({
+        title: '提示',
+        content: '目前小程序暂时不支持提现，请下载Summer校园APP，点击游戏，选择最强学霸，即可提现。',
+        success: res=>{
+          if (res.confirm) {
+
+          }
+        }
+      })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
