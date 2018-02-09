@@ -377,7 +377,10 @@ var handle = {
             return;
           }
           handle.login(res => {
-            wx.startPullDownRefresh({})
+            wx.startPullDownRefresh({});
+            setTimeout(()=>{
+                wx.stopPullDownRefresh()
+            },1500)
           },'merge');
         }
       });
