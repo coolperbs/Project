@@ -9,7 +9,7 @@
 			<view class="label age">{{userInfo.gender=='1'?'♀':'♂'}} {{userInfo.age}}</view><!-- ♂ -->
 			<view class="label">{{userInfo.astro}}</view>
 		</view>
-		<view class="desc">{{userInfo.bio}}</view>
+		<!--<view class="desc" style="width: 550rpx">{{userInfo.bio}}</view>-->
 	</view>
 
 	<view class="school">

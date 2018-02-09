@@ -250,8 +250,21 @@ Page({
       that.saveInfo();
     }
   },
+    bindNameChange:function (e) {
+        this.setData({
+           nickname: e.detail.value
+        })
+    },
   saveInfo: function () {
     var that = this;
+    debugger
+    if(this.data.nickname.replace(/(^\s*)|(\s*$)/g, "")==''){
+        wx.showModal({
+          title: '提示',
+          content: '昵称不能为空',
+        });
+        return
+    }
     service.user.putUserInfo({
       "nickname": this.data.nickname,
       "avatar": this.data.avatar,
@@ -259,7 +272,8 @@ Page({
       "birthday": this.data.birthday,
       "relationship_status": this.data.relationship_status,
       "province": this.data.province,
-      "city": this.data.city
+      "city": this.data.city,
+      "city_id":this.data.city.id
     }, function (res) {
         wx.showToast({
             title:'保存成功',

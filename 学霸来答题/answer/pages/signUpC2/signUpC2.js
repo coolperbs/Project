@@ -67,8 +67,8 @@ Page({
             that.getDepartment(function () {
                 that.setData({
                     name: userInfo.name,
-                    school: userInfo.school || that.data.school,
-                    department: userInfo.department || that.data.department,
+                    school: userInfo.school || {name:'请选择'},
+                    department: userInfo.department || {name:'请选择'},
                     major: userInfo.major,
                     enroll: userInfo.enroll
                 });
@@ -194,17 +194,11 @@ Page({
         this.initPage();
     },
     saveBasicInfo: function () {
+        debugger
         if (!/^[\u4e00-\u9fa5]+$/gi.test(this.data.name)) {
             wx.showModal({
                 title: '提示',
                 content: '真实姓名请使用中文且不能为空'
-            });
-            return
-        }
-        if (!/^[\u4e00-\u9fa5]+$/gi.test(this.data.major)) {
-            wx.showModal({
-                title: '提示',
-                content: '专业请使用中文且不能为空'
             });
             return
         }
@@ -215,6 +209,27 @@ Page({
             });
             return
         }
+        if (!this.data.school.id) {
+            wx.showModal({
+                title: '提示',
+                content: '请选择学校'
+            });
+            return
+        }
+        if (!this.data.department.id) {
+            wx.showModal({
+                title: '提示',
+                content: '请选择学院'
+            });
+            return
+        }
+        if (!/^[\u4e00-\u9fa5]+$/gi.test(this.data.major)) {
+            wx.showModal({
+                title: '提示',
+                content: '专业请使用中文且不能为空'
+            });
+            return
+        }
         if (this.data.major.length > 20) {
             wx.showModal({
                 title: '提示',
@@ -222,17 +237,27 @@ Page({
             });
             return
         }
+
+
         service.user.putUserInfo({
             "name": this.data.name,
-            "school": this.data.school,
-            "department": this.data.department,
+           // "school": this.data.school,
+            //"department": this.data.department,
+            "department_id":this.data.department.id,
             "major": this.data.major,
             "degree": this.data.degree.id,
             "enroll": this.data.enroll
         }, function (res) {
-            wx.navigateBack({
-                delta: 1
+            wx.showToast({
+                title:'保存成功',
+                icon:'success'
             });
+            setTimeout(()=>{
+                wx.navigateBack({
+                    delta: 1
+                });
+            },1500);
+
         })
     }
 });

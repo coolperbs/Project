@@ -9,8 +9,10 @@
         均可,30岁以下的校友用户上传校友卡即可认证。
     </view>
     <view class="upload-box">
-        <view class="upload-box-label">请上传认证图片</view>
-        <view class="album-box">
+        <view class="upload-box-label" wx:if="{{certification_status==0||certification_status==1||certification_status==4}}">请上传认证图片</view>
+        <view class="upload-box-label" wx:if="{{certification_status==2}}">认证中</view>
+        <view class="upload-box-label" wx:if="{{certification_status==3}}">认证通过</view>
+        <view class="album-box" wx:if="{{certification_status!=2&&certification_status!=3}}">
             <view class="album-item" wx:for="{{certificates}}" wx:key="{{index}}">
                 <image class="album-image" src="{{item}}"></image>
                 <image catchtap="deleteEvt" data-index="{{index}}" class="album-delete" src="../../images/image_delete@2x.png"></image>

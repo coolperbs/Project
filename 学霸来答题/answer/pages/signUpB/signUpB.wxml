@@ -9,7 +9,7 @@
 <view class='sign-up-info-box'>
   <view class='info-inline'>
     <text class='info-label'>昵称</text>
-    <input class='info-input' value="{{nickname}}" placeholder-class='info-placeholder' placeholder='请输入1-20位字符的昵称'></input>
+    <input class='info-input' value="{{nickname}}" bindinput="bindNameChange" placeholder-class='info-placeholder' placeholder='请输入1-20位字符的昵称'></input>
   </view>
   <view class='info-group'>
     <text class='info-label'>性别</text>

@@ -9,6 +9,7 @@ Page({
      */
     data: {
         certificates: [],
+        certification_status:0,
         chooseImage: false
     },
     onShareAppMessage : function() {
@@ -51,7 +52,8 @@ Page({
         //     });
         // } else {
             that.setData({
-                certificates: utils.getValueByPath(userInfo,'user.certificates') || []
+                certificates: utils.getValueByPath(userInfo,'user.certificates') || [],
+                certification_status: utils.getValueByPath(userInfo,'user.certification_status')
             });
         // }
     },
@@ -112,6 +114,22 @@ Page({
         var that = this;
         var certificates = that.data.certificates;
         var count = certificates.length;
+
+        if(that.data.certification_status==2){
+            wx.showModal({
+                title: '提示',
+                content: '资料认证中...'
+            });
+            return
+        }
+        if(that.data.certification_status==3){
+            wx.showModal({
+                title: '提示',
+                content: '资料已认证,不能修改!'
+            });
+            return
+        }
+
         if (count == 0) {
             wx.showModal({
                 title: '提示',

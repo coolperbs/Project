@@ -214,7 +214,7 @@ var handle = {
         return
       }
       _fn.setStoreInfo(result);
-      callback && callback(true);
+      callback && callback(result);
     })
   },
   putUserInfo (object, callback) {
@@ -242,12 +242,19 @@ var handle = {
         return
       }
       debugger
-      var userInfo = that.getStoreInfo() || {};
-      var newUserInfo = _fn.merge(result, object);
-      var oldUserInfo = userInfo.user;
-      oldUserInfo = _fn.merge(oldUserInfo, newUserInfo);
-      userInfo.user = oldUserInfo;
-      _fn.setStoreInfo(userInfo);
+      // var userInfo = that.getStoreInfo() || {};
+      // var newUserInfo = _fn.merge(result, object);
+      // var oldUserInfo = userInfo.user;
+      // oldUserInfo = _fn.merge(oldUserInfo, newUserInfo);
+      // userInfo.user = oldUserInfo;
+      // _fn.setStoreInfo(userInfo);
+
+        var userInfo = that.getStoreInfo() || {};
+        // var newUserInfo = _fn.merge(result, object);
+        // var oldUserInfo = userInfo.user;
+        // oldUserInfo = _fn.merge(oldUserInfo, newUserInfo);
+        userInfo.user = result;
+        _fn.setStoreInfo(userInfo);
       callback && callback(result);
     })
   },
@@ -279,7 +286,13 @@ var handle = {
     var token = utils.getValueByPath(userInfo, 'user.id') || '';
     var keyArr = ['Avatar', 'Certification'];
     var key = token + '/' + keyArr[obj.key] + '/' + new Date().getTime();
-
+      wx.showLoading({
+          title:'图片上传中...',
+          mask:true
+      });
+      setTimeout(()=>{
+          wx.hideLoading();
+      },1500);
     handle.getUploadToken(uptoken => {
       qiniuUploader.upload(obj.filePath, (res) => {
         // 每个文件上传成功后,处理相关的事情

@@ -145,6 +145,32 @@ Page({
                     title:'保存成功',
                     icon:'success'
                 });
+                //判断必填字段调不同录入页面
+                var user =res.user||{};
+                if(!user.nickname||!user.avatar||!user.city){
+                    setTimeout(()=>{
+                        wx.navigateTo({
+                            url: '../signUpB/signUpB'
+                        });
+                    },1500);
+                    return
+                }
+                if(!user.department||!user.school){
+                    setTimeout(()=>{
+                        wx.navigateTo({
+                            url: '../signUpC/signUpC'
+                        });
+                    },1500);
+                    return
+                }
+                if(user.nickname&&user.avatar&&user.city&&user.department){
+                    setTimeout(()=>{
+                        wx.navigateTo({
+                            url: '../index/index'
+                        });
+                    },1500);
+                    return
+                }
                 setTimeout(()=>{
                     wx.navigateTo({
                         url: '../signUpB/signUpB'
