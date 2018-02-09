@@ -1,5 +1,5 @@
 // pages/getCard/getCard.js
-import server from '../../service/service'
+import service from '../../service/service'
 import  areaCode from '../../common/areaCode/areaCode'
 Page({
 
@@ -90,7 +90,7 @@ Page({
             return
         }
         var phone = this.data.areacode + this.data.phone;
-        server.user.getShareCode({phone:phone,userId:this.data.userId}, function (res) {
+        service.user.getShareCode({phone:phone,userId:this.data.userId}, function (res) {
             console.log(res)
             if (res.code == '0') {
                 that.setData({
@@ -135,7 +135,7 @@ Page({
             });
             return
         }
-        server.user.checkShareCode({code:this.data.regcode,userId:this.data.userId,phone:this.data.phone}, function (res) {
+        service.user.checkShareCode({code:this.data.regcode,userId:this.data.userId,phone:this.data.phone}, function (res) {
             callback(res)
         })
     },
