@@ -4,7 +4,7 @@
 			<image src="{{userInfo.avatar}}"></image>
 			<view class="status">{{statusArr[userInfo.relationship_status]}}</view>
 		</view>
-		<view class="name">{{userInfo.name||userInfo.nickname}}</view>
+		<view class="name">{{userInfo.nickname}}</view>
 		<view class="tags">
 			<view class="label age">{{userInfo.gender=='1'?'♀':'♂'}} {{userInfo.age}}</view><!-- ♂ -->
 			<view class="label">{{userInfo.astro}}</view>

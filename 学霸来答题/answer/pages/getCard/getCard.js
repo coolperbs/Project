@@ -167,9 +167,9 @@ Page({
         this.checkRegCode(function (res) {
             if (res) {
               //todo  需要新接口
-              //   wx.navigateTo({
-              //       url: '../signUpB/signUpB'
-              //   });
+                wx.navigateTo({
+                    url: '../index/index'
+                });
             }
         })
 

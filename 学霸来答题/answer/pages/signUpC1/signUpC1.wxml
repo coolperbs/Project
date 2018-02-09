@@ -2,7 +2,7 @@
 <view style="overflow: scroll;padding-bottom: 120rpx">
     <view class='author-desc'>
         <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
-        Summer是一款校园专属的社交应用,为了保证用户学生身份的真实性,我们需要您的配合上传能够证明学生身份的证件照片,包括
+        “最强学霸”是Summer校园旗下高校 专属的知识竞技分享应用，为了保证用户学生身份的真实性,我们需要您的配合上传能够证明学生身份的证件照片,包括
         <text class="desc-inline">学生卡、学生证、录取通知书</text>
         和
         <text class="desc-inline">毕业证书</text>

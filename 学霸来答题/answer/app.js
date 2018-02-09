@@ -2,7 +2,7 @@ var EVT = 'online',
     host, url;
 
 host = {
-    online: 'https://summer.buluotech.com/',
+    online: 'https://imsummer.cn/',
     test: 'https://summer.buluotech.com/'
 };
 

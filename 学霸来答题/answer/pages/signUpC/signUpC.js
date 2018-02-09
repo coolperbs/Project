@@ -49,7 +49,9 @@ Page({
         userId = userId.id;
         path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
         return {
-            path : path,
+            title: '快来参加大学生专属的有奖答题，瓜分奖学金，送你复活卡，快来领。',
+            path: path,
+            imageUrl:'../../images/share_bg.png'
         };
     },
     onPullDownRefresh:function () {
@@ -69,11 +71,14 @@ Page({
         //先拿local 没有就去登陆
         var that = this;
         //获取 地区列表
-        var userInfo = service.user.getStoreInfo();
-        that.setData({
-            userInfo: userInfo.user,
-            school: utils.getValueByPath(userInfo, 'user.school.name')
-        })
+        service.user.getUserInfo(userData => {
+            debugger
+            that.setData({
+                userInfo: userData,
+                school: utils.getValueByPath(userData, 'school.name')
+            })
+        });
+
     },
     goPage: function (event) {
         var URL = '../signUpC1/signUpC1';

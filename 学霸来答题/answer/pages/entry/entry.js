@@ -17,9 +17,11 @@ Page({
         userId = userInfo || {};
         userId = userId.user || {};
         userId = userId.id;
-        path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+        path = userId ? 'pages/index/index?userId=' + userId : 'pages/index/index'
         return {
-            path : path,
+            title: '快来参加大学生专属的有奖答题，瓜分奖学金，送你复活卡，快来领。',
+            path: path,
+            imageUrl:'../../images/share_bg.png'
         };
     },
     onPullDownRefresh:function () {

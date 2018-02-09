@@ -37,17 +37,19 @@ Page({
     edit: false
   },
   onShareAppMessage: function () {
-    var userId,
-      userInfo = service.user.getStoreInfo(),
-      path;
+      var userId,
+          userInfo = service.user.getStoreInfo(),
+          path;
 
-    userId = userInfo || {};
-    userId = userId.user || {};
-    userId = userId.id;
-    path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
-    return {
-      path: path,
-    };
+      userId = userInfo || {};
+      userId = userId.user || {};
+      userId = userId.id;
+      path = userId ? 'pages/getCard/getCard?userId=' + userId : 'pages/index/index'
+      return {
+          title: '快来参加大学生专属的有奖答题，瓜分奖学金，送你复活卡，快来领。',
+          path: path,
+          imageUrl:'../../images/share_bg.png'
+      };
   },
   onPullDownRefresh: function () {
     this.initPage();
