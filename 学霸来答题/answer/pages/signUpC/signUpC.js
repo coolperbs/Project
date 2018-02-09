@@ -144,9 +144,15 @@ Page({
             icon:'success'
         });
         setTimeout(()=>{
-            wx.navigateBack({
-                delta: 1
-            });
+            if(that.data.edit){
+                wx.navigateBack({
+                    delta: 1
+                });
+            }else {
+                wx.redirectTo({
+                    url: '../index/index'
+                })
+            }
         },1500)
 
     }

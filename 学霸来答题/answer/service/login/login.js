@@ -73,8 +73,8 @@ var handle = {
   getStoreInfo () {
     return wx.getStorageSync(CONF.storeName) || null;
   },
-  login (callback) {
-    this.updateInfo(callback);
+  login (callback,merge) {
+    this.updateInfo(callback,merge);
   },
   getInfo (callback) {
     var userInfo = handle.getStoreInfo();
@@ -91,7 +91,7 @@ var handle = {
       }
     });
   },
-  updateInfo (callback) {
+  updateInfo (callback,merge) {
     // 1.登录
     _fn.wxLogin((loginInfo) => {
       if (_fn.isErrorRes(loginInfo)) {
@@ -365,7 +365,7 @@ var handle = {
           }
           handle.login(res => {
             wx.startPullDownRefresh({})
-          });
+          },'merge');
         }
       });
       return false

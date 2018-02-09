@@ -26,19 +26,19 @@ Page({
     initPage: function () {
       service.user.login(res => {
           if (res.user) {
-              if (res.user.phone&&!res.user.avatar) {
-                  wx.redirectTo({
-                      url: '../signUpB/signUpB'
-                  })
-              } else if (res.user.avatar) {
-                  wx.redirectTo({
-                      url: '../signUpC/signUpC'
-                  })
-              } else {
+              // if (res.user.phone&&!res.user.avatar) {
+              //     wx.redirectTo({
+              //         url: '../signUpB/signUpB'
+              //     })
+              // } else if (res.user.avatar) {
+              //     wx.redirectTo({
+              //         url: '../signUpC/signUpC'
+              //     })
+              // } else {
                   wx.redirectTo({
                       url: '../index/index'
                   })
-              }
+              // }
           }
 
       });

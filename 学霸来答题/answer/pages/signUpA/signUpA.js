@@ -139,8 +139,6 @@ Page({
      * 自定义事件 去登陆
      * */
     nextStep: function () {
-        //todo 这里需要验证判断判断
-
         this.checkRegCode(function (res) {
             if (res) {
                 wx.showToast({
