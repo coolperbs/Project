@@ -316,13 +316,13 @@ _fn = {
 				result.push( {
 					'option_id' : '',
 					'question_id' : questions[i].id,
-					'resurrection' : false
+					'resurrection' : ( o.restart ? true : false )
 				} );
 			} else {
 				result.push( {
 					'option_id' : o.id || '',
 					'question_id' : questions[i].id,
-					'resurrection' : ( o.correct ? true : false )
+					'resurrection' : ( o.restart ? true : false )
 				} );
 			}
 		}

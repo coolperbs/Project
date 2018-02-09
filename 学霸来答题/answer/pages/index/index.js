@@ -19,6 +19,33 @@ Page( {
             imageUrl:'../../images/share_bg.png'
         };
 	},
+	onPullDownRefresh:function () {
+		var caller = this;
+		utils.showLoading( 300 );
+		service.questions.getList( function( list ) {
+			utils.hideLoading();
+			if ( list && list.code ) {
+				wx.showModal( {
+					title : '提示',
+					content : list.message || '获取信息错误',
+					showCancel : false,
+					complete : function() {
+						wx.reLaunch( { url : '../entry/entry' } );
+					}
+				} );
+				return;
+			}
+
+			// 设置一个获取数据的时间		
+			caller.setData( { 
+				//'pageData.list' : list,
+				'currentTime' : new Date().getTime()
+			} );
+			// 立即计算一次
+			_fn.formatStatus( caller, list );
+		} );
+		wx.stopPullDownRefresh();
+    },
 	onReady : function() {
 		var caller = this;
 		utils.showLoading( 300 );
