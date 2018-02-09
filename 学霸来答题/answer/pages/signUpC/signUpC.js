@@ -81,13 +81,16 @@ Page({
         if (type == 'school') {
             URL = '../signUpC2/signUpC2'
         }
+        if(this.data.userInfo.certification_status==2&&type != 'school'){
+            return
+        }
         wx.navigateTo({
             url: URL
         });
     },
     saveBasicInfo: function () {
         var that=this;
-        if (this.data.userInfo.certification_status != 3) {
+        if (this.data.userInfo.certification_status == 0) {
             wx.showModal({
                 title: '提示',
                 content: '请认证学生信息',

@@ -155,7 +155,7 @@ Page({
                     },1500);
                     return
                 }
-                if(!user.department||!user.school){
+                if(!user.department||!user.school||user.certification_status==0){
                     setTimeout(()=>{
                         wx.navigateTo({
                             url: '../signUpC/signUpC'

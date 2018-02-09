@@ -44,9 +44,12 @@ Page({
 
               var user =res.user||{};
               if(!user.phone){
-                  wx.redirectTo({
-                      url: '../signUpA/signUpA'
-                  })
+                  setTimeout(()=>{
+                      wx.redirectTo({
+                          url: '../signUpA/signUpA'
+                      })
+                  },1500);
+
               }
               if(!user.nickname||!user.avatar||!user.city){
                   setTimeout(()=>{
@@ -56,7 +59,7 @@ Page({
                   },1500);
                   return
               }
-              if(!user.department||!user.school){
+              if(!user.department||!user.school||user.certification_status==0){
                   setTimeout(()=>{
                       wx.redirectTo({
                           url: '../signUpC/signUpC'
@@ -76,7 +79,12 @@ Page({
           }else {
               this.setData({
                   canLogin:true
-              })
+              });
+              setTimeout(()=>{
+                  wx.redirectTo({
+                      url: '../signUpA/signUpA'
+                  })
+              },1500);
           }
 
       });
