@@ -52,7 +52,7 @@ Page( {
 
 			// 模拟数据
 			//res.start_timestamp = new Date().getTime() + 20000 * res.paper.questions.length - 1000;
-			endTime = new Date().getTime() + 20000 * res.paper.questions.length + 60000;
+			endTime = res.start_timestamp + 20000 * res.paper.questions.length + 60000;
 			res.end_timestamp = endTime <= res.end_timestamp ? endTime : res.end_timestamp;
 			res.currentTime = new Date().getTime();
 			//res.resurrection_count = 2;
