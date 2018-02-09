@@ -51,7 +51,7 @@ Page( {
 			}
 
 			// 模拟数据
-			//res.start_timestamp = new Date().getTime() + 20000 * res.paper.questions.length - 1000;
+			//res.start_timestamp = new Date().getTime() - 9000;
 			endTime = res.start_timestamp + 20000 * res.paper.questions.length + 60000;
 			res.end_timestamp = endTime <= res.end_timestamp ? endTime : res.end_timestamp;
 			res.currentTime = new Date().getTime();
@@ -402,10 +402,10 @@ _fn = {
 		// 答错先开启观战模式
 		visitorMode = true;
 		// 没有复活卡，且当前题没有复活过
-		if ( data.pageData.resurrection_count <= 0 ) {
+		if ( data.pageData.resurrection_count <= 0 && _fn.inTime( caller ) ) {
 			showEnd = true;
 		}
-		if ( data.pageData.resurrection_count > 0 && data.pageData.currentTime < data.pageData.end_timestamp ) {
+		if ( data.pageData.resurrection_count > 0 && _fn.inTime( caller ) ) {
 			_fn.restart( caller );
 			wx.showToast( { 
 				title : '已使用一张复活卡'
@@ -419,6 +419,17 @@ _fn = {
 			'pageData.showRestart' : showRestart
 		} );
 	},
+
+	inTime : function( caller ) {
+		var data = caller.data,
+			now = new Date().getTime();
+		if ( data.pageData.currentTime < ( data.pageData.end_timestamp - 60000 ) && now > data.pageData.start_timestamp && now < ( data.pageData.end_timestamp - 60000 ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+
 	getComment : function( caller ) {
 		var oComments;
 		if ( !caller.data || !caller.data.pageData || !caller.data.pageData.id ) {
