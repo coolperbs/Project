@@ -51,7 +51,7 @@ Page( {
 			}
 
 			// 模拟数据
-			//res.start_timestamp = new Date().getTime() - 9000;
+			//res.start_timestamp = new Date().getTime() + 30000;
 			endTime = res.start_timestamp + 20000 * res.paper.questions.length + 60000;
 			res.end_timestamp = endTime <= res.end_timestamp ? endTime : res.end_timestamp;
 			res.currentTime = new Date().getTime();
@@ -395,7 +395,7 @@ _fn = {
 		answer = userAnswer['a' + quesInfo.index] || {};
 
 		// 正确则什么都不管
-		if ( answer.correct || answer.restart ) {
+		if ( answer.correct || answer.restart || !_fn.inTime( caller ) ) {
 			return;
 		}
 
