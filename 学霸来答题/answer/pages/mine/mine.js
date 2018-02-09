@@ -59,15 +59,12 @@ Page({
     },
     initData: function (userInfo) {
         var that = this;
+
         that.setData({
             userInfo: userInfo
         });
         that.getAstro();
-        service.questions.getRank(res => {
-            that.setData({
-                myRank: res.my_ranking
-            })
-        })
+
     },
     onPullDownRefresh: function () {
         this.initPage();
@@ -78,6 +75,11 @@ Page({
     initPage: function () {
         var that = this;
         //获取 地区列表
+        service.questions.getRank(res => {
+          that.setData({
+            myRank: res.my_ranking
+          })
+        });
         service.user.getUserInfo(userData => {
             that.initData(userData || {});
         });

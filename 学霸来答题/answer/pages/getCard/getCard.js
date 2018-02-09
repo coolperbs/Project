@@ -171,7 +171,7 @@ Page({
             if (res) {
               //todo  需要新接口
                 wx.navigateTo({
-                    url: '../index/index'
+                    url: '../entry/entry'
                 });
             }
         })
