@@ -1,5 +1,5 @@
 // pages/signUpA/signUpA.js
-import server from '../../service/service'
+import service from '../../service/service'
 import  areaCode from '../../common/areaCode/areaCode'
 Page({
 
@@ -103,7 +103,7 @@ Page({
             return
         }
         var phone = this.data.areacode + this.data.phone;
-        server.user.getRegCode(phone, function (res) {
+        service.user.getRegCode(phone, function (res) {
             console.log(res)
             if (res.code == '0') {
                 that.setData({
@@ -196,7 +196,7 @@ Page({
             });
             return
         }
-        server.user.checkRegCode(this.data.regcode, function (res) {
+        service.user.checkRegCode(this.data.regcode, function (res) {
             callback(res)
         })
     },
