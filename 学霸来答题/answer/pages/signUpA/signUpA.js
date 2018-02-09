@@ -165,7 +165,7 @@ Page({
                 }
                 if(user.nickname&&user.avatar&&user.city&&user.department){
                     setTimeout(()=>{
-                        wx.navigateTo({
+                        wx.redirectTo({
                             url: '../index/index'
                         });
                     },1500);

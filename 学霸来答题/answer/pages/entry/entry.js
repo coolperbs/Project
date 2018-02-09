@@ -37,10 +37,42 @@ Page({
               //         url: '../signUpC/signUpC'
               //     })
               // } else {
-                  wx.redirectTo({
-                      url: '../index/index'
-                  })
+              //     wx.redirectTo({
+              //         url: '../index/index'
+              //     })
               // }
+
+              var user =res.user||{};
+              if(!user.phone){
+                  wx.redirectTo({
+                      url: '../signUpA/signUpA'
+                  })
+              }
+              if(!user.nickname||!user.avatar||!user.city){
+                  setTimeout(()=>{
+                      wx.redirectTo({
+                          url: '../signUpB/signUpB'
+                      });
+                  },1500);
+                  return
+              }
+              if(!user.department||!user.school){
+                  setTimeout(()=>{
+                      wx.redirectTo({
+                          url: '../signUpC/signUpC'
+                      });
+                  },1500);
+                  return
+              }
+              if(user.nickname&&user.avatar&&user.city&&user.department){
+                  setTimeout(()=>{
+                      wx.redirectTo({
+                          url: '../index/index'
+                      });
+                  },1500);
+                  return
+              }
+
           }else {
               this.setData({
                   canLogin:true
@@ -54,24 +86,25 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onLoad: function () {
-        this.initPage();
+        //this.initPage();
     },
     /**
      * 自定义事件 去登陆/注册
      * */
     goLogin: function () {
-        if(!this.data.canLogin){
-            wx.showLoading({
-                title:'加载中...',
-                mask:true
-            });
-            setTimeout(()=>{
-                wx.hideLoading();
-            },1500)
-            return
-        }
-        wx.navigateTo({
-            url: '../signUpA/signUpA?a=1'
-        });
+        // if(!this.data.canLogin){
+        //     wx.showLoading({
+        //         title:'加载中...',
+        //         mask:true
+        //     });
+        //     setTimeout(()=>{
+        //         wx.hideLoading();
+        //     },1500)
+        //     return
+        // }
+        // wx.navigateTo({
+        //     url: '../signUpA/signUpA'
+        // });
+        this.initPage();
     }
 });
