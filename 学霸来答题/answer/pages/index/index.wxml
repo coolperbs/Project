@@ -34,6 +34,8 @@
 	</view>
 </view>
 
+<view class="block"></view>
+
 <!--
 <view class="entry">
 	<view class="info">
@@ -69,8 +71,13 @@
 </view>
 -->
 
-<view class="mine" catchtap="goMine">
+<!--<view class="mine" catchtap="goMine">
 	<image src="../../images/mine.png"></image>
+</view>-->
+
+<view class="toolbar">
+	<button  open-type="share" class="btn">邀好友得复活卡</button>
+	<view catchtap="goMine" class="btn">我的钱包</view>
 </view>
 
 

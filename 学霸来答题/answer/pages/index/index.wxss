@@ -18,7 +18,14 @@ Page{ background-color: #36a3fb; }
 .entry .act.btns .btn { height : 100rpx; width : 400rpx; font-size : 30rpx; color : #fff; border-radius: 50rpx; line-height: 100rpx; text-align: center; background-color: #43b1ff; }
 .entry .act.btns .btn.now { background-color: #36a3fb; }
 .entry .act.btns .btn.finish { background-color: #e4e4e4; }
+/*.entry:last-child { margin-bottom : 190rpx; }*/
+.block { height : 190rpx; }
 
 
 .mine { width : 120rpx; height : 120rpx; background-color: #ffd200; border-radius: 50%; position: fixed; right : 30rpx; bottom : 30rpx; display: flex; justify-content: center; align-items: center; }
 .mine image { width : 54rpx; height : 66rpx; }
+
+.toolbar { height : 170rpx; width : 100%; position: fixed; bottom : 0; left : 0; z-index: 100; background-color: #36a3fb; display: flex; justify-content : space-between; align-items : center; }
+.toolbar .btn { width : 320rpx; height : 100rpx; font-size : 28rpx; border-radius: 70rpx; background-color: #ffd200; color : #fff; display: flex; align-items : center; justify-content : center; }
+.toolbar .btn:first-child { margin-left : 40rpx; }
+.toolbar .btn:last-child { margin-right : 40rpx; }
