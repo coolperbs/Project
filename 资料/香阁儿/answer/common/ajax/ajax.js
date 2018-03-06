@@ -1,0 +1,77 @@
+var sysInfo = wx.getSystemInfoSync(),
+  handle,
+  whiteList,
+  _fn;
+
+whiteList = [];
+
+handle = {
+  socket(option){
+    //1.7.0版本区别
+  },
+  getPost: function (object) {
+    //todo 看这里是否需要调整统一
+    wx.request({
+      url: object.url,
+      data: object.param || {},
+      method: object.method || 'get',
+      header: object.header || {},
+      success: function (res) {
+        _fn.responseWrapper(res, object.callback);
+      },
+      fail: function (res) {
+        _fn.responseWrapper(res, object.callback);
+      }
+    });
+  }
+}
+
+_fn = {
+  wrapParam: function (object) {
+    return object.param || {};
+    var userInfo = wx.getStorageSync('userinfo') || {},
+      result;
+
+    result = {
+      param: JSON.stringify(object.param) || '',
+      token: userInfo.token || ''
+    };
+
+    if (object && object.url && _fn.isInWihteList(object.url)) {
+      result.sys = JSON.stringify(sysInfo) || '';
+    }
+    return result;
+  },
+
+  isInWihteList: function (url) {
+    var i, s;
+    for (i = 0; s = whiteList[i]; ++i) {
+      if (url.indexOf(s) > 0) {
+        return true;
+      }
+    }
+    return false;
+  },
+  responseWrapper: function (res, callback) {
+    // if ( !res || res.statusCode != 200 ) {
+    //   callback( {
+    //     errCode : -1,
+    //     msg : '网络问题',
+    //     data : {}
+    //   } );
+    //   return;
+    // }
+    //
+    // // 一些特殊登录统一拦截，如未登录等情况
+    // if ( res.data.code == 'GW1004' || res.data.msg == 'GW1004' ) {
+    //   // 跳转到登录页
+    //   wx.removeStorageSync( 'userinfo' );
+    //   //wx.navigateTo( { url : '../login/login' } );
+    // }
+    if (typeof callback == 'function') {
+      callback(res.data);
+    }
+  }
+}
+
+module.exports = handle;
