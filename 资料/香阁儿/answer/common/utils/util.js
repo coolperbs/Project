@@ -2,14 +2,14 @@ var handle, loadingTimmer;
 
 
 handle = {
-  showError: function (msg) {
+  showError (msg) {
     wx.showModal({
       title: '提示',
       content: msg,
       showCancel: false
     });
   },
-  timeToDateObj: function (time) {
+  timeToDateObj (time) {
     var date = new Date();
 
     date.setTime(time);
@@ -25,38 +25,14 @@ handle = {
       seconds: date.getSeconds()
     };
   },
-  showLoading: function () {
-    var param, time;
-    if (arguments.length == 1) {
-      param = {};
-      time = arguments[0];
-    } else {
-      param = arguments[0] || {};
-      time = arguments[1];
-    }
-    param.title = param.title || '加载中...';
-    if (time && time > 0) {
-      loadingTimmer = setTimeout(function () {
-        wx.showLoading(param);
-      }, time);
-      return;
-    }
 
-    wx.showLoading(param);
-  },
-
-  hideLoading: function () {
-    clearTimeout(loadingTimmer);
-    wx.hideLoading();
-  },
-
-  countTime: function (startTime, endTime, currentTime, sysTime) {
+  countTime (startTime, endTime, currentTime, sysTime) {
     if (!startTime || !endTime || !currentTime || !sysTime) {
       return undefined;
     }
     return Math.ceil(( endTime - startTime + ( sysTime - currentTime ) ) / 1000);
   },
-  getValueByPath: function (obj, path) {
+  getValueByPath (obj, path) {
     var tempObj = obj;
     path = path.replace(/\[(\w+)\]/g, '.$1');
     path = path.replace(/^\./, '');
@@ -88,7 +64,7 @@ handle = {
   /**
    * 添加图片方式
    * */
-  startChooseEvt: function (count,callback) {
+  startChooseEvt (count,callback) {
     wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
       success: function (res) {
@@ -103,7 +79,7 @@ handle = {
   /**
    * 选择图片
    * */
-  chooseRealImage: function (type,count, callback) {
+  chooseRealImage (type,count, callback) {
     var tempType = [];
     tempType.push(type);
     wx.chooseImage({
@@ -122,4 +98,4 @@ handle = {
   }
 };
 
-module.exports = handle;
+export default handle;
