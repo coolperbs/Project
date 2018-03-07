@@ -30,7 +30,7 @@ handle = {
         //todo 如果socketTask 不可用 把responseWrapper 对外暴露方便统一使用
         //todo　所有接口返回结构如下
         res = {
-            success: true,
+            code: '0000',
             data: {},
             message: ''
         }
