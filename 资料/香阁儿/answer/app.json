@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/test/test",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/battleone/battleone"
   ],
   "window": {
     "backgroundTextStyle": "#fff",

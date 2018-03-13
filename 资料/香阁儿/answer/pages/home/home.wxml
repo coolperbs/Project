@@ -1,25 +1,33 @@
 <!--pages/home/home.wxml-->
-<image mode="scaleToFill" src="../../static/images/home-bg.jpg" class="page-bg"></image>
+<!--<image mode="scaleToFill" src="../../static/images/home-bg.jpg" class="page-bg"></image>-->
 <image mode="scaleToFill" src="../../static/images/home-point.png" class="page-bg fade-out-in-animation"></image>
-<scroll-view scroll-y="true" class="page-scroll">
-   <view class="home-container">
-       <image  mode="aspectFit" src="../../static/images/home-logo.png"   class="home-btn"></image>
-      <view  class="home-btn">
-          <image  mode="aspectFit" src="../../static/images/home-rank.png"></image>
-      </view>
-       <view  class="home-btn">
-           <image  mode="aspectFit" src="../../static/images/friend-battle.png"></image>
-       </view>
-       <view class="home-btn-group">
-           <view  class="home-btn ">
-               <image  mode="aspectFit" src="../../static/images/home-record.png"></image>
-           </view>
-           <view  class="home-btn disabled">
-               <image  mode="aspectFit" src="../../static/images/home-lib.png"></image>
-           </view>
-           <view  class="home-btn disabled">
-               <image  mode="aspectFit" src="../../static/images/home-mine.png"></image>
-           </view>
-       </view>
-   </view>
+<image mode="aspectFit" src="../../static/images/home-logo.png" class="home-logo"></image>
+<scroll-view scroll-y="true" class="home-scroll">
+    <view class="home-container">
+        <view class="home-btn">
+            <image mode="aspectFit" src="../../static/images/home-rank.png"></image>
+        </view>
+        <view class="home-btn">
+            <image mode="aspectFit" src="../../static/images/friend-battle.png"></image>
+        </view>
+        <view class="home-btn-group">
+            <view class="home-btn ">
+                <image mode="aspectFit" src="../../static/images/home-record.png"></image>
+            </view>
+            <view class="home-btn disabled">
+                <image mode="aspectFit" src="../../static/images/home-lib.png"></image>
+            </view>
+            <view class="home-btn disabled">
+                <image mode="aspectFit" src="../../static/images/home-mine.png"></image>
+            </view>
+        </view>
+        <view class="home-btn-bottom">
+            <view class="home-btn">
+                <image mode="aspectFit" src="../../static/images/home-shop.png"></image>
+            </view>
+            <view class="home-btn">
+                <image mode="aspectFit" src="../../static/images/home-message.png"></image>
+            </view>
+        </view>
+    </view>
 </scroll-view>

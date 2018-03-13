@@ -1,9 +1,25 @@
 /* pages/home/home.wxss */
-
+.home-scroll {
+    position: fixed;
+    top: 258rpx;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
 .home-container {
     margin: 0 50rpx
 }
-
+.home-logo{
+    position: absolute;
+    width: 650rpx;
+    height: 244rpx;
+    margin-left: 50rpx;
+    margin-right: 50rpx;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    z-index: 2;
+}
 .home-btn {
     width: 650rpx;
     height: 244rpx;
@@ -37,7 +53,16 @@
 .home-btn-group .home-btn:nth-child(2){
     margin: 0 20rpx 20rpx 20rpx;
 }
-image {
+
+.home-btn-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.home-btn-bottom .home-btn{
+    width: 142rpx;
+    height: 161rpx;
+}
+.home-btn image {
     width: inherit;
     height: inherit;
 }
