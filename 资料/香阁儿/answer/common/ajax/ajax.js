@@ -7,19 +7,7 @@ whiteList = [];
 
 handle = {
   connectSocket(data,callback) {
-    var newData=
-   wx.connectSocket({
-      url: 'ws://gamegw.soofylia.net/ws/singleFightAgainst',
-      data() {
-        return {
-          userId: 123456,
-          danGrading: 1
-        }
-      },
-      success(res) {
-        debugger
-      }
-    });
+    
   },
   request(object) {
     if (!object) {

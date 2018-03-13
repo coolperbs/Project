@@ -1,2 +1,54 @@
 /**app.wxss**/
 /*全局css*/
+Page {
+    background-color: #1e0141;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    color: #fff;
+}
+
+.page-bg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.page-scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+/*动画*/
+
+.fade-out-in-animation{
+    animation: fadeOutIn 3s infinite ease;
+}
+
+@keyframes fadeOutIn {
+    0%{
+        opacity: 0.4;
+        transform:translate3d(0,0,0);
+    }
+    50%{
+        opacity: 1;
+        transform:translate3d(0,10rpx,0);
+    }
+    100%{
+        opacity: 0.4;
+        transform:translate3d(0,,0);
+    }
+}

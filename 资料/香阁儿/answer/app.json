@@ -1,12 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/home/home"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "test后面改名字",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "#fff",
+    "backgroundColor": "#1e0141",
+    "navigationBarBackgroundColor": "#1e0141",
+    "navigationBarTitleText": "小程序测试",
+    "navigationBarTextStyle": "#fff"
   }
 }
