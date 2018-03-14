@@ -1,5 +1,6 @@
 // pages/test/test.js
-import ajax from '../../common/ajax/ajax'
+import {battle} from '../../services/index'
+
 Page({
 
   /**
@@ -11,45 +12,17 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //socket
-    wx.connectSocket({
-      url: 'ws://gamegw.soofylia.net/ws/singleFightAgainst?userId=123456&danGrading=1',
-      data:{
-        
-      },
-      success(res) {
-
-      }
-    });
-    wx.onSocketOpen(res=>{
-       wx.sendSocketMessage({
-         data: 'userId=123456&danGrading=1'
-      })
-    });
-    wx.onSocketMessage((res)=>{
-      console.log(res)
-    });
-    wx.onSocketError(function () {
-      console.log('websocket连接失败！');
+    battle.battleOneConnect();
+    battle.battleOneOnSocket((res)=>{
+      console.log(res);
+      //这里去打开 锁 只有打开锁才能发送 关闭 socket
     })
-     
+   battle.battleOneOnSocket(res=>{
+     debugger
+   })
   },
 
   /**
