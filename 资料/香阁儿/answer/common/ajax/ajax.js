@@ -5,6 +5,7 @@ var sysInfo = wx.getSystemInfoSync(),
 
 whiteList = [];
 import util from '../utils/util'
+
 handle = {
   mapToUrl (param, key, encode) {
     if (param == null) return '';
@@ -65,22 +66,22 @@ handle = {
       method: object.method || 'get',
       header: object.header || {},
       success: function (res) {
-        handle.responseWrapper(res, object.callback);
+        handle.responseWrapper(res.data, object.callback);
       },
       fail: function (res) {
-        handle.responseWrapper(res, object.callback);
+        handle.responseWrapper(res.data, object.callback);
       }
     });
   },
   responseWrapper (dataStr, callback) {
     //todo 如果socketTask 不可用 把responseWrapper 对外暴露方便统一使用
     //todo　所有接口返回结构如下
-    var res = JSON.parse(dataStr) || null;
+    var res = (typeof dataStr == 'String' ? JSON.parse(dataStr) : dataStr) || null;
 
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
-      util.showError(res.message);
-     return
+      util.showError(res.msg);
+      return
     }
     /*res = {
       code: '0000',

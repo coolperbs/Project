@@ -1,5 +1,4 @@
 var handle, loadingTimmer;
-var modalConfig = {confirmColor: '#1e0141'}
 handle = {
   showError (msg, duration) {
     setTimeout(() => {
@@ -7,7 +6,7 @@ handle = {
         title: '提示',
         content: msg,
         showCancel: false,
-        confirmColor: modalConfig.modalConfig
+        confirmColor: '#1e0141'
       });
     }, (duration && duration > 0 && duration > 1500) ? duration : 1500)
   },
@@ -18,7 +17,7 @@ handle = {
       wx.showModal({
         title: '提示',
         content: msg,
-        confirmColor: modalConfig.modalConfig,
+        confirmColor: '#1e0141',
         success (res) {
           callback(res);
         }
