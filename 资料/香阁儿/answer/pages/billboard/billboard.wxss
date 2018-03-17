@@ -1,0 +1,25 @@
+Page { width : 100%; height : 100%; }
+.content { height : 100%; display: flex; flex-direction : column; }
+
+.nav { display: flex; align-items : center; justify-content : center; margin-top : 50rpx; width : 100%; z-index: 10; }
+.nav .tab { transition: all 0.3s; transform-origin:50% 100%; transform : scale3d( 0.6, 0.6, 0.6 ); position: relative; font-size : 60rpx; opacity : 0.4; width : 260rpx;height : 80rpx; display: flex; justify-content : center; align-items : flex-end; }
+.nav .tab:after { transition : all 0.3s; background: linear-gradient( to right, #423ceb , #bc0fb5); transform : scale3d( 0, 1, 1 );  width : 100%; height : 8rpx; background-color: #fff; content : ''; position: absolute; left : 0; bottom : -20rpx; }
+.nav .tab.current { transform : scale3d( 1, 1, 1 ); opacity: 1; }
+.nav .tab.current:after { transform : scale3d( 1, 1, 1 ); }
+
+.list-wrapper { overflow: hidden; border-radius : 20rpx; padding : 4rpx; background: linear-gradient( #4900ec, #910275); overflow: hidden; height : 100rpx; flex-grow : 1; width : 640rpx; margin : 60rpx auto 100rpx auto; display: flex; flex-direction : column; }
+.list-wrapper .list { border-radius : 20rpx; height : 10rpx; flex-grow : 1; background-color: rgba( 0, 0, 0, 0.4 ); }
+.list .item { height : 200rpx; border-bottom : solid 1px rgba( 188, 15, 181, 0.3 ); overflow: hidden; position: relative; display: flex; align-items : center; justify-content : space-between; }
+.list .item:after { content : ''; width : 100%; height : 1px; background-color: rgba( 0, 0, 0, 0.3 ); position: absolute; left : 0; bottom : 1px; }
+.list .item:last-child { border-bottom : none; }
+.list .item:last-child:after { display: none; }
+
+.list .item .user { margin-left : 40rpx; position: relative;  width : 124rpx; height : 124rpx; }
+.list .item .user .rank { position: absolute; }
+.list .item .user .logo { width : 120rpx; height : 120rpx; border-radius: 50%; border : solid 4rpx #c55266; }
+.list .item .info { margin-left : 20rpx; flex-grow : 1; }
+.list .item .info .username { font-size : 34rpx }
+.list .item .info .levelname { margin-top : 40rpx; font-size : 24rpx; display: inline-block; height : 46rpx; padding : 0 22rpx; border-radius: 30rpx; background-color: #501a3f; line-height: 46rpx; }
+
+.list .item .sub-info { margin-right : 20rpx; }
+.list .item .sub-info .star { width : 40rpx; height : 40rpx; }

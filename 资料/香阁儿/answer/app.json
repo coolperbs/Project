@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/test/test",
     "pages/home/home",
-    "pages/battleone/battleone"
+    "pages/battleone/battleone",
+    "pages/billboard/billboard"
   ],
   "window": {
     "backgroundTextStyle": "#fff",
