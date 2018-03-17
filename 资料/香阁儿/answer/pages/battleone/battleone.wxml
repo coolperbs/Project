@@ -1,0 +1,68 @@
+<!--pages/battleone/battleone.wxml-->
+<view class="battle">
+    <view class="battle-head">
+        <view class="battle-left">
+            <view class="battle-user-box">
+                <view class="battle-user">
+                    <image  mode="aspectFit" class="battle-user-head" src="../../static/images/testuser.png"></image>
+                    <view class="battle-user-score">360</view>
+                </view>
+                <view class="battle-user-name-box">
+                    <view class="battle-user-level">V1</view>
+                    <view class="battle-user-name">K186</view>
+                </view>
+            </view>
+            <view class="battle-progress-bar">
+                <view class="battle-progress"></view>
+            </view>
+        </view>
+        <view class="battle-center">
+            <view class="battle-count"></view>
+            <image mode="aspectFit" class="battle-vs" src="../../static/images/vs-small.png"></image>
+        </view>
+        <view class="battle-right">
+            <view class="battle-user-box">
+                <view class="battle-user">
+                    <view class="battle-user-score">360</view>
+                    <image mode="aspectFit" class="battle-user-head" src="../../static/images/testuser.png"></image>
+                </view>
+                <view class="battle-user-name-box">
+                    <view class="battle-user-level">V1</view>
+                    <view class="battle-user-name">K186</view>
+                </view>
+            </view>
+            <view class="battle-progress-bar">
+                <view class="battle-progress"></view>
+            </view>
+        </view>
+    </view>
+    <view class="battle-question">
+        题目文字 题目文字题目文字 题目文字题目文字
+    </view>
+    <scroll-view scroll-y="true" class="battle-scroll">
+        <view class="battle-btn success">xxxx</view>
+        <view class="battle-btn error">xxxx</view>
+        <view class="battle-btn">xxxx</view>
+        <view class="battle-btn">xxxx</view>
+    </scroll-view>
+</view>
+<!--<view class="loading">-->
+
+<!--</view>-->
+<!--<view class="battle-stage">-->
+    <!--<view class="left">-->
+        <!--<view class="user">-->
+            <!--<image mode="aspectFit" class="head"></image>-->
+            <!--<view class="name">Shelan</view>-->
+            <!--<view class="level">V1</view>-->
+        <!--</view>-->
+    <!--</view>-->
+    <!--<view class="right">-->
+        <!--<view class="user">-->
+            <!--<image mode="aspectFit" class="head"></image>-->
+            <!--<view class="name">Shelan</view>-->
+            <!--<view class="level">V1</view>-->
+        <!--</view>-->
+    <!--</view>-->
+    <!--<image class="vs" mode="aspectFit" src="../../static/images/VS2.png"></image>-->
+<!--</view>-->

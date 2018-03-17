@@ -1,11 +1,15 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/index/index",
+    "pages/test/test",
+    "pages/home/home",
+    "pages/battleone/battleone"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "test后面改名字",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "#fff",
+    "backgroundColor": "#1e0141",
+    "navigationBarBackgroundColor": "#1e0141",
+    "navigationBarTitleText": "小程序测试",
+    "navigationBarTextStyle": "#fff"
   }
 }
