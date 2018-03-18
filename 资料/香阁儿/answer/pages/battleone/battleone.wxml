@@ -72,5 +72,8 @@
 	<image animation="{{centerAniData}}" class="vs" mode="aspectFit" src="../../static/images/VS2.png"></image>
 </view>
 <view wx:if="{{showLoading}}" animation="{{loadingAniData}}" class="loading">
-	寻找对手中/.////
+<view class="box-loading">
+	<view class="loading-item loading1"></view>
+	<view class="loading-item loading2"></view>
+</view>
 </view>

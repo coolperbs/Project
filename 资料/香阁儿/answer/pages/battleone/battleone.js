@@ -130,9 +130,9 @@ Page({
       callback && callback();
     } else if (type == 'ready') {
       this.loadingAni.opacity(0).step();
-      this.leftAni.translateX(0).step();
-      this.rightAni.translateX(0).step();
-      this.centerAni.scale(1).translate3d(0, 0, 0).opacity(1).step();
+      this.leftAni.translateX(0).step({delay:500});
+      this.rightAni.translateX(0).step({delay:500});
+      this.centerAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay:500});
       this.setData({
         leftAniData: this.leftAni.export(),
         rightAniData: this.rightAni.export(),
@@ -144,7 +144,7 @@ Page({
           showLoading: false,
         });
         this.animationEvt('gaming', callback)
-      }, 2000)
+      }, 3000)
     } else if (type == 'gaming') {
       this.leftAni.translateX(-width).step();
       this.rightAni.translateX(width).step();
