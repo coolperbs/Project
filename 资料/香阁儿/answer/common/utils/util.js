@@ -1,27 +1,41 @@
 var handle, loadingTimmer;
 handle = {
-  showError (msg, duration) {
-    setTimeout(() => {
-      wx.showModal({
-        title: '提示',
-        content: msg,
-        showCancel: false,
-        confirmColor: '#1e0141'
-      });
-    }, (duration && duration > 0 && duration > 1500) ? duration : 1500)
-  },
-  showAction (data, callback) {
-    var msg = data.msg || '';
-    var duration = data.duration || 0;
-    setTimeout(() => {
-      wx.showModal({
-        title: '提示',
-        content: msg,
-        confirmColor: '#1e0141',
-        success (res) {
-          callback(res);
+  showError (msg, callback) {
+    wx.showModal({
+      title: '提示',
+      content: msg,
+      showCancel: false,
+      confirmColor: '#1e0141',
+      success(res){
+        if (res.confirm) {
+          callback(true)
+        } else if (res.cancel) {
+          callback(false)
         }
-      });
+      }
+    });
+  },
+  showAction (msg, callback) {
+    wx.showModal({
+      title: '提示',
+      content: msg || '',
+      confirmColor: '#1e0141',
+      success (res) {
+        if (res.confirm) {
+          callback(true)
+        } else if (res.cancel) {
+          callback(false)
+        }
+      }
+    });
+  },
+  showToast (object, duration) {
+    wx.showToast({
+      title: object.title || '',
+      icon: object.icon || 'none',
+    });
+    setTimeout(() => {
+      wx.hideToast()
     }, (duration && duration > 0 && duration > 1500) ? duration : 1500)
   },
   timeToDateObj (time) {
@@ -110,6 +124,12 @@ handle = {
         console.log(res.tempFilePaths);
       }
     })
+  },
+  /**
+   * 系统信息
+   * */
+  getSystemInfo () {
+    return wx.getSystemInfoSync()
   }
 };
 

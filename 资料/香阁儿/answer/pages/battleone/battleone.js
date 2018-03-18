@@ -1,11 +1,36 @@
 // pages/battleone/battleone.js
+import {battle} from '../../services/index'
+import util from '../../common/utils/util'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showLoading: true,
+    showRound: true,
+    showBattle: true,
+    isConnect: false,
+    vsAi: true,
+    sendMessageList: [],
+    leftAniData: {},
+    rightAniData: {},
+    centerAniData: {},
+    roundAniData: {},
+    questionTypeAniData: {},
+    questionTitleAniData: {},
+    questionListAniData: {},
+    systemInfo: {},
+    roomUsers: [],
+    roomInfo: {},
+    question: {},
+    ready: false,//可以开始答题了没
+    answered: false,//这道题答过没有
+    answerOption: 0,//答题号
+    countDown: 10,
+    subjectOffset: 0,//题目等级
+    Timer: null
   },
 
   /**
@@ -26,35 +51,338 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //初始化动画
+    this.initAnimation();
+    this.setData({
+      systemInfo: util.getSystemInfo()
+    });
+    battle.Connect('', '');
+    battle.onOpen(res => {
+      this.setData({
+        isConnect: true
+      });
+      this.getMessage();
+      //todo 等待系统是否匹配AI 目前设置5秒
+      setTimeout(() => {
+        if (this.data.vsAi) {
+          //todo socket 有问题
+        }
+      }, 5000);
+    });
+
+  },
+  /**
+   * 初始化动画对象
+   * */
+  initAnimation () {
+    this.leftAni = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease'
+    });
+    this.rightAni = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease'
+    });
+    this.centerAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    this.roundAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    this.loadingAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    this.setData({
+      leftAniData: this.leftAni.export(),
+      rightAniData: this.rightAni.export(),
+      centerAniData: this.centerAni.export(),
+      roundAniData: this.roundAni.export(),
+      loadingAniData: this.loadingAni.export(),
+    })
+  },
+  /**
+   * 获取题目
+   * */
+  getQuestion () {
+    this.setData({
+      countDown: 10,
+      subjectOffset: this.data.subjectOffset + 1
+    });
+    this.sendMessage({
+      "type": 1,
+      "subjectOffset": this.data.subjectOffset // 题目列表ID，从1开始，以此累加 todo 这里我自己管里？？
+    })
+  },
+  /**
+   * 转场动画
+   * */
+  animationEvt (type, callback) {
+    let width = this.data.systemInfo.windowWidth;
+    if (type == 'loading') {
+      this.setData({
+        showBattle: true,
+        showRound: true,
+        showLoading: true,
+      });
+      callback && callback();
+    } else if (type == 'ready') {
+      this.loadingAni.opacity(0).step();
+      this.leftAni.translateX(0).step();
+      this.rightAni.translateX(0).step();
+      this.centerAni.scale(1).translate3d(0, 0, 0).opacity(1).step();
+      this.setData({
+        leftAniData: this.leftAni.export(),
+        rightAniData: this.rightAni.export(),
+        centerAniData: this.centerAni.export(),
+        loadingAniData: this.loadingAni.export(),
+      });
+      setTimeout(() => {
+        this.setData({
+          showLoading: false,
+        });
+        this.animationEvt('gaming', callback)
+      }, 2000)
+    } else if (type == 'gaming') {
+      this.leftAni.translateX(-width).step();
+      this.rightAni.translateX(width).step();
+      this.centerAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
+      this.roundAni.opacity(0).step();
+      this.setData({
+        leftAniData: this.leftAni.export(),
+        rightAniData: this.rightAni.export(),
+        centerAniData: this.centerAni.export(),
+        roundAniData: this.roundAni.export(),
+      });
+      setTimeout(() => {
+        this.setData({
+          showRound: false
+        });
+        callback && callback();
+      }, 1000)
+    } else if (type == 'end') {
+
+    }
+  },
+  /**
+   * 答题动画
+   * */
+  questionAnimationEvt (step, callback) {
+    // 1 展示类型 自动展示 2
+    // 2 展示题目 和选项
+    // 3 展示此题答完状态
+    // 4 清场状态 全部隐藏
+    let typeAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let titleAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let boxAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    if (step == '1') {
+      typeAni.scale(1).step();
+      this.setData({
+        questionTypeAniData: typeAni.export()
+      });
+      setTimeout(() => {
+        this.questionAnimationEvt(2, callback)
+      }, 1000)
+    }
+    if (step == '2') {
+      typeAni.scale(0).step();
+      titleAni.scale(1).step();
+      boxAni.scale(1).step();
+      this.setData({
+        questionTypeAniData: typeAni.export(),
+        questionTitleAniData: titleAni.export(),
+        questionListAniData: boxAni.export(),
+      });
+      setTimeout(() => {
+        callback && callback()
+      }, 500)
+    }
+    if (step == '4') {
+      typeAni.scale(0).step();
+      titleAni.scale(0).step();
+      boxAni.scale(0).step();
+      this.setData({
+        questionTypeAniData: typeAni.export(),
+        questionTitleAniData: titleAni.export(),
+        questionListAniData: boxAni.export(),
+      });
+      setTimeout(() => {
+        callback && callback()
+      }, 500)
+    }
 
   },
 
+  /**
+   * 获取socket返回信息
+   * */
+  getMessage () {
+    battle.onSocketMessage((res) => {
+      if (res.type == '1') {
+        //获取房间
+        if (!res.beginAnswer) {
+          //可以开始答题了，取拿题
+          //不需要AI
+          this.setData({
+            vsAi: false
+          });
+          setTimeout(() => {
+            this.getQuestion();
+          }, 5000)
+        }
+      }
+      if (res.type == '2') {
+        //加入房间
+      }
+      if (res.type == '3') {
+        //获取题目
+        //只有第一次走ready
+        //播放对战前动画 准备开始对战拿第一题
+        //把题目过滤结构
+        var newOptionList = [];
+        for (var i = 0; i < res.subject.optionList.length; i++) {
+          newOptionList.push({
+            className: '',
+            label: res.subject.optionList[i]
+          })
+        }
+        res.subject.optionList = newOptionList;
+        this.setData({
+          question: res,
+          answered: false
+        });
+        if (!this.data.ready) {
+          this.setData({
+            ready: true
+          });
+          this.animationEvt('ready', () => {
+            this.questionAnimationEvt(1, () => {
+              this.startAnswerEvt();
+            })
+          });
+        } else {
+          this.questionAnimationEvt(1, () => {
+            this.startAnswerEvt();
+          })
+        }
+      }
+      if (res.type == '4') {
+        //回答问题
+        //获取答案 后要停止Timer
+
+      }
+    });
+  },
+  /**
+   * 开始答题
+   * */
+  startAnswerEvt () {
+    let Timer = setInterval(() => {
+      if (this.data.countDown <= 0) {
+        clearInterval(Timer);
+        //到时间自动答题
+        this.answerEvt();
+        //10 完了展示3秒后开始新的
+        setTimeout(() => {
+          this.questionAnimationEvt(4, () => {
+            this.getQuestion();
+          })
+        }, 3000)
+      } else {
+        this.setData({
+          countDown: this.data.countDown - 1
+        })
+      }
+    }, 1000);
+    this.setData({
+      Timer: Timer
+    })
+  },
+  /*
+  * 发送消息
+  * */
+  sendMessage (data) {
+    var messageList = this.data.sendMessageList;
+    messageList.push(data);
+    this.setData({
+      sendMessageList: messageList
+    });
+    if (this.data.isConnect) {
+      for (var i = 0; i < this.data.sendMessageList.length; i++) {
+        battle.sendSocketMessage(this.data.sendMessageList[i])
+      }
+      this.setData({
+        sendMessageList: []
+      });
+    }
+  },
+  /**
+   * 答题
+   * */
+  answerEvt (e) {
+    let answer = e ? e.currentTarget.dataset.index : 0;
+    if (this.data.answered) {
+      return
+    }
+    //处理正确与错误
+    this.setData({
+      answerOption: answer,
+      answered: true
+    });
+    this.filterOptionListEvt();
+    this.sendMessage({
+      "type": 2,
+      "optionId": answer,		// 用户回答的选项ID，从1开始
+      "subjectOffset": this.data.subjectOffset	// 用户回答的题目ID todo 题目接口里面没有
+    })
+  },
+  /**
+   * 处理答题列表
+   * */
+  filterOptionListEvt (isHide) {
+    let answer = this.data.answerOption;
+    let optionList = util.getValueByPath(this.data.question, 'subject.optionList') || [];
+    for (let i = 0; i < optionList.length; i++) {
+      let current = i + 1;
+      let RightOption = util.getValueByPath(this.data.question, 'subject.rightOption');
+      if (answer == current) {
+        optionList[i].className = 'success';
+        if (current != RightOption) {
+          optionList[i].className = 'error';
+        }
+      } else if (current == RightOption) {
+        optionList[i].className = 'success';
+      } else {
+        optionList[i].className = isHide ? 'hide' : '';
+      }
+    }
+    let question = this.data.question;
+    question.subject.optionList = optionList;
+    this.setData({
+      question: question
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+    //todo 需要判断 标识符是否打开 如果没有则不能执行
+    if (this.data.isConnect) {
+      battle.onSocketClose(res => {
+        debugger
+      })
+    }
   },
 
   /**
@@ -63,4 +391,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+});

@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.0",
-	"appid": "wx688e0bc628edd02e",
+	"appid": "wxdd14bc8e46e4ec02",
 	"projectname": "XGL-answer",
 	"condition": {
 		"search": {
@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -48,7 +48,8 @@
 				{
 					"id": -1,
 					"name": "排行榜",
-					"pathName": "pages/billboard/billboard"
+					"pathName": "pages/billboard/billboard",
+					"query": ""
 				}
 			]
 		}

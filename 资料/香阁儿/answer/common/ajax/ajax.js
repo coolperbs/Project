@@ -12,7 +12,8 @@ handle = {
     var paramStr = '';
     var t = typeof (param);
     if (t == 'string' || t == 'number' || t == 'boolean') {
-      paramStr += '&' + key + '=' + ((encode == null || encode) ? encodeURIComponent(param) : param);
+      paramStr += key + '=' + ((encode == null || encode) ? encodeURIComponent(param) : param);
+      paramStr += '&'
     } else {
       for (var i in param) {
         var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
@@ -23,12 +24,15 @@ handle = {
   },
   connectSocket (url, data) {
     wx.connectSocket({
-      url: url + '?' + handle.mapToUrl(data)
+      url: url + '?' + handle.mapToUrl(data),
+      success(res){
+        console.log(res.socketTaskId)
+      }
     })
   },
   onSocketOpen (callback) {
     wx.onSocketOpen(res => {
-      callback(res);
+      callback(true);
       console.log('WebSocket连接已打开！')
     })
   },
@@ -40,7 +44,7 @@ handle = {
   },
   sendSocketMessage (data) {
     wx.sendSocketMessage({
-      data: data
+      data: JSON.stringify(data)
     })
   },
   onSocketMessage (callback) {
@@ -76,19 +80,22 @@ handle = {
   responseWrapper (dataStr, callback) {
     //todo 如果socketTask 不可用 把responseWrapper 对外暴露方便统一使用
     //todo　所有接口返回结构如下
-    var res = (typeof dataStr == 'String' ? JSON.parse(dataStr) : dataStr) || null;
-
+    var res = (typeof dataStr == 'string' ? JSON.parse(dataStr) : dataStr) || null;
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
-      util.showError(res.msg);
+      util.showToast({
+        title: res.message || res.msg || ''
+      });
+      callback(res);
       return
     }
+
     /*res = {
       code: '0000',
       data: {},
       message: ''
     }*/
-    callback(res.data)
+    callback(res)
   }
 }
 

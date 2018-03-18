@@ -31,12 +31,14 @@ Page({
     wx.login({
       success (res1) {
         wx.getUserInfo({
+          lang:'zh_CN',
           success: res2 => {
             console.log(res1.code)
             console.log(res2.iv)
             console.log(res2.encryptedData)
+            debugger
             ajax.request({
-              url: 'http://gamegw.soofylia.net/login',
+              url: 'https://gamegw.soofylia.net/login',
               data: {param: JSON.stringify({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})},
               callback (res3) {
                 debugger
