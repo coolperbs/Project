@@ -5,6 +5,7 @@ var sysInfo = wx.getSystemInfoSync(),
 
 whiteList = [];
 import util from '../utils/utils'
+import {login} from '../../services/index'
 
 handle = {
 
@@ -88,7 +89,7 @@ handle = {
 _fn = {
   wrapParam (object) {
     return object.data || {};
-    var userInfo = wx.getStorageSync('userinfo') || {},
+    var userInfo = login.getLoginInfo() || {},
       result;
 
     result = {

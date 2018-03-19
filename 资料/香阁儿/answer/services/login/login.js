@@ -36,12 +36,14 @@ export default {
     });
   },
   isLogin (callback) {
-    let UserInfo = utils.getStorageSync('userInfo') || null;
+    let UserInfo = this.getLoginInfo;
     if (UserInfo) {
       callback(true)
     } else {
       callback(false)
     }
+  },
+  getLoginInfo(){
+    return utils.getStorageSync('userInfo') || null
   }
-
 }
