@@ -6,7 +6,7 @@ handle = {
       content: msg,
       showCancel: false,
       confirmColor: '#1e0141',
-      success(res){
+      success (res) {
         if (res.confirm) {
           callback(true)
         } else if (res.cancel) {
@@ -53,13 +53,6 @@ handle = {
       minutes: date.getMinutes(),
       seconds: date.getSeconds()
     };
-  },
-
-  countTime (startTime, endTime, currentTime, sysTime) {
-    if (!startTime || !endTime || !currentTime || !sysTime) {
-      return undefined;
-    }
-    return Math.ceil(( endTime - startTime + ( sysTime - currentTime ) ) / 1000);
   },
   getValueByPath (obj, path) {
     var tempObj = obj;
@@ -130,6 +123,38 @@ handle = {
    * */
   getSystemInfo () {
     return wx.getSystemInfoSync()
+  },
+  setStorageSync (KEY, DATA) {
+    wx.setStorageSync(KEY, DATA)
+  },
+  getStorageSync (KEY) {
+    return wx.getStorageSync(KEY)
+  },
+  mapToUrl (param, key, encode) {
+    if (param == null) return '';
+    var paramStr = '';
+    var t = typeof (param);
+    if (t == 'string' || t == 'number' || t == 'boolean') {
+      paramStr += key + '=' + ((encode == null || encode) ? encodeURIComponent(param) : param);
+      paramStr += '&'
+    } else {
+      for (var i in param) {
+        var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
+        paramStr += handle.mapToUrl(param[i], k, encode);
+      }
+    }
+    return paramStr;
+  },
+  navigateTo (url, data) {
+    wx.navigateTo({
+      url: url + '?' + this.mapToUrl(data)
+    })
+  },
+  redirectTo (url, data) {
+    let that = this;
+    wx.redirectTo({
+      url: url + '?' + that.mapToUrl(data)
+    })
   }
 };
 

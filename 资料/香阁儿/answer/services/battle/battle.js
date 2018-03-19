@@ -1,15 +1,18 @@
 import ajax from '../../common/ajax/ajax'
-import utils from '../../common/utils/util'
+import utils from '../../common/utils/utils'
 
 const app = getApp();
 export default {
   apiList: {
     battleOneByOne: app.HOST_SOCKET + '/singleFightAgainst'
   },
-  Connect (userId, danGrading) {
-    ajax.connectSocket(this.apiList.battleOneByOne, {userId: userId || 123456, danGrading: danGrading || 1})
+  Connect (danGrading) {
+    debugger
+    let userInfo = utils.getStorageSync('userInfo') || {};
+    let userId = userInfo.token || '';
+    ajax.connectSocket(this.apiList.battleOneByOne, {userId: 1, danGrading: danGrading || 1})
   },
-  ConnectAi(danGrading){
+  ConnectAi (danGrading) {
     ajax.connectSocket(this.apiList.battleOneByOne, {type: 'ai', danGrading: danGrading || 1})
   },
   onOpen (callback) {
@@ -19,7 +22,7 @@ export default {
   },
   onSocketMessage (callback) {
     ajax.onSocketMessage(res => {
-      var res = (typeof res == 'string' ? JSON.parse(res) : res) ||null;
+      var res = (typeof res == 'string' ? JSON.parse(res) : res) || null;
       if (res.code != '0000') {
         utils.showToast({
           title: res.msg || res.message || '',

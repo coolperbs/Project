@@ -1,0 +1,2 @@
+<!--pages/login/login.wxml-->
+<text>纯图已授权自动登陆，未授权提示授权，登陆成功自动跳转home</text>

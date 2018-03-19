@@ -4,27 +4,13 @@ var sysInfo = wx.getSystemInfoSync(),
   _fn;
 
 whiteList = [];
-import util from '../utils/util'
+import util from '../utils/utils'
 
 handle = {
-  mapToUrl (param, key, encode) {
-    if (param == null) return '';
-    var paramStr = '';
-    var t = typeof (param);
-    if (t == 'string' || t == 'number' || t == 'boolean') {
-      paramStr += key + '=' + ((encode == null || encode) ? encodeURIComponent(param) : param);
-      paramStr += '&'
-    } else {
-      for (var i in param) {
-        var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
-        paramStr += handle.mapToUrl(param[i], k, encode);
-      }
-    }
-    return paramStr;
-  },
+
   connectSocket (url, data) {
     wx.connectSocket({
-      url: url + '?' + handle.mapToUrl(data),
+      url: url + '?' + util.mapToUrl(data),
       success(res){
         console.log(res.socketTaskId)
       }
@@ -83,19 +69,19 @@ handle = {
     var res = (typeof dataStr == 'string' ? JSON.parse(dataStr) : dataStr) || null;
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
+      util.showError(JSON.stringify(res));
       util.showToast({
         title: res.message || res.msg || ''
       });
       callback(res);
       return
     }
-
     /*res = {
       code: '0000',
       data: {},
       message: ''
     }*/
-    callback(res)
+    callback(res.data)
   }
 }
 
