@@ -1,16 +1,16 @@
 import ajax from '../../common/ajax/ajax'
 import utils from '../../common/utils/utils'
-import {login} from '../../services/index'
+
 const app = getApp();
 export default {
   apiList: {
     battleOneByOne: app.HOST_SOCKET + '/singleFightAgainst'
   },
   Connect (danGrading) {
-    //todo
-    let userInfo = login.getLoginInfo() || {};
+    debugger
+    let userInfo = utils.getStorageSync('userInfo') || {};
     let userId = userInfo.token || '';
-    ajax.connectSocket(this.apiList.battleOneByOne, {userId: 1, danGrading: danGrading || 1})
+    ajax.connectSocket(this.apiList.battleOneByOne, {userId: 5, danGrading: danGrading || 1})
   },
   ConnectAi (danGrading) {
     ajax.connectSocket(this.apiList.battleOneByOne, {type: 'ai', danGrading: danGrading || 1})
