@@ -9,42 +9,14 @@ import util from '../utils/utils'
 handle = {
 
   connectSocket (url, data) {
-    wx.connectSocket({
+    let task = {};
+    task = wx.connectSocket({
       url: url + '?' + util.mapToUrl(data),
-      success(res){
+      success (res) {
         console.log(res.socketTaskId)
       }
-    })
-  },
-  onSocketOpen (callback) {
-    wx.onSocketOpen(res => {
-      callback(true);
-      console.log('WebSocket连接已打开！')
-    })
-  },
-  onSocketError (callback) {
-    wx.onSocketError(res => {
-      callback(res);
-      console.log('WebSocket连接打开失败，请检查！')
-    })
-  },
-  sendSocketMessage (data) {
-    wx.sendSocketMessage({
-      data: JSON.stringify(data)
-    })
-  },
-  onSocketMessage (callback) {
-    wx.onSocketMessage(res => {
-      handle.responseWrapper(res.data, callback);
-      //todo 这里需要wrapper？？？
-      console.log('收到服务器内容：' + res.data)
-    })
-  },
-  onSocketClose (callback) {
-    wx.onSocketClose(res => {
-      callback(res);
-      console.log('WebSocket 已关闭！')
-    })
+    });
+    return task;
   },
   request (object) {
     if (!object) {

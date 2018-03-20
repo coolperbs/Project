@@ -6,23 +6,24 @@ export default {
   apiList: {
     battleOneByOne: app.HOST_SOCKET + '/singleFightAgainst'
   },
+  PVP_socket: {},
   Connect (danGrading) {
-    debugger
     let userInfo = utils.getStorageSync('userInfo') || {};
-    let userId = userInfo.token || '';
-    ajax.connectSocket(this.apiList.battleOneByOne, {userId: 5, danGrading: danGrading || 1})
+    let token = userInfo.token;
+    this.PVP_socket = ajax.connectSocket(this.apiList.battleOneByOne, {token: token, danGrading: danGrading || 1})
   },
   ConnectAi (danGrading) {
     ajax.connectSocket(this.apiList.battleOneByOne, {type: 'ai', danGrading: danGrading || 1})
   },
   onOpen (callback) {
-    ajax.onSocketOpen(res => {
+    this.PVP_socket.onOpen(res => {
       callback(res);
     })
   },
   onSocketMessage (callback) {
-    ajax.onSocketMessage(res => {
-      var res = (typeof res == 'string' ? JSON.parse(res) : res) || null;
+    this.PVP_socket.onMessage(res => {
+      debugger
+      var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
         utils.showToast({
           title: res.msg || res.message || '',
@@ -33,17 +34,15 @@ export default {
     })
   },
   sendSocketMessage (data) {
-    ajax.sendSocketMessage(data)
+    this.PVP_socket.send(data)
   },
   onSocketError (callback) {
-    ajax.onSocketError(res => {
+    this.PVP_socket.onError(res => {
       callback(res)
     })
   },
-  onSocketClose (callback) {
-    ajax.onSocketClose(res => {
-      callback(res);
-    })
+  socketClose () {
+    this.PVP_socket.close({})
   }
 
 }

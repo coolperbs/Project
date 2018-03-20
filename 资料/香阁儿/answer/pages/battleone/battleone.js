@@ -223,8 +223,18 @@ Page({
     battle.onSocketMessage((res) => {
       if (res.type == '1') {
         //获取房间
+        this.initBattleUser(res);
+        //todo 等待系统是否匹配AI 目前设置5秒
+        setTimeout(() => {
+          if (this.data.vsAi) {
+            //todo socket 有问题
+          }
+        }, 5000);
+      }
+      if (res.type == '2') {
+        //加入房间
         //这里会返回 房间用户信息 如果beginAnswer 为真 就开始进场动画 房间用户信息 每次答题完 会去请求 todo 如何判断两个用户的勾选展示在界面上
-        if (!res.beginAnswer) {
+        if (res.beginAnswer) {
           //可以开始答题了，取拿题
           //不需要AI
           this.setData({
@@ -235,14 +245,16 @@ Page({
           this.initBattleUser(res);
         }
       }
-      if (res.type == '2') {
-        //加入房间
-      }
       if (res.type == '3') {
         //获取题目
         //只有第一次走ready
         //播放对战前动画 准备开始对战拿第一题
         //把题目过滤结构
+        let question = this.data.question;
+        if (util.getValueByPath(question, 'subject.pushTime') == res.subject.pushTime) {
+          //避免题目二次渲染
+          return
+        }
         var newOptionList = [];
         for (var i = 0; i < res.subject.optionList.length; i++) {
           newOptionList.push({
@@ -429,12 +441,6 @@ Page({
         isConnect: true
       });
       this.getMessage();
-      //todo 等待系统是否匹配AI 目前设置5秒
-      setTimeout(() => {
-        if (this.data.vsAi) {
-          //todo socket 有问题
-        }
-      }, 5000);
     });
   },
   /**
@@ -477,9 +483,7 @@ Page({
   onHide: function () {
     //todo 需要判断 标识符是否打开 如果没有则不能执行
     if (this.data.isConnect) {
-      battle.onSocketClose(res => {
-        debugger
-      })
+      battle.socketClose()
     }
   },
 

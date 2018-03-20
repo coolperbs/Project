@@ -18,6 +18,7 @@ export default {
               data: {param: JSON.stringify({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})},
               callback (res3) {
                 //本地信息缓存
+                console.warn(res3.data.token)
                 utils.setStorageSync('userInfo', res3.data);
                 callback(true)
               }
@@ -36,7 +37,7 @@ export default {
     });
   },
   isLogin (callback) {
-    let UserInfo = this.getLoginInfo;
+    let UserInfo = this.getLoginInfo();
     if (UserInfo) {
       callback(true)
     } else {
