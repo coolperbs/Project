@@ -1,0 +1,27 @@
+<view class="content">
+	<view class="nav">
+		<view class="tab {{ tab == 1 ? 'current' : '' }}" data-tab="1" catchtap="changeTab">好友排行</view>
+		<view class="tab {{ tab == 2 ? 'current' : '' }}" data-tab="2" catchtap="changeTab">世界排行</view>
+	</view>
+	<view class="list-wrapper">
+		<scroll-view scroll-y="{{true}}" class="list">
+			<view class="item" wx:for="{{23}}">
+				<view class="user">
+					<view class="rank">1</view>
+					<image class="logo"></image>
+				</view>
+				<view class="info">
+					<view class="username">用户名称</view>
+					<view class="levelname">title</view>
+				</view>
+				<view class="sub-info">
+					<view class="point">
+						<view>80</view>
+						<image class="star"></image>
+					</view>
+					<view class="location">来自成都</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>

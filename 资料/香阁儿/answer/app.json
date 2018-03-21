@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/battleone/battleone",
+    "pages/billboard/billboard"
+  ],
+  "window": {
+    "backgroundTextStyle": "#fff",
+    "backgroundColor": "#1e0141",
+    "navigationBarBackgroundColor": "#1e0141",
+    "navigationBarTitleText": "最强大脑",
+    "navigationBarTextStyle": "#fff"
+  }
+}
