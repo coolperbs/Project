@@ -1,28 +1,43 @@
-// pages/test/test.js
-import {battle} from '../../services/index'
-
+// pages/login/login.js
+import {login} from '../../services/index'
+import util from '../../common/utils/utils'
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-    webSocket: null,
-    webSocket2: null,
+  data: {},
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    battle.battleOneConnect();
-    battle.battleOneOnSocket((res)=>{
-      console.log(res);
-      //这里去打开 锁 只有打开锁才能发送 关闭 socket
+    login.isLogin((res) => {
+      if (!res) {
+        login.login((res2)=>{
+          if(res2){
+            util.redirectTo('../battleone/battleone')
+          }
+        });
+      }else {
+        util.redirectTo('../battleone/battleone')
+      }
     })
-   battle.battleOneOnSocket(res=>{
-     debugger
-   })
+
   },
 
   /**

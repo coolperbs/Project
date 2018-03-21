@@ -1,25 +1,29 @@
 import ajax from '../../common/ajax/ajax'
-import utils from '../../common/utils/util'
+import utils from '../../common/utils/utils'
 
 const app = getApp();
 export default {
   apiList: {
     battleOneByOne: app.HOST_SOCKET + '/singleFightAgainst'
   },
-  Connect (userId, danGrading) {
-    ajax.connectSocket(this.apiList.battleOneByOne, {userId: userId || 123456, danGrading: danGrading || 1})
+  PVP_socket: {},
+  Connect (danGrading) {
+    let userInfo = utils.getStorageSync('userInfo') || {};
+    let token = userInfo.token;
+    this.PVP_socket = ajax.connectSocket(this.apiList.battleOneByOne, {token: token, danGrading: danGrading || 1})
   },
-  ConnectAi(danGrading){
+  ConnectAi (danGrading) {
     ajax.connectSocket(this.apiList.battleOneByOne, {type: 'ai', danGrading: danGrading || 1})
   },
   onOpen (callback) {
-    ajax.onSocketOpen(res => {
+    this.PVP_socket.onOpen(res => {
       callback(res);
     })
   },
   onSocketMessage (callback) {
-    ajax.onSocketMessage(res => {
-      var res = (typeof res == 'string' ? JSON.parse(res) : res) ||null;
+    this.PVP_socket.onMessage(res => {
+      debugger
+      var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
         utils.showToast({
           title: res.msg || res.message || '',
@@ -30,17 +34,15 @@ export default {
     })
   },
   sendSocketMessage (data) {
-    ajax.sendSocketMessage(data)
+    this.PVP_socket.send(data)
   },
   onSocketError (callback) {
-    ajax.onSocketError(res => {
+    this.PVP_socket.onError(res => {
       callback(res)
     })
   },
-  onSocketClose (callback) {
-    ajax.onSocketClose(res => {
-      callback(res);
-    })
+  socketClose () {
+    this.PVP_socket.close({})
   }
 
 }

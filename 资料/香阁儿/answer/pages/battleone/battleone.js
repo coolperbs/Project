@@ -1,7 +1,7 @@
 // pages/battleone/battleone.js
 import {battle} from '../../services/index'
-import util from '../../common/utils/util'
-
+import util from '../../common/utils/utils'
+//todo 1对战结果展示 2对战提前10秒内答题完毕 3.对战ai
 Page({
 
   /**
@@ -37,7 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    debugger
   },
 
   /**
@@ -51,25 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //初始化动画
-    this.initAnimation();
-    this.setData({
-      systemInfo: util.getSystemInfo()
-    });
-    battle.Connect('', '');
-    battle.onOpen(res => {
-      this.setData({
-        isConnect: true
-      });
-      this.getMessage();
-      //todo 等待系统是否匹配AI 目前设置5秒
-      setTimeout(() => {
-        if (this.data.vsAi) {
-          //todo socket 有问题
-        }
-      }, 5000);
-    });
-
+    this.initPage();
   },
   /**
    * 初始化动画对象
@@ -107,6 +89,11 @@ Page({
    * 获取题目
    * */
   getQuestion () {
+    if (!this.data.question.hasMore && this.data.question.hasMore != undefined) {
+      //本次对战结束 算分了！！！！！
+      this.endThisRoundEvt();
+      return
+    }
     this.setData({
       countDown: 10,
       subjectOffset: this.data.subjectOffset + 1
@@ -130,9 +117,9 @@ Page({
       callback && callback();
     } else if (type == 'ready') {
       this.loadingAni.opacity(0).step();
-      this.leftAni.translateX(0).step({delay:500});
-      this.rightAni.translateX(0).step({delay:500});
-      this.centerAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay:500});
+      this.leftAni.translateX(0).step({delay: 500});
+      this.rightAni.translateX(0).step({delay: 500});
+      this.centerAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay: 500});
       this.setData({
         leftAniData: this.leftAni.export(),
         rightAniData: this.rightAni.export(),
@@ -223,7 +210,12 @@ Page({
     }
 
   },
-
+  /**
+   * 结束本回合
+   * */
+  endThisRoundEvt () {
+    this.sendMessage({"type": 3});
+  },
   /**
    * 获取socket返回信息
    * */
@@ -231,25 +223,38 @@ Page({
     battle.onSocketMessage((res) => {
       if (res.type == '1') {
         //获取房间
-        if (!res.beginAnswer) {
+        this.initBattleUser(res);
+        //todo 等待系统是否匹配AI 目前设置5秒
+        setTimeout(() => {
+          if (this.data.vsAi) {
+            //todo socket 有问题
+          }
+        }, 5000);
+      }
+      if (res.type == '2') {
+        //加入房间
+        //这里会返回 房间用户信息 如果beginAnswer 为真 就开始进场动画 房间用户信息 每次答题完 会去请求 todo 如何判断两个用户的勾选展示在界面上
+        if (res.beginAnswer) {
           //可以开始答题了，取拿题
           //不需要AI
           this.setData({
             vsAi: false
           });
-          setTimeout(() => {
-            this.getQuestion();
-          }, 5000)
+          this.getQuestion();
+          //对战用户信息
+          this.initBattleUser(res);
         }
-      }
-      if (res.type == '2') {
-        //加入房间
       }
       if (res.type == '3') {
         //获取题目
         //只有第一次走ready
         //播放对战前动画 准备开始对战拿第一题
         //把题目过滤结构
+        let question = this.data.question;
+        if (util.getValueByPath(question, 'subject.pushTime') == res.subject.pushTime) {
+          //避免题目二次渲染
+          return
+        }
         var newOptionList = [];
         for (var i = 0; i < res.subject.optionList.length; i++) {
           newOptionList.push({
@@ -280,9 +285,40 @@ Page({
       if (res.type == '4') {
         //回答问题
         //获取答案 后要停止Timer
-
+        this.filterAnswerEvt(res);
       }
     });
+  },
+  /**
+   * 回答校验同步分数
+   * */
+  filterAnswerEvt (res) {
+    let oldUserInfo = this.data.roomUsers;
+    for (let i = 0; i < oldUserInfo.length; i++) {
+      let currentUser = oldUserInfo[i];
+      if (currentUser.userId = res.userId && res.answerResult) {
+        oldUserInfo[i].point += res.point;
+        //计算百分比
+        //todo 待完善
+        oldUserInfo[i].pointBar = ((oldUserInfo[i].point * 100) / this.data.roomInfo.totlePoint).toFixed(2);
+        this.setData({
+          roomUsers: oldUserInfo
+        })
+      }
+    }
+    // if (flag != undefined) {
+    //   let Timer = setInterval(() => {
+    //     if (this.data.roomUsers[flag].point == newPoint) {
+    //       clearInterval(Timer);
+    //       return
+    //     }
+    //     let tempUser = this.data.roomUsers;
+    //     tempUser[flag].point += 1;
+    //     this.setData({
+    //       roomUsers: tempUser
+    //     })
+    //   }, 10)
+    // }
   },
   /**
    * 开始答题
@@ -307,6 +343,23 @@ Page({
     }, 1000);
     this.setData({
       Timer: Timer
+    })
+  },
+  /**
+   * 对战用户信息
+   * */
+  initBattleUser (res) {
+    let roomUsers = res.roomUsers;
+    //初始化积分
+    roomUsers = roomUsers.map((el) => {
+      el.point = 0;
+      el.pointBar = 0;
+      return el;
+    });
+    delete res.roomUsers;
+    this.setData({
+      roomInfo: res,
+      roomUsers: roomUsers
     })
   },
   /*
@@ -374,14 +427,63 @@ Page({
     })
   },
   /**
+   * 进入房间
+   * */
+  initPage () {
+    //初始化动画
+    this.initAnimation();//todo 这个有点多余
+    this.setData({
+      systemInfo: util.getSystemInfo()
+    });
+    battle.Connect('', '');
+    battle.onOpen(res => {
+      this.setData({
+        isConnect: true
+      });
+      this.getMessage();
+    });
+  },
+  /**
+   * 再来一吧 页面状态恢复
+   * */
+  playAgain () {
+    this.setData({
+      showLoading: true,
+      showRound: true,
+      showBattle: true,
+      isConnect: false,
+      vsAi: true,
+      sendMessageList: [],
+      leftAniData: {},
+      rightAniData: {},
+      centerAniData: {},
+      roundAniData: {},
+      questionTypeAniData: {},
+      questionTitleAniData: {},
+      questionListAniData: {},
+      systemInfo: {},
+      roomUsers: [],
+      roomInfo: {},
+      question: {},
+      ready: false,//可以开始答题了没
+      answered: false,//这道题答过没有
+      answerOption: 0,//答题号
+      countDown: 10,
+      subjectOffset: 0,//题目等级
+      Timer: null
+    });
+    //todo 这里核对逻辑
+    setTimeout(() => {
+      this.initPage();
+    }, 50)
+  },
+  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
     //todo 需要判断 标识符是否打开 如果没有则不能执行
     if (this.data.isConnect) {
-      battle.onSocketClose(res => {
-        debugger
-      })
+      battle.socketClose()
     }
   },
 

@@ -5,15 +5,15 @@
 			<view class="battle-user-box">
 				<view class="battle-user">
 					<image mode="aspectFit" class="battle-user-head" src="{{roomUsers[0].avatar}}"></image>
-					<view class="battle-user-score">360</view>
+					<view class="battle-user-score">{{roomUsers[0].point}}</view>
 				</view>
 				<view class="battle-user-name-box">
 					<view class="battle-user-level">{{roomUsers[0].level}}</view>
-					<view class="battle-user-name">{{roomUsers[0].name||'NPC'}}</view>
+					<view class="battle-user-name">{{roomUsers[0].name}}</view>
 				</view>
 			</view>
 			<view class="battle-progress-bar">
-				<view class="battle-progress"></view>
+				<view class="battle-progress" style="width:{{roomUsers[0].pointBar}}%"></view>
 			</view>
 		</view>
 		<view class="battle-center">
@@ -23,16 +23,16 @@
 		<view class="battle-right">
 			<view class="battle-user-box">
 				<view class="battle-user">
-					<view class="battle-user-score">360</view>
+					<view class="battle-user-score">{{roomUsers[1].point}}</view>
 					<image mode="aspectFit" class="battle-user-head" src="{{roomUsers[1].avatar}}"></image>
 				</view>
 				<view class="battle-user-name-box">
-					<view class="battle-user-level">{{roomUsers[1].level||''}}</view>
-					<view class="battle-user-name">{{roomUsers[1].name||'NPC'}}</view>
+					<view class="battle-user-level">{{roomUsers[1].level}}</view>
+					<view class="battle-user-name">{{roomUsers[1].name}}</view>
 				</view>
 			</view>
 			<view class="battle-progress-bar">
-				<view class="battle-progress"></view>
+				<view class="battle-progress" style="width:{{roomUsers[1].pointBar}}%"></view>
 			</view>
 		</view>
 	</view>
@@ -57,23 +57,23 @@
 <view wx:if="{{showRound}}" animation="{{roundAniData}}" class="battle-stage">
 	<view animation="{{leftAniData}}" class="left">
 		<view class="user">
-			<image mode="aspectFit" class="head"></image>
-			<view class="name">Shelan</view>
-			<view class="level">V1</view>
+			<image mode="aspectFit" class="head" src="{{roomUsers[0].avatar}}"></image>
+			<view class="name">{{roomUsers[0].name}}</view>
+			<view class="level">{{roomUsers[0].level}}</view>
 		</view>
 	</view>
 	<view animation="{{rightAniData}}" class="right">
 		<view class="user">
-			<image mode="aspectFit" class="head"></image>
-			<view class="name">Shelan</view>
-			<view class="level">V1</view>
+			<image mode="aspectFit" class="head" src="{{roomUsers[1].avatar}}"></image>
+			<view class="name">{{roomUsers[1].name}}</view>
+			<view class="level">{{roomUsers[1].level}}</view>
 		</view>
 	</view>
 	<image animation="{{centerAniData}}" class="vs" mode="aspectFit" src="../../static/images/VS2.png"></image>
 </view>
 <view wx:if="{{showLoading}}" animation="{{loadingAniData}}" class="loading">
-<view class="box-loading">
-	<view class="loading-item loading1"></view>
-	<view class="loading-item loading2"></view>
-</view>
+	<view class="box-loading">
+		<view class="loading-item loading1"></view>
+		<view class="loading-item loading2"></view>
+	</view>
 </view>
