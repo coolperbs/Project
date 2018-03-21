@@ -6,17 +6,17 @@ export default {
   apiList: {
     login: app.HOST_AJAX + '/login'
   },
-  login (callback) {
+  login(callback) {
     let that = this;
     wx.login({
-      success (res1) {
+      success(res1) {
         wx.getUserInfo({
           lang: 'zh_CN',
-          success (res2) {
+          success(res2) {
             ajax.request({
               url: that.apiList.login,
               data: {param: JSON.stringify({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})},
-              callback (res3) {
+              callback(res3) {
                 //本地信息缓存
                 console.warn(res3.data.token)
                 utils.setStorageSync('userInfo', res3.data);
@@ -24,9 +24,9 @@ export default {
               }
             })
           },
-          fail (res) {
-            utils.showAction('请开启授权,否则无法正常体验小程序',(res)=>{
-              if(res){
+          fail(res) {
+            utils.showAction('请开启授权,否则无法正常体验小程序', (res) => {
+              if (res) {
                 wx.openSetting({});
               }
             });
@@ -36,7 +36,7 @@ export default {
       }
     });
   },
-  isLogin (callback) {
+  isLogin(callback) {
     let UserInfo = this.getLoginInfo();
     if (UserInfo) {
       callback(true)
@@ -44,7 +44,14 @@ export default {
       callback(false)
     }
   },
-  getLoginInfo(){
-    return utils.getStorageSync('userInfo') || null
+  getLoginInfo() {
+    let userInfo = utils.getStorageSync('userInfo') || null;
+    if (!userInfo) {
+      //拿不到信息就去登陆
+      utils.navigateTo('../../pages/login/login');
+      return userInfo
+    } else {
+      return userInfo
+    }
   }
 }
