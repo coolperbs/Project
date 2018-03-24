@@ -42,6 +42,19 @@ Page {
     }
     100%{
         opacity: 0.4;
-        transform:translate3d(0,,0);
+        transform:translate3d(0,0,0);
     }
 }
+.up-down-animation{
+  animation: upDown 1.5s infinite alternate;
+}
+@keyframes upDown {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(0, -5rpx, 0);
+    opacity: 1;
+  }
+ }
