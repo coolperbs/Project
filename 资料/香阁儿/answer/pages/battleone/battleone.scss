@@ -168,7 +168,10 @@
 .battle-btn.success, .battle-btn.error {
   color: #fff;
 }
-
+.battle-btn.hide {
+  transition: all .45s ease;
+  opacity: 0;
+}
 .battle-btn.success {
   background: linear-gradient(to top, #0bcf91, #44f669);
 }
