@@ -58,3 +58,14 @@ Page {
     opacity: 1;
   }
  }
+.roate-animation{
+  animation: roated 10s infinite alternate;
+}
+@keyframes roated {
+  0% {
+   transform: rotate3d(0,0,1,0deg);
+  }
+  100% {
+    transform: rotate3d(0,0,1,30deg);
+  }
+}

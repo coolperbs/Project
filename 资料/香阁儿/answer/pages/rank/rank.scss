@@ -1,0 +1,238 @@
+.rank{
+  text-align: center;
+  .rank-bg{
+    margin: 20rpx 0;
+    width: 626rpx;
+    height: 616rpx;
+  }
+  .rank-box{
+    position: absolute;
+    top: 40rpx;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    .rank-title{
+      width: 323rpx;
+      height: 77rpx;
+    }
+    .rank-menu{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      .coins{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .icon-coin{
+          width: 136rpx;
+          height: 136rpx;
+        }
+        .icon-count{
+          color: #fff;
+          font-size: 32rpx;
+        }
+      }
+      .skills{
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 50rpx;
+        .skill{
+          width: 64rpx;
+          height: 64rpx;
+          margin: 0 5rpx;
+          opacity: 0.8;
+          &.active{
+            filter: grayscale(100%);
+          }
+        }
+      }
+    }
+    .scroll-box{
+      position: relative;
+      width: 640rpx;
+      height: 800rpx;
+      padding: 5rpx;
+      .box-bg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.8;
+        box-sizing: border-box;
+        border-radius: 22rpx;
+        background:linear-gradient(#ff15c0, #7307ee);
+        &:after{
+          position: absolute;
+          top: -4rpx; bottom: -4rpx;
+          left: -4rpx; right: -4rpx;
+          background: linear-gradient(#d605a2, #021d82);
+          opacity: 0.8;
+          content: '';
+          z-index: -1;
+          border-radius: 22rpx;
+        }
+      }
+      .scroll{
+        position: absolute;
+        top:0;
+        right: 0;
+        bottom:0;
+        left: 0;
+        .level-item{
+          margin: 0;
+          background-color: transparent;
+          border-left: none;
+          border-right: none;
+          padding-left: 20rpx;
+          padding-right: 20rpx;
+          border-radius: 0;
+          box-sizing: border-box;
+          overflow: hidden;
+          &:after{
+            content:" ";
+            width:200%;
+            height:200%;
+            position:absolute;
+            top:0;
+            left:0;
+            border:1px solid rgba(0, 0, 0,0);
+            -webkit-transform:scale(0.5);
+            transform:scale(0.5);
+            -webkit-transform-origin:0 0;
+            transform-origin:0 0;
+            box-sizing:border-box;
+            border-radius:10px;
+          }
+          &.disabled{
+            &:after{
+              content:" ";
+              width:200%;
+              height:200%;
+              position:absolute;
+              top:0;
+              left:0;
+              border:1px solid rgba(0, 0, 0,0);
+              -webkit-transform:scale(0.5);
+              transform:scale(0.5);
+              -webkit-transform-origin:0 0;
+              transform-origin:0 0;
+              box-sizing:border-box;
+              border-radius:10px;
+              background: rgba(0,0,0,0.4);
+            }
+          }
+          &:first-child{
+            .item-box{
+              border-top: none;
+            }
+          }
+          &:last-child{
+            .item-box{
+              border-bottom: none;
+            }
+          }
+          .item-box{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom:2rpx solid #200144;
+            border-top:2rpx solid #ff2bcb;
+            .item-image{
+              width: 167rpx;
+              height: 213rpx;
+            }
+            .desc{
+              display: flex;
+              flex-direction: column;
+              width: 640-136rpx;
+              .top{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15rpx 0;
+                border-bottom: 4rpx solid #ffbf4c;
+                border:4rpx solid;
+                border-image: -webkit-linear-gradient(left, #ffbf4c, transparent) 30 30;
+                border-image: -moz-linear-gradient(left,  #ffbf4c, transparent) 30 30;
+                border-image: linear-gradient(left, #ffbf4c, transparent) 30 30;
+                border-top:none;
+                border-left: none;
+                border-right: none;
+                .title{
+                  font-size: 36rpx;
+                  color: #fff;
+                  text-shadow: 0 10rpx 10rpx rgba(40, 0, 113, 0.4);
+                }
+                .coin{
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+                  .coin-icon{
+                    width: 64rpx;
+                    height: 58rpx;
+                  }
+                  .coin-count{
+                    font-size: 24rpx;
+                    opacity: 0.5;
+                  }
+                }
+              }
+              .bottom{
+                padding: 15rpx 0;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                .text{
+                  color: #ffb313;
+                  font-size: 28rpx;
+                  text-shadow: 0 10rpx 10rpx rgba(40, 0, 113, 0.4);
+                  vertical-align: bottom;
+                }
+                .star-list{
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: flex-end;
+                  margin-right: 20rpx;
+                  .star{
+                    position: relative;
+                    width: 49rpx;
+                    height: 47rpx;
+                    &.active{
+                      .start-box{
+                        display: none;
+                      }
+                      .start-active{
+                        display: block;
+                      }
+                    }
+                    .start-active{
+                      display: none;
+                    }
+                    .start-box,.start-active{
+                      position: absolute;
+                      left: 0;
+                      top: 0;
+                      width: 49rpx;
+                      height: 47rpx;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        }
+        .level-item-hover{
+          background: rgba(255,255,255,0.1);
+          border-radius: 5rpx;
+        }
+      }
+    }
+  }
+}
