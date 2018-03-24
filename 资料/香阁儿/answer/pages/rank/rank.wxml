@@ -36,7 +36,7 @@
 										<image class="start-box" src="../../static/images/star-bg.png"></image>
 										<image class="start-active" src="../../static/images/star.png"></image>
 									</view>
-									<view class="star active">
+									<view class="star">
 										<image class="start-box" src="../../static/images/star-bg.png"></image>
 										<image class="start-active" src="../../static/images/star.png"></image>
 									</view>
@@ -63,7 +63,7 @@
 										<image class="start-box" src="../../static/images/star-bg.png"></image>
 										<image class="start-active" src="../../static/images/star.png"></image>
 									</view>
-									<view class="star active">
+									<view class="star {{active?'active':''}}">
 										<image class="start-box" src="../../static/images/star-bg.png"></image>
 										<image class="start-active" src="../../static/images/star.png"></image>
 									</view>
