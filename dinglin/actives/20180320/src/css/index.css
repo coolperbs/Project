@@ -22,13 +22,69 @@ blockquote:before, blockquote:after,
 q:before, q:after {	content: '';	content: none;}
 table {	border-collapse: collapse;	border-spacing: 0;}
 
+.clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfix{zoom:1} 
 
-.btn { width :100%; border : solid 1px; height : 100px; margin-bottom : 30px; }
+html { font-family: 微软雅黑; background : linear-gradient(to bottom, #ddebfe, #dcd4fe); background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ddebfe), to(#dcd4fe) );   }
+
+body { font-size : 12px; }
+
+.logo { margin : 20px; }
+.logo img { width : 100px; height : 24px; }
+
+.slogan { margin : 20px; }
+.slogan img { width : 100%; }
+.slogan .text { color : #231916; font-weight : bold; text-align: center; font-size: 18px; line-height: 20px; margin-top : -6px; }
+
+.steps,
+.count { -webkit-box-shadow: 0px 8px 8px rgba( 88,150,255, 0.2 ); box-shadow: 0px 8px 8px rgba( 88,150,255, 0.2 ); background-color: #fff; border : solid 1px #5896FF; border-radius : 5px; margin : 20px; position: relative; }
+.steps .title { font-size : 24px; font-weight: bold; margin : 20px; line-height: 38px; }
+.steps .title em { font-size: 32px; color : #cc0927; }
+.steps .s { margin : 20px 20px 40px 20px; }
+.steps .s .row { font-size : 16px; line-height: 32px; color : #666; }
+.steps .s .row em { font-size : 32px; color : #cc0927; padding : 5px 0; display: inline-block; width : 25px; text-align: center; }
+
+.count { display: none; font-weight: bold; }
+.count .num { margin : 20px; font-size: 24px; text-align: center; }
+.count .num em { font-size : 60px; color : #cc0927; }
+.count .end { text-align: center; padding : 15px 0; line-height: 24px; color : #fff; font-size: 20px; font-weight: bold; background-color: #5896FF; }
+
+.list {}
+.list .mod { float : left; width : 100%; }
+.list .mod .box { -webkit-box-shadow: 0px 8px 8px rgba( 88,150,255, 0.2 ); box-shadow: 0px 8px 8px rgba( 88,150,255, 0.2 ); background-color: #fff; border : solid 1px #5896FF; border-radius : 5px; margin : 20px; position: relative; }
+.list .mod .box .level { font-size : 17px; left : -10px; top : -10px; position: absolute; height: 40px; line-height : 40px; color : #fff; padding : 0 20px; background-color: #F94C72; }
+.list .mod .box .level:before { content : ''; width:0; height:0; border-width:4px 5px; position: absolute; bottom: -8px; left : 0; border-style:solid; border-color:#CE3D5D #CE3D5D transparent transparent;}
+.list .mod .box .level:after { content : ''; width:0; height:0; border-width:20px 6px; position: absolute; top:0; right : -12px; border-style:solid; border-color:#F94C72 transparent transparent #F94C72;}
+.list .mod .box .content { margin : 40px 20px 20px 20px; position: relative; }
+.list .mod .box .pic { position: relative; background-position: center center; background-size : contain; background-repeat: no-repeat; height : 200px; border : solid 1px #f0f0f0; float : left; width : 50%; }
+.list .mod .box .pic img { width : 100%; margin : auto; }
+.list .mod .box .pic .info { padding : 4px 0; text-indent: 10px; background-color : #F94C72; color : #fff; font-size: 12px; color : #fff; border-radius: 20px; position: absolute; bottom : -10px; left : 0; width : 100%; }
+.list .mod .box .pic .info.none { height :0; padding : 0; }
+.list .mod .box .pic .info .tag { position: absolute; line-height: 60px; height : 60px; width : 60px; right : -10px; bottom : 0; background-color: #F94C72; border-radius: 50%; font-size : 24px; text-indent: 0; text-align: center; color : #fff; font-weight: bold; }
+.list .mod .box .content .desc { line-height: 16px; font-size : 14px; color : #666; margin-left : 10px; width : 45%; float : right;}
+.list .mod .box .content .desc .title { font-size : 18px; }
+.list .mod .box .content .desc .param { margin-top: 20px; font-size : 14px; line-height: 18px; }
+.list .mod .box .content .desc .param .row { margin : 5px 0; }
+.list .mod .box .btn { -webkit-box-shadow: 0px 5px 5px rgba( 88,150,255, 0.2 ); box-shadow: 0px 5px 5px rgba( 88,150,255, 0.2 ); margin : 20px; text-align: center; line-height: 50px; font-size : 17px; height : 50px; background-color: #5896FF; color : #fff; border-radius: 30px; }
 
 
-.poparea { display: none; width : 100%; height : 100%; position: fixed; top : 0; left : 0; background-color : rgba( 0, 0, 0, 0.2 ); }
-.poparea .pop { width : 80%; height : 80%; position: relative; background-color: #fff; margin : 0 auto; }
-.poparea .pop .close { position: absolute; width : 30px; height : 30px; border : solid 1px; right : -15px; top : -15px; background-color: #fff; }
+
+.poparea { display: none; width : 100%; height : 100%; position: fixed; top : 0; left : 0; background-color : rgba( 0, 0, 0, 0.4 ); }
+.poparea .pop { -webkit-box-shadow: 0px 10px 10px rgba( 0, 0, 0, 0.1 ); box-shadow: 0px 10px 10px rgba( 0, 0, 0, 0.1 ); border-radius: 8px; border : solid 1px #5896FF; width : 80%; height : 80%; position: relative; top : 50%; background-color: #fff; margin : 0 auto; }
+.poparea .pop .title { margin-top : 20px; text-indent: 20px; font-size : 24px; color : #5896FF; font-weight : bold; }
+.poparea .pop .close { position: absolute; width : 40px; height : 40px; border : solid 1px #f64f75; border-radius : 25px; right : -20px; top : -20px; background-color: #fff; }
+
+.pop.rule .cont { border : solid 1px; margin : 20px 20px 0 20px; overflow-y: auto; }
+.pop.rule .cont .text { height : 1000px; }
+
+.poparea  .pop.form { height : auto; }
+.pop.form .list { margin: 40px 20px 20px 20px; }
+.pop.form .list .row { margin-bottom : 10px; border : solid 1px #5896FF; border-radius: 30px; overflow: hidden; padding : 0 10px; }
+.pop.form .list .row:last-child { margin-bottom : 0; }
+.pop.form .list select,
+.pop.form .list input { color : #444; background-color: #fff; width : 100%; height: 40px; line-height: 40px; font-size : 16px; display: block; border : none; }
+.pop.form .act { margin : 40px 20px 20px 20px; }
+.pop.form .act .btn { height : 50px; line-height: 50px; text-align: center; background-color: #5896FF; border-radius: 50px; color : #fff; font-size : 18px;-webkit-box-shadow: 0px 5px 5px rgba( 88,150,255, 0.2 ); box-shadow: 0px 5px 5px rgba( 88,150,255, 0.2 );  }
 
 
 
