@@ -46,12 +46,6 @@ export default {
   },
   getLoginInfo() {
     let userInfo = utils.getStorageSync('userInfo') || null;
-    if (!userInfo) {
-      //拿不到信息就去登陆
-      utils.navigateTo('../../pages/login/login');
-      return userInfo
-    } else {
-      return userInfo
-    }
+    return userInfo
   }
 }

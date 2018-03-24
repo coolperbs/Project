@@ -1,33 +1,31 @@
-<!--pages/home/home.wxml-->
-<!--<image mode="scaleToFill" src="../../static/images/home-bg.jpg" class="page-bg"></image>-->
 <image mode="scaleToFill" src="../../static/images/home-point.png" class="page-bg fade-out-in-animation"></image>
 <image mode="aspectFit" src="../../static/images/home-logo.png" class="home-logo"></image>
 <scroll-view scroll-y="true" class="home-scroll">
     <view class="home-container">
-        <view class="home-btn">
+        <button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="rank">
             <image mode="aspectFit" src="../../static/images/home-rank.png"></image>
-        </view>
-        <view class="home-btn">
+        </button>
+        <button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="friendBattle">
             <image mode="aspectFit" src="../../static/images/friend-battle.png"></image>
-        </view>
+        </button>
         <view class="home-btn-group">
-            <view class="home-btn ">
+            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="billboard">
                 <image mode="aspectFit" src="../../static/images/home-record.png"></image>
-            </view>
-            <view class="home-btn disabled">
+            </button>
+            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="questionLib">
                 <image mode="aspectFit" src="../../static/images/home-lib.png"></image>
-            </view>
-            <view class="home-btn disabled">
+            </button>
+            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="mine">
                 <image mode="aspectFit" src="../../static/images/home-mine.png"></image>
-            </view>
+            </button>
         </view>
         <view class="home-btn-bottom">
-            <view class="home-btn">
+            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="shop">
                 <image mode="aspectFit" src="../../static/images/home-shop.png"></image>
-            </view>
-            <view class="home-btn">
+            </button>
+            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="message">
                 <image mode="aspectFit" src="../../static/images/home-message.png"></image>
-            </view>
+            </button>
         </view>
     </view>
 </scroll-view>

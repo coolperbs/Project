@@ -1,6 +1,6 @@
 // pages/home/home.js
 import ajax from '../../common/ajax/ajax'
-
+import utils from '../../common/utils/utils'
 Page({
 
   /**
@@ -32,32 +32,31 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  jumpPage (e) {
+    let type = e.currentTarget.dataset.type;
+    switch (type){
+      case 'rank':
+        utils.navigateTo('../rank/rank');//排位赛
+        break;
+      case 'friendBattle':
+        utils.navigateTo('../friendbattle/friendbattle');//好友对战
+        break;
+      case 'billboard':
+        utils.navigateTo('../billboard/billboard');//排行榜
+        break;
+      case 'questionLib':
+        utils.navigateTo('../questionlib/questionlib');//题库
+        break;
+      case 'mine':
+        utils.navigateTo('../mine/mine');//我的
+        break;
+      case 'shop':
+        utils.navigateTo('../shop/shop');//商店
+        break;
+      case 'message':
+        utils.navigateTo('../message/message');//消息
+        break;
+    }
   },
 
   /**
