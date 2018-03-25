@@ -105,6 +105,7 @@ export default {
   },
   PVA_close () {
     if (this.PVA_isConnect) {
+      console.log('PVP close')
       this.PVA_socket.close({})
     }
   },

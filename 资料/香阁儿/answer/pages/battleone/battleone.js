@@ -13,7 +13,7 @@ Page({
     BATTLE: false,
     END: false,
     WINNER: false,
-    vsAi: true,
+    vsAi: undefined,
     /*动画*/
     loadingData: {},
     matchLeftData: {},
@@ -218,10 +218,13 @@ Page({
         this.initBattleUser(res);
         //todo 等待系统是否匹配AI 目前设置5秒
         setTimeout(() => {
-          if (this.data.vsAi) {
+          if (this.data.vsAi == undefined) {
+            this.setData({
+              vsAi: true
+            })
             this.initAI();
           }
-        }, 3000);
+        }, 3500);
       }
       if (res.type == '2') {
         //加入房间
@@ -229,9 +232,11 @@ Page({
         if (res.beginAnswer) {
           //可以开始答题了，取拿题
           //不需要AI
-          this.setData({
-            vsAi: false
-          });
+          if (this.data.vsAi != true) {
+            this.setData({
+              vsAi: false
+            });
+          }
           //对战用户信息
           //延迟执行
           setTimeout(() => {
@@ -304,21 +309,24 @@ Page({
         //   this.showResult();
         //   this.closeConnect();
         // }
-       // this.data.countEnd += 1;
+        // this.data.countEnd += 1;
         this.setData({
           END: true
         });
         this.setData({
           result: res.fightResults
         });
-        this.showResult();
-        this.closeConnect();
+        setTimeout(()=>{
+          this.showResult();
+          this.closeConnect();
+        },1000)
       }
       if (res.type == '6') {
         this.setData({
           isOffLine: true
         })
-        this.clearInterval(()=>{
+        this.clearAiInterval()
+        this.clearInterval(() => {
           this.questionAnimationEvt(4, () => {
             this.endThisRoundEvt();
           })
@@ -617,7 +625,7 @@ Page({
       BATTLE: false,
       END: false,
       WINNER: false,
-      vsAi: true,
+      vsAi: undefined,
       /*动画*/
       loadingData: {},
       matchLeftData: {},
@@ -638,6 +646,11 @@ Page({
       answered: false,
       countEnd: 0,
       isOffLine: false,//有人掉线
+      level: 1,
+      /*ai*/
+      aiCountTime: 10,
+      aiPushTime: undefined,
+      aiInfo: {},
     });
     //动画重置
     this.animationEvt('reset', () => {
@@ -648,10 +661,15 @@ Page({
    * 关闭连接
    * */
   closeConnect () {
+    this.clearAiInterval();
+    this.clearInterval();
+    debugger
     if (this.data.isConnect) {
+      console.log('pvp close!!!!!')
       battle.PVP_close()
     }
-    if (this.data.isAiConnect) {
+    if (this.data.vsAi != undefined) {
+      console.log('pva close!!!!!')
       battle.PVA_close()
     }
   },
@@ -693,9 +711,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    if (this.data.isConnect) {
-      battle.PVP_close()
-    }
+    this.closeConnect();
+  },
+  onUnload () {
+    this.closeConnect();
   },
 
   /**
