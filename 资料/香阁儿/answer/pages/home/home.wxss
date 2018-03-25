@@ -11,7 +11,7 @@
     margin: 0 50rpx
 }
 .home-logo{
-    position: absolute;
+    position: fixed;
     width: 650rpx;
     height: 244rpx;
     margin-left: 50rpx;

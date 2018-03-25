@@ -45,7 +45,7 @@
 						</view>
 					</view>
 				</button>
-				<button hover-class="level-item-hover" class="level-item">
+				<button hover-class="level-item-hover" bindtap="rankBattleEvt" class="level-item">
 					<view class="item-box">
 						<image class="item-image" src="../../static/images/lv1.png"></image>
 						<view class="desc">

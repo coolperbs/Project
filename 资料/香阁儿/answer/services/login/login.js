@@ -13,6 +13,8 @@ export default {
         wx.getUserInfo({
           lang: 'zh_CN',
           success(res2) {
+            console.log({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})
+            debugger
             ajax.request({
               url: that.apiList.login,
               data: {param: JSON.stringify({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})},
@@ -20,7 +22,7 @@ export default {
                 //本地信息缓存
                 console.warn(res3.data.token)
                 utils.setStorageSync('userInfo', res3.data);
-                callback(true)
+                callback&&callback(true)
               }
             })
           },
@@ -30,7 +32,7 @@ export default {
                 wx.openSetting({});
               }
             });
-            callback(false)
+            callback&&callback(false)
           }
         })
       }

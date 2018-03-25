@@ -12,6 +12,7 @@ Page({
     showRound: true,
     showBattle: true,
     isConnect: false,
+    isAiConnect: false,
     vsAi: true,
     leftAniData: {},
     rightAniData: {},
@@ -81,7 +82,7 @@ Page({
   /**
    * 获取题目
    * */
-  getQuestion (type) {
+  getQuestion () {
     if (!this.data.question.hasMore && this.data.question.hasMore != undefined) {
       //本次对战结束 算分了！！！！！
       this.endThisRoundEvt();
@@ -219,7 +220,6 @@ Page({
         this.initBattleUser(res);
         //todo 等待系统是否匹配AI 目前设置5秒
         setTimeout(() => {
-
           if (this.data.vsAi) {
             //this.initAI();
           }
@@ -236,7 +236,7 @@ Page({
           });
           //对战用户信息
           this.initBattleUser(res, () => {
-            this.getQuestion('2');
+            this.getQuestion();
           });
         }
       }
@@ -289,6 +289,7 @@ Page({
         this.setData({
           isEnd: true
         })
+        this.closeConnect();
       }
     });
   },
@@ -318,7 +319,14 @@ Page({
     this.filterOptionListEvt(res);
     if (res.mayNextSub) {
       //提前结束这道题
-      this.clearInterval()
+      this.clearInterval(() => {
+        //10 完了展示3秒后开始新的
+        setTimeout(() => {
+          this.questionAnimationEvt(4, () => {
+            this.getQuestion();
+          })
+        }, 3000)
+      })
     }
 
   },
@@ -326,36 +334,28 @@ Page({
    * 开始答题
    * */
   startInterval () {
-    if(this.Timer){
-      this.clearInterval();
-    }
-    this.Timer = setInterval(() => {
-      console.log(111111)
-      if (this.data.countDown <= 0) {
-        this.clearInterval('AutoAnswer');
-      } else {
-        this.setData({
-          countDown: this.data.countDown - 1
-        })
-      }
-    }, 1000);
+    this.clearInterval(() => {
+      this.Timer = setInterval(() => {
+        if (this.data.countDown <= 0) {
+          this.clearInterval(() => {
+            this.answerEvt();
+          });
+        } else {
+          this.setData({
+            countDown: this.data.countDown - 1
+          })
+        }
+      }, 1000);
+    });
   },
   /**
    * 结束这道题
    * */
-  clearInterval (isAutoAnswer) {
-    console.log('clean')
-    clearInterval(this.Timver);
-    if(isAutoAnswer){
-      //到时间自动答题
-      this.answerEvt();
+  clearInterval (callback) {
+    if (this.Timer) {
+      clearInterval(this.Timer);
     }
-    //10 完了展示3秒后开始新的
-    setTimeout(() => {
-      this.questionAnimationEvt(4, () => {
-        this.getQuestion('1');
-      })
-    }, 3000)
+    callback && callback();
   },
   /**
    * 对战用户信息
@@ -462,9 +462,8 @@ Page({
   /**
    * 初始化AI
    * */
-  initAI(){
-
-    battle.PVA_connect('',()=>{
+  initAI () {
+    battle.PVA_connect('', () => {
 
     })
   },
@@ -500,6 +499,17 @@ Page({
     setTimeout(() => {
       this.initPage();
     }, 50)
+  },
+  /**
+   * 关闭连接
+   * */
+  closeConnect () {
+    if (this.data.isConnect) {
+      battle.PVP_close()
+    }
+    if (this.data.isAiConnect) {
+      battle.PVA_close()
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏

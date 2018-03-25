@@ -1,4 +1,5 @@
 // pages/rank/rank.js
+import utils from '../../common/utils/utils'
 Page({
 
   /**
@@ -33,6 +34,9 @@ Page({
   },5000)
   },
 
+  rankBattleEvt(e){
+    utils.navigateTo('../battleone/battleone')
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
