@@ -32,7 +32,7 @@
 					<view class="level">V{{roomUsers[0].level}}</view>
 					<view class="text">{{roomUsers[0].name}}</view>
 				</view>
-				<view class="progress">
+				<view class="progress {{END?'active':''}}">
 					<view class="progress-bar" style="width:{{roomUsers[0].pointBar}}%"></view>
 				</view>
 				<view class="point">{{roomUsers[0].point}}</view>
@@ -45,18 +45,18 @@
 					<view class="level">V{{roomUsers[1].level}}</view>
 					<view class="text">{{roomUsers[1].name}}</view>
 				</view>
-				<view class="progress">
+				<view class="progress {{END?'active':''}}">
 					<view class="progress-bar" style="width:{{roomUsers[1].pointBar}}%"></view>
 				</view>
 				<view class="point">{{roomUsers[1].point}}</view>
 			</view>
 		</view>
 		<view class="battle-title">
-			<view class="vs">
+			<view class="vs {{!WINNER?'':'active'}}">
 				<view class="count"></view>
 				<image class="vs-png" src="../../static/images/vs-small.png"></image>
 			</view>
-			<view class="winner">
+			<view class="winner {{WINNER?'active':''}}">
 				<image class="winner-icon" src="../../static/images/winner.png"></image>
 			</view>
 			<view class="looser"></view>
@@ -76,16 +76,16 @@
 								catchtap="answerEvt" hover-class="hover">{{item.label}}</button>
 			</view>
 		</view>
-		<view class="result">
+		<view class="result {{END?'active':''}}">
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/coin.png"></image>
 				<view class="item-label">金币</view>
-				<view class="item-text">+4</view>
+				<view class="item-text">+{{showResultData.gold}}</view>
 			</view>
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/crown.png"></image>
 				<view class="item-label">EXP</view>
-				<view class="item-text">+5</view>
+				<view class="item-text">+{{showResultData.exp}}</view>
 			</view>
 			<button class="continue">
 				继续挑战

@@ -30,7 +30,7 @@ Page({
     questionCount: 0,
     countDownTime: 10,
     result: {},
-    showResult: {},
+    showResultData: {},
     answered: false,
     countEnd: 0,
     isOffLine: false,//有人掉线
@@ -40,14 +40,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initPage();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.initPage();
+
   },
   /**
    * 初始化动画对象
@@ -299,7 +299,7 @@ Page({
       }
       if (res.type == '5') {
         console.log(res)
-        if (this.data.isEnd) {
+        if (this.data.END) {
           return
         }
         this.data.countEnd += 1;
@@ -308,7 +308,7 @@ Page({
         })
         if (this.data.countEnd == 2) {
           this.setData({
-            isEnd: true,
+            END: true,
             result: res.fightResults
           });
           this.showResult();
@@ -432,7 +432,6 @@ Page({
    * */
   filterOptionListEvt (res) {
     //{result: res.answerResult, optionId: res.optionId, mayNextSub: res.mayNextSub}
-    debugger
     let question = this.data.questionInfo;
     let rightOption = question.subject.rightOption;
     let userId = this.data.currentUser;
@@ -538,7 +537,7 @@ Page({
   showResult () {
     //获取当前用户,
     let result = this.data.result || [];
-    let currentUser = this.currentUser;
+    let currentUser = this.data.currentUser;
     let roomUser = this.data.roomUsers;
     //计算玩家分数
     for (var i = 0; i < roomUser.length; i++) {
@@ -562,9 +561,8 @@ Page({
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
-      showResult: result[index]
+      showResultData: result[index]
     });
-
 
   },
   /**
