@@ -221,7 +221,7 @@ Page({
           if (this.data.vsAi) {
             this.initAI();
           }
-        }, 5000);
+        }, 3000);
       }
       if (res.type == '2') {
         //加入房间
@@ -347,7 +347,6 @@ Page({
         }, 3000)
       })
     }
-
   },
   /**
    * 开始答题
@@ -509,9 +508,9 @@ Page({
           return
         }
         //更PVP 同步 等2秒动画
-        setTimeout(()=>{
+        setTimeout(() => {
           this.startAiInter()
-        },2000)
+        }, 2000)
       }
     })
   },
@@ -521,11 +520,12 @@ Page({
    * */
   startAiInter () {
     this.clearAiInterval(() => {
+      let count = Math.ceil(parseInt(Math.random() * 10));
       this.setData({
-        aiCountTime: 10
-      })
+        aiCountTime: count
+      });
       this.aiTimer = setInterval(() => {
-        console.log('ai 答题倒计时')
+        console.log('ai 答题倒计时');
         if (this.data.aiCountTime <= 0) {
           this.clearAiInterval(() => {
             this.aiAnswer();

@@ -333,6 +333,11 @@
           margin: 0 auto;
           height: 80rpx;
           margin-bottom: 90rpx;
+          position: relative;
+          .q-double{
+            position: absolute;
+            background: red;
+          }
         }
         .q-chose{
           background-color: transparent;

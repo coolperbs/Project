@@ -67,7 +67,10 @@
 				<view class="q-count">第{{questionCount}}题</view>
 			</view>
 			<view class="answer-step" animation="{{qListData}}">
-				<view class="q-title">{{questionInfo.subject.title}}</view>
+				<view class="q-title">
+					{{questionInfo.subject.title}}
+					<image wx:if="{{questionInfo.doublePoint}}" class="q-double" src="../../static/images/coin.png"></image>
+				</view>
 				<button wx:for="{{questionList}}"
 								wx:key="{{index}}"
 								class="q-chose {{item.className}}"

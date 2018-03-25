@@ -262,7 +262,11 @@
           width: 500rpx;
           margin: 0 auto;
           height: 80rpx;
-          margin-bottom: 90rpx; }
+          margin-bottom: 90rpx;
+          position: relative; }
+          .battle-box .battle .answer .answer-step .q-title .q-double {
+            position: absolute;
+            background: red; }
         .battle-box .battle .answer .answer-step .q-chose {
           background-color: transparent;
           width: 560rpx;
