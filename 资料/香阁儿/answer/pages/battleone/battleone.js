@@ -34,12 +34,19 @@ Page({
     answered: false,
     countEnd: 0,
     isOffLine: false,//有人掉线
+    level: 1,
+    /*ai*/
+    aiCountTime: 10,
+    aiPushTime: undefined
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      level: options.level || 1
+    });
     this.initPage();
   },
 
@@ -48,38 +55,6 @@ Page({
    */
   onShow: function () {
 
-  },
-  /**
-   * 初始化动画对象
-   * */
-  initAnimation () {
-    this.leftAni = wx.createAnimation({
-      duration: 1000,
-      timingFunction: 'ease'
-    });
-    this.rightAni = wx.createAnimation({
-      duration: 1000,
-      timingFunction: 'ease'
-    });
-    this.centerAni = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease',
-    });
-    this.roundAni = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease',
-    });
-    this.loadingAni = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease',
-    });
-    this.setData({
-      leftAniData: this.leftAni.export(),
-      rightAniData: this.rightAni.export(),
-      centerAniData: this.centerAni.export(),
-      roundAniData: this.roundAni.export(),
-      loadingAniData: this.loadingAni.export(),
-    })
   },
   /**
    * 获取题目
@@ -124,13 +99,21 @@ Page({
       duration: 500,
       timingFunction: 'ease',
     });
-    if (type == 'loading') {
+    if (type == 'reset') {
+      matchLeftAni.translateX(-width).step();
+      matchRightAni.translateX(width).step();
+      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
+      matchAni.opacity(1).step();
       this.setData({
-        showBattle: true,
-        showRound: true,
-        showLoading: true,
+        loadingData: loadingAni.export(),
+        matchLeftData: matchLeftAni.export(),
+        matchRightData: matchRightAni.export(),
+        matchCenterData: matchCenterAni.export(),
+        matchData: matchAni.export()
       });
-      callback && callback();
+      setTimeout(() => {
+        callback && callback();
+      }, 2000)
     } else if (type == 'ready') {
       loadingAni.opacity(0).step();
       matchLeftAni.translateX(0).step({delay: 500});
@@ -166,9 +149,7 @@ Page({
         callback && callback();
       }, 1000)
     } else if (type == 'end') {
-      this.setData({
-        showRound: false
-      });
+
     }
   },
   /**
@@ -237,7 +218,7 @@ Page({
         //todo 等待系统是否匹配AI 目前设置5秒
         setTimeout(() => {
           if (this.data.vsAi) {
-            //this.initAI();
+            this.initAI();
           }
         }, 5000);
       }
@@ -251,9 +232,12 @@ Page({
             vsAi: false
           });
           //对战用户信息
-          this.initBattleUser(res, () => {
-            this.getQuestion();
-          });
+          //延迟执行
+          setTimeout(() => {
+            this.initBattleUser(res, () => {
+              this.getQuestion();
+            });
+          }, 1000)
         }
       }
       if (res.type == '3') {
@@ -268,7 +252,7 @@ Page({
         }
         //题目数据重构
         var newOptionList = res.subject.optionList.map((item) => {
-          var result = {}
+          var result = {};
           result.className = '';
           result.label = item;
           return result
@@ -305,7 +289,7 @@ Page({
         this.data.countEnd += 1;
         this.setData({
           countEnd: this.data.countEnd
-        })
+        });
         if (this.data.countEnd == 2) {
           this.setData({
             END: true,
@@ -486,7 +470,8 @@ Page({
       systemInfo: util.getSystemInfo(),
       currentUser: id
     });
-    battle.PVP_connect('', () => {
+    let level = this.data.level;
+    battle.PVP_connect(level, () => {
       this.setData({
         isConnect: true
       });
@@ -498,7 +483,9 @@ Page({
    * 初始化AI
    * */
   initAI () {
-    battle.PVA_connect('', () => {
+    let roomId = this.data.roomInfo.roomId;
+    let level = 1;
+    battle.PVA_connect(roomId, level, () => {
       this.getAiMessage();
     })
   },
@@ -507,18 +494,95 @@ Page({
    * */
   getAiMessage () {
     battle.PVA_onMessage((res) => {
-      debugger
+      if (res.type == 2) {
+        this.initAiInfo()
+      }
+      if (res.type == 3) {
+        let aiPushTime = this.data.aiPushTime;
+        if (aiPushTime == res.subject.pushTime) {
+          //避免题目二次渲染
+          return
+        }
+        this.startAiInter()
+      }
     })
+  },
+
+  /**
+   * aiTimer
+   * */
+  startAiInter () {
+    this.clearAiInterval(() => {
+      this.aiTimer = setInterval(() => {
+        console.log('ai 答题倒计时')
+        if (this.data.aiCountTime <= 0) {
+          this.clearAiInterval(() => {
+            this.aiAnswer();
+          });
+        } else {
+          this.setData({
+            aiCountTime: this.data.aiCountTime - 1
+          })
+        }
+      }, 1000);
+    });
+  },
+  /**
+   * aiAnswer
+   * */
+  aiAnswer () {
+    let answer = 1;
+    battle.PVA_send({
+      "type": 2,
+      "optionId": answer,		// 用户回答的选项ID，从1开始
+      "subjectOffset": this.data.questionCount	// 用户回答的题目ID todo 题目接口里面没有
+    })
+  },
+  /**
+   * 清理AI timer
+   * */
+  clearAiInterval (callback) {
+    if (this.aiTimer) {
+      clearInterval(this.aiTimer);
+    }
+    callback && callback();
   },
   /**
    * 再来一吧 页面状态恢复
    * */
   playAgain () {
-
-    //todo 这里核对逻辑
-    setTimeout(() => {
+    this.setData({
+      LOADING: true,
+      MATCH: true,
+      BATTLE: false,
+      END: false,
+      WINNER: false,
+      vsAi: true,
+      /*动画*/
+      loadingData: {},
+      matchLeftData: {},
+      matchRightData: {},
+      matchCenterData: {},
+      qTypeData: {},
+      qListData: {},
+      roomInfo: {},
+      roomUsers: [],
+      currentUser: null,
+      hasMore: undefined,
+      questionInfo: {},
+      questionList: [],
+      questionCount: 0,
+      countDownTime: 10,
+      result: {},
+      showResultData: {},
+      answered: false,
+      countEnd: 0,
+      isOffLine: false,//有人掉线
+    });
+    //动画重置
+    this.animationEvt('reset', () => {
       this.initPage();
-    }, 50)
+    })
   },
   /**
    * 关闭连接

@@ -7,10 +7,11 @@ export default {
     PVP: app.HOST_SOCKET + '/singleFightAgainst',
   },
   PVP_messageList: [],
+  PVA_messageList: [],
   PVP_isConnect: false,
   PVP_socket: {},
-  PVA_socket:{},
-  PVA_isConnect:false,
+  PVA_socket: {},
+  PVA_isConnect: false,
   PVP_connect (danGrading, callback) {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
@@ -58,21 +59,20 @@ export default {
     })
   },
   PVP_close () {
-    if(this.PVP_isConnect){
+    if (this.PVP_isConnect) {
       console.log('PVP close')
       this.PVP_socket.close({})
     }
   },
-  PVA_connect (danGrading, callback) {
-    debugger
-    this.PVA_socket = ajax.connectSocket(this.apiList.PVP, {type: 'ai', danGrading: danGrading || 1});
+  PVA_connect (roomId, danGrading, callback) {
+    this.PVA_socket = ajax.connectSocket(this.apiList.PVP, {type: 'ai', roomId: roomId, danGrading: danGrading || 1});
     this.PVA_socket.onOpen(res => {
       this.PVA_isConnect = true;
       callback(res);
     })
   },
   PVA_send (data) {
-    var messageList = this.PVP_messageList;
+    var messageList = this.PVA_messageList;
     messageList.push(data);
     if (this.PVA_isConnect) {
       for (var i = 0; i < this.PVA_messageList.length; i++) {
@@ -104,7 +104,7 @@ export default {
     })
   },
   PVA_close () {
-    if(this.PVA_isConnect){
+    if (this.PVA_isConnect) {
       this.PVA_socket.close({})
     }
   },

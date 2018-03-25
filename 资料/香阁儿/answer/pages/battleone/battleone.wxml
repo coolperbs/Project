@@ -87,7 +87,7 @@
 				<view class="item-label">EXP</view>
 				<view class="item-text">+{{showResultData.exp}}</view>
 			</view>
-			<button class="continue">
+			<button class="continue" bindtap="playAgain">
 				继续挑战
 			</button>
 		</view>
