@@ -37,7 +37,8 @@ Page({
     level: 1,
     /*ai*/
     aiCountTime: 10,
-    aiPushTime: undefined
+    aiPushTime: undefined,
+    aiInfo: {},
   },
 
   /**
@@ -235,7 +236,9 @@ Page({
           //延迟执行
           setTimeout(() => {
             this.initBattleUser(res, () => {
-              this.getQuestion();
+              this.animationEvt('ready', () => {
+                this.getQuestion();
+              });
             });
           }, 1000)
         }
@@ -264,17 +267,20 @@ Page({
           hasMore: res.hasMore,
           answered: false
         });
-        if (this.data.questionCount == 1) {
-          this.animationEvt('ready', () => {
-            this.questionAnimationEvt(1, () => {
-              this.startInterval();
-            })
-          });
-        } else {
-          this.questionAnimationEvt(1, () => {
-            this.startInterval();
-          })
-        }
+        // if (this.data.questionCount == 1) {
+        //   this.animationEvt('ready', () => {
+        //     this.questionAnimationEvt(1, () => {
+        //       this.startInterval();
+        //     })
+        //   });
+        // } else {
+        //   this.questionAnimationEvt(1, () => {
+        //     this.startInterval();
+        //   })
+        // }
+        this.questionAnimationEvt(1, () => {
+          this.startInterval();
+        })
       }
       if (res.type == '4') {
         //回答问题
@@ -332,7 +338,6 @@ Page({
     this.filterOptionListEvt(res);
     if (res.mayNextSub) {
       //提前结束这道题
-      console.log('提前结束')
       this.clearInterval(() => {
         //10 完了展示3秒后开始新的
         setTimeout(() => {
@@ -495,7 +500,7 @@ Page({
   getAiMessage () {
     battle.PVA_onMessage((res) => {
       if (res.type == 2) {
-        this.initAiInfo()
+        this.initAiInfo(res)
       }
       if (res.type == 3) {
         let aiPushTime = this.data.aiPushTime;
@@ -503,7 +508,10 @@ Page({
           //避免题目二次渲染
           return
         }
-        this.startAiInter()
+        //更PVP 同步 等2秒动画
+        setTimeout(()=>{
+          this.startAiInter()
+        },2000)
       }
     })
   },
@@ -513,6 +521,9 @@ Page({
    * */
   startAiInter () {
     this.clearAiInterval(() => {
+      this.setData({
+        aiCountTime: 10
+      })
       this.aiTimer = setInterval(() => {
         console.log('ai 答题倒计时')
         if (this.data.aiCountTime <= 0) {
@@ -527,16 +538,51 @@ Page({
       }, 1000);
     });
   },
+  /*
+  * 初始化AI 信息
+  * */
+  initAiInfo (res) {
+    this.setData({
+      aiInfo: res
+    })
+  },
   /**
    * aiAnswer
    * */
   aiAnswer () {
-    let answer = 1;
+    console.log('ai答题了');
+    let percent = parseFloat(Math.random() * 1).toFixed(2);
+    let aiWinRate = this.data.aiInfo.aiWinRate || 0;
+    let that = this;
+
+    //先随机取答案且保证答案不正确
+    function getError (right) {
+      let result = Math.ceil(parseInt(Math.random() * that.data.questionList.length));
+      if (right == result) {
+        return getError(right)
+      } else {
+        console.log('随机答案' + result)
+        return result
+      }
+    }
+
+    let rightAnswer = this.data.questionInfo.subject.rightOption;
+    let answer = getError(rightAnswer);
+    if (percent > aiWinRate) {
+      answer = rightAnswer;
+    }
+    console.log('ai 答案' + answer)
     battle.PVA_send({
       "type": 2,
       "optionId": answer,		// 用户回答的选项ID，从1开始
       "subjectOffset": this.data.questionCount	// 用户回答的题目ID todo 题目接口里面没有
     })
+    if (!this.data.hasMore && this.data.hasMore != undefined) {
+      //本次对战结束 算分了！！！！！
+      battle.PVA_send({
+        "type": 3
+      });
+    }
   },
   /**
    * 清理AI timer

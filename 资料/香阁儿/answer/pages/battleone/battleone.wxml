@@ -53,7 +53,7 @@
 		</view>
 		<view class="battle-title">
 			<view class="vs {{!WINNER?'':'active'}}">
-				<view class="count"></view>
+				<view class="count">{{countDownTime}}</view>
 				<image class="vs-png" src="../../static/images/vs-small.png"></image>
 			</view>
 			<view class="winner {{WINNER?'active':''}}">
