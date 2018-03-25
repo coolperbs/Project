@@ -59,7 +59,8 @@ export default {
   },
   PVP_close () {
     if(this.PVP_isConnect){
-      this.PVP_socket({})
+      console.log('PVP close')
+      this.PVP_socket.close({})
     }
   },
   PVA_connect (danGrading, callback) {
@@ -104,7 +105,7 @@ export default {
   },
   PVA_close () {
     if(this.PVA_isConnect){
-      this.PVA_socket({})
+      this.PVA_socket.close({})
     }
   },
 }

@@ -8,30 +8,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showLoading: true,
-    showRound: true,
-    showBattle: true,
-    isConnect: false,
-    isAiConnect: false,
+    LOADING: true,
+    MATCH: true,
+    BATTLE: false,
+    END: false,
+    WINNER: false,
     vsAi: true,
-    leftAniData: {},
-    rightAniData: {},
-    centerAniData: {},
-    roundAniData: {},
-    questionTypeAniData: {},
-    questionTitleAniData: {},
-    questionListAniData: {},
-    systemInfo: {},
-    roomUsers: [],
+    /*动画*/
+    loadingData: {},
+    matchLeftData: {},
+    matchRightData: {},
+    matchCenterData: {},
+    qTypeData: {},
+    qListData: {},
     roomInfo: {},
-    question: {},
-    ready: false,//可以开始答题了没
-    answered: false,//这道题答过没有
-    answerOption: 0,//答题号
-    countDown: 10,//每道题倒计时
-    subjectOffset: 0,//题目等级
-    Timer: null,
-    isEnd: false//本局是否结束
+    roomUsers: [],
+    currentUser: null,
+    hasMore: undefined,
+    questionInfo: {},
+    questionList: [],
+    questionCount: 0,
+    countDownTime: 10,
+    result: {},
+    showResult: {},
+    answered: false,
+    countEnd: 0,
+    isOffLine: false,//有人掉线
   },
 
   /**
@@ -83,18 +85,18 @@ Page({
    * 获取题目
    * */
   getQuestion () {
-    if (!this.data.question.hasMore && this.data.question.hasMore != undefined) {
+    if (!this.data.hasMore && this.data.hasMore != undefined) {
       //本次对战结束 算分了！！！！！
       this.endThisRoundEvt();
       return
     }
     this.setData({
-      countDown: 10,//todo 零时100秒
-      subjectOffset: this.data.subjectOffset + 1
+      countDownTime: 10,
+      questionCount: this.data.questionCount + 1
     });
     this.sendMessage({
       "type": 1,
-      "subjectOffset": this.data.subjectOffset // 题目列表ID，从1开始，以此累加 todo 这里我自己管里？？
+      "subjectOffset": this.data.questionCount // 题目列表ID，从1开始，以此累加
     })
   },
   /**
@@ -102,6 +104,26 @@ Page({
    * */
   animationEvt (type, callback) {
     let width = this.data.systemInfo.windowWidth;
+    let loadingAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    let matchLeftAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    let matchRightAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    let matchCenterAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    let matchAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
     if (type == 'loading') {
       this.setData({
         showBattle: true,
@@ -110,56 +132,54 @@ Page({
       });
       callback && callback();
     } else if (type == 'ready') {
-      this.loadingAni.opacity(0).step();
-      this.leftAni.translateX(0).step({delay: 500});
-      this.rightAni.translateX(0).step({delay: 500});
-      this.centerAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay: 500});
+      loadingAni.opacity(0).step();
+      matchLeftAni.translateX(0).step({delay: 500});
+      matchRightAni.translateX(0).step({delay: 500});
+      matchCenterAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay: 500});
       this.setData({
-        leftAniData: this.leftAni.export(),
-        rightAniData: this.rightAni.export(),
-        centerAniData: this.centerAni.export(),
-        loadingAniData: this.loadingAni.export(),
+        loadingData: loadingAni.export(),
+        matchLeftData: matchLeftAni.export(),
+        matchRightData: matchRightAni.export(),
+        matchCenterData: matchCenterAni.export(),
       });
       setTimeout(() => {
         this.setData({
-          showLoading: false,
+          LOADING: false,
         });
         this.animationEvt('gaming', callback)
-      }, 3000)
+      }, 1500)
     } else if (type == 'gaming') {
-      this.leftAni.translateX(-width).step();
-      this.rightAni.translateX(width).step();
-      this.centerAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
-      this.roundAni.opacity(0).step();
+      matchLeftAni.translateX(-width).step();
+      matchRightAni.translateX(width).step();
+      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
+      matchAni.opacity(0).step();
       this.setData({
-        leftAniData: this.leftAni.export(),
-        rightAniData: this.rightAni.export(),
-        centerAniData: this.centerAni.export(),
-        roundAniData: this.roundAni.export(),
+        matchLeftData: matchLeftAni.export(),
+        matchRightData: matchRightAni.export(),
+        matchCenterData: matchCenterAni.export(),
+        matchData: matchAni.export()
       });
       setTimeout(() => {
         this.setData({
-          showRound: false
+          MATCH: false
         });
         callback && callback();
       }, 1000)
     } else if (type == 'end') {
-
+      this.setData({
+        showRound: false
+      });
     }
   },
   /**
    * 答题动画
    * */
   questionAnimationEvt (step, callback) {
-    // 1 展示类型 自动展示 2
+    // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
     // 4 清场状态 全部隐藏
     let typeAni = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease'
-    });
-    let titleAni = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
     });
@@ -170,7 +190,7 @@ Page({
     if (step == '1') {
       typeAni.scale(1).step();
       this.setData({
-        questionTypeAniData: typeAni.export()
+        qTypeData: typeAni.export()
       });
       setTimeout(() => {
         this.questionAnimationEvt(2, callback)
@@ -178,12 +198,10 @@ Page({
     }
     if (step == '2') {
       typeAni.scale(0).step();
-      titleAni.scale(1).step();
       boxAni.scale(1).step();
       this.setData({
-        questionTypeAniData: typeAni.export(),
-        questionTitleAniData: titleAni.export(),
-        questionListAniData: boxAni.export(),
+        qTypeData: typeAni.export(),
+        qListData: boxAni.export(),
       });
       setTimeout(() => {
         callback && callback()
@@ -191,12 +209,10 @@ Page({
     }
     if (step == '4') {
       typeAni.scale(0).step();
-      titleAni.scale(0).step();
       boxAni.scale(0).step();
       this.setData({
-        questionTypeAniData: typeAni.export(),
-        questionTitleAniData: titleAni.export(),
-        questionListAniData: boxAni.export(),
+        qTypeData: typeAni.export(),
+        qListData: boxAni.export(),
       });
       setTimeout(() => {
         callback && callback()
@@ -227,7 +243,7 @@ Page({
       }
       if (res.type == '2') {
         //加入房间
-        //这里会返回 房间用户信息 如果beginAnswer 为真 就开始进场动画 房间用户信息 每次答题完 会去请求 todo 如何判断两个用户的勾选展示在界面上
+        //这里会返回 房间用户信息 如果beginAnswer 为真 就开始进场动画
         if (res.beginAnswer) {
           //可以开始答题了，取拿题
           //不需要AI
@@ -245,8 +261,8 @@ Page({
         //只有第一次走ready
         //播放对战前动画 准备开始对战拿第一题
         //把题目过滤结构
-        let question = this.data.question;
-        if (util.getValueByPath(question, 'subject.pushTime') == res.subject.pushTime) {
+        let questionInfo = this.data.questionInfo;
+        if (util.getValueByPath(questionInfo, 'subject.pushTime') == res.subject.pushTime) {
           //避免题目二次渲染
           return
         }
@@ -257,15 +273,14 @@ Page({
           result.label = item;
           return result
         });
-        res.subject.optionList = newOptionList;
+        delete res.subject.optionList;
         this.setData({
-          question: res,
+          questionInfo: res,
+          questionList: newOptionList,
+          hasMore: res.hasMore,
           answered: false
         });
-        if (!this.data.ready) {
-          this.setData({
-            ready: true
-          });
+        if (this.data.questionCount == 1) {
           this.animationEvt('ready', () => {
             this.questionAnimationEvt(1, () => {
               this.startInterval();
@@ -283,13 +298,27 @@ Page({
         this.filterAnswerEvt(res);
       }
       if (res.type == '5') {
+        console.log(res)
         if (this.data.isEnd) {
           return
         }
+        this.data.countEnd += 1;
         this.setData({
-          isEnd: true
+          countEnd: this.data.countEnd
         })
-        this.closeConnect();
+        if (this.data.countEnd == 2) {
+          this.setData({
+            isEnd: true,
+            result: res.fightResults
+          });
+          this.showResult();
+          this.closeConnect();
+        }
+      }
+      if (res.type == '6') {
+        this.setData({
+          isOffLine: true
+        })
       }
     });
   },
@@ -319,6 +348,7 @@ Page({
     this.filterOptionListEvt(res);
     if (res.mayNextSub) {
       //提前结束这道题
+      console.log('提前结束')
       this.clearInterval(() => {
         //10 完了展示3秒后开始新的
         setTimeout(() => {
@@ -336,13 +366,13 @@ Page({
   startInterval () {
     this.clearInterval(() => {
       this.Timer = setInterval(() => {
-        if (this.data.countDown <= 0) {
+        if (this.data.countDownTime <= 0) {
           this.clearInterval(() => {
             this.answerEvt();
           });
         } else {
           this.setData({
-            countDown: this.data.countDown - 1
+            countDownTime: this.data.countDownTime - 1
           })
         }
       }, 1000);
@@ -381,17 +411,20 @@ Page({
   answerEvt (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.answered) {
+      //todo 如有掉线怎么处理
+      // if (this.data.isOffLine) {
+      //   this.getQuestion();
+      // }
       return
     }
     //处理正确与错误
     this.setData({
-      answerOption: answer,
       answered: true
     });
     this.sendMessage({
       "type": 2,
       "optionId": answer,		// 用户回答的选项ID，从1开始
-      "subjectOffset": this.data.subjectOffset	// 用户回答的题目ID todo 题目接口里面没有
+      "subjectOffset": this.data.questionCount	// 用户回答的题目ID todo 题目接口里面没有
     })
   },
   /**
@@ -399,15 +432,16 @@ Page({
    * */
   filterOptionListEvt (res) {
     //{result: res.answerResult, optionId: res.optionId, mayNextSub: res.mayNextSub}
-    let question = this.data.question;
+    debugger
+    let question = this.data.questionInfo;
     let rightOption = question.subject.rightOption;
-    let userId = util.getStorageSync('userInfo').user.id;
+    let userId = this.data.currentUser;
 
     let optionId = res.optionId;
     let mayNextSub = res.mayNextSub;
 
 
-    let optionList = this.data.question.subject.optionList;
+    let optionList = this.data.questionList;
     let checkIndex = optionId - 1;
     let rightIndex = rightOption - 1;
     //没有选择
@@ -437,9 +471,8 @@ Page({
         }
       }
     }
-    question.subject.optionList = optionList;
     this.setData({
-      question: question
+      questionList: optionList
     })
   },
   /**
@@ -447,9 +480,12 @@ Page({
    * */
   initPage () {
     //初始化动画
-    this.initAnimation();//todo 这个有点多余
+    //this.initAnimation();//todo 这个有点多余
+    let user = util.getStorageSync('userInfo') || {};
+    let id = util.getValueByPath(user, 'user.id') || '';
     this.setData({
-      systemInfo: util.getSystemInfo()
+      systemInfo: util.getSystemInfo(),
+      currentUser: id
     });
     battle.PVP_connect('', () => {
       this.setData({
@@ -464,37 +500,22 @@ Page({
    * */
   initAI () {
     battle.PVA_connect('', () => {
-
+      this.getAiMessage();
+    })
+  },
+  /**
+   * 监听AI信息
+   * */
+  getAiMessage () {
+    battle.PVA_onMessage((res) => {
+      debugger
     })
   },
   /**
    * 再来一吧 页面状态恢复
    * */
   playAgain () {
-    this.setData({
-      showLoading: true,
-      showRound: true,
-      showBattle: true,
-      isConnect: false,
-      vsAi: true,
-      leftAniData: {},
-      rightAniData: {},
-      centerAniData: {},
-      roundAniData: {},
-      questionTypeAniData: {},
-      questionTitleAniData: {},
-      questionListAniData: {},
-      systemInfo: {},
-      roomUsers: [],
-      roomInfo: {},
-      question: {},
-      ready: false,//可以开始答题了没
-      answered: false,//这道题答过没有
-      answerOption: 0,//答题号
-      countDown: 10,
-      subjectOffset: 0,//题目等级
-      Timer: null
-    });
+
     //todo 这里核对逻辑
     setTimeout(() => {
       this.initPage();
@@ -512,10 +533,44 @@ Page({
     }
   },
   /**
+   * 展示对战结果
+   * */
+  showResult () {
+    //获取当前用户,
+    let result = this.data.result || [];
+    let currentUser = this.currentUser;
+    let roomUser = this.data.roomUsers;
+    //计算玩家分数
+    for (var i = 0; i < roomUser.length; i++) {
+      for (var k = 0; k < result.length; k++) {
+        if (roomUser[i].id == result[k].userId) {
+          roomUser[i].point = result[k].totlePoint;
+          roomUser[i].pointBar = ((roomUser[i].point * 100) / this.data.roomInfo.totlePoint).toFixed(2);
+        }
+      }
+    }
+    //判断当前玩家赢没有
+    let index = result.findIndex((el) => {
+      return el.userId == currentUser
+    });
+    let flag = false;
+    if (result[index] && result[index].result) {
+      flag = true;
+    }
+    console.log('赢家数据');
+    console.log(result[index]);
+    this.setData({
+      roomUsers: roomUser,
+      WINNER: flag,
+      showResult: result[index]
+    });
+
+
+  },
+  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    //todo 需要判断 标识符是否打开 如果没有则不能执行
     if (this.data.isConnect) {
       battle.PVP_close()
     }
