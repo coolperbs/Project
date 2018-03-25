@@ -221,7 +221,7 @@ Page({
           if (this.data.vsAi) {
             this.initAI();
           }
-        }, 3000);
+        }, 4000);
       }
       if (res.type == '2') {
         //加入房间
@@ -292,22 +292,36 @@ Page({
         if (this.data.END) {
           return
         }
-        this.data.countEnd += 1;
+        // this.data.countEnd += 1;
+        // this.setData({
+        //   countEnd: this.data.countEnd
+        // });
+        // if (this.data.countEnd == 2) {
+        //   this.setData({
+        //     END: true,
+        //     result: res.fightResults
+        //   });
+        //   this.showResult();
+        //   this.closeConnect();
+        // }
+       // this.data.countEnd += 1;
         this.setData({
-          countEnd: this.data.countEnd
+          END: true
         });
-        if (this.data.countEnd == 2) {
-          this.setData({
-            END: true,
-            result: res.fightResults
-          });
-          this.showResult();
-          this.closeConnect();
-        }
+        this.setData({
+          result: res.fightResults
+        });
+        this.showResult();
+        this.closeConnect();
       }
       if (res.type == '6') {
         this.setData({
           isOffLine: true
+        })
+        this.clearInterval(()=>{
+          this.questionAnimationEvt(4, () => {
+            this.endThisRoundEvt();
+          })
         })
       }
     });
