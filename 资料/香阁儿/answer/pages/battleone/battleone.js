@@ -221,7 +221,7 @@ Page({
           if (this.data.vsAi) {
             this.initAI();
           }
-        }, 4000);
+        }, 3000);
       }
       if (res.type == '2') {
         //加入房间
