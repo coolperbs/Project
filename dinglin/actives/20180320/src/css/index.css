@@ -30,7 +30,7 @@ html { font-family: 微软雅黑; background : linear-gradient(to bottom, #ddebf
 body { font-size : 12px; }
 
 .logo { margin : 20px; }
-.logo img { width : 100px; height : 24px; }
+.logo img { width : 150px; }
 
 .slogan { margin : 20px; }
 .slogan img { width : 100%; }

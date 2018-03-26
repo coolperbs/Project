@@ -13,6 +13,8 @@ handle = {
       callback : function( res ) {
       	console.log( res );
       }
+    }, function() {
+      
     } );
   },
   getGlobalRank : function() {
@@ -20,5 +22,5 @@ handle = {
   }
 }
 
-//handle.getRank();
+handle.getRank();
 export default handle;
