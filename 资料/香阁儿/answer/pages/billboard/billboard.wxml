@@ -5,10 +5,10 @@
 	</view>
 	<view class="list-wrapper">
 		<scroll-view scroll-y="{{true}}" class="list">
-			<view class="item" wx:for="{{23}}">
+			<view class="item" wx:for="{{23}}" wx:key="index">
 				<view class="user">
-					<view class="rank">1</view>
-					<image class="logo"></image>
+					<view class="rank">{{index + 1}}</view>
+					<image class="logo" src=""></image>
 				</view>
 				<view class="info">
 					<view class="username">用户名称</view>
@@ -17,7 +17,7 @@
 				<view class="sub-info">
 					<view class="point">
 						<view>80</view>
-						<image class="star"></image>
+						<image class="star" src="../../static/images/star.png"></image>
 					</view>
 					<view class="location">来自成都</view>
 				</view>

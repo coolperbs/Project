@@ -1,0 +1,17 @@
+<view class="content">
+	<view class="list-wrapper">
+		<scroll-view scroll-y="{{true}}" class="list">
+			<view class="item" wx:for="{{23}}" wx:key="index">
+				<image class="icon" src=""></image>
+				<view class="desc">限制经验卡</view>
+				<view class="coin">
+					<image src="../../static/images/coin.png"></image>
+					400
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="act">
+		<view class="button-wrapper"><view class="button">分享免费领取金币</view></view>
+	</view>
+</view>

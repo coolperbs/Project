@@ -1,0 +1,30 @@
+Page { width : 100%; height : 100%; }
+.content { height : 100%; display: flex; flex-direction : column; }
+
+.list-wrapper { overflow: hidden; border-radius : 20rpx; padding : 4rpx; background: linear-gradient( #5a93ec, #ed47c7); overflow: hidden; height : 100rpx; flex-grow : 1; width : 640rpx; margin : 40rpx auto 0 auto; display: flex; flex-direction : column; }
+.list-wrapper .list { border-radius : 20rpx; height : 10rpx; flex-grow : 1; background-color: rgba( 0, 0, 0, 0.4 ); }
+.list-content { border : solid 1px #fff; }
+.list .item { float : left; width : 50%; height : 320rpx; border-bottom : solid 1px rgba( 188, 15, 181, 0.3 ); overflow: hidden; position: relative; display: flex; align-items : center; justify-content : space-around; flex-direction: column; }
+.list .item:after { content : ''; width : 100%; height : 1px; background-color: rgba( 0, 0, 0, 0.3 ); position: absolute; left : 0; bottom : 0; }
+.list .item:last-child { border-bottom : none; }
+.list .item:last-child:after { display: none; }
+.list .item:nth-child( odd ):before { content : ''; height : 100%; width : 1px; background-color: rgba( 0, 0, 0, 0.3 ); position: absolute; right : 0; top : 0;  }
+.list .item:nth-child( even ):before { content : ''; height : 100%; width : 1px; background-color: rgba( 188, 15, 181, 0.3 ); position: absolute; left : 0; top : 0;  }
+
+
+.list .item .icon { margin-top : 20rpx; width : 128rpx; height : 128rpx; }
+.list .item .desc { font-size : 32rpx; }
+.list .item .coin { text-shadow: 0 4rpx 20rpx #ee47c8; font-size : 28rpx; color : #ffc002; font-style: italic; margin-bottom : 20rpx; height : 50rpx; display: flex; justify-content: center; align-items: center; }
+.list .item .coin image { width : 50rpx; height : 50rpx; position: relative; top : -4rpx; margin-right : 4rpx; }
+
+.act { padding : 30rpx 0 46rpx 0; display: flex; align-items: center; justify-content: center; }
+.act .button { width : 452rpx; height : 92rpx; border-radius: 90rpx; position: relative; z-index: 20; background: linear-gradient( #e7a62a, #d64e41); font-size : 36rpx; color : #fff; display: flex; justify-content: center; align-items: center; position: relative; }
+.act .button-wrapper { display: flex; justify-content: center; align-items: center; border-radius: 90rpx; height : 100rpx; width : 460rpx; z-index: 1; background: linear-gradient( #fd15c0, #7507ed); box-shadow: 0 10rpx 10rpx rgba( 0, 0, 0, 0.3 ) }
+
+
+
+
+
+
+
+

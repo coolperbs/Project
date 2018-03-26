@@ -7,7 +7,7 @@
 		init : function() {
 			_fn.render();
 			_fn.bind();
-			//_fn.showPop( $( '#J_Form' ), { type : 2 } );
+			//_fn.showPop( $( '#J_Rule' ) );
 		}
 	}
 
@@ -31,6 +31,8 @@
 
 			$( '.J_ClosePop' ).click( function( e ) {
 				var jTarget = $( e.target );
+
+				jTarget = jTarget.hasClass( 'J_ClosePop' ) ? jTarget : jTarget.parents( '.J_ClosePop' );
 				_fn.closePop( $( '#' + jTarget.attr( 'data-id' ) ) );
 			} );
 
@@ -40,6 +42,9 @@
 		},
 
 		showPop : function( jEl, options ) {
+			if ( jEl.attr( 'id' ) == 'J_Form' && navigator.userAgent.indexOf('iPhone') > -1 ) {
+				$( 'body' ).css( {'position' : 'fixed'} );
+			}
 			var jPop = jEl.find( '.J_Pop' );
 
 			jEl.css( { display : 'block' } );
@@ -60,6 +65,7 @@
 		},
 
 		closePop : function( jEl ) {
+			$( 'body' ).css( {'position' : 'relative'} );
 			jEl.css( { display : 'none' } );
 		},
 
@@ -70,13 +76,12 @@
 				return;
 			}
 			$.post( 'http://actgw.yimeixinxijishu.com//act/apply', { param : JSON.stringify( data ) }, function( res ) {
-				console.log( res );
 				res = res || {};
 				if ( res.code != '0000' ) {
 					alert( res.msg || '申请失败' );
 					return;
 				}
-				window.location.href = './src/images/end.jpeg';
+				window.location.href = './step.html';
 			} );
 		},
 
@@ -98,13 +103,13 @@
 				result.level = '158元档';
 				result.model = '华为畅享7s 3g+32g';
 			} else if ( type == 3 ) {
-				result.level = '158元档';
+				result.level = '138元档';
 				result.model = '红米5 3g+32g';
 			} else if ( type == 4 ) {
 				result.level = '158元档';
 				result.model = '金立F6L 3g+32g';
 			} else if ( type == 5 ) {
-				result.level = '158元档';
+				result.level = '138元档';
 				result.model = '荣耀V9 Play 4g+32g';
 			} else if ( type == 6 ) {
 				result.level = '188元档';
@@ -116,7 +121,7 @@
 				result.level = '188元档';
 				result.model = 'OPPO A73t 4g+64g';
 			} else if ( type == 9 ) {
-				result.level = '188元档';
+				result.level = '158元档';
 				result.model = '红米5Plus 4g+64g';
 			} else if ( type == 10 ) {
 				result.level = '238元档';

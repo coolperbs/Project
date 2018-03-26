@@ -10,6 +10,5 @@ Page( {
 		this.setData( {
 			tab : tab
 		} );
-		console.log( tab );
 	}
 } );
