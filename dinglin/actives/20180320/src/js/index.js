@@ -110,7 +110,7 @@
 				result.model = '金立F6L 3g+32g';
 			} else if ( type == 5 ) {
 				result.level = '138元档';
-				result.model = '荣耀V9 Play 4g+32g';
+				result.model = '荣耀V9Play 4g+32g';
 			} else if ( type == 6 ) {
 				result.level = '188元档';
 				result.model = '华为畅享7s 4g+64g';
