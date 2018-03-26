@@ -26,7 +26,8 @@ Page({
     roomAniData: {},
     qTypeData: {},
     qListData: {},
-    isEnd: false
+    isEnd: false,
+    errorShaking:false
   },
 
   /**
@@ -273,7 +274,21 @@ Page({
         subjectList[checkIndex].className = 'success';
       } else if (checkIndex != rightIndex && res.userId == userId) {
         subjectList[checkIndex].className = 'error';
-        wx.vibrateLong({})
+        wx.vibrateLong({});
+        let count = 3;
+        let timer = setInterval(() => {
+          if (count <= 0) {
+            clearInterval(timer);
+            this.setData({
+              errorShaking: false
+            })
+          } else {
+            count -= 1;
+            this.setData({
+              errorShaking: !this.data.errorShaking
+            })
+          }
+        },100);
       } else {
         subjectList[checkIndex].className = 'check';
       }

@@ -97,4 +97,5 @@
 			<button wx:if="{{roomOwner==userId}}" bindtap="startBattle">开始</button>
 		</view>
 	</view>
+	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 </view>
