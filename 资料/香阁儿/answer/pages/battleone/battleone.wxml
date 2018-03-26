@@ -95,4 +95,5 @@
 			</button>
 		</view>
 	</view>
+	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 </view>

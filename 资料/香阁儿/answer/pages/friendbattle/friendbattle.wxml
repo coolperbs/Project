@@ -1,6 +1,76 @@
 <view class="friend">
 	<view class="battle">
-
+		<view class="battle-user">
+			<view class="left">
+				<view class="head">
+					<image class="head-image" src="{{roomUsers[0].avatar}}"></image>
+				</view>
+				<view class="name">
+					<view class="level">V{{roomUsers[0].level}}</view>
+					<view class="text">{{roomUsers[0].name}}</view>
+				</view>
+				<view class="progress {{END?'active':''}}">
+					<view class="progress-bar" style="width:{{roomUsers[0].pointBar}}%"></view>
+				</view>
+				<view class="point">{{roomUsers[0].point}}</view>
+			</view>
+			<view class="right">
+				<view class="head">
+					<image class="head-image" src="{{roomUsers[1].avatar}}"></image>
+				</view>
+				<view class="name">
+					<view class="level">V{{roomUsers[1].level}}</view>
+					<view class="text">{{roomUsers[1].name}}</view>
+				</view>
+				<view class="progress {{END?'active':''}}">
+					<view class="progress-bar" style="width:{{roomUsers[1].pointBar}}%"></view>
+				</view>
+				<view class="point">{{roomUsers[1].point}}</view>
+			</view>
+		</view>
+		<view class="battle-title">
+			<view class="vs">
+				<view class="count">{{countDownTime}}</view>
+				<image class="vs-png" src="../../static/images/vs-small.png"></image>
+			</view>
+			<view class="winner">
+				<image class="winner-icon" src="../../static/images/winner.png"></image>
+			</view>
+			<view class="looser"></view>
+		</view>
+		<view class="answer">
+			<view class="answer-step" animation="{{qTypeData}}">
+				<view class="q-type">{{subject.type}}</view>
+				<view class="q-count">第{{subjectCount}}题</view>
+			</view>
+			<view class="answer-step" animation="{{qListData}}">
+				<view class="q-title">
+					{{subject.title}}
+					<image wx:if="{{subject.doublePoint}}" class="q-double" src="../../static/images/coin.png"></image>
+				</view>
+				<button wx:for="{{subjectList}}"
+								wx:key="{{index}}"
+								class="q-chose {{item.className}}"
+								data-index="{{index+1}}"
+								disabled="{{answered}}"
+								catchtap="answerSubject" hover-class="hover">{{item.label}}</button>
+			</view>
+		</view>
+		<view class="result">
+			<view class="result-item">
+				<image class="item-icon" src="../../static/images/coin.png"></image>
+				<view class="item-label">金币</view>
+				<view class="item-text">+</view>
+			</view>
+			<view class="result-item">
+				<image class="item-icon" src="../../static/images/crown.png"></image>
+				<view class="item-label">EXP</view>
+				<view class="item-text">+</view>
+			</view>
+			<button class="continue">
+				继续挑战
+			</button>
+		</view>
 	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="user">

@@ -39,6 +39,7 @@ Page({
     aiCountTime: 10,
     aiPushTime: undefined,
     aiInfo: {},
+    errorShaking: false
   },
 
   /**
@@ -309,10 +310,10 @@ Page({
         this.setData({
           result: res.fightResults
         });
-        setTimeout(()=>{
+        setTimeout(() => {
           this.showResult();
           this.closeConnect();
-        },1000)
+        }, 1000)
       }
       if (res.type == '6') {
         this.setData({
@@ -452,6 +453,23 @@ Page({
         optionList[checkIndex].className = 'success';
       } else if (checkIndex != rightIndex && res.userId == userId) {
         optionList[checkIndex].className = 'error';
+        console.log('调用了震动')
+        wx.vibrateLong({});
+        let count = 3;
+        let timer = setInterval(() => {
+          if (count <= 0) {
+            clearInterval(timer);
+            this.setData({
+              errorShaking: false
+            })
+          } else {
+            count -= 1;
+            this.setData({
+              errorShaking: !this.data.errorShaking
+            })
+          }
+        },100);
+
       } else {
         optionList[checkIndex].className = 'check';
       }
@@ -652,7 +670,6 @@ Page({
   closeConnect () {
     this.clearAiInterval();
     this.clearInterval();
-    debugger
     if (this.data.isConnect) {
       console.log('pvp close!!!!!')
       battle.PVP_close()

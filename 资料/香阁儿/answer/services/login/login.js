@@ -14,7 +14,6 @@ export default {
           lang: 'zh_CN',
           success(res2) {
             console.log({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})
-            debugger
             ajax.request({
               url: that.apiList.login,
               data: {param: JSON.stringify({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})},

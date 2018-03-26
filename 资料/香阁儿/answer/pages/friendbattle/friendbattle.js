@@ -18,12 +18,14 @@ Page({
     subject: {},
     subjectList: [],
     subjectCount: 0,
-    hansMore: true,
+    hasMore: true,
     countDownTime: 10,
     isAnswered: false,
     result: {},
     showRoom: true,
     roomAniData: {},
+    qTypeData: {},
+    qListData: {},
     isEnd: false
   },
 
@@ -69,7 +71,7 @@ Page({
       }
       if (res.type == 2) {
         console.log('好友连接上了:-----------------------------');
-        this.updateRoom(res);
+        this.updateRoomUser(res.roomUsers);
       }
       if (res.type == 3) {
         console.log('得到题目了:-----------------------------');
@@ -77,7 +79,7 @@ Page({
       }
       if (res.type == 4) {
         console.log('得到答案了:-----------------------------');
-        this.updatePoint()
+        this.updatePoint(res)
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
@@ -94,21 +96,26 @@ Page({
     console.log('房间信息:-----------------');
     console.log(res.roomId)
     this.setData({
-      roomUsers: res.roomUsers || [],
       roomOwner: res.userId || '',
       roomId: res.roomId || '',
       totalPoint: res.totlePoint || ''
     })
+    this.updateRoomUser(res.roomUsers);
   },
   /**
    * 更新房间信息
    * */
-  updateRoom (res) {
+  updateRoomUser (res) {
     console.log('房间信息更新:-----------------');
     console.log(res);
     console.log('房间信息更新:-----------------');
+    let roomUsers = res.map((el) => {
+      el.point = 0;
+      el.pointBar = 0;
+      return el;
+    });
     this.setData({
-      roomUsers: res.roomUsers || [],
+      roomUsers: roomUsers,
     })
   },
   /**
@@ -167,6 +174,7 @@ Page({
   getSubject () {
     if (!this.data.hasMore) {
       //本次对战结束 算分了！！！！！
+      console.log('本轮结束')
       this.sendMessage({type: 3});
       return
     }
@@ -184,7 +192,7 @@ Page({
     console.log(res)
     console.log('获取的题目:-------------------------------')
     let subject = this.data.subject;
-    if (utils.getValueByPath(subject, 'subject.pushTime') == res.subject.pushTime) {
+    if (subject.pushTime == res.subject.pushTime) {
       //避免题目二次渲染
       return
     }
@@ -197,14 +205,10 @@ Page({
     });
     delete res.subject.optionList;
     this.setData({
-      subject: res,
+      subject: res.subject,
       subjectList: subjectList,
       hasMore: res.hasMore,
       isAnswered: false
-    });
-    this.setData({
-      subject: res.subject,
-      hasMore: res.hasMore,
     });
     //题目动画
     this.subjectAnimation(1, () => {
@@ -226,20 +230,70 @@ Page({
     let roomUser = this.data.roomUsers;
     let updateUser = roomUser[index];
     updateUser['point'] += res.point;
-    updateUser['pointBar'] = ((updateUser.point * 100) / this.data.roomInfo.totlePoint).toFixed(2);
+    updateUser['pointBar'] = ((updateUser.point * 100) / this.data.totlePoint).toFixed(2);
     roomUser[index] = updateUser;
     this.setData({
       roomUsers: roomUser
     });
-    this.filterOptionListEvt(res);
+    this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
       //提前结束这道题
-      this.clearInterval(() => {
-        this.subjectAnimation(4, () => {
-          this.getSubject();
-        })
+      this.clearTheInterval(() => {
+        /*结果展示2秒*/
+        setTimeout(()=>{
+          this.subjectAnimation(4, () => {
+            this.getSubject();
+          })
+        },2000)
       })
     }
+  },
+  /**
+   * 题目选项过滤
+   * */
+  filterSubjectListEvt (res) {
+    let subject = this.data.subject;
+    let rightOption = subject.rightOption;
+    let userId = this.data.userId;
+
+    let optionId = res.optionId;
+    let mayNextSub = res.mayNextSub;
+
+
+    let subjectList = this.data.subjectList;
+    let checkIndex = optionId - 1;
+    let rightIndex = rightOption - 1;
+    //没有选择
+    if (optionId <= 0) {
+      subjectList[rightIndex].className = 'success';
+    } else {
+      //选择了
+      //只展示勾选
+      if (checkIndex == rightIndex && res.userId == userId) {
+        subjectList[checkIndex].className = 'success';
+      } else if (checkIndex != rightIndex && res.userId == userId) {
+        subjectList[checkIndex].className = 'error';
+        wx.vibrateLong({})
+      } else {
+        subjectList[checkIndex].className = 'check';
+      }
+    }
+
+    //这道题都答了 就显示正确答案 并把双方答案判断正确和错误
+    if (mayNextSub) {
+      //显示正确选项
+      subjectList[rightIndex].className = 'success';
+      for (let i = 0; i < subjectList.length; i++) {
+        if (subjectList[i].className == '') {
+          subjectList[i].className = 'hide'
+        } else if (subjectList[i].className == 'check') {
+          subjectList[i].className = 'error'
+        }
+      }
+    }
+    this.setData({
+      subjectList: subjectList
+    })
   },
   /**
    * 题目动画
@@ -249,6 +303,45 @@ Page({
     // 2 展示题目 和选项
     // 3 展示此题答完状态
     // 4 清场状态 全部隐藏 延迟3秒执行
+    let typeAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let boxAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    if (type == '1') {
+      typeAni.scale(1).step();
+      this.setData({
+        qTypeData: typeAni.export()
+      });
+      setTimeout(() => {
+        this.subjectAnimation(2, callback)
+      }, 1000)
+    }
+    if (type == '2') {
+      typeAni.scale(0).step();
+      boxAni.scale(1).step();
+      this.setData({
+        qTypeData: typeAni.export(),
+        qListData: boxAni.export(),
+      });
+      setTimeout(() => {
+        callback && callback()
+      }, 500)
+    }
+    if (type == '4') {
+      typeAni.scale(0).step();
+      boxAni.scale(0).step();
+      this.setData({
+        qTypeData: typeAni.export(),
+        qListData: boxAni.export(),
+      });
+      setTimeout(() => {
+        callback && callback()
+      }, 500)
+    }
   },
   /**
    * 答题倒计时

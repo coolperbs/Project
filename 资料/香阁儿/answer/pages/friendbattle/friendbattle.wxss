@@ -1,5 +1,7 @@
+@charset "UTF-8";
 .friend {
-  height: 100%; }
+  height: 100%;
+  /*对战*/ }
   .friend .room, .friend .battle, .friend .match {
     position: absolute;
     top: 0;
@@ -84,5 +86,210 @@
       display: flex;
       justify-content: space-between;
       width: 100%; }
+  .friend .battle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0; }
+    .friend .battle .battle-user {
+      height: 320rpx;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 30rpx;
+      position: relative; }
+      .friend .battle .battle-user .head {
+        width: 90rpx;
+        height: 90rpx;
+        box-sizing: border-box;
+        overflow: hidden;
+        border-radius: 50%;
+        border-width: 4rpx;
+        border-style: solid;
+        margin-bottom: 20rpx; }
+        .friend .battle .battle-user .head .head-image {
+          width: 90rpx;
+          height: 90rpx; }
+      .friend .battle .battle-user .name {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        font-size: 26rpx;
+        margin-bottom: 10rpx; }
+        .friend .battle .battle-user .name .level {
+          opacity: 0.5; }
+        .friend .battle .battle-user .name .text {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          max-width: 250rpx;
+          margin: 0 10rpx; }
+      .friend .battle .battle-user .progress {
+        width: 280rpx;
+        height: 20rpx;
+        background: #381b5a;
+        border-radius: 10rpx;
+        overflow: hidden;
+        margin-bottom: 20rpx; }
+        .friend .battle .battle-user .progress .progress-bar {
+          width: 0;
+          height: 20rpx;
+          border-radius: 10rpx;
+          transition: all .45s ease; }
+      .friend .battle .battle-user .point {
+        font-size: 40rpx; }
+      .friend .battle .battle-user .left, .friend .battle .battle-user .right {
+        position: absolute;
+        left: 30rpx;
+        right: 30rpx;
+        top: 30rpx;
+        bottom: 30rpx; }
+      .friend .battle .battle-user .right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; }
+      .friend .battle .battle-user .left .head {
+        border-color: #e10083; }
+      .friend .battle .battle-user .left .progress-bar {
+        background: #e10083; }
+      .friend .battle .battle-user .left .point {
+        color: #e10083; }
+      .friend .battle .battle-user .right .head {
+        border-color: #2fdefd; }
+      .friend .battle .battle-user .right .progress {
+        display: flex;
+        justify-content: flex-end; }
+      .friend .battle .battle-user .right .progress-bar {
+        background: #2fdefd; }
+      .friend .battle .battle-user .right .point {
+        color: #2fdefd; }
+    .friend .battle .battle-title {
+      height: 320rpx;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 30rpx;
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .friend .battle .battle-title > view {
+        position: absolute; }
+      .friend .battle .battle-title .vs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        .friend .battle .battle-title .vs.active {
+          display: none; }
+        .friend .battle .battle-title .vs .count {
+          width: 110rpx;
+          height: 110rpx;
+          background: red;
+          margin-bottom: 10rpx; }
+        .friend .battle .battle-title .vs .vs-png {
+          width: 66rpx;
+          height: 89rpx; }
+      .friend .battle .battle-title .winner {
+        top: -10rpx;
+        transition: all .45s ease;
+        opacity: 0;
+        transform: scale(0); }
+        .friend .battle .battle-title .winner .winner-icon {
+          width: 469rpx;
+          height: 469rpx; }
+        .friend .battle .battle-title .winner.active {
+          transform: scale(1);
+          opacity: 1; }
+    .friend .battle .answer {
+      position: relative;
+      text-align: center; }
+      .friend .battle .answer .answer-step {
+        position: absolute;
+        width: 100%;
+        color: #fff;
+        transform: scale(0); }
+        .friend .battle .answer .answer-step .q-type {
+          font-size: 36rpx; }
+        .friend .battle .answer .answer-step .q-count {
+          font-size: 60rpx; }
+        .friend .battle .answer .answer-step .q-title {
+          font-size: 30rpx;
+          width: 500rpx;
+          margin: 0 auto;
+          height: 80rpx;
+          margin-bottom: 90rpx;
+          position: relative; }
+          .friend .battle .answer .answer-step .q-title .q-double {
+            position: absolute;
+            background: red; }
+        .friend .battle .answer .answer-step .q-chose {
+          background-color: transparent;
+          width: 560rpx;
+          height: 120rpx;
+          border-radius: 20rpx;
+          margin-bottom: 24rpx;
+          color: #350165;
+          font-size: 32rpx;
+          line-height: 120rpx;
+          font-weight: bold;
+          background: #ffffff;
+          position: relative;
+          opacity: 1;
+          transition: all 0.45s ease; }
+          .friend .battle .answer .answer-step .q-chose.error {
+            background: linear-gradient(to bottom, #fd2fa1, #fd2f56);
+            color: #fff; }
+          .friend .battle .answer .answer-step .q-chose.success {
+            background: linear-gradient(to bottom, #44f669, #0bcf91);
+            color: #fff; }
+          .friend .battle .answer .answer-step .q-chose.hide {
+            opacity: 0; }
+          .friend .battle .answer .answer-step .q-chose.hover:after {
+            content: " ";
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: none;
+            box-sizing: border-box;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.1); }
+    .friend .battle .result {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all .45s ease;
+      opacity: 0;
+      transform: scale(0); }
+      .friend .battle .result.active {
+        opacity: 1;
+        transform: scale(1); }
+      .friend .battle .result .result-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: white;
+        border-bottom: 4rpx solid #936051;
+        width: 460rpx; }
+        .friend .battle .result .result-item .item-icon {
+          width: 136rpx;
+          height: 136rpx;
+          transform: translate3d(-30rpx, 0, 0); }
+        .friend .battle .result .result-item .item-label {
+          font-size: 32rpx; }
+        .friend .battle .result .result-item .item-text {
+          font-size: 48rpx;
+          margin-left: auto; }
+      .friend .battle .result .continue {
+        margin-top: 200rpx;
+        width: 460rpx;
+        border-radius: 50rpx;
+        height: 100rpx;
+        color: white;
+        background: linear-gradient(to bottom, #f7f417, #c60054);
+        border: 4rpx solid #ff15c0; }
 
 /*# sourceMappingURL=friendbattle.wxss.map */
