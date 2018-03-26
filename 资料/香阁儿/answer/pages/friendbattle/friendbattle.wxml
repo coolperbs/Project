@@ -1,2 +1,28 @@
-<!--pages/friendbattle/friendbattle.wxml-->
-<text>好友对战房间</text>
+<view class="friend">
+	<view class="battle"></view>
+	<view class="room" animation="roomAniData">
+		<view class="user">
+			<image class="owner" mode="aspectFit" src="../../static/images/crown.png"></image>
+			<image mode="aspectFit" class="head" src="{{roomUsers[0].avatar}}"></image>
+			<view class="name">{{roomUsers[0].name}}</view>
+			<view class="level">{{roomUsers[0].level?'V'+roomUsers[0].level:''}}</view>
+			<image mode="aspectFit" class="ready" src="../../static/images/coin.png"></image>
+		</view>
+		<view class="user-list">
+			<view wx:if="{{index>0}}" wx:for="{{roomUsers}}" class="user">
+				<image mode="aspectFit" class="head" src="{{item.avatar}}"></image>
+				<view class="name">{{item.name}}</view>
+				<view class="level">{{item.level?'V'+item.level:''}}</view>
+				<image mode="aspectFit" class="ready" src="../../static/images/coin.png"></image>
+			</view>
+			<view wx:if="{{roomUsers.length<5}}">
+				等待好友加入...
+			</view>
+		</view>
+		<view class="button-list">
+			<button>取消</button>
+			<button open-type="share">邀请好友</button>
+			<button wx:if="{{roomOwner==userId}}" bindtap="startBattle">开始</button>
+		</view>
+	</view>
+</view>
