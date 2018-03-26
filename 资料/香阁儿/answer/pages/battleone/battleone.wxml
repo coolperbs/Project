@@ -1,79 +1,98 @@
-<!--pages/battleone/battleone.wxml-->
-<view wx:if="{{showBattle}}" class="battle">
-	<view class="battle-head">
-		<view class="battle-left">
-			<view class="battle-user-box">
-				<view class="battle-user">
-					<image mode="aspectFit" class="battle-user-head" src="{{roomUsers[0].avatar}}"></image>
-					<view class="battle-user-score">{{roomUsers[0].point}}</view>
-				</view>
-				<view class="battle-user-name-box">
-					<view class="battle-user-level">{{roomUsers[0].level}}</view>
-					<view class="battle-user-name">{{roomUsers[0].name}}</view>
-				</view>
-			</view>
-			<view class="battle-progress-bar">
-				<view class="battle-progress" style="width:{{roomUsers[0].pointBar}}%"></view>
+<view class="battle-box">
+	<view class="loading" wx:if="{{LOADING}}" animation="{{loadingData}}">
+		<view class="box-loading">
+			<view class="loading-item loading1"></view>
+			<view class="loading-item loading2"></view>
+		</view>
+	</view>
+	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
+		<view class="left" animation="{{matchLeftData}}">
+			<view class="user">
+				<image mode="aspectFit" class="head" src="{{roomUsers[0].avatar}}"></image>
+				<view class="name">{{roomUsers[0].name}}</view>
+				<view class="level">V{{roomUsers[0].level}}</view>
 			</view>
 		</view>
-		<view class="battle-center">
-			<view class="battle-count">{{countDown}}</view>
-			<image mode="aspectFit" class="battle-vs" src="../../static/images/vs-small.png"></image>
-		</view>
-		<view class="battle-right">
-			<view class="battle-user-box">
-				<view class="battle-user">
-					<view class="battle-user-score">{{roomUsers[1].point}}</view>
-					<image mode="aspectFit" class="battle-user-head" src="{{roomUsers[1].avatar}}"></image>
-				</view>
-				<view class="battle-user-name-box">
-					<view class="battle-user-level">{{roomUsers[1].level}}</view>
-					<view class="battle-user-name">{{roomUsers[1].name}}</view>
-				</view>
-			</view>
-			<view class="battle-progress-bar">
-				<view class="battle-progress" style="width:{{roomUsers[1].pointBar}}%"></view>
+		<view class="right" animation="{{matchRightData}}">
+			<view class="user">
+				<image mode="aspectFit" class="head" src="{{roomUsers[1].avatar}}"></image>
+				<view class="name">{{roomUsers[1].name}}</view>
+				<view class="level">V{{roomUsers[1].level}}</view>
 			</view>
 		</view>
+		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
 	</view>
-	<view class="battle-question-box">
-		<view class="battle-question" animation="{{questionTypeAniData}}">
-			{{question.subject.type}}
+	<view class="battle">
+		<view class="battle-user">
+			<view class="left">
+				<view class="head">
+					<image class="head-image" src="{{roomUsers[0].avatar}}"></image>
+				</view>
+				<view class="name">
+					<view class="level">V{{roomUsers[0].level}}</view>
+					<view class="text">{{roomUsers[0].name}}</view>
+				</view>
+				<view class="progress {{END?'active':''}}">
+					<view class="progress-bar" style="width:{{roomUsers[0].pointBar}}%"></view>
+				</view>
+				<view class="point">{{roomUsers[0].point}}</view>
+			</view>
+			<view class="right">
+				<view class="head">
+					<image class="head-image" src="{{roomUsers[1].avatar}}"></image>
+				</view>
+				<view class="name">
+					<view class="level">V{{roomUsers[1].level}}</view>
+					<view class="text">{{roomUsers[1].name}}</view>
+				</view>
+				<view class="progress {{END?'active':''}}">
+					<view class="progress-bar" style="width:{{roomUsers[1].pointBar}}%"></view>
+				</view>
+				<view class="point">{{roomUsers[1].point}}</view>
+			</view>
 		</view>
-		<view class="battle-question" animation="{{questionTitleAniData}}">
-			{{question.subject.title}}
+		<view class="battle-title">
+			<view class="vs {{!WINNER?'':'active'}}">
+				<view class="count">{{countDownTime}}</view>
+				<image class="vs-png" src="../../static/images/vs-small.png"></image>
+			</view>
+			<view class="winner {{WINNER?'active':''}}">
+				<image class="winner-icon" src="../../static/images/winner.png"></image>
+			</view>
+			<view class="looser"></view>
 		</view>
-	</view>
-	<view class="battle-scroll" animation="{{questionListAniData}}">
-		<view wx:for="{{question.subject.optionList}}" wx:key="{{index}}"
-					class="battle-btn {{item.className}}"
-					data-index="{{index+1}}"
-					catchtap="answerEvt">{{item.label}}
+		<view class="answer">
+			<view class="answer-step" animation="{{qTypeData}}">
+				<view class="q-type">{{questionInfo.subject.type}}</view>
+				<view class="q-count">第{{questionCount}}题</view>
+			</view>
+			<view class="answer-step" animation="{{qListData}}">
+				<view class="q-title">
+					{{questionInfo.subject.title}}
+					<image wx:if="{{questionInfo.doublePoint}}" class="q-double" src="../../static/images/coin.png"></image>
+				</view>
+				<button wx:for="{{questionList}}"
+								wx:key="{{index}}"
+								class="q-chose {{item.className}}"
+								data-index="{{index+1}}"
+								disabled="{{answered}}"
+								catchtap="answerEvt" hover-class="hover">{{item.label}}</button>
+			</view>
 		</view>
-		<!--<view class="battle-btn success">xxxx</view>-->
-		<!--<view class="battle-btn error">xxxx</view>-->
-	</view>
-</view>
-<view wx:if="{{showRound}}" animation="{{roundAniData}}" class="battle-stage">
-	<view animation="{{leftAniData}}" class="left">
-		<view class="user">
-			<image mode="aspectFit" class="head" src="{{roomUsers[0].avatar}}"></image>
-			<view class="name">{{roomUsers[0].name}}</view>
-			<view class="level">{{roomUsers[0].level}}</view>
+		<view class="result {{END?'active':''}}">
+			<view class="result-item">
+				<image class="item-icon" src="../../static/images/coin.png"></image>
+				<view class="item-label">金币</view>
+				<view class="item-text">+{{showResultData.gold}}</view>
+			</view>
+			<view class="result-item">
+				<image class="item-icon" src="../../static/images/crown.png"></image>
+				<view class="item-label">EXP</view>
+				<view class="item-text">+{{showResultData.exp}}</view>
+			</view>
+			<button class="continue" bindtap="playAgain">
+				继续挑战
+			</button>
 		</view>
-	</view>
-	<view animation="{{rightAniData}}" class="right">
-		<view class="user">
-			<image mode="aspectFit" class="head" src="{{roomUsers[1].avatar}}"></image>
-			<view class="name">{{roomUsers[1].name}}</view>
-			<view class="level">{{roomUsers[1].level}}</view>
-		</view>
-	</view>
-	<image animation="{{centerAniData}}" class="vs" mode="aspectFit" src="../../static/images/VS2.png"></image>
-</view>
-<view wx:if="{{showLoading}}" animation="{{loadingAniData}}" class="loading">
-	<view class="box-loading">
-		<view class="loading-item loading1"></view>
-		<view class="loading-item loading2"></view>
 	</view>
 </view>

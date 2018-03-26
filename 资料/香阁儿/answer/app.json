@@ -4,8 +4,13 @@
     "pages/home/home",
     "pages/battleone/battleone",
     "pages/billboard/billboard",
+    "pages/userinfo/userinfo",
+    "pages/rank/rank",
+    "pages/friendbattle/friendbattle",
+    "pages/questionlib/questionlib",
+    "pages/mine/mine",
     "pages/shop/shop",
-    "pages/userinfo/userinfo"
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "#fff",

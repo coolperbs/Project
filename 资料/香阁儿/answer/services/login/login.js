@@ -13,6 +13,8 @@ export default {
         wx.getUserInfo({
           lang: 'zh_CN',
           success(res2) {
+            console.log({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})
+            debugger
             ajax.request({
               url: that.apiList.login,
               data: {param: JSON.stringify({code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData})},
@@ -20,7 +22,7 @@ export default {
                 //本地信息缓存
                 console.warn(res3.data.token)
                 utils.setStorageSync('userInfo', res3.data);
-                callback(true)
+                callback&&callback(true)
               }
             })
           },
@@ -30,7 +32,7 @@ export default {
                 wx.openSetting({});
               }
             });
-            callback(false)
+            callback&&callback(false)
           }
         })
       }
@@ -46,12 +48,6 @@ export default {
   },
   getLoginInfo() {
     let userInfo = utils.getStorageSync('userInfo') || null;
-    if (!userInfo) {
-      //拿不到信息就去登陆
-      utils.navigateTo('../../pages/login/login');
-      return userInfo
-    } else {
-      return userInfo
-    }
+    return userInfo
   }
 }

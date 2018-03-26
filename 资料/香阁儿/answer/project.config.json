@@ -56,12 +56,6 @@
 					"name": "商店",
 					"pathName": "pages/shop/shop",
 					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "用户信息",
-					"pathName": "pages/userinfo/userinfo",
-					"query": ""
 				}
 			]
 		}

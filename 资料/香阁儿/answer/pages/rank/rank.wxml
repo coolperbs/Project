@@ -1,0 +1,105 @@
+<view class="rank">
+	<image class="rank-bg roate-animation" src="../../static/images/rank-bg.png"></image>
+	<view class="rank-box">
+		<image class="rank-title" src="../../static/images/rank-title.png"></image>
+		<view class="rank-menu">
+			<view class="coins">
+				<image class="icon-coin" src="../../static/images/coin.png"></image>
+				<view class="icon-count">800</view>
+			</view>
+			<view class="skills">
+				<image class="skill" src="../../static/images/skill1.png"></image>
+				<image class="skill" src="../../static/images/skill2.png"></image>
+				<image class="skill" src="../../static/images/skill3.png"></image>
+				<image class="skill" src="../../static/images/skill4.png"></image>
+				<image class="skill active" src="../../static/images/skill5.png"></image>
+			</view>
+		</view>
+		<view class="scroll-box">
+			<view class="box-bg"></view>
+			<scroll-view scroll-y="true" class="scroll">
+				<button hover-class="level-item-hover" disabled class="level-item disabled">
+					<view class="item-box">
+						<image class="item-image" src="../../static/images/lv1.png"></image>
+						<view class="desc">
+							<view class="top">
+								<view class="title">入门萌新</view>
+								<view class="coin">
+									<image class="coin-icon" src="../../static/images/coin.png"></image>
+									<view class="coin-count">20</view>
+								</view>
+							</view>
+							<view class="bottom">
+								<view class="text">奖金:80</view>
+								<view class="star-list">
+									<view class="star">
+										<image class="start-box" src="../../static/images/star-bg.png"></image>
+										<image class="start-active" src="../../static/images/star.png"></image>
+									</view>
+									<view class="star">
+										<image class="start-box" src="../../static/images/star-bg.png"></image>
+										<image class="start-active" src="../../static/images/star.png"></image>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</button>
+				<button hover-class="level-item-hover" bindtap="rankBattleEvt" class="level-item">
+					<view class="item-box">
+						<image class="item-image" src="../../static/images/lv1.png"></image>
+						<view class="desc">
+							<view class="top">
+								<view class="title">入门萌新</view>
+								<view class="coin">
+									<image class="coin-icon" src="../../static/images/coin.png"></image>
+									<view class="coin-count">20</view>
+								</view>
+							</view>
+							<view class="bottom">
+								<view class="text">奖金:80</view>
+								<view class="star-list">
+									<view class="star">
+										<image class="start-box" src="../../static/images/star-bg.png"></image>
+										<image class="start-active" src="../../static/images/star.png"></image>
+									</view>
+									<view class="star {{active?'active':''}}">
+										<image class="start-box" src="../../static/images/star-bg.png"></image>
+										<image class="start-active" src="../../static/images/star.png"></image>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</button>
+				<button hover-class="level-item-hover" class="level-item">
+					<view class="item-box">
+						<image class="item-image" src="../../static/images/lv1.png"></image>
+						<view class="desc">
+							<view class="top">
+								<view class="title">入门萌新</view>
+								<view class="coin">
+									<image class="coin-icon" src="../../static/images/coin.png"></image>
+									<view class="coin-count">20</view>
+								</view>
+							</view>
+							<view class="bottom">
+								<view class="text">奖金:80</view>
+								<view class="star-list">
+									<view class="star">
+										<image class="start-box" src="../../static/images/star-bg.png"></image>
+										<image class="start-active" src="../../static/images/star.png"></image>
+									</view>
+									<view class="star active">
+										<image class="start-box" src="../../static/images/star-bg.png"></image>
+										<image class="start-active" src="../../static/images/star.png"></image>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</button>
+			</scroll-view>
+		</view>
+	</view>
+</view>

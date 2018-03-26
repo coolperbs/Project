@@ -30,11 +30,11 @@ Page({
       if (!res) {
         login.login((res2)=>{
           if(res2){
-            util.redirectTo('../battleone/battleone')
+            util.redirectTo('../home/home')
           }
         });
       }else {
-        util.redirectTo('../battleone/battleone')
+        util.redirectTo('../home/home')
       }
     })
 

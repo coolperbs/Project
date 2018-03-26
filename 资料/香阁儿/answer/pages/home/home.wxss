@@ -11,7 +11,7 @@
     margin: 0 50rpx
 }
 .home-logo{
-    position: absolute;
+    position: fixed;
     width: 650rpx;
     height: 244rpx;
     margin-left: 50rpx;
@@ -26,10 +26,20 @@
     margin-bottom: 20rpx;
     border-radius: 20rpx;
     overflow: hidden;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  background-color: transparent;
+  position: relative;
 }
-
-.home-btn.disabled {
-    position: relative;
+.home-btn-hover:before{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  background: rgba(255, 255,255, 0.2);
 }
 
 .home-btn.disabled:before {
