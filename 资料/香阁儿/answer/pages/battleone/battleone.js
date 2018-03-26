@@ -414,10 +414,6 @@ Page({
   answerEvt (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.answered) {
-      //todo 如有掉线怎么处理
-      // if (this.data.isOffLine) {
-      //   this.getQuestion();
-      // }
       return
     }
     //处理正确与错误

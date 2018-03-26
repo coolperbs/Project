@@ -21,6 +21,6 @@ handle = {
 
   }
 }
-
-handle.getRank();
+//todo 调用报错 零时注释掉
+//handle.getRank();
 export default handle;

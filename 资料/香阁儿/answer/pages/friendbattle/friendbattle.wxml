@@ -1,6 +1,8 @@
 <view class="friend">
-	<view class="battle"></view>
-	<view class="room" animation="roomAniData">
+	<view class="battle">
+
+	</view>
+	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="user">
 			<image class="owner" mode="aspectFit" src="../../static/images/crown.png"></image>
 			<image mode="aspectFit" class="head" src="{{roomUsers[0].avatar}}"></image>
@@ -9,7 +11,7 @@
 			<image mode="aspectFit" class="ready" src="../../static/images/coin.png"></image>
 		</view>
 		<view class="user-list">
-			<view wx:if="{{index>0}}" wx:for="{{roomUsers}}" class="user">
+			<view wx:if="{{index>0}}" wx:for="{{roomUsers}}" wx:key="{{index}}" class="user">
 				<image mode="aspectFit" class="head" src="{{item.avatar}}"></image>
 				<view class="name">{{item.name}}</view>
 				<view class="level">{{item.level?'V'+item.level:''}}</view>
