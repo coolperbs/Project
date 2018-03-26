@@ -8,9 +8,9 @@ handle = {
       confirmColor: '#1e0141',
       success (res) {
         if (res.confirm) {
-          callback(true)
+          callback && callback(true)
         } else if (res.cancel) {
-          callback(false)
+          callback && callback(false)
         }
       }
     });
@@ -22,9 +22,9 @@ handle = {
       confirmColor: '#1e0141',
       success (res) {
         if (res.confirm) {
-          callback(true)
+          callback && callback(true)
         } else if (res.cancel) {
-          callback(false)
+          callback && callback(false)
         }
       }
     });
@@ -33,10 +33,8 @@ handle = {
     wx.showToast({
       title: object.title || '',
       icon: object.icon || 'none',
+      duration: duration > 1500 ? duration : 1500
     });
-    setTimeout(() => {
-      wx.hideToast()
-    }, (duration && duration > 0 && duration > 1500) ? duration : 1500)
   },
   timeToDateObj (time) {
     var date = new Date();
