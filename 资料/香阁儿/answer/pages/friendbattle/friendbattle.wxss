@@ -26,66 +26,88 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-    .friend .room .user-list {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      box-sizing: border-box;
-      margin: 20rpx; }
-    .friend .room .user {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+    align-items: center;
+    justify-content: flex-start; }
+    .friend .room .room-box {
       position: relative;
-      width: 150rpx;
-      box-sizing: border-box;
-      margin: 20rpx 40rpx; }
-      .friend .room .user .head {
-        height: 150rpx;
-        width: 150rpx;
-        box-sizing: border-box;
-        border: 7rpx solid #e10083;
-        border-radius: 50%;
-        margin-bottom: 10rpx; }
-      .friend .room .user .name {
-        font-size: 32rpx;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 150rpx;
-        text-align: center; }
-      .friend .room .user .level {
+      top: 0;
+      right: 0;
+      left: 0;
+      margin: 150rpx auto;
+      width: 500rpx;
+      height: 500rpx;
+      border-radius: 50%;
+      border: 2rpx solid rgba(47, 222, 253, 0.2); }
+      .friend .room .room-box .user {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         position: absolute;
-        top: 0;
-        right: -50rpx;
-        opacity: 0.5;
-        font-size: 24rpx; }
-      .friend .room .user .ready {
-        position: absolute;
-        top: 60rpx;
-        left: 60rpx;
-        width: 60rpx;
-        height: 60rpx;
-        transition: all .45s ease;
-        transform: scale(0); }
-        .friend .room .user .ready.active {
-          transform: scale(1); }
-      .friend .room .user .owner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate3d(-50rpx, -70rpx, 0) rotate3d(0, 0, 1, -35deg);
-        width: 136rpx;
-        height: 136rpx; }
-    .friend .room .button-list {
-      margin-top: 150rpx;
-      display: flex;
-      justify-content: space-between;
-      width: 100%; }
+        width: 100rpx; }
+        .friend .room .room-box .user .head {
+          border: 4rpx solid #2fdefd;
+          box-sizing: border-box;
+          width: 90rpx;
+          height: 90rpx;
+          border-radius: 50%;
+          overflow: hidden; }
+          .friend .room .room-box .user .head.owner {
+            border: 4rpx solid #e10083; }
+          .friend .room .room-box .user .head .head-image {
+            width: 90rpx;
+            height: 90rpx; }
+        .friend .room .room-box .user .name {
+          color: rgba(255, 255, 255, 0.2);
+          margin-top: 10rpx;
+          font-size: 26rpx;
+          width: 150rpx;
+          word-break: keep-all;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+          .friend .room .room-box .user .name.active {
+            color: #fff; }
+        .friend .room .room-box .user.active .name {
+          color: #fff; }
+        .friend .room .room-box .user.set1 {
+          left: 0;
+          top: 0;
+          transform: translate3d(-30rpx, 90rpx, 0); }
+        .friend .room .room-box .user.set2 {
+          left: 0;
+          top: 0;
+          transform: translate3d(205rpx, -50rpx, 0); }
+        .friend .room .room-box .user.set3 {
+          top: 0;
+          right: 0;
+          transform: translate3d(30rpx, 90rpx, 0); }
+        .friend .room .room-box .user.set4 {
+          bottom: 0;
+          right: 0;
+          transform: translate3d(0, -40rpx, 0); }
+        .friend .room .room-box .user.set5 {
+          bottom: 0;
+          left: 0;
+          transform: translate3d(0, -40rpx, 0); }
+    .friend .room .room-btn {
+      width: 200rpx;
+      height: 200rpx;
+      background-color: transparent;
+      border-radius: 50%;
+      padding: 0;
+      margin: 0; }
+      .friend .room .room-btn image {
+        width: 200rpx;
+        height: 200rpx; }
+      .friend .room .room-btn.invite {
+        transform: translate3d(150rpx, 150rpx, 0); }
+    .friend .room .cancel {
+      border-radius: 4rpx;
+      color: #fd2fa1;
+      font-size: 36rpx;
+      margin-top: 40rpx;
+      font-weight: bold;
+      background-color: transparent; }
   .friend .battle {
     position: fixed;
     top: 0;
