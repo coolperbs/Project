@@ -16,19 +16,14 @@ export default {
   PVF_messageList: [],
   PVF_socket: {},
   PVF_isConnect: false,
-  PVP_connect (danGrading, callback) {
-    let UserInfo = utils.getStorageSync('userInfo') || {};
-    let token = utils.getValueByPath(UserInfo, 'token');
-    if (!token) {
-      return
-    }
+  PVP_connect(danGrading, token, callback) {
     this.PVP_socket = ajax.connectSocket(this.apiList.PVP, {token: token, danGrading: danGrading || 1});
     this.PVP_socket.onOpen(res => {
       this.PVP_isConnect = true;
       callback(res);
     })
   },
-  PVP_send (data) {
+  PVP_send(data) {
     console.log('发送：')
     console.log(data)
     var messageList = this.PVP_messageList;
@@ -43,39 +38,39 @@ export default {
       }
     }
   },
-  PVP_onMessage (callback) {
+  PVP_onMessage(callback) {
     this.PVP_socket.onMessage(res => {
       var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
         utils.showToast({
-          title: res.msg || res.message || '',
+          title: res.msg || res.message || ''
         });
         return
       }
       callback(res.data);
     })
   },
-  PVP_onError (callback) {
+  PVP_onError(callback) {
     this.PVP_socket.onError(res => {
       utils.showToast({
-        title: '连接错误！',
+        title: '连接错误！'
       });
     })
   },
-  PVP_close () {
+  PVP_close() {
     if (this.PVP_isConnect) {
       console.log('PVP close')
       this.PVP_socket.close({})
     }
   },
-  PVA_connect (roomId, danGrading, callback) {
+  PVA_connect(roomId, danGrading, callback) {
     this.PVA_socket = ajax.connectSocket(this.apiList.PVP, {type: 'ai', roomId: roomId, danGrading: danGrading || 1});
     this.PVA_socket.onOpen(res => {
       this.PVA_isConnect = true;
       callback(res);
     })
   },
-  PVA_send (data) {
+  PVA_send(data) {
     var messageList = this.PVA_messageList;
     messageList.push(data);
     if (this.PVA_isConnect) {
@@ -88,39 +83,39 @@ export default {
       }
     }
   },
-  PVA_onMessage (callback) {
+  PVA_onMessage(callback) {
     this.PVA_socket.onMessage(res => {
       var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
         utils.showToast({
-          title: res.msg || res.message || '',
+          title: res.msg || res.message || ''
         });
         return
       }
       callback(res.data);
     })
   },
-  PVA_onError (callback) {
+  PVA_onError(callback) {
     this.PVA_socket.onError(res => {
       utils.showToast({
-        title: '连接错误！',
+        title: '连接错误！'
       });
     })
   },
-  PVA_close () {
+  PVA_close() {
     if (this.PVA_isConnect) {
-      console.log('PVP close')
+      console.log('PVA close')
       this.PVA_socket.close({})
     }
   },
-  PVF_connect (danGrading, token, roomId, callback) {
+  PVF_connect(danGrading, token, roomId, callback) {
     this.PVF_socket = ajax.connectSocket(this.apiList.PVF, {token: token, roomId: roomId, danGrading: danGrading || 1});
     this.PVF_socket.onOpen(res => {
       this.PVF_isConnect = true;
       callback(res);
     })
   },
-  PVF_send (data) {
+  PVF_send(data) {
     var messageList = this.PVF_messageList;
     messageList.push(data);
     if (this.PVF_isConnect) {
@@ -133,29 +128,29 @@ export default {
       }
     }
   },
-  PVF_onMessage (callback) {
+  PVF_onMessage(callback) {
     this.PVF_socket.onMessage(res => {
       var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
         utils.showToast({
-          title: res.msg || res.message || '',
+          title: res.msg || res.message || ''
         });
         return
       }
       callback(res.data);
     })
   },
-  PVF_onError (callback) {
+  PVF_onError(callback) {
     this.PVF_socket.onError(res => {
       utils.showToast({
-        title: '连接错误！',
+        title: '连接错误！'
       });
     })
   },
-  PVF_close () {
+  PVF_close() {
     if (this.PVF_isConnect) {
       console.log('PVF close')
       this.PVF_socket.close({})
     }
-  },
+  }
 }

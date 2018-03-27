@@ -27,7 +27,7 @@ Page({
     qTypeData: {},
     qListData: {},
     isEnd: false,
-    errorShaking:false
+    errorShaking: false
   },
 
   /**
@@ -43,7 +43,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage () {
+  initPage() {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -64,7 +64,7 @@ Page({
   /**
    * 监听信息
    * */
-  getMessage () {
+  getMessage() {
     battle.PVF_onMessage((res) => {
       console.log('好友对战接收到消息了:----------------------');
       if (res.type == 1) {
@@ -91,7 +91,7 @@ Page({
   /**
    * 初始化房间信息
    * */
-  initRoom (res) {
+  initRoom(res) {
     console.log('房间信息:-----------------');
     console.log(res);
     console.log('房间信息:-----------------');
@@ -106,7 +106,7 @@ Page({
   /**
    * 更新房间信息
    * */
-  updateRoomUser (res) {
+  updateRoomUser(res) {
     console.log('房间信息更新:-----------------');
     console.log(res);
     console.log('房间信息更新:-----------------');
@@ -116,19 +116,19 @@ Page({
       return el;
     });
     this.setData({
-      roomUsers: roomUsers,
+      roomUsers: roomUsers
     })
   },
   /**
    * 发送消息
    * */
-  sendMessage (data) {
+  sendMessage(data) {
     battle.PVF_send(data);
   },
   /**
    * 开始对战
    * */
-  startBattle () {
+  startBattle() {
     this.sendMessage({"type": 4});
     this.animationEvt('start', () => {
       this.getSubject();
@@ -137,10 +137,10 @@ Page({
   /**
    * 场景动画
    * */
-  animationEvt (type, callback) {
+  animationEvt(type, callback) {
     let room = wx.createAnimation({
       duration: 500,
-      timingFunction: 'ease',
+      timingFunction: 'ease'
     });
     if (type == 'reset') {
       //所有动画还原
@@ -172,10 +172,10 @@ Page({
   /**
    * 获取题目
    * */
-  getSubject () {
+  getSubject() {
     if (!this.data.hasMore) {
       //本次对战结束 算分了！！！！！
-      console.log('本轮结束')
+      console.log('本轮结束')//todo 结束本轮不能放这
       this.sendMessage({type: 3});
       return
     }
@@ -188,7 +188,7 @@ Page({
   /**
    * 拿到题目
    * */
-  filterSubject (res) {
+  filterSubject(res) {
     console.log('获取的题目:-------------------------------')
     console.log(res)
     console.log('获取的题目:-------------------------------')
@@ -220,7 +220,7 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint (res) {
+  updatePoint(res) {
     console.log('得到答案更新用户分数:--------------------------------------')
     console.log(res);
     console.log('得到答案更新用户分数:--------------------------------------')
@@ -231,7 +231,7 @@ Page({
     let roomUser = this.data.roomUsers;
     let updateUser = roomUser[index];
     updateUser['point'] += res.point;
-    updateUser['pointBar'] = ((updateUser.point * 100) / this.data.totlePoint).toFixed(2);
+    updateUser['pointBar'] = ((updateUser.point * 100) / this.data.totalPoint).toFixed(2);
     roomUser[index] = updateUser;
     this.setData({
       roomUsers: roomUser
@@ -241,18 +241,18 @@ Page({
       //提前结束这道题
       this.clearTheInterval(() => {
         /*结果展示2秒*/
-        setTimeout(()=>{
+        setTimeout(() => {
           this.subjectAnimation(4, () => {
             this.getSubject();
           })
-        },2000)
+        }, 2000)
       })
     }
   },
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt (res) {
+  filterSubjectListEvt(res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -288,7 +288,7 @@ Page({
               errorShaking: !this.data.errorShaking
             })
           }
-        },100);
+        }, 100);
       } else {
         subjectList[checkIndex].className = 'check';
       }
@@ -313,7 +313,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation (type, callback) {
+  subjectAnimation(type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -340,7 +340,7 @@ Page({
       boxAni.scale(1).step();
       this.setData({
         qTypeData: typeAni.export(),
-        qListData: boxAni.export(),
+        qListData: boxAni.export()
       });
       setTimeout(() => {
         callback && callback()
@@ -351,7 +351,7 @@ Page({
       boxAni.scale(0).step();
       this.setData({
         qTypeData: typeAni.export(),
-        qListData: boxAni.export(),
+        qListData: boxAni.export()
       });
       setTimeout(() => {
         callback && callback()
@@ -361,7 +361,7 @@ Page({
   /**
    * 答题倒计时
    * */
-  startTheInterval () {
+  startTheInterval() {
     this.clearTheInterval(() => {
       this.Timer = setInterval(() => {
         if (this.data.countDownTime <= 0) {
@@ -379,7 +379,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval (callback) {
+  clearTheInterval(callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -388,9 +388,9 @@ Page({
   /**
    * 答题
    * */
-  answerSubject (e) {
+  answerSubject(e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
-    if (this.data.answered) {
+    if (this.data.isAnswered) {
       return
     }
     this.setData({
@@ -405,7 +405,7 @@ Page({
   /**
    * 结束游戏
    * */
-  endGame (res) {
+  endGame(res) {
     console.log('游戏结束:--------------------------------------')
     console.log(res)
     console.log('游戏结束:--------------------------------------')
@@ -413,7 +413,7 @@ Page({
       return
     }
     this.setData({
-      isEnd: true,
+      isEnd: true
     });
     //获取当前用户,
     let result = res.fightResults;
@@ -441,7 +441,7 @@ Page({
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
-      showResultData: result[index]
+      result: result[index]
     });
     this.closeConnect();
   },
@@ -449,9 +449,9 @@ Page({
   /**
    * 关闭连接
    * */
-  closeConnect () {
+  closeConnect() {
     console.log('关闭连接:-------------------------------------')
-    if (this.isConnect) {
+    if (this.data.isConnect) {
       battle.PVF_close();
     }
   },
