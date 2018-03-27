@@ -23,7 +23,7 @@ Page({
     countDownTime: 10,
     isAnswered: false,
     result: {},
-    showRoom: false,
+    showRoom: true,
     roomAniData: {},
     qTypeData: {},
     qListData: {},
