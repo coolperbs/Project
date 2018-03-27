@@ -20,16 +20,16 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 1,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -62,16 +62,15 @@
 					"query": ""
 				},
 				{
-<<<<<<< HEAD
-					"id": -1,
-					"name": "用户信息",
-					"pathName": "pages/userinfo/userinfo",
-=======
 					"id": 5,
 					"name": "好友对战",
 					"pathName": "pages/friendbattle/friendbattle",
->>>>>>> a6d38fa26e0c9da62932e493b5c9a9c714667ea8
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "用户信息",
+					"pathName": "pages/userinfo/userinfo"
 				}
 			]
 		}
