@@ -9,6 +9,7 @@ Page({
    */
   data: {
     isConnect: false,
+    WINNER: false,
     roomId: '',
     level: '',
     roomUsers: [],
@@ -22,7 +23,7 @@ Page({
     countDownTime: 10,
     isAnswered: false,
     result: {},
-    showRoom: true,
+    showRoom: false,
     roomAniData: {},
     qTypeData: {},
     qListData: {},
@@ -80,14 +81,14 @@ Page({
           this.setData({
             subjectCount: 1
           })
-          this.animationEvt('start',()=>{
+          this.animationEvt('start', () => {
             this.filterSubject(res);
           })
-        }else {
+        } else {
           //等待动画同步
-          setTimeout(()=>{
+          setTimeout(() => {
             this.filterSubject(res);
-          },1000)
+          }, 1000)
         }
 
       }

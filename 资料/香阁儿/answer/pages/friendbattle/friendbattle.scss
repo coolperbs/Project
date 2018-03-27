@@ -147,92 +147,45 @@
       box-sizing: border-box;
       padding: 30rpx;
       position: relative;
-      .head{
-        width: 90rpx;
-        height: 90rpx;
-        box-sizing: border-box;
-        overflow: hidden;
-        border-radius: 50%;
-        border-width: 4rpx;
-        border-style: solid;
-        margin-bottom: 20rpx;
-        .head-image{
-          width: 90rpx;
-          height: 90rpx;
-        }
-      }
-      .name{
-        color: #fff;
-        display: flex;
-        align-items: center;
-        font-size: 26rpx;
-        margin-bottom: 10rpx;
-        .level{
-          opacity: 0.5;
-        }
-        .text{
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          max-width: 250rpx;
-          margin: 0 10rpx;
-        }
-      }
-      .progress{
-        width: 280rpx;
-        height: 20rpx;
-        background: #381b5a;
-        border-radius: 10rpx;
-        overflow: hidden;
-        margin-bottom: 20rpx;
-        .progress-bar{
-          width: 0;
-          height: 20rpx;
-          border-radius: 10rpx;
-          transition: all .45s ease;
-        }
-      }
-      .point{
-        font-size: 40rpx;
-      }
-      .left,.right{
-        position: absolute;
-        left: 30rpx;
-        right: 30rpx;
-        top: 30rpx;
-        bottom: 30rpx;
-      }
-      .right{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
-      .left{
-        .head{
-          border-color:#e10083;
-        }
-        .progress-bar {
-          background: #e10083;
-        }
-        .point{
-          color: #e10083;
-        }
-      }
-      .right{
-        .head{
-          border-color:#2fdefd;
-        }
-        .progress{
-          display: flex;
-          justify-content: flex-end;
-        }
-        .progress-bar {
-          background: #2fdefd;
-        }
-        .point{
-          color: #2fdefd;
-        }
-      }
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+     .user{
+       position: relative;
+       margin-right: 40rpx;
+       &.owner{
+         .head{
+           border:4rpx solid #e10083;
+         }
+         .point{
+           color: #e10083;
+         }
+       }
+       .head{
+         width: 90rpx;
+         height: 90rpx;
+         box-sizing: border-box;
+         overflow: hidden;
+         border-radius: 50%;
+         border: 4rpx solid #2fdefd;
+         margin-bottom: 20rpx;
+       }
+       .name{
+         font-size: 22rpx;
+         color: #fff;
+         width: 100rpx;
+         white-space: nowrap;
+         word-break: keep-all;
+         text-overflow: ellipsis;
+         overflow: hidden;
+       }
+       .point{
+         position: absolute;
+         top: -30rpx;
+         right: 0;
+       }
+     }
+
     }
     .battle-title{
       height: 320rpx;
@@ -252,6 +205,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 110rpx;
         &.active{
           display: none;
         }
