@@ -1,4 +1,7 @@
-var handle, loadingTimmer;
+var handle, loadingTimmer,
+    sysInfo = wx.getSystemInfoSync();
+
+
 handle = {
   showError (msg, callback) {
     wx.showModal({
@@ -15,6 +18,31 @@ handle = {
       }
     });
   },
+  hideLoading : function() {
+    if ( loadingTimmer ) {
+      clearTimeout( loadingTimmer );
+    }
+    wx.hideLoading();
+  },
+  showLoading : function() {
+    var param, time;
+    if ( arguments.length == 1 ) {
+      param = {};
+      time = arguments[0];
+    } else {
+      param = arguments[0] || {};
+      time = arguments[1];
+    }
+    param.title = param.title || '加载中...';
+    if ( time && time > 0 ) {
+      loadingTimmer = setTimeout( function() {
+        wx.showLoading( param );
+      }, time );
+      return;
+    }
+
+    wx.showLoading( param );
+  },  
   showAction (msg, callback) {
     wx.showModal({
       title: '提示',
@@ -142,6 +170,12 @@ handle = {
     }
     return paramStr;
   },
+  toPx : function( num ) {
+    return num / ( 750 / sysInfo.windowWidth )
+  },
+  toRpx : function( num ) {
+    return num * 750 / sysInfo.windowWidth;
+  },  
   navigateTo (url, data) {
     wx.navigateTo({
       url: url + '?' + this.mapToUrl(data)
