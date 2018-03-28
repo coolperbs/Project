@@ -57,7 +57,7 @@ body { font-size : 12px; }
 .list .mod .box .level:before { content : ''; width:0; height:0; border-width:4px 5px; position: absolute; bottom: -8px; left : 0; border-style:solid; border-color:#8b071b #8b071b transparent transparent;}
 .list .mod .box .level:after { content : ''; width:0; height:0; border-width:20px 6px; position: absolute; top:0; right : -12px; border-style:solid; border-color:#cc0927 transparent transparent #cc0927;}
 .list .mod .box .content { margin : 40px 20px 20px 20px; position: relative; }
-.list .mod .box .pic { top : 50%; margin-top : -100px; position: absolute; background-position: center center; background-size : contain; background-repeat: no-repeat; height : 200px; border : solid 1px #f0f0f0; float : left; width : 50%; }
+.list .mod .box .pic { position: relative; background-position: center center; background-size : contain; background-repeat: no-repeat; height : 200px; border : solid 1px #f0f0f0; float : left; width : 50%; }
 .list .mod .box .pic img { width : 100%; margin : auto; }
 .list .mod .box .pic .info { padding : 4px 0; text-indent: 10px; background-color : #F94C72; color : #fff; font-size: 12px; color : #fff; border-radius: 20px; position: absolute; bottom : -10px; left : 0; width : 100%; }
 .list .mod .box .pic .info.none { height :0; padding : 0; }
@@ -65,7 +65,7 @@ body { font-size : 12px; }
 .list .mod .box .content .desc { line-height: 12px; font-size : 10px; color : #666; margin-left : 10px; width : 45%; float : right;}
 .list .mod .box .content .price { display: inline-block; margin-top : 5px; background-color : #cc0927; color : #fff; padding : 3px 8px; border-radius: 20px; line-height: 15px; font-size : 12px; }
 .list .mod .box .content .desc .title { line-height: 18px; font-size : 16px; color : #231916; }
-.list .mod .box .content .desc .param { margin-top: 10px; -webkit-text-size-adjust:none; font-size : 10px; line-height: 14px; }
+.list .mod .box .content .desc .param { margin-top: 10px; font-size : 12px; line-height: 16px; }
 .list .mod .box .content .desc .param .row { margin : 3px 0; }
 .list .mod .box .btn { -webkit-box-shadow: 0px 5px 5px rgba( 88,150,255, 0.2 ); box-shadow: 0px 5px 5px rgba( 88,150,255, 0.2 ); margin : 20px; text-align: center; line-height: 50px; font-size : 17px; height : 50px; background-color: #5896FF; color : #fff; border-radius: 30px; }
 

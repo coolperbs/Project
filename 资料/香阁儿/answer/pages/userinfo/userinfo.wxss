@@ -12,7 +12,9 @@ Page { width : 100%; height : 100%; background-color : #ccc; }
 .radar .col-3 { height : 340rpx; top : 155rpx; left : 590rpx; position: absolute; }
 .radar .col-3 .label { text-align: left; }
 .radar .logo { z-index: 100; width : 134rpx; height: 134rpx; border : solid 8rpx #e10083; border-radius: 50%; position: absolute; left : 50%; top : 50%; margin-top : -75rpx; margin-left : -75rpx; background-color: #fff; }
-.radar .logo image { width : 100%; height : 100%; }
+.radar .logo image { border-radius: 50%; width : 100%; height : 100%; }
+.radar .logo .name { font-weight : bold; position: absolute; bottom : -40rpx; font-size : 28rpx; width : 100%; text-align: center; }
+.radar .logo .level { top : 0;left : 140rpx; position: absolute; bottom : -10rpx; font-size : 20rpx; }
 
 
 
