@@ -34,7 +34,7 @@ Page({
     });
   },
   filterData(data) {
-    let scrollToView = 0
+    let scrollToView = 0;
     for (let i = 0; i < data.danGradingList.length; i++) {
       let item = data.danGradingList[i];
       if (!item.deblock && i != 0) {

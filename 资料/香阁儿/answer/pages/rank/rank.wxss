@@ -25,10 +25,11 @@
       .rank .rank-box .rank-menu .coins {
         display: flex;
         align-items: center;
-        justify-content: flex-start; }
+        justify-content: flex-start;
+        padding-left: 40rpx; }
         .rank .rank-box .rank-menu .coins .icon-coin {
-          width: 136rpx;
-          height: 136rpx; }
+          width: 100rpx;
+          height: 100rpx; }
         .rank .rank-box .rank-menu .coins .icon-count {
           color: #fff;
           font-size: 32rpx; }
