@@ -4,7 +4,7 @@
 		<image class="rank-title" src="../../static/images/rank-title.png"></image>
 		<view class="rank-menu">
 			<view class="coins">
-				<image class="icon-coin" src="../../static/images/coin.png"></image>
+				<image class="icon-coin" src="../../static/images/coins.png"></image>
 				<view class="icon-count">{{rankData.user.gold}}</view>
 			</view>
 			<view class="skills">

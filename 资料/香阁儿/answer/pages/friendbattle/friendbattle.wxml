@@ -9,7 +9,11 @@
 		</view>
 		<view class="battle-title">
 			<view class="vs">
-				<view class="count">{{countDownTime}}</view>
+				<canvas class="circle" style="z-index: -99;" canvas-id="canvasCircle">
+				</canvas>
+				<canvas class="circle" style="" canvas-id="canvasArcCir">
+				</canvas>
+				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
 			</view>
 			<view class="winner">
 				<image class="winner-icon" src="../../static/images/winner.png"></image>

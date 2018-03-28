@@ -209,12 +209,6 @@
         &.active{
           display: none;
         }
-        .count{
-          width: 110rpx;
-          height: 110rpx;
-          background: red;
-          margin-bottom: 10rpx;
-        }
         .vs-png{
           width: 66rpx;
           height: 89rpx;
@@ -345,5 +339,24 @@
         border:4rpx solid #ff15c0
       }
     }
+  }
+}
+.vs{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  .circle,.count{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 150rpx;
+    height: 150rpx;
+  }
+  .count{
+    text-align: center;
+    line-height: 150rpx;
+    vertical-align: middle;
   }
 }
