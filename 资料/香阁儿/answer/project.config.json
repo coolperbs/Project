@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -71,6 +71,12 @@
 					"id": -1,
 					"name": "用户信息",
 					"pathName": "pages/userinfo/userinfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "排位大厅",
+					"pathName": "pages/rank/rank",
 					"query": ""
 				}
 			]
