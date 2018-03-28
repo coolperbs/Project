@@ -1,49 +1,51 @@
 <view class="content">
 	<view class="radar">
 		<view class="col col-1">
-			<view class="label">1text</view>
-			<view class="label">1text</view>
+			<view class="label">{{ pageData.questionTypeCountList[3].name }}</view>
+			<view class="label">{{ pageData.questionTypeCountList[2].name }}</view>
 		</view>
 		<view class="col col-2">
-			<view class="label">2text</view>
-			<view class="label">2text</view>
+			<view class="label">{{ pageData.questionTypeCountList[4].name }}</view>
+			<view class="label">{{ pageData.questionTypeCountList[1].name }}</view>
 		</view>
 		<view class="col col-3">
-			<view class="label">3text</view>
-			<view class="label">3text</view>
+			<view class="label">{{ pageData.questionTypeCountList[5].name }}</view>
+			<view class="label">{{ pageData.questionTypeCountList[0].name }}</view>
 		</view>
 		<canvas class="c-radar" canvas-id="cRadar"/>
 		<view class="logo">
-			<image src="../../static/images/winner.png"></image>
+			<image src="{{ pageData.avatar }}"></image>
+			<view class="level">lv.{{ pageData.level }}</view>
+			<view class="name">{{ pageData.name }}</view>
 		</view>
 	</view>
 	<view class="list-wrapper">
 		<view class="list">
 			<view class="row">
-				<view class="key">key</view>
-				<view class="value">value</view>
+				<view class="key">胜率</view>
+				<view class="value">{{ pageData.sucPercent }}</view>
 			</view>
 			<view class="row">
-				<view class="key">key</view>
-				<view class="value">value</view>
+				<view class="key">段位</view>
+				<view class="value">{{ pageData.danGradingName }}</view>
 			</view>
 			<view class="row">
-				<view class="key">key</view>
-				<view class="value">value</view>
+				<view class="key">总场数</view>
+				<view class="value">{{ pageData.totalCount }}</view>
 			</view>
 			<view class="row">
-				<view class="key">key</view>
-				<view class="value">value</view>
+				<view class="key">胜场</view>
+				<view class="value">{{ pageData.sucCount }}</view>
 			</view>
 			<view class="row">
-				<view class="key">key</view>
+				<view class="key">等级</view>
 				<view class="line">
-					<view class="line-v" style="width : 80%"></view>
+					<view class="line-v" style="width : {{ pageData.curLevelUserExp / pageData.curLevelTotleExp * 100 }}%"></view>
 				</view>
-				<view class="value">value</view>
+				<view class="value">lv.{{ pageData.level }}</view>
 			</view>
 			<view class="row">
-				<view class="key">key</view>
+				<view class="key">金币数</view>
 				<view class="value">value</view>
 			</view>
 		</view>

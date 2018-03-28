@@ -4,7 +4,6 @@ import utils from '../../common/utils/utils';
 const app = getApp();
 let handle;
 
-console.log( app );
 handle = {
   getList : function() {
     ajax.request( {

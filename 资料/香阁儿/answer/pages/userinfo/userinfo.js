@@ -1,20 +1,64 @@
 import utils from '../../common/utils/utils';
+import {user} from '../../services/index'
+
 let _fn;
 
 Page( {
 	onShow : function() {
+		let self = this;
 		let ctx = wx.createCanvasContext('cRadar');
-		_fn.drawRadar( ctx, this );
+		utils.showLoading( 300 );
+		user.getLevelInfo( function( res ) {
+			utils.hideLoading();
+			if ( !res || res.code != '0000' ) {
+				return;
+			}
+			res.data = _fn.formatData( res.data );
+			self.setData( {
+				pageData : res.data
+			} );
+			_fn.drawRadar( ctx, self );
+		} );
 	}
 } );
 
 _fn = {
+	formatData : function( data ) {
+		data.sucPercent = data.totalCount != 0 ? ( data.sucCount / data.totalCount ).toFixed( 2 ) : 0;
+		return data;	
+	},
+
 	drawRadar : function( ctx, caller ) {
 		_fn.drawBackground( ctx, caller );
 	},
 
+	getRadarData : function( list ) {
+		var result = [], num,
+			i, all = 0;
+
+		list = list || [];
+		if ( !list || list.length != 6 ) {
+			return list;
+		}
+
+
+		for ( i = 0; i < list.length; ++i ) {
+			all += list[i].count * 1;
+		}
+
+		for ( i = 0; i < list.length; ++i ) {
+			num = 120 + list[i].count / all * 70;			
+			num = num <= 120 ? 120 : num;
+			num = num >= 260 ? 260 : num;
+			result.push( num );
+		}
+		return result;
+	},
+
 	drawBackground : function( ctx, caller ) {
-		var data = [110, 90, 120, 150, 180, 210];
+		var pageData = caller.data.pageData || {},
+			data = _fn.getRadarData( pageData.questionTypeCountList );
+
 		_fn.drawAllCircle( ctx );
 		_fn.drawAllLine( ctx );
 		_fn.drawArea( ctx, data );
