@@ -68,6 +68,11 @@ Page({
   getMessage () {
     battle.PVF_onMessage((res) => {
       console.log('好友对战接收到消息了:----------------------');
+      if (res.code != '0000') {
+        this.closeConnect();
+        return
+      }
+      res = res.data;
       if (res.type == 1) {
         this.initRoom(res);
       }
@@ -103,7 +108,6 @@ Page({
       if (res.type == '6') {
         //todo 这里可能有问题 需要核对
         this.clearTheInterval();
-        this.clearTheAiInterval();
         this.subjectAnimation(4, () => {
           this.sendMessage({type: 3})
         })

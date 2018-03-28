@@ -45,9 +45,9 @@ export default {
         utils.showToast({
           title: res.msg || res.message || ''
         });
-        return
+        callback(res);
       }
-      callback(res.data);
+      callback(res);
     })
   },
   PVP_onError(callback) {
@@ -90,9 +90,9 @@ export default {
         utils.showToast({
           title: res.msg || res.message || ''
         });
-        return
+        callback(res);
       }
-      callback(res.data);
+      callback(res);
     })
   },
   PVA_onError(callback) {
@@ -135,9 +135,9 @@ export default {
         utils.showToast({
           title: res.msg || res.message || ''
         });
-        return
+        callback(res);
       }
-      callback(res.data);
+      callback(res);
     })
   },
   PVF_onError(callback) {
