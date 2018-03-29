@@ -37,8 +37,6 @@ handle = {
     });
   },
   responseWrapper (dataStr, callback) {
-    //todo 如果socketTask 不可用 把responseWrapper 对外暴露方便统一使用
-    //todo　所有接口返回结构如下
     var res = (typeof dataStr == 'string' ? JSON.parse(dataStr) : dataStr) || null;
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
@@ -49,11 +47,6 @@ handle = {
       callback(res);
       return
     }
-    /*res = {
-      code: '0000',
-      data: {},
-      message: ''
-    }*/
     callback(res)
   }
 }

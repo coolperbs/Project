@@ -30,7 +30,51 @@ Page({
     isEnd: false,
     errorShaking: false
   },
+  onReady () {
+    let sys = wx.getSystemInfoSync();
+    let ratio = (150 / 750)*sys.pixelRatio;
+    let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
+    circle.setLineWidth(8 * ratio);
+    circle.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, 1.5 * Math.PI, false);
+    circle.setStrokeStyle('#ffffff');
+    circle.stroke();
+    circle.draw();
 
+    let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
+    circle2.setLineWidth(8 * ratio);
+    circle2.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, -0.5 * Math.PI, false);
+    circle2.setStrokeStyle('#e10083');
+    circle2.stroke();
+    circle2.draw();
+
+  },
+  clearCountAni (callback) {
+    if (this.countTimer) {
+      clearInterval(this.countTimer)
+    }
+    callback && callback()
+  },
+  startCountAni () {
+    let sys = wx.getSystemInfoSync();
+    let ratio = (150 / 750)*sys.pixelRatio;
+    console.log(sys)
+    let circle2 = this.canvasCircle2
+    let time = 1000;
+    let count = 0;
+    this.countTimer = setInterval(() => {
+      console.log(count)
+      if (count >= time) {
+        clearInterval(this.countTimer)
+      }
+      count += 1;
+      let endPath = (-0.5 * Math.PI) + count * (2 * Math.PI / time);
+      circle2.setLineWidth(8 * ratio);
+      circle2.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, endPath, false);
+      circle2.setStrokeStyle('#e10083');
+      circle2.stroke();
+      circle2.draw();
+    }, 10)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -68,6 +112,11 @@ Page({
   getMessage () {
     battle.PVF_onMessage((res) => {
       console.log('好友对战接收到消息了:----------------------');
+      if (res.code != '0000') {
+        this.closeConnect();
+        return
+      }
+      res = res.data;
       if (res.type == 1) {
         this.initRoom(res);
       }
@@ -103,7 +152,6 @@ Page({
       if (res.type == '6') {
         //todo 这里可能有问题 需要核对
         this.clearTheInterval();
-        this.clearTheAiInterval();
         this.subjectAnimation(4, () => {
           this.sendMessage({type: 3})
         })
@@ -410,18 +458,21 @@ Page({
    * */
   startTheInterval () {
     this.clearTheInterval(() => {
-      this.Timer = setInterval(() => {
-        if (this.data.countDownTime <= 0) {
-          console.log('用户到时间,自动答错 获取新题目')
-          this.clearTheInterval(() => {
-            this.answerSubject();
-          });
-        } else {
-          this.setData({
-            countDownTime: this.data.countDownTime - 1
-          })
-        }
-      }, 1000);
+      this.clearCountAni(() => {
+        this.startCountAni();
+        this.Timer = setInterval(() => {
+          if (this.data.countDownTime <= 0) {
+            console.log('用户到时间,自动答错 获取新题目')
+            this.clearTheInterval(() => {
+              this.answerSubject();
+            });
+          } else {
+            this.setData({
+              countDownTime: this.data.countDownTime - 1
+            })
+          }
+        }, 1000);
+      })
     });
   },
   /**

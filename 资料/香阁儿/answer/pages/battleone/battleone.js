@@ -79,6 +79,11 @@ Page({
    * */
   getPVPMessage () {
     battle.PVP_onMessage((res) => {
+      if (res.code != '0000') {
+        this.closeConnect();
+        return
+      }
+      res = res.data;
       if (res.type == 1) {
         this.initRoom(res);
         this.initAiEvt();
@@ -182,6 +187,9 @@ Page({
       timingFunction: 'ease'
     });
     if (type == 'reset') {
+      this.setData({
+        MATCH: true
+      });
       matchLeftAni.translateX(-width).step();
       matchRightAni.translateX(width).step();
       matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
@@ -436,7 +444,7 @@ Page({
     let rightIndex = rightOption - 1;
     //没有选择
     if (optionId <= 0) {
-      subjectList[rightIndex].className = 'success';
+      subjectList[rightIndex].className = 'check';
     } else {
       //选择了
       //只展示勾选
@@ -560,6 +568,11 @@ Page({
    * */
   getAiMessage () {
     battle.PVA_onMessage((res) => {
+      if (res.code != '0000') {
+        this.closeConnect();
+        return
+      }
+      res = res.data;
       if (res.type == 2) {
         this.setData({
           aiInfo: res

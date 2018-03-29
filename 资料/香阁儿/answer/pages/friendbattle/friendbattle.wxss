@@ -171,11 +171,6 @@
         margin-top: 110rpx; }
         .friend .battle .battle-title .vs.active {
           display: none; }
-        .friend .battle .battle-title .vs .count {
-          width: 110rpx;
-          height: 110rpx;
-          background: red;
-          margin-bottom: 10rpx; }
         .friend .battle .battle-title .vs .vs-png {
           width: 66rpx;
           height: 89rpx; }
@@ -279,5 +274,22 @@
         color: white;
         background: linear-gradient(to bottom, #f7f417, #c60054);
         border: 4rpx solid #ff15c0; }
+
+.vs {
+  position: relative;
+  width: 150px;
+  height: 150px; }
+  .vs .circle, .vs .count {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 150rpx;
+    height: 150rpx; }
+  .vs .count {
+    text-align: center;
+    line-height: 150rpx;
+    vertical-align: middle; }
 
 /*# sourceMappingURL=friendbattle.wxss.map */
