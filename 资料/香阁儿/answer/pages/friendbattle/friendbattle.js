@@ -23,7 +23,7 @@ Page({
     countDownTime: 10,
     isAnswered: false,
     result: {},
-    showRoom: false,
+    showRoom: true,
     roomAniData: {},
     qTypeData: {},
     qListData: {},
@@ -31,23 +31,22 @@ Page({
     errorShaking: false,
     isStart: false
   },
-  onReady () {
+  initCanvas () {
     let sys = wx.getSystemInfoSync();
-    let ratio = (150 / 750) * sys.pixelRatio;
+    let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
-    circle.setLineWidth(8 * ratio);
-    circle.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, 1.5 * Math.PI, false);
-    circle.setStrokeStyle('#ffffff');
+    circle.setLineWidth(4);
+    circle.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, 1.5 * Math.PI, false);
+    circle.setStrokeStyle('#381b5a');
     circle.stroke();
     circle.draw();
 
     let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
-    circle2.setLineWidth(8 * ratio);
-    circle2.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, -0.5 * Math.PI, false);
+    circle2.setLineWidth(4);
+    circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, -0.5 * Math.PI, false);
     circle2.setStrokeStyle('#e10083');
     circle2.stroke();
     circle2.draw();
-
   },
   clearCountAni (callback) {
     if (this.countTimer) {
@@ -57,20 +56,19 @@ Page({
   },
   startCountAni () {
     let sys = wx.getSystemInfoSync();
-    let ratio = (150 / 750) * sys.pixelRatio;
-    console.log(sys)
+    let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2
     let time = 1000;
     let count = 0;
     this.countTimer = setInterval(() => {
-      console.log(count)
+
       if (count >= time) {
         clearInterval(this.countTimer)
       }
       count += 1;
       let endPath = (-0.5 * Math.PI) + count * (2 * Math.PI / time);
-      circle2.setLineWidth(8 * ratio);
-      circle2.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, endPath, false);
+      circle2.setLineWidth(4);
+      circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, endPath, false);
       circle2.setStrokeStyle('#e10083');
       circle2.stroke();
       circle2.draw();
@@ -115,15 +113,15 @@ Page({
       console.log('好友对战接收到消息了:----------------------');
       if (res.code != '0000') {
         this.closeConnect();
-        setTimeout(()=>{
+        setTimeout(() => {
           if (this.data.roomOwner == this.data.userId) {
             wx.navigateBack(1)
-          }else {
+          } else {
             wx.redirectTo({
-              url:'../home/home'
+              url: '../home/home'
             })
           }
-        },1500);
+        }, 1500);
         return
       }
       res = res.data;
@@ -298,6 +296,7 @@ Page({
       this.setData({
         roomAniData: room.export()
       });
+      this.initCanvas();
       setTimeout(() => {
         this.setData({
           showRoom: false
@@ -374,6 +373,7 @@ Page({
       if (!this.data.hasMore) {
         //获取对战结果
         /*结果展示2秒*/
+        this.clearCountAni();
         this.clearTheInterval();
         setTimeout(() => {
           this.subjectAnimation(4, () => {

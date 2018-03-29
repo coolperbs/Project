@@ -53,7 +53,13 @@
 		</view>
 		<view class="battle-title">
 			<view class="vs {{!WINNER?'':'active'}}">
-				<view class="count">{{countDownTime}}</view>
+			<view class="vs-box">
+				<canvas class="circle" style="z-index: -99;" canvas-id="canvasCircle">
+				</canvas>
+				<canvas class="circle" style="" canvas-id="canvasArcCir">
+				</canvas>
+				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
+			</view>
 				<image class="vs-png" src="../../static/images/vs-small.png"></image>
 			</view>
 			<view class="winner {{WINNER?'active':''}}">

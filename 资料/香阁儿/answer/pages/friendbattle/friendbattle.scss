@@ -8,7 +8,7 @@
     bottom: 0;
   }
   .room{
-    z-index: 2;
+    z-index: 999;
   }
   .battle{
     z-index: 0;
@@ -155,7 +155,7 @@
        transition: all 1s ease;
        &.owner{
          .head{
-           border:4rpx solid #e10083;
+           border:8rpx solid #e10083;
          }
          .point{
            color: #e10083;
@@ -167,7 +167,7 @@
          box-sizing: border-box;
          overflow: hidden;
          border-radius: 50%;
-         border: 4rpx solid #2fdefd;
+         border: 8rpx solid #2fdefd;
          margin-bottom: 20rpx;
        }
        .name{
@@ -205,7 +205,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 110rpx;
+        margin-top: 160rpx;
         &.active{
           display: none;
         }
@@ -343,8 +343,8 @@
 }
 .vs{
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 150rpx;
+  height: 150rpx;
   .circle,.count{
     position: absolute;
     top: 0;

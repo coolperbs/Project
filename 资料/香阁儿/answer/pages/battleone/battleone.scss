@@ -109,7 +109,7 @@
         height: 150rpx;
         width: 150rpx;
         box-sizing: border-box;
-        border: 7rpx solid #e10083;
+        border: 8rpx solid #e10083;
         border-radius: 50%;
         margin-bottom: 10rpx;
       }
@@ -161,7 +161,39 @@
       opacity: 0
     }
   }
-
+  .vs-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &.active{
+      display: none;
+    }
+    .vs-png{
+      width: 66rpx;
+      height: 89rpx;
+    }
+  }
+  .vs-box{
+    position: relative;
+    width: 150rpx;
+    height: 150rpx;
+    transform:translate3d(0,-20rpx,0);
+    .circle,.count{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 150rpx;
+      height: 150rpx;
+    }
+    .count{
+      text-align: center;
+      line-height: 150rpx;
+      vertical-align: middle;
+    }
+  }
   /*对战*/
   .battle{
     position: fixed;
@@ -182,7 +214,7 @@
         box-sizing: border-box;
         overflow: hidden;
         border-radius: 50%;
-        border-width: 4rpx;
+        border-width: 8rpx;
         border-style: solid;
         margin-bottom: 20rpx;
         .head-image{
@@ -283,12 +315,6 @@
         align-items: center;
         &.active{
           display: none;
-        }
-        .count{
-          width: 110rpx;
-          height: 110rpx;
-          background: red;
-          margin-bottom: 10rpx;
         }
         .vs-png{
           width: 66rpx;

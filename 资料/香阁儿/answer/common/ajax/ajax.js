@@ -62,6 +62,7 @@ _fn = {
       token: userInfo.token || ''
     };
 
+    console.log(result.token)
     if (object && object.url && _fn.isInwhiteList(object.url)) {
       result.sys = JSON.stringify(sysInfo) || '';
     }

@@ -95,7 +95,7 @@
         height: 150rpx;
         width: 150rpx;
         box-sizing: border-box;
-        border: 7rpx solid #e10083;
+        border: 8rpx solid #e10083;
         border-radius: 50%;
         margin-bottom: 10rpx; }
       .battle-box .battle-stage .user .name {
@@ -129,6 +129,33 @@
       margin: auto;
       transform: scale(2) translate3d(0, 0, 200px);
       opacity: 0; }
+  .battle-box .vs-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .battle-box .vs-box.active {
+      display: none; }
+    .battle-box .vs-box .vs-png {
+      width: 66rpx;
+      height: 89rpx; }
+  .battle-box .vs-box {
+    position: relative;
+    width: 150rpx;
+    height: 150rpx;
+    transform: translate3d(0, -20rpx, 0); }
+    .battle-box .vs-box .circle, .battle-box .vs-box .count {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 150rpx;
+      height: 150rpx; }
+    .battle-box .vs-box .count {
+      text-align: center;
+      line-height: 150rpx;
+      vertical-align: middle; }
   .battle-box .battle {
     position: fixed;
     top: 0;
@@ -148,7 +175,7 @@
         box-sizing: border-box;
         overflow: hidden;
         border-radius: 50%;
-        border-width: 4rpx;
+        border-width: 8rpx;
         border-style: solid;
         margin-bottom: 20rpx; }
         .battle-box .battle .battle-user .head .head-image {
@@ -226,11 +253,6 @@
         align-items: center; }
         .battle-box .battle .battle-title .vs.active {
           display: none; }
-        .battle-box .battle .battle-title .vs .count {
-          width: 110rpx;
-          height: 110rpx;
-          background: red;
-          margin-bottom: 10rpx; }
         .battle-box .battle .battle-title .vs .vs-png {
           width: 66rpx;
           height: 89rpx; }

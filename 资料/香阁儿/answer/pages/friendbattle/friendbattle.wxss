@@ -9,7 +9,7 @@
     right: 0;
     bottom: 0; }
   .friend .room {
-    z-index: 2; }
+    z-index: 999; }
   .friend .battle {
     z-index: 0; }
   .friend .match {
@@ -128,7 +128,7 @@
         box-sizing: border-box;
         transition: all 1s ease; }
         .friend .battle .battle-user .user.owner .head {
-          border: 4rpx solid #e10083; }
+          border: 8rpx solid #e10083; }
         .friend .battle .battle-user .user.owner .point {
           color: #e10083; }
         .friend .battle .battle-user .user .head {
@@ -137,7 +137,7 @@
           box-sizing: border-box;
           overflow: hidden;
           border-radius: 50%;
-          border: 4rpx solid #2fdefd;
+          border: 8rpx solid #2fdefd;
           margin-bottom: 20rpx; }
         .friend .battle .battle-user .user .name {
           font-size: 22rpx;
@@ -168,7 +168,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 110rpx; }
+        margin-top: 160rpx; }
         .friend .battle .battle-title .vs.active {
           display: none; }
         .friend .battle .battle-title .vs .vs-png {
@@ -277,8 +277,8 @@
 
 .vs {
   position: relative;
-  width: 150px;
-  height: 150px; }
+  width: 150rpx;
+  height: 150rpx; }
   .vs .circle, .vs .count {
     position: absolute;
     top: 0;
