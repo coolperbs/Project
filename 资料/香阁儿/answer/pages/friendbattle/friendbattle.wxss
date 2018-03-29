@@ -120,13 +120,13 @@
       width: 100%;
       box-sizing: border-box;
       padding: 30rpx;
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start; }
+      position: relative; }
       .friend .battle .battle-user .user {
-        position: relative;
-        margin-right: 40rpx; }
+        position: absolute;
+        width: 90rpx;
+        margin-right: 40rpx;
+        box-sizing: border-box;
+        transition: all 1s ease; }
         .friend .battle .battle-user .user.owner .head {
           border: 4rpx solid #e10083; }
         .friend .battle .battle-user .user.owner .point {
@@ -150,7 +150,7 @@
         .friend .battle .battle-user .user .point {
           position: absolute;
           top: -30rpx;
-          right: 0; }
+          right: -10rpx; }
     .friend .battle .battle-title {
       height: 320rpx;
       width: 100%;

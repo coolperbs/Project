@@ -81,6 +81,9 @@ Page({
     battle.PVP_onMessage((res) => {
       if (res.code != '0000') {
         this.closeConnect();
+        setTimeout(()=>{
+          wx.navigateBack(1)
+        },1500)
         return
       }
       res = res.data;
@@ -104,7 +107,11 @@ Page({
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
-        this.endGame(res)
+        setTimeout(() => {
+          this.subjectAnimation(4, () => {
+            this.endGame(res)
+          })
+        }, 1000)
       }
       if (res.type == '6') {
         this.clearTheInterval();
@@ -708,7 +715,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    this.closeConnect()
+    this.closeConnect();
   },
   /**
    * 用户点击右上角分享

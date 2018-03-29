@@ -23,16 +23,17 @@ Page({
     countDownTime: 10,
     isAnswered: false,
     result: {},
-    showRoom: true,
+    showRoom: false,
     roomAniData: {},
     qTypeData: {},
     qListData: {},
     isEnd: false,
-    errorShaking: false
+    errorShaking: false,
+    isStart: false
   },
   onReady () {
     let sys = wx.getSystemInfoSync();
-    let ratio = (150 / 750)*sys.pixelRatio;
+    let ratio = (150 / 750) * sys.pixelRatio;
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
     circle.setLineWidth(8 * ratio);
     circle.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, 1.5 * Math.PI, false);
@@ -56,7 +57,7 @@ Page({
   },
   startCountAni () {
     let sys = wx.getSystemInfoSync();
-    let ratio = (150 / 750)*sys.pixelRatio;
+    let ratio = (150 / 750) * sys.pixelRatio;
     console.log(sys)
     let circle2 = this.canvasCircle2
     let time = 1000;
@@ -114,6 +115,15 @@ Page({
       console.log('好友对战接收到消息了:----------------------');
       if (res.code != '0000') {
         this.closeConnect();
+        setTimeout(()=>{
+          if (this.data.roomOwner == this.data.userId) {
+            wx.navigateBack(1)
+          }else {
+            wx.redirectTo({
+              url:'../home/home'
+            })
+          }
+        },1500);
         return
       }
       res = res.data;
@@ -126,6 +136,9 @@ Page({
       }
       if (res.type == 3) {
         console.log('得到题目了:-----------------------------');
+        this.setData({
+          isStart: true
+        })
         if (this.data.showRoom) {
           this.setData({
             subjectCount: 1
@@ -147,14 +160,50 @@ Page({
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
-        this.endGame(res)
+        setTimeout(() => {
+          this.subjectAnimation(4, () => {
+            this.endGame(res)
+          })
+        }, 1000)
       }
       if (res.type == '6') {
-        //todo 这里可能有问题 需要核对
-        this.clearTheInterval();
-        this.subjectAnimation(4, () => {
-          this.sendMessage({type: 3})
-        })
+        //判断有人逃跑 游戏没开始 房间解散 游戏开始后判断少于2个人 就结束游戏
+
+        let roomUsers = this.data.roomUsers;
+        let runner = roomUsers.findIndex((el) => {
+          return el.id == res.userId
+        });
+        roomUsers[runner] = {point: 0};
+        this.setData({
+          roomUsers: roomUsers
+        });
+        //计算还有几个用户
+        let count = 0;
+        roomUsers.map((el) => {
+          if (el.id) {
+            count++
+          }
+        });
+        //区分开始对战没有
+        if (this.data.isStart) {
+          if (count < 2) {
+            console.log('人都跑了,去拿答案了')
+            this.clearTheInterval();
+            this.subjectAnimation(4, () => {
+              this.sendMessage({type: 3})
+            })
+          }
+        } else {
+          if (res.userId == this.data.roomOwner) {
+            //房主都跑了
+            this.clearTheInterval();
+            this.subjectAnimation(4, () => {
+              this.sendMessage({type: 3})
+            })
+          }
+        }
+
+
       }
     })
   },
@@ -565,17 +614,10 @@ Page({
     }
   },
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.closeConnect();
   },
   /**
    * 用户点击右上角分享
