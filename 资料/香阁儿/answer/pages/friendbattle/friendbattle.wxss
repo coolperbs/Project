@@ -149,8 +149,8 @@
           overflow: hidden; }
         .friend .battle .battle-user .user .point {
           position: absolute;
-          top: -30rpx;
-          right: -10rpx; }
+          top: -40rpx;
+          right: -30rpx; }
     .friend .battle .battle-title {
       height: 320rpx;
       width: 100%;
@@ -168,7 +168,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 160rpx; }
+        margin-top: 140rpx; }
         .friend .battle .battle-title .vs.active {
           display: none; }
         .friend .battle .battle-title .vs .vs-png {
@@ -187,7 +187,8 @@
           opacity: 1; }
     .friend .battle .answer {
       position: relative;
-      text-align: center; }
+      text-align: center;
+      margin-top: 20rpx; }
       .friend .battle .answer .answer-step {
         position: absolute;
         width: 100%;

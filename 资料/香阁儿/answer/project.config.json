@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -65,7 +65,7 @@
 					"id": 5,
 					"name": "好友对战",
 					"pathName": "pages/friendbattle/friendbattle",
-					"query": ""
+					"query": "roomId=caf00426-f225-465b-b7d7-b60e4fb832c5"
 				},
 				{
 					"id": -1,

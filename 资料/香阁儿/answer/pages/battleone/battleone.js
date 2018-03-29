@@ -191,6 +191,11 @@ Page({
       el.pointBar = 0;
       return el;
     });
+    let index = roomUsers.findIndex((el) => {
+      return el.id == this.data.userId;
+    });
+    let temp = roomUsers.splice(index, 1);
+    roomUsers.unshift(temp[0]);
     this.setData({
       roomUsers: roomUsers
     })
@@ -712,7 +717,7 @@ Page({
    * 在来一把
    * */
   playAgain () {
-   wx.navigateBack(1)
+    wx.navigateBack(1)
   },
   /**
    * 生命周期函数--监听页面隐藏

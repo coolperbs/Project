@@ -158,6 +158,9 @@ Page({
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
+        this.setData({
+          showRoom: false
+        });
         setTimeout(() => {
           this.subjectAnimation(4, () => {
             this.endGame(res)
@@ -171,7 +174,7 @@ Page({
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
         });
-        roomUsers[runner] = {point: 0};
+        roomUsers[runner] = {point: 0,};
         this.setData({
           roomUsers: roomUsers
         });
@@ -182,10 +185,11 @@ Page({
             count++
           }
         });
+        this.updateRankList();
         //区分开始对战没有
         if (this.data.isStart) {
           if (count < 2) {
-            console.log('人都跑了,去拿答案了')
+            console.log('人都跑了,去拿答案了');
             this.clearTheInterval();
             this.subjectAnimation(4, () => {
               this.sendMessage({type: 3})
@@ -227,8 +231,11 @@ Page({
     console.log(res);
     console.log('房间信息更新:-----------------');
     let that = this;
-    let roomUsers = res.map((el) => {
+    let sys = wx.getSystemInfoSync();
+    let roomUsers = res.map((el, index) => {
       el.point = 0;
+      el['scale'] = sys.windowWidth * (130 / 750);
+      el['rank'] = index;
       if (el.owner) {
         that.setData({
           roomOwner: el.id
@@ -368,6 +375,7 @@ Page({
     this.setData({
       roomUsers: roomUser
     });
+    this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
       if (!this.data.hasMore) {
@@ -383,6 +391,7 @@ Page({
         return
       }
       //提前结束这道题
+      this.clearCountAni();
       this.clearTheInterval(() => {
         /*结果展示2秒*/
         setTimeout(() => {
@@ -392,6 +401,25 @@ Page({
         }, 2000)
       })
     }
+  },
+  /**
+   * updateRankList
+   * */
+  updateRankList () {
+    let roomUser = this.data.roomUsers;
+    let sortData = [...roomUser];
+    sortData.sort((a, b) => {
+      return b.point - a.point
+    });
+    for (var i = 0; i < roomUser.length; i++) {
+      let index = sortData.findIndex((el) => {
+        return el.id == roomUser[i].id
+      })
+      roomUser[i].rank = index;
+    }
+    this.setData({
+      roomUsers: roomUser
+    })
   },
   /**
    * 题目选项过滤
