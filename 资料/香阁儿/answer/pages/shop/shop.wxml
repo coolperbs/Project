@@ -1,12 +1,12 @@
 <view class="content">
 	<view class="list-wrapper">
 		<scroll-view scroll-y="{{true}}" class="list">
-			<view class="item" wx:for="{{23}}" wx:key="index">
-				<image class="icon" src=""></image>
-				<view class="desc">限制经验卡</view>
-				<view class="coin">
+			<view class="item" wx:for="{{pageInfo}}" wx:key="index">
+				<image class="icon" src="{{item.image}}"></image>
+				<view class="desc">{{ item.name }}</view>
+				<view class="coin" data-id="{{ item.wareId }}" catchtap="buy">
 					<image src="../../static/images/coin.png"></image>
-					400
+					{{ item.price }}元
 				</view>
 			</view>
 		</scroll-view>

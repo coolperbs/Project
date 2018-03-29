@@ -5,13 +5,18 @@ const app = getApp();
 let handle;
 
 handle = {
-  getList : function() {
+  getList : function( callback ) {
     ajax.request( {
-      url : app.HOST_AJAX + '',
-      callback : function() {
-
-      }
+      url : app.HOST_AJAX + '/app/ware/list',
+      callback : callback
     } );
+  },
+  buyItem : function( data, callback ) {
+    ajax.request( {
+      url : app.HOST_AJAX + '/app/pay/wechatPrePay',
+      data : data,
+      callback : callback
+    } );	
   }
 }
 
