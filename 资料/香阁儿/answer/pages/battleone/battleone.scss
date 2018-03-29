@@ -109,7 +109,7 @@
         height: 150rpx;
         width: 150rpx;
         box-sizing: border-box;
-        border: 8rpx solid #e10083;
+        border: 4rpx solid #e10083;
         border-radius: 50%;
         margin-bottom: 10rpx;
       }
@@ -214,7 +214,7 @@
         box-sizing: border-box;
         overflow: hidden;
         border-radius: 50%;
-        border-width: 8rpx;
+        border-width: 4rpx;
         border-style: solid;
         margin-bottom: 20rpx;
         .head-image{
@@ -362,7 +362,8 @@
           position: relative;
           .q-double{
             position: absolute;
-            background: red;
+            width: 180rpx;
+            height: 180rpx;
           }
         }
         .q-chose{

@@ -29,3 +29,24 @@
         </view>
     </view>
 </scroll-view>
+
+<!--<view class="modal">-->
+	<!--<view class="content">-->
+		<!--<view class="title">-->
+			<!--<image class="title-image" src="../../static/images/modal.png"></image>-->
+		<!--</view>-->
+		<!--<view class="body">-->
+			<!--<view class="item-list">-->
+				<!--<view class="item">-->
+					<!--<image class="item-image" src=""></image>-->
+					<!--<view class="item-name">礼品名称</view>-->
+					<!--<view class="item-text">200金币</view>-->
+				<!--</view>-->
+			<!--</view>-->
+			<!--<button class="modal-btn">领取</button>-->
+		<!--</view>-->
+	<!--</view>-->
+	<!--<view class="close">-->
+		<!--<image class="close-image" src="../../static/images/close.png"></image>-->
+	<!--</view>-->
+<!--</view>-->

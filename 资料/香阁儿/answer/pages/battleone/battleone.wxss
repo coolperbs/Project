@@ -95,7 +95,7 @@
         height: 150rpx;
         width: 150rpx;
         box-sizing: border-box;
-        border: 8rpx solid #e10083;
+        border: 4rpx solid #e10083;
         border-radius: 50%;
         margin-bottom: 10rpx; }
       .battle-box .battle-stage .user .name {
@@ -175,7 +175,7 @@
         box-sizing: border-box;
         overflow: hidden;
         border-radius: 50%;
-        border-width: 8rpx;
+        border-width: 4rpx;
         border-style: solid;
         margin-bottom: 20rpx; }
         .battle-box .battle .battle-user .head .head-image {
@@ -288,7 +288,8 @@
           position: relative; }
           .battle-box .battle .answer .answer-step .q-title .q-double {
             position: absolute;
-            background: red; }
+            width: 180rpx;
+            height: 180rpx; }
         .battle-box .battle .answer .answer-step .q-chose {
           background-color: transparent;
           width: 560rpx;

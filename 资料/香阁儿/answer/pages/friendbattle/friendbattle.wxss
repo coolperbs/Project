@@ -207,7 +207,8 @@
           position: relative; }
           .friend .battle .answer .answer-step .q-title .q-double {
             position: absolute;
-            background: red; }
+            width: 180rpx;
+            height: 180rpx; }
         .friend .battle .answer .answer-step .q-chose {
           background-color: transparent;
           width: 560rpx;

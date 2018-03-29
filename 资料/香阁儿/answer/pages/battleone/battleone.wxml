@@ -75,7 +75,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image wx:if="{{subject.doublePoint}}" class="q-double" src="../../static/images/coin.png"></image>
+					<image wx:if="{{subject.doublePoint}}" class="q-double" src="../../static/images/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
