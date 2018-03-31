@@ -102,33 +102,12 @@
       flex-direction: column;
       justify-content: space-between;
       height: 760rpx; }
-      .modal .content .body .item-list {
-        display: flex;
-        flex-wrap: wrap; }
-        .modal .content .body .item-list .item {
-          width: 300rpx;
-          height: 300rpx;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start; }
-          .modal .content .body .item-list .item .item-image {
-            width: 200rpx;
-            height: 200rpx; }
-          .modal .content .body .item-list .item .item-name {
-            font-size: 34rpx;
-            font-weight: bold;
-            color: #1f0142; }
-          .modal .content .body .item-list .item .item-text {
-            font-size: 28rpx;
-            color: #1f0142; }
       .modal .content .body .modal-btn {
         border-radius: 20rpx;
-        background-color: #fd2fa1;
-        box-shadow: 0 10rpx 20rpx 0 rgba(253, 47, 161, 0.5);
+        background-color: #9421ff;
+        box-shadow: 0 10rpx 20rpx 0 rgba(148, 33, 255, 0.5);
         width: 400rpx;
         height: 120rpx;
-        line-height: 120rpx;
         color: #fff;
         margin-bottom: 40rpx; }
   .modal .close {
@@ -136,5 +115,59 @@
     .modal .close .close-image {
       width: 64rpx;
       height: 64rpx; }
+
+.body .item-list {
+  display: flex;
+  flex-wrap: wrap; }
+  .body .item-list .item {
+    width: 200rpx;
+    height: 220rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20rpx; }
+    .body .item-list .item .item-image-box {
+      width: 140rpx;
+      height: 140rpx;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden; }
+      .body .item-list .item .item-image-box .image, .body .item-list .item .item-image-box .check, .body .item-list .item .item-image-box .uncheck {
+        width: 140rpx;
+        height: 140rpx;
+        position: absolute; }
+      .body .item-list .item .item-image-box .check, .body .item-list .item .item-image-box .uncheck {
+        background: rgba(0, 0, 0, 0.3);
+        font-size: 30rpx;
+        text-align: center;
+        vertical-align: middle;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold; }
+      .body .item-list .item .item-image-box .check {
+        z-index: 1; }
+      .body .item-list .item .item-image-box .uncheck {
+        z-index: 1; }
+    .body .item-list .item .item-name {
+      font-size: 34rpx;
+      color: #1f0142;
+      display: -webkit-box;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1; }
+    .body .item-list .item .item-text {
+      font-size: 28rpx;
+      color: #1f0142;
+      display: -webkit-box;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      margin: 0 40rpx; }
 
 /*# sourceMappingURL=home.wxss.map */

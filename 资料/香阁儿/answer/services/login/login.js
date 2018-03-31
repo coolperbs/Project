@@ -3,9 +3,6 @@ import utils from "../../common/utils/utils"
 
 const app = getApp();
 export default {
-  apiList: {
-    login: app.HOST_AJAX + '/login'
-  },
   checkSingleAuthorize (scopeItem, callback) {
     wx.getSetting({
       success: (response) => {
@@ -48,7 +45,7 @@ export default {
                 icon: 'loading'
               });
               ajax.request({
-                url: that.apiList.login,
+                url: app.HOST_AJAX + '/login',
                 data: {code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData},
                 callback (res3) {
                   utils.setStorageSync('userInfo', res3.data);
@@ -73,5 +70,17 @@ export default {
   getLoginInfo () {
     let userInfo = utils.getStorageSync('userInfo') || null;
     return userInfo
+  },
+  getDailyCheckData (callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/app/login/ware/list',
+      callback: callback
+    });
+  },
+  dailyCheck (data, callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/app/login/ware/use/' + data.wareId + '/' + data.wareNum,
+      callback: callback
+    });
   }
 }

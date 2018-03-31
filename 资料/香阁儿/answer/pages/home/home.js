@@ -1,40 +1,49 @@
 // pages/home/home.js
 import ajax from '../../common/ajax/ajax'
 import utils from '../../common/utils/utils'
+import {login} from '../../services/index'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bgAnimation: {}
+    bgAnimation: {},
+    checkData: [],
+    showCheck: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-
+    login.getDailyCheckData(res => {
+      if (res.code != '0000') {
+        if (res.code == '9999') {
+          //是否文案提示
+        }
+        return
+      }
+      let checkData = res.data;
+      let ware = {};
+      checkData.map((el) => {
+        if (el.canGet && !el.hasGet) {
+          ware = el
+        }
+        return el
+      });
+      this.setData({
+        checkData: checkData,
+        checkWare: ware,
+        showCheck: true
+      })
+    })
   },
 
   jumpPage (e) {
     let type = e.currentTarget.dataset.type;
-    switch (type){
+    switch (type) {
       case 'rank':
         utils.navigateTo('../rank/rank');//排位赛
         break;
@@ -58,7 +67,23 @@ Page({
         break;
     }
   },
-
+  check () {
+    login.dailyCheck(this.data.checkWare, res => {
+      if (res.code != '0000') {
+        utils.showToast({title: res.msg || '签到失败,请稍候重试'})
+      } else {
+        utils.showToast({title: '签到成功'})
+      }
+      this.setData({
+        showCheck: false
+      })
+    })
+  },
+  closeModal(){
+    this.setData({
+      showCheck: false
+    })
+  },
   /**
    * 用户点击右上角分享
    */
