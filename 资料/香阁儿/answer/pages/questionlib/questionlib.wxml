@@ -7,7 +7,7 @@
 	<view class="list-wrapper">
 		<scroll-view scroll-y="true" class="list">
 			<view class="item">
-				<view class="name">倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨</view>
+				<view class="name"><view class="type">文化</view>倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨倒萨发达省份斯蒂芬倒萨</view>
 				<view class="box">
 					<view class="q">倒萨发达省份斯倒萨发达省份斯蒂芬倒萨芬倒萨</view>
 					<view class="q active">倒萨发达省份斯蒂芬倒萨</view>

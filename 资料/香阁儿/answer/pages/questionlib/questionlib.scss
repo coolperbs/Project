@@ -25,6 +25,7 @@ Page { width : 100%; height : 100%; }
       display:-webkit-box;
       -webkit-box-orient:vertical;
       -webkit-line-clamp:2;
+      display: flex;
     }
     .box{
       margin: 0 40rpx 20rpx 40rpx;
