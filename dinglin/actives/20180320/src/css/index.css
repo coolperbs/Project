@@ -83,6 +83,7 @@ body { font-size : 12px; }
 .poparea  .pop.form { height : auto; }
 .pop.form .list { margin: 40px 20px 20px 20px; }
 .pop.form .list .row { margin-bottom : 10px; border : solid 1px #5896FF; border-radius: 30px; overflow: hidden; padding : 0 10px; }
+.pop.form .list .row.info { border : none; color : red; }
 .pop.form .list .row:last-child { margin-bottom : 0; }
 .pop.form .list select,
 .pop.form .list input { color : #444; background-color: #fff; width : 100%; height: 40px; line-height: 40px; font-size : 16px; display: block; border : none; }
