@@ -29,10 +29,14 @@ handle = {
       method: object.method || 'get',
       header: object.header || {},
       success: function (res) {
-        handle.responseWrapper(res.data, object.callback);
+        if(res.statusCode!=200){
+          handle.responseWrapper({code:9999,message:'网络错误'}, object.callback);
+        }else {
+          handle.responseWrapper(res.data, object.callback);
+        }
       },
       fail: function (res) {
-        handle.responseWrapper(res.data, object.callback);
+        handle.responseWrapper({code:9999,message:'网络错误'}, object.callback);
       }
     });
   },
@@ -40,7 +44,6 @@ handle = {
     var res = (typeof dataStr == 'string' ? JSON.parse(dataStr) : dataStr) || null;
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
-      util.showError(JSON.stringify(res));
       util.showToast({
         title: res.message || res.msg || ''
       });

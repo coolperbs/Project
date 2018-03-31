@@ -10,7 +10,8 @@
     "pages/questionlib/questionlib",
     "pages/mine/mine",
     "pages/shop/shop",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/questionin/questionin"
   ],
   "window": {
     "backgroundTextStyle": "#fff",

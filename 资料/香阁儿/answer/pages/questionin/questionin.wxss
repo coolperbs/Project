@@ -1,0 +1,77 @@
+.get-in .box {
+  background: linear-gradient(to bottom, #423ceb, #bc0fb5);
+  width: 640rpx;
+  min-height: 100rpx;
+  position: relative;
+  margin: 0 auto 20rpx auto;
+  border-radius: 22rpx;
+  overflow: hidden; }
+  .get-in .box .box-in {
+    position: absolute;
+    top: 4rpx;
+    right: 4rpx;
+    bottom: 4rpx;
+    left: 4rpx;
+    background: #26014f;
+    border-radius: 22rpx; }
+.get-in .select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20rpx;
+  height: 92rpx; }
+  .get-in .select-box .label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 34rpx; }
+  .get-in .select-box .select {
+    color: #fff;
+    font-size: 36rpx;
+    position: relative;
+    margin-right: 50rpx; }
+    .get-in .select-box .select:before {
+      position: absolute;
+      right: -50rpx;
+      top: 0;
+      content: ' ';
+      background: transparent;
+      width: 15rpx;
+      height: 15rpx;
+      box-sizing: border-box;
+      border-bottom: 4rpx solid #fff;
+      border-right: 4rpx solid #fff;
+      transform: rotate3d(0, 0, 1, 45deg) translate3d(0, 20rpx, 0); }
+.get-in .box.name-box {
+  height: 300rpx; }
+.get-in .name {
+  height: 300rpx;
+  margin: 40rpx; }
+.get-in .box.input {
+  min-height: 120rpx;
+  background: linear-gradient(to bottom, #fd2f59, #fd2f9e); }
+  .get-in .box.input.right {
+    background: linear-gradient(to bottom, #0cd08f, #42f56b); }
+.get-in .choice {
+  color: #fff;
+  text-align: center;
+  font-size: 34rpx;
+  height: 100%; }
+.get-in .choice-place-holder {
+  color: rgba(255, 255, 255, 0.2); }
+.get-in .btn-out {
+  background: linear-gradient(to top, #423ceb, #bc0fb5);
+  width: 460rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  position: relative;
+  margin: 40rpx auto 50rpx auto; }
+  .get-in .btn-out .btn-in {
+    background: linear-gradient(to top, #c60054, #f7f417);
+    position: absolute;
+    top: 4rpx;
+    right: 4rpx;
+    bottom: 4rpx;
+    left: 4rpx;
+    border-radius: 50rpx;
+    color: white; }
+
+/*# sourceMappingURL=questionin.wxss.map */

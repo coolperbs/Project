@@ -1,24 +1,85 @@
 // pages/questionlib/questionlib.js
+import {questionlib} from '../../services/index'
+import utils from '../../common/utils/utils'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tab: 1
+    tab: 2,
+    currentPage: 1,
+    listArr: [],
+    isEmpty: false,
+    loading: false
   },
   changeTab (e) {
+    let tab = e.currentTarget.dataset.tab
+    if (tab == this.data.tab) {
+      return
+    }
     this.setData({
-      tab: e.currentTarget.dataset.tab
+      tab: tab,
+      listArr: [],
+      isEmpty: false,
+      currentPage: 1
+    })
+    this.loadEvt()
+  },
+  goin () {
+    wx.navigateTo({
+      url: '../questionin/questionin'
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  loadEvt () {
+    if (this.data.loading || this.data.isNoMore) {
+      return
+    }
+    this.setData({
+      loading: true
+    })
+    questionlib.getList({currentPage: this.data.currentPage, status: this.data.tab,pageSize:20}, res => {
+      this.setData({
+        loading: false
+      })
+      if (res.code != '0000') {
+        utils.showToast({
+          title: res.message
+        })
+        return
+      }
+      let result = res.data.result || [];
+      result = result.map((el) => {
+        el.options = JSON.parse(el.options);
+        return el
+      })
+      this.setData({
+        listArr: [...this.data.listArr, ...result]
+      })
+      if (this.data.listArr.length <= 0) {
+        this.setData({
+          isEmpty: true
+        })
+      }
+      console.log(res)
+    })
   },
-
+  loadMoreEvt () {
+    this.setData({
+      currentPage: this.data.currentPage + 1
+    })
+    this.loadEvt();
+  },
+  onShow(){
+    this.setData({
+      tab: 2,
+      listArr: [],
+      isEmpty: false,
+      currentPage: 1
+    })
+    this.loadEvt()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,12 +87,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -84,6 +84,12 @@
 					"name": "题库",
 					"pathName": "pages/questionlib/questionlib",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "题库录入",
+					"pathName": "pages/questionin/questionin",
+					"query": ""
 				}
 			]
 		}
