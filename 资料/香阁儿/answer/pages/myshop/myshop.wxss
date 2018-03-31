@@ -12,7 +12,7 @@ Page { width : 100%; height : 100%; }
 .list .item:nth-child( even ):before { content : ''; height : 100%; width : 1px; background-color: rgba( 188, 15, 181, 0.3 ); position: absolute; left : 0; top : 0;  }
 
 .list .item .icon { margin-top : 20rpx; width : 128rpx; height : 128rpx; }
-.list .item .desc { font-size : 32rpx; }
+.list .item .desc { font-size : 32rpx; margin-bottom : 20rpx; }
 
 .list .item .btn { margin-bottom : 20rpx; box-shadow: 0 5rpx 5rpx rgba(0, 0, 0, 0.2); width : 452rpx; height : 92rpx; border-radius: 90rpx; left : 4rpx; top : 4rpx; position: relative; z-index: 20; background: linear-gradient( #e7a62a, #d64e41); border : solid 1px #ffb11c; color : #fff;  }
 /*.list .item .btn-wrapper { margin-bottom : 20rpx; border-radius: 90rpx; height : 60rpx; width : 180rpx; z-index: 1; background: linear-gradient( #fd15c0, #7507ed); box-shadow: 0 10rpx 10rpx rgba( 0, 0, 0, 0.3 ) }*/
@@ -38,7 +38,6 @@ Page { width : 100%; height : 100%; }
 
 .poparea .pop .close { width : 60rpx; height : 60rpx; border-radius: 50%; border : solid 1px rgba( 255, 255, 255, 0.6 ); background-color: rgba( 0,0,0, 0.1 ); display: flex; justify-content: center; align-items: center; position: absolute; bottom : -110rpx; }
 .poparea .pop .close image { width : 40rpx; height : 40rpx; }
-
 
 
 

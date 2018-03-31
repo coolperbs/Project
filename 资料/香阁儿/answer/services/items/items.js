@@ -11,12 +11,24 @@ handle = {
       callback : callback
     } );
   },
+  getUserList : function( callback ) {
+    ajax.request( {
+      url : app.HOST_AJAX + '/app/user/ware/list',
+      callback : callback
+    } );
+  },
   buyItem : function( data, callback ) {
     ajax.request( {
       url : app.HOST_AJAX + '/app/pay/wechatPrePay',
       data : data,
       callback : callback
     } );	
+  },
+  useItem : function( wareId, callback ) {
+    ajax.request( {
+      url : app.HOST_AJAX + '/app/user/ware/use/' + wareId,
+      callback : callback
+    } );      
   }
 }
 

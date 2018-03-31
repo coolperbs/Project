@@ -40,7 +40,7 @@ handle = {
     var res = (typeof dataStr == 'string' ? JSON.parse(dataStr) : dataStr) || null;
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
-      util.showError(JSON.stringify(res));
+      //util.showError(JSON.stringify(res));
       util.showToast({
         title: res.message || res.msg || ''
       });

@@ -1,15 +1,9 @@
 <view class="content">
 	<view class="list-wrapper">
 		<scroll-view scroll-y="{{true}}" class="list">
-			<view class="item" catchtap="showPop" data-index="{{index}}" wx:for="{{pageInfo}}" wx:key="index">
+			<view class="item" catchtap="showPop" wx:for="{{pageInfo}}" wx:key="index" data-index="{{index}}">
 				<image class="icon" src="{{item.image}}"></image>
 				<view class="desc">{{ item.name }}</view>
-				<!--<view class="btn-wrapper">-->
-					<view class="coin btn" data-id="{{ item.wareId }}" catchtap="buy">
-						<image src="../../static/images/coin.png"></image>
-						{{ item.price }}元
-				<!--</view>-->
-				</view>
 			</view>
 		</scroll-view>
 	</view>
@@ -24,15 +18,15 @@
 				<view class="name">{{pageInfo[currentIndex].name}}</view>
 				<view class="desc">{{pageInfo[currentIndex].desc}}</view>
 			</view>
-			<!--<view class="act">
+			<view class="act">
 				<view class="num">剩余数量：{{pageInfo[currentIndex].wareNum}}</view>
 				<view class="btn" data-id="{{pageInfo[currentIndex].wareId}}" data-index="{{currentIndex}}" catchtap="useItem">使用</view>
-			</view>-->
+			</view>
 			<view class="close" catchtap="hidePop">
 				<image src="../../static/images/cross-white.png"/>
 			</view>
 		</view>
 		<view class="mask" catchtap="hidePop"></view>
-	</view>	
+	</view>
 </view>
 
