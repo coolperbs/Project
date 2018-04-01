@@ -1,0 +1,43 @@
+<!--pages/questionin/questionin.wxml-->
+<form class="get-in" bindsubmit="formSubmit">
+	<view class="box">
+		<view class="box-in">
+			<view class="select-box">
+				<view class="label">分类</view>
+				<picker bindchange="bindPickerChange" name="type" value="{{index}}" range-key="name" range="{{typeArr}}">
+					<view class="select">
+						{{typeArr[index].name}}
+					</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+	<view class="box name-box">
+		<view class="box-in">
+			<textarea class="name" name="title" placeholder="请输入题目"></textarea>
+		</view>
+	</view>
+	<view class="box input right">
+		<view class="box-in">
+			<input type="text" class="choice" name="right" place-holder-calss="choice-place-holder" placeholder="请输入正确答案"/>
+		</view>
+	</view>
+	<view class="box input">
+		<view class="box-in">
+			<input type="text" class="choice" name="opt1" place-holder-calss="choice-place-holder" placeholder="请输入错误答案"/>
+		</view>
+	</view>
+	<view class="box input">
+		<view class="box-in">
+			<input type="text" class="choice" name="opt2" place-holder-calss="choice-place-holder" placeholder="请输入错误答案"/>
+		</view>
+	</view>
+	<view class="box input">
+		<view class="box-in">
+			<input type="text" class="choice" name="opt3" place-holder-calss="choice-place-holder" placeholder="请输入错误答案"/>
+		</view>
+	</view>
+	<view class="btn-out">
+		<button class="btn-in" formType="submit">提交</button>
+	</view>
+</form>

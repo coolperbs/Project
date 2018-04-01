@@ -11,7 +11,8 @@
     "pages/mine/mine",
     "pages/shop/shop",
     "pages/myshop/myshop",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/questionin/questionin"
   ],
   "window": {
     "backgroundTextStyle": "#fff",

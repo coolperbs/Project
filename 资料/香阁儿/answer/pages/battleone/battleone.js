@@ -41,7 +41,49 @@ Page({
     PVA_isConnect: false,
     aiInfo: {}
   },
+  initCanvas () {
+    let sys = wx.getSystemInfoSync();
+    let ratio = sys.windowWidth * (150 / 750);
+    let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
+    circle.setLineWidth(4);
+    circle.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, 1.5 * Math.PI, false);
+    circle.setStrokeStyle('#381b5a');
+    circle.stroke();
+    circle.draw();
 
+    let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
+    circle2.setLineWidth(4);
+    circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, -0.5 * Math.PI, false);
+    circle2.setStrokeStyle('#e10083');
+    circle2.stroke();
+    circle2.draw();
+  },
+  clearCountAni (callback) {
+    if (this.countTimer) {
+      console.warn('进度条清空')
+      clearInterval(this.countTimer)
+    }
+    callback && callback()
+  },
+  startCountAni () {
+    let sys = wx.getSystemInfoSync();
+    let ratio = sys.windowWidth * (150 / 750);
+    let circle2 = this.canvasCircle2
+    let time = 1000;
+    let count = 0;
+    this.countTimer = setInterval(() => {
+      if (count >= time) {
+        clearInterval(this.countTimer)
+      }
+      count += 1;
+      let endPath = (-0.5 * Math.PI) + count * (2 * Math.PI / time);
+      circle2.setLineWidth(4);
+      circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, endPath, false);
+      circle2.setStrokeStyle('#e10083');
+      circle2.stroke();
+      circle2.draw();
+    }, 10)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -81,6 +123,9 @@ Page({
     battle.PVP_onMessage((res) => {
       if (res.code != '0000') {
         this.closeConnect();
+        setTimeout(() => {
+          wx.navigateBack(1)
+        }, 1500)
         return
       }
       res = res.data;
@@ -104,7 +149,11 @@ Page({
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
-        this.endGame(res)
+        setTimeout(() => {
+          this.subjectAnimation(4, () => {
+            this.endGame(res)
+          })
+        }, 1000)
       }
       if (res.type == '6') {
         this.clearTheInterval();
@@ -142,6 +191,11 @@ Page({
       el.pointBar = 0;
       return el;
     });
+    let index = roomUsers.findIndex((el) => {
+      return el.id == this.data.userId;
+    });
+    let temp = roomUsers.splice(index, 1);
+    roomUsers.unshift(temp[0]);
     this.setData({
       roomUsers: roomUsers
     })
@@ -232,6 +286,7 @@ Page({
         matchCenterData: matchCenterAni.export(),
         matchData: matchAni.export()
       });
+      this.initCanvas();
       setTimeout(() => {
         this.setData({
           MATCH: false
@@ -344,18 +399,21 @@ Page({
    * */
   startTheInterval () {
     this.clearTheInterval(() => {
-      this.Timer = setInterval(() => {
-        if (this.data.countDownTime <= 0) {
-          this.clearTheInterval(() => {
-            console.log('用户到时间,自动答错 获取新题目')
-            this.answerSubject();
-          });
-        } else {
-          this.setData({
-            countDownTime: this.data.countDownTime - 1
-          })
-        }
-      }, 1000);
+      this.clearCountAni(() => {
+        this.startCountAni();
+        this.Timer = setInterval(() => {
+          if (this.data.countDownTime <= 0) {
+            this.clearTheInterval(() => {
+              console.log('用户到时间,自动答错 获取新题目')
+              this.answerSubject();
+            });
+          } else {
+            this.setData({
+              countDownTime: this.data.countDownTime - 1
+            })
+          }
+        }, 1000);
+      })
     });
   },
   /**
@@ -408,6 +466,7 @@ Page({
       if (!this.data.hasMore) {
         //获取对战结果
         /*结果展示2秒*/
+        this.clearCountAni();
         this.clearTheInterval();
         setTimeout(() => {
           this.subjectAnimation(4, () => {
@@ -417,6 +476,7 @@ Page({
         return
       }
       //提前结束这道题
+      this.clearCountAni();
       this.clearTheInterval(() => {
         /*结果展示2秒*/
         setTimeout(() => {
@@ -657,45 +717,7 @@ Page({
    * 在来一把
    * */
   playAgain () {
-    this.setData({
-      /*场景*/
-      LOADING: true,
-      MATCH: false,
-      /*动画*/
-      loadingData: {},
-      matchData: {},
-      matchLeftData: {},
-      matchRightData: {},
-      matchCenterData: {},
-      qTypeData: {},
-      qListData: {},
-      /*页面信息*/
-      roomId: '',
-      level: '',
-      roomUsers: [],
-      roomOwner: '',
-      totalPoint: '',
-      userId: '',
-      subject: {},
-      subjectList: [],
-      subjectCount: 0,
-      hasMore: true,
-      countDownTime: 10,
-      isAnswered: false,
-      result: {},
-      isEnd: false,
-      WINNER: false,
-      errorShaking: false,
-      PVP_isConnect: false,
-      /*ai*/
-      vsAi: 'undefined',
-      PVA_isConnect: false,
-      aiInfo: {}
-    })
-    //动画重置
-    this.animationEvt('reset', () => {
-      this.initPage();
-    })
+    wx.navigateBack(1)
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -708,7 +730,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    this.closeConnect()
+    this.closeConnect();
   },
   /**
    * 用户点击右上角分享

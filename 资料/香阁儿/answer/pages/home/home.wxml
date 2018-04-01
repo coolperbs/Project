@@ -1,31 +1,58 @@
 <image mode="scaleToFill" src="../../static/images/home-point.png" class="page-bg fade-out-in-animation"></image>
 <image mode="aspectFit" src="../../static/images/home-logo.png" class="home-logo up-down-animation"></image>
 <scroll-view scroll-y="true" class="home-scroll">
-    <view class="home-container">
-        <button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="rank">
-            <image mode="aspectFit" src="../../static/images/home-rank.png"></image>
-        </button>
-        <button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="friendBattle">
-            <image mode="aspectFit" src="../../static/images/friend-battle.png"></image>
-        </button>
-        <view class="home-btn-group">
-            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="billboard">
-                <image mode="aspectFit" src="../../static/images/home-record.png"></image>
-            </button>
-            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="questionLib">
-                <image mode="aspectFit" src="../../static/images/home-lib.png"></image>
-            </button>
-            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="mine">
-                <image mode="aspectFit" src="../../static/images/home-mine.png"></image>
-            </button>
-        </view>
-        <view class="home-btn-bottom">
-            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="shop">
-                <image mode="aspectFit" src="../../static/images/home-shop.png"></image>
-            </button>
-            <button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="message">
-                <image mode="aspectFit" src="../../static/images/home-message.png"></image>
-            </button>
-        </view>
-    </view>
+	<view class="home-container">
+		<button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="rank">
+			<image mode="aspectFit" src="../../static/images/home-rank.png"></image>
+		</button>
+		<button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="friendBattle">
+			<image mode="aspectFit" src="../../static/images/friend-battle.png"></image>
+		</button>
+		<view class="home-btn-group">
+			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="billboard">
+				<image mode="aspectFit" src="../../static/images/home-record.png"></image>
+			</button>
+			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="questionLib">
+				<image mode="aspectFit" src="../../static/images/home-lib.png"></image>
+			</button>
+			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="mine">
+				<image mode="aspectFit" src="../../static/images/home-mine.png"></image>
+			</button>
+		</view>
+		<view class="home-btn-bottom">
+			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="shop">
+				<image mode="aspectFit" src="../../static/images/home-shop.png"></image>
+			</button>
+			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="message">
+				<image mode="aspectFit" src="../../static/images/home-message.png"></image>
+			</button>
+		</view>
+	</view>
 </scroll-view>
+
+<view class="modal" wx:if="{{showCheck}}">
+	<view class="content">
+		<view class="title">
+			<image class="title-image" src="../../static/images/modal.png"></image>
+		</view>
+		<view class="body">
+			<scroll-view scroll-y="true" class="body">
+				<view class="item-list">
+					<view class="item" wx:for="{{checkData}}" wx:key="{{index}}">
+					<view class="item-image-box">
+						<image class="image" src="{{item.image}}"></image>
+						<!--<view wx:if="{{item.hanGet}}" class="check">已领</view>-->
+						<!--<view wx:if="{{!item.canGet&&!item.hanGet}}" class="uncheck">失效</view>-->
+					</view>
+						<view class="item-name" style="font-size: 30rpx;font-weight: bold">{{item.day}}</view>
+						<view class="item-name">{{item.name}}</view>
+					</view>
+				</view>
+			</scroll-view>
+			<button class="modal-btn" bindtap="check">领取</button>
+		</view>
+	</view>
+	<view class="close" bindtap="closeModal">
+		<image class="close-image" src="../../static/images/close.png"></image>
+	</view>
+</view>

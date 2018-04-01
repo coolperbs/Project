@@ -1,2 +1,22 @@
-<!--pages/questionlib/questionlib.wxml-->
-<text>题库</text>
+<view class="content">
+	<view class="nav">
+		<view class="tab {{tab==2?'current':''}}" data-tab="2" catchtap="changeTab">已通过</view>
+		<view class="tab {{tab==3?'current':''}}" data-tab="3" catchtap="changeTab">未通过</view>
+		<view class="tab {{tab==1?'current':''}}" data-tab="1" catchtap="changeTab">待审核</view>
+	</view>
+	<view class="list-wrapper">
+		<scroll-view scroll-y="true" class="list" bindscrolltolower="loadMoreEvt">
+			<view class="item" wx:for="{{listArr}}" wx:key="{{index}}">
+				<view class="name"><text class="type">文化</text>{{item.title}}</view>
+				<view class="box">
+					<view class="q {{itemName.isRight?'active':''}}" wx:for="{{item.options}}" wx:for-item="itemName" wx:for-index="idx" wx:key="{{idx}}">{{itemName.option}}</view>
+				</view>
+			</view>
+			<view class="loading" wx:if="{{isEmpty}}">暂时还没有您的记录哦~</view>
+			<view class="loading" wx:if="{{loading}}">加载中...</view>
+		</scroll-view>
+	</view>
+	<view class="btn-out">
+		<button class="btn-in" bindtap="goin">我要出题</button>
+	</view>
+</view>

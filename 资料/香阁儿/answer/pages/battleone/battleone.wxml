@@ -53,7 +53,13 @@
 		</view>
 		<view class="battle-title">
 			<view class="vs {{!WINNER?'':'active'}}">
-				<view class="count">{{countDownTime}}</view>
+			<view class="vs-box">
+				<canvas class="circle" style="z-index: -99;" canvas-id="canvasCircle">
+				</canvas>
+				<canvas class="circle" style="" canvas-id="canvasArcCir">
+				</canvas>
+				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
+			</view>
 				<image class="vs-png" src="../../static/images/vs-small.png"></image>
 			</view>
 			<view class="winner {{WINNER?'active':''}}">
@@ -69,7 +75,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image wx:if="{{subject.doublePoint}}" class="q-double" src="../../static/images/coin.png"></image>
+					<image wx:if="{{subject.doublePoint}}" class="q-double" src="../../static/images/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
@@ -85,11 +91,13 @@
 				<image class="item-icon" src="../../static/images/coin.png"></image>
 				<view class="item-label">金币</view>
 				<view class="item-text">+{{result.gold}}</view>
+				<view class="item-more" wx:if="{{result.upGold&&result.upGold>0}}">+{{result.upGold}}</view>
 			</view>
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/crown.png"></image>
 				<view class="item-label">EXP</view>
 				<view class="item-text">+{{result.exp}}</view>
+				<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>
 			</view>
 			<button class="continue" bindtap="playAgain">
 				继续挑战

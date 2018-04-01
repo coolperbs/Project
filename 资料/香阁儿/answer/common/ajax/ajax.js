@@ -29,10 +29,14 @@ handle = {
       method: object.method || 'get',
       header: object.header || {},
       success: function (res) {
-        handle.responseWrapper(res.data, object.callback);
+        if(res.statusCode!=200){
+          handle.responseWrapper({code:9999,message:'网络错误'}, object.callback);
+        }else {
+          handle.responseWrapper(res.data, object.callback);
+        }
       },
       fail: function (res) {
-        handle.responseWrapper(res.data, object.callback);
+        handle.responseWrapper({code:9999,message:'网络错误'}, object.callback);
       }
     });
   },
@@ -62,6 +66,7 @@ _fn = {
       token: userInfo.token || ''
     };
 
+    console.log(result.token)
     if (object && object.url && _fn.isInwhiteList(object.url)) {
       result.sys = JSON.stringify(sysInfo) || '';
     }

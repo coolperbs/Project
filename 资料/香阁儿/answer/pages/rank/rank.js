@@ -64,7 +64,7 @@ Page({
     for (let i = 0; i < data.danGradingList.length; i++) {
       let item = data.danGradingList[i];
       item['processCountArr'] = [];
-      for (var k = item.processCount; k >= 0; k--) {
+      for (var k = item.processCount||0; k >= 0; k--) {
         item['processCountArr'].push({active: false})
       }
       if (item.level < userCurrentLevel) {

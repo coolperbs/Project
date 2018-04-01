@@ -28,25 +28,25 @@ Page({
     qTypeData: {},
     qListData: {},
     isEnd: false,
-    errorShaking: false
+    errorShaking: false,
+    isStart: false
   },
-  onReady () {
+  initCanvas () {
     let sys = wx.getSystemInfoSync();
-    let ratio = (150 / 750)*sys.pixelRatio;
+    let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
-    circle.setLineWidth(8 * ratio);
-    circle.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, 1.5 * Math.PI, false);
-    circle.setStrokeStyle('#ffffff');
+    circle.setLineWidth(4);
+    circle.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, 1.5 * Math.PI, false);
+    circle.setStrokeStyle('#381b5a');
     circle.stroke();
     circle.draw();
 
     let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
-    circle2.setLineWidth(8 * ratio);
-    circle2.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, -0.5 * Math.PI, false);
+    circle2.setLineWidth(4);
+    circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, -0.5 * Math.PI, false);
     circle2.setStrokeStyle('#e10083');
     circle2.stroke();
     circle2.draw();
-
   },
   clearCountAni (callback) {
     if (this.countTimer) {
@@ -56,20 +56,19 @@ Page({
   },
   startCountAni () {
     let sys = wx.getSystemInfoSync();
-    let ratio = (150 / 750)*sys.pixelRatio;
-    console.log(sys)
+    let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2
     let time = 1000;
     let count = 0;
     this.countTimer = setInterval(() => {
-      console.log(count)
+
       if (count >= time) {
         clearInterval(this.countTimer)
       }
       count += 1;
       let endPath = (-0.5 * Math.PI) + count * (2 * Math.PI / time);
-      circle2.setLineWidth(8 * ratio);
-      circle2.arc(75 * ratio, ratio * 75, 70 * ratio, -0.5 * Math.PI, endPath, false);
+      circle2.setLineWidth(4);
+      circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, endPath, false);
       circle2.setStrokeStyle('#e10083');
       circle2.stroke();
       circle2.draw();
@@ -114,6 +113,15 @@ Page({
       console.log('好友对战接收到消息了:----------------------');
       if (res.code != '0000') {
         this.closeConnect();
+        setTimeout(() => {
+          if (this.data.roomOwner == this.data.userId) {
+            wx.navigateBack(1)
+          } else {
+            wx.redirectTo({
+              url: '../home/home'
+            })
+          }
+        }, 1500);
         return
       }
       res = res.data;
@@ -126,6 +134,9 @@ Page({
       }
       if (res.type == 3) {
         console.log('得到题目了:-----------------------------');
+        this.setData({
+          isStart: true
+        })
         if (this.data.showRoom) {
           this.setData({
             subjectCount: 1
@@ -147,14 +158,54 @@ Page({
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
-        this.endGame(res)
+        this.setData({
+          showRoom: false
+        });
+        setTimeout(() => {
+          this.subjectAnimation(4, () => {
+            this.endGame(res)
+          })
+        }, 1000)
       }
       if (res.type == '6') {
-        //todo 这里可能有问题 需要核对
-        this.clearTheInterval();
-        this.subjectAnimation(4, () => {
-          this.sendMessage({type: 3})
-        })
+        //判断有人逃跑 游戏没开始 房间解散 游戏开始后判断少于2个人 就结束游戏
+
+        let roomUsers = this.data.roomUsers;
+        let runner = roomUsers.findIndex((el) => {
+          return el.id == res.userId
+        });
+        roomUsers[runner] = {point: 0,};
+        this.setData({
+          roomUsers: roomUsers
+        });
+        //计算还有几个用户
+        let count = 0;
+        roomUsers.map((el) => {
+          if (el.id) {
+            count++
+          }
+        });
+        this.updateRankList();
+        //区分开始对战没有
+        if (this.data.isStart) {
+          if (count < 2) {
+            console.log('人都跑了,去拿答案了');
+            this.clearTheInterval();
+            this.subjectAnimation(4, () => {
+              this.sendMessage({type: 3})
+            })
+          }
+        } else {
+          if (res.userId == this.data.roomOwner) {
+            //房主都跑了
+            this.clearTheInterval();
+            this.subjectAnimation(4, () => {
+              this.sendMessage({type: 3})
+            })
+          }
+        }
+
+
       }
     })
   },
@@ -180,8 +231,11 @@ Page({
     console.log(res);
     console.log('房间信息更新:-----------------');
     let that = this;
-    let roomUsers = res.map((el) => {
+    let sys = wx.getSystemInfoSync();
+    let roomUsers = res.map((el, index) => {
       el.point = 0;
+      el['scale'] = sys.windowWidth * (130 / 750);
+      el['rank'] = index;
       if (el.owner) {
         that.setData({
           roomOwner: el.id
@@ -249,6 +303,7 @@ Page({
       this.setData({
         roomAniData: room.export()
       });
+      this.initCanvas();
       setTimeout(() => {
         this.setData({
           showRoom: false
@@ -320,11 +375,13 @@ Page({
     this.setData({
       roomUsers: roomUser
     });
+    this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
       if (!this.data.hasMore) {
         //获取对战结果
         /*结果展示2秒*/
+        this.clearCountAni();
         this.clearTheInterval();
         setTimeout(() => {
           this.subjectAnimation(4, () => {
@@ -334,6 +391,7 @@ Page({
         return
       }
       //提前结束这道题
+      this.clearCountAni();
       this.clearTheInterval(() => {
         /*结果展示2秒*/
         setTimeout(() => {
@@ -343,6 +401,25 @@ Page({
         }, 2000)
       })
     }
+  },
+  /**
+   * updateRankList
+   * */
+  updateRankList () {
+    let roomUser = this.data.roomUsers;
+    let sortData = [...roomUser];
+    sortData.sort((a, b) => {
+      return b.point - a.point
+    });
+    for (var i = 0; i < roomUser.length; i++) {
+      let index = sortData.findIndex((el) => {
+        return el.id == roomUser[i].id
+      })
+      roomUser[i].rank = index;
+    }
+    this.setData({
+      roomUsers: roomUser
+    })
   },
   /**
    * 题目选项过滤
@@ -565,17 +642,10 @@ Page({
     }
   },
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.closeConnect();
   },
   /**
    * 用户点击右上角分享
