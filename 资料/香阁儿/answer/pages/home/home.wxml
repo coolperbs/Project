@@ -23,6 +23,9 @@
 			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="shop">
 				<image mode="aspectFit" src="../../static/images/home-shop.png"></image>
 			</button>
+			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="userinfo">
+				<image mode="aspectFit" src="../../static/images/home-shop.png"></image>
+			</button>
 			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="message">
 				<image mode="aspectFit" src="../../static/images/home-message.png"></image>
 			</button>

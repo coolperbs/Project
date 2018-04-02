@@ -57,7 +57,10 @@ Page({
         utils.navigateTo('../questionlib/questionlib');//题库
         break;
       case 'mine':
-        utils.navigateTo('../mine/mine');//我的
+        utils.navigateTo('../myshop/myshop');//我的
+        break;
+      case 'userinfo':
+        utils.navigateTo('../userinfo/userinfo');//我的
         break;
       case 'shop':
         utils.navigateTo('../shop/shop');//商店

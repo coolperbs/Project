@@ -1,9 +1,6 @@
 import {items} from '../../services/index';
 
 Page( {
-	data : {
-		showPop : true
-	},
 	onShow : function() {
 		let self = this;
 		items.getList( function( res ) {
