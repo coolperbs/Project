@@ -54,6 +54,11 @@
             filter: grayscale(100%);
           }
         }
+        .limit{
+          position: absolute;
+          bottom: 0;
+          font-size: 18rpx;
+        }
       }
     }
     .scroll-box{
@@ -233,4 +238,84 @@
       }
     }
   }
+}
+.modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .modal-content{
+    background: #fff;
+    border-radius: 10rpx;
+    width: 450rpx;
+    height: 500rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    .modal-head{
+      position: relative;
+      height:90rpx;
+      .image-box{
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 50%;
+        border:8rpx solid #9421ff;
+        overflow: hidden;
+        transform: translate3d(0,-50rpx,0);
+        background: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        .head-image{
+          width: 100rpx;
+          height: 100rpx;
+        }
+      }
+      .close{
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: transparent;
+        color: #9421ff;
+        &:before{
+          background: transparent;
+        }
+      }
+    }
+    .modal-body{
+      .name{
+        background: #9421ff;
+        color: #fff;
+        font-size: 36rpx;
+        font-weight: bold;
+        text-align: center;
+        height: 70rpx;
+        line-height: 70rpx;
+      }
+    }
+    .modal-foot{
+      margin-top: auto;
+     .btn{
+       border-radius: 20rpx;
+       background-color: #e10083;
+       box-shadow: 0 10rpx 20rpx 0 rgba(225, 0, 131, 0.51);
+       width: 300rpx;
+       height: 100rpx;
+       line-height: 100rpx;
+       color: #fff;
+       margin-bottom: 40rpx;
+       font-size: 40rpx;
+     }
+    }
+  }
+}
+button::after{
+  border: none;
 }

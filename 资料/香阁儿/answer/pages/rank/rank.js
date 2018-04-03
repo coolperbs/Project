@@ -44,23 +44,23 @@ Page({
     //用户技能处理
     let skills = data.user.skillInfos || [];
     //把道具拆开单独的
+    //todo 是否直接取
     let indexA = skills.findIndex((el) => {
       return el.type == 1
-    })
-    let skillA = indexA > -1 ? skills[indexA] : null;
+    });
+    let skillA = skills[indexA];
     let indexB = skills.findIndex((el) => {
       return el.type == 2
-    })
-    let skillB = indexB > -1 ? skills[indexB] : null;
+    });
+    let skillB = skills[indexB];
     let indexC = skills.findIndex((el) => {
       return el.type == 3
-    })
-    let skillC = indexC > -1 ? skills[indexC] : null;
+    });
+    let skillC = skills[indexC];
     let indexD = skills.findIndex((el) => {
       return el.type == 4
-    })
-    let skillD = indexD > -1 ? skills[indexD] : null;
-    //todo 后台重新返回完整的
+    });
+    let skillD = skills[indexD];
     //1 3 限时
     this.setData({
       skillA: skillA,
@@ -144,11 +144,11 @@ Page({
     hours = this.checkTime(days * 24 + hours);
     minutes = this.checkTime(minutes);
     if (leftTime > 0) {
-     if(hours>0){
-       return hours + ':' + minutes + ':' + seconds
-     }else {
-       return minutes + ':' + seconds
-     }
+      if (hours > 0) {
+        return hours + ':' + minutes + ':' + seconds
+      } else {
+        return minutes + ':' + seconds
+      }
     } else {
       return null
     }
