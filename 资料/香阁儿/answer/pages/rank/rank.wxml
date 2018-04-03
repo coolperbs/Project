@@ -8,7 +8,18 @@
 				<view class="icon-count">{{rankData.user.gold}}</view>
 			</view>
 			<view class="skills">
-				<image class="skill {{item.active?'':'active'}}" wx:for="{{skills}}" wx:key="{{index}}" src="../../static/images/skill{{index+1}}.png"></image>
+				<view class="skill-box">
+					<image class="skill {{skillA?'':'active'}}" src="../../static/images/skill1.png"></image>
+				</view>
+				<view class="skill-box">
+					<image class="skill {{skillB?'':'active'}}" src="../../static/images/skill2.png"></image>
+				</view>
+				<view class="skill-box">
+					<image class="skill {{skillC?'':'active'}}" src="../../static/images/skill3.png"></image>
+				</view>
+				<view class="skill-box">
+					<image class="skill {{skillD?'':'active'}}" src="../../static/images/skill4.png"></image>
+				</view>
 			</view>
 		</view>
 		<view class="scroll-box">

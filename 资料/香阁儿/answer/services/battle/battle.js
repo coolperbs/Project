@@ -42,9 +42,11 @@ export default {
     this.PVP_socket.onMessage(res => {
       var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
-        utils.showToast({
-          title: res.msg || res.message || ''
-        });
+        if (this.PVP_isConnect) {
+          utils.showToast({
+            title: res.msg || res.message || ''
+          });
+        }
         callback(res);
       }
       callback(res);
@@ -87,9 +89,11 @@ export default {
     this.PVA_socket.onMessage(res => {
       var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
-        utils.showToast({
-          title: res.msg || res.message || ''
-        });
+        if (this.PVA_isConnect) {
+          utils.showToast({
+            title: res.msg || res.message || ''
+          });
+        }
         callback(res);
       }
       callback(res);
@@ -132,9 +136,11 @@ export default {
     this.PVF_socket.onMessage(res => {
       var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
       if (res.code != '0000') {
-        utils.showToast({
-          title: res.msg || res.message || ''
-        });
+        if (this.PVF_isConnect) {
+          utils.showToast({
+            title: res.msg || res.message || ''
+          });
+        }
         callback(res);
       }
       callback(res);

@@ -27,11 +27,15 @@ Page({
       if (!res) {
         login.login((res2) => {
           if (res2) {
-            util.redirectTo('../home/home')
+           setTimeout(()=>{
+             util.redirectTo('../home/home')
+           },1500)
           }
         });
       } else {
-        util.redirectTo('../home/home')
+        setTimeout(()=>{
+          util.redirectTo('../home/home')
+        },1500)
       }
     })
   },

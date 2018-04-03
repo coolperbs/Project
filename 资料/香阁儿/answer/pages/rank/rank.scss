@@ -42,6 +42,9 @@
         display: flex;
         justify-content: flex-end;
         margin-right: 50rpx;
+        .skill-box{
+          position: relative;
+        }
         .skill{
           width: 64rpx;
           height: 64rpx;
