@@ -88,6 +88,7 @@
 		getFormData : function() {
 			var result = {},
 				jForm = $( '#J_Form' ),
+				urlParam = _fn.getUrlParam(),
 				type;
 
 			result.username = $.trim( jForm.find( 'input[name=username]' ).val() );
@@ -95,6 +96,7 @@
 			result.bankCard = $.trim( jForm.find( 'input[name=bankCard]' ).val() );
 			result.address = $.trim( jForm.find( 'input[name=address]' ).val() );
 			result.phone =  $.trim( jForm.find( 'input[name=phone]' ).val() );
+			result.sourceid = urlParam.sourceid || '';
 			type = $.trim( jForm.find('select[name=type]').val() * 1 );
 			if ( type == 1 ) {
 				result.level = '88元档';
@@ -132,6 +134,24 @@
 			}
 			return result;
 		},
+
+		getUrlParam : function() {
+			var url = window.location.href,
+				i, u, result = {}, k, v;
+
+			url = url.split( '?' )[1] || '';
+			url = url.split( '#' )[0] || '';
+			url = url.split( '&' );
+			for ( i = 0; u = url[i]; ++i ) {
+				u = u || '';
+				u = u.split( '=' );
+				if ( u[0] && u[1] ) {
+					result[u[0]] = u[1];
+				}
+			}
+			return result;
+		},
+
 		checkData : function( data ) {
 			var key = ['username','phone','idCard','bankCard','address' ],
 				text, k, len;
