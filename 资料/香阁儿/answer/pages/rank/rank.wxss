@@ -37,6 +37,8 @@
         display: flex;
         justify-content: flex-end;
         margin-right: 50rpx; }
+        .rank .rank-box .rank-menu .skills .skill-box {
+          position: relative; }
         .rank .rank-box .rank-menu .skills .skill {
           width: 64rpx;
           height: 64rpx;
@@ -44,6 +46,10 @@
           opacity: 0.8; }
           .rank .rank-box .rank-menu .skills .skill.active {
             filter: grayscale(100%); }
+        .rank .rank-box .rank-menu .skills .limit {
+          position: absolute;
+          bottom: 0;
+          font-size: 18rpx; }
     .rank .rank-box .scroll-box {
       position: relative;
       width: 640rpx;
@@ -193,5 +199,75 @@
         .rank .rank-box .scroll-box .scroll .level-item-hover {
           background: rgba(255, 255, 255, 0.1);
           border-radius: 5rpx; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .modal .modal-content {
+    background: #fff;
+    border-radius: 10rpx;
+    width: 450rpx;
+    height: 500rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 10rpx 20rpx 0 rgba(0, 0, 0, 0.5); }
+    .modal .modal-content .modal-head {
+      position: relative;
+      height: 90rpx; }
+      .modal .modal-content .modal-head .image-box {
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 50%;
+        border: 8rpx solid #9421ff;
+        overflow: hidden;
+        transform: translate3d(0, -50rpx, 0);
+        background: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto; }
+        .modal .modal-content .modal-head .image-box .head-image {
+          width: 100rpx;
+          height: 100rpx; }
+      .modal .modal-content .modal-head .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: transparent;
+        color: #9421ff; }
+        .modal .modal-content .modal-head .close:before {
+          background: transparent; }
+    .modal .modal-content .modal-body .name {
+      background: #9421ff;
+      color: #fff;
+      font-size: 36rpx;
+      font-weight: bold;
+      text-align: center;
+      height: 70rpx;
+      line-height: 70rpx; }
+    .modal .modal-content .modal-foot {
+      margin-top: auto; }
+      .modal .modal-content .modal-foot .btn {
+        border-radius: 20rpx;
+        background-color: #e10083;
+        box-shadow: 0 10rpx 20rpx 0 rgba(225, 0, 131, 0.51);
+        width: 300rpx;
+        height: 100rpx;
+        line-height: 100rpx;
+        color: #fff;
+        margin-bottom: 40rpx;
+        font-size: 40rpx; }
+
+button::after {
+  border: none; }
 
 /*# sourceMappingURL=rank.wxss.map */

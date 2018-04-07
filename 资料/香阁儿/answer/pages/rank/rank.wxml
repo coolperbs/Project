@@ -8,7 +8,19 @@
 				<view class="icon-count">{{rankData.user.gold}}</view>
 			</view>
 			<view class="skills">
-				<image class="skill {{item.active?'':'active'}}" wx:for="{{skills}}" wx:key="{{index}}" src="../../static/images/skill{{index+1}}.png"></image>
+				<view class="skill-box">
+					<image class="skill {{skillA.userHas?'':'active'}}" src="{{skillA.image}}"></image>
+					<view class="limit">{{skillA.countDown}}</view>
+				</view>
+				<view class="skill-box">
+					<image class="skill {{skillB.userHas?'':'active'}}" src="{{skillB.image}}"></image>
+				</view>
+				<view class="skill-box">
+					<image class="skill {{skillC.userHas?'':'active'}}" src="{{skillC.image}}"></image>
+				</view>
+				<view class="skill-box">
+					<image class="skill {{skillD.userHas?'':'active'}}" src="{{skillD.image}}"></image>
+				</view>
 			</view>
 		</view>
 		<view class="scroll-box">
@@ -46,6 +58,22 @@
 					</view>
 				</button>
 			</scroll-view>
+		</view>
+	</view>
+</view>
+<view class="modal">
+	<view class="modal-content">
+		<view class="modal-head">
+			<view class="image-box">
+				<image class="head-image"></image>
+			</view>
+			<button class="close">X</button>
+		</view>
+		<view class="modal-body">
+			<view class="name">xxxx</view>
+		</view>
+		<view class="modal-foot">
+			<button class="btn">确认</button>
 		</view>
 	</view>
 </view>
