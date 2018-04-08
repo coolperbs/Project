@@ -8,17 +8,17 @@
 				<view class="icon-count">{{rankData.user.gold}}</view>
 			</view>
 			<view class="skills">
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillA}}">
 					<image class="skill {{skillA.userHas?'':'active'}}" src="{{skillA.image}}"></image>
 					<view class="limit">{{skillA.countDown}}</view>
 				</view>
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillB}}">
 					<image class="skill {{skillB.userHas?'':'active'}}" src="{{skillB.image}}"></image>
 				</view>
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillC}}">
 					<image class="skill {{skillC.userHas?'':'active'}}" src="{{skillC.image}}"></image>
 				</view>
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillD}}">
 					<image class="skill {{skillD.userHas?'':'active'}}" src="{{skillD.image}}"></image>
 				</view>
 			</view>
@@ -61,19 +61,20 @@
 		</view>
 	</view>
 </view>
-<view class="modal">
+<view class="modal {{showModal?'active':''}}">
 	<view class="modal-content">
 		<view class="modal-head">
 			<view class="image-box">
-				<image class="head-image"></image>
+				<image class="head-image" src="{{modalValue.image}}"></image>
 			</view>
-			<button class="close">X</button>
+			<button class="close" bindtap="hideSkill">X</button>
 		</view>
 		<view class="modal-body">
-			<view class="name">xxxx</view>
+			<view class="name">{{modalValue.name}}</view>
+			<view class="desc">{{modalValue.desc}}</view>
 		</view>
 		<view class="modal-foot">
-			<button class="btn">确认</button>
+			<button class="btn" bindtap="hideSkill">确认</button>
 		</view>
 	</view>
 </view>

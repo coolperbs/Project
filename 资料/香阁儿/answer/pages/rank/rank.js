@@ -10,7 +10,8 @@ Page({
   data: {
     active: false,
     rankData: {},
-    scrollToView: 0
+    scrollToView: 0,
+    modalValue:{}
   },
 
 
@@ -158,6 +159,19 @@ Page({
       i = "0" + i;
     }
     return i;
+  },
+  showSkill(e) {
+    debugger
+    let value = e.currentTarget.dataset.index;
+    this.setData({
+      modalValue: value,
+      showModal:true
+    })
+  },
+  hideSkill(e){
+    this.setData({
+      showModal:false
+    })
   },
   rankBattleEvt(e) {
     let level = e.currentTarget.dataset.level || 1

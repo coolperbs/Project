@@ -249,6 +249,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: -10;
+  opacity: 0;
+  transition:all .45s ease;
   .modal-content{
     background: #fff;
     border-radius: 10rpx;
@@ -258,6 +261,8 @@
     flex-direction: column;
     justify-content: flex-start;
     box-shadow: 0 10rpx 20rpx 0 rgba(0, 0, 0, 0.5);
+    transition: all .45s cubic-bezier(.18,1.91,.25,.81)  .2s;
+    transform: scale(0);
     .modal-head{
       position: relative;
       height:90rpx;
@@ -267,13 +272,14 @@
         border-radius: 50%;
         border:8rpx solid #9421ff;
         overflow: hidden;
-        transform: translate3d(0,-50rpx,0);
         background: white;
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         margin: 0 auto;
+        transition: all .45s ease .45s;
+        transform: translate3d(0,-50rpx,0) rotate3d(0,0,1,180deg);
         .head-image{
           width: 100rpx;
           height: 100rpx;
@@ -300,6 +306,11 @@
         height: 70rpx;
         line-height: 70rpx;
       }
+      .desc{
+        color: #333;
+        font-size: 32rpx;
+        margin: 20rpx;
+      }
     }
     .modal-foot{
       margin-top: auto;
@@ -316,6 +327,19 @@
      }
     }
   }
+}
+.modal{
+  &.active{
+    opacity: 1;
+    z-index: 0;
+    .modal-content{
+      transform: scale(1);
+      .image-box{
+        transform: translate3d(0,-50rpx,0) rotate3d(0,0,1,0);
+      }
+    }
+  }
+
 }
 button::after{
   border: none;
