@@ -83,3 +83,6 @@ Page {
   bottom: 0;
   background-color: rgba(255, 0, 0, 0.22);
 }
+button:after{
+  border: none ;
+}

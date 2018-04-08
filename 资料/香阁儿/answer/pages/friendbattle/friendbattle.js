@@ -29,9 +29,10 @@ Page({
     qListData: {},
     isEnd: false,
     errorShaking: false,
-    isStart: false
+    isStart: false,
+    MATCH: false
   },
-  initCanvas() {
+  initCanvas () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
@@ -48,16 +49,16 @@ Page({
     circle2.stroke();
     circle2.draw();
   },
-  clearCountAni(callback) {
+  clearCountAni (callback) {
     if (this.countTimer) {
       clearInterval(this.countTimer)
     }
     callback && callback()
   },
-  startCountAni() {
+  startCountAni () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
-    let circle2 = this.canvasCircle2
+    let circle2 = this.canvasCircle2;
     let time = 1000;
     let count = 0;
     this.countTimer = setInterval(() => {
@@ -87,7 +88,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage() {
+  initPage () {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -108,10 +109,15 @@ Page({
   /**
    * 监听信息
    * */
-  getMessage() {
+  getMessage () {
     battle.PVF_onMessage((res) => {
       console.log('好友对战接收到消息了:----------------------');
       if (res.code != '0000') {
+        if (this.data.isConnect) {
+          utils.showToast({
+            title: res.message
+          })
+        }
         this.closeConnect();
         setTimeout(() => {
           if (this.data.roomOwner == this.data.userId) {
@@ -137,20 +143,7 @@ Page({
         this.setData({
           isStart: true
         })
-        if (this.data.showRoom) {
-          this.setData({
-            subjectCount: 1
-          })
-          this.animationEvt('start', () => {
-            this.filterSubject(res);
-          })
-        } else {
-          //等待动画同步
-          setTimeout(() => {
-            this.filterSubject(res);
-          }, 1000)
-        }
-
+        this.filterSubject(res);
       }
       if (res.type == 4) {
         console.log('得到答案了:-----------------------------');
@@ -161,6 +154,8 @@ Page({
         this.setData({
           showRoom: false
         });
+        this.clearCountAni();
+        this.clearTheInterval();
         setTimeout(() => {
           this.subjectAnimation(4, () => {
             this.endGame(res)
@@ -174,13 +169,12 @@ Page({
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
         });
-        roomUsers[runner] = {point: 0};
-        this.setData({
-          roomUsers: roomUsers
-        });
+        let rest = [...roomUsers]
+        rest[runner] = {point: 0,};
+
         //计算还有几个用户
         let count = 0;
-        roomUsers.map((el) => {
+        rest.map((el) => {
           if (el.id) {
             count++
           }
@@ -190,6 +184,7 @@ Page({
         if (this.data.isStart) {
           if (count < 2) {
             console.log('人都跑了,去拿答案了');
+            this.clearCountAni();
             this.clearTheInterval();
             this.subjectAnimation(4, () => {
               this.sendMessage({type: 3})
@@ -198,21 +193,33 @@ Page({
         } else {
           if (res.userId == this.data.roomOwner) {
             //房主都跑了
-            this.clearTheInterval();
-            this.subjectAnimation(4, () => {
-              this.sendMessage({type: 3})
+            utils.showToast({
+              title: '房间解散~~'
             })
+            this.closeConnect();
+            setTimeout(() => {
+              if (this.data.roomOwner == this.data.userId) {
+                wx.navigateBack(1)
+              } else {
+                wx.redirectTo({
+                  url: '../home/home'
+                })
+              }
+            }, 1500);
           }
         }
-
-
+      }
+      if (res.type == '7') {
+        this.animationEvt('start', () => {
+          this.getSubject();
+        })
       }
     })
   },
   /**
    * 初始化房间信息
    * */
-  initRoom(res) {
+  initRoom (res) {
     console.log('房间信息:-----------------');
     console.log(res);
     console.log('房间信息:-----------------');
@@ -226,7 +233,7 @@ Page({
   /**
    * 更新房间信息
    * */
-  updateRoomUser(res) {
+  updateRoomUser (res) {
     console.log('房间信息更新:-----------------');
     console.log(res);
     console.log('房间信息更新:-----------------');
@@ -256,18 +263,24 @@ Page({
   /**
    * 发送消息
    * */
-  sendMessage(data) {
+  sendMessage (data) {
     battle.PVF_send(data);
   },
   /**
    * 开始对战
    * */
-  startBattle() {
-    if (this.data.roomUsers.length >= 2) {
-      this.sendMessage({"type": 7});
-      this.animationEvt('start', () => {
-        this.getSubject();
-      })
+  startBattle () {
+    let count = 2;
+    this.data.roomUsers.map((el) => {
+      if (el.avatar) {
+        count++;
+      }
+    })
+    if (count >= 2) {
+      this.sendMessage({"type": 4});
+      // this.animationEvt('start', () => {
+      //   this.getSubject();
+      // })
     } else {
       wx.showToast({
         title: '至少2人才能开始对战！~',
@@ -278,15 +291,36 @@ Page({
   /**
    * 取消对战
    * */
-  cancelBattle() {
-    this.closeConnect();
-    wx.navigateBack(1)
+  cancelBattle () {
+    utils.showAction('确定退出房间?', (res) => {
+      if (res) {
+        this.closeConnect();
+        wx.navigateBack(1)
+      }
+    })
   },
   /**
    * 场景动画
    * */
-  animationEvt(type, callback) {
+  animationEvt (type, callback) {
     let room = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let width = wx.getSystemInfoSync().windowWidth;
+    let matchLeftAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let matchRightAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let matchCenterAni = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease'
+    });
+    let matchAni = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
     });
@@ -298,7 +332,8 @@ Page({
       });
       setTimeout(() => {
         this.setData({
-          showRoom: true
+          showRoom: true,
+          MATCH: false
         });
         callback && callback();
       }, 500)
@@ -307,21 +342,53 @@ Page({
       //隐藏房间
       room.opacity(0).step();
       this.setData({
-        roomAniData: room.export()
+        roomAniData: room.export(),
+        MATCH: true
       });
-      this.initCanvas();
       setTimeout(() => {
         this.setData({
           showRoom: false
         });
+        this.animationEvt('ready', callback)
+      }, 100)
+    }
+    if (type == 'ready') {
+      matchLeftAni.translateX(0).step({delay: 500});
+      matchRightAni.translateX(0).step({delay: 500});
+      matchCenterAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay: 500});
+      this.setData({
+        matchLeftData: matchLeftAni.export(),
+        matchRightData: matchRightAni.export(),
+        matchCenterData: matchCenterAni.export()
+      });
+      setTimeout(() => {
+        this.animationEvt('gaming', callback)
+      }, 1500)
+    }
+    if (type == 'gaming') {
+      matchLeftAni.translateX(-width).step();
+      matchRightAni.translateX(width).step();
+      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
+      matchAni.opacity(0).step();
+      this.setData({
+        matchLeftData: matchLeftAni.export(),
+        matchRightData: matchRightAni.export(),
+        matchCenterData: matchCenterAni.export(),
+        matchData: matchAni.export()
+      });
+      this.initCanvas();
+      setTimeout(() => {
         callback && callback();
+        this.setData({
+          MATCH: false
+        });
       }, 500)
     }
   },
   /**
    * 获取题目
    * */
-  getSubject() {
+  getSubject () {
     if (!this.data.hasMore) {
       return
     }
@@ -334,7 +401,7 @@ Page({
   /**
    * 拿到题目
    * */
-  filterSubject(res) {
+  filterSubject (res) {
     console.log('获取的题目:-------------------------------')
     console.log(res)
     console.log('获取的题目:-------------------------------')
@@ -366,7 +433,7 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint(res) {
+  updatePoint (res) {
     console.log('得到答案更新用户分数:--------------------------------------')
     console.log(res);
     console.log('得到答案更新用户分数:--------------------------------------')
@@ -411,7 +478,7 @@ Page({
   /**
    * updateRankList
    * */
-  updateRankList() {
+  updateRankList () {
     let roomUser = this.data.roomUsers;
     let sortData = [...roomUser];
     sortData.sort((a, b) => {
@@ -430,7 +497,7 @@ Page({
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt(res) {
+  filterSubjectListEvt (res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -491,7 +558,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation(type, callback) {
+  subjectAnimation (type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -525,6 +592,15 @@ Page({
       }, 500)
     }
     if (type == '4') {
+      let sys = wx.getSystemInfoSync();
+      let ratio = sys.windowWidth * (150 / 750);
+      let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
+      circle2.setLineWidth(4);
+      circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, -0.5 * Math.PI, false);
+      circle2.setStrokeStyle('#e10083');
+      circle2.stroke();
+      circle2.draw();
+
       typeAni.scale(0).step();
       boxAni.scale(0).step();
       this.setData({
@@ -539,13 +615,14 @@ Page({
   /**
    * 答题倒计时
    * */
-  startTheInterval() {
+  startTheInterval () {
     this.clearTheInterval(() => {
       this.clearCountAni(() => {
         this.startCountAni();
         this.Timer = setInterval(() => {
           if (this.data.countDownTime <= 0) {
-            console.log('用户到时间,自动答错 获取新题目')
+            console.log('用户到时间,自动答错 获取新题目');
+            this.clearCountAni();
             this.clearTheInterval(() => {
               this.answerSubject();
             });
@@ -561,7 +638,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval(callback) {
+  clearTheInterval (callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -570,7 +647,7 @@ Page({
   /**
    * 答题
    * */
-  answerSubject(e) {
+  answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
       return
@@ -587,7 +664,7 @@ Page({
   /**
    * 结束游戏
    * */
-  endGame(res) {
+  endGame (res) {
     console.log('游戏结束:--------------------------------------')
     console.log(res)
     console.log('游戏结束:--------------------------------------')
@@ -624,27 +701,39 @@ Page({
       WINNER: flag,
       result: result[index]
     });
-    this.closeConnect();
+    //this.closeConnect();
   },
 
   /**
    * 关闭连接
    * */
-  closeConnect() {
+  closeConnect () {
     console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
+    this.clearCountAni();
     if (this.data.isConnect) {
       battle.PVF_close();
+      this.setData({
+        isConnect: false
+      })
     }
   },
   /**
    * 再来一把
    * */
-  playAgain() {
+  playAgain () {
     if (this.data.roomOwner != this.data.userId) {
       utils.redirectTo('../home/home')
     } else {
       wx.navigateBack(1)
+    }
+  },
+  onHide () {
+    console.log('小程序隐藏了')
+    if (this.data.isStart) {
+      console.log('关闭连接');
+      this.startHide = true;
+      this.closeConnect();
     }
   },
   /**
@@ -652,6 +741,12 @@ Page({
    */
   onUnload: function () {
     this.closeConnect();
+  },
+  /**/
+  onShow () {
+    if (this.startHide) {
+      wx.reLaunch();
+    }
   },
   /**
    * 用户点击右上角分享

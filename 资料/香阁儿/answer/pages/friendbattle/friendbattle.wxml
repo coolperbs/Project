@@ -54,6 +54,11 @@
 			</button>
 		</view>
 	</view>
+	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
+		<view class="left" animation="{{matchLeftData}}"></view>
+		<view class="right" animation="{{matchRightData}}"></view>
+		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
+	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
 			<view class="user-list">
@@ -71,7 +76,7 @@
 		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId}}">
 			<image src="../../static/images/start.png"></image>
 		</button>
-		<button class="cancel" bindtap="cancelBattle">取消</button>
+		<button class="cancel" bindtap="cancelBattle">退出房间</button>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 </view>
