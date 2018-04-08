@@ -12,14 +12,15 @@
 				</view>
 				<view class="info">
 					<view class="username">{{item.nickName}}</view>
-					<view class="levelname">{{item.DivisionName}}</view>
+					<view class="levelname">{{item.divisionName}}</view>
 				</view>
 				<view class="sub-info">
 					<view class="point">
 						<view>{{item.curLevelPoint}}</view>
 						<image class="star" src="../../static/images/star.png"></image>
 					</view>
-					<view class="location">来自{{item.city}}</view>
+					<view wx:if="{{ item.city }}" class="location">来自{{item.city}}</view>
+					<view wx:else class="location">未知区域</view>
 				</view>
 			</view>
 		</scroll-view>

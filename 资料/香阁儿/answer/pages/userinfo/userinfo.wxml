@@ -46,7 +46,7 @@
 			</view>
 			<view class="row">
 				<view class="key">金币数</view>
-				<view class="value">value</view>
+				<view class="value">{{ pageData.gold }}</view>
 			</view>
 		</view>
 	</view>
