@@ -60,7 +60,7 @@ Page({
   },
   clearCountAni(callback) {
     if (this.countTimer) {
-      console.warn('进度条清空')
+      console.warn('进度条清空');
       clearInterval(this.countTimer)
     }
     callback && callback()
@@ -145,7 +145,9 @@ Page({
       }
       if (res.type == 4) {
         console.log('得到答案了:-----------------------------');
-        this.updatePoint(res)
+        setTimeout(()=>{
+          this.updatePoint(res)
+        },500)
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
@@ -455,21 +457,24 @@ Page({
     });
     let roomUser = this.data.roomUsers;
     let updateUser = roomUser[index];
+    let oldPoint = updateUser['point'];
     updateUser['point'] += res.point;
     updateUser['pointBar'] = ((updateUser.point * 100) / this.data.totalPoint).toFixed(2);
-    updateUser['animation'] = true;
+    updateUser['animation'] = oldPoint != updateUser['point'] ? true : false;
     roomUser[index] = updateUser;
     this.setData({
       roomUsers: roomUser
     });
     //加分动画
-    setTimeout(()=>{
-      updateUser['animation'] = false;
-      roomUser[index] = updateUser;
-      this.setData({
-        roomUsers: roomUser
-      });
-    },1000);
+    if (updateUser['animation']) {
+      setTimeout(() => {
+        updateUser['animation'] = false;
+        roomUser[index] = updateUser;
+        this.setData({
+          roomUsers: roomUser
+        });
+      }, 500);
+    }
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
       if (!this.data.hasMore) {
@@ -648,12 +653,6 @@ Page({
         })
       }
       if (res.type == 3) {
-        // 
-        // let aiPushTime = this.data.subject.pushTime;
-        // if (aiPushTime == res.subject.pushTime) {
-        //   //避免题目二次渲染
-        //   return
-        // }
         //更PVP 同步 等2秒动画
         setTimeout(() => {
           this.startTheAiInterval()
@@ -666,8 +665,7 @@ Page({
    * */
   startTheAiInterval() {
     this.clearTheAiInterval(() => {
-      //let count = Math.ceil(parseInt(Math.random() * 10));
-      let count = 3;
+      let count = Math.ceil(parseInt(Math.random() * 5));
       this.aiTimer = setInterval(() => {
         console.log('ai答题倒计时');
         if (count <= 0) {
