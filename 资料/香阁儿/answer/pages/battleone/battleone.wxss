@@ -293,8 +293,16 @@
           position: relative; }
           .battle-box .battle .answer .answer-step .q-title .q-double {
             position: absolute;
-            width: 180rpx;
-            height: 180rpx; }
+            width: 112rpx;
+            height: 35rpx;
+            right: 0;
+            top: -40rpx;
+            transform: scale(10);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.18, 1.91, 0.25, 0.81) 2s; }
+            .battle-box .battle .answer .answer-step .q-title .q-double.active {
+              transform: scale(1);
+              opacity: 1; }
         .battle-box .battle .answer .answer-step .q-chose {
           background-color: transparent;
           width: 560rpx;

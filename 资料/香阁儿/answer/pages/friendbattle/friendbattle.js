@@ -92,14 +92,14 @@ Page({
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
-      console.log('获取用户信息失败了')
+      //console.log('获取用户信息失败了')
       return
     }
     this.setData({
       userId: UserInfo.user.id
     });
     battle.PVF_connect(this.data.level, token, this.data.roomId, () => {
-      console.log('好友对战连接成功:----------------------');
+      //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true
       });
@@ -111,7 +111,7 @@ Page({
    * */
   getMessage () {
     battle.PVF_onMessage((res) => {
-      console.log('好友对战接收到消息了:----------------------');
+      //console.log('好友对战接收到消息了:----------------------');
       if (res.code != '0000') {
         if (this.data.isConnect) {
           utils.showToast({
@@ -135,22 +135,22 @@ Page({
         this.initRoom(res);
       }
       if (res.type == 2) {
-        console.log('好友连接上了:-----------------------------');
+        //console.log('好友连接上了:-----------------------------');
         this.updateRoomUser(res.roomUsers);
       }
       if (res.type == 3) {
-        console.log('得到题目了:-----------------------------');
+        //console.log('得到题目了:-----------------------------');
         this.setData({
           isStart: true
         })
         this.filterSubject(res);
       }
       if (res.type == 4) {
-        console.log('得到答案了:-----------------------------');
+        //console.log('得到答案了:-----------------------------');
         this.updatePoint(res)
       }
       if (res.type == 5) {
-        console.log('游戏结束:-----------------------------');
+        //console.log('游戏结束:-----------------------------');
         this.setData({
           showRoom: false
         });
@@ -170,8 +170,8 @@ Page({
           return el.id == res.userId
         });
         let rest = [...roomUsers]
+        utils.showToast({title:'玩家'+ rest[runner].name+'逃跑了~'})
         rest[runner] = {point: 0,};
-
         //计算还有几个用户
         let count = 0;
         rest.map((el) => {
@@ -183,7 +183,7 @@ Page({
         //区分开始对战没有
         if (this.data.isStart) {
           if (count < 2) {
-            console.log('人都跑了,去拿答案了');
+            //console.log('人都跑了,去拿答案了');
             this.clearCountAni();
             this.clearTheInterval();
             this.subjectAnimation(4, () => {
@@ -220,10 +220,10 @@ Page({
    * 初始化房间信息
    * */
   initRoom (res) {
-    console.log('房间信息:-----------------');
-    console.log(res);
-    console.log('房间信息:-----------------');
-    console.log(res.roomId)
+    //console.log('房间信息:-----------------');
+    //console.log(res);
+    //console.log('房间信息:-----------------');
+    //console.log(res.roomId)
     this.setData({
       roomId: res.roomId || '',
       totalPoint: res.totlePoint || ''
@@ -234,9 +234,9 @@ Page({
    * 更新房间信息
    * */
   updateRoomUser (res) {
-    console.log('房间信息更新:-----------------');
-    console.log(res);
-    console.log('房间信息更新:-----------------');
+    //console.log('房间信息更新:-----------------');
+    //console.log(res);
+    //console.log('房间信息更新:-----------------');
     let that = this;
     let sys = wx.getSystemInfoSync();
     let roomUsers = res.map((el, index) => {
@@ -402,9 +402,9 @@ Page({
    * 拿到题目
    * */
   filterSubject (res) {
-    console.log('获取的题目:-------------------------------')
-    console.log(res)
-    console.log('获取的题目:-------------------------------')
+    //console.log('获取的题目:-------------------------------')
+    //console.log(res)
+    //console.log('获取的题目:-------------------------------')
     let subject = this.data.subject;
     if (subject.pushTime == res.subject.pushTime) {
       //避免题目二次渲染
@@ -434,9 +434,9 @@ Page({
    * 更新分数
    * */
   updatePoint (res) {
-    console.log('得到答案更新用户分数:--------------------------------------')
-    console.log(res);
-    console.log('得到答案更新用户分数:--------------------------------------')
+    //console.log('得到答案更新用户分数:--------------------------------------')
+    //console.log(res);
+    //console.log('得到答案更新用户分数:--------------------------------------')
     let resultUser = res.userId;
     let index = this.data.roomUsers.findIndex((el) => {
       return el.id == resultUser
@@ -621,7 +621,7 @@ Page({
         this.startCountAni();
         this.Timer = setInterval(() => {
           if (this.data.countDownTime <= 0) {
-            console.log('用户到时间,自动答错 获取新题目');
+            //console.log('用户到时间,自动答错 获取新题目');
             this.clearCountAni();
             this.clearTheInterval(() => {
               this.answerSubject();
@@ -665,9 +665,9 @@ Page({
    * 结束游戏
    * */
   endGame (res) {
-    console.log('游戏结束:--------------------------------------')
-    console.log(res)
-    console.log('游戏结束:--------------------------------------')
+    //console.log('游戏结束:--------------------------------------')
+    //console.log(res)
+    //console.log('游戏结束:--------------------------------------')
     if (this.data.isEnd) {
       return
     }
@@ -694,8 +694,8 @@ Page({
     if (result[index] && result[index].result) {
       flag = true;
     }
-    console.log('玩家数据');
-    console.log(result[index]);
+    //console.log('玩家数据');
+    //console.log(result[index]);
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
@@ -708,7 +708,11 @@ Page({
    * 关闭连接
    * */
   closeConnect () {
-    console.log('关闭连接:-------------------------------------')
+    //console.log('关闭连接:-------------------------------------')
+    if (!this.data.isEnd) {
+      //逃跑退出获取结果
+      this.sendMessage({type: 3})
+    }
     this.clearTheInterval();
     this.clearCountAni();
     if (this.data.isConnect) {
@@ -729,9 +733,9 @@ Page({
     }
   },
   onHide () {
-    console.log('小程序隐藏了')
+    //console.log('小程序隐藏了')
     if (this.data.isStart) {
-      console.log('关闭连接');
+      //console.log('关闭连接');
       this.startHide = true;
       this.closeConnect();
     }

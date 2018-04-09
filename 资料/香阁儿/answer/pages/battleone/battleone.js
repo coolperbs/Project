@@ -303,6 +303,14 @@ Page({
     if (!this.data.hasMore) {
       return
     }
+    let sys = wx.getSystemInfoSync();
+    let ratio = sys.windowWidth * (150 / 750);
+    let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
+    circle2.setLineWidth(4);
+    circle2.arc(ratio / 2, ratio / 2, ratio / 2 - 4, -0.5 * Math.PI, -0.5 * Math.PI, false);
+    circle2.setStrokeStyle('#e10083');
+    circle2.stroke();
+    circle2.draw();
     this.setData({
       subjectCount: this.data.subjectCount + 1,
       countDownTime: 10
@@ -498,9 +506,11 @@ Page({
         /*结果展示2秒*/
         this.clearCountAni();
         this.clearTheInterval();
-        this.subjectAnimation(4, () => {
-          this.sendMessage({type: 3});
-        })
+        setTimeout(() => {
+          this.subjectAnimation(4, () => {
+            this.sendMessage({type: 3});
+          })
+        }, 2000)
         return
       }
       //提前结束这道题
@@ -630,6 +640,10 @@ Page({
    * */
   closeConnect () {
     //console.log('关闭连接:-------------------------------------')
+    if (!this.data.isEnd) {
+      //逃跑退出获取结果
+      this.sendMessage({type: 3})
+    }
     this.clearTheInterval();
     this.clearTheAiInterval();
     if (this.data.PVP_isConnect) {
@@ -718,7 +732,7 @@ Page({
 
     //先随机取答案且保证答案不正确
     function getError (right) {
-      let result = Math.ceil(parseInt(Math.random() * that.data.subjectList.length));
+      let result = Math.floor(parseInt((Math.random() * that.data.subjectList.length)+1));
       if (right == result) {
         return getError(right)
       } else {
@@ -732,8 +746,8 @@ Page({
     if (percent > aiWinRate) {
       answer = rightAnswer;
     }
-    //console.log('正确答案' + rightAnswer)
-    //console.log('ai 答案' + answer)
+    console.log('正确答案' + rightAnswer)
+    console.log('ai 答案' + answer)
     battle.PVA_send({
       "type": 2,
       "optionId": answer,

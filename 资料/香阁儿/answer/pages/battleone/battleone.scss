@@ -368,8 +368,17 @@
           position: relative;
           .q-double{
             position: absolute;
-            width: 180rpx;
-            height: 180rpx;
+            width: 112rpx;
+            height: 35rpx;
+            right: 0;
+            top: -40rpx;
+            transform: scale(10);
+            opacity: 0;
+            transition: all 1s cubic-bezier(.18,1.91,.25,.81) 2s;
+            &.active{
+              transform: scale(1);
+              opacity: 1;
+            }
           }
         }
         .q-chose{
