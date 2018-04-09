@@ -264,10 +264,10 @@
       }
       .left,.right{
         position: absolute;
-        left: 30rpx;
-        right: 30rpx;
-        top: 30rpx;
-        bottom: 30rpx;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
       }
       .right{
         display: flex;
@@ -464,6 +464,36 @@
         background: linear-gradient(to bottom,#f7f417,#c60054);
         border:4rpx solid #ff15c0
       }
+    }
+  }
+}
+.combo{
+  font-size: 20rpx;
+  color: white;
+  background: #57ee76;
+  display: inline-block;
+  padding: 5rpx 10rpx;
+  border-radius: 15rpx;
+  transition: all .5s ease-in-out .45s;
+  margin-top: 5rpx;
+  font-weight: bold;
+}
+.left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .combo{
+    transform: translate3d(-200%,0,0);
+    &.active{
+      transform: translate3d(0,0,0);
+    }
+  }
+}
+.right{
+  .combo{
+    transform: translate3d(200%,0,0);
+    &.active{
+      transform: translate3d(0,0,0);
     }
   }
 }

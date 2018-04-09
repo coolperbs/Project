@@ -36,6 +36,7 @@
 					<view class="progress-bar" style="width:{{roomUsers[0].pointBar}}%"></view>
 				</view>
 				<view class="point {{roomUsers[0].animation?'active':''}}">{{roomUsers[0].point}}</view>
+				<view class="combo {{roomUsers[0].comboAnimation?'active':''}}">COMBO×{{roomUsers[0].comboCount}}</view>
 			</view>
 			<view class="right">
 				<view class="head">
@@ -49,6 +50,7 @@
 					<view class="progress-bar" style="width:{{roomUsers[1].pointBar}}%"></view>
 				</view>
 				<view class="point {{roomUsers[1].animation?'active':''}}">{{roomUsers[1].point}}</view>
+				<view class="combo {{roomUsers[1].comboAnimation?'active':''}}">COMBO×{{roomUsers[1].comboCount}}</view>
 			</view>
 		</view>
 		<view class="battle-title">
@@ -90,14 +92,14 @@
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/coin.png"></image>
 				<view class="item-label">金币</view>
-				<view class="item-text">+{{result.gold}}</view>
-				<view class="item-more" wx:if="{{result.upGold&&result.upGold>0}}">+{{result.upGold}}</view>
+				<view class="item-text">+{{result.gold+result.upGold?result.upGold:0}}</view>
+				<!--<view class="item-more" wx:if="{{result.upGold&&result.upGold>0}}">+{{result.upGold}}</view>-->
 			</view>
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/crown.png"></image>
 				<view class="item-label">EXP</view>
-				<view class="item-text">+{{result.exp}}</view>
-				<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>
+				<view class="item-text">+{{result.exp+result.upExp?result.upExp:0}}</view>
+				<!--<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>-->
 			</view>
 			<button class="continue" bindtap="playAgain">
 				继续挑战
@@ -105,4 +107,5 @@
 		</view>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
+	<view class="level-up {{hasUpLevel?'active':''}}">升级啦！~~~~~</view>
 </view>

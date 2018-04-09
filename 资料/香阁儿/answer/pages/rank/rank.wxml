@@ -14,12 +14,15 @@
 				</view>
 				<view class="skill-box" catchtap="showSkill" data-index="{{skillB}}">
 					<image class="skill {{skillB.userHas?'':'active'}}" src="{{skillB.image}}"></image>
+					<view class="limit">{{skillB.limit}}</view>
 				</view>
 				<view class="skill-box" catchtap="showSkill" data-index="{{skillC}}">
 					<image class="skill {{skillC.userHas?'':'active'}}" src="{{skillC.image}}"></image>
+					<view class="limit">{{skillC.countDown}}</view>
 				</view>
 				<view class="skill-box" catchtap="showSkill" data-index="{{skillD}}">
 					<image class="skill {{skillD.userHas?'':'active'}}" src="{{skillD.image}}"></image>
+					<view class="limit">{{skillD.limit}}</view>
 				</view>
 			</view>
 		</view>
@@ -35,7 +38,7 @@
 								scroll-into-view="{{scrollToView}}"
 								class="{{!item.deblock?'disabled':'' }} level-item">
 					<view class="item-box">
-						<image class="item-image" src="../../static/images/lv{{(index+1)<5?index+1:5}}.png"></image>
+						<image class="item-image" src="{{item.logo}}"></image>
 						<view class="desc">
 							<view class="top">
 								<view class="title">{{item.name}}</view>

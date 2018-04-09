@@ -41,7 +41,7 @@ Page({
     PVA_isConnect: false,
     aiInfo: {}
   },
-  initCanvas() {
+  initCanvas () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
@@ -58,14 +58,14 @@ Page({
     circle2.stroke();
     circle2.draw();
   },
-  clearCountAni(callback) {
+  clearCountAni (callback) {
     if (this.countTimer) {
       console.warn('进度条清空');
       clearInterval(this.countTimer)
     }
     callback && callback()
   },
-  startCountAni() {
+  startCountAni () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2
@@ -96,7 +96,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage() {
+  initPage () {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -109,7 +109,7 @@ Page({
       userId: UserInfo.user.id
     });
     battle.PVP_connect(this.data.level, token, () => {
-      console.log('对战连接成功:----------------------');
+      //console.log('对战连接成功:----------------------');
       this.setData({
         PVP_isConnect: true
       });
@@ -119,7 +119,7 @@ Page({
   /**
    * PVP获取信息
    * */
-  getPVPMessage() {
+  getPVPMessage () {
     battle.PVP_onMessage((res) => {
       if (res.code != '0000') {
         this.closeConnect();
@@ -135,20 +135,20 @@ Page({
 
       }
       if (res.type == 2) {
-        console.log('对战开始:-----------------------------');
-        this.updateRoomUser(res.roomUsers);
+        //console.log('对战开始:-----------------------------');
+        this.initRoom(res);
         this.beginAnswer(res);
       }
       if (res.type == 3) {
-        console.log('得到题目了:-----------------------------');
+        //console.log('得到题目了:-----------------------------');
         this.filterSubject(res);
       }
       if (res.type == 4) {
-        console.log('得到答案了:-----------------------------');
+        //console.log('得到答案了:-----------------------------');
         this.updatePoint(res)
       }
       if (res.type == 5) {
-        console.log('游戏结束:-----------------------------');
+        //console.log('游戏结束:-----------------------------');
         setTimeout(() => {
           this.subjectAnimation(4, () => {
             this.endGame(res)
@@ -168,24 +168,25 @@ Page({
   /**
    * 初始化房间信息
    * */
-  initRoom(res) {
-    console.log('房间信息:-----------------');
-    console.log(res);
-    console.log('房间信息:-----------------');
-    console.log(res.roomId)
+  initRoom (res) {
+    //console.log('房间信息:-----------------');
+    //console.log(res);
+    //console.log('房间信息:-----------------');
+    //console.log(res.roomId)
+    console.log(res)
     this.setData({
       roomId: res.roomId || '',
-      totalPoint: res.totlePoint || ''
+      totalPoint: res.totlePoint || 0
     });
     this.updateRoomUser(res.roomUsers);
   },
   /**
    * 更新房间用户信息
    * */
-  updateRoomUser(users) {
-    console.log('房间信息更新:-----------------');
-    console.log(users);
-    console.log('房间信息更新:-----------------');
+  updateRoomUser (users) {
+    //console.log('房间信息更新:-----------------');
+    //console.log(users);
+    //console.log('房间信息更新:-----------------');
     let roomUsers = users.map((el) => {
       el.point = 0;
       el.pointBar = 0;
@@ -203,7 +204,7 @@ Page({
   /**
    * 判断是否开始答题
    * */
-  beginAnswer(res) {
+  beginAnswer (res) {
     if (res.beginAnswer) {
       if (this.data.vsAi == 'undefined') {
         this.setData({
@@ -218,7 +219,7 @@ Page({
   /**
    * 场景动画
    * */
-  animationEvt(type, callback) {
+  animationEvt (type, callback) {
     let width = wx.getSystemInfoSync().windowWidth;
     let loadingAni = wx.createAnimation({
       duration: 500,
@@ -298,7 +299,7 @@ Page({
   /**
    * 获取题目
    * */
-  getSubject() {
+  getSubject () {
     if (!this.data.hasMore) {
       return
     }
@@ -311,16 +312,16 @@ Page({
   /**
    * 发送消息
    * */
-  sendMessage(data) {
+  sendMessage (data) {
     battle.PVP_send(data);
   },
   /**
    * 渲染题目
    * */
-  filterSubject(res) {
-    console.log('获取的题目:-------------------------------')
-    console.log(res)
-    console.log('获取的题目:-------------------------------')
+  filterSubject (res) {
+    //console.log('获取的题目:-------------------------------')
+    //console.log(res)
+    //console.log('获取的题目:-------------------------------')
     let subject = this.data.subject;
     if (subject.pushTime == res.subject.pushTime) {
       //避免题目二次渲染
@@ -349,7 +350,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation(type, callback) {
+  subjectAnimation (type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -397,14 +398,14 @@ Page({
   /**
    * PVP 倒计时
    * */
-  startTheInterval() {
+  startTheInterval () {
     this.clearTheInterval(() => {
       this.clearCountAni(() => {
         this.startCountAni();
         this.Timer = setInterval(() => {
           if (this.data.countDownTime <= 0) {
             this.clearTheInterval(() => {
-              console.log('用户到时间,自动答错 获取新题目')
+              ////console.log('用户到时间,自动答错 获取新题目')
               this.answerSubject();
             });
           } else {
@@ -419,7 +420,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval(callback) {
+  clearTheInterval (callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -428,7 +429,7 @@ Page({
   /**
    * 答题
    * */
-  answerSubject(e) {
+  answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
       return
@@ -445,10 +446,11 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint(res) {
+  updatePoint (res) {
     console.log('得到答案更新用户分数:--------------------------------------')
-    console.log(res);
-    console.log('得到答案更新用户分数:--------------------------------------')
+    ////console.log(res);
+    ////console.log('得到答案更新用户分数:--------------------------------------')
+
     let resultUser = res.userId;
     let index = this.data.roomUsers.findIndex((el) => {
       return el.id == resultUser
@@ -458,20 +460,36 @@ Page({
     let oldPoint = updateUser['point'];
     updateUser['point'] += res.point;
     updateUser['pointBar'] = ((updateUser.point * 100) / this.data.totalPoint).toFixed(2);
-    updateUser['animation'] = oldPoint != updateUser['point'] ? true : false;
+    updateUser['animation'] = oldPoint == updateUser['point'] ? false : true;
+    let oldCombo = updateUser['comboCount'] || 0;
+    updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
+    updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
     roomUser[index] = updateUser;
     this.setData({
       roomUsers: roomUser
     });
     //加分动画
+    //console.log('pointBar',updateUser['pointBar'] )
     if (updateUser['animation']) {
       setTimeout(() => {
-        let users= this.data.roomUsers;
+        let users = this.data.roomUsers;
         users[index]['animation'] = false;
+        //console.log('pointBar2',users[index].pointBar)
         this.setData({
           roomUsers: users
         });
-      }, 600);
+      }, 1000);
+    }
+    //combo 动画
+    if (updateUser['comboCount'] > 1) {
+      setTimeout(() => {
+        let users = this.data.roomUsers;
+        users[index]['comboAnimation'] = false;
+        this.setData({
+          roomUsers: users
+        });
+      }, 1500);
+
     }
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
@@ -480,11 +498,9 @@ Page({
         /*结果展示2秒*/
         this.clearCountAni();
         this.clearTheInterval();
-        setTimeout(() => {
-          this.subjectAnimation(4, () => {
-            this.sendMessage({type: 3});
-          })
-        }, 2000);
+        this.subjectAnimation(4, () => {
+          this.sendMessage({type: 3});
+        })
         return
       }
       //提前结束这道题
@@ -502,7 +518,7 @@ Page({
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt(res) {
+  filterSubjectListEvt (res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -563,10 +579,10 @@ Page({
   /**
    * 游戏结束
    * */
-  endGame(res) {
-    console.log('游戏结束:--------------------------------------')
-    console.log(res)
-    console.log('游戏结束:--------------------------------------')
+  endGame (res) {
+    //console.log('游戏结束:--------------------------------------')
+    //console.log(res)
+    //console.log('游戏结束:--------------------------------------')
     if (this.data.isEnd) {
       return
     }
@@ -594,20 +610,26 @@ Page({
     if (result[index] && result[index].result) {
       flag = true;
     }
-    console.log('玩家数据');
-    console.log(result[index]);
+    //判断当前玩家升级没有
+    let up = false;
+    if (result[index].hasUpLevel) {
+      up = true
+    }
+    //console.log('玩家数据');
+    //console.log(result[index]);
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
-      result: result[index]
+      result: result[index],
+      hasUpLevel: up
     });
     this.closeConnect();
   },
   /**
    * 关闭连接
    * */
-  closeConnect() {
-    console.log('关闭连接:-------------------------------------')
+  closeConnect () {
+    //console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
     this.clearTheAiInterval();
     if (this.data.PVP_isConnect) {
@@ -620,7 +642,7 @@ Page({
   /**
    * 准备AI
    * */
-  initAiEvt() {
+  initAiEvt () {
     setTimeout(() => {
       if (this.data.vsAi == 'undefined') {
         this.setData({
@@ -638,7 +660,7 @@ Page({
   /**
    * 监听Ai
    * */
-  getAiMessage() {
+  getAiMessage () {
     battle.PVA_onMessage((res) => {
       if (res.code != '0000') {
         this.closeConnect();
@@ -661,11 +683,11 @@ Page({
   /**
    * ai倒计时
    * */
-  startTheAiInterval() {
+  startTheAiInterval () {
     this.clearTheAiInterval(() => {
       let count = Math.ceil(parseInt(Math.random() * 5));
       this.aiTimer = setInterval(() => {
-        console.log('ai答题倒计时');
+        //console.log('ai答题倒计时');
         if (count <= 0) {
           this.clearTheAiInterval(() => {
             this.aiAnswerEvt();
@@ -679,7 +701,7 @@ Page({
   /**
    * ai 倒计时清空
    * */
-  clearTheAiInterval(callback) {
+  clearTheAiInterval (callback) {
     if (this.aiTimer) {
       clearInterval(this.aiTimer);
     }
@@ -688,19 +710,19 @@ Page({
   /**
    * ai 答题
    * */
-  aiAnswerEvt() {
-    console.log('ai答题了');
+  aiAnswerEvt () {
+    //console.log('ai答题了');
     let percent = parseFloat(Math.random() * 1).toFixed(2);
     let aiWinRate = this.data.aiInfo.aiWinRate || 0;
     let that = this;
 
     //先随机取答案且保证答案不正确
-    function getError(right) {
+    function getError (right) {
       let result = Math.ceil(parseInt(Math.random() * that.data.subjectList.length));
       if (right == result) {
         return getError(right)
       } else {
-        console.log('随机答案' + result)
+        //console.log('随机答案' + result)
         return result
       }
     }
@@ -710,8 +732,8 @@ Page({
     if (percent > aiWinRate) {
       answer = rightAnswer;
     }
-    console.log('正确答案' + rightAnswer)
-    console.log('ai 答案' + answer)
+    //console.log('正确答案' + rightAnswer)
+    //console.log('ai 答案' + answer)
     battle.PVA_send({
       "type": 2,
       "optionId": answer,
@@ -721,7 +743,7 @@ Page({
   /**
    * 在来一把
    * */
-  playAgain() {
+  playAgain () {
     wx.navigateBack(1)
   },
   /**
