@@ -204,9 +204,9 @@
     z-index: 0;
     .battle-user{
       height: 320rpx;
-      width: 100%;
+      width: 750-60rpx;
       box-sizing: border-box;
-      padding: 30rpx;
+      margin: 30rpx;
       position: relative;
       .head{
         width: 90rpx;
@@ -255,6 +255,12 @@
       }
       .point{
         font-size: 40rpx;
+        transition: all .45s ease;
+        display: inline-block;
+        &.active{
+          transform: scale(1.3);
+          text-shadow: 0 0 10rpx #fff
+        }
       }
       .left,.right{
         position: absolute;

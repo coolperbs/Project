@@ -165,9 +165,9 @@
     z-index: 0; }
     .battle-box .battle .battle-user {
       height: 320rpx;
-      width: 100%;
+      width: 690rpx;
       box-sizing: border-box;
-      padding: 30rpx;
+      margin: 30rpx;
       position: relative; }
       .battle-box .battle .battle-user .head {
         width: 90rpx;
@@ -208,7 +208,12 @@
           border-radius: 10rpx;
           transition: all .45s ease; }
       .battle-box .battle .battle-user .point {
-        font-size: 40rpx; }
+        font-size: 40rpx;
+        transition: all .45s ease;
+        display: inline-block; }
+        .battle-box .battle .battle-user .point.active {
+          transform: scale(1.3);
+          text-shadow: 0 0 10rpx #fff; }
       .battle-box .battle .battle-user .left, .battle-box .battle .battle-user .right {
         position: absolute;
         left: 30rpx;

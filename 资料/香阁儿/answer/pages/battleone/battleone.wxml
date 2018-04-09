@@ -35,7 +35,7 @@
 				<view class="progress {{isEnd?'active':''}}">
 					<view class="progress-bar" style="width:{{roomUsers[0].pointBar}}%"></view>
 				</view>
-				<view class="point">{{roomUsers[0].point}}</view>
+				<view class="point {{roomUsers[0].animation?'active':''}}">{{roomUsers[0].point}}</view>
 			</view>
 			<view class="right">
 				<view class="head">
@@ -48,7 +48,7 @@
 				<view class="progress {{isEnd?'active':''}}">
 					<view class="progress-bar" style="width:{{roomUsers[1].pointBar}}%"></view>
 				</view>
-				<view class="point">{{roomUsers[1].point}}</view>
+				<view class="point {{roomUsers[1].animation?'active':''}}">{{roomUsers[1].point}}</view>
 			</view>
 		</view>
 		<view class="battle-title">
