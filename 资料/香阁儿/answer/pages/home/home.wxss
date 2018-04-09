@@ -101,15 +101,16 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 760rpx; }
-      .modal .content .body .modal-btn {
-        border-radius: 20rpx;
-        background-color: #9421ff;
-        box-shadow: 0 10rpx 20rpx 0 rgba(148, 33, 255, 0.5);
-        width: 400rpx;
-        height: 120rpx;
-        color: #fff;
-        margin-bottom: 40rpx; }
+      height: 600rpx; }
+    .modal .content .modal-btn {
+      border-radius: 20rpx;
+      background-color: #9421ff;
+      box-shadow: 0 10rpx 20rpx 0 rgba(148, 33, 255, 0.5);
+      width: 400rpx;
+      height: 100rpx;
+      line-height: 100rpx;
+      color: #fff;
+      margin-bottom: 40rpx; }
   .modal .close {
     margin-top: 50rpx; }
     .modal .close .close-image {
@@ -121,21 +122,24 @@
   flex-wrap: wrap; }
   .body .item-list .item {
     width: 200rpx;
-    height: 220rpx;
+    height: 150rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin-top: 20rpx; }
     .body .item-list .item .item-image-box {
-      width: 140rpx;
-      height: 140rpx;
+      width: 100rpx;
+      height: 100rpx;
       position: relative;
       border-radius: 50%;
-      overflow: hidden; }
+      overflow: hidden;
+      margin: 0 20rpx; }
+      .body .item-list .item .item-image-box.today {
+        animation: scaleShake 1s infinite; }
       .body .item-list .item .item-image-box .image, .body .item-list .item .item-image-box .check, .body .item-list .item .item-image-box .uncheck {
-        width: 140rpx;
-        height: 140rpx;
+        width: 100rpx;
+        height: 100rpx;
         position: absolute; }
       .body .item-list .item .item-image-box .check, .body .item-list .item .item-image-box .uncheck {
         background: rgba(0, 0, 0, 0.3);
@@ -151,7 +155,7 @@
       .body .item-list .item .item-image-box .uncheck {
         z-index: 1; }
     .body .item-list .item .item-name {
-      font-size: 34rpx;
+      font-size: 20rpx;
       color: #1f0142;
       display: -webkit-box;
       word-break: break-all;
@@ -169,5 +173,17 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       margin: 0 40rpx; }
+
+@-webkit-keyframes scaleShake {
+  0%, 100% {
+    transform: scale(1) rotate3d(0, 0, 0, 0); }
+  12.5%, 87.5% {
+    transform: scale(1) rotate3d(0, 0, 1, 15deg); }
+  25%, 75% {
+    transform: scale(1) rotate3d(0, 0, 0, 0); }
+  37.5%, 62.5% {
+    transform: scale(1) rotate3d(0, 0, 1, -15deg); }
+  50% {
+    transform: scale(1) rotate3d(0, 0, 0, 0); } }
 
 /*# sourceMappingURL=home.wxss.map */
