@@ -145,9 +145,7 @@ Page({
       }
       if (res.type == 4) {
         console.log('得到答案了:-----------------------------');
-        setTimeout(()=>{
-          this.updatePoint(res)
-        },500)
+        this.updatePoint(res)
       }
       if (res.type == 5) {
         console.log('游戏结束:-----------------------------');
@@ -468,12 +466,12 @@ Page({
     //加分动画
     if (updateUser['animation']) {
       setTimeout(() => {
-        updateUser['animation'] = false;
-        roomUser[index] = updateUser;
+        let users= this.data.roomUsers;
+        users[index]['animation'] = false;
         this.setData({
-          roomUsers: roomUser
+          roomUsers: users
         });
-      }, 500);
+      }, 600);
     }
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
