@@ -52,7 +52,7 @@
 			<button wx:if="{{roomOwner==userId}}" class=" continue" bindtap="playAgain">
 				再来一局
 			</button>
-			<button class="cancel" bindtap="back">
+			<button class="cancel" bindtap="cancelBattle">
 				返回
 			</button>
 		</view>

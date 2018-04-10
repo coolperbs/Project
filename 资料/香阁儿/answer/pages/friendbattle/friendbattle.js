@@ -112,7 +112,6 @@ Page({
   getMessage() {
     battle.PVF_onMessage((res) => {
       //console.log('好友对战接收到消息了:----------------------');
-      console.log(res)
       if (res.code != '0000') {
         if (this.data.isConnect) {
           utils.showToast({
@@ -149,10 +148,11 @@ Page({
         this.setData({
           showRoom: false
         });
-        this.clearCountAni();
-        this.clearTheInterval();
+
         setTimeout(() => {
           this.subjectAnimation(4, () => {
+            this.clearCountAni();
+            this.clearTheInterval();
             this.endGame(res)
           })
         }, 1000)
@@ -180,12 +180,13 @@ Page({
             //console.log('人都跑了,去拿答案了');
             this.clearCountAni();
             this.clearTheInterval();
-            this.subjectAnimation(4, () => {
-              this.sendMessage({type: 3})
-            })
+            setTimeout(()=>{
+              this.subjectAnimation(4, () => {
+                this.sendMessage({type: 3})
+              })
+            },1000)
           }
         } else {
-          console.log('房间用户',rest)
           this.setData({
             roomUsers:rest
           })
@@ -697,6 +698,7 @@ Page({
     }
     //console.log('玩家数据');
     //console.log(result[index]);
+    console.log(flag)
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
