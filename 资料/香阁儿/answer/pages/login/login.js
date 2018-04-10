@@ -29,13 +29,13 @@ Page({
           if (res2) {
            setTimeout(()=>{
              util.redirectTo('../home/home')
-           },1500)
+           },1000)
           }
         });
       } else {
         setTimeout(()=>{
           util.redirectTo('../home/home')
-        },1500)
+        },1000)
       }
     })
   },

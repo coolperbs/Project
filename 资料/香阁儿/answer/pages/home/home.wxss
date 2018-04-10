@@ -68,7 +68,7 @@
 
 .home-btn-bottom .home-btn {
   width: 142rpx;
-  height: 161rpx; }
+  height: 142rpx; }
 
 .home-btn image {
   width: inherit;
@@ -122,17 +122,16 @@
   flex-wrap: wrap; }
   .body .item-list .item {
     width: 200rpx;
-    height: 150rpx;
+    height: 180rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 20rpx; }
+    margin-top: 10rpx; }
     .body .item-list .item .item-image-box {
       width: 100rpx;
       height: 100rpx;
       position: relative;
-      border-radius: 50%;
       overflow: hidden;
       margin: 0 20rpx; }
       .body .item-list .item .item-image-box.today {
@@ -140,6 +139,7 @@
       .body .item-list .item .item-image-box .image, .body .item-list .item .item-image-box .check, .body .item-list .item .item-image-box .uncheck {
         width: 100rpx;
         height: 100rpx;
+        border-radius: 50%;
         position: absolute; }
       .body .item-list .item .item-image-box .check, .body .item-list .item .item-image-box .uncheck {
         background: rgba(0, 0, 0, 0.3);

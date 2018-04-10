@@ -92,13 +92,13 @@
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/coin.png"></image>
 				<view class="item-label">金币</view>
-				<view class="item-text">+{{result.gold+result.upGold?result.upGold:0}}</view>
+				<view class="item-text">+{{result.gold}}</view>
 				<!--<view class="item-more" wx:if="{{result.upGold&&result.upGold>0}}">+{{result.upGold}}</view>-->
 			</view>
 			<view class="result-item">
 				<image class="item-icon" src="../../static/images/crown.png"></image>
 				<view class="item-label">EXP</view>
-				<view class="item-text">+{{result.exp+result.upExp?result.upExp:0}}</view>
+				<view class="item-text">+{{result.exp}}</view>
 				<!--<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>-->
 			</view>
 			<button class="continue" bindtap="playAgain">

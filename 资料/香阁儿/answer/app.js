@@ -3,17 +3,22 @@ App({
   HOST_SOCKET: 'ws://gamegw.soofylia.net/ws',
   HOST_AJAX: 'http://gamegw.soofylia.net',
   onHide() {
-   /* let Time = new Date().getTime();
-    wx.setStorageSync('hideTime', Time)*/
+    // let time = wx.getStorageSync('hideTime') || null;
+    // if (!time) {
+    //   time = new Date().getTime();
+    //   wx.setStorageSync('hideTime', time)
+    // }
   },
   onShow() {
-    /*let time = wx.getStorageSync('hideTime') || null;
-    console.log(time)
-    if (time) {
-      let now = new Date().getTime();
-      if ((now - time) > 120000) {
-        wx.reLaunch({})
-      }
-    }*/
+    // let time = wx.getStorageSync('hideTime') || null;
+    // let now = new Date().getTime();
+    // if (time) {
+    //   if ((now - time) > 50000) {
+    //     wx.reLaunch({
+    //       url:'../home/home'
+    //     })
+    //     wx.clearStorageSync('hideTime')
+    //   }
+    // }
   }
 })
