@@ -1,15 +1,41 @@
 <view class="friend">
 	<view class="battle">
 		<view class="battle-user">
-			<view class="user {{item.owner?'owner':''}}"
-						wx:for="{{roomUsers}}"
-						wx:key="{{index}}"
-						style="transform:translate3d({{item.rank*item.scale}}px,0,0)"
-						wx:if="{{item.name}}">
-				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
-				<view class="name">{{item.name}}</view>
-				<view class="point">{{item.point}}</view>
+			<!--<view class="user {{item.owner?'owner':''}}"-->
+						<!--wx:for="{{roomUsers}}"-->
+						<!--wx:key="{{index}}"-->
+						<!--style="transform:translate3d({{item.rank*item.scale}}px,0,0)"-->
+						<!--wx:if="{{item.name}}">-->
+				<!--<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>-->
+				<!--<view class="name">{{item.name}}</view>-->
+				<!--<view class="point">{{item.point}}</view>-->
+			<!--</view>-->
+
+			<view class="user-box">
+				<view class="user-box-in">
+					<view class="mine-box">
+						<view class="user">
+							<view class="user-head">
+								<image class="head-image"></image>
+							</view>
+							<view class="name">sdfdsfsdfsfsd</view>
+						</view>
+						<view class="big-point">234</view>
+						<view class="big-rank">第4名</view>
+					</view>
+					<view class="list-box">
+						<view class="user">
+							<view class="rank">1</view>
+							<view class="user-head">
+								<image class="head-image"></image>
+							</view>
+							<view class="name">fdsfsdfsdfdsfs</view>
+							<view class="point">232</view>
+						</view>
+					</view>
+				</view>
 			</view>
+
 		</view>
 		<view class="battle-title">
 			<view class="vs">
@@ -57,29 +83,29 @@
 			</button>
 		</view>
 	</view>
-	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
-		<view class="left" animation="{{matchLeftData}}"></view>
-		<view class="right" animation="{{matchRightData}}"></view>
-		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
-	</view>
-	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
-		<view class="room-box">
-			<view class="user-list">
-				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
-					<view class="head {{item.owner?'owner':''}}">
-						<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
-					</view>
-					<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>
-				</view>
-			</view>
-			<button class="room-btn invite" open-type="share">
-				<image src="../../static/images/invite.png"></image>
-			</button>
-		</view>
-		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId}}">
-			<image src="../../static/images/start.png"></image>
-		</button>
-		<button class="cancel" bindtap="cancelBattle">退出房间</button>
-	</view>
-	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
+	<!--<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">-->
+		<!--<view class="left" animation="{{matchLeftData}}"></view>-->
+		<!--<view class="right" animation="{{matchRightData}}"></view>-->
+		<!--<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>-->
+	<!--</view>-->
+	<!--<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">-->
+		<!--<view class="room-box">-->
+			<!--<view class="user-list">-->
+				<!--<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">-->
+					<!--<view class="head {{item.owner?'owner':''}}">-->
+						<!--<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>-->
+					<!--</view>-->
+					<!--<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>-->
+				<!--</view>-->
+			<!--</view>-->
+			<!--<button class="room-btn invite" open-type="share">-->
+				<!--<image src="../../static/images/invite.png"></image>-->
+			<!--</button>-->
+		<!--</view>-->
+		<!--<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId}}">-->
+			<!--<image src="../../static/images/start.png"></image>-->
+		<!--</button>-->
+		<!--<button class="cancel" bindtap="cancelBattle">退出房间</button>-->
+	<!--</view>-->
+	<!--<view wx:if="{{errorShaking}}" class="mask-shaking"></view>-->
 </view>

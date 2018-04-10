@@ -7,7 +7,7 @@ Page { width : 100%; height : 100%; }
 .nav .tab.current { transform : scale3d( 1, 1, 1 ); opacity: 1; }
 .nav .tab.current:after { transform : scale3d( 1, 1, 1 ); }
 
-.list-wrapper { overflow: hidden; border-radius : 20rpx; padding : 4rpx; background: linear-gradient( #4900ec, #910275); overflow: hidden; height : 100rpx; flex-grow : 1; width : 640rpx; margin : 60rpx auto 50rpx auto; display: flex; flex-direction : column; }
+.list-wrapper { overflow: hidden; border-radius : 20rpx; padding : 4rpx; background: linear-gradient( #4900ec, #910275);  height : 100rpx; flex-grow : 1; width : 640rpx; margin : 60rpx auto 50rpx auto; display: flex; flex-direction : column; }
 .list-wrapper .list { border-radius : 20rpx; height : 10rpx; flex-grow : 1; background-color: rgba( 0, 0, 0, 0.4 ); }
 
 .list{

@@ -123,36 +123,67 @@
       box-sizing: border-box;
       margin: 30rpx;
       position: relative; }
-      .friend .battle .battle-user .user {
-        position: absolute;
-        width: 90rpx;
-        margin-right: 40rpx;
-        box-sizing: border-box;
-        transition: all 1s ease; }
-        .friend .battle .battle-user .user.owner .head {
-          border: 4rpx solid #e10083; }
-        .friend .battle .battle-user .user.owner .point {
-          color: #e10083; }
-        .friend .battle .battle-user .user .head {
-          width: 90rpx;
-          height: 90rpx;
-          box-sizing: border-box;
-          overflow: hidden;
-          border-radius: 50%;
-          border: 4rpx solid #2fdefd;
-          margin-bottom: 20rpx; }
-        .friend .battle .battle-user .user .name {
-          font-size: 22rpx;
-          color: #fff;
-          width: 100rpx;
-          white-space: nowrap;
-          word-break: keep-all;
-          text-overflow: ellipsis;
-          overflow: hidden; }
-        .friend .battle .battle-user .user .point {
+      .friend .battle .battle-user .user-box {
+        background: linear-gradient(#4900ec, #910275);
+        border-radius: 5rpx;
+        height: 240rpx;
+        width: 100%;
+        position: relative; }
+        .friend .battle .battle-user .user-box .user-box-in {
+          background-color: rgba(0, 0, 0, 0.4);
           position: absolute;
-          top: -20rpx;
-          right: -30rpx; }
+          top: 6rpx;
+          right: 6rpx;
+          bottom: 6rpx;
+          left: 6rpx;
+          border-radius: 5rpx;
+          overflow: hidden;
+          display: flex;
+          padding: 20rpx; }
+          .friend .battle .battle-user .user-box .user-box-in .mine-box, .friend .battle .battle-user .user-box .user-box-in .list-box {
+            width: 50%; }
+          .friend .battle .battle-user .user-box .user-box-in .user {
+            display: flex;
+            color: #ffffff;
+            align-items: center;
+            justify-content: flex-start; }
+            .friend .battle .battle-user .user-box .user-box-in .user .rank {
+              font-size: 36rpx;
+              margin-right: 10rpx; }
+            .friend .battle .battle-user .user-box .user-box-in .user .user-head {
+              width: 40rpx;
+              height: 40rpx;
+              border-radius: 50%;
+              border: 2rpx solid #2fdefd;
+              margin-right: 20rpx; }
+              .friend .battle .battle-user .user-box .user-box-in .user .user-head.owner {
+                border: 2rpx solid #e10083; }
+            .friend .battle .battle-user .user-box .user-box-in .user .name {
+              color: rgba(255, 255, 255, 0.6);
+              font-size: 30rpx;
+              width: 150rpx;
+              white-space: nowrap;
+              word-break: keep-all;
+              text-overflow: ellipsis;
+              overflow: hidden; }
+            .friend .battle .battle-user .user-box .user-box-in .user .point {
+              margin-left: auto;
+              font-size: 32rpx;
+              color: rgba(255, 255, 255, 0.6); }
+          .friend .battle .battle-user .user-box .user-box-in .mine-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; }
+            .friend .battle .battle-user .user-box .user-box-in .mine-box .user {
+              align-self: flex-start; }
+              .friend .battle .battle-user .user-box .user-box-in .mine-box .user .name {
+                color: #ffffff !important; }
+            .friend .battle .battle-user .user-box .user-box-in .mine-box .big-point {
+              font-size: 60rpx;
+              font-weight: bold; }
+            .friend .battle .battle-user .user-box .user-box-in .mine-box .big-rank {
+              font-size: 28rpx; }
     .friend .battle .battle-title {
       height: 320rpx;
       width: 100%;
