@@ -33,6 +33,15 @@ Page({
         }
         return el
       });
+      let todayIndex = checkData.findIndex((el, index) => {
+        if (el.wareId == ware.wareId) {
+          return index
+        }
+      })
+      checkData = checkData.map((el) => {
+        el['todayIndex'] = todayIndex;
+        return el
+      });
       this.setData({
         checkData: checkData,
         checkWare: ware,
@@ -41,7 +50,7 @@ Page({
     })
   },
 
-  jumpPage (e) {
+  jumpPage(e) {
     let type = e.currentTarget.dataset.type;
     switch (type) {
       case 'rank':
@@ -70,7 +79,7 @@ Page({
         break;
     }
   },
-  check () {
+  check() {
     login.dailyCheck(this.data.checkWare, res => {
       if (res.code != '0000') {
         utils.showToast({title: res.msg || '签到失败,请稍候重试'})
@@ -82,7 +91,7 @@ Page({
       })
     })
   },
-  closeModal(){
+  closeModal() {
     this.setData({
       showCheck: false
     })

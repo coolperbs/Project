@@ -44,8 +44,8 @@
 					<view class="item" wx:for="{{checkData}}" wx:key="{{index}}">
 					<view class="item-image-box {{item.canGet?'today':''}}">
 						<image class="image" src="{{item.image}}"></image>
-						<!--<view wx:if="{{item.hanGet}}" class="check">已领</view>-->
-						<!--<view wx:if="{{!item.canGet&&!item.hanGet}}" class="uncheck">失效</view>-->
+						<view wx:if="{{item.hasGet}}" class="check">已领</view>
+						<view wx:if="{{index<item.todayIndex&&!item.hasGet}}" class="uncheck">失效</view>
 					</view>
 						<view class="item-name" style="font-size: 26rpx;font-weight: bold">{{item.day}}</view>
 						<view class="item-name">{{item.name}}</view>
