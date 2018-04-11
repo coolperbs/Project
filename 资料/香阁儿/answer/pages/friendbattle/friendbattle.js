@@ -61,10 +61,13 @@ Page({
     let circle2 = this.canvasCircle2;
     let time = 1000;
     let count = 0;
+    if(this.countTimer){
+      clearInterval(this.countTimer)
+    }
     this.countTimer = setInterval(() => {
 
       if (count >= time) {
-        clearInterval(this.countTimer)
+       this.clearCountAni()
       }
       count += 1;
       let endPath = (-0.5 * Math.PI) + count * (2 * Math.PI / time);
@@ -192,6 +195,9 @@ Page({
             count++
           }
         });
+        this.setData({
+          roomUsers: rest
+        })
         //区分开始对战没有
         if (this.data.isStart) {
           this.updateRankList();
@@ -206,9 +212,6 @@ Page({
             }, 1000)
           }
         } else {
-          this.setData({
-            roomUsers: rest
-          })
           if (res.userId == this.data.roomOwner) {
             //房主都跑了
             utils.showToast({
@@ -280,6 +283,10 @@ Page({
    * 发送消息
    * */
   sendMessage(data) {
+    if(!this.data.isConnect){
+      this.back();
+      return
+    }
     battle.PVF_send(data);
   },
   /**
@@ -746,9 +753,9 @@ Page({
     let flag = false;
     if (result[index] && result[index].result) {
       flag = true;
-      this.playWinner();
     }
     this.stopBg();
+    this.playWinner();
     //console.log('玩家数据');
     //console.log(result[index]);
     this.setData({
@@ -770,10 +777,6 @@ Page({
    * */
   closeConnect() {
     //console.log('关闭连接:-------------------------------------')
-    if (!this.data.isEnd && this.data.isStart) {
-      //逃跑退出获取结果
-      this.sendMessage({type: 3})
-    }
     this.clearTheInterval();
     this.clearCountAni();
     if (this.data.isConnect) {
