@@ -91,7 +91,26 @@ Page({
     this.setData({
       level: options.level || 1
     })
-    this.initPage()
+    this.initPage();
+  },
+  onReady(){
+    this.playBg();
+  },
+  playBg(){
+    this.audioCtx = wx.createAudioContext('myAudio');
+    this.audioCtx.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
+    this.audioCtx.play();
+  },
+  stopBg(){
+    this.audioCtx.pause();
+  },
+  playWinner(){
+    this.audioCtx2 = wx.createAudioContext('myAudio2');
+    this.audioCtx2.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
+    this.audioCtx2.play();
+  },
+  stopWinner(){
+    this.audioCtx2.pause();
   },
   /**
    * 初始化
@@ -620,11 +639,13 @@ Page({
     let flag = false;
     if (result[index] && result[index].result) {
       flag = true;
+      this.playWinner()
     }
+    this.stopBg();
     //判断当前玩家升级没有
     let up = false;
     if (result[index].hasUpLevel) {
-      up = true
+      up = true;
     }
     //console.log('玩家数据');
     //console.log(result[index]);
@@ -665,7 +686,8 @@ Page({
     }
     this.setData({
       PVP_isConnect:false,
-      PVA_isConnect:false
+      PVA_isConnect:false,
+      vsAi:undefined
     })
   },
   /**
@@ -674,9 +696,11 @@ Page({
   initAiEvt () {
     setTimeout(() => {
       if (this.data.vsAi == 'undefined') {
+        console.log('连接AI')
         if(!this.data.PVP_isConnect){
           return
         }
+        console.log('lianjie AI chenggong ')
         this.setData({
           vsAi: true
         });
@@ -783,7 +807,7 @@ Page({
    * 在来一把
    * */
   playAgain () {
-    wx.navigateBack(1)
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -797,6 +821,8 @@ Page({
    */
   onUnload: function () {
     this.closeConnect('run');
+    this.stopBg();
+    this.stopWinner()
   },
   /**
    * 用户点击右上角分享

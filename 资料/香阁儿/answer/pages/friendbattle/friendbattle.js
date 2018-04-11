@@ -75,6 +75,25 @@ Page({
       circle2.draw();
     }, 10)
   },
+  onShow(){
+    this.playBg();
+  },
+  playBg(){
+    this.audioCtx = wx.createAudioContext('myAudio');
+    this.audioCtx.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
+    this.audioCtx.play();
+  },
+  stopBg(){
+    this.audioCtx.pause();
+  },
+  playWinner(){
+    this.audioCtx2 = wx.createAudioContext('myAudio2');
+    this.audioCtx2.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
+    this.audioCtx2.play();
+  },
+  stopWinner(){
+    this.audioCtx2.pause();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -452,7 +471,7 @@ Page({
     updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
     updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
     roomUser[index] = updateUser;
-    console.log(roomUser)
+    //console.log(roomUser)
     this.setData({
       roomUsers: roomUser
     });
@@ -514,7 +533,7 @@ Page({
     sortData.sort((a, b) => {
       return b.point - a.point
     });
-    console.log('排行过后的用户列表', sortData)
+    //console.log('排行过后的用户列表', sortData)
     for (var i = 0; i < roomUser.length; i++) {
       let index = sortData.findIndex((el) => {
         return el.id == roomUser[i].id
@@ -724,7 +743,9 @@ Page({
     let flag = false;
     if (result[index] && result[index].result) {
       flag = true;
+      this.playWinner();
     }
+    this.stopBg();
     //console.log('玩家数据');
     //console.log(result[index]);
     this.setData({
@@ -797,6 +818,7 @@ Page({
     //动画还原
     this.subjectAnimation(4)
     this.animationEvt('reset')
+    this.playBg()
     setTimeout(() => {
       this.sendMessage({type: 5});
     }, 50)
@@ -821,6 +843,8 @@ Page({
    */
   onUnload: function () {
     this.closeConnect();
+    this.stopBg();
+    this.stopWinner();
   },
 
   /**

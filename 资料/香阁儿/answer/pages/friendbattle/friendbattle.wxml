@@ -124,3 +124,5 @@
 		</view>
 	</view>
 </view>
+<audio id="myAudio" loop="true"></audio>
+<audio id="myAudio2"></audio>

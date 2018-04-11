@@ -110,3 +110,5 @@
 	<view class="level-up {{hasUpLevel?'active':''}}">升级啦！~~~~~</view>
 	<view class="level-up {{hasUpDanGrading?'active':''}}">断位升级！~~~~~</view>
 </view>
+<audio id="myAudio" loop="true"></audio>
+<audio id="myAudio2"></audio>

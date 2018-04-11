@@ -178,8 +178,10 @@ Page({
     })
   },
   rankBattleEvt (e) {
-    let level = e.currentTarget.dataset.level || 1
-    utils.navigateTo('../battleone/battleone', {level: level})
+    let level = e.currentTarget.dataset.level || 1;
+    setTimeout(()=>{
+      utils.navigateTo('../battleone/battleone', {level: level})
+    },500)
   },
   /**
    * 生命周期函数--监听页面隐藏
