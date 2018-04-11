@@ -113,8 +113,8 @@
 					</view>
 				</view>
 			</view>
-			<view class="btn-out">
-				<button wx:if="{{roomOwner==userId}}" class="btn-in" bindtap="playAgain">
+			<view wx:if="{{roomOwner==userId}}" class="btn-out">
+				<button class="btn-in" bindtap="playAgain">
 					继续游戏
 				</button>
 			</view>

@@ -267,7 +267,7 @@ Page({
    * 开始对战
    * */
   startBattle () {
-    let count = 2;
+    let count = 0;
     this.data.roomUsers.map((el) => {
       if (el.avatar) {
         count++;
