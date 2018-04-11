@@ -21,7 +21,9 @@ Page({
     login.getDailyCheckData(res => {
       if (res.code != '0000') {
         if (res.code == '9999') {
-          //是否文案提示
+          utils.showToast({
+            title:'网络错误,请稍候重试!'
+          })
         }
         return
       }

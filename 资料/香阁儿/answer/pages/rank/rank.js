@@ -27,6 +27,9 @@ Page({
   updateRank() {
     rank.getRank((res) => {
       if (res.code !== '0000') {
+        utils.showToast({
+          title:res.message||'连接错误'
+        })
         return
       }
       this.filterData(res.data)

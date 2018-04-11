@@ -47,8 +47,8 @@
 						<view wx:if="{{item.hasGet}}" class="check">已领</view>
 						<view wx:if="{{index<item.todayIndex&&!item.hasGet}}" class="uncheck">失效</view>
 					</view>
-						<view class="item-name" style="font-size: 26rpx;font-weight: bold">{{item.day}}</view>
 						<view class="item-name">{{item.name}}</view>
+						<view wx:if="{{!item.hasGet}}" class="item-name" style="font-size: 26rpx;font-weight: bold">{{item.day}}</view>
 					</view>
 				</view>
 			</scroll-view>

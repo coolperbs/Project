@@ -48,8 +48,12 @@ export default {
                 url: app.HOST_AJAX + '/login',
                 data: {code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData},
                 callback (res3) {
-                  utils.setStorageSync('userInfo', res3.data);
-                  callback && callback(true)
+                  if(res3.code!='0000'){
+                    callback && callback(false)
+                  }else {
+                    utils.setStorageSync('userInfo', res3.data);
+                    callback && callback(true)
+                  }
                 }
               })
             }

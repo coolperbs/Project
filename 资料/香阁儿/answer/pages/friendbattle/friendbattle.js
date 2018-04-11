@@ -153,8 +153,8 @@ Page({
           this.subjectAnimation(4, () => {
             this.clearCountAni();
             this.clearTheInterval();
-            this.endGame(res)
           })
+          this.endGame(res)
         }, 1000)
       }
       if (res.type == '6') {
@@ -727,12 +727,17 @@ Page({
     }
     //console.log('玩家数据');
     //console.log(result[index]);
-    console.log(flag)
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
-      result: result[index]
+      result: result
     });
+    let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
+    let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
+    circle.clearRect(0, 0, 1000, 1000);
+    circle2.clearRect(0, 0, 1000, 1000);
+    circle.draw();
+    circle2.draw();
     //this.closeConnect();
   },
 

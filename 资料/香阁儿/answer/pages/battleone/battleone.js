@@ -153,8 +153,8 @@ Page({
         //console.log('游戏结束:-----------------------------');
         setTimeout(() => {
           this.subjectAnimation(4, () => {
-            this.endGame(res)
           })
+          this.endGame(res)
         }, 1000)
       }
       if (res.type == '6') {

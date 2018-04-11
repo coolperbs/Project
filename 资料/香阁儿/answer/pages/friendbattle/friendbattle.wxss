@@ -103,6 +103,13 @@
         height: 200rpx; }
       .friend .room .room-btn.invite {
         transform: translate3d(150rpx, 150rpx, 0); }
+      .friend .room .room-btn.start {
+        width: 460rpx;
+        height: 100rpx;
+        border-radius: 50rpx;
+        color: #ffffff;
+        font-weight: bold;
+        background-image: linear-gradient(to top, #fd2f56, #fd2fa1); }
   .friend .cancel {
     border-radius: 4rpx;
     color: #fd2fa1;
@@ -410,7 +417,10 @@
     z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center;
+    transform: scale(0);
+    opacity: 0;
+    transition: all .45s ease 1s; }
     .friend .result .mine {
       display: flex;
       flex-direction: column;
@@ -481,7 +491,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #fff; }
+        color: #fff;
+        margin-bottom: 10rpx; }
         .friend .result .rank-list .list-user .rank {
           font-size: 24rpx;
           width: 40rpx;
@@ -501,7 +512,8 @@
           white-space: nowrap;
           word-break: keep-all;
           text-overflow: ellipsis;
-          overflow: hidden; }
+          overflow: hidden;
+          font-size: 26rpx; }
         .friend .result .rank-list .list-user .coin-box {
           margin-left: auto;
           display: flex;
@@ -511,6 +523,9 @@
           font-size: 22rpx; }
         .friend .result .rank-list .list-user .coin {
           color: #fd2fa1; }
+  .friend .result.active {
+    transform: scale(1);
+    opacity: 1; }
 
 .vs {
   position: relative;
@@ -528,5 +543,22 @@
     text-align: center;
     line-height: 150rpx;
     vertical-align: middle; }
+
+.btn-out {
+  background: linear-gradient(to top, #423ceb, #bc0fb5);
+  width: 460rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  position: relative;
+  margin: 0 auto 50rpx auto; }
+  .btn-out .btn-in {
+    background: linear-gradient(to top, #c60054, #f7f417);
+    position: absolute;
+    top: 4rpx;
+    right: 4rpx;
+    bottom: 4rpx;
+    left: 4rpx;
+    border-radius: 50rpx;
+    color: white; }
 
 /*# sourceMappingURL=friendbattle.wxss.map */
