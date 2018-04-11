@@ -122,9 +122,11 @@ Page({
   getPVPMessage () {
     battle.PVP_onMessage((res) => {
       if (res.code != '0000') {
-        utils.showToast({
-          title: '连接错误,请退出重试' + res.code
-        })
+        if(this.data.PVP_isConnect){
+          utils.showToast({
+            title: '连接错误,请退出重试' + res.code
+          })
+        }
         return
       }
       res = res.data;
@@ -663,6 +665,9 @@ Page({
   initAiEvt () {
     setTimeout(() => {
       if (this.data.vsAi == 'undefined') {
+        if(!this.data.PVP_isConnect){
+          return
+        }
         this.setData({
           vsAi: true
         });
@@ -681,13 +686,11 @@ Page({
   getAiMessage () {
     battle.PVA_onMessage((res) => {
       if (res.code != '0000') {
-        this.closeConnect();
-        utils.showToast({
-          title: '连接错误' + res.code
-        })
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
+        if(this.data.PVA_isConnect){
+          utils.showToast({
+            title: '连接错误' + res.code
+          })
+        }
         return
       }
       res = res.data;

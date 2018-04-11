@@ -19,8 +19,7 @@
       height: 100rpx; }
       .rank .rank-box .rank-title .rank-name {
         font-size: 50rpx;
-        font-weight: bold;
-        margin-bottom: 10rpx; }
+        font-weight: bold; }
       .rank .rank-box .rank-title .rank-time {
         font-size: 24rpx; }
     .rank .rank-box .rank-menu {
