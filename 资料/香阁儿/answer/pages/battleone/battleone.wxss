@@ -406,4 +406,16 @@
   .right .combo.active {
     transform: translate3d(0, 0, 0); }
 
+.up-icon {
+  width: 144rpx;
+  height: 144rpx;
+  margin: 0 20rpx;
+  transition: all 0.5s cubic-bezier(0.18, 1.91, 0.25, 0.81) 0.45s;
+  transform: scale(0) rotate3d(0, 0, 1, 180deg); }
+  .up-icon.active {
+    transform: scale(1) rotate3d(0, 0, 1, 0deg); }
+
+.result-item.none {
+  border: none; }
+
 /*# sourceMappingURL=battleone.wxss.map */

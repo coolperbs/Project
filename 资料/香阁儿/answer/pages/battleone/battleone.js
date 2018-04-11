@@ -663,8 +663,8 @@ Page({
       roomUsers: roomUser,
       WINNER: flag,
       result: resultA,
-      hasUpLevel: up,
-      hasUpDanGrading: resultA.hasUpDanGrading || false
+      hasUpLevel: true,
+      hasUpDanGrading: true
     });
     this.closeConnect();
   },
@@ -826,11 +826,5 @@ Page({
     this.closeConnect('run');
     this.stopBg();
     this.stopWinner()
-  },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
