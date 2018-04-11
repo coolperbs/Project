@@ -17,7 +17,7 @@
 			<view class="user">
 				<image mode="aspectFit" class="head" src="{{roomUsers[1].avatar}}"></image>
 				<view class="name">{{roomUsers[1].name}}</view>
-				<view class="level">{{roomUsers[1].level?'V'+roomUsers[1].level:''}}</view>
+				<view wx:if="{{roomUsers[1].id!=-1}}" class="level">{{roomUsers[1].level?'V'+roomUsers[1].level:''}}</view>
 			</view>
 		</view>
 		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
@@ -43,7 +43,7 @@
 					<image class="head-image" src="{{roomUsers[1].avatar}}"></image>
 				</view>
 				<view class="name">
-					<view class="level">V{{roomUsers[1].level}}</view>
+					<view class="level">{{roomUsers[1].id!=-1?'V'+roomUsers[1].level:''}}</view>
 					<view class="text">{{roomUsers[1].name}}</view>
 				</view>
 				<view class="progress {{isEnd?'active':''}}">
@@ -108,4 +108,5 @@
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="level-up {{hasUpLevel?'active':''}}">升级啦！~~~~~</view>
+	<view class="level-up {{hasUpDanGrading?'active':''}}">断位升级！~~~~~</view>
 </view>
