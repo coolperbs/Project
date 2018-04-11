@@ -663,8 +663,8 @@ Page({
       roomUsers: roomUser,
       WINNER: flag,
       result: resultA,
-      hasUpLevel: true,
-      hasUpDanGrading: true
+      hasUpLevel: up,
+      hasUpDanGrading: resultA.hasUpDanGrading || false
     });
     this.closeConnect();
   },
