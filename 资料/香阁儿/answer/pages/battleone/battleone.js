@@ -591,9 +591,9 @@ Page({
    * 游戏结束
    * */
   endGame (res) {
-    console.log('游戏结束:--------------------------------------')
-    console.log(res)
-    console.log('游戏结束:--------------------------------------')
+    // console.log('游戏结束:--------------------------------------')
+    // console.log(res)
+    // console.log('游戏结束:--------------------------------------')
     if (this.data.isEnd) {
       return
     }
@@ -647,17 +647,26 @@ Page({
   /**
    * 关闭连接
    * */
-  closeConnect () {
+  closeConnect (type) {
     //console.log('关闭连接:-------------------------------------')
+    if(type){
+      //有人逃跑
+      if (this.data.PVA_isConnect) {
+        battle.PVA_send({"type": 3});
+      }
+    }
     this.clearTheInterval();
     this.clearTheAiInterval();
     if (this.data.PVP_isConnect) {
       battle.PVP_close();
     }
     if (this.data.PVA_isConnect) {
-      battle.PVA_send({"type": 3});
       battle.PVA_close();
     }
+    this.setData({
+      PVP_isConnect:false,
+      PVA_isConnect:false
+    })
   },
   /**
    * 准备AI
@@ -704,6 +713,9 @@ Page({
         setTimeout(() => {
           this.startTheAiInterval()
         }, 2000)
+      }
+      if(res.type=='6'){
+        battle.PVA_send({"type": 3});
       }
     })
   },
@@ -784,7 +796,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    this.closeConnect();
+    this.closeConnect('run');
   },
   /**
    * 用户点击右上角分享
