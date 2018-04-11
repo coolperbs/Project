@@ -21,10 +21,11 @@ Page({
     login.getDailyCheckData(res => {
       if (res.code != '0000') {
         if (res.code == '9999') {
-          utils.showToast({
-            title:'网络错误,请稍候重试!'
-          })
+          return
         }
+        utils.showToast({
+          title:'网络错误,请稍候重试!'
+        })
         return
       }
       let checkData = res.data;

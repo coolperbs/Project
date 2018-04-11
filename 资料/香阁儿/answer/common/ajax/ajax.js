@@ -30,13 +30,13 @@ handle = {
       header: object.header || {},
       success: function (res) {
         if(res.statusCode!=200){
-          handle.responseWrapper({code:9999,message:'网络错误'}, object.callback);
+          handle.responseWrapper({code:'-1',message:'网络错误'}, object.callback);
         }else {
           handle.responseWrapper(res.data, object.callback);
         }
       },
       fail: function (res) {
-        handle.responseWrapper({code:9999,message:'网络错误'}, object.callback);
+        handle.responseWrapper({code:'-1',message:'网络错误'}, object.callback);
       }
     });
   },
