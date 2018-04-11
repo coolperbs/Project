@@ -1,5 +1,4 @@
 import ajax from '../../common/ajax/ajax';
-import utils from '../../common/utils/utils';
 
 const app = getApp();
 //app/danGrading/list  断位列表

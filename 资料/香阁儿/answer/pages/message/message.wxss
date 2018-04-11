@@ -1,1 +1,26 @@
 /* pages/message/message.wxss */
+.notice{
+  margin: 20rpx;
+}
+.notice .title{
+  font-size: 50rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+  margin-top: 40rpx;
+}
+.notice .content{
+  text-indent: 40rpx;
+  text-align: left;
+  font-size: 35rpx;
+}
+button:after{
+  display: none;
+}
+.notice .read-btn{
+  margin-top: 100rpx;
+  width: 640rpx;
+  height: 100rpx;
+  color: #fff;
+  background-color: #e10083;
+  box-shadow: 0 10rpx 20rpx 0 rgba(225, 0, 131, 0.51);
+}

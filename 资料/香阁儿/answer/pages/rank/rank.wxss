@@ -6,7 +6,7 @@
     height: 616rpx; }
   .rank .rank-box {
     position: absolute;
-    top: 40rpx;
+    top: 20rpx;
     right: 0;
     bottom: 0;
     left: 0;
@@ -15,8 +15,14 @@
     align-items: center;
     justify-content: flex-start; }
     .rank .rank-box .rank-title {
-      width: 323rpx;
-      height: 77rpx; }
+      width: 100%;
+      height: 100rpx; }
+      .rank .rank-box .rank-title .rank-name {
+        font-size: 50rpx;
+        font-weight: bold;
+        margin-bottom: 10rpx; }
+      .rank .rank-box .rank-title .rank-time {
+        font-size: 24rpx; }
     .rank .rank-box .rank-menu {
       display: flex;
       justify-content: space-between;

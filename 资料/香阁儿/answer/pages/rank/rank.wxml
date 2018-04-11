@@ -1,7 +1,10 @@
 <view class="rank">
 	<image class="rank-bg roate-animation" src="../../static/images/rank-bg.png"></image>
 	<view class="rank-box">
-		<image class="rank-title" src="../../static/images/rank-title.png"></image>
+		<view class="rank-title">
+			<view class="rank-name">{{rankData.name}}</view>
+			<view class="rank-time">{{rankData.begTimeStr}}~{{rankData.endTimeStr}}</view>
+		</view>
 		<view class="rank-menu">
 			<view class="coins">
 				<image class="icon-coin" src="../../static/images/coins.png"></image>

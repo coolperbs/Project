@@ -1,2 +1,7 @@
 <!--pages/message/message.wxml-->
-<text>消息中心</text>
+<view class="notice">
+	<view wx:if="{{!noticeData}}" class="title">暂无消息</view>
+	<view class="title">{{noticeData.title}}</view>
+	<view class="content">{{noticeData.content}}</view>
+<!--	<button class="read-btn" bindtap="readNotice">确认</button>-->
+</view>

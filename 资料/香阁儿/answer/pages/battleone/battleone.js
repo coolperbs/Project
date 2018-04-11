@@ -123,11 +123,8 @@ Page({
     battle.PVP_onMessage((res) => {
       if (res.code != '0000') {
         utils.showToast({
-          title: '连接错误' + res.code
+          title: '连接错误,请退出重试' + res.code
         })
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
         return
       }
       res = res.data;
