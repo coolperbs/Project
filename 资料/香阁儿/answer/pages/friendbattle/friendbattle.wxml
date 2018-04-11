@@ -115,7 +115,7 @@
 			</view>
 			<view wx:if="{{roomOwner==userId}}" class="btn-out">
 				<button class="btn-in" bindtap="playAgain">
-					继续游戏
+					再来一盘
 				</button>
 			</view>
 			<button class="cancel" bindtap="cancelBattle">
