@@ -118,7 +118,8 @@ Page({
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
-      //console.log('获取用户信息失败了')
+      //用户没有登陆
+      utils.redirectTo('../login/login',{direct:this.route,roomId:this.data.roomId})
       return
     }
     this.setData({
@@ -858,6 +859,8 @@ Page({
     }, 50)
   },
   back() {
+    wx.navigateBack();
+    return
     if (this.data.roomOwner != this.data.userId) {
       utils.redirectTo('../home/home')
     } else {
@@ -888,7 +891,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '等你来战',
-      path: '/pages/friendbattle/friendbattle?roomId=' + this.data.roomId,
+      path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,
       //image: '',
       success: function (res) {
         // utils.showToast({

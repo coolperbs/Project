@@ -50,7 +50,11 @@ Page({
         checkWare: ware,
         showCheck: true
       })
-    })
+    });
+    console.log('options',decodeURIComponent(options.direct))
+    if(options.direct){
+      utils.navigateTo(decodeURIComponent(options.direct),{roomId:options.roomId})
+    }
   },
 
   jumpPage(e) {

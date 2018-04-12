@@ -13,6 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.optData = options;
+    console.log('12312',options)
     this.loginEVT();
   },
 
@@ -22,22 +24,23 @@ Page({
   onReady: function () {
 
   },
-  loginEVT () {
+  loginEVT() {
     login.isLogin((res) => {
       if (!res) {
         login.login((res2) => {
           if (res2) {
-           setTimeout(()=>{
-             util.redirectTo('../home/home')
-           },1000)
+           this.goPage();
           }
         });
       } else {
-        setTimeout(()=>{
-          util.redirectTo('../home/home')
-        },1000)
+        this.goPage();
       }
     })
+  },
+  goPage(){
+    setTimeout(() => {
+      util.redirectTo('../home/home', this.optData)
+    }, 1000);
   },
   /**
    * 用户点击右上角分享
