@@ -191,9 +191,11 @@ Page({
         utils.showToast({title: '玩家' + rest[runner].name + '逃跑~'})
         this.clearTheInterval();
         this.clearTheAiInterval();
-        this.subjectAnimation(4, () => {
-          this.sendMessage({type: 3})
-        })
+        setTimeout(() => {
+          this.subjectAnimation(4, () => {
+            this.sendMessage({type: 3})
+          })
+        }, 1000)
       }
 
     })
@@ -687,7 +689,6 @@ Page({
     //console.log('关闭连接:-------------------------------------')
     if (type) {
       //有人逃跑
-
       this.clearTheInterval();
       this.clearTheAiInterval();
       if (this.data.PVP_isConnect) {
