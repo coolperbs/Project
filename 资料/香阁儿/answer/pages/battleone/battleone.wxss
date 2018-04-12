@@ -373,7 +373,7 @@
             height: 50rpx;
             background: red; }
       .battle-box .battle .result .continue {
-        margin-top: 200rpx;
+        margin-top: 100rpx;
         width: 460rpx;
         border-radius: 50rpx;
         height: 100rpx;
@@ -416,6 +416,6 @@
     transform: scale(1) rotate3d(0, 0, 1, 0deg); }
 
 .result-item.none {
-  border: none; }
+  border: none !important; }
 
 /*# sourceMappingURL=battleone.wxss.map */

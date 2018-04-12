@@ -465,7 +465,7 @@
         }
       }
       .continue{
-        margin-top: 200rpx;
+        margin-top: 100rpx;
         width: 460rpx;
         border-radius: 50rpx;
         height: 100rpx;
@@ -518,6 +518,6 @@
 }
 .result-item{
   &.none{
-    border: none;
+    border: none !important;
   }
 }
