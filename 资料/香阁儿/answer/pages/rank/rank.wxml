@@ -51,7 +51,7 @@
 								</view>
 							</view>
 							<view class="bottom">
-								<view class="text">奖金:{{item.exp}}</view>
+								<view class="text">奖金:{{item.gold*2}}</view>
 								<view class="star-list">
 									<view class="star {{processCount.active?'active':''}}" wx:for="{{item.processCountArr}}"
 												wx:for-item="processCount" wx:key="{{index}}">

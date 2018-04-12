@@ -105,7 +105,9 @@ Page({
     this.audioCtx.play();
   },
   stopBg() {
-    this.audioCtx.pause();
+    if (this.audioCtx) {
+      this.audioCtx.pause();
+    }
   },
   playWinner() {
     this.audioCtx2 = wx.createAudioContext('myAudio2');
@@ -113,7 +115,9 @@ Page({
     this.audioCtx2.play();
   },
   stopWinner() {
-    this.audioCtx2.pause();
+    if (this.audioCtx2) {
+      this.audioCtx2.pause();
+    }
   },
   /**
    * 初始化
@@ -179,6 +183,12 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
+        let roomUsers = this.data.roomUsers;
+        let runner = roomUsers.findIndex((el) => {
+          return el.id == res.userId
+        });
+        let rest = [...roomUsers]
+        utils.showToast({title: '玩家' + rest[runner].name + '逃跑~'})
         this.clearTheInterval();
         this.clearTheAiInterval();
         this.subjectAnimation(4, () => {
@@ -489,7 +499,9 @@ Page({
     let roomUser = this.data.roomUsers;
     let updateUser = roomUser[index];
     let oldPoint = updateUser['point'];
-    updateUser['point'] += res.point;
+    if (res.point >= 0) {
+      updateUser['point'] += res.point;
+    }
     updateUser['pointBar'] = ((updateUser.point * 100) / this.data.totalPoint).toFixed(2);
     updateUser['animation'] = true;
     let oldCombo = updateUser['comboCount'] || 0;
@@ -630,7 +642,7 @@ Page({
     for (var i = 0; i < roomUser.length; i++) {
       for (var k = 0; k < result.length; k++) {
         if (roomUser[i].id == result[k].userId) {
-          roomUser[i].point = result[k].totlePoint;
+          roomUser[i].point = result[k].totlePoint<0?roomUser[i].point:result[k].totlePoint;
           roomUser[i].pointBar = ((roomUser[i].point * 100) / this.data.totalPoint).toFixed(2);
         }
       }
@@ -675,23 +687,32 @@ Page({
     //console.log('关闭连接:-------------------------------------')
     if (type) {
       //有人逃跑
-      if (this.data.PVA_isConnect) {
-        battle.PVA_send({"type": 3});
+
+      this.clearTheInterval();
+      this.clearTheAiInterval();
+      if (this.data.PVP_isConnect) {
+        battle.PVP_close();
+        this.setData({
+          PVP_isConnect: false
+        })
       }
+      return
     }
     this.clearTheInterval();
     this.clearTheAiInterval();
     if (this.data.PVP_isConnect) {
       battle.PVP_close();
+      this.setData({
+        PVP_isConnect: false
+      })
     }
     if (this.data.PVA_isConnect) {
       battle.PVA_close();
+      this.setData({
+        PVA_isConnect: false,
+        vsAi: undefined
+      })
     }
-    this.setData({
-      PVP_isConnect: false,
-      PVA_isConnect: false,
-      vsAi: undefined
-    })
   },
   /**
    * 准备AI

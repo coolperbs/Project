@@ -48,10 +48,10 @@ handle = {
       // util.showToast({
       //   title: res.message || res.msg || ''
       // });
-      callback(res);
+      callback&&callback(res);
       return
     }
-    callback(res)
+    callback&&callback(res);
   }
 }
 

@@ -107,7 +107,7 @@
 							<view class="name">{{item.userName}}</view>
 							<view class="coin-box">
 								<view class="coin">+{{item.gold}}金币</view>
-								<view class="point">{{item.totlePoint}}分</view>
+								<view class="point">{{item.totlePoint<0?'0':item.totlePoint}}分</view>
 							</view>
 						</view>
 					</view>

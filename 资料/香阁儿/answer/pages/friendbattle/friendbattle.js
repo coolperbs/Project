@@ -87,7 +87,9 @@ Page({
     this.audioCtx.play();
   },
   stopBg() {
-    this.audioCtx.pause();
+    if (this.audioCtx) {
+      this.audioCtx.pause();
+    }
   },
   playWinner() {
     this.audioCtx2 = wx.createAudioContext('myAudio2');
@@ -95,7 +97,9 @@ Page({
     this.audioCtx2.play();
   },
   stopWinner() {
-    this.audioCtx2.pause();
+    if (this.audioCtx2) {
+      this.audioCtx2.pause();
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -170,7 +174,6 @@ Page({
         this.setData({
           showRoom: false
         });
-
         setTimeout(() => {
           this.subjectAnimation(4, () => {
             this.clearCountAni();
@@ -263,6 +266,15 @@ Page({
     })
     this.updateRoomUser(res.roomUsers);
   },
+  addFriend(ownerId) {
+    if (this.data.roomOwner == this.data.userId) {
+      return
+    }
+    battle.addFriend(ownerId,(res)=>{
+      console.log('加好友')
+      console.log(res)
+    })
+  },
   /**
    * 更新房间信息
    * */
@@ -292,6 +304,8 @@ Page({
     this.setData({
       roomUsers: roomUsers
     })
+    //加好友
+    this.addFriend(this.data.roomOwner)
   },
   /**
    * 发送消息
