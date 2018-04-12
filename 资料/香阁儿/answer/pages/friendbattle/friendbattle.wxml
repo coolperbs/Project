@@ -78,7 +78,7 @@
 				<image src="../../static/images/invite.png"></image>
 			</button>
 		</view>
-		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId}}">
+		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId&&roomOwner!=''}}">
 			开始游戏
 		</button>
 		<button class="cancel" bindtap="cancelBattle">退出房间</button>
