@@ -127,7 +127,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 10rpx; }
+    margin-top: 5rpx; }
     .body .item-list .item .item-image-box {
       width: 100rpx;
       height: 100rpx;
