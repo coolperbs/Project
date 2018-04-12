@@ -61,13 +61,13 @@ Page({
     let circle2 = this.canvasCircle2;
     let time = 1000;
     let count = 0;
-    if(this.countTimer){
+    if (this.countTimer) {
       clearInterval(this.countTimer)
     }
     this.countTimer = setInterval(() => {
 
       if (count >= time) {
-       this.clearCountAni()
+        this.clearCountAni()
       }
       count += 1;
       let endPath = (-0.5 * Math.PI) + count * (2 * Math.PI / time);
@@ -231,8 +231,22 @@ Page({
       }
       if (res.type == '8') {
         let roomId = res.roomId || '';
-        this.closeConnect();
-        utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
+        let that = this;
+        wx.showModal({
+          title: '提示',
+          content: '房主发起再来一盘',
+          confirmColor: '#1e0141',
+          confirmText: '确认加入',
+          cancelText: '取消',
+          success(res) {
+            that.closeConnect();
+            if (res.confirm) {
+              utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
+            } else if (res.cancel) {
+              that.back();
+            }
+          }
+        });
       }
     })
   },
@@ -283,7 +297,7 @@ Page({
    * 发送消息
    * */
   sendMessage(data) {
-    if(!this.data.isConnect){
+    if (!this.data.isConnect) {
       this.back();
       return
     }
@@ -472,8 +486,8 @@ Page({
     let roomUser = this.data.roomUsers;
     let updateUser = roomUser[index];
     updateUser['point'] += res.point;
-    if( updateUser['point']<0){
-      updateUser['point']=0
+    if (updateUser['point'] < 0) {
+      updateUser['point'] = 0
     }
     roomUser[index] = updateUser;
     updateUser['pointAnimation'] = true;
