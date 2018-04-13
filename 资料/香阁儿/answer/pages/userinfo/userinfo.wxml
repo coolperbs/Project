@@ -13,11 +13,11 @@
 			<view class="label">{{ pageData.questionTypeCountList[0].name }}</view>
 		</view>
 		<canvas class="c-radar" canvas-id="cRadar"/>
-		<view class="logo">
-			<image src="{{ pageData.avatar }}"></image>
-			<view class="level">lv.{{ pageData.level }}</view>
-			<view class="name">{{ pageData.name }}</view>
-		</view>
+		<cover-view class="logo">
+			<cover-image src="{{ pageData.avatar }}"></cover-image>
+			<cover-view class="level">lv.{{ pageData.level }}</cover-view>
+			<cover-view class="name">{{ pageData.name }}</cover-view>
+		</cover-view>
 	</view>
 	<view class="list-wrapper">
 		<view class="list">

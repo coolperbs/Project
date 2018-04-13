@@ -14,7 +14,7 @@
 		</scroll-view>
 	</view>
 	<view class="act">
-		<view class="button-wrapper"><view class="button">分享免费领取金币</view></view>
+		<button class="button-wrapper" open-type="share"><view class="button">分享免费领取金币</view></button>
 	</view>
 
 	<view class="poparea" wx:if="{{ showPop }}">

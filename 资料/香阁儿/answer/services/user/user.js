@@ -12,6 +12,12 @@ handle = {
       url : app.HOST_AJAX + '/app/user/profile',
       callback : callback
     } );
+  },
+  shareGetGold : function( callback ) {
+    ajax.request( {
+      url : app.HOST_AJAX + '/app/user/share',
+      callback : callback
+    } );
   }
 }
 

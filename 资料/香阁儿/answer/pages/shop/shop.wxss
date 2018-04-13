@@ -21,7 +21,7 @@ Page { width : 100%; height : 100%; }
 
 .act { padding : 30rpx 0 46rpx 0; display: flex; align-items: center; justify-content: center; }
 .act .button { width : 452rpx; height : 92rpx; border-radius: 90rpx; position: relative; z-index: 20; background: linear-gradient( #e7a62a, #d64e41); font-size : 36rpx; color : #fff; display: flex; justify-content: center; align-items: center; position: relative; }
-.act .button-wrapper { display: flex; justify-content: center; align-items: center; border-radius: 90rpx; height : 100rpx; width : 460rpx; z-index: 1; background: linear-gradient( #fd15c0, #7507ed); box-shadow: 0 10rpx 10rpx rgba( 0, 0, 0, 0.3 ) }
+.act .button-wrapper { padding : 0; display: flex; justify-content: center; align-items: center; border-radius: 90rpx; height : 100rpx; width : 460rpx; z-index: 1; background: linear-gradient( #fd15c0, #7507ed); box-shadow: 0 10rpx 10rpx rgba( 0, 0, 0, 0.3 ) }
 
 
 .poparea { z-index: 10000; display: flex; justify-content: center; align-items: center; height : 100%; width : 100%; position: fixed; top : 0; left : 0; background-color: rgba( 0, 0, 0, 0.6 ); }

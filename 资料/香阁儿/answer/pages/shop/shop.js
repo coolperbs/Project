@@ -1,6 +1,22 @@
-import {items} from '../../services/index';
+import {items,user} from '../../services/index';
 
 Page( {
+
+	onShareAppMessage: function () {
+		return {
+		  title: '等你来战',
+		  path: '/pages/login/login',
+		  //image: '',
+		  success: function (res) {
+		  	user.shareGetGold( function( res ) {
+		  		if ( !res || res.code != '0000' ) {
+		  			return;
+		  		}
+		  		wx.showToast( { title : '领取成功' } );
+		  	} );
+		  }
+		}
+	},	
 	onShow : function() {
 		let self = this;
 		items.getList( function( res ) {
@@ -25,6 +41,7 @@ Page( {
 			currentIndex : index
 		} );
 	},
+
 	buy : function( e ) {
 		var target = e.currentTarget,
 			id = target.dataset.id;
