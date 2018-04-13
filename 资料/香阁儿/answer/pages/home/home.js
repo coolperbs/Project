@@ -21,8 +21,11 @@ Page({
     login.getDailyCheckData(res => {
       if (res.code != '0000') {
         if (res.code == '9999') {
-          //是否文案提示
+          return
         }
+        utils.showToast({
+          title:'网络错误,请稍候重试!'
+        })
         return
       }
       let checkData = res.data;
@@ -33,15 +36,28 @@ Page({
         }
         return el
       });
+      let todayIndex = checkData.findIndex((el, index) => {
+        if (el.wareId == ware.wareId) {
+          return index
+        }
+      })
+      checkData = checkData.map((el) => {
+        el['todayIndex'] = todayIndex;
+        return el
+      });
       this.setData({
         checkData: checkData,
         checkWare: ware,
         showCheck: true
       })
-    })
+    });
+    console.log('options',decodeURIComponent(options.direct))
+    if(options.direct){
+      utils.navigateTo(decodeURIComponent(options.direct),{roomId:options.roomId})
+    }
   },
 
-  jumpPage (e) {
+  jumpPage(e) {
     let type = e.currentTarget.dataset.type;
     switch (type) {
       case 'rank':
@@ -70,7 +86,7 @@ Page({
         break;
     }
   },
-  check () {
+  check() {
     login.dailyCheck(this.data.checkWare, res => {
       if (res.code != '0000') {
         utils.showToast({title: res.msg || '签到失败,请稍候重试'})
@@ -82,7 +98,7 @@ Page({
       })
     })
   },
-  closeModal(){
+  closeModal() {
     this.setData({
       showCheck: false
     })

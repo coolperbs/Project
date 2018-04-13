@@ -20,5 +20,8 @@
     "navigationBarBackgroundColor": "#1e0141",
     "navigationBarTitleText": "最强大脑",
     "navigationBarTextStyle": "#fff"
-  }
+  },
+	"networkTimeout":{
+		"connectSocket":180000
+	}
 }

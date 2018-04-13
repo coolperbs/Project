@@ -1,14 +1,29 @@
 <view class="friend">
 	<view class="battle">
 		<view class="battle-user">
-			<view class="user {{item.owner?'owner':''}}"
-						wx:for="{{roomUsers}}"
-						wx:key="{{index}}"
-						style="transform:translate3d({{item.rank*item.scale}}px,0,0)"
-						wx:if="{{item.name}}">
-				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
-				<view class="name">{{item.name}}</view>
-				<view class="point">{{item.point}}</view>
+			<view class="user-box">
+				<view class="user-box-in">
+					<view class="mine-box" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
+						<view class="user">
+							<view class="user-head">
+								<image class="head-image" src="{{item.avatar}}"></image>
+							</view>
+							<view class="name" style="width: 250rpx">{{item.name}}</view>
+						</view>
+						<view class="big-point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
+						<view class="big-rank">第{{item.rank+1}}名</view>
+					</view>
+					<view class="list-box">
+						<view class="user" wx:if="{{item.id!=userId&&item.name}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
+							<view class="rank">{{item.rank+1}}</view>
+							<view class="user-head">
+								<image class="head-image" src="{{item.avatar}}"></image>
+							</view>
+							<view class="name">{{item.name}}</view>
+							<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
+						</view>
+					</view>
+				</view>
 			</view>
 		</view>
 		<view class="battle-title">
@@ -32,7 +47,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image wx:if="{{subject.doublePoint}}" class="q-double" src="../../static/images/t.png"></image>
+					<image class="q-double {{subject.doublePoint?'active':''}}" src="../../static/images/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
@@ -43,16 +58,11 @@
 				</button>
 			</view>
 		</view>
-		<view class="result {{isEnd?'active':''}}">
-			<view class="result-item">
-				<image class="item-icon" src="../../static/images/coin.png"></image>
-				<view class="item-label">金币</view>
-				<view class="item-text">+{{result.gold}}</view>
-			</view>
-			<button class="continue" bindtap="playAgain">
-				返回
-			</button>
-		</view>
+	</view>
+	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
+		<view class="left" animation="{{matchLeftData}}"></view>
+		<view class="right" animation="{{matchRightData}}"></view>
+		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
 	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
@@ -68,10 +78,51 @@
 				<image src="../../static/images/invite.png"></image>
 			</button>
 		</view>
-		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId}}">
-			<image src="../../static/images/start.png"></image>
+		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId&&roomOwner!=''}}">
+			开始游戏
 		</button>
-		<button class="cancel" bindtap="cancelBattle">取消</button>
+		<button class="cancel" bindtap="cancelBattle">退出房间</button>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
+	<view class="result {{isEnd?'active':''}}">
+		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
+			<view class="mine-head">
+				<image class="head-image" src="{{item.avatar}}"></image>
+			</view>
+			<view class="min-name">{{item.name}}</view>
+		</view>
+		<view class="result-bottom">
+			<view class="result-box">
+				<view class="result-box-in">
+					<view class="mine-point" wx:if="{{item.userId==userId}}" wx:for="{{result}}" wx:key="{{index}}">
+						<view class="point">+{{item.gold}}金币</view>
+						<view class="rank">第{{item.ranking}}名</view>
+					</view>
+					<view class="rank-list">
+						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
+							<view class="rank">{{item.ranking}}</view>
+							<view class="head-box">
+								<image class="head" src="{{item.userAvatar}}"></image>
+							</view>
+							<view class="name">{{item.userName}}</view>
+							<view class="coin-box">
+								<view class="coin">+{{item.gold}}金币</view>
+								<view class="point">{{item.totlePoint<0?'0':item.totlePoint}}分</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{roomOwner==userId}}" class="btn-out">
+				<button class="btn-in" bindtap="playAgain">
+					再来一盘
+				</button>
+			</view>
+			<button class="cancel" bindtap="cancelBattle">
+				退出游戏
+			</button>
+		</view>
+	</view>
 </view>
+<audio id="myAudio" loop="true"></audio>
+<audio id="myAudio2"></audio>

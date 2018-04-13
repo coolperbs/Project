@@ -51,7 +51,9 @@ Page({
       }
       let result = res.data.result || [];
       result = result.map((el) => {
-        el.options = JSON.parse(el.options);
+        if(el.options){
+          el.options = JSON.parse(el.options);
+        }
         return el
       })
       this.setData({

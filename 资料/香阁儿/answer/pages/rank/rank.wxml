@@ -1,25 +1,31 @@
 <view class="rank">
 	<image class="rank-bg roate-animation" src="../../static/images/rank-bg.png"></image>
 	<view class="rank-box">
-		<image class="rank-title" src="../../static/images/rank-title.png"></image>
+		<view class="rank-title">
+			<view class="rank-name">{{rankData.name}}</view>
+			<view class="rank-time">{{rankData.begTimeStr}}~{{rankData.endTimeStr}}</view>
+		</view>
 		<view class="rank-menu">
 			<view class="coins">
 				<image class="icon-coin" src="../../static/images/coins.png"></image>
 				<view class="icon-count">{{rankData.user.gold}}</view>
 			</view>
 			<view class="skills">
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillA}}">
 					<image class="skill {{skillA.userHas?'':'active'}}" src="{{skillA.image}}"></image>
 					<view class="limit">{{skillA.countDown}}</view>
 				</view>
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillB}}">
 					<image class="skill {{skillB.userHas?'':'active'}}" src="{{skillB.image}}"></image>
+					<view class="limit">{{skillB.limit}}</view>
 				</view>
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillC}}">
 					<image class="skill {{skillC.userHas?'':'active'}}" src="{{skillC.image}}"></image>
+					<view class="limit">{{skillC.countDown}}</view>
 				</view>
-				<view class="skill-box">
+				<view class="skill-box" catchtap="showSkill" data-index="{{skillD}}">
 					<image class="skill {{skillD.userHas?'':'active'}}" src="{{skillD.image}}"></image>
+					<view class="limit">{{skillD.limit}}</view>
 				</view>
 			</view>
 		</view>
@@ -35,7 +41,7 @@
 								scroll-into-view="{{scrollToView}}"
 								class="{{!item.deblock?'disabled':'' }} level-item">
 					<view class="item-box">
-						<image class="item-image" src="../../static/images/lv{{(index+1)<5?index+1:5}}.png"></image>
+						<image class="item-image" src="{{item.logo}}"></image>
 						<view class="desc">
 							<view class="top">
 								<view class="title">{{item.name}}</view>
@@ -45,7 +51,7 @@
 								</view>
 							</view>
 							<view class="bottom">
-								<view class="text">奖金:{{item.exp}}</view>
+								<view class="text">奖金:{{item.gold*2}}</view>
 								<view class="star-list">
 									<view class="star {{processCount.active?'active':''}}" wx:for="{{item.processCountArr}}"
 												wx:for-item="processCount" wx:key="{{index}}">
@@ -61,19 +67,20 @@
 		</view>
 	</view>
 </view>
-<view class="modal">
+<view class="modal {{showModal?'active':''}}">
 	<view class="modal-content">
 		<view class="modal-head">
 			<view class="image-box">
-				<image class="head-image"></image>
+				<image class="head-image" src="{{modalValue.image}}"></image>
 			</view>
-			<button class="close">X</button>
+			<button class="close" bindtap="hideSkill">X</button>
 		</view>
 		<view class="modal-body">
-			<view class="name">xxxx</view>
+			<view class="name">{{modalValue.name}}</view>
+			<view class="desc">{{modalValue.desc}}</view>
 		</view>
 		<view class="modal-foot">
-			<button class="btn">确认</button>
+			<button class="btn" bindtap="hideSkill">确认</button>
 		</view>
 	</view>
 </view>

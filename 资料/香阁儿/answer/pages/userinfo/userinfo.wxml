@@ -23,7 +23,7 @@
 		<view class="list">
 			<view class="row">
 				<view class="key">胜率</view>
-				<view class="value">{{ pageData.sucPercent }}</view>
+				<view class="value">{{ pageData.sucPercent*100 }}%</view>
 			</view>
 			<view class="row">
 				<view class="key">段位</view>

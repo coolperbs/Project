@@ -83,3 +83,19 @@ Page {
   bottom: 0;
   background-color: rgba(255, 0, 0, 0.22);
 }
+.level-up{
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition:all 1s ease;
+  transform: scale(0);
+}
+.level-up.active{
+  transform: scale(1);
+}
+button:after{
+  border: none ;
+}

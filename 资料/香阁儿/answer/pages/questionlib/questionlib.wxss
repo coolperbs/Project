@@ -52,7 +52,6 @@ Page {
   border-radius: 20rpx;
   padding: 4rpx;
   background: linear-gradient(#4900ec, #910275);
-  overflow: hidden;
   height: 100rpx;
   flex-grow: 1;
   width: 640rpx;

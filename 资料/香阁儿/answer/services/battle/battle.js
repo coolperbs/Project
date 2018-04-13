@@ -158,5 +158,12 @@ export default {
       console.log('PVF close')
       this.PVF_socket.close({})
     }
+  },
+  addFriend(ownerId,callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/app/user/friend/' + ownerId || '',
+      callback: callback
+    });
   }
 }
+

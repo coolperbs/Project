@@ -10,7 +10,8 @@ Page({
   data: {
     active: false,
     rankData: {},
-    scrollToView: 0
+    scrollToView: 0,
+    modalValue: {}
   },
 
 
@@ -18,21 +19,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.updateRank();
+    setTimeout(()=>{
+      this.updateRank();
+    },1000)
   },
   /**
    * 更新rank
    * */
-  updateRank() {
+  updateRank () {
     rank.getRank((res) => {
       if (res.code !== '0000') {
+        utils.showToast({
+          title: res.message || '连接错误'
+        })
         return
       }
       this.filterData(res.data)
 
     });
   },
-  filterData(data) {
+  filterData (data) {
     let scrollToView = 0;
     for (let i = 0; i < data.danGradingList.length; i++) {
       let item = data.danGradingList[i];
@@ -74,6 +80,7 @@ Page({
         clearInterval(this.timerA)
       }
       this.timerA = setInterval(() => {
+        this.data.skillA.limit -= 1000;
         let result = this.leftTime(this.data.skillA.limit);
         let tempSkill = this.data.skillA;
         tempSkill['countDown'] = result
@@ -93,6 +100,7 @@ Page({
         clearInterval(this.timerC)
       }
       this.timerC = setInterval(() => {
+        this.data.skillC.limit -= 1000;
         let result = this.leftTime(this.data.skillC.limit);
         let tempSkill = this.data.skillC;
         tempSkill['countDown'] = result;
@@ -135,8 +143,8 @@ Page({
       })
     }
   },
-  leftTime(endTime) {
-    var leftTime = (endTime) - (new Date().getTime()); //计算剩余的毫秒数
+  leftTime (endTime) {
+    var leftTime = (endTime); //计算剩余的毫秒数
     var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
     var hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10); //计算剩余的小时
     var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
@@ -153,15 +161,29 @@ Page({
       return null
     }
   },
-  checkTime(i) { //将0-9的数字前面加上0，例1变为01
+  checkTime (i) { //将0-9的数字前面加上0，例1变为01
     if (i < 10) {
       i = "0" + i;
     }
     return i;
   },
-  rankBattleEvt(e) {
-    let level = e.currentTarget.dataset.level || 1
-    utils.navigateTo('../battleone/battleone', {level: level})
+  showSkill (e) {
+    let value = e.currentTarget.dataset.index;
+    this.setData({
+      modalValue: value,
+      showModal: true
+    })
+  },
+  hideSkill (e) {
+    this.setData({
+      showModal: false
+    })
+  },
+  rankBattleEvt (e) {
+    let level = e.currentTarget.dataset.level || 1;
+    setTimeout(()=>{
+      utils.navigateTo('../battleone/battleone', {level: level})
+    },500)
   },
   /**
    * 生命周期函数--监听页面隐藏
