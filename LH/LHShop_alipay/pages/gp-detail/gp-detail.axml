@@ -1,0 +1,89 @@
+<import src="../../widgets/modules/modules.axml"/>
+
+<scroll-view class="page-gp-detail" bindscrolltolower="getMore" scroll-y="{{true}}">
+    <view class="group-info">
+            <view class="ware-detail">
+                <view class="img-wrapper">
+                    <image src="{{pageData.bannerImage}}" mode="aspectFit"/>
+                </view>
+                <view class="ware-info">
+                    <view class="title ellipsis-2">{{pageData.skuTitle}}</view>
+                    <!-- <text class='sub-title'>{{pageData.skuDesc}}</text> -->
+                    <text class="group-count">{{pageData.quantity}}人团</text>
+                    <view class="price-wrapper">
+                        <text class="price">￥{{pageData.skuPrice}}</text>
+                        <text class="orgPrice">￥{{pageData.skuOriPrice}}</text>
+                    </view>
+                </view>
+                    
+            </view>
+        
+            <view class="user-list">
+                <block a:for="{{pageData.showUserList}}" a:key="*this">
+                        <view class="gp-user join" a:if="{{item.id}}">
+                            <image src="{{item.avatarUrl}}" class="head"></image>
+                            <image src="../../asset/gp-leader-logo.png" class="gp-leader" a:if="{{index == 0}}"></image>
+                        </view>
+                        <view class="gp-user" a:else>
+                            <image src="../../asset/gp-join.png" class="head"></image>
+                        </view>
+                </block>
+                
+                
+            </view>
+        
+            <view class="buybtn-wrapper">
+                <view class="notice">
+                        <image src="../../asset/gp-sucess.png" class="notice-logo" a:if="{{pageType === 3}}"></image>
+                        <image src="../../asset/gp-notice.png" class="notice-logo" a:else></image>
+                        <block a:if="{{pageType === 1 || pageType === 2}}">
+                            <text class="notice-msg">拼团进行中</text>
+                        </block>
+                        <block a:if="{{pageType === 3}}">
+                            <text class="notice-msg suc">拼团成功</text>
+                        </block>
+                        <block a:if="{{pageType === 4}}">
+                            <text class="notice-msg">拼团失败</text>
+                        </block>
+                </view>
+                <view class="left-time" a:if="{{pageType === 1 || pageType === 2}}">{{pageData.leftTimeStr}}</view>
+                <view class="page-btn-wrapper">
+                    <block a:if="{{pageType === 2}}">
+                        <button class="toBuy pagebtn half" a:if="{{pageType === 2}}" catchTap="join">￥{{pageData.skuPrice}}团好货</button>
+                        <button class="pagebtn half" catchTap="toIndex">其他活动</button>
+                    </block>
+                    <block a:if="{{pageType === 1}}">
+                        <button class="toShare pagebtn half" open-type="share" a:if="{{pageType === 1}}" catchTap="share">马上邀请小伙伴</button>
+                        <button class="pagebtn half" catchTap="toIndex">其他活动</button>
+                    </block>
+                    <button class="toHome pagebtn" a:if="{{pageType === 4}}" catchTap="toGrouponIndex">未成团,再去看看其他活动吧</button>
+                    <button class="toHome pagebtn" a:if="{{pageType === 3}}" catchTap="toGrouponIndex">已成团,再去看看其他活动吧</button>
+                </view>
+            </view>
+    </view>
+
+    <view class="recommond">
+<!--         <view class="menu">
+            <view class="menu-btn"  catchtap="toIndex">
+                <image src="../../asset/home.png" class="logo"></image>
+                <text class="txt">首页逛逛</text>
+                
+            </view>
+            <view class="menu-btn"  catchtap="toGrouponIndex">
+                <image src="../../asset/gp-gplist.png" class="logo"></image>
+                <text class="txt">更多拼团</text>
+                
+            </view>
+            <view class="menu-btn" catchtap="toGrouponOrders">
+                <image src="../../asset/fx-tm-submit.png" class="logo"></image>
+                <text class="txt">我的拼团</text>
+            </view>
+        </view> -->
+       <!--  <view class="more modules" wx:if="{{moduleList && moduleList.length}}">
+            <block wx:for="{{moduleList}}" wx:key="modulePrototypeId">
+                <template is="gp-1-2" data="{{...item, index}}"></template>
+            </block>
+        </view> -->
+    </view>
+    
+</scroll-view>

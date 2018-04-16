@@ -1,0 +1,199 @@
+<import src="../../widgets/modules/modules.axml"/>
+
+<scroll-view class="main {{pop.show ? 'showpop' : ''}}" bindscrolltolower="getMore" scroll-y="{{true}}">
+    <view class="head">
+        <swiper class="banner" indicator-color="rgba(0, 0, 0, 0.3)" indicator-active-color="#111111" indicator-dots="{{true}}">
+            <swiper-item a:for="{{pageData.mainImage}}" a:key="index">
+                <image mode="aspectFill" src="{{item}}"></image>
+            </swiper-item>
+        </swiper> 
+
+        <view class="desc">
+            <view class="title ellipsis-2">{{pageData.title}}</view>
+            <!-- <view class="sub-title">{{pageData.subTitle}}</view> -->
+            <view class="price-info">
+                <view class="price"><view class="sub">¥</view>{{pageData.price ? pageData.price / 100 : pageData.originPrice / 100}}<view class="sub">元</view></view>
+                <view class="origin-price" a:if="{{pageData.originPrice}}">¥{{pageData.originPrice / 100}}</view>
+                <view class="tags" a:if="{{pageData.tags && pageData.tags.length}}">{{pageData.tags[0]}}</view>
+            </view>
+        </view>
+
+        <view class="services">
+            <view class="cell">
+                <image src="../../asset/right-small.png"></image>
+                100% 正品保证
+            </view>
+            <view class="cell">
+                <image src="../../asset/right-small.png"></image>
+                7天无理由退货
+            </view>
+            <view class="cell">
+                <image src="../../asset/right-small.png"></image>
+                48小时快速退款
+            </view>
+        </view>
+    </view>
+    <view class="grouponList" a:if="{{grouponList && grouponList.length > 0}}">
+        <view class="header">{{grouponList.length}}人在开团，可直接参与</view>
+        <scroll-view scroll-y="{{true}}" style="height:{{grouponList.length >= 3 ? 3 * 140 : grouponList.length * 140}}rpx;">
+            <block a:for="{{grouponList}}">
+                <template is="grouponItem" data="{{...item}}"></template>
+            </block>
+        </scroll-view>
+    </view>
+
+
+    <view class="comment-list">
+        <view class="all">宝贝评价（{{allcomments || 0}}）</view>
+        <view class="comment" a:if="{{comments[0]}}">
+            <view class="c-head">
+                <image src="{{comments[0].userAvatarUrl}}"></image>
+                {{comments[0].username}}:
+            </view>
+            <view class="c-content">{{comments[0].content}}</view>
+            <view class="c-img">
+                <block a:for="{[1,2,3,4,5,6,7,8,9]}" a:key="index"><image src="{{comments[0]['img' + item]}}" a:if="{{comments[0]['img' + item]}}"></image></block>
+            </view>
+            <view class="c-sub">{{comments[0].commentCreatedObj.year}}-{{comments[0].commentCreatedObj.month}}-{{comments[0].commentCreatedObj.day}} {{comments[0].commentCreatedObj.hours}}:{{comments[0].commentCreatedObj.minutes}}:{{comments[0].commentCreatedObj.seconds}}</view>
+        </view>
+        <navigator url="../commentlist/commentlist?skuid={{pageData.skuId}}" class="c-more">查看全部评价</navigator>
+    </view>
+
+    <view class="cont">
+        <view class="tabs">
+            <view class="tab {{tab.current == 'imgs' ? 'current' : ''}}" data-id="imgs" catchTap="changeTab">图文详情</view>
+            <view class="tab {{tab.current == 'param' ? 'current' : ''}}" data-id="param" catchTap="changeTab">参数规格</view>
+            <view class="tab {{tab.current == 'desc' ? 'current' : ''}}" data-id="desc" catchTap="changeTab">品牌描述</view>
+        </view>
+
+        <!-- 图文详情 start -->
+        <view class="images" a:if="{{tab.current == 'imgs'}}">
+            <image mode="widthFix" src="{{item}}" a:for="{{pageData.detailImage}}" a:key="index"></image>
+        </view>
+        <!-- 图文详情 end -->
+
+        <!-- 参数规格 start -->
+        <view class="parameters" a:if="{{tab.current == 'param'}}">
+            <view class="row" a:for="{{pageData.pros}}" a:key="index">
+                <view class="key">{{index}}：</view>
+                <view class="value">{{item}}</view>
+            </view>
+        </view>
+        <!-- 参数规格 end -->
+
+        <!-- 品牌描述 start -->
+        <view class="brand" a:if="{{pageData.brand && tab.current == 'desc'}}">
+            <view class="brief">
+                <image class="logo" src="{{pageData.brand.logo}}"></image>
+                <view class="name">{{pageData.brand.name}}</view>
+            </view>
+            <view class="desc">
+                {{pageData.brand.introduce}}
+            </view>
+        </view>
+        <!-- 品牌描述 end -->
+    </view>
+
+    <view class="more modules" a:if="{{moduleList && moduleList.length}}">
+        <view class="m-title">猜你喜欢</view>
+        <block a:for="{{moduleList}}" a:key="modulePrototypeId">
+            <template is="gp-1-2" data="{{...item, index}}"></template>
+        </block>
+    </view>
+
+
+
+    <view class="last-node"></view>
+</scroll-view>
+
+<view class="pop {{pop.show ? 'showpop' : ''}}">
+    <view class="head">
+        <image class="img" src="{{pageData.skuImage}}"></image>
+        <view class="info">
+            <!--<view class="title">中秋便携茶具礼盒限量版时光小黑盒 Pertouch泊喜</view>-->
+            <view class="main">
+                <view class="price"><view class="sub">¥</view>{{pageData.price ? pageData.price / 100 : pageData.originPrice / 100}}</view>
+                <view class="stock">库存{{pageData.lastStock}}件</view>
+            </view>
+            <view class="name ellipsis-2">{{pageData.title}}</view>
+            <!--J<view class="sub ellipsis-2">{{pageData.subTitle}}</view>-->
+        </view>
+    </view>
+
+    <scroll-view class="cont" scroll-y="{{true}}" a:if="{{pageData.saleProSku.pros && pageData.saleProSku.pros.length}}">
+        <view class="spec">
+            <view class="row" a:for="{{pageData.saleProSku.pros}}" a:for-index="proIndex" a:key="proId">
+                <view class="name">{{item.proName}}</view>
+                <view class="cells">
+                    <view class="slt {{pageData.attributesObj[item.proId + ':' + slt.valueId] ? 'current' : ''}}" data-level="{{proIndex}}" data-id="{{item.proId}}:{{slt.valueId}}" a:for="{{item.values}}" a:for-item="slt" a:key="valueId" catchTap="changePros">{{slt.valueName}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="count">
+            <view class="name">数量</view>
+            <view class="act">
+                <view class="minus" catchTap="minus">-</view>
+                <view class="num">{{buyNum}}</view>
+                <view class="plus" catchTap="plus">+</view>
+            </view>
+        </view>
+        <view class="last"></view>
+    </scroll-view>
+</view>
+
+<view class="mask  {{pop.show ? 'showpop' : ''}}" catchTap="hidePop"></view>
+
+<view class="toolbar">
+    <block a:if="{{!pop.show}}">
+        <view class="icons">
+            <view class="cell">
+                <button class="call" open-type="contact"></button>
+                <image src="../../asset/message-white.png"></image>
+            </view>
+            <view class="cell" catchTap="toCart">
+                <view class="num" a:if="{{cartNum > 0}}">{{cartNum || ''}}</view>
+
+                <image src="../../asset/cart-white.png"></image>
+            </view>
+            <view class="cell" catchTap="follow">
+                <image src="../../asset/heart-red.png" a:if="{{pageData.favorite == 1}}"></image>
+                <image src="../../asset/heart-line.png" a:else></image>
+            </view>
+        </view>
+        <view class="buttons">
+            <block a:if="{{isJoinOtherGroupon}}">
+                    <view class="btn primary" catchTap="buyNow">
+                        <view class="btn-price"><view class="sub">¥</view>{{pageData.price ? pageData.price / 100 : pageData.originPrice / 100}}<view class="sub">元</view></view>
+                        <view>加入TA的团</view> 
+                    </view>
+            </block>
+            <block a:else>
+                    <view class="btn primary" catchTap="buyNow">
+                        <view class="btn-price"><view class="sub">¥</view>{{pageData.price ? pageData.price / 100 : pageData.originPrice / 100}}<view class="sub">元</view></view>
+                        <view>去开团</view>
+                    </view>
+            </block>
+            
+        </view>
+    </block>
+    <view class="btn primary" a:if="{{pop.show}}" catchTap="submit">确定</view>
+</view>
+
+
+<template name="grouponItem">
+    <view class="grouponItemWrapper">
+        <view class="left-side">
+            <view class="master-img">
+                <image src="{{master.avatarUrl}}"></image>
+            </view>
+            <view class="master-name ellipsis-1">{{master.nickName}}</view>
+        </view>
+        <view class="right-side">
+            <view class="groupon-info">
+                <view class="left-persion">还差<text class="left-num">{{left}}人</text>成团</view>
+                <view class="time-counter">{{leftTimeStr}}</view>
+            </view>
+            <view class="groupon-btn" data-productid="{{productId}}" data-grouponid="{{grouponId}}" catchTap="joinGroupon">去参团</view>
+        </view>
+    </view>
+</template>

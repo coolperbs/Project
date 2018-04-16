@@ -1,0 +1,36 @@
+<import src="../../widgets/modules/modules.axml"/>
+
+<view class="head" a:if="{{!hideHead}}">
+	<view class="tab {{tab == 1 ? 'current' : ''}}" data-type="1" catchTap="changeTab">{{pageData.renderData.title}}</view>
+	<view class="tab {{tab == 2 ? 'current' : ''}}" data-type="2" catchTap="changeTab">等待处理</view>
+</view>
+
+<view a:if="{{tab == 1}}">
+	<form onSubmit="submit">
+		<view class="form">
+			<view class="modules" a:if="{{pageData.moduleList}}">
+				<block a:for="{{pageData.moduleList}}" a:key="index">
+					<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{...item, index}}"></template>
+				</block>
+			</view>
+		</view>
+
+
+		<button class="submit" formType="submit">
+			立即预约
+		</button>
+	</form>
+</view>
+
+<view class="list {{hideHead ? 'no-head' : ''}}" a:if="{{tab == 2}}">
+	<view class="empty" a:if="{{listData.bespeakList && !listData.bespeakList.length}}">
+		没有数据	
+	</view>
+	<block a:for="{{listData.bespeakList}}" a:key="index"><view data-index="{{index}}" class="item" a:if="{{listData.bespeakList && listData.bespeakList.length}}" catchTap="goDetail">
+		<view class="title ellipsis-2">{{item.bespeakTitle}}</view>
+		<view class="sub">
+			<view class="time">申请时间: {{item.createdStr}}</view>
+			<view class="stauts status-{{item.status}}">{{item.statusStr}}</view>
+		</view>
+	</view></block>
+</view>

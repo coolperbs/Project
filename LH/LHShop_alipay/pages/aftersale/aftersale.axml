@@ -1,0 +1,52 @@
+<view class="page-aftersale">
+	<view class="ware pannel">
+		<image class="ware-img" src="{{ware.mainImage}}"/>
+		<view class="ware-detail">
+			<view class="name ellipsis-2">{{ware.title}}</view>
+			<text class="price">{{ware.showOriginPrice}}</text>
+			<text class="num" a:if="{{ware.skuNum}}">x{{ware.skuNum}}</text>
+		</view>
+	</view>
+
+	<view class="return-detail pannel">
+		<view class="line">
+			<text class="title">售后类型</text>
+			<view class="content" onTap="changeNum">
+				<!-- <text>1</text> -->
+				<picker mode="selector" range="{{type}}" range-key="name" data-key="type" disabled="{{disable}}" onChange="changeInput">
+					<view class="text">{{formData && formData.typeName ? formData.typeName : '请选择'}}</view>
+				</picker>
+				<image class="logo" src="../../asset/arrow-right.png"/>
+			</view>
+		</view>
+		<view class="line big">
+			<text class="title">说明</text>
+			<view class="content notice">
+				<textarea disabled="{{disable}}" data-key="content" cursor-spacing="100" placeholder="选填" value="{{formData.content}}" placeholder-style="font-size:16px;color:#e5e5e5" onInput="changeInput">
+
+				</textarea>
+			</view>
+		</view>
+	</view>
+
+	<view class="upload pannel">
+		<text class="title">上传凭证</text>
+		<view class="btn-wrapper">
+			<block a:for="{{uploadData.btns}}">
+				<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" a:if="{{disable}}" catchTap/>
+				<text data-param="{{item.eventParam}}" class="alipay_catch_img" a:if="{{!disable}}" catchTap="changeFile"><image src="{{item.imgUrl}}" class="logo"/></text>
+			</block>
+		</view>
+	</view>
+	<form report-submit="{{true}}" onSubmit="submit">
+		<view class="submit-btn" form-type="submit" a:if="{{!disable}}" catchTap="submit">
+			申请售后
+		</view>
+		<view data-id="{{formData.id}}" class="submit-btn" form-type="submit" a:if="{{cancelable}}" catchTap="cancel">
+			取消申请
+		</view>
+	</form>
+
+
+	
+</view>

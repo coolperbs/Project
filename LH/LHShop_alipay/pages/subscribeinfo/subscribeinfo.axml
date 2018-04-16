@@ -1,0 +1,4 @@
+<view class="row" a:for="{{list}}" a:key="index">
+	<view class="key">{{item.key}} :</view>
+	<view class="value">{{item.value}}</view>
+</view>

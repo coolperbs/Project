@@ -1,0 +1,9 @@
+<template name="search-box">
+	<view class="search-box">
+		<view class="box-cont" onTap="{{tapEvent}}">
+			<icon class="icon search"/>
+			<view class="input" a:if="{{!showInput}}">搜索多点超市商品</view>
+			<input class="input" auto-focus="{{autoFocus}}" placeholder="搜索多点超市商品" bindblur="{{blurEvent}}" a:else/>
+		</view>
+	</view>
+</template>

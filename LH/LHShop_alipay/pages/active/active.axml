@@ -1,0 +1,7 @@
+<import src="../../widgets/modules/modules.axml"/>
+
+<view class="modules">
+	<block a:for="{{pageData.moduleList}}" a:key="index">
+		<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{...item, index}}"></template>
+	</block>
+</view>

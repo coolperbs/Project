@@ -1,0 +1,73 @@
+.page-showdetail {
+  padding-bottom : 100rpx;
+}
+.header {
+  width: 750rpx;
+  height: 350rpx;
+}
+.header .bg-img {
+  width: 750rpx;
+  height: 350rpx;
+}
+.body {
+}
+.shop-logo-wrapper {
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+.shop-img {
+  width: 200rpx;
+  position: relative;
+  bottom: 28px;
+  border-radius: 4rpx;
+  border : solid 1px #f0f0f0;
+  box-shadow: 0 10rpx 10rpx #eee;
+}
+.btn-wrapper {
+  display: flex;
+  width: 350rpx;
+  justify-content: center;
+  font-size: 14px;
+  margin-top: 25px;
+}
+.shop-btn {
+  /*color:#b9b9b9;
+border:1px solid #b8b8b8;*/
+  padding: 0 25rpx;
+  border-radius: 4px;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.shop-btn.collect {
+  color: red;
+  border: 1px solid red;
+}
+.shop-btn.location {
+  color: #df393c;
+  border: 1px solid #df393c;
+}
+.msg {
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #b9b9b9;
+  padding: 20rpx;
+  display : flex;
+  justify-content: space-between;
+}
+.msg .label {
+  width : 160rpx;
+}
+.msg .value {
+  width : 500rpx;
+}
+.msg .call {
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  right: 0px;
+  float: right;
+  top: 28rpx;
+}
