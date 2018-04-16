@@ -1,0 +1,74 @@
+<import src="../../widgets/common/common.axml"/> 
+<view class="page-collect">
+	<view class="head">
+		<block a:for="{{tab.tabData}}" a:key="index">
+			<view class="box {{item.isCur ? 'current' : ''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" style="{{item.style}}" onTap="changeTab">{{item.name}}{{index === 0 ? '(' + (skuNum ? skuNum : 0) + ')' : '(' + (shopNum ? shopNum : 0) + ')'}}</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+		<scroll-view class="scrollview" style="height:{{scrollHeight}}" scroll-y="{{true}}">
+			<block a:if="{{favList.length > 0}}">
+				<block a:for="{{favList}}">
+					<block a:if="{{curType === 'sku'}}">
+						<template is="ware" data="{{...item}}"></template>
+					</block>
+					<block a:else>
+						<template is="store" data="{{...item}}"></template>
+						
+					</block>
+				</block>
+				<!-- <template is="list-bottom" data="{{type: '1'}}"></template> -->
+			</block>
+			<block a:else>
+					<template is="nodata-page"></template>
+			</block>
+		</scroll-view>
+	
+</view>
+
+<template name="store">
+	<view class="store" data-id="{{id}}" data-type="shop" onTap="toDetail">
+		<view class="left">
+			<image src="{{logo}}"/>
+		</view>
+		<view class="right">
+			<view class="name ellipsis-1">
+				{{name}}
+			</view>
+			<view class="detail ellipsis-1">
+				{{introduce}}
+			</view>
+			<view class="cancel cancel" data-id="{{favoriteId}}" data-type="shop" catchTap="cancel">
+				<image src="../../asset/cancel-collect.png"/>
+			</view>
+		</view>
+	</view>
+	
+</template>
+<template name="ware">
+	<view class="ware" data-id="{{skuId}}" data-type="sku">
+		<view class="left" onTap="toDetail">
+			<image src="{{mainImage}}"/>
+		</view>
+		<view class="right">
+			<view class="title ellipsis-2">
+				{{title}}
+			</view>
+			<view class="sub-title ellipsis-1">
+				{{subTitle}}
+			</view>
+			<view class="price">
+				<text class="dw">￥</text>
+				<text class="zs">{{priceZS}}</text>
+				<text class="xs">{{priceXS}}</text>
+			</view>
+			<view class="addCart " data-id="{{skuId}}" catchTap="addCart">
+				<image src="../../asset/shopping-cart.png"/>
+			</view>
+			<view class="cancel cancel" data-id="{{favoriteId}}" data-type="sku" catchTap="cancel">
+				<image src="../../asset/cancel-collect.png"/>
+			</view>
+		</view> 
+	</view>
+	
+</template>

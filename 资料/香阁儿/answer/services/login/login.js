@@ -28,6 +28,7 @@ export default {
     let that = this;
     this.checkSingleAuthorize('scope.userInfo', (res) => {
       if (!res) {
+        callback && callback(false)
         utils.showAction('需要开启授权才能进行游戏哦~', res => {
           if (res) {
             wx.openSetting()

@@ -1,0 +1,82 @@
+<view class="page-fxmoney">
+	<view class="head">
+		<block a:for="{{tab.tabData}}" a:key="index">
+			<view class="box {{item.isCur ? 'current' : ''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" style="{{item.style}}" onTap="changeTab">
+				<text class="tabName">{{item.name}}</text>
+				<text class="tabSubName" a:if="{{index === 0}}">￥{{saleTotal}}</text>
+				<text class="tabSubName" a:if="{{index === 1}}">￥{{getTotal}}</text>
+				<text class="tabSubName" a:if="{{index === 2}}">￥{{takeTotal}}</text>
+			</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+
+	<view class="memberlist-wrapper base" a:if="{{members && members.length > 0}}">
+		<scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="scrollToLower" style="height:{{scrollHeight}}px">
+			<block a:for="{{members}}" a:key="id">
+				<view>
+					<block a:if="{{type === 'sale'}}">
+						<template is="xiaoshou" data="{{...item}}"></template>
+					</block>
+					<block a:if="{{type === 'get'}}">
+						<template is="fencheng" data="{{...item}}"></template>
+					</block>
+					<block a:if="{{type === 'moneyapply'}}">
+						<template is="tixian" data="{{...item}}"></template>
+					</block>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+	<view a:else>
+		<template is="empty-members"></template>
+	</view>
+</view>
+
+
+<template name="empty-members">
+	<view class="empty-members">
+		<image class="login-logo" src="../../asset/empty-data.png"></image>
+		<view class="login-msg">当前金额记录为0</view>
+	</view>
+</template>
+
+<template name="xiaoshou">
+	<view class="record-wrapper">
+		<view class="record">
+			<view class="name ptl">
+				{{level}}级销售金额
+			</view>
+			<view class="date ptr"><text class="money">￥{{price}}</text></view>
+		</view>
+	</view>
+</template>
+<template name="fencheng">
+	<view class="record-wrapper">
+		<view class="record">
+			<view class="name ptl">
+				{{level}}级分成金额
+			</view>
+			<view class="date ptr"><text class="money">￥{{price}}</text></view>
+		</view>
+	</view>
+</template>
+<template name="tixian">
+	<view class="record-wrapper">
+		<view class="record">
+			<view class="ptl">
+				提现金额:<text class="money">￥{{showPrice}}</text>
+			</view>
+			<view class="date ptr">
+				{{showCreated}}
+			</view>
+			<view class="left pbl">
+				<text class="type">{{showType}} : </text>
+				<text class="carNum">{{showCardNum}}</text>
+			</view>
+			<view class="totalSale pbr">
+				<text class="people">{{showApplyStatus}}</text>
+			</view>
+		</view>
+	</view>
+</template>

@@ -1,0 +1,12 @@
+<template name="itemlist">
+	<view class="itemlist" a:if="{{list}}">
+		<view class="item" a:for="{{list}}">
+			<navigator url="../details/details?sku={{item.skuId}}">
+				<image src="{{item.img}}"></image>
+				<view class="title">{{item.title}}</view>
+				<view class="price">¥<view class="strong">{{item.price}}</view></view>
+			</navigator>
+			<icon data-event="addCart" data-store-id="{{item.storeId}}" data-sku-id="{{item.skuId}}" class="icon plus" a:if="{{showAddCart}}"/>
+		</view>
+	</view>
+</template>

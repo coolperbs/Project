@@ -1,0 +1,67 @@
+page {
+  display: block;
+  width: 750rpx;
+  height: 100%;
+}
+.city-wrap {
+  width: 750rpx;
+  height: 100%;
+}
+.scroll-wrap {
+  width: 750rpx;
+  height: 100%;
+}
+.city-container {
+  overflow: hidden;
+}
+.city-all {
+  color : #df393c;
+  text-align: center;
+  position: fixed;
+  right : 20rpx;
+  top : 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.city-all .block {
+  height : 30rpx;
+}
+.city-all .city-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.city-all .city-list .city-item {
+  flex-grow: 1;
+}
+.city-container .city-title {
+  padding : 20rpx;
+  font-size: 26rpx;
+  background-color: #f0f0f0;
+}
+.city-container .city-list {
+  display: flex;
+  flex-direction: column;
+}
+.city-container .city-list .city-item {
+  padding : 20rpx;
+  border-bottom: solid 1px #f0f0f0;
+  font-size: 26rpx;
+}
+.city-list-wrap {
+  overflow: hidden;
+}
+.city-list-wrap .city-list {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.city-list-wrap .city-list .city-item:first-child {
+  background-color: #f0f0f0;
+}
+.city-list-wrap .city-list .city-item {
+  padding : 20rpx;
+  border-bottom: solid 1px #f0f0f0;
+  font-size: 26rpx;
+}

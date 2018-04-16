@@ -1,0 +1,37 @@
+<import src="../coupon-mine/coupon-mine.axml"/>
+
+
+<view class="barline"></view>
+<view class="page-couponuse">
+	<view class="head">
+		<block a:for="{{tab.tabData}}" a:key="index">
+			<view class="box {{item.isCur ? 'current' : ''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" style="{{item.style}}" onTap="changeTab">{{item.name}}</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+	<scroll-view class="coupon-list" scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltolower="loadMore" a:if="{{coupons && coupons.length > 0}}">
+		<view class="wrapper">
+			<block a:for="{{coupons}}" a:key="id">
+				<view data-id="{{item.id}}" catchTap="useCoupon">
+					<template is="online-coupon" data="{{...item}}"></template>
+				</view>
+			</block> 
+		</view>
+		<view class="btn-wrapper">
+			<view class="btn use" data-type="use" catchTap="back">使用优惠券</view>
+			<view class="btn cancel" data-type="cancel" catchTap="back">取消</view>
+		</view>
+	</scroll-view>
+	<view a:else>
+		<template is="couponuse-empty"></template>
+	</view>
+</view>
+<template name="couponuse-empty">
+	<view class="coupon-empty">
+		<image class="coupon-empty-img" src="../../asset/empty-data.png"></image>
+		<!-- <view class="message"> -->
+			<text class="title">很遗憾</text>
+			<text class="subtitle">您暂无可以使用的优惠券</text>
+		<!-- </view> -->
+	</view>
+</template>

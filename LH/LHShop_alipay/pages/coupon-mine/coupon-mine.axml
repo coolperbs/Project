@@ -1,0 +1,61 @@
+<view class="barline"></view>
+<view class="page-mycoupon">
+	<view class="head">
+		<block a:for="{{tab.tabData}}" a:key="index">
+			<view class="box {{item.isCur ? 'current' : ''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" style="{{item.style}}" onTap="changeTab">{{item.name}}</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+
+
+	<scroll-view class="coupon-list" scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltolower="scrollToLower" a:if="{{coupons && coupons.length > 0}}">
+		<view class="listInner">
+			<view class="wrapper" a:for="{{coupons}}" a:key="id">
+				<template is="online-coupon" data="{{...item}}"></template>
+			</view>
+			
+		</view>
+	</scroll-view>
+	<view a:else>
+		<template is="couponmine-empty"></template>
+	</view>
+</view>
+<template name="couponmine-empty">
+	<view class="coupon-empty">
+		<image class="coupon-empty-img" src="../../asset/empty-data.png"></image>
+		<!-- <view class="message"> -->
+			<text class="title">很遗憾</text>
+			<text class="subtitle">您暂无数据</text>
+		<!-- </view> -->
+	</view>
+</template>
+
+<template name="online-coupon">
+	<view class="online-coupon-wrapper selected">
+		<view class="price">
+			<view class="couponPrice">
+				<text class="unit" style="font-size: 15px" a:if="{{proType !== 2}}">￥</text>
+				<text class="num">{{showPrice}}</text>
+				<text class="unitAfter" style="font-size: 17px" a:if="{{proType === 2}}">折</text>
+			</view>
+			<view class="couponCondition">
+				
+			</view>
+		</view>
+		<view class="how-use">
+			<view class="coupon-type">{{showProType}}</view>
+			<view class="coupon-date">有效期:{{showStartTime}}-{{showEndTime}}</view>
+			<view class="coupon-note">{{name}}</view>
+		</view>
+		<image src="../../asset/online-coupon.png" class="online-coupon-bg"></image>
+		<!-- <view class="online-coupon-bg"></view> -->
+		<view class="rt-logo">
+				<view class="selected use" a:if="{{isUse}}">
+					<image src="../../asset/checked.png"/>
+				</view>
+				<view class="selected" a:if="{{isFetch}}">
+					<image src="../../asset/coupon-fetched.png"/>
+				</view>
+		</view>
+	</view>
+</template>

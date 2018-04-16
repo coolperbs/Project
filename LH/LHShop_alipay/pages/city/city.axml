@@ -1,0 +1,46 @@
+<view class="city-wrap">
+    <scroll-view class="scroll-wrap" scroll-into-view="{{scorllId}}" scroll-y="true">
+        <view class="city-container hot">
+            <view class="city-title" id="hot">
+                 热门城市
+            </view>
+            <view class="city-list">
+                <block a:for="{{pageData.hotCity}}" a:for-index="key" a:for-item="item" a:key="key">
+                    <view class="city-item" data-citycode="{{item.citycode}}" data-cityname="{{item.name}}" catchTap="selectCity">
+                        {{item.name}}
+                    </view>
+                </block>
+            </view>
+        </view>
+
+        <view class="city-all">
+            <view class="block"></view>
+            <view class="city-title" data-id="hot" onTap="scrollIntoCity">
+                热门
+            </view>
+            <view class="city-list">
+                <block a:for="{{pageData.cityList}}" a:for-index="index" a:for-item="item" a:key="index">
+                    <view class="city-item" data-id="{{item.letter}}" onTap="scrollIntoCity">
+                        {{item.letter}}
+                    </view>
+                </block>
+            </view>
+             <view class="block"></view>
+        </view>
+
+        <view class="city-list-wrap">
+            <block a:for="{{pageData.cityList}}" a:for-index="index" a:for-item="item" a:key="index">
+                <view class="city-list" id="{{item.letter}}">
+                    <view class="city-item" a:if="{{item.city.length}}">
+                        {{item.letter}}
+                    </view>
+                    <block a:for="{{item.city}}" a:key="index">
+                        <view class="city-item" data-citycode="{{item.citycode}}" data-cityname="{{item.name}}" catchTap="selectCity">
+                            {{item.name}}
+                        </view>
+                    </block>
+                </view>
+            </block>    
+        </view>
+    </scroll-view>
+</view>

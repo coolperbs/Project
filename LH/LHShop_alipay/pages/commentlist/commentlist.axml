@@ -1,0 +1,58 @@
+<view class="page-commentlist commentList">
+	<view class="head">
+		<block a:for="{{tab.tabData}}" a:key="index">
+			<view class="box {{item.isCur ? 'current' : ''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" style="{{item.style}}" onTap="changeTab">{{item.name}}</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+
+	<scroll-view class="list-container" style="height:{{scrollHeight}}px" scroll-y="true" bing bindscrolltolower="loadMore">
+		<block a:for="{{commentList}}">
+			<template is="comment-item" data="{{...item}}"></template>
+		</block>
+	</scroll-view>	
+</view>
+
+<template name="comment-item">
+	<view class="comment-wrapper" onTap="selectComment">
+		<view class="main">
+			<view class="left">
+				<block a:if="{{userAvatarUrl}}">
+					<image src="{{userAvatarUrl}}"></image>
+				</block>
+				<block a:else>
+					<image src="../../asset/default-user.png"></image>
+				</block>
+				<!-- <image src="{{userHeadImage}}"></image> -->
+			</view>
+			<view class="right">
+				<view>
+					<view class="name">{{username}}</view>
+					<view class="starts">
+						<block a:for="{{[0, 1, 2, 3, 4]}}" a:key="id">
+							<view class="star" data-value="{{item}}">
+								<block a:if="{{star - 1 < item}}">
+									<image src="../../asset/star-nor.png"></image>
+								</block>
+								<block a:else>
+									<image src="../../asset/star-sel.png"></image>
+								</block>
+							</view>
+						</block>
+					</view>
+					<view class="content ellipsis-2">{{content}}</view>
+				</view>
+				<view class="time-wrapper">
+					<view class="time">{{showCreateTime}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="files">
+			<!-- <view class="msg">上传文件</view> -->
+			<block a:for="{{files}}" a:key="index">
+				<image src="{{item}}" class="commentFile"/>
+			</block>
+		</view>
+	</view>
+	
+</template>

@@ -1,0 +1,171 @@
+<view class="head-nav"></view>
+
+<form onSubmit="submit">
+<view class="content">
+	<view class="order-info module">
+		<view class="row">
+			<view class="key">联系人</view>
+			<view class="value">
+				<input name="userName" data-key="userName" placeholder="请填写联系人" value="{{address.userName}}" onInput="saveinput"/>
+			</view>
+		</view>
+		<view class="row">
+			<view class="key">手机号</view>
+			<view class="value">
+				<input name="userPhone" data-key="userPhone" placeholder="请填写手机号" value="{{address.userPhone}}" onInput="saveinput"/>
+			</view>
+		</view>
+ 		<view class="row">
+			<view class="key">区域</view>
+			<view class="value address">
+	            <picker mode="selector" range="{{location.provinceList}}" range-key="name" data-param="{{location.provinceParam}}" class="picker" onChange="changeLocation">
+	                <view class="ellipsis-1 picker">{{address.provinceName || '请选择省'}}</view>
+	            </picker>
+	             <picker mode="selector" range="{{location.cityList}}" range-key="name" data-param="{{location.cityParam}}" class="picker" onChange="changeLocation">
+	                <view class="ellipsis-1 picker">{{address.cityName || '请选择市'}}</view>
+	            </picker>	
+	             <picker mode="selector" range="{{location.countryList}}" range-key="name" data-param="{{location.countryParam}}" class="picker" onChange="changeLocation">
+	                <view class="ellipsis-1 picker">{{address.countryName || '请选择区'}}</view>
+	            </picker>	                        
+			</view>
+		</view>
+		<view class="row">
+			<view class="key">详细地址</view>
+			<view class="value">
+				<input name="address" data-key="address" placeholder="请填写详细地址" value="{{address.address}}" onInput="saveinput"/>
+			</view>
+		</view>
+		<view class="row" catchTap="showAddress">
+			<view class="value address">切换地址</view>
+		</view>
+	</view>
+
+	<view class="payment module">
+		<view class="row" data-payment="1" catchTap="changePayment">
+			<view class="key">
+				<image src="../../asset/zhifubao.png"></image>
+				支付宝支付
+			</view>
+			<view class="checkbox {{paymentType == 1 ? 'checked' : ''}}">
+				<image class="off" src="../../asset/unchecked.png"></image>
+				<image class="on" src="../../asset/checked.png"></image>
+			</view>
+		</view>
+		<view class="row" data-payment="2" a:if="{{pageData.moneyPrice - pageData.payPrice >= 0}}" catchTap="changePayment">
+			<view class="key">
+				<image src="../../asset/mine-cash.png"></image>
+				余额支付 (共{{pageData.moneyPrice / 100}}元)
+			</view>
+			<!--<view>余额不足</view>-->
+			<view class="checkbox {{paymentType == 2 ? 'checked' : ''}}">
+				<image class="off" src="../../asset/unchecked.png"></image>
+				<image class="on" src="../../asset/checked.png"></image>
+			</view>
+		</view>
+		<view class="row" data-payment="2" a:else>
+			<view class="key">
+				<image src="../../asset/mine-cash.png"></image>
+				余额支付 (共{{pageData.moneyPrice / 100}}元)
+			</view>
+			<view class="little">余额不足，暂不可用</view>
+		</view>
+	</view>
+
+	<view class="item-list" a:if="{{pageData.skus}}">
+		<view class="module">
+			<view class="list">
+				<view class="item" a:for="{{pageData.skus}}" a:for-item="sku" a:key="skuId">
+					<image src="{{sku.mainImage}}"></image>
+					<view class="item-info">
+						<view class="name ellipsis-2">{{sku.title}}</view>
+						<view class="sub-name ellipsis-2">
+							{{sku.subTitle}}
+						</view>
+						<view class="price-info">
+							<view class="price"><view class="sub">¥</view>{{sku.price ? sku.price / 100 : sku.originPrice / 100}}</view>
+							<view class="favo-info" a:if="{{sku.originPrice && sku.price}}">¥{{sku.originPrice / 100}}</view>
+						</view>
+					</view>
+					<view class="act">
+						<view class="sub">x</view>{{sku.skuNum}}
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+		<view class="sum">
+			<view class="row">
+				<view class="key">商品金额</view>
+				<view class="value">¥{{pageData.totalPrice / 100}}</view>
+			</view>
+			<view class="row">
+				<view class="key">运费</view>
+				<view class="value">¥{{pageData.sheepPrice / 100}}</view>
+			</view>
+			<!--<view class="row" wx:if="{{tradeInfo.modules.balance.data.availableStr}}">
+				<view class="key">余额</view>
+				<view class="value"><view class="sub">共¥{{tradeInfo.modules.balance.data.total ? tradeInfo.modules.balance.data.totalStr : '0.00'}}，已抵扣</view>¥{{tradeInfo.modules.balance.data.availableStr}}</view>
+			</view>-->
+			<view class="row" a:if="{{bizType !== 'groupon'}}" catchTap="goCoupons">
+				<view class="key">优惠券</view>
+				<view class="value ellipsis-1">
+					{{selectedCoupon.proValue ? '-' + selectedCoupon.proValue : '请选择'}}
+					<image class="more" src="../../asset/arrow-right.png">
+					</image>
+				</view>
+			</view>
+			<!--<view class="row">
+				<view class="key">
+					积分抵扣
+					<view class="sub-key">共{{pageData.point}}积分，最多抵扣{{pointPrice / 100}}元</view>
+				</view>
+				<view class="value jifen ellipsis-1">
+					-<input catchblur="usePoint" type="number" value="{{pointPrice >= pageData.payPrice ? pageData.payPrice / 100 : pointPrice / 100}}" />元
+				</view>
+			</view>-->
+		</view>
+
+
+		<view class="total">
+			<!--<view class="sub-info">(已抵扣余额{{tradeInfo.modules.balance.data.availableStr}}元)</view>-->
+			应付: <view class="price">
+				<view class="sub">¥</view>{{pointPrice >= pageData.payPrice ? 0 : (pageData.payPrice - pointPrice) / 100}}元
+			</view>
+		</view>
+	</view>
+
+
+</view>
+
+<view class="toolbar" a:if="{{pageData}}">
+	<view class="btn">
+		<view class="text">{{paymentType == 1 ? '支付宝' : '余额'}}支付</view>
+		<view class="info">
+			<view class="price">
+				<view class="sub">¥</view>{{pointPrice >= pageData.payPrice ? 0 : (pageData.payPrice - pointPrice) / 100}}
+			</view>
+		</view>
+		<view class="text">元</view>
+		<button form-type="submit"></button>
+	</view>
+</view>
+</form>
+<view class="mask {{!!showAddress ? 'show' : ''}}" catchTap="hideAddress"></view>
+<view class="address-list {{!!showAddress ? 'show' : ''}}">
+	<scroll-view scroll-y="{{true}}">
+		<view class="address" data-id="{{item.addressId}}" a:for="{{addressList.list}}" a:key="addressId" catchTap="selectAddress">
+			<view class="checkbox {{item.addressId == addressList.selectedId ? 'checked' : ''}}">
+				<image class="on" src="../../asset/checked.png"></image>
+				<image class="off" src="../../asset/unchecked.png"></image>
+			</view>
+			<view class="info">
+				<view class="name">{{item.userName}} {{item.userPhone}}</view>
+				<view class="detail">{{item.provinceName}}{{item.cityName}}{{item.countryName}} {{item.address}}</view>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="act">
+		<view class="btn" catchTap="newAddress">创建新地址</view>
+	</view>
+</view>

@@ -7,7 +7,9 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    loginDisabled:false
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -25,14 +27,23 @@ Page({
 
   },
   loginEVT() {
+    this.setData({
+      loginDisabled:true
+    })
     login.isLogin((res) => {
       if (!res) {
         login.login((res2) => {
           if (res2) {
            this.goPage();
           }
+          this.setData({
+            loginDisabled:res2
+          })
         });
       } else {
+        this.setData({
+          loginDisabled:false
+        })
         this.goPage();
       }
     })

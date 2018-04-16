@@ -1,0 +1,128 @@
+@import '../../views/mine/mine.acss';
+@import '../../widgets/common/common.acss';
+@import '../../widgets/modules/modules.acss';
+.search-content{
+  width: 100%;
+}
+.seach-header {
+  z-index: 100;
+  position: fixed;
+  top: 1px;
+  left: 0;
+  width: 100%;
+}
+.search-box {
+  height: 100rpx;
+  border-bottom: solid 1px #f8f8f8;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.sort-menu {
+  display: flex;
+  height: 80rpx;
+  border-bottom: solid 1px #f8f8f8;
+  background-color: white;
+}
+.sort-menu .menu-item {
+  width: 250rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-box input {
+  width : 610rpx;
+  height : 60rpx;
+  line-height: 60rpx;
+  color : #999;
+  border-radius: 30rpx;
+  padding : 0 20rpx;
+  padding-left : 60rpx;
+  background-color: #eee;
+}
+.search-box image {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  z-index: 10;
+  left: 50rpx;
+}
+.search-scroll {
+  width: 100%;
+  position: absolute;
+  /*padding: 44rpx 44rpx 0 44rpx;*/
+  margin-top: 160rpx;
+}
+.sort-logo {
+  width: 60rpx;
+  height: 60rpx;
+  position: relative;
+  left : -10rpx;
+}
+.sort-logo.up {
+  top : 8rpx;
+}
+.sort-logo.down {
+  top : -8rpx;
+}
+.page-search .tpl-recommond-ware {
+  /*width:331rpx;*/
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-search .tpl-recommond-ware .top {
+}
+.page-search .tpl-recommond-ware .top .ware-img {
+  width: 300rpx;
+  height: 300rpx;
+}
+.page-search .tpl-recommond-ware .bottom {
+  display: flex;
+  flex-direction: column;
+  height: 200rpx;
+  width: 300rpx;
+  position: relative;
+}
+.page-search .tpl-recommond-ware .bottom .ware-name {
+  font-size: 14px;
+  color: #232323;
+  height: 25px;
+  line-height: 25px;
+}
+.page-search .tpl-recommond-ware .bottom .feature {
+  font-size: 13px;
+  color: #969696;
+  height: 25px;
+  line-height: 25px;
+}
+.page-search .tpl-recommond-ware .bottom .price-info {
+}
+.page-search .tpl-recommond-ware .bottom .price-info .new-price:before,
+.page-search .tpl-recommond-ware .bottom .price-info .old-price:before {
+  content: '￥';
+}
+.page-search .tpl-recommond-ware .bottom .price-info .new-price {
+  color: #d24740;
+  font-size: 14px;
+  margin-right: 10rpx;
+}
+.page-search .tpl-recommond-ware .bottom .price-info .old-price {
+  color: #969696;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+.page-search .tpl-recommond-ware .bottom .addCart {
+  position: absolute;
+  top: 110rpx;
+  right: 0;
+}
+.page-search .tpl-recommond-ware .bottom .addCart .cartimg {
+  width: 50rpx;
+  height: 50rpx;
+}

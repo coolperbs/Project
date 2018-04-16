@@ -1,0 +1,49 @@
+<import src="../../widgets/common/common.axml"/> 
+<import src="../../widgets/modules/modules.axml"/>
+<view class="page-search">
+	<view class="barline"></view>
+	<view class="seach-header">
+		<view class="search-box">
+			<input class="search-input" placeholder="输入你想要的宝贝吧" onInput="changeInput"/>
+			<image src="../../asset/search-gray.png"/>
+		</view>
+		<view class="sort-menu">
+			<block a:for="{{sortMenuData.menu}}" a:key="{{index}}">
+				<view class="menu-item status-{{item.status}}" data-param="{{item.eventParam}}" catchTap="changeSort">
+					{{item.text}}
+					<image src="../../asset/sort-null.png" class="sort-logo" a:if="{{!item.status}}"></image>
+					<image src="../../asset/sort-up.png" class="sort-logo up" a:if="{{item.status === 1}}"></image>
+					<image src="../../asset/sort-down.png" class="sort-logo down" a:if="{{item.status === 2}}"></image>
+				</view>
+			</block>
+			
+		</view>
+	</view>
+	<scroll-view class="search-scroll" style="height:{{height}}" scroll-y="{{true}}" bindscrolltolower="getNext">
+		<view class="search-content modules" a:if="{{searchRes}}">
+			<template is="1-2" data="{{...searchRes}}"></template>
+		</view>
+	</scroll-view>
+
+
+</view>
+
+
+<template name="recommond-ware">
+	<view class="tpl-recommond-ware">
+		<view class="top">
+			<image src="{{mainImage}}" class="ware-img"/>
+		</view>
+		<view class="bottom">
+			<view class="ware-name ellipsis-1"><text>{{title}}</text></view>
+			<view class="feature ellipsis-1"><text>{{subTitle}}</text></view>
+			<view class="price-info">
+				<view class="new-price">{{showPrice}}</view>
+				<view class="old-price">{{showOriginPrice}}</view>
+			</view>
+			<view class="addCart">
+				<image src="../../asset/cart.png" class="cartimg"/>
+			</view>
+		</view>
+	</view>
+</template>

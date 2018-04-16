@@ -1,0 +1,6 @@
+/**app.wxss* */
+@import "/common/basestyle/basestyle.acss";page {
+  font-size : 28rpx;
+  color : #232323;
+  font-weight : 300!important;
+}

@@ -1,6 +1,6 @@
 <!--pages/login/login.wxml-->
 <view class="login">
 	<image class="login-image" src="../../static/images/login.jpg"></image>
-	<button class="login-btn" bindtap="loginEVT">微信登录</button>
+	<button class="login-btn" bindtap="loginEVT" disabled="{{loginDisabled}}">微信登录</button>
 </view>
 
