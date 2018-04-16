@@ -1,0 +1,46 @@
+<view class="page-fxteam">
+	<view class="head">
+		<block a:for="{{tab.tabData}}" a:key="index">
+			<view class="box {{item.isCur ? 'current' : ''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" style="{{item.style}}" onTap="changeTab">
+				<text class="tabName">{{item.name}}</text>
+				<text class="tabSubName" a:if="{{index == 0}}">({{firstTotal}})</text>
+				<text class="tabSubName" a:if="{{index == 1}}">({{secondTotal}})</text>
+			</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+
+	<view class="memberlist-wrapper base" a:if="{{members && members.length > 0}}">
+		<scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="scrollToLower" style="height:{{scrollHeight}}px">
+			<block a:for="{{members}}" a:key="id">
+				<view>
+					<template is="member" data="{{...item}}"></template>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+	<view a:else>
+		<template is="empty-members"></template>
+	</view>
+</view>
+
+
+<template name="empty-members">
+	<view class="empty-members">
+		<image class="login-logo" src="../../asset/empty-data.png"></image>
+		<view class="login-msg">您当前还没有该级分销商</view>
+	</view>
+</template>
+
+<template name="member">
+	<view class="member-wrapper">
+		<view class="left">
+			<image src="{{avatarUrl}}" class="user-img"/>
+		</view>
+		<view class="right">
+			<view class="name">{{nickName}}</view>
+			<view class="joinDate">加入日期:{{showCreated}}</view>
+			<!-- <view class="totalSale">累计销售:<text class="money">￥500.00</text></view> -->
+		</view>
+	</view>
+</template>

@@ -1,0 +1,59 @@
+<view class="page-wallet">
+	<view class="toPayList">
+		<!-- <text class="msg">明细</text> -->
+		<!-- <image src="../../asset/arrow-right.png" class="go"></image> -->
+	</view>
+	<view class="money-wrapper">
+		<!-- <view class="num">{{user.balance || '0.00'}}</view> -->
+		<view class="num-wrapper">
+			<block a:for="{{balanceNum}}" a:key="index">
+				<view class="nums {{balanceAnimate}}" style="">
+					<block a:if="{{item == '.'}}">
+						<text class="number">.</text>
+					</block>
+					<block a:else>
+						<!-- <block a:for="{{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}}" a:key="*this">
+							<text class="number">{{item}}</text>
+						</block> -->
+						<text class="number">{{item}}</text>
+					</block>
+				</view>
+			</block>
+		</view>
+		<view class="msg">余额(元)</view>
+	</view>
+	<view class="charge-wrapper">
+		<view class="header">
+			<view class="left">
+				<image class="header-img" src="../../asset/card-draw.png"></image>
+				<text class="header-txt">账户充值</text>
+			</view>
+			<!-- <view>
+				<image class="header-img-arrow {{toggleCharge ? '' : 'down'}}" src="../../asset/arrow-down.png" bindtap="toggleCharge"></image>
+			</view> -->
+		</view>
+		<view class="charge-animate-wrapper {{toggleCharge ? 'close' : ''}}">
+			<view class="body ">
+				<block a:for="{{chargeList}}" a:key="id">
+					<view class="charge-item {{(index + 1) % 2 === 1 ? 'left' : 'right'}} {{item.id === selectCharge.id ? 'active' : ''}}" data-id="{{item.id}}" onTap="changeCharge">
+						<view class="title">
+							<text class="pre">充</text>
+							<text class="num">{{item.price}}</text>
+							<text class="yuan">元</text>
+						</view>
+						<view class="subtitle">
+							<text class="pre">实得</text>
+							<text class="num">{{item.totalFee}}</text>
+							<text class="yuan">元</text>
+						</view>
+					</view>
+				</block>
+				<view class="charge-note">
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="footer">
+		<view class="charge-btn {{submitLoading ? 'active' : ''}}" onTap="pay">立即充值</view>
+	</view>
+</view>

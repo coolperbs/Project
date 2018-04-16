@@ -1,0 +1,26 @@
+<view class="calendar pink-color box box-tb">
+    <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+        <view class="prev box box-rl" data-handle="prev" onTap="handleCalendar">
+            <view class="prev-handle box box-lr box-align-center box-pack-center">《</view>
+        </view>
+        <view class="date-area box box-lr box-align-center box-pack-center">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+        <view class="next box box-lr" data-handle="next" onTap="handleCalendar">
+            <view class="next-handle box box-lr box-align-center box-pack-center">》</view>
+        </view>
+    </view>
+    <view class="weeks box box-lr box-pack-center box-align-center">
+        <view class="flex week fs28" data-idx="{{index}}" a:for="{{weeks_ch}}" a:key="{{index}}">{{item}}</view>
+    </view>
+
+
+    <view class="days box box-lr box-wrap">
+
+        <block a:for="{{empytGrids}}" a:key="{{index}}"><view class="grid white-color box box-align-center box-pack-center" data-idx="{{index}}" a:if="{{hasEmptyGrid}}">
+        </view></block>
+
+
+        <view class="grid white-color box box-align-center box-pack-center" a:for="{{days}}" a:key="{{days.time}}">
+            <view data-year="{{cur_year}}" data-month="{{cur_month}}" data-day="{{item.day}}" class="day {{item.selected ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center" onTap="selectDay">{{item.day}}</view>
+        </view>
+    </view>
+</view>

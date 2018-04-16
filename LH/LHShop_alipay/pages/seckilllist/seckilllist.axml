@@ -1,0 +1,60 @@
+<view class="articallist">
+	<view class="list">
+		<scroll-view scroll-y="true" style="height:{{scrollHeight}}" class="CPStudyList-list-wrapper" bindscrolltolower="loadMore">
+				<block a:for="{{listData}}" a:key="id"><block a:if="{{listData && listData.length}}">
+					<view class="item">
+						<view class="pic" data-fn="jumpDetail" data-id="{{item.skuId}}" data-id="{{item.skuId}}" catchTap="jumpDetail">
+							<view class="tags">限时秒杀</view>
+							<image mode="aspectFit" src="{{item.mainImage}}"></image>
+						</view>
+						<view class="info">
+							<view class="title ellipsis-2" data-fn="jumpDetail" data-id="{{item.skuId}}" catchTap="jumpDetail">{{item.title}}</view>
+							<view class="sub-title ellipsis-2" data-fn="jumpDetail" data-id="{{item.skuId}}" catchTap="jumpDetail">
+								<block a:if="{{item.seckillObj.status == 0}}">
+									还有
+									<view class="time">
+										<view class="s">{{item.seckillObj.startTime.day}}</view>
+										<view class="t">天</view>
+										<view class="s">{{item.seckillObj.startTime.hours}}</view>
+										<view class="t">时</view>
+										<view class="s">{{item.seckillObj.startTime.minutes}}</view>
+										<view class="t">分</view>
+										<view class="s">{{item.seckillObj.startTime.seconds}}</view>
+										<view class="t">秒</view>
+									</view>
+									开始	
+								</block>
+								<block a:if="{{item.seckillObj.status == 1}}">
+									还有
+									<view class="time">
+										<view class="s">{{item.seckillObj.endTime.day}}</view>
+										<view class="t">天</view>
+										<view class="s">{{item.seckillObj.endTime.hours}}</view>
+										<view class="t">时</view>
+										<view class="s">{{item.seckillObj.endTime.minutes}}</view>
+										<view class="t">分</view>
+										<view class="s">{{item.seckillObj.endTime.seconds}}</view>
+										<view class="t">秒</view>
+									</view>
+									结束
+								</block>
+								<block a:if="{{item.seckillObj.status == 2}}">
+									抢购结束
+								</block>
+							</view>
+							<view class="info-act">
+								<view class="price"><view class="sub">¥</view>{{item.seckill.skuPrice ? item.seckill.skuPrice / 100 : item.seckill.skuOriPrice / 100}}</view>
+								<view class="origin-price" a:if="{{item.seckill.skuOriPrice}}">¥{{item.seckill.skuOriPrice / 100}}</view>
+								<view class="add normal" data-fn="jumpDetail" data-id="{{item.skuId}}" a:if="{{item.seckillObj.status == 0}}" catchTap="jumpDetail">还未开抢</view>
+
+								<view class="add" data-fn="jumpDetail" data-id="{{item.skuId}}" a:if="{{item.seckillObj.status == 1}}" catchTap="jumpDetail">立即抢购</view>
+
+								<view class="add end" data-id="{{item.skuId}}" a:if="{{item.seckillObj.status == 2}}">抢购结束</view>
+							</view>
+						</view>
+					</view>
+				</block></block> 
+				<view class="empty-list" a:if="{{!listData || !listData.length}}">没有数据</view>
+		</scroll-view>
+	</view>  
+</view>
