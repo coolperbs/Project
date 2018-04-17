@@ -11,11 +11,18 @@ var ajax = require( '../../common/ajax/ajax' ),
 
 Page({
 	data : {
-		paymentType : 1
+		paymentType : 1, // 默认微信支付
+		floor : ['1楼','2楼','3楼','4楼','5楼','6楼','7楼','8楼','9楼','10楼','11楼','12楼','13楼','14楼','15楼','16楼','17楼','18楼','19楼','20楼','21楼','22楼','23楼','24楼','25楼','26楼','27楼','28楼','29楼','30楼'],
+		selectedFloor : 0
 	},
 	onShareAppMessage : app.shareFunc,
 	onLoad : function( param ) {
 		pageParam = param || {};
+	},
+	chooseFloor : function( e ) {
+		this.setData( {
+			selectedFloor : e.detail.value
+		} );
 	},
 	onShow : function() {
 		var self = this;
@@ -218,6 +225,9 @@ _fn = {
 			couponId = 0,
 			city = wx.getStorageSync( 'city' ),
 			selectedCoupon = SCoupon;
+
+		//  模拟数据
+		//city = city || { name : '成都市', code : '028' };
 
 		if ( !city || !city.code ) {
 			wx.showToast( { title : '缺少地址信息' } );

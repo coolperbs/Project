@@ -20,6 +20,10 @@
 			"current": -1,
 			"list": []
 		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": -1,
 			"list": [
@@ -52,6 +56,18 @@
 					"name": "首页",
 					"pathName": "pages/index/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商详",
+					"pathName": "pages/detail/detail",
+					"query": "id=190414"
+				},
+				{
+					"id": 6,
+					"name": "结算",
+					"pathName": "pages/checkout/checkout",
+					"query": "shopid=100042"
 				}
 			]
 		}

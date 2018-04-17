@@ -84,7 +84,51 @@
 			</view>
 			<view class="little">余额不足，暂不可用</view>
 		</view>
+
+		<!-- 兼容水卡 START -->
+		<view class="row" catchtap="changePayment" data-payment="3" >
+			<view class="key">
+				<image src="../../asset/cash.png"></image>
+				现金支付
+			</view>
+			<view class="checkbox {{ paymentType == 3 ? 'checked' : '' }}">
+				<image class="off" src="../../asset/unchecked.png"></image>
+				<image class="on" src="../../asset/checked.png"></image>
+			</view>
+		</view>
+		<view class="row" catchtap="changePayment" data-payment="4" >
+			<view class="key">
+				<image src="../../asset/watercard.png"></image>
+				水卡支付
+			</view>
+			<view class="checkbox {{ paymentType == 4 ? 'checked' : '' }}">
+				<image class="off" src="../../asset/unchecked.png"></image>
+				<image class="on" src="../../asset/checked.png"></image>
+			</view>
+		</view>
+		<view class="row" catchtap="changePayment" data-payment="5" >
+			<view class="key">
+				<image src="../../asset/waterticket.png"></image>
+				水票支付
+			</view>
+			<view class="checkbox {{ paymentType == 5 ? 'checked' : '' }}">
+				<image class="off" src="../../asset/unchecked.png"></image>
+				<image class="on" src="../../asset/checked.png"></image>
+			</view>
+		</view>
+		<!-- 兼容水卡 END -->
 	</view>
+
+	<!-- 兼容水卡 START -->
+	<view class="payment module" wx:if="{{ paymentType == 1 || paymentType == 2 }}">
+		<view class="row floor">
+			<view class="key">选择楼层</view>
+			<view class="value">
+				<picker value="{{selectedFloor}}" bindchange="chooseFloor" range="{{floor}}"><view class="num">{{ floor[selectedFloor] }}</view></picker>
+			</view>
+		</view>
+	</view>
+	<!-- 兼容水卡 END -->
 
 	<view class="item-list" wx:if="{{pageData.skus}}">
 		<view class="module">
