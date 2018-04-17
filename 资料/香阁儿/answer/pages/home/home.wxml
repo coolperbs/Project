@@ -1,7 +1,9 @@
 <image mode="scaleToFill" src="../../static/images/home-point.png" class="page-bg fade-out-in-animation"></image>
 <scroll-view scroll-y="true" class="home-scroll">
 	<view class="home-container">
-		<image mode="aspectFit" src="../../static/images/home-logo.png" class="home-logo up-down-animation"></image>
+		<button  class="home-btn">
+			<image mode="aspectFit" src="../../static/images/home-logo.png" class="up-down-animation"></image>
+		</button>
 		<button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="rank">
 			<image mode="aspectFit" src="../../static/images/home-rank.png"></image>
 		</button>
