@@ -110,8 +110,8 @@
 	<view class="level-up {{showUPMask?'active':''}}">
 		<view class="bg-box">
 			<image class="shinning" src="../../static/images/shinning.png"></image>
-			<image class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
-			<image class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
+			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
+			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
 		</view>
 		<view class="flag">
 			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>

@@ -191,7 +191,9 @@ Page({
           return el.id == res.userId
         });
         let rest = [...roomUsers]
-        utils.showToast({title: '玩家' + rest[runner].name + '逃跑~'})
+        if (rest[runner].id != '-1' && !this.data.isEnd) {
+          utils.showToast({title: '玩家' + rest[runner].name + '逃跑~'})
+        }
         this.clearTheInterval();
         this.clearTheAiInterval();
         setTimeout(() => {
@@ -846,7 +848,7 @@ Page({
   },
   closeModal() {
     this.setData({
-      showUPMask:false
+      showUPMask: false
     })
   },
   /**
