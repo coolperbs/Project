@@ -238,48 +238,48 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 40rpx;
-      height: 40rpx;
+      width: 30rpx;
+      height: 30rpx;
       z-index: 3;
       opacity: 0; }
     .bank-box .coins .coin-2 {
       position: absolute;
       top: 0;
       right: 0;
-      width: 40rpx;
-      height: 40rpx;
+      width: 30rpx;
+      height: 30rpx;
       z-index: 3;
       opacity: 0; }
     .bank-box .coins .coin-3 {
       position: absolute;
       top: 0;
       right: 0;
-      width: 40rpx;
-      height: 40rpx;
+      width: 30rpx;
+      height: 30rpx;
       z-index: 3;
       opacity: 0; }
     .bank-box .coins .coin-4 {
       position: absolute;
       top: 0;
       right: 0;
-      width: 40rpx;
-      height: 40rpx;
+      width: 30rpx;
+      height: 30rpx;
       z-index: 3;
       opacity: 0; }
     .bank-box .coins .coin-5 {
       position: absolute;
       top: 0;
       right: 0;
-      width: 40rpx;
-      height: 40rpx;
+      width: 30rpx;
+      height: 30rpx;
       z-index: 3;
       opacity: 0; }
     .bank-box .coins .coin-6 {
       position: absolute;
       top: 0;
       right: 0;
-      width: 40rpx;
-      height: 40rpx;
+      width: 30rpx;
+      height: 30rpx;
       z-index: 3;
       opacity: 0; }
     .bank-box .coins.active1 .coin-1 {

@@ -662,11 +662,6 @@ Page({
       this.playWinner()
     }
     this.stopBg();
-    //判断当前玩家升级没有
-    let up = false;
-    if (result[index].hasUpLevel) {
-      up = true;
-    }
     //console.log('玩家数据');
     //console.log(result[index]);
     let resultA = result[index]
@@ -676,11 +671,13 @@ Page({
     if (resultA.upGold !== undefined) {
       resultA.gold += resultA.upGold
     }
+    var showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
       result: resultA,
-      hasUpLevel: up,
+      showUPMask: showUPMask,
+      hasUpLevel: resultA.hasUpLevel || false,
       hasUpDanGrading: resultA.hasUpDanGrading || false
     });
     this.closeConnect();
@@ -847,7 +844,11 @@ Page({
   onHide: function () {
     //this.closeConnect();
   },
-
+  closeModal() {
+    this.setData({
+      showUPMask:false
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

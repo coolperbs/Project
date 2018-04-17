@@ -107,9 +107,30 @@
 		</view>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
-</view>
-<view class="up-box">
-
+	<view class="level-up {{showUPMask?'active':''}}">
+		<view class="bg-box">
+			<image class="shinning" src="../../static/images/shinning.png"></image>
+			<image class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
+			<image class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
+		</view>
+		<view class="flag">
+			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
+			<image  class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
+		</view>
+		<view class="text" wx:if="{{result.hasUpDanGrading}}">
+			<view class="old-name">{{result.oldDanGradingName}}</view>
+			<view class="arrow"> > </view>
+			<view class="new-name">{{result.newDanGradingName}}</view>
+		</view>
+		<view class="close" bindtap="closeModal">
+			<image class="close-image" src="../../static/images/close.png"></image>
+		</view>
+		<!--
+		oldDanGradingName;
+newDanGradingName;
+newDanGradingLogo;
+		-->
+	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>
 <audio id="myAudio2"></audio>

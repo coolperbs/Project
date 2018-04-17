@@ -24,14 +24,14 @@
 				<image mode="aspectFit" src="../../static/images/bank.png" style="position: absolute;left: 0;right: 0;bottom: 0;top: 0;"></image>
 				<view class="bank-box">
 					<view class="coins {{getCoins?'active1':''}} {{getCoins2?'active2':''}}">
-						<image class="coin-1" src="../../static/images/coin.png"></image>
-						<image class="coin-2" src="../../static/images/coin.png"></image>
-						<image class="coin-3" src="../../static/images/coin.png"></image>
-						<image class="coin-4" src="../../static/images/coin.png"></image>
-						<image class="coin-5" src="../../static/images/coin.png"></image>
-						<image class="coin-6" src="../../static/images/coin.png"></image>
-						<image class="coin-7" src="../../static/images/coin.png"></image>
-						<image class="coin-8" src="../../static/images/coin.png"></image>
+						<image class="coin-1" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-2" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-3" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-4" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-5" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-6" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-7" src="../../static/images/bankcoin.png"></image>
+						<image class="coin-8" src="../../static/images/bankcoin.png"></image>
 					</view>
 					<view class="bank-icon">
 						<image class="bank-coin" src="../../static/images/coin.png"></image>
