@@ -31,6 +31,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      margin: 20rpx 0;
       .coins{
         display: flex;
         align-items: center;
@@ -53,12 +54,13 @@
           position: relative;
         }
         .skill{
-          width: 64rpx;
-          height: 64rpx;
+          width: 100rpx;
+          height: 100rpx;
           margin: 0 5rpx;
-          opacity: 0.8;
+          opacity: 1;
           &.active{
             filter: grayscale(100%);
+            opacity: 0.8;
           }
         }
         .limit{

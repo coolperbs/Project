@@ -87,5 +87,19 @@ export default {
       url: app.HOST_AJAX + '/app/login/ware/use/' + data.wareId + '/' + data.wareNum,
       callback: callback
     });
-  }
+  },
+  getBank (data, callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/app/bank/get/',
+      callback: callback
+    });
+  },
+  lastBank (data, callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/app/last/bank/',
+      callback: callback
+    });
+  },
 }
+
+

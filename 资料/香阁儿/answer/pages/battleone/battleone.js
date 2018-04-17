@@ -101,7 +101,7 @@ Page({
   },
   playBg() {
     this.audioCtx = wx.createAudioContext('myAudio');
-    this.audioCtx.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
+    this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
   },
   stopBg() {
@@ -111,7 +111,7 @@ Page({
   },
   playWinner() {
     this.audioCtx2 = wx.createAudioContext('myAudio2');
-    this.audioCtx2.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
+    this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
   },
   stopWinner() {
@@ -134,8 +134,9 @@ Page({
     this.setData({
       userId: UserInfo.user.id
     });
+    battle.PVP_close();
     battle.PVP_connect(this.data.level, token, () => {
-      //console.log('对战连接成功:----------------------');
+      console.log('对战连接成功:----------------------');
       this.setData({
         PVP_isConnect: true
       });
@@ -147,6 +148,8 @@ Page({
    * */
   getPVPMessage() {
     battle.PVP_onMessage((res) => {
+      console.log('玩家消息')
+      console.log(res)
       if (res.code != '0000') {
         if (this.data.PVP_isConnect) {
           utils.showToast({
@@ -644,7 +647,7 @@ Page({
     for (var i = 0; i < roomUser.length; i++) {
       for (var k = 0; k < result.length; k++) {
         if (roomUser[i].id == result[k].userId) {
-          roomUser[i].point = result[k].totlePoint<0?roomUser[i].point:result[k].totlePoint;
+          roomUser[i].point = result[k].totlePoint < 0 ? roomUser[i].point : result[k].totlePoint;
           roomUser[i].pointBar = ((roomUser[i].point * 100) / this.data.totalPoint).toFixed(2);
         }
       }
@@ -723,13 +726,16 @@ Page({
       if (this.data.vsAi == 'undefined') {
         console.log('连接AI')
         if (!this.data.PVP_isConnect) {
+          console.log('人机对战没有连接')
           return
         }
-        console.log('lianjie AI chenggong ')
         this.setData({
           vsAi: true
         });
+        console.log('连接AI开始');
+        battle.PVA_close();
         battle.PVA_connect(this.data.roomId, this.data.level, () => {
+          console.log('连接AI成功');
           this.setData({
             PVA_isConnect: true
           });
@@ -743,6 +749,7 @@ Page({
    * */
   getAiMessage() {
     battle.PVA_onMessage((res) => {
+      console.log('aiMessage', res)
       if (res.code != '0000') {
         if (this.data.PVA_isConnect) {
           utils.showToast({

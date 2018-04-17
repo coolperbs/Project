@@ -19,6 +19,31 @@
 				<image mode="aspectFit" src="../../static/images/home-mine.png"></image>
 			</button>
 		</view>
+		<view class="home-btn-group">
+			<button class="home-btn" style="position: relative;overflow: visible" hover-class="home-btn-hover" bindtap="getBank">
+				<image mode="aspectFit" src="../../static/images/bank.png" style="position: absolute;left: 0;right: 0;bottom: 0;top: 0;"></image>
+				<view class="bank-box">
+					<view class="coins {{getCoins?'active1':''}} {{getCoins2?'active2':''}}">
+						<image class="coin-1" src="../../static/images/coin.png"></image>
+						<image class="coin-2" src="../../static/images/coin.png"></image>
+						<image class="coin-3" src="../../static/images/coin.png"></image>
+						<image class="coin-4" src="../../static/images/coin.png"></image>
+						<image class="coin-5" src="../../static/images/coin.png"></image>
+						<image class="coin-6" src="../../static/images/coin.png"></image>
+						<image class="coin-7" src="../../static/images/coin.png"></image>
+						<image class="coin-8" src="../../static/images/coin.png"></image>
+					</view>
+					<view class="bank-icon">
+						<image class="bank-coin" src="../../static/images/coin.png"></image>
+						<view class="coin-count">{{coinCount}}/60</view>
+					</view>
+					<view class="bank-process">
+						<view class="bank-bar" style="width:{{width}}%"></view>
+						<view class="bank-time">{{countTime}}</view>
+					</view>
+				</view>
+			</button>
+		</view>
 		<view class="home-btn-bottom">
 			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="shop">
 				<image mode="aspectFit" src="../../static/images/home-shop.png"></image>
@@ -32,7 +57,7 @@
 		</view>
 	</view>
 </scroll-view>
-
+<audio id="myAudio"></audio>
 <view class="modal" wx:if="{{showCheck}}">
 	<view class="content">
 		<view class="title">
