@@ -315,6 +315,7 @@
       @for $i from 1 through 6 {
         .coin-#{$i} {
           transition: all 1s ease;
+          transform: translate3d(60rpx, -1000rpx, 0);
           opacity: 0;
         }
       }

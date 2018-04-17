@@ -316,21 +316,27 @@
       opacity: 1; }
     .bank-box .coins.active1.active2 .coin-1 {
       transition: all 1s ease;
+      transform: translate3d(60rpx, -1000rpx, 0);
       opacity: 0; }
     .bank-box .coins.active1.active2 .coin-2 {
       transition: all 1s ease;
+      transform: translate3d(60rpx, -1000rpx, 0);
       opacity: 0; }
     .bank-box .coins.active1.active2 .coin-3 {
       transition: all 1s ease;
+      transform: translate3d(60rpx, -1000rpx, 0);
       opacity: 0; }
     .bank-box .coins.active1.active2 .coin-4 {
       transition: all 1s ease;
+      transform: translate3d(60rpx, -1000rpx, 0);
       opacity: 0; }
     .bank-box .coins.active1.active2 .coin-5 {
       transition: all 1s ease;
+      transform: translate3d(60rpx, -1000rpx, 0);
       opacity: 0; }
     .bank-box .coins.active1.active2 .coin-6 {
       transition: all 1s ease;
+      transform: translate3d(60rpx, -1000rpx, 0);
       opacity: 0; }
 
 @-webkit-keyframes scaleShake {
