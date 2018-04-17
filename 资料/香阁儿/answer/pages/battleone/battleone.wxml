@@ -1,8 +1,8 @@
 <view class="battle-box">
 	<view class="loading" wx:if="{{LOADING}}" animation="{{loadingData}}">
-		<view class="box-loading">
-			<view class="loading-item loading1"></view>
-			<view class="loading-item loading2"></view>
+		<view class="box-loading {{LOADING?'':'pause'}}">
+			<view class="{{LOADING?'loading-item':''}} loading1"></view>
+			<view class="{{LOADING?'loading-item':''}} loading2"></view>
 		</view>
 	</view>
 	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
@@ -101,16 +101,15 @@
 				<view class="item-text">+{{result.exp}}</view>
 				<!--<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>-->
 			</view>
-			<view class="result-item {{hasUpLevel||hasUpDanGrading?'':'none'}}">
-				<image class="up-icon {{hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
-				<image class="up-icon {{hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
-			</view>
 			<button class="continue" bindtap="playAgain">
 				继续挑战
 			</button>
 		</view>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
+</view>
+<view class="up-box">
+
 </view>
 <audio id="myAudio" loop="true"></audio>
 <audio id="myAudio2"></audio>

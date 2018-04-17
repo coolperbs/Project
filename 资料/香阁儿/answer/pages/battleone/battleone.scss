@@ -57,6 +57,13 @@
   .loading-item:nth-child(2){
     animation:loading 1s 0s ease-in-out infinite;
   }
+  .box-loading{
+    &.pause{
+      .loading-item{
+        animation: none;
+      }
+    }
+  }
   @keyframes loading {
     0%{
       transform:scale(1)
