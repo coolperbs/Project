@@ -9,6 +9,8 @@
 				<view class="user">
 					<view class="rank">{{index + 1}}</view>
 					<image class="logo" src="{{item.avatarUrl}}"></image>
+					<image class="photoframe" src="{{item.headerImg}}"></image>
+					<image wx:if="{{item.top3Img}}" class="crown" src="{{item.top3Img}}"></image>
 				</view>
 				<view class="info">
 					<view class="username">{{item.nickName}}</view>
