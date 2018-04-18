@@ -43,6 +43,14 @@ Page({
 			urls : images
 		} );
 	},
+	previewDetailImage : function() {
+		var images = this.data.pageData || {};
+		images = images.detailImage || [];
+
+		wx.previewImage( {
+			urls : images
+		} );
+	},
 	moduleClickProxy : function( e ) {
 		var target = e.currentTarget;
 		if ( target.dataset && target.dataset.fn && modules.events[target.dataset.fn] ) {

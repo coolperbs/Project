@@ -374,6 +374,11 @@ _fn = {
 			}
 
 			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
+				return;
+			}
+
+			// 水卡这些就不支付了
+			if ( caller.data.paymentType != 1 && caller.data.paymentType != 2 ) {
 				if(pageParam.bizType === 'groupon'){
 					var grouponId = orderRes.data.grouponId;
 					wx.redirectTo( { url : '../gp-detail/gp-detail?grouponId=' + grouponId  } );
@@ -460,7 +465,7 @@ _fn = {
 		}
 
 
-		if ( data.otherMoney ) {
+		if ( data.otherMoney && (data.paymentType == 1 || data.paymentType == 2) ) {
 			param.otherMoney = data.otherMoney;
 		}
 		param.address = address;

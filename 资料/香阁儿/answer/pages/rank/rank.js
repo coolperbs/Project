@@ -19,9 +19,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    setTimeout(()=>{
-      this.updateRank();
-    },1000)
+    var self = this;
+
+    if ( self.data.rankData.user ) {
+      setTimeout(()=>{
+        self.updateRank();
+      },1000)
+      return;
+    }
+    self.updateRank();
   },
   /**
    * 更新rank
