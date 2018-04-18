@@ -55,6 +55,17 @@
 		</view>
 	</view>
 
+	<!-- 兼容水卡 START -->
+	<view class="payment module" wx:if="{{ pageData.store.catTypeId == 2 && ( paymentType == 1 || paymentType == 2 ) }}">
+		<view class="row floor">
+			<view class="key">选择楼层</view>
+			<view class="value">
+				<picker value="{{selectedFloor}}" bindchange="chooseFloor" range="{{floor}}"><view class="num">{{ floor[selectedFloor] }}</view></picker>
+			</view>
+		</view>
+	</view>
+	<!-- 兼容水卡 END -->
+
 	<view class="payment module">
 		<view class="row" catchtap="changePayment" data-payment="1" >
 			<view class="key">
@@ -86,7 +97,7 @@
 		</view>
 
 		<!-- 兼容水卡 START -->
-		<view class="row" catchtap="changePayment" data-payment="3" >
+		<view class="row" wx:if="{{ pageData.store.catTypeId == 2 }}" catchtap="changePayment" data-payment="3" >
 			<view class="key">
 				<image src="../../asset/cash.png"></image>
 				现金支付
@@ -96,7 +107,7 @@
 				<image class="on" src="../../asset/checked.png"></image>
 			</view>
 		</view>
-		<view class="row" catchtap="changePayment" data-payment="4" >
+		<view class="row" wx:if="{{ pageData.store.catTypeId == 2 }}" catchtap="changePayment" data-payment="4" >
 			<view class="key">
 				<image src="../../asset/watercard.png"></image>
 				水卡支付
@@ -106,7 +117,7 @@
 				<image class="on" src="../../asset/checked.png"></image>
 			</view>
 		</view>
-		<view class="row" catchtap="changePayment" data-payment="5" >
+		<view class="row" wx:if="{{ pageData.store.catTypeId == 2 }}" catchtap="changePayment" data-payment="5" >
 			<view class="key">
 				<image src="../../asset/waterticket.png"></image>
 				水票支付
@@ -118,17 +129,6 @@
 		</view>
 		<!-- 兼容水卡 END -->
 	</view>
-
-	<!-- 兼容水卡 START -->
-	<view class="payment module" wx:if="{{ paymentType == 1 || paymentType == 2 }}">
-		<view class="row floor">
-			<view class="key">选择楼层</view>
-			<view class="value">
-				<picker value="{{selectedFloor}}" bindchange="chooseFloor" range="{{floor}}"><view class="num">{{ floor[selectedFloor] }}</view></picker>
-			</view>
-		</view>
-	</view>
-	<!-- 兼容水卡 END -->
 
 	<view class="item-list" wx:if="{{pageData.skus}}">
 		<view class="module">
@@ -202,7 +202,7 @@
 		<view class="text">{{paymentType == 1 ? '微信' : '余额'}}支付</view>
 		<view class="info">
 			<view class="price">
-				<view class="sub">¥</view>{{ pointPrice >= pageData.payPrice ? 0 : ( pageData.payPrice - pointPrice ) / 100 }}
+				<view class="sub">¥</view>{{ pointPrice >= pageData.payPrice ? 0 : ( pageData.payPrice - pointPrice + otherMoney ) / 100 }}
 			</view>
 		</view>
 		<view class="text">元</view>

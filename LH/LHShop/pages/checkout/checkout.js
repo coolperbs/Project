@@ -13,15 +13,22 @@ Page({
 	data : {
 		paymentType : 1, // 默认微信支付
 		floor : ['1楼','2楼','3楼','4楼','5楼','6楼','7楼','8楼','9楼','10楼','11楼','12楼','13楼','14楼','15楼','16楼','17楼','18楼','19楼','20楼','21楼','22楼','23楼','24楼','25楼','26楼','27楼','28楼','29楼','30楼'],
-		selectedFloor : 0
+		selectedFloor : 0,
+		otherMoney : 0 // 附加金额0
 	},
 	onShareAppMessage : app.shareFunc,
 	onLoad : function( param ) {
 		pageParam = param || {};
 	},
 	chooseFloor : function( e ) {
+		var floor = e.detail.value * 1,
+			otherMoney = 0;
+
+		otherMoney = ( floor * 1 - 1 ) * 100;
+		otherMoney = otherMoney < 0 ? 0 : otherMoney;
 		this.setData( {
-			selectedFloor : e.detail.value
+			selectedFloor : floor,
+			otherMoney : otherMoney
 		} );
 	},
 	onShow : function() {
@@ -453,6 +460,9 @@ _fn = {
 		}
 
 
+		if ( data.otherMoney ) {
+			param.otherMoney = data.otherMoney;
+		}
 		param.address = address;
 		param.payType = data.paymentType;
 		param.userPoint = data.pointPrice;

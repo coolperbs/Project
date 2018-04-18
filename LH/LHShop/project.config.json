@@ -67,7 +67,7 @@
 					"id": 6,
 					"name": "结算",
 					"pathName": "pages/checkout/checkout",
-					"query": "shopid=100042"
+					"query": "shopid=100001"
 				}
 			]
 		}
