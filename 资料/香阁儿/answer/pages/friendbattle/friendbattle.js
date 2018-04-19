@@ -276,11 +276,16 @@ Page({
     })
     this.updateRoomUser(res.roomUsers);
   },
-  addFriend(ownerId) {
+  addFriend() {
     if (this.data.roomOwner == this.data.userId) {
       return
     }
-    battle.addFriend(ownerId, (res) => {
+    let roomUsers = this.data.roomUsers.map((el) => {
+      if (el.id) {
+        return el.id;
+      }
+    });
+    battle.addFriend(roomUsers, (res) => {
       console.log('加好友')
       console.log(res)
     })
@@ -315,7 +320,7 @@ Page({
       roomUsers: roomUsers
     })
     //加好友
-    this.addFriend(this.data.roomOwner)
+    this.addFriend()
   },
   /**
    * 发送消息

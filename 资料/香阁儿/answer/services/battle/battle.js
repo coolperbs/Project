@@ -162,9 +162,10 @@ export default {
       this.PVF_socket.close({})
     }
   },
-  addFriend(ownerId,callback) {
+  addFriend(roomUsers, callback) {
     ajax.request({
-      url: app.HOST_AJAX + '/app/user/friend/' + ownerId || '',
+      url: app.HOST_AJAX + '/app/user/friend/',
+      data: {users: roomUsers||[]},
       callback: callback
     });
   }
