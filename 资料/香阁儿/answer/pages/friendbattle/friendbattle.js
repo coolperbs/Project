@@ -285,6 +285,10 @@ Page({
         return el.id;
       }
     });
+    if (roomUsers.length <= 0) {
+      return
+    }
+    roomUsers = roomUsers.join(',');
     battle.addFriend(roomUsers, (res) => {
       console.log('加好友')
       console.log(res)

@@ -165,7 +165,7 @@ export default {
   addFriend(roomUsers, callback) {
     ajax.request({
       url: app.HOST_AJAX + '/app/user/friend/',
-      data: {users: roomUsers||[]},
+      data: {users: roomUsers||''},
       callback: callback
     });
   }
