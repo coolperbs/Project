@@ -166,6 +166,25 @@ var _fn = {
 						return v;
 					});
 					var bizType = page.param.bizType;
+					switch( resDattOrder.paymentType * 1 ) {
+						case 1:
+							resDattOrder.paymentTypeStr = '微信支付';
+							break;
+						case 2 : 
+							resDattOrder.paymentTypeStr = '余额支付';
+							break;
+						case 3 : 
+							resDattOrder.paymentTypeStr = '现金支付';
+							break;
+						case 4 : 
+							resDattOrder.paymentTypeStr = '水卡支付';
+							break;
+						case 5 : 
+							resDattOrder.paymentTypeStr = '水票支付';
+							break;
+					}
+
+
 					if(bizType === 'groupon' && resDattOrder.grouponStatus){;//-1过期，1进行中，2完成
 						
 						if(resDattOrder.grouponStatus === -1){

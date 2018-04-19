@@ -199,16 +199,17 @@
 
 <view class="toolbar" wx:if="{{pageData}}">
 	<view class="btn">
-		<view class="text">{{paymentType == 1 ? '微信' : '余额'}}支付</view>
+		<view class="text" wx:if="{{ paymentType == 1 }}">微信支付</view>
+		<view class="text" wx:if="{{ paymentType == 2 }}">余额支付</view>
 		<view class="info">
 			<view class="price" wx:if="{{ paymentType == 1 || paymentType == 2 }}">
 				<view class="sub">¥</view>{{ pointPrice >= pageData.payPrice ? 0 : ( pageData.payPrice - pointPrice + otherMoney ) / 100 }}
 			</view>
 			<view class="price" wx:else>
-				<view class="sub">¥</view>{{ pointPrice >= pageData.payPrice ? 0 : ( pageData.payPrice - pointPrice ) / 100 }}
+				确认生成订单
 			</view>
 		</view>
-		<view class="text">元</view>
+		<view class="text" wx:if="{{ paymentType == 1 || paymentType == 2 }}">元</view>
 		<button form-type="submit"></button>
 	</view>
 </view>
