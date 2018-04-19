@@ -675,6 +675,10 @@ Page({
       resultA.gold += resultA.upGold
     }
     var showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
+    let exp = resultA.exp;
+    let gold = resultA.gold;
+    resultA.exp = 0;
+    resultA.gold = 0;
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
@@ -684,6 +688,34 @@ Page({
       hasUpDanGrading: resultA.hasUpDanGrading || false
     });
     this.closeConnect();
+    setTimeout(()=>{
+      if (this.expTimer) {
+        clearInterval(this.expTimer)
+      }
+      this.expTimer = setInterval(() => {
+        if (this.data.result.exp == exp) {
+          clearInterval(this.expTimer)
+        } else {
+          this.data.result.exp += 1;
+          this.setData({
+            result: this.data.result
+          });
+        }
+      }, 10);
+      if (this.goldTimer) {
+        clearInterval(this.goldTimer)
+      }
+      this.goldTimer = setInterval(() => {
+        if (this.data.result.gold == gold) {
+          clearInterval(this.goldTimer)
+        } else {
+          this.data.result.gold += 1;
+          this.setData({
+            result: this.data.result
+          });
+        }
+      }, 10)
+    },1000)
   },
   /**
    * 关闭连接
@@ -773,7 +805,7 @@ Page({
       }
       if (res.type == '6') {
         battle.PVA_send({"type": 3});
-        setTimeout(()=>{
+        setTimeout(() => {
           this.clearTheAiInterval()
           if (this.data.PVA_isConnect) {
             battle.PVA_close();
@@ -782,7 +814,7 @@ Page({
               vsAi: undefined
             })
           }
-        },500)
+        }, 500)
       }
     })
   },
