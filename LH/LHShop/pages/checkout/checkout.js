@@ -362,7 +362,6 @@ _fn = {
 
 		// 1.创建订单
 		createOrderFunc( caller, function( orderRes ) {
-			console.log('完成订单创建',orderRes);
 			if ( utils.isErrorRes( orderRes ) ) {
 				return;
 			}
@@ -370,10 +369,6 @@ _fn = {
 			
 			if ( caller.data.type == '到店支付' ) {
 				wx.redirectTo( { url : '../orderdetail/orderdetail?orderid=' + orderId  } );
-				return;
-			}
-
-			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
 				return;
 			}
 
@@ -387,6 +382,11 @@ _fn = {
 				}
 				return;
 			}
+
+			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
+				return;
+			}
+
 
 			// 2.获取支付订单
 			_fn.payOrder( {
@@ -471,6 +471,10 @@ _fn = {
 		param.address = address;
 		param.payType = data.paymentType;
 		param.userPoint = data.pointPrice;
+		console.log( data );
+		if ( data.pageData.store.catTypeId == 2 && ( data.paymentType == 1 || data.paymentType == 2 ) ) {
+			param.remark = '送水楼层' + ( data.selectedFloor + 1 ) + '楼'
+		}
 		//param.userMoney = data.
 		ajax.query( {
 			url : url,

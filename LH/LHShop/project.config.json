@@ -40,10 +40,10 @@
 					"query": "grouponId=75"
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "订单",
-					"pathName": "pages/orderlist/orderlist",
-					"query": "bizType=groupon"
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "orderid=10001090&bizType=undefined"
 				},
 				{
 					"id": -1,
