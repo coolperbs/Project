@@ -119,7 +119,7 @@ Page({
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
       //用户没有登陆
-      utils.redirectTo('../login/login',{direct:this.route,roomId:this.data.roomId})
+      utils.redirectTo('../login/login', {direct: this.route, roomId: this.data.roomId})
       return
     }
     this.setData({
@@ -131,6 +131,7 @@ Page({
         isConnect: true
       });
       this.getMessage();
+      battle.PVF_onError()
     })
   },
   /**
@@ -158,6 +159,13 @@ Page({
       if (res.type == 2) {
         //console.log('好友连接上了:-----------------------------');
         this.initRoom(res);
+        if (this.keepTimer) {
+          clearInterval(this.keepTimer)
+        }
+        this.keepTimer = setInterval(() => {
+          console.log('keep----')
+          battle.PVF_send({aba: 324})
+        }, 5000)
       }
       if (res.type == 3) {
         //console.log('得到题目了:-----------------------------');
@@ -185,6 +193,7 @@ Page({
       }
       if (res.type == '6') {
         //判断有人逃跑 游戏没开始 房间解散 游戏开始后判断少于2个人 就结束游戏
+        console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
@@ -207,10 +216,10 @@ Page({
           this.updateRankList();
           if (count < 2) {
             //console.log('人都跑了,去拿答案了');
-            this.clearCountAni();
-            this.clearTheInterval();
             setTimeout(() => {
               this.subjectAnimation(4, () => {
+                this.clearCountAni();
+                this.clearTheInterval();
                 this.sendMessage({type: 3})
               })
             }, 1000)
@@ -271,7 +280,7 @@ Page({
     if (this.data.roomOwner == this.data.userId) {
       return
     }
-    battle.addFriend(ownerId,(res)=>{
+    battle.addFriend(ownerId, (res) => {
       console.log('加好友')
       console.log(res)
     })
@@ -814,6 +823,9 @@ Page({
         isConnect: false
       })
     }
+    if (this.keepTimer) {
+      clearInterval(this.keepTimer)
+    }
   },
   /**
    * 再来一把
@@ -860,20 +872,19 @@ Page({
   },
   back() {
     wx.navigateBack();
-    return
-    if (this.data.roomOwner != this.data.userId) {
-      utils.redirectTo('../home/home')
-    } else {
-      wx.navigateBack()
-    }
+    // if (this.data.roomOwner != this.data.userId) {
+    //   utils.redirectTo('../home/home')
+    // } else {
+    //   wx.navigateBack()
+    // }
   },
   onHide() {
     //console.log('小程序隐藏了')
-    if (this.data.isStart) {
-      //console.log('关闭连接');
-      this.closeConnect();
-      this.back();
-    }
+    // if (this.data.isStart) {
+    //   //console.log('关闭连接');
+    //   this.closeConnect();
+    //   this.back();
+    // }
   },
   /**
    * 生命周期函数--监听页面卸载

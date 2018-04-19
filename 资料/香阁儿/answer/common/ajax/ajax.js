@@ -8,39 +8,43 @@ import util from '../utils/utils'
 
 handle = {
 
-  connectSocket (url, data) {
+  connectSocket(url, data) {
     let task = {};
     task = wx.connectSocket({
-      url: url + '?' + util.mapToUrl(data),
-      success (res) {
-        console.log(res.socketTaskId)
+        url: url + '?' + util.mapToUrl(data),
+        success(res) {
+          console.log(res.socketTaskId)
+        },
+        fail(res) {
+          console.log('connectFailed',res)
+        }
       }
-    });
+    );
     return task;
   },
-  request (object) {
+  request(object) {
     if (!object) {
       return
     }
-    object.data = _fn.wrapParam( object );
+    object.data = _fn.wrapParam(object);
     wx.request({
       url: object.url,
       data: object.data || {},
       method: object.method || 'get',
       header: object.header || {},
       success: function (res) {
-        if(res.statusCode!=200){
-          handle.responseWrapper({code:'-1',message:'网络错误'}, object.callback);
-        }else {
+        if (res.statusCode != 200) {
+          handle.responseWrapper({code: '-1', message: '网络错误'}, object.callback);
+        } else {
           handle.responseWrapper(res.data, object.callback);
         }
       },
       fail: function (res) {
-        handle.responseWrapper({code:'-1',message:'网络错误'}, object.callback);
+        handle.responseWrapper({code: '-1', message: '网络错误'}, object.callback);
       }
     });
   },
-  responseWrapper (dataStr, callback) {
+  responseWrapper(dataStr, callback) {
     var res = (typeof dataStr == 'string' ? JSON.parse(dataStr) : dataStr) || null;
     if (res.code != '0000') {
       /*todo 更具不同的code走不同的逻辑*/
@@ -48,15 +52,15 @@ handle = {
       // util.showToast({
       //   title: res.message || res.msg || ''
       // });
-      callback&&callback(res);
+      callback && callback(res);
       return
     }
-    callback&&callback(res);
+    callback && callback(res);
   }
 }
 
 _fn = {
-  wrapParam (object) {
+  wrapParam(object) {
     //return object.data || {};
     var userInfo = wx.getStorageSync('userInfo') || {},
       result;
@@ -72,7 +76,7 @@ _fn = {
     }
     return result;
   },
-  isInwhiteList () {
+  isInwhiteList() {
 
   }
 }

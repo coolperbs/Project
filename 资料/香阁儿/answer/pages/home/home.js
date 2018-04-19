@@ -166,6 +166,8 @@ Page({
       login.getBank(null, (res) => {
         this.lastBank();
       })
+    }else {
+      utils.showToast({title:'暂时还有没有金币哦~'})
     }
   },
   coinAni() {

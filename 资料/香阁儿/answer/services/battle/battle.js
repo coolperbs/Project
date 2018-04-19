@@ -54,6 +54,7 @@ export default {
   },
   PVP_onError(callback) {
     this.PVP_socket.onError(res => {
+      console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -101,6 +102,7 @@ export default {
   },
   PVA_onError(callback) {
     this.PVA_socket.onError(res => {
+      console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -148,6 +150,7 @@ export default {
   },
   PVF_onError(callback) {
     this.PVF_socket.onError(res => {
+      console.log(res)
       utils.showToast({
         title: '连接错误！'
       });

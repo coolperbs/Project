@@ -141,6 +141,7 @@ Page({
         PVP_isConnect: true
       });
       this.getPVPMessage();
+      battle.PVP_onError();
     })
   },
   /**
@@ -738,7 +739,8 @@ Page({
           this.setData({
             PVA_isConnect: true
           });
-          this.getAiMessage()
+          this.getAiMessage();
+          battle.PVA_onError();
         })
       }
     }, 3500)
@@ -771,6 +773,16 @@ Page({
       }
       if (res.type == '6') {
         battle.PVA_send({"type": 3});
+        setTimeout(()=>{
+          this.clearTheAiInterval()
+          if (this.data.PVA_isConnect) {
+            battle.PVA_close();
+            this.setData({
+              PVA_isConnect: false,
+              vsAi: undefined
+            })
+          }
+        },500)
       }
     })
   },
