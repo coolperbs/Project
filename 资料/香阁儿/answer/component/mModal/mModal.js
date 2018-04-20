@@ -1,13 +1,6 @@
 // component/mModal.js
 Component({
   /**
-   * 组件的属性列表
-   */
-  properties: {
-    
-  },
-
-  /**
    * 组件的初始数据
    */
   data: {
@@ -15,28 +8,54 @@ Component({
     content: '',
     showCancel: true,
     cancelText: '取消',
-    cancelColor:'#000000',
     confirmText: '确认',
-    confirmColor: '#3CC51F',
-    success: null
+    success: null,
+    zIndex: -9999
   },
 
   /**
    * 组件的方法列表
    */
+  ready() {
+    this.mAni = wx.createAnimation({
+      duration: 450,
+      timingFunction: "ease",
+      delay: 0
+    })
+  },
   methods: {
-    showModal(object){
+    showModal(object) {
+      //todo 可能需要过滤
+      console.log('进来了~~~~')
       this.setData({...object});
       this.show()
     },
-    show(){
-
+    show() {
+      this.setData({
+        zIndex: 9999
+      });
+      this.mAni.opacity(1).step();
+      this.setData({
+        mAni: this.mAni.export()
+      })
     },
-    hide(){
-
+    hide() {
+      this.mAni.opacity(0).step();
+      this.setData({
+        mAni: this.mAni.export()
+      });
+      setTimeout(() => {
+        this.setData({
+          zIndex: -9999
+        })
+      }, 500)
     },
-    clickEvt(e){
-
+    tapEvt(e) {
+      let type = e.currentTarget.dataset.type;
+      if (typeof this.data.success == 'function') {
+        this.data.success({result: type})
+      }
+      this.hide();
     }
   }
 })

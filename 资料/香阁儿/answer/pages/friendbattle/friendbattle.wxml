@@ -126,3 +126,4 @@
 </view>
 <audio id="myAudio" loop="true"></audio>
 <audio id="myAudio2"></audio>
+<m-modal id="m-modal"></m-modal>

@@ -1,1 +1,55 @@
 /* component/mModal.wxss */
+.m-modal-mask{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.m-content{
+  width: 640rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.m-title{
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  background: #ed47c7;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.m-foot{
+  display: flex;
+  border-top: 1rpx solid;
+}
+.m-foot .m-f-btn{
+  width: 100%;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  background-color: #9421ff;
+  box-shadow: 0 10rpx 20rpx 0 rgba(148, 33, 255, 0.5);
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+}
+.m-foot .m-f-btn.cancel{
+  background-color: #ed47c7;
+  box-shadow: 0 10rpx 20rpx 0 rgba(237, 71, 199, 0.5);
+}
+.m-body{
+  box-sizing: border-box;
+  padding: 20rpx;
+  color: #333333;
+  font-size: 26rpx;
+  min-height: 60rpx;
+}

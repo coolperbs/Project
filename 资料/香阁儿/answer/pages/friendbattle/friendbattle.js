@@ -110,6 +110,7 @@ Page({
       roomId: options.roomId || ''
     });
     this.initPage();
+    this.modal = this.selectComponent("#m-modal");
   },
   /**
    * 初始化
@@ -245,21 +246,33 @@ Page({
       if (res.type == '8') {
         let roomId = res.roomId || '';
         let that = this;
-        wx.showModal({
-          title: '提示',
+        this.modal.showModal({
           content: '房主发起再来一盘',
-          confirmColor: '#1e0141',
           confirmText: '确认加入',
-          cancelText: '取消',
           success(res) {
             that.closeConnect();
-            if (res.confirm) {
+            if (res.result == 'confirm') {
               utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
-            } else if (res.cancel) {
+            } else {
               that.back();
             }
           }
-        });
+        })
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '房主发起再来一盘',
+        //   confirmColor: '#1e0141',
+        //   confirmText: '确认加入',
+        //   cancelText: '取消',
+        //   success(res) {
+        //     that.closeConnect();
+        //     if (res.confirm) {
+        //       utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
+        //     } else if (res.cancel) {
+        //       that.back();
+        //     }
+        //   }
+        // });
       }
     })
   },
@@ -359,12 +372,22 @@ Page({
    * 取消对战
    * */
   cancelBattle() {
-    utils.showAction('确定退出房间?', (res) => {
-      if (res) {
-        this.closeConnect();
-        this.back();
+    let that = this;
+    this.modal.showModal({
+      content: '确定退出房间?',
+      success(res) {
+        if (res.result == 'confirm') {
+          that.closeConnect();
+          that.back();
+        }
       }
     })
+    // utils.showAction('确定退出房间?', (res) => {
+    //   if (res) {
+    //     this.closeConnect();
+    //     this.back();
+    //   }
+    // })
   },
   /**
    * 场景动画

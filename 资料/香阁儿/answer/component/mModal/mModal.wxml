@@ -1,2 +1,12 @@
-<!--component/mModal.wxml-->
-<text>component/mModal.wxml</text>
+<view class="m-modal-mask" animation="{{mAni}}" style="z-index: {{zIndex}};">
+	<view class="m-content">
+		<view class="m-title">{{title}}</view>
+		<view class="m-body">
+			{{content}}
+		</view>
+		<view class="m-foot">
+			<button class="m-f-btn cancel" wx:if="{{showCancel}}" bindtap="tapEvt" data-type="cancel">{{cancelText}}</button>
+			<button class="m-f-btn" bindtap="tapEvt" data-type="confirm">{{confirmText}}</button>
+		</view>
+	</view>
+</view>
