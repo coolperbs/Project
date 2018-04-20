@@ -154,6 +154,45 @@
       box-sizing: border-box;
       margin: 30rpx;
       position: relative;
+     .user{
+       position: absolute;
+       width: 90rpx;
+       margin-right: 40rpx;
+       box-sizing: border-box;
+       transition: all 1s ease;
+       &.owner{
+         .head{
+           border:4rpx solid #e10083;
+         }
+       }
+       .head{
+         width: 90rpx;
+         height: 90rpx;
+         box-sizing: border-box;
+         overflow: hidden;
+         border-radius: 50%;
+         border: 4rpx solid #2fdefd;
+         margin-bottom: 20rpx;
+       }
+       .name{
+         font-size: 22rpx;
+         color: #fff;
+         width: 100rpx;
+         white-space: nowrap;
+         word-break: keep-all;
+         text-overflow: ellipsis;
+         overflow: hidden;
+       }
+       .point{
+         position: absolute;
+         top:-10rpx;
+         right:-20rpx;
+         text-shadow: 0 0 5rpx rgba(9, 13, 59, 0.87);
+         color: #e3c75f;
+         font-size: 36rpx;
+         font-weight: bold;
+       }
+     }
      .user-box{
         background: linear-gradient( #4900ec, #910275);
         border-radius: 8rpx;
