@@ -54,7 +54,9 @@ Page({
     });
     console.log('options', decodeURIComponent(options.direct))
     if (options.direct) {
-      utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId})
+      setTimeout(()=>{
+        utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId})
+      },50)
     }
     this.lastBank();
   },

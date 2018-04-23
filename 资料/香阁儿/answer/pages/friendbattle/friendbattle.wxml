@@ -32,7 +32,9 @@
 						wx:if="{{item.name}}">
 				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 				<!--<view class="name">{{item.name}}</view>-->
-				<view class="point">{{item.point}}</view>
+				<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
+				<!--<image class="combo active" src=".../../static/images/combo{{item.combo}}.png"></image>-->
+				<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
 			</view>
 		</view>
 		<view class="battle-title">
@@ -122,9 +124,14 @@
 					</view>
 				</view>
 			</view>
-			<view wx:if="{{roomOwner==userId}}" class="btn-out">
-				<button class="btn-in" bindtap="playAgain">
-					再来一盘
+			<view style="display: flex; justify-content: space-between;align-items: center">
+				<view wx:if="{{roomOwner==userId}}" class="btn-out">
+					<button class="btn-in" bindtap="playAgain">
+						再来一盘
+					</button>
+				</view>
+				<button class="share-result" open-type="share">
+					炫耀一下
 				</button>
 			</view>
 			<button class="cancel" bindtap="cancelBattle">

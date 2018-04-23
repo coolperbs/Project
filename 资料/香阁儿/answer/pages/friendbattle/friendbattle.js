@@ -1,6 +1,7 @@
 // pages/friendbattle/friendbattle.js
 import {battle} from '../../services/index'
 import utils from '../../common/utils/utils'
+import {user} from "../../services";
 
 Page({
 
@@ -568,15 +569,15 @@ Page({
       }, 1000);
     }
     //combo 动画
-    // if (updateUser['comboCount'] > 1) {
-    //   setTimeout(() => {
-    //     let users = this.data.roomUsers;
-    //     users[index]['comboAnimation'] = false;
-    //     this.setData({
-    //       roomUsers: users
-    //     });
-    //   }, 1500);
-    // }
+    if (updateUser['comboCount'] > 1) {
+      setTimeout(() => {
+        let users = this.data.roomUsers;
+        users[index]['comboAnimation'] = false;
+        this.setData({
+          roomUsers: users
+        });
+      }, 1500);
+    }
     this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
@@ -903,7 +904,9 @@ Page({
     }, 50)
   },
   back() {
-    wx.navigateBack();
+    setTimeout(()=>{
+      wx.navigateBack();
+    },50)
     // if (this.data.roomOwner != this.data.userId) {
     //   utils.redirectTo('../home/home')
     // } else {
@@ -932,19 +935,30 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '等你来战',
-      path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,
-      //image: '',
-      success: function (res) {
-        // utils.showToast({
-        //   title: '邀请已发送!'
-        // })
-      },
-      fail: function (res) {
-        // utils.showToast({
-        //   title: '邀请失败!'
-        // })
+    if(this.data.isEnd){
+      return {
+        title: '我在知识大对战等你~',
+        path: '/pages/login/login',
+        success: function (res) {
+          user.shareGetGold( function( res ) {
+            if ( !res || res.code != '0000' ) {
+              return;
+            }
+            wx.showToast( { title : '分享成功' } );
+          } );
+        },
+        fail: function (res) {
+
+        }
+      }
+    }else {
+      return {
+        title: '等你来战',
+        path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,
+        success: function (res) {
+        },
+        fail: function (res) {
+        }
       }
     }
   }

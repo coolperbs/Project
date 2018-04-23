@@ -135,9 +135,15 @@
         width: 90rpx;
         margin-right: 40rpx;
         box-sizing: border-box;
-        transition: all 1s ease; }
+        transition: all 1s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; }
         .friend .battle .battle-user .user.owner .head {
           border: 4rpx solid #e10083; }
+        .friend .battle .battle-user .user.owner .point {
+          color: #e10083; }
         .friend .battle .battle-user .user .head {
           width: 90rpx;
           height: 90rpx;
@@ -145,7 +151,7 @@
           overflow: hidden;
           border-radius: 50%;
           border: 4rpx solid #2fdefd;
-          margin-bottom: 20rpx; }
+          margin-bottom: 5rpx; }
         .friend .battle .battle-user .user .name {
           font-size: 22rpx;
           color: #fff;
@@ -155,13 +161,22 @@
           text-overflow: ellipsis;
           overflow: hidden; }
         .friend .battle .battle-user .user .point {
-          position: absolute;
-          top: -10rpx;
-          right: -20rpx;
-          text-shadow: 0 0 5rpx rgba(9, 13, 59, 0.87);
-          color: #e3c75f;
+          color: #2fdefd;
           font-size: 36rpx;
-          font-weight: bold; }
+          transition: all .45s ease; }
+          .friend .battle .battle-user .user .point.active {
+            text-shadow: 0 0 5rpx rgba(255, 255, 255, 0.8);
+            transform: scale(1.3); }
+        .friend .battle .battle-user .user .combo {
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          width: 112.5rpx;
+          height: 50rpx;
+          transition: all .45s ease;
+          transform: scale(0); }
+          .friend .battle .battle-user .user .combo.active {
+            transform: scale(1); }
       .friend .battle .battle-user .user-box {
         background: linear-gradient(#4900ec, #910275);
         border-radius: 8rpx;
@@ -530,15 +545,15 @@
           width: 40rpx;
           font-weight: bold; }
         .friend .result .rank-list .list-user .head-box {
-          width: 50rpx;
-          height: 50rpx;
+          width: 60rpx;
+          height: 60rpx;
           border-radius: 50%;
           overflow: hidden;
           border: 2rpx solid #2fdefd;
           margin-right: 20rpx; }
           .friend .result .rank-list .list-user .head-box .head {
-            width: 50rpx;
-            height: 50rpx; }
+            width: 60rpx;
+            height: 60rpx; }
         .friend .result .rank-list .list-user .name {
           width: 200rpx;
           white-space: nowrap;
@@ -578,11 +593,10 @@
 
 .btn-out {
   background: linear-gradient(to top, #423ceb, #bc0fb5);
-  width: 460rpx;
+  width: 300rpx;
   height: 100rpx;
   border-radius: 50rpx;
-  position: relative;
-  margin: 0 auto 50rpx auto; }
+  position: relative; }
   .btn-out .btn-in {
     background: linear-gradient(to top, #c60054, #f7f417);
     position: absolute;
@@ -592,5 +606,12 @@
     left: 4rpx;
     border-radius: 50rpx;
     color: white; }
+
+.share-result {
+  width: 300rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background-image: linear-gradient(to top, #fd2f56, #fd2fa1);
+  color: #ffffff; }
 
 /*# sourceMappingURL=friendbattle.wxss.map */
