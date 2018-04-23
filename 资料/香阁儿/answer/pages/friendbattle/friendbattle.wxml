@@ -71,9 +71,21 @@
 		</view>
 	</view>
 	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
-		<view class="left" animation="{{matchLeftData}}"></view>
-		<view class="right" animation="{{matchRightData}}"></view>
-		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
+	<!--<view class="battle-stage">-->
+		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/match-vs.png"></image>
+		<view class="start-box">
+			<image class="start-left"  src="../../static/images/match-left.png"  animation="{{matchLeftData}}"></image>
+			<image class="start-right" src="../../static/images/match-right.png" animation="{{matchRightData}}"></image>
+		</view>
+		<view class="match-user">
+			<view class="user {{item.owner?'owner':''}}"
+						wx:for="{{roomUsers}}"
+						wx:key="{{index}}"
+						wx:if="{{item.name}}">
+				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
+				<view class="name">{{item.name}}</view>
+			</view>
+		</view>
 	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">

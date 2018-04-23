@@ -1,7 +1,6 @@
 // pages/friendbattle/friendbattle.js
-import {battle} from '../../services/index'
+import {battle,user} from '../../services/index'
 import utils from '../../common/utils/utils'
-import {user} from "../../services";
 
 Page({
 
@@ -407,10 +406,6 @@ Page({
       duration: 500,
       timingFunction: 'ease'
     });
-    let matchCenterAni = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease'
-    });
     let matchAni = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
@@ -419,14 +414,12 @@ Page({
       //所有动画还原
       matchLeftAni.translateX(-width).step();
       matchRightAni.translateX(width).step();
-      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
       matchAni.opacity(1).step();
       room.opacity(1).step();
       this.setData({
         roomAniData: room.export(),
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
-        matchCenterData: matchCenterAni.export(),
         matchData: matchAni.export()
       });
       setTimeout(() => {
@@ -452,13 +445,12 @@ Page({
       }, 100)
     }
     if (type == 'ready') {
+      console.log('xxxxxxxxxx',width)
       matchLeftAni.translateX(0).step({delay: 500});
       matchRightAni.translateX(0).step({delay: 500});
-      matchCenterAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay: 500});
       this.setData({
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
-        matchCenterData: matchCenterAni.export()
       });
       setTimeout(() => {
         this.animationEvt('gaming', callback)
@@ -467,12 +459,10 @@ Page({
     if (type == 'gaming') {
       matchLeftAni.translateX(-width).step();
       matchRightAni.translateX(width).step();
-      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
       matchAni.opacity(0).step();
       this.setData({
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
-        matchCenterData: matchCenterAni.export(),
         matchData: matchAni.export()
       });
       this.initCanvas();
