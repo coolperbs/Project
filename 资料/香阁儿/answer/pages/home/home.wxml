@@ -11,7 +11,7 @@
 			<image mode="aspectFit" src="../../static/images/friend-battle.png"></image>
 		</button>
 		<button hover-class="home-btn-hover" class="home-btn" open-type="share">
-			<image mode="aspectFit" src="../../static/images/friend-battle.png"></image>
+			<image mode="aspectFit" src="../../static/images/qun-battle.png"></image>
 		</button>
 		<view class="home-btn-group">
 			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="billboard">
