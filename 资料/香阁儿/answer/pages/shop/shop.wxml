@@ -1,5 +1,5 @@
 <view class="content">
-	<view class="list-wrapper">
+	<view wx:if="{{platform =='android'}}" class="list-wrapper">
 		<scroll-view scroll-y="{{true}}" class="list">
 			<view class="item" catchtap="showPop" data-index="{{index}}" wx:for="{{pageInfo}}" wx:key="index">
 				<image class="icon" src="{{item.image}}"></image>
@@ -13,11 +13,11 @@
 			</view>
 		</scroll-view>
 	</view>
-	<view class="act">
+	<view wx:if="{{platform =='android'}}" class="act">
 		<button class="button-wrapper" open-type="share"><view class="button">分享免费领取金币</view></button>
 	</view>
 
-	<view class="poparea" wx:if="{{ showPop }}">
+	<view wx:if="{{platform =='android'}}" class="poparea" wx:if="{{ showPop }}">
 		<view class="pop">
 			<view class="info">
 				<image class="icon" src="{{pageInfo[currentIndex].image}}"/>
@@ -33,6 +33,12 @@
 			</view>
 		</view>
 		<view class="mask" catchtap="hidePop"></view>
-	</view>	
+	</view>
+	<view wx:if="{{platform!='android'}}" class="ios">
+		<image class="shop-close" src="../../static/images/shop-close.png"></image>
+		<view wx:if="{{platform!='android'}}" class="act">
+			<button class="button-wrapper" open-type="share"><view class="button">分享免费领取金币</view></button>
+		</view>
+	</view>
 </view>
 

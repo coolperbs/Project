@@ -16,7 +16,14 @@ Page( {
 		  	} );
 		  }
 		}
-	},	
+	},
+  onLoad(){
+	  let sys = wx.getSystemInfoSync();
+	  console.log(sys.platform)
+    this.setData({
+      platform:sys.platform
+    })
+  },
 	onShow : function() {
 		let self = this;
 		items.getList( function( res ) {
@@ -57,7 +64,7 @@ Page( {
 				nonceStr : data.nonceStr,
 				package : 'prepay_id=' + data.prepayId,
 				signType : 'MD5',
-				paySign : data.sign,			
+				paySign : data.sign,
 				success : function() {
 					wx.showToast( {
 						title : '购买成功'
@@ -65,11 +72,11 @@ Page( {
 				},
 				fail : function( ) {
 					wx.showToast( {
-						icon : 'none', 
+						icon : 'none',
 						title : '购买失败'
 					} );
 				}
-			} );			
+			} );
 		} );
 	}
 } );
