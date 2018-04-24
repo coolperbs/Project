@@ -614,4 +614,9 @@
   background-image: linear-gradient(to top, #fd2f56, #fd2fa1);
   color: #ffffff; }
 
+.boom {
+  position: absolute;
+  width: 643rpx;
+  height: 391rpx; }
+
 /*# sourceMappingURL=friendbattle.wxss.map */

@@ -126,7 +126,7 @@ Page({
     this.setData({
       userId: UserInfo.user.id
     });
-    battle.PVF_connect(this.data.level, token, this.data.roomId, () => {
+    battle.PVF_connect(this.data.level, token, this.data.roomId,'',false, () => {
       //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true

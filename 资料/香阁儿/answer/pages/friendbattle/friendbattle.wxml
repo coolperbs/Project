@@ -150,6 +150,7 @@
 				退出游戏
 			</button>
 		</view>
+		<image class="boom" src="../../static/images/boom.png"></image>
 	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>
