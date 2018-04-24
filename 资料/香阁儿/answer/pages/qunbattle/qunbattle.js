@@ -1,5 +1,5 @@
 // pages/friendbattle/friendbattle.js
-import {battle,user} from '../../services/index'
+import {battle, user} from '../../services/index'
 import utils from '../../common/utils/utils'
 
 Page({
@@ -107,7 +107,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       level: options.level || 1,
-      roomId: options.roomId || ''
+      roomId: options.roomId || '',
+      isOwner: options.isOwner || false
     });
     this.initPage();
     this.modal = this.selectComponent("#m-modal");
@@ -126,7 +127,7 @@ Page({
     this.setData({
       userId: UserInfo.user.id
     });
-    battle.PVF_connect(this.data.level, token, this.data.roomId, () => {
+    battle.PVF_connect(this.data.level, token, this.data.roomId,'qun',this.data.isOwner, () => {
       //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true
@@ -217,9 +218,9 @@ Page({
           this.updateRankList();
           if (count < 2) {
             //console.log('人都跑了,去拿答案了');
-            this.clearCountAni();
-            this.clearTheInterval();
             setTimeout(() => {
+              this.clearCountAni();
+              this.clearTheInterval();
               this.subjectAnimation(4, () => {
                 this.clearCountAni();
                 this.clearTheInterval();
@@ -447,12 +448,12 @@ Page({
       }, 100)
     }
     if (type == 'ready') {
-      console.log('xxxxxxxxxx',width)
+      console.log('xxxxxxxxxx', width)
       matchLeftAni.translateX(0).step({delay: 500});
       matchRightAni.translateX(0).step({delay: 500});
       this.setData({
         matchLeftData: matchLeftAni.export(),
-        matchRightData: matchRightAni.export(),
+        matchRightData: matchRightAni.export()
       });
       setTimeout(() => {
         this.animationEvt('gaming', callback)
@@ -896,9 +897,9 @@ Page({
     }, 50)
   },
   back() {
-    setTimeout(()=>{
+    setTimeout(() => {
       wx.navigateBack();
-    },50)
+    }, 50)
     // if (this.data.roomOwner != this.data.userId) {
     //   utils.redirectTo('../home/home')
     // } else {
@@ -927,23 +928,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    if(this.data.isEnd){
+    if (this.data.isEnd) {
       return {
         title: '我在知识大对战等你~',
         path: '/pages/login/login',
         success: function (res) {
-          user.shareGetGold( function( res ) {
-            if ( !res || res.code != '0000' ) {
+          user.shareGetGold(function (res) {
+            if (!res || res.code != '0000') {
               return;
             }
-            wx.showToast( { title : '分享成功' } );
-          } );
+            wx.showToast({title: '分享成功'});
+          });
         },
         fail: function (res) {
 
         }
       }
-    }else {
+    } else {
       return {
         title: '等你来战',
         path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,

@@ -7,6 +7,7 @@
     "pages/userinfo/userinfo",
     "pages/rank/rank",
     "pages/friendbattle/friendbattle",
+    "pages/qunbattle/qunbattle",
     "pages/questionlib/questionlib",
     "pages/mine/mine",
     "pages/shop/shop",

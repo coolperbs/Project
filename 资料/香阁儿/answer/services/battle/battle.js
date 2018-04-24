@@ -114,8 +114,14 @@ export default {
       this.PVA_socket.close({})
     }
   },
-  PVF_connect(danGrading, token, roomId, callback) {
-    this.PVF_socket = ajax.connectSocket(this.apiList.PVF, {token: token, roomId: roomId, danGrading: danGrading || 1});
+  PVF_connect(danGrading, token, roomId, type, isOwner, callback) {
+    this.PVF_socket = ajax.connectSocket(this.apiList.PVF, {
+      token: token,
+      roomId: roomId,
+      danGrading: danGrading || 1,
+      type: type || null,
+      isOwner: isOwner || false
+    });
     this.PVF_socket.onOpen(res => {
       this.PVF_isConnect = true;
       callback(res);
@@ -165,7 +171,13 @@ export default {
   addFriend(roomUsers, callback) {
     ajax.request({
       url: app.HOST_AJAX + '/app/user/friendship',
-      data: {users: roomUsers||''},
+      data: {users: roomUsers || ''},
+      callback: callback
+    });
+  },
+  createRoom(callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/room/id',
       callback: callback
     });
   }
