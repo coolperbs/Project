@@ -1,7 +1,8 @@
 // pages/home/home.js
 import ajax from '../../common/ajax/ajax'
 import utils from '../../common/utils/utils'
-import {login} from '../../services/index'
+import {login,user} from '../../services/index'
+
 
 Page({
 
@@ -209,6 +210,19 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '等你来战',
+      path: '/pages/login/login',
+      success: function (res) {
+        user.shareGetGold( function( res ) {
+          if ( !res || res.code != '0000' ) {
+            return;
+          }
+          wx.showToast( { title : '分享成功,已获取金币' } );
+        } );
+      },
+      fail: function (res) {
+      }
+    }
   }
 })
