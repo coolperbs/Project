@@ -1,7 +1,7 @@
 // pages/home/home.js
-import ajax from '../../common/ajax/ajax'
 import utils from '../../common/utils/utils'
-import {login} from '../../services/index'
+import {login, user, battle} from '../../services/index'
+
 
 Page({
 
@@ -12,7 +12,8 @@ Page({
     bgAnimation: {},
     checkData: [],
     showCheck: false,
-    coinCount:0
+    coinCount: 0,
+    groupRoomId: ''
   },
 
   /**
@@ -54,11 +55,15 @@ Page({
     });
     console.log('options', decodeURIComponent(options.direct))
     if (options.direct) {
-      utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId})
+      setTimeout(() => {
+        utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId})
+      }, 50)
     }
     this.lastBank();
   },
-
+  onShow() {
+    this.createRoom();
+  },
   jumpPage(e) {
     let type = e.currentTarget.dataset.type;
     switch (type) {
@@ -158,7 +163,7 @@ Page({
   },
   getBank() {
     console.log('领取金币');
-    if(this.data.getCoins){
+    if (this.data.getCoins) {
       return
     }
     if (this.data.coinCount > 0) {
@@ -166,24 +171,26 @@ Page({
       login.getBank(null, (res) => {
         this.lastBank();
       })
+    } else {
+      utils.showToast({title: '暂时还有没有金币哦~'})
     }
   },
   coinAni() {
     this.playBg();
     this.setData({
-      getCoins:true
+      getCoins: true
     });
-    setTimeout(()=>{
+    setTimeout(() => {
       this.setData({
-        getCoins2:true
+        getCoins2: true
       });
-      setTimeout(()=>{
+      setTimeout(() => {
         this.setData({
-          getCoins2:false,
-          getCoins:false
+          getCoins2: false,
+          getCoins: false
         })
-      },1000)
-    },1500)
+      }, 1000)
+    }, 1500)
 
   },
   playBg() {
@@ -201,10 +208,47 @@ Page({
       showCheck: false
     })
   },
+  createRoom() {
+    battle.createRoom((res) => {
+      if (res.code != '0000') {
+        return
+      }
+      this.setData({
+        groupRoomId: res.data
+      })
+    })
+  },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (option) {
+    let that = this;
+    if (option.from == 'button') {
+      return {
+        title: '等你来战',
+        path: '/pages/login/login?direct=../qunbattle/qunbattle&type=qun&roomId=' + this.data.groupRoomId,
+        success: function (res) {
+          console.log('转发成功')
+          utils.navigateTo('../qunbattle/qunbattle', {type: 'qun', roomId: that.data.groupRoomId, isOwner: true})
+        },
+        fail: function (res) {
+        }
+      }
+    } else {
+      return {
+        title: '等你来战',
+        path: '/pages/login/login',
+        success: function (res) {
+          user.shareGetGold(function (res) {
+            if (!res || res.code != '0000') {
+              return;
+            }
+            wx.showToast({title: '分享成功,已获取金币'});
+          });
+        },
+        fail: function (res) {
+        }
+      }
+    }
   }
 })
