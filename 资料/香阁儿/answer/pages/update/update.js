@@ -66,7 +66,6 @@ Page({
     return {
       title: '等你来战',
       path: '/pages/login/login',
-      //image: '',
       success: function (res) {
         user.shareGetGold( function( res ) {
           if ( !res || res.code != '0000' ) {
