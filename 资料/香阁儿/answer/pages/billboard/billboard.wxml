@@ -18,7 +18,7 @@
 				</view>
 				<view class="sub-info">
 					<view class="point">
-						<view>{{item.curLevelPoint}}</view>
+						<view>{{item.totleCrown}}</view>
 						<image class="star" src="../../static/images/star.png"></image>
 					</view>
 					<view wx:if="{{ item.city }}" class="location">来自{{item.city}}</view>
