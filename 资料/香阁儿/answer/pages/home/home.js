@@ -91,6 +91,9 @@ Page({
       case 'message':
         utils.navigateTo('../message/message');//消息
         break;
+      case 'update':
+        utils.navigateTo('../update/update');//消息
+        break;
     }
   },
   check() {
