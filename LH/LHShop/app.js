@@ -44,14 +44,16 @@ var handle = {
 		//wx.showToast( { title : options.scene + '' } );
 		//wx.showModal( { content : JSON.stringify( options ), title : '场景值获取' } );
 		// 这里对页面scene进行透传，然后页面内消费后进行删除
+		//options.q = 'a=1&b=2';
 		var scene,
 			query = options.query,
-			upperuid = query.upperuid,
+			upperuid = query.upperuid,	// 直接分享过来的
 			str;
 
-		scene = query.scene || options.scene || '';
+		scene = _fn.getQ( options.q ) || query.scene || options.scene || '';
+		//console.log( scene );
+		//console.log( options.scene );
 		scene = scene ? decodeURIComponent( scene ) : '';
-		// 如果scene有值则用scene覆盖
 		// 处理分销逻辑
         if ( scene.indexOf( 'upperuid_' ) == 0 ) {
             str = options.scene.split( '_' );
@@ -93,7 +95,6 @@ var handle = {
 				parentUserId : upperuid
 			}
 		}, function( res ) {
-			console.log( '绑定请求返回:' + res.code + ',msg:' + res.msg );
 			if ( res.code == '0000' || res.code == '1003' ) {
 				wx.setStorageSync( 'hasBind', true );
 			}
@@ -102,6 +103,33 @@ var handle = {
 };
 
 _fn = {
+	getQ : function( q ) {
+		q = q || '';
+		var result = '';
+
+		q = decodeURIComponent( q );
+		q = _fn.urlToObj( q );
+		result = decodeURIComponent( q.scene || '' );
+
+		//console.log( q );
+		return result || '';
+	},
+
+	urlToObj : function( str ) {
+		str = str || '';
+		var result = {},
+			i, len, sub;
+
+		str = str.split( '&' );
+		for ( i = 0, len = str.length; i < len; ++i ) {
+			sub = str[i].split( '=' );
+			if ( sub.length == 2 ) {
+				result[sub[0]] = sub[1];
+			}
+		}
+
+		return result;
+	}
 }
 
 App( handle );
