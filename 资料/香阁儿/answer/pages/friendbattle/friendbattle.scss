@@ -152,7 +152,7 @@
       height: 320rpx;
       width: 750-60rpx;
       box-sizing: border-box;
-      margin: 30rpx;
+      margin: 30rpx 30rpx 0 30rpx;
       position: relative;
      .user{
        position: absolute;
@@ -329,7 +329,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 250rpx;
+        margin-top: 150rpx;
         &.active{
           display: none;
         }
@@ -359,9 +359,9 @@
     .answer{
       position: relative;
       text-align: center;
-      margin-top: 100rpx;
       .answer-step{
         position: absolute;
+        top: 0;
         width: 100%;
         color: #fff;
         transform: scale(0);
@@ -372,10 +372,10 @@
           font-size: 60rpx;
         }
         .q-title{
-          font-size: 30rpx;
+          font-size: 36rpx;
           width: 500rpx;
           margin: 0 auto;
-          height: 80rpx;
+          padding: 10rpx;
           margin-bottom:10rpx;
           position: relative;
           .q-double{
@@ -395,7 +395,7 @@
         }
         .q-chose{
           background-color: transparent;
-          width: 560rpx;
+          width: 700rpx;
           height: 120rpx;
           border-radius: 20rpx;
           margin-bottom: 24rpx;
