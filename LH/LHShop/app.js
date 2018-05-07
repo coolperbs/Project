@@ -44,13 +44,13 @@ var handle = {
 		//wx.showToast( { title : options.scene + '' } );
 		//wx.showModal( { content : JSON.stringify( options ), title : '场景值获取' } );
 		// 这里对页面scene进行透传，然后页面内消费后进行删除
-		options.q = 'a=1&b=2';
+		//options.q = 'a=1&b=2';
 		var scene,
 			query = options.query,
 			upperuid = query.upperuid,	// 直接分享过来的
 			str;
 
-		scene = _fn.getQ( options.q ) || options.scene || query.scene || '';
+		scene = _fn.getQ( options.q ) || query.scene || options.scene || '';
 		//console.log( scene );
 		//console.log( options.scene );
 		scene = scene ? decodeURIComponent( scene ) : '';
