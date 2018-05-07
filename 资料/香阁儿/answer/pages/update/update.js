@@ -1,5 +1,5 @@
 // pages/update/update.js
-import {user} from '../../services/index';
+import { user } from '../../services/index';
 import utils from '../../common/utils/utils';
 
 Page({
@@ -19,30 +19,36 @@ Page({
   onLoad: function (options) {
     this.getList()
   },
-  getList () {
+  getList() {
     user.getUpdateList((res) => {
       console.log(res)
       if (res.code != '0000') {
-        utils.showToast({title: '获取列表失败,请稍后重试！'});
+        utils.showToast({ title: '获取列表失败,请稍后重试！' });
         return;
       }
-      this.setData({listData: res.data})
+      this.setData({ listData: res.data })
     })
   },
-  hidePop () {
+  hidePop() {
     this.setData({
       isShowPop: false
     })
   },
-  showPop (e) {
+  showPop(e) {
     let index = e.currentTarget.dataset.index;
+    //判断是否展示升级
+    let showPopData = this.data.listData[index];
+    if(showPopData.nextLevel==undefined){
+      wx.showToast({title:'等级已升满'})
+      return
+    }
     this.setData({
       popShowData: this.data.listData[index],
       isShowPop: true
     })
   },
-  updateLevel () {
-    user.updateList({code: this.data.popShowData.code}, res => {
+  updateLevel() {
+    user.updateList({ code: this.data.popShowData.code }, res => {
       console.log(res)
       if (res.code != '0000') {
         utils.showToast({
@@ -67,12 +73,12 @@ Page({
       title: '等你来战',
       path: '/pages/login/login',
       success: function (res) {
-        user.shareGetGold( function( res ) {
-          if ( !res || res.code != '0000' ) {
+        user.shareGetGold(function (res) {
+          if (!res || res.code != '0000') {
             return;
           }
-          wx.showToast( { title : '领取成功' } );
-        } );
+          wx.showToast({ title: '领取成功' });
+        });
       }
     }
   }
