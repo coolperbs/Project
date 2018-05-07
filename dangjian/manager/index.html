@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="dmall">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link href="./src/common/basestyle/reset.css" rel="stylesheet" type="text/css" />
+  <script src="./src/libs/seajs3.0/sea.js"></script>
+  <script src="./src/libs/seajs3.0/plugins/seajs-text.js"></script>
+  <script src="./src/libs/seajs3.0/plugins/seajs-css.js"></script>
+  <script src="./src/libs/vue/vue.js"></script>
+  <script src="./src/libs/vue/vue-router.js"></script>
+  <title>列表</title>
+  <style>
+    body, html { background-color: #f0f0f0; }
+  </style>
+</head>
+
+<body class="base">
+  <style>
+    .nav { border-bottom : solid 1px #6B6ED3; background-color: #fff; padding : 10px 10px 0 10px; font-size : 10px; }
+    .nav .tab{ display: block; float : left; height : 30px;  width : 80px; line-height: 30px; text-align: center; overflow: hidden; position: relative; }
+    .nav .tab.current { font-size : 12px; font-weight: bold; background-color: #6B6ED3; color : #fff; border : solid 1px #6B6ED3; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+  </style>
+  <div class="nav clearfix">
+    <div class="tab current">列表</div>
+    <div class="tab">任务</div>
+  </div>
+  <div id="app">
+    <router-view>
+    </router-view>
+  </div>
+
+  <script>
+    seajs.config( {
+      base: './src/'
+    } );
+
+    seajs.use( 'index' );
+  </script>
+</body>
+</html>

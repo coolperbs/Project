@@ -1,0 +1,33 @@
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+
+.base {}
+
+/* 页面 */
+.base .page { padding : 10px; height : 100%; }
+
+/* 模块 */
+.base .module { background-color: #fff; margin-top : 10px; border-radius : 4px; padding : 10px; }
+.base .module:first-child { margin-top : 0; }
+
+/* 基础元素 */
+.base .button { font-size : 12px; color : #fff; background-color: #6B6ED3; border-radius : 4px; padding : 0 20px; height : 30px; line-height: 30px; display: inline-block; }
+
+/* 表单 */
+.base .form {}
+.base .form .row { *+height:1%; padding : 5px 0 5px 80px; border-top : solid 1px #fafafa; }
+.base .form .row:first-child { margin-top : 0; border-top : none; }
+.base .form .row:after { content:"."; display:block; height:0; clear:both; visibility:hidden }
+.base .form .row .key { font-size : 12px; height : 30px; line-height: 30px; padding-right : 10px; text-align: right; width: 80px; float: left; margin-left : -80px; }
+.base .form .row .value {}
+.base .form select {appearance:none; -moz-appearance:none; -webkit-appearance:none; border-radius: 4px; border : solid 1px #f0f0f0; background: none; height : 30px; margin : 0; display: block; width : 100%; padding : 0 10px; position: relative;background:-moz-linear-gradient(top, #fff, #f0f0f0); background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#f0f0f0)); background:-o-linear-gradient(top, #fff, #f0f0f0);  }
+.base .form textarea { padding : 5px; border : solid 1px #f0f0f0; border-radius : 4px; width : 100%; height : 150px; }
+
+.base .list .action { margin-bottom : 10px; }
+.base .list .action:last-child { margin-bottom: 0; }
+
+.base .tabel-wapper {border : solid 0 #f0f0f0; border-width : 1px 0 0 1px; }
+.base .table { font-size : 10px; width : 100%; }
+.base .table th,
+.base .table td { text-align: center; padding : 5px; border : solid 0 #f0f0f0; border-width : 0 1px 1px 0; }
+.base .table td.t-detail { text-align: left; }
