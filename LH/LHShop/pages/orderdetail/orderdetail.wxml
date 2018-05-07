@@ -16,6 +16,14 @@
 		<view class="header">
 			订单创建时间: {{detail.order.showOrderTime}}
 		</view>
+			<view class="item" wx:if="{{detail.order.paymentTypeStr}}">
+	            <view class="cost-name">
+	                支付方式
+	            </view>
+	            <view class="cost-count">
+	                 {{detail.order.paymentTypeStr}}
+	            </view>
+	        </view>
 	        <view class="item" wx:if="{{detail.order.showTotalPrice}}">
 	            <view class="cost-name">
 	                商品总价
@@ -40,6 +48,14 @@
 	               - ¥{{detail.order.showCouponPrice}}
 	            </view>
 	        </view>
+	        <view class="item" wx:if="{{ detail.order.remark }}">
+	            <view class="cost-name">
+	                备注
+	            </view>
+	            <view class="cost-count">
+	               	{{ detail.order.remark }}
+	            </view>
+	        </view>
 	        <view class="item">
 	            <view class="cost-name">
 	                订单总价
@@ -55,7 +71,7 @@
 	<view wx:if="{{detail.order.orderStatus == 8 || detail.order.orderStatus == 128 || detail.order.orderStatus == 1024 || (detail.order.type/1===2 && detail.order.grouponId && detail.order.grouponStatusStr)}}" class="bottom-btns order-wrapper">
 		<view class="footer">
 			<view class="btn-group right">
-				<view  wx:if="{{ detail.order.orderStatus == 8 }}"
+				<view  wx:if="{{ detail.order.orderStatus == 8 && ( detail.order.paymentType == 1 || detail.order.paymentType == 2 ) }}"
 				data-orderId="{{ detail.order.orderId}}"
 				class="btn waitingPay" 
 				catchtap="payOrder"> 

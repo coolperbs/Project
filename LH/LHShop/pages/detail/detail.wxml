@@ -2,7 +2,7 @@
 
 <scroll-view class="main {{pop.show ? 'showpop' : ''}}" bindscrolltolower="getMore" scroll-y="{{ true }}">
     <view class="head">
-        <swiper class="banner" indicator-color="rgba(0, 0, 0, 0.3)" indicator-active-color="#111111" indicator-dots="{{true}}">
+        <swiper catchtap="previewImage" class="banner" indicator-color="rgba(0, 0, 0, 0.3)" indicator-active-color="#111111" indicator-dots="{{true}}">
             <swiper-item wx:for="{{pageData.mainImage}}" wx:key="index">
                 <image mode="aspectFill" src="{{item}}"></image>
             </swiper-item>
@@ -94,7 +94,7 @@
         </view>
 
         <!-- 图文详情 start -->
-        <view class="images" wx:if="{{ tab.current=='imgs' }}">
+        <view class="images" catchtap="previewDetailImage" wx:if="{{ tab.current=='imgs' }}">
             <image mode="widthFix" wx:for="{{pageData.detailImage}}" wx:key="index" src="{{item}}"></image>
         </view>
         <!-- 图文详情 end -->

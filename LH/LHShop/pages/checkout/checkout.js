@@ -11,11 +11,25 @@ var ajax = require( '../../common/ajax/ajax' ),
 
 Page({
 	data : {
-		paymentType : 1
+		paymentType : 1, // 默认微信支付
+		floor : ['1楼','2楼','3楼','4楼','5楼','6楼','7楼','8楼','9楼','10楼','11楼','12楼','13楼','14楼','15楼','16楼','17楼','18楼','19楼','20楼','21楼','22楼','23楼','24楼','25楼','26楼','27楼','28楼','29楼','30楼'],
+		selectedFloor : 0,
+		otherMoney : 0 // 附加金额0
 	},
 	onShareAppMessage : app.shareFunc,
 	onLoad : function( param ) {
 		pageParam = param || {};
+	},
+	chooseFloor : function( e ) {
+		var floor = e.detail.value * 1,
+			otherMoney = 0;
+
+		otherMoney = ( floor * 1 - 1 ) * 100;
+		otherMoney = otherMoney < 0 ? 0 : otherMoney;
+		this.setData( {
+			selectedFloor : floor,
+			otherMoney : otherMoney
+		} );
 	},
 	onShow : function() {
 		var self = this;
@@ -219,6 +233,9 @@ _fn = {
 			city = wx.getStorageSync( 'city' ),
 			selectedCoupon = SCoupon;
 
+		//  模拟数据
+		//city = city || { name : '成都市', code : '028' };
+
 		if ( !city || !city.code ) {
 			wx.showToast( { title : '缺少地址信息' } );
 			return;
@@ -345,7 +362,6 @@ _fn = {
 
 		// 1.创建订单
 		createOrderFunc( caller, function( orderRes ) {
-			console.log('完成订单创建',orderRes);
 			if ( utils.isErrorRes( orderRes ) ) {
 				return;
 			}
@@ -356,7 +372,8 @@ _fn = {
 				return;
 			}
 
-			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
+			// 水卡这些就不支付了
+			if ( caller.data.paymentType != 1 && caller.data.paymentType != 2 ) {
 				if(pageParam.bizType === 'groupon'){
 					var grouponId = orderRes.data.grouponId;
 					wx.redirectTo( { url : '../gp-detail/gp-detail?grouponId=' + grouponId  } );
@@ -365,6 +382,11 @@ _fn = {
 				}
 				return;
 			}
+
+			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
+				return;
+			}
+
 
 			// 2.获取支付订单
 			_fn.payOrder( {
@@ -443,9 +465,16 @@ _fn = {
 		}
 
 
+		if ( data.otherMoney && (data.paymentType == 1 || data.paymentType == 2) ) {
+			param.otherMoney = data.otherMoney;
+		}
 		param.address = address;
 		param.payType = data.paymentType;
 		param.userPoint = data.pointPrice;
+		console.log( data );
+		if ( data.pageData.store.catTypeId == 2 && ( data.paymentType == 1 || data.paymentType == 2 ) ) {
+			param.remark = '送水楼层' + ( data.selectedFloor + 1 ) + '楼'
+		}
 		//param.userMoney = data.
 		ajax.query( {
 			url : url,

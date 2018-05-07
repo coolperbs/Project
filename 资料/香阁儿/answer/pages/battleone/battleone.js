@@ -1,5 +1,5 @@
 import utils from "../../common/utils/utils";
-import {battle} from "../../services/index";
+import {battle,user} from "../../services/index";
 
 Page({
 
@@ -41,7 +41,7 @@ Page({
     PVA_isConnect: false,
     aiInfo: {}
   },
-  initCanvas() {
+  initCanvas () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
@@ -58,14 +58,14 @@ Page({
     circle2.stroke();
     circle2.draw();
   },
-  clearCountAni(callback) {
+  clearCountAni (callback) {
     if (this.countTimer) {
       console.warn('进度条清空');
       clearInterval(this.countTimer)
     }
     callback && callback()
   },
-  startCountAni() {
+  startCountAni () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2
@@ -96,25 +96,25 @@ Page({
     })
     this.initPage();
   },
-  onReady() {
+  onReady () {
     this.playBg();
   },
-  playBg() {
+  playBg () {
     this.audioCtx = wx.createAudioContext('myAudio');
-    this.audioCtx.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
+    this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
   },
-  stopBg() {
+  stopBg () {
     if (this.audioCtx) {
       this.audioCtx.pause();
     }
   },
-  playWinner() {
+  playWinner () {
     this.audioCtx2 = wx.createAudioContext('myAudio2');
-    this.audioCtx2.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
+    this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
   },
-  stopWinner() {
+  stopWinner () {
     if (this.audioCtx2) {
       this.audioCtx2.pause();
     }
@@ -122,7 +122,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage() {
+  initPage () {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -134,19 +134,23 @@ Page({
     this.setData({
       userId: UserInfo.user.id
     });
+    battle.PVP_close();
     battle.PVP_connect(this.data.level, token, () => {
-      //console.log('对战连接成功:----------------------');
+      console.log('对战连接成功:----------------------');
       this.setData({
         PVP_isConnect: true
       });
       this.getPVPMessage();
+      battle.PVP_onError();
     })
   },
   /**
    * PVP获取信息
    * */
-  getPVPMessage() {
+  getPVPMessage () {
     battle.PVP_onMessage((res) => {
+      console.log('玩家消息')
+      console.log(res)
       if (res.code != '0000') {
         if (this.data.PVP_isConnect) {
           utils.showToast({
@@ -188,7 +192,9 @@ Page({
           return el.id == res.userId
         });
         let rest = [...roomUsers]
-        utils.showToast({title: '玩家' + rest[runner].name + '逃跑~'})
+        if (rest[runner].id != '-1' && !this.data.isEnd) {
+          utils.showToast({title: '玩家' + rest[runner].name + '逃跑~'})
+        }
         this.clearTheInterval();
         this.clearTheAiInterval();
         setTimeout(() => {
@@ -203,7 +209,7 @@ Page({
   /**
    * 初始化房间信息
    * */
-  initRoom(res) {
+  initRoom (res) {
     //console.log('房间信息:-----------------');
     //console.log(res);
     //console.log('房间信息:-----------------');
@@ -218,7 +224,7 @@ Page({
   /**
    * 更新房间用户信息
    * */
-  updateRoomUser(users) {
+  updateRoomUser (users) {
     //console.log('房间信息更新:-----------------');
     //console.log(users);
     //console.log('房间信息更新:-----------------');
@@ -239,7 +245,7 @@ Page({
   /**
    * 判断是否开始答题
    * */
-  beginAnswer(res) {
+  beginAnswer (res) {
     if (res.beginAnswer) {
       if (this.data.vsAi == 'undefined') {
         this.setData({
@@ -254,7 +260,7 @@ Page({
   /**
    * 场景动画
    * */
-  animationEvt(type, callback) {
+  animationEvt (type, callback) {
     let width = wx.getSystemInfoSync().windowWidth;
     let loadingAni = wx.createAnimation({
       duration: 500,
@@ -334,7 +340,7 @@ Page({
   /**
    * 获取题目
    * */
-  getSubject() {
+  getSubject () {
     if (!this.data.hasMore) {
       return
     }
@@ -355,13 +361,13 @@ Page({
   /**
    * 发送消息
    * */
-  sendMessage(data) {
+  sendMessage (data) {
     battle.PVP_send(data);
   },
   /**
    * 渲染题目
    * */
-  filterSubject(res) {
+  filterSubject (res) {
     //console.log('获取的题目:-------------------------------')
     //console.log(res)
     //console.log('获取的题目:-------------------------------')
@@ -393,7 +399,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation(type, callback) {
+  subjectAnimation (type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -441,7 +447,7 @@ Page({
   /**
    * PVP 倒计时
    * */
-  startTheInterval() {
+  startTheInterval () {
     this.clearTheInterval(() => {
       this.clearCountAni(() => {
         this.startCountAni();
@@ -463,7 +469,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval(callback) {
+  clearTheInterval (callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -472,7 +478,7 @@ Page({
   /**
    * 答题
    * */
-  answerSubject(e) {
+  answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
       return
@@ -489,7 +495,7 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint(res) {
+  updatePoint (res) {
     console.log('得到答案更新用户分数:--------------------------------------')
     ////console.log(res);
     ////console.log('得到答案更新用户分数:--------------------------------------')
@@ -565,7 +571,7 @@ Page({
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt(res) {
+  filterSubjectListEvt (res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -626,7 +632,7 @@ Page({
   /**
    * 游戏结束
    * */
-  endGame(res) {
+  endGame (res) {
     // console.log('游戏结束:--------------------------------------')
     // console.log(res)
     // console.log('游戏结束:--------------------------------------')
@@ -644,7 +650,7 @@ Page({
     for (var i = 0; i < roomUser.length; i++) {
       for (var k = 0; k < result.length; k++) {
         if (roomUser[i].id == result[k].userId) {
-          roomUser[i].point = result[k].totlePoint<0?roomUser[i].point:result[k].totlePoint;
+          roomUser[i].point = result[k].totlePoint < 0 ? roomUser[i].point : result[k].totlePoint;
           roomUser[i].pointBar = ((roomUser[i].point * 100) / this.data.totalPoint).toFixed(2);
         }
       }
@@ -659,11 +665,6 @@ Page({
       this.playWinner()
     }
     this.stopBg();
-    //判断当前玩家升级没有
-    let up = false;
-    if (result[index].hasUpLevel) {
-      up = true;
-    }
     //console.log('玩家数据');
     //console.log(result[index]);
     let resultA = result[index]
@@ -673,19 +674,53 @@ Page({
     if (resultA.upGold !== undefined) {
       resultA.gold += resultA.upGold
     }
+    var showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
+    let exp = resultA.exp;
+    let gold = resultA.gold;
+    resultA.exp = 0;
+    resultA.gold = 0;
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
       result: resultA,
-      hasUpLevel: up,
+      showUPMask: showUPMask,
+      hasUpLevel: resultA.hasUpLevel || false,
       hasUpDanGrading: resultA.hasUpDanGrading || false
     });
     this.closeConnect();
+    setTimeout(() => {
+      if (this.expTimer) {
+        clearInterval(this.expTimer)
+      }
+      this.expTimer = setInterval(() => {
+        if (this.data.result.exp == exp) {
+          clearInterval(this.expTimer)
+        } else {
+          this.data.result.exp += 1;
+          this.setData({
+            result: this.data.result
+          });
+        }
+      }, 10);
+      if (this.goldTimer) {
+        clearInterval(this.goldTimer)
+      }
+      this.goldTimer = setInterval(() => {
+        if (this.data.result.gold == gold) {
+          clearInterval(this.goldTimer)
+        } else {
+          this.data.result.gold += 1;
+          this.setData({
+            result: this.data.result
+          });
+        }
+      }, 10)
+    }, 1000)
   },
   /**
    * 关闭连接
    * */
-  closeConnect(type) {
+  closeConnect (type) {
     //console.log('关闭连接:-------------------------------------')
     if (type) {
       //有人逃跑
@@ -718,22 +753,26 @@ Page({
   /**
    * 准备AI
    * */
-  initAiEvt() {
+  initAiEvt () {
     setTimeout(() => {
       if (this.data.vsAi == 'undefined') {
         console.log('连接AI')
         if (!this.data.PVP_isConnect) {
+          console.log('人机对战没有连接')
           return
         }
-        console.log('lianjie AI chenggong ')
         this.setData({
           vsAi: true
         });
+        console.log('连接AI开始');
+        battle.PVA_close();
         battle.PVA_connect(this.data.roomId, this.data.level, () => {
+          console.log('连接AI成功');
           this.setData({
             PVA_isConnect: true
           });
-          this.getAiMessage()
+          this.getAiMessage();
+          battle.PVA_onError();
         })
       }
     }, 3500)
@@ -741,8 +780,9 @@ Page({
   /**
    * 监听Ai
    * */
-  getAiMessage() {
+  getAiMessage () {
     battle.PVA_onMessage((res) => {
+      console.log('aiMessage', res)
       if (res.code != '0000') {
         if (this.data.PVA_isConnect) {
           utils.showToast({
@@ -765,13 +805,23 @@ Page({
       }
       if (res.type == '6') {
         battle.PVA_send({"type": 3});
+        setTimeout(() => {
+          this.clearTheAiInterval()
+          if (this.data.PVA_isConnect) {
+            battle.PVA_close();
+            this.setData({
+              PVA_isConnect: false,
+              vsAi: undefined
+            })
+          }
+        }, 500)
       }
     })
   },
   /**
    * ai倒计时
    * */
-  startTheAiInterval() {
+  startTheAiInterval () {
     this.clearTheAiInterval(() => {
       let count = Math.ceil(parseInt(Math.random() * 5));
       this.aiTimer = setInterval(() => {
@@ -789,7 +839,7 @@ Page({
   /**
    * ai 倒计时清空
    * */
-  clearTheAiInterval(callback) {
+  clearTheAiInterval (callback) {
     if (this.aiTimer) {
       clearInterval(this.aiTimer);
     }
@@ -798,14 +848,14 @@ Page({
   /**
    * ai 答题
    * */
-  aiAnswerEvt() {
+  aiAnswerEvt () {
     //console.log('ai答题了');
     let percent = parseFloat(Math.random() * 1).toFixed(2);
     let aiWinRate = this.data.aiInfo.aiWinRate || 0;
     let that = this;
 
     //先随机取答案且保证答案不正确
-    function getError(right) {
+    function getError (right) {
       let result = Math.floor(parseInt((Math.random() * that.data.subjectList.length) + 1));
       if (right == result) {
         return getError(right)
@@ -831,7 +881,7 @@ Page({
   /**
    * 在来一把
    * */
-  playAgain() {
+  playAgain () {
     wx.navigateBack()
   },
   /**
@@ -840,7 +890,11 @@ Page({
   onHide: function () {
     //this.closeConnect();
   },
-
+  closeModal () {
+    this.setData({
+      showUPMask: false
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */
@@ -848,5 +902,25 @@ Page({
     this.closeConnect('run');
     this.stopBg();
     this.stopWinner()
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '我在知识大对战等你~',
+      path: '/pages/login/login',
+      success: function (res) {
+        user.shareGetGold(function (res) {
+          if (!res || res.code != '0000') {
+            return;
+          }
+          wx.showToast({title: '分享成功'});
+        });
+      },
+      fail: function (res) {
+
+      }
+    }
   }
 })

@@ -20,6 +20,10 @@
 			"current": -1,
 			"list": []
 		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": -1,
 			"list": [
@@ -36,10 +40,10 @@
 					"query": "grouponId=75"
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "订单",
-					"pathName": "pages/orderlist/orderlist",
-					"query": "bizType=groupon"
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "orderid=10001090&bizType=undefined"
 				},
 				{
 					"id": -1,
@@ -52,6 +56,18 @@
 					"name": "首页",
 					"pathName": "pages/index/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商详",
+					"pathName": "pages/detail/detail",
+					"query": "id=190414"
+				},
+				{
+					"id": 6,
+					"name": "结算",
+					"pathName": "pages/checkout/checkout",
+					"query": "shopid=100001"
 				}
 			]
 		}

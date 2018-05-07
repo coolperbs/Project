@@ -1,7 +1,7 @@
 // pages/home/home.js
-import ajax from '../../common/ajax/ajax'
 import utils from '../../common/utils/utils'
-import {login} from '../../services/index'
+import {login, user, battle} from '../../services/index'
+
 
 Page({
 
@@ -11,7 +11,9 @@ Page({
   data: {
     bgAnimation: {},
     checkData: [],
-    showCheck: false
+    showCheck: false,
+    coinCount: 0,
+    groupRoomId: ''
   },
 
   /**
@@ -24,7 +26,7 @@ Page({
           return
         }
         utils.showToast({
-          title:'网络错误,请稍候重试!'
+          title: '网络错误,请稍候重试!'
         })
         return
       }
@@ -51,12 +53,17 @@ Page({
         showCheck: true
       })
     });
-    console.log('options',decodeURIComponent(options.direct))
-    if(options.direct){
-      utils.navigateTo(decodeURIComponent(options.direct),{roomId:options.roomId})
+    console.log('options', decodeURIComponent(options.direct))
+    if (options.direct) {
+      setTimeout(() => {
+        utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId})
+      }, 50)
     }
+    this.lastBank();
   },
-
+  onShow() {
+    this.createRoom();
+  },
   jumpPage(e) {
     let type = e.currentTarget.dataset.type;
     switch (type) {
@@ -98,15 +105,150 @@ Page({
       })
     })
   },
+  lastBank() {
+    login.lastBank(null, (res) => {
+      if (res.code != '0000') {
+        return
+      }
+      var total = 3 * 60 * 60 * 1000;
+      var pastTime = (new Date().getTime() - res.data);
+      var lastTime = total - pastTime;
+      if (this.bankTimer) {
+        clearInterval(this.bankTimer)
+      }
+      this.lastTime = lastTime;
+      this.bankTimer = setInterval(() => {
+        this.lastTime -= 1000;
+        var left = this.leftTime(this.lastTime);
+        var width = (100 - ((this.lastTime / total) * 100)).toFixed(2);
+        var coinCount = Math.floor((total - this.lastTime) / 1000 / 60 / 3);
+        coinCount = coinCount > 0 ? coinCount : 0;
+        if (!left) {
+          this.setData({
+            countTime: '00:00:00',
+            width: 100,
+            coinCount: 60
+          });
+          clearInterval(this.bankTimer);
+          return
+        }
+        this.setData({
+          countTime: left,
+          width: width,
+          coinCount: coinCount
+        })
+      }, 1000);
+    })
+  },
+  leftTime(endTime) {
+    var leftTime = (endTime); //计算剩余的毫秒数
+    var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
+    var hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10); //计算剩余的小时
+    var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
+    var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+    hours = this.checkTime(days * 24 + hours);
+    minutes = this.checkTime(minutes);
+    seconds = this.checkTime(seconds);
+    if (leftTime > 0) {
+      return hours + ':' + minutes + ':' + seconds
+    } else {
+      return null
+    }
+  },
+  checkTime(i) { //将0-9的数字前面加上0，例1变为01
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  },
+  getBank() {
+    console.log('领取金币');
+    if (this.data.getCoins) {
+      return
+    }
+    if (this.data.coinCount > 0) {
+      this.coinAni();
+      login.getBank(null, (res) => {
+        this.lastBank();
+      })
+    } else {
+      utils.showToast({title: '暂时还有没有金币哦~'})
+    }
+  },
+  coinAni() {
+    this.playBg();
+    this.setData({
+      getCoins: true
+    });
+    setTimeout(() => {
+      this.setData({
+        getCoins2: true
+      });
+      setTimeout(() => {
+        this.setData({
+          getCoins2: false,
+          getCoins: false
+        })
+      }, 1000)
+    }, 1500)
+
+  },
+  playBg() {
+    this.audioCtx = wx.createAudioContext('myAudio');
+    this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/77408d79-00ba-4203-84c8-f2b5ec5e65dc.mp3');
+    this.audioCtx.play();
+  },
+  stopBg() {
+    if (this.audioCtx) {
+      this.audioCtx.pause();
+    }
+  },
   closeModal() {
     this.setData({
       showCheck: false
     })
   },
+  createRoom() {
+    battle.createRoom((res) => {
+      if (res.code != '0000') {
+        return
+      }
+      this.setData({
+        groupRoomId: res.data
+      })
+    })
+  },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (option) {
+    let that = this;
+    if (option.from == 'button') {
+      return {
+        title: '等你来战',
+        path: '/pages/login/login?direct=../qunbattle/qunbattle&type=qun&roomId=' + this.data.groupRoomId,
+        success: function (res) {
+          console.log('转发成功')
+          utils.navigateTo('../qunbattle/qunbattle', {type: 'qun', roomId: that.data.groupRoomId, isOwner: true})
+        },
+        fail: function (res) {
+        }
+      }
+    } else {
+      return {
+        title: '等你来战',
+        path: '/pages/login/login',
+        success: function (res) {
+          user.shareGetGold(function (res) {
+            if (!res || res.code != '0000') {
+              return;
+            }
+            wx.showToast({title: '分享成功,已获取金币'});
+          });
+        },
+        fail: function (res) {
+        }
+      }
+    }
   }
 })

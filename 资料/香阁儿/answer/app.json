@@ -7,21 +7,22 @@
     "pages/userinfo/userinfo",
     "pages/rank/rank",
     "pages/friendbattle/friendbattle",
+    "pages/qunbattle/qunbattle",
     "pages/questionlib/questionlib",
-    "pages/mine/mine",
     "pages/shop/shop",
     "pages/myshop/myshop",
     "pages/message/message",
-    "pages/questionin/questionin"
+    "pages/questionin/questionin",
+    "pages/update/update"
   ],
   "window": {
     "backgroundTextStyle": "#fff",
     "backgroundColor": "#1e0141",
     "navigationBarBackgroundColor": "#1e0141",
-    "navigationBarTitleText": "最强大脑",
+    "navigationBarTitleText": "知识大对战",
     "navigationBarTextStyle": "#fff"
   },
-	"networkTimeout":{
-		"connectSocket":180000
-	}
+  "networkTimeout": {
+    "connectSocket": 180000
+  }
 }

@@ -1,8 +1,8 @@
 <view class="battle-box">
 	<view class="loading" wx:if="{{LOADING}}" animation="{{loadingData}}">
-		<view class="box-loading">
-			<view class="loading-item loading1"></view>
-			<view class="loading-item loading2"></view>
+		<view class="box-loading {{LOADING?'':'pause'}}">
+			<view class="{{LOADING?'loading-item':''}} loading1"></view>
+			<view class="{{LOADING?'loading-item':''}} loading2"></view>
 		</view>
 	</view>
 	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
@@ -101,16 +101,39 @@
 				<view class="item-text">+{{result.exp}}</view>
 				<!--<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>-->
 			</view>
-			<view class="result-item {{hasUpLevel||hasUpDanGrading?'':'none'}}">
-				<image class="up-icon {{hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
-				<image class="up-icon {{hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
-			</view>
 			<button class="continue" bindtap="playAgain">
 				继续挑战
+			</button>
+			<button class="continue" style="margin-top:50rpx;" open-type="share">
+				炫耀一下
 			</button>
 		</view>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
+	<view class="level-up {{showUPMask?'active':''}}">
+		<view class="bg-box">
+			<image class="shinning" src="../../static/images/shinning.png"></image>
+			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
+			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
+		</view>
+		<view class="flag">
+			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
+			<image  class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
+		</view>
+		<view class="text" wx:if="{{result.hasUpDanGrading}}">
+			<view class="old-name">{{result.oldDanGradingName}}</view>
+			<view class="arrow"> > </view>
+			<view class="new-name">{{result.newDanGradingName}}</view>
+		</view>
+		<view class="close" bindtap="closeModal">
+			<image class="close-image" src="../../static/images/close.png"></image>
+		</view>
+		<!--
+		oldDanGradingName;
+newDanGradingName;
+newDanGradingLogo;
+		-->
+	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>
 <audio id="myAudio2"></audio>

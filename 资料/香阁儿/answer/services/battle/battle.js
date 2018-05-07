@@ -54,6 +54,7 @@ export default {
   },
   PVP_onError(callback) {
     this.PVP_socket.onError(res => {
+      console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -101,6 +102,7 @@ export default {
   },
   PVA_onError(callback) {
     this.PVA_socket.onError(res => {
+      console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -112,8 +114,14 @@ export default {
       this.PVA_socket.close({})
     }
   },
-  PVF_connect(danGrading, token, roomId, callback) {
-    this.PVF_socket = ajax.connectSocket(this.apiList.PVF, {token: token, roomId: roomId, danGrading: danGrading || 1});
+  PVF_connect(danGrading, token, roomId, type, isOwner, callback) {
+    this.PVF_socket = ajax.connectSocket(this.apiList.PVF, {
+      token: token,
+      roomId: roomId,
+      danGrading: danGrading || 1,
+      type: type || null,
+      isOwner: isOwner || false
+    });
     this.PVF_socket.onOpen(res => {
       this.PVF_isConnect = true;
       callback(res);
@@ -148,6 +156,7 @@ export default {
   },
   PVF_onError(callback) {
     this.PVF_socket.onError(res => {
+      console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -159,9 +168,16 @@ export default {
       this.PVF_socket.close({})
     }
   },
-  addFriend(ownerId,callback) {
+  addFriend(roomUsers, callback) {
     ajax.request({
-      url: app.HOST_AJAX + '/app/user/friend/' + ownerId || '',
+      url: app.HOST_AJAX + '/app/user/friendship',
+      data: {users: roomUsers || ''},
+      callback: callback
+    });
+  },
+  createRoom(callback) {
+    ajax.request({
+      url: app.HOST_AJAX + '/room/id',
       callback: callback
     });
   }

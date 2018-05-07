@@ -20,12 +20,12 @@
 			"current": -1,
 			"list": []
 		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
 		"plugin": {
 			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -89,6 +89,12 @@
 					"id": -1,
 					"name": "题库录入",
 					"pathName": "pages/questionin/questionin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "知识升级",
+					"pathName": "pages/update/update",
 					"query": ""
 				}
 			]

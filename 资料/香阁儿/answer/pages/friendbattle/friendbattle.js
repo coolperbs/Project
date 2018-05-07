@@ -1,5 +1,5 @@
 // pages/friendbattle/friendbattle.js
-import {battle} from '../../services/index'
+import {battle,user} from '../../services/index'
 import utils from '../../common/utils/utils'
 
 Page({
@@ -83,7 +83,7 @@ Page({
   },
   playBg() {
     this.audioCtx = wx.createAudioContext('myAudio');
-    this.audioCtx.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
+    this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
   },
   stopBg() {
@@ -93,7 +93,7 @@ Page({
   },
   playWinner() {
     this.audioCtx2 = wx.createAudioContext('myAudio2');
-    this.audioCtx2.setSrc('http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
+    this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
   },
   stopWinner() {
@@ -110,6 +110,7 @@ Page({
       roomId: options.roomId || ''
     });
     this.initPage();
+    this.modal = this.selectComponent("#m-modal");
   },
   /**
    * 初始化
@@ -119,18 +120,19 @@ Page({
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
       //用户没有登陆
-      utils.redirectTo('../login/login',{direct:this.route,roomId:this.data.roomId})
+      utils.redirectTo('../login/login', {direct: this.route, roomId: this.data.roomId})
       return
     }
     this.setData({
       userId: UserInfo.user.id
     });
-    battle.PVF_connect(this.data.level, token, this.data.roomId, () => {
+    battle.PVF_connect(this.data.level, token, this.data.roomId,'',false, () => {
       //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true
       });
       this.getMessage();
+      battle.PVF_onError()
     })
   },
   /**
@@ -158,6 +160,13 @@ Page({
       if (res.type == 2) {
         //console.log('好友连接上了:-----------------------------');
         this.initRoom(res);
+        if (this.keepTimer) {
+          clearInterval(this.keepTimer)
+        }
+        this.keepTimer = setInterval(() => {
+          console.log('keep----')
+          battle.PVF_send({aba: 324})
+        }, 5000)
       }
       if (res.type == 3) {
         //console.log('得到题目了:-----------------------------');
@@ -185,6 +194,7 @@ Page({
       }
       if (res.type == '6') {
         //判断有人逃跑 游戏没开始 房间解散 游戏开始后判断少于2个人 就结束游戏
+        console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
@@ -211,9 +221,11 @@ Page({
             this.clearTheInterval();
             setTimeout(() => {
               this.subjectAnimation(4, () => {
+                this.clearCountAni();
+                this.clearTheInterval();
                 this.sendMessage({type: 3})
               })
-            }, 1000)
+            }, 100)
           }
         } else {
           if (res.userId == this.data.roomOwner) {
@@ -236,21 +248,33 @@ Page({
       if (res.type == '8') {
         let roomId = res.roomId || '';
         let that = this;
-        wx.showModal({
-          title: '提示',
+        this.modal.showModal({
           content: '房主发起再来一盘',
-          confirmColor: '#1e0141',
           confirmText: '确认加入',
-          cancelText: '取消',
           success(res) {
             that.closeConnect();
-            if (res.confirm) {
+            if (res.result == 'confirm') {
               utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
-            } else if (res.cancel) {
+            } else {
               that.back();
             }
           }
-        });
+        })
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '房主发起再来一盘',
+        //   confirmColor: '#1e0141',
+        //   confirmText: '确认加入',
+        //   cancelText: '取消',
+        //   success(res) {
+        //     that.closeConnect();
+        //     if (res.confirm) {
+        //       utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
+        //     } else if (res.cancel) {
+        //       that.back();
+        //     }
+        //   }
+        // });
       }
     })
   },
@@ -267,11 +291,20 @@ Page({
     })
     this.updateRoomUser(res.roomUsers);
   },
-  addFriend(ownerId) {
+  addFriend() {
     if (this.data.roomOwner == this.data.userId) {
       return
     }
-    battle.addFriend(ownerId,(res)=>{
+    let roomUsers = this.data.roomUsers.map((el) => {
+      if (el.id) {
+        return el.id;
+      }
+    });
+    if (roomUsers.length <= 0) {
+      return
+    }
+    roomUsers = roomUsers.join(',');
+    battle.addFriend(roomUsers, (res) => {
       console.log('加好友')
       console.log(res)
     })
@@ -306,7 +339,7 @@ Page({
       roomUsers: roomUsers
     })
     //加好友
-    this.addFriend(this.data.roomOwner)
+    this.addFriend()
   },
   /**
    * 发送消息
@@ -341,12 +374,22 @@ Page({
    * 取消对战
    * */
   cancelBattle() {
-    utils.showAction('确定退出房间?', (res) => {
-      if (res) {
-        this.closeConnect();
-        this.back();
+    let that = this;
+    this.modal.showModal({
+      content: '确定退出房间?',
+      success(res) {
+        if (res.result == 'confirm') {
+          that.closeConnect();
+          that.back();
+        }
       }
     })
+    // utils.showAction('确定退出房间?', (res) => {
+    //   if (res) {
+    //     this.closeConnect();
+    //     this.back();
+    //   }
+    // })
   },
   /**
    * 场景动画
@@ -365,10 +408,6 @@ Page({
       duration: 500,
       timingFunction: 'ease'
     });
-    let matchCenterAni = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease'
-    });
     let matchAni = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
@@ -377,14 +416,12 @@ Page({
       //所有动画还原
       matchLeftAni.translateX(-width).step();
       matchRightAni.translateX(width).step();
-      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
       matchAni.opacity(1).step();
       room.opacity(1).step();
       this.setData({
         roomAniData: room.export(),
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
-        matchCenterData: matchCenterAni.export(),
         matchData: matchAni.export()
       });
       setTimeout(() => {
@@ -410,13 +447,12 @@ Page({
       }, 100)
     }
     if (type == 'ready') {
+      console.log('xxxxxxxxxx',width)
       matchLeftAni.translateX(0).step({delay: 500});
       matchRightAni.translateX(0).step({delay: 500});
-      matchCenterAni.scale(1).translate3d(0, 0, 0).opacity(1).step({delay: 500});
       this.setData({
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
-        matchCenterData: matchCenterAni.export()
       });
       setTimeout(() => {
         this.animationEvt('gaming', callback)
@@ -425,12 +461,10 @@ Page({
     if (type == 'gaming') {
       matchLeftAni.translateX(-width).step();
       matchRightAni.translateX(width).step();
-      matchCenterAni.scale(2).translate3d(0, 0, 200).opacity(0).step();
       matchAni.opacity(0).step();
       this.setData({
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
-        matchCenterData: matchCenterAni.export(),
         matchData: matchAni.export()
       });
       this.initCanvas();
@@ -527,15 +561,15 @@ Page({
       }, 1000);
     }
     //combo 动画
-    // if (updateUser['comboCount'] > 1) {
-    //   setTimeout(() => {
-    //     let users = this.data.roomUsers;
-    //     users[index]['comboAnimation'] = false;
-    //     this.setData({
-    //       roomUsers: users
-    //     });
-    //   }, 1500);
-    // }
+    if (updateUser['comboCount'] > 1) {
+      setTimeout(() => {
+        let users = this.data.roomUsers;
+        users[index]['comboAnimation'] = false;
+        this.setData({
+          roomUsers: users
+        });
+      }, 1500);
+    }
     this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
@@ -814,6 +848,9 @@ Page({
         isConnect: false
       })
     }
+    if (this.keepTimer) {
+      clearInterval(this.keepTimer)
+    }
   },
   /**
    * 再来一把
@@ -859,21 +896,22 @@ Page({
     }, 50)
   },
   back() {
-    wx.navigateBack();
-    return
-    if (this.data.roomOwner != this.data.userId) {
-      utils.redirectTo('../home/home')
-    } else {
-      wx.navigateBack()
-    }
+    setTimeout(()=>{
+      wx.navigateBack();
+    },50)
+    // if (this.data.roomOwner != this.data.userId) {
+    //   utils.redirectTo('../home/home')
+    // } else {
+    //   wx.navigateBack()
+    // }
   },
   onHide() {
     //console.log('小程序隐藏了')
-    if (this.data.isStart) {
-      //console.log('关闭连接');
-      this.closeConnect();
-      this.back();
-    }
+    // if (this.data.isStart) {
+    //   //console.log('关闭连接');
+    //   this.closeConnect();
+    //   this.back();
+    // }
   },
   /**
    * 生命周期函数--监听页面卸载
@@ -889,19 +927,30 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '等你来战',
-      path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,
-      //image: '',
-      success: function (res) {
-        // utils.showToast({
-        //   title: '邀请已发送!'
-        // })
-      },
-      fail: function (res) {
-        // utils.showToast({
-        //   title: '邀请失败!'
-        // })
+    if(this.data.isEnd){
+      return {
+        title: '我在知识大对战等你~',
+        path: '/pages/login/login',
+        success: function (res) {
+          user.shareGetGold( function( res ) {
+            if ( !res || res.code != '0000' ) {
+              return;
+            }
+            wx.showToast( { title : '分享成功' } );
+          } );
+        },
+        fail: function (res) {
+
+        }
+      }
+    }else {
+      return {
+        title: '等你来战',
+        path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,
+        success: function (res) {
+        },
+        fail: function (res) {
+        }
       }
     }
   }
