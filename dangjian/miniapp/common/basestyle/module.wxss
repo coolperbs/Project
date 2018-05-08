@@ -18,11 +18,12 @@
 .artical .left{
 	width: 170rpx;
 	height: 170rpx;
+	padding-right : 20rpx;
 }
 .artical .right{
 	width:450rpx;
-	padding-left:20rpx;
 	position:relative;
+	flex-grow : 1;
 }
 .artical .left .artical-img{
 	width: 100%;
@@ -39,7 +40,7 @@
 	 overflow:hidden; 
 	 font-size: 26rpx;
 	 margin-top : 20rpx;
-	 color : #444;
+	 color : #999;
 }
 .artical .right .artical-date{
 	font-size:20rpx;
