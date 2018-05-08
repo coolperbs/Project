@@ -1,0 +1,37 @@
+<view class='content'>
+	<image class='updatebanner' src='../../static/images/updatebanner.png'></image>
+	<view class="list-wrapper">
+		<scroll-view scroll-y="{{true}}" class="list">
+			<view class="item" catchtap="showPop" wx:for="{{listData}}" wx:key="index" data-index="{{index}}">
+				<image class="icon" src="{{item.image}}"></image>
+				<view class="desc">{{ item.name }}</view>
+			</view>
+		</scroll-view>
+	</view>
+
+	<view class="modal" wx:if="{{isShowPop}}">
+		<view class="pop-box">
+			<view class="pop-title">
+				<image class="pop-icon" src="{{popShowData.image}}"></image>
+				<view class="pop-desc">
+					<view class="desc-a">天文</view>
+					<view class="desc-b">等级{{popShowData.level}}</view>
+				</view>
+			</view>
+			<view class="pop-body">
+				<view class="body-desc">"{{popShowData.fenlei}}”类题目加分增加{{popShowData.jifenUp}}%>{{popShowData.nextJifenUp}}%</view>
+				<view class="body-charge">
+					<view class="charge-title">升级消耗</view>
+					<view class="charge-icon">
+						<image class="icon" src="../../static/images/bankcoin.png"></image>
+						<view class="charge-count">{{popShowData.nextGold}}</view>
+					</view>
+				</view>
+				<button class="pop-btn" hover-class="none" bindtap="updateLevel">升级</button>
+			</view>
+		</view>
+		<view class="close" catchtap="hidePop">
+			<image src="../../static/images/close.png"></image>
+		</view>
+	</view>
+</view>

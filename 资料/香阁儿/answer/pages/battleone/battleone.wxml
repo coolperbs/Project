@@ -104,6 +104,9 @@
 			<button class="continue" bindtap="playAgain">
 				继续挑战
 			</button>
+			<button class="continue" style="margin-top:50rpx;" open-type="share">
+				炫耀一下
+			</button>
 		</view>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>

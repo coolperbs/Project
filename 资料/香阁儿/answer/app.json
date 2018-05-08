@@ -12,7 +12,8 @@
     "pages/shop/shop",
     "pages/myshop/myshop",
     "pages/message/message",
-    "pages/questionin/questionin"
+    "pages/questionin/questionin",
+    "pages/update/update"
   ],
   "window": {
     "backgroundTextStyle": "#fff",
@@ -21,7 +22,7 @@
     "navigationBarTitleText": "知识大对战",
     "navigationBarTextStyle": "#fff"
   },
-	"networkTimeout":{
-		"connectSocket":180000
-	}
+  "networkTimeout": {
+    "connectSocket": 180000
+  }
 }
