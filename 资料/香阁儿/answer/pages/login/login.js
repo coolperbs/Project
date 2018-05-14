@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.optData = options;
-    console.log('12312',options)
+    //console.log('12312',options)
     this.loginEVT();
   },
 
