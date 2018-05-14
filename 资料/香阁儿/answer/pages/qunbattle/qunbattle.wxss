@@ -128,7 +128,7 @@
       height: 320rpx;
       width: 690rpx;
       box-sizing: border-box;
-      margin: 30rpx;
+      margin: 30rpx 30rpx 0 30rpx;
       position: relative; }
       .friend .battle .battle-user .user {
         position: absolute;
@@ -273,7 +273,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 250rpx; }
+        margin-top: 150rpx; }
         .friend .battle .battle-title .vs.active {
           display: none; }
         .friend .battle .battle-title .vs .vs-png {
@@ -292,10 +292,10 @@
           opacity: 1; }
     .friend .battle .answer {
       position: relative;
-      text-align: center;
-      margin-top: 100rpx; }
+      text-align: center; }
       .friend .battle .answer .answer-step {
         position: absolute;
+        top: 0;
         width: 100%;
         color: #fff;
         transform: scale(0); }
@@ -304,10 +304,10 @@
         .friend .battle .answer .answer-step .q-count {
           font-size: 60rpx; }
         .friend .battle .answer .answer-step .q-title {
-          font-size: 30rpx;
+          font-size: 36rpx;
           width: 500rpx;
           margin: 0 auto;
-          height: 80rpx;
+          padding: 10rpx;
           margin-bottom: 10rpx;
           position: relative; }
           .friend .battle .answer .answer-step .q-title .q-double {
@@ -324,7 +324,7 @@
               opacity: 1; }
         .friend .battle .answer .answer-step .q-chose {
           background-color: transparent;
-          width: 560rpx;
+          width: 700rpx;
           height: 120rpx;
           border-radius: 20rpx;
           margin-bottom: 24rpx;

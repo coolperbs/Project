@@ -72,7 +72,7 @@
           text-overflow: ellipsis;
           white-space: nowrap;
           &.active{
-           color: #fff;
+            color: #fff;
           }
         }
         &.active{
@@ -152,67 +152,67 @@
       height: 320rpx;
       width: 750-60rpx;
       box-sizing: border-box;
-      margin: 30rpx;
+      margin: 30rpx 30rpx 0 30rpx;
       position: relative;
-     .user{
-       position: absolute;
-       width: 90rpx;
-       margin-right: 40rpx;
-       box-sizing: border-box;
-       transition: all 1s ease;
-       display: flex;
-       flex-direction: column;
-       justify-content: flex-start;
-       align-items: center;
-       &.owner{
-         .head{
-           border:4rpx solid #e10083;
-         }
-         .point{
-           color: #e10083;
-         }
-       }
-       .head{
-         width: 90rpx;
-         height: 90rpx;
-         box-sizing: border-box;
-         overflow: hidden;
-         border-radius: 50%;
-         border: 4rpx solid #2fdefd;
-         margin-bottom: 5rpx;
-       }
-       .name{
-         font-size: 22rpx;
-         color: #fff;
-         width: 100rpx;
-         white-space: nowrap;
-         word-break: keep-all;
-         text-overflow: ellipsis;
-         overflow: hidden;
-       }
-       .point{
-         color: #2fdefd;
-         font-size: 36rpx;
-         transition:all .45s ease;
-         &.active{
-           text-shadow: 0 0 5rpx rgba(255, 255, 255, 0.8);
-           transform: scale(1.3);
-         }
-       }
-       .combo{
-         position: absolute;
-         z-index: 1;
-         top: 0;
-         width: 112.5rpx;
-         height: 50rpx;
-         transition: all .45s ease;
-         transform: scale(0);
-         &.active{
-           transform: scale(1);
-         }
-       }
-     }
-     .user-box{
+      .user{
+        position: absolute;
+        width: 90rpx;
+        margin-right: 40rpx;
+        box-sizing: border-box;
+        transition: all 1s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        &.owner{
+          .head{
+            border:4rpx solid #e10083;
+          }
+          .point{
+            color: #e10083;
+          }
+        }
+        .head{
+          width: 90rpx;
+          height: 90rpx;
+          box-sizing: border-box;
+          overflow: hidden;
+          border-radius: 50%;
+          border: 4rpx solid #2fdefd;
+          margin-bottom: 5rpx;
+        }
+        .name{
+          font-size: 22rpx;
+          color: #fff;
+          width: 100rpx;
+          white-space: nowrap;
+          word-break: keep-all;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .point{
+          color: #2fdefd;
+          font-size: 36rpx;
+          transition:all .45s ease;
+          &.active{
+            text-shadow: 0 0 5rpx rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+          }
+        }
+        .combo{
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          width: 112.5rpx;
+          height: 50rpx;
+          transition: all .45s ease;
+          transform: scale(0);
+          &.active{
+            transform: scale(1);
+          }
+        }
+      }
+      .user-box{
         background: linear-gradient( #4900ec, #910275);
         border-radius: 8rpx;
         height: 240rpx;
@@ -329,7 +329,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 250rpx;
+        margin-top: 150rpx;
         &.active{
           display: none;
         }
@@ -359,9 +359,9 @@
     .answer{
       position: relative;
       text-align: center;
-      margin-top: 100rpx;
       .answer-step{
         position: absolute;
+        top: 0;
         width: 100%;
         color: #fff;
         transform: scale(0);
@@ -372,10 +372,10 @@
           font-size: 60rpx;
         }
         .q-title{
-          font-size: 30rpx;
+          font-size: 36rpx;
           width: 500rpx;
           margin: 0 auto;
-          height: 80rpx;
+          padding: 10rpx;
           margin-bottom:10rpx;
           position: relative;
           .q-double{
@@ -395,7 +395,7 @@
         }
         .q-chose{
           background-color: transparent;
-          width: 560rpx;
+          width: 700rpx;
           height: 120rpx;
           border-radius: 20rpx;
           margin-bottom: 24rpx;

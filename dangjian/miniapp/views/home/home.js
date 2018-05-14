@@ -122,7 +122,6 @@ var _fn = {
 	},
 	getRenderData:function(dataList){
 		var renderData = {};
-		console.log( dataList );
 		if(dataList && dataList.length>0){
 			dataList.forEach((v,k)=>{
 				if(v.list && v.list.length>0){
@@ -131,10 +130,13 @@ var _fn = {
 						v.list.splice(0,1);
 					}else{
 						renderData.swiperArtical = renderData.swiperArtical || [];
-						if ( v.list[0].adImgUrl ) {
-							renderData.swiperArtical.push(v.list[0]);
-						}
-						v.list.splice(0,1);
+
+						v.list.forEach( ( subV, subK ) => {
+							if ( subV.adImgUrl && renderData.swiperArtical.length < 5 ) {
+								renderData.swiperArtical.push(subV);
+								return false;
+							}
+						} );
 					}
 
 					renderData.listArtical = renderData.listArtical || [];

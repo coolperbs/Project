@@ -58,10 +58,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "商详",
 					"pathName": "pages/detail/detail",
-					"query": "id=190414"
+					"query": "id=212378"
 				},
 				{
 					"id": 6,

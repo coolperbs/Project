@@ -13,6 +13,9 @@
 		<button hover-class="home-btn-hover" class="home-btn" open-type="share">
 			<image mode="aspectFit" src="../../static/images/qun-battle.png"></image>
 		</button>
+		<button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="update">
+			<image mode="aspectFit" src="../../static/images/update-qa.png"></image>
+		</button>
 		<view class="home-btn-group">
 			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="billboard">
 				<image mode="aspectFit" src="../../static/images/home-record.png"></image>

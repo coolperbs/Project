@@ -13,14 +13,15 @@
 <template name="home-banner">
 	<view class="home-banner-wrapper">
 		<swiper class="banner" 
-		indicator-dots='{{false}}'
+		indicator-dots='{{true}}'
 		autoplay='{{true}}
-		interval='3000'
+		interval='5000'
+		indicator-active-color="#d21302"
 		circular='{{true}}'>
 			<block wx:for="{{swiperArtical}}" wx:key="id">
 				<swiper-item class="swiper-item">
 			      <image mode="aspectFill" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}" class="slide-image" data-id="{{item.id}}" catchtap="events" data-func="toArtical"/>
-			      <view class="slide-title">{{item.name}}</view>
+			      <!--<view class="slide-title">{{item.name}}</view>-->
 			    </swiper-item>
 			</block>
 		</swiper>

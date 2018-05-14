@@ -124,7 +124,7 @@
 .list .item {
   float: left;
   width: 50%;
-  height: 320rpx;
+  height:290rpx;
   border-bottom: solid 1px rgba(188, 15, 181, 0.3);
   overflow: hidden;
   position: relative;

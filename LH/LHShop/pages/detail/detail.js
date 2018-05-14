@@ -381,6 +381,8 @@ _fn = {
 		var list = {}, i = 0, len,
 			attributes;
 
+		//console.log( data );
+		//data.attributes = '7:12^2:13';
 		attributes = data.attributes || '';
 		attributes = attributes.split( '^' );
 		for ( i = 0, len = attributes.length; i < len; ++i ) {
