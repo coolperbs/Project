@@ -1,0 +1,6 @@
+{
+	"disableScroll":true,
+	"usingComponents": {
+		"m-modal": "../../component/mModal/mModal"
+	}
+}
