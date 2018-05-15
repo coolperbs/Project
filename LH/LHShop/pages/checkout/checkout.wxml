@@ -50,6 +50,12 @@
 				<input name="address" bindinput="saveinput" data-key="address" placeholder="请填写详细地址" value="{{address.address}}"/>
 			</view>
 		</view>
+		<view class="row">
+			<view class="key">备注</view>
+			<view class="value">
+				<input name="remarkInfo"  placeholder="请填写备注信息" value=""/>
+			</view>
+		</view>
 		<view class="row" catchtap="showAddress">
 			<view class="value address">切换地址</view>
 		</view>

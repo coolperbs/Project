@@ -90,9 +90,18 @@
 
 .modules .banner image{ width : 100%; height : 240rpx; }
 
+/* 1N图片 */
 .modules .normal-image { line-height: 0; }
 .modules .normal-image,
 .modules .normal-image image{ width: 100%; }
+
+/* 2N图片 */
+.modules .image-2 { line-height : 0; width : 100%; display: flex; align-items: center; justify-content: space-between; }
+.modules .image-2 image { width : 50%; }
+
+/* 3N图片 */
+.modules .image-3 { line-height : 0; width : 100%; display: flex; align-items: center; justify-content: space-between; }
+.modules .image-3 image { width : 33.3333333%; }
 
 /* 店铺街 */
 .modules .m-6-9 { padding : 10rpx 0; display: flex; justify-content: space-between; align-items: center; }

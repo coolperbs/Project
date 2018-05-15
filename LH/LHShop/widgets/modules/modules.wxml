@@ -29,12 +29,34 @@
 	</view>
 </template>
 
-<!-- 普通图片 -->
+<!-- 普通1N图片 -->
 <template name="2-3">
 	<view class="normal-image">
 		<image mode="widthFix" src="{{data.url}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content}}" data-type="{{data.type}}"></image>
 	</view>
 </template>
+
+<!-- 2N图片 -->
+<template name="2-18">
+	<view class="image-2">
+		<image mode="widthFix" src="{{data.url}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content}}" data-type="{{data.type}}"></image>
+
+		<image mode="widthFix" src="{{data.url2}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content2}}" data-type="{{data.type2}}"></image>
+	</view>
+</template>
+
+
+<!-- 3N图片 -->
+<template name="2-19">
+	<view class="image-3">
+		<image mode="widthFix" src="{{data.url}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content}}" data-type="{{data.type}}"></image>
+
+		<image mode="widthFix" src="{{data.url2}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content2}}" data-type="{{data.type2}}"></image>
+
+		<image mode="widthFix" src="{{data.url3}}" catchtap="moduleClickProxy" data-fn="jumpUrl" data-content="{{data.content3}}" data-type="{{data.type3}}"></image>
+	</view>
+</template>
+
 
 <!-- 1N商品 -->
 <template name="1-1">

@@ -20,6 +20,10 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"current": -1,
 			"list": []
@@ -61,7 +65,7 @@
 					"id": 5,
 					"name": "商详",
 					"pathName": "pages/detail/detail",
-					"query": "id=212378"
+					"query": "id=100137"
 				},
 				{
 					"id": 6,

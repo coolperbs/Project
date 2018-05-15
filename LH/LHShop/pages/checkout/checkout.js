@@ -348,6 +348,7 @@ _fn = {
 		caller.data.address.userName = newData.userName;
 		caller.data.address.userPhone = newData.userPhone;
 		caller.data.address.address = newData.address;
+		caller.data.remarkInfo = newData.remarkInfo;
 		return true;
 	},
 	submit : function( caller ) {
@@ -471,7 +472,7 @@ _fn = {
 		param.address = address;
 		param.payType = data.paymentType;
 		param.userPoint = data.pointPrice;
-		console.log( data );
+		param.remarkInfo = data.remarkInfo;
 		if ( data.pageData.store.catTypeId == 2 && ( data.paymentType == 1 || data.paymentType == 2 ) ) {
 			param.remark = '送水楼层' + ( data.selectedFloor + 1 ) + '楼'
 		}

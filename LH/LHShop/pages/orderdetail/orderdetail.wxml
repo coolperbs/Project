@@ -50,7 +50,15 @@
 	        </view>
 	        <view class="item" wx:if="{{ detail.order.remark }}">
 	            <view class="cost-name">
-	                备注
+	                用户备注
+	            </view>
+	            <view class="cost-count">
+	               	{{ detail.order.remarkInfo || '无' }}
+	            </view>
+	        </view>
+	        <view class="item" wx:if="{{ detail.order.remark }}">
+	            <view class="cost-name">
+	                其他
 	            </view>
 	            <view class="cost-count">
 	               	{{ detail.order.remark }}

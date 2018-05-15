@@ -43,6 +43,14 @@ Page({
 			urls : images
 		} );
 	},
+
+	privewSingleImg	: function( e ) {
+		var imgUrl = e.currentTarget.dataset.src;
+		wx.previewImage( {
+			urls : [imgUrl]
+		} );
+	},
+
 	previewDetailImage : function() {
 		var images = this.data.pageData || {};
 		images = images.detailImage || [];

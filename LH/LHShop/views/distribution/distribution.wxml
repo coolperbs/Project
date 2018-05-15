@@ -9,7 +9,23 @@
 </view>
 
 <view class="distribution" wx:if="{{ userInfo.nickName }}">
-	<view class="noagent " wx:if="{{ !isBind }}">
+	<view class="noagent" wx:if="{{traderInfo.traderStatus * 1 != 1}}">
+		<view class="userinfo">
+		  <image class="logo" src="{{userInfo.avatarUrl}}"></image>
+		  <view class="name">{{userInfo.nickName}}</view>
+		</view>
+		<view class="message" wx:if="{{traderInfo.traderStatus * 1 == 3}}">
+			审核不通过，如有疑问，请联系客服。
+		</view>
+		<view class="message" wx:else>
+			资料审核中
+		</view>
+	</view>
+
+
+
+
+	<view class="noagent " wx:if="{{ !isBind && traderInfo.traderStatus * 1 == 1 }}">
 		<form bindsubmit="distribitionClickProxy" data-fn="beAgent">
 		<view class="userinfo">
 		  <image class="logo" src="{{userInfo.avatarUrl}}"></image>
@@ -28,7 +44,7 @@
 	</view>
 
 
-	<view class="isagent" wx:if="{{ isBind }}">
+	<view class="isagent" wx:if="{{ isBind && traderInfo.traderStatus * 1 == 1 }}">
 		<view class="userinfo">
 		  <view class="user">
 		    <image src="{{traderInfo.avatarUrl}}"></image>
