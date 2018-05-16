@@ -280,6 +280,7 @@ Page({
       totalPoint: res.totlePoint || ''
     })
     this.updateRoomUser(res.roomUsers);
+    this.updateTeam(res.teamUsersMap)
   },
   /**
    * 更新房间信息
@@ -306,6 +307,13 @@ Page({
     }
     this.setData({
       roomUsers: roomUsers
+    })
+  },
+  updateTeam (res) {
+    let teamId = Object.keys(res);
+    this.setData({
+      teamUsersMap: res,
+      teamIdArr: teamId
     })
   },
   /**
