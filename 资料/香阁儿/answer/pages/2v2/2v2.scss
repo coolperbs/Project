@@ -149,13 +149,14 @@
       width: 750-60rpx;
       box-sizing: border-box;
       margin: 30rpx 30rpx 0 30rpx;
-      position: relative;
+      display:flex;
+      align-items: center;
+      justify-content: space-around;
+
      .user{
-       position: absolute;
        width: 90rpx;
        margin-right: 40rpx;
        box-sizing: border-box;
-       transition: all 1s ease;
        display: flex;
        flex-direction: column;
        justify-content: flex-start;
@@ -163,6 +164,7 @@
        &.owner{
          .head{
            border:4rpx solid #e10083;
+
          }
          .point{
            color: #e10083;

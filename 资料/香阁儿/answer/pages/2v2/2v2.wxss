@@ -126,13 +126,13 @@
       width: 690rpx;
       box-sizing: border-box;
       margin: 30rpx 30rpx 0 30rpx;
-      position: relative; }
+      display: flex;
+      align-items: center;
+      justify-content: space-around; }
       .tvt .battle .battle-user .user {
-        position: absolute;
         width: 90rpx;
         margin-right: 40rpx;
         box-sizing: border-box;
-        transition: all 1s ease;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;

@@ -82,6 +82,7 @@ Page({
     this.playBg();
   },
   playBg () {
+    // todo 完了要移除
     return
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
@@ -93,6 +94,7 @@ Page({
     }
   },
   playWinner () {
+    // TODO 完了要移除
     return
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
@@ -218,7 +220,6 @@ Page({
         })
         //区分开始对战没有
         if (this.data.isStart) {
-          this.updateRankList();
           if (count < 2) {
             //console.log('人都跑了,去拿答案了');
             this.clearCountAni();
@@ -280,24 +281,6 @@ Page({
     })
     this.updateRoomUser(res.roomUsers);
   },
-  addFriend () {
-    if (this.data.roomOwner == this.data.userId) {
-      return
-    }
-    let roomUsers = this.data.roomUsers.map((el) => {
-      if (el.id) {
-        return el.id;
-      }
-    });
-    if (roomUsers.length <= 0) {
-      return
-    }
-    roomUsers = roomUsers.join(',');
-    battle.addFriend(roomUsers, (res) => {
-      console.log('加好友')
-      console.log(res)
-    })
-  },
   /**
    * 更新房间信息
    * */
@@ -306,11 +289,8 @@ Page({
     //console.log(res);
     //console.log('房间信息更新:-----------------');
     let that = this;
-    let sys = wx.getSystemInfoSync();
     let roomUsers = res.map((el, index) => {
       el.point = 0;
-      el['scale'] = sys.windowWidth * (130 / 750);
-      el['rank'] = index;
       if (el.owner) {
         that.setData({
           roomOwner: el.id
@@ -318,7 +298,7 @@ Page({
       }
       return el;
     });
-    //补全 5个用户
+    //补全 4个用户
     for (var k = roomUsers.length; k < 4; k++) {
       roomUsers.push({
         point: 0
@@ -327,8 +307,6 @@ Page({
     this.setData({
       roomUsers: roomUsers
     })
-    //加好友
-    this.addFriend()
   },
   /**
    * 发送消息
@@ -534,6 +512,7 @@ Page({
     updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
     roomUser[index] = updateUser;
     //console.log(roomUser)
+    // todo 这里 更新 队伍得分 原用户得分 不做排名 移动 动画 只做combo
     this.setData({
       roomUsers: roomUser
     });
@@ -559,7 +538,6 @@ Page({
         });
       }, 1500);
     }
-    this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
       if (!this.data.hasMore) {
@@ -585,26 +563,6 @@ Page({
         }, 2000)
       })
     }
-  },
-  /**
-   * updateRankList
-   * */
-  updateRankList () {
-    let roomUser = this.data.roomUsers;
-    let sortData = [...roomUser];
-    sortData.sort((a, b) => {
-      return b.point - a.point
-    });
-    //console.log('排行过后的用户列表', sortData)
-    for (var i = 0; i < roomUser.length; i++) {
-      let index = sortData.findIndex((el) => {
-        return el.id == roomUser[i].id
-      })
-      roomUser[i].rank = index;
-    }
-    this.setData({
-      roomUsers: roomUser
-    })
   },
   /**
    * 题目选项过滤
