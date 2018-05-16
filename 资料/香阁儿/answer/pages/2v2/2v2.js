@@ -145,8 +145,22 @@ Page({
    * */
   getMessage () {
     battle.TVT_onMessage((res) => {
-      //console.log('好友对战接收到消息了:----------------------');
-      debugger
+      //console.log('好友对战接收到消息了:----------------------')
+      // setTimeout(() => {
+      //   setInterval(() => {
+      //     res ={
+      //       "answerResult": true,
+      //       "mayNextSub": false,
+      //       "optionId": 3,
+      //       "point": 186,
+      //       "teamPoint": 23423,
+      //       "teamId": "5",
+      //       "type": 4,
+      //       "userId": 5
+      //     }
+      //     this.updatePoint(res)
+      //   }, 3000)
+      // }, 1000)
       if (res.code != '0000') {
         if (this.data.isConnect) {
           utils.showToast({
@@ -311,9 +325,13 @@ Page({
   },
   updateTeam (res) {
     let teamId = Object.keys(res);
+    var teamIdArr = [];
+    for (let i = 0; i < teamId.length; i++) {
+      teamIdArr.push({teamId: teamId[i], teamPoint: 0})
+    }
     this.setData({
       teamUsersMap: res,
-      teamIdArr: teamId
+      teamIdArr: teamIdArr
     })
   },
   /**
@@ -336,6 +354,8 @@ Page({
         count++;
       }
     })
+    //todo
+    this.sendMessage({"type": 4});
     if (count >= 2) {
       this.sendMessage({"type": 4});
     } else {
@@ -507,22 +527,33 @@ Page({
     let index = this.data.roomUsers.findIndex((el) => {
       return el.id == resultUser
     })
+    let teamId = res.teamId;
+    let teamIndex = this.data.teamIdArr.findIndex((el) => {
+      return el.teamId == teamId
+    })
+    let teamIdArr = this.data.teamIdArr;
+    let updateTeam = teamIdArr[teamIndex];
     let roomUser = this.data.roomUsers;
     let updateUser = roomUser[index];
     updateUser['point'] += res.point;
+    updateTeam['teamPoint'] += res.point;
     if (updateUser['point'] < 0) {
       updateUser['point'] = 0
     }
+    if (updateTeam['teamPoint'] < 0) {
+      updateTeam['teamPoint'] = 0
+    }
     roomUser[index] = updateUser;
+    teamIdArr[teamIndex] = updateTeam;
     updateUser['pointAnimation'] = true;
     let oldCombo = updateUser['comboCount'] || 0;
     updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
     updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
     roomUser[index] = updateUser;
     //console.log(roomUser)
-    // todo 这里 更新 队伍得分 原用户得分 不做排名 移动 动画 只做combo
     this.setData({
-      roomUsers: roomUser
+      roomUsers: roomUser,
+      teamIdArr: teamIdArr
     });
 
     //加分动画

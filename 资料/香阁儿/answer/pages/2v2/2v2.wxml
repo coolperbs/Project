@@ -5,7 +5,7 @@
 				wx:for="{{roomUsers}}"
 				wx:key="{{index}}"
 				wx:if="{{item.name}}"
-				class="user {{item.teamId==teamIdArr[index<2?'0':'1']?'owner':''}}">
+				class="user {{item.teamId==teamIdArr[index<2?'0':'1'].teamId?'owner':''}}">
 				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 				<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
 				<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
@@ -52,7 +52,7 @@
 			<image class="start-right" src="../../static/images/match-right.png" animation="{{matchRightData}}"></image>
 		</view>
 		<view class="match-user">
-			<view class="user {{item.owner?'owner':''}}"
+			<view class="user {{item.teamId==teamIdArr[index<2?'0':'1'].teamId?'owner':''}}"
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
 						wx:if="{{item.name}}">
@@ -61,25 +61,25 @@
 			</view>
 		</view>
 	</view>
-	<!--<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">-->
-	<!--<view class="room-box">-->
-	<!--<view class="user-list">-->
-	<!--<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">-->
-	<!--<view class="head {{item.owner?'owner':''}}">-->
-	<!--<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>-->
-	<!--</view>-->
-	<!--<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>-->
-	<!--</view>-->
-	<!--</view>-->
-	<!--<button class="room-btn invite" open-type="share">-->
-	<!--<image src="../../static/images/invite.png"></image>-->
-	<!--</button>-->
-	<!--</view>-->
-	<!--<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId&&roomOwner!=''}}">-->
-	<!--开始游戏-->
-	<!--</button>-->
-	<!--<button class="cancel" bindtap="cancelBattle">退出房间</button>-->
-	<!--</view>-->
+	<!--<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
+		<view class="room-box">
+			<view class="user-list">
+				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
+					<view class="head {{item.owner?'owner':''}}">
+						<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
+					</view>
+					<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>
+				</view>
+			</view>
+			<button class="room-btn invite" open-type="share">
+				<image src="../../static/images/invite.png"></image>
+			</button>
+		</view>
+		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId&&roomOwner!=''}}">
+			开始游戏
+		</button>
+		<button class="cancel" bindtap="cancelBattle">退出房间</button>
+	</view>-->
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="result {{isEnd?'active':''}}">
 		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
