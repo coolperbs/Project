@@ -24,7 +24,7 @@ export default {
       }
     })
   },
-  login (callback) {
+  login (data,callback) {
     let that = this;
     this.checkSingleAuthorize('scope.userInfo', (res) => {
       if (!res) {
@@ -38,25 +38,20 @@ export default {
       }
       wx.login({
         success (res1) {
-          wx.getUserInfo({
-            lang: 'zh_CN',
-            success (res2) {
-              wx.showToast({
-                title: '登录中...',
-                icon: 'loading'
-              });
-              ajax.request({
-                url: app.HOST_AJAX + '/login',
-                data: {code: res1.code, iv: res2.iv, encryptedData: res2.encryptedData},
-                callback (res3) {
-                  if(res3.code!='0000'){
-                    callback && callback(false)
-                  }else {
-                    utils.setStorageSync('userInfo', res3.data);
-                    callback && callback(true)
-                  }
-                }
-              })
+          wx.showToast({
+            title: '登录中...',
+            icon: 'loading'
+          });
+          ajax.request({
+            url: app.HOST_AJAX + '/login',
+            data: {code: res1.code, iv: data.iv, encryptedData: data.encryptedData},
+            callback (res3) {
+              if(res3.code!='0000'){
+                callback && callback(false)
+              }else {
+                utils.setStorageSync('userInfo', res3.data);
+                callback && callback(true)
+              }
             }
           })
         }

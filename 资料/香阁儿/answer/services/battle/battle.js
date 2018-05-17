@@ -77,6 +77,14 @@ export default {
       teamId: teamId,
       danGrading: danGrading || 1,
     });
+    console.log('链接数据')
+    console.log({
+      token: token,
+      roomId: roomId,
+      teamId: teamId,
+      danGrading: danGrading || 1,
+    })
+    console.log('链接数据')
     this.TVT_socket.onOpen(res => {
       this.TVT_isConnect = true;
       callback(res);

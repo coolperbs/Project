@@ -1,14 +1,36 @@
 <view class="tvt">
 	<view class="battle">
 		<view class="battle-user">
-			<view
-				wx:for="{{roomUsers}}"
-				wx:key="{{index}}"
-				wx:if="{{item.name}}"
-				class="user {{item.teamId==teamIdArr[index<2?'0':'1'].teamId?'owner':''}}">
-				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
-				<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
-				<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+			<view class="user-left-box">
+				<view class="box-user-list">
+					<view
+						wx:for="{{roomUsers}}"
+						wx:key="{{index}}"
+						wx:if="{{item.teamId==roomOwner}}"
+						class="user {{item.teamId==roomOwner?'owner':''}}">
+						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
+						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
+						<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+					</view>
+				</view>
+				<view class="team-point owner">{{teamIdArr[0].teamPoint}}</view>
+			</view>
+			<view class="user-vs">
+				<image src="../../static/images/vs-small.png"></image>
+			</view>
+			<view class="user-right-box">
+				<view class="box-user-list">
+					<view
+						wx:for="{{roomUsers}}"
+						wx:key="{{index}}"
+						wx:if="{{item.teamId!=roomOwner}}"
+						class="user {{item.teamId==roomOwner?'owner':''}}">
+						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
+						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
+						<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+					</view>
+				</view>
+				<view class="team-point ">{{teamIdArr[1].teamPoint}}</view>
 			</view>
 		</view>
 		<view class="battle-title">
@@ -61,11 +83,11 @@
 			</view>
 		</view>
 	</view>
-	<!--<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
+	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
 			<view class="user-list">
 				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
-					<view class="head {{item.owner?'owner':''}}">
+					<view class="head {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
 					</view>
 					<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>
@@ -75,11 +97,8 @@
 				<image src="../../static/images/invite.png"></image>
 			</button>
 		</view>
-		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId&&roomOwner!=''}}">
-			开始游戏
-		</button>
 		<button class="cancel" bindtap="cancelBattle">退出房间</button>
-	</view>-->
+	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="result {{isEnd?'active':''}}">
 		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
@@ -98,12 +117,14 @@
 					<view class="rank-list">
 						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
 							<view class="rank">{{item.ranking}}</view>
-							<view class="head-box">
+							<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
 								<image class="head" src="{{item.userAvatar}}"></image>
+								<image wx:if="{{item.mvp}}" class="mvp" src="../../static/images/vmp.png"></image>
 							</view>
 							<view class="name">{{item.userName}}</view>
 							<view class="coin-box">
 								<view class="coin">+{{item.gold}}金币</view>
+								<view class="coin">+{{item.exp}}经验</view>
 								<view class="point">{{item.totlePoint<0?'0':item.totlePoint}}分</view>
 							</view>
 						</view>
@@ -111,11 +132,11 @@
 				</view>
 			</view>
 			<view style="display: flex; justify-content: space-between;align-items: center">
-				<view wx:if="{{roomOwner==userId}}" class="btn-out">
+				<!--<view wx:if="{{roomOwner==userId}}" class="btn-out">
 					<button class="btn-in" bindtap="playAgain">
 						再来一盘
 					</button>
-				</view>
+				</view>-->
 				<button class="share-result" open-type="share">
 					炫耀一下
 				</button>
@@ -125,6 +146,30 @@
 			</button>
 		</view>
 		<image class="boom" src="../../static/images/boom.png"></image>
+	</view>
+	<view class="level-up  {{showUPMask?'active':''}}">
+		<view class="bg-box">
+			<image class="shinning" src="../../static/images/shinning.png"></image>
+			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
+			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
+		</view>
+		<view class="flag">
+			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
+			<image  class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
+		</view>
+		<view class="text" wx:if="{{result.hasUpDanGrading}}">
+			<view class="old-name">{{result.oldDanGradingName}}</view>
+			<view class="arrow"> > </view>
+			<view class="new-name">{{result.newDanGradingName}}</view>
+		</view>
+		<view class="close" bindtap="closeModal">
+			<image class="close-image" src="../../static/images/close.png"></image>
+		</view>
+		<!--
+		oldDanGradingName;
+newDanGradingName;
+newDanGradingLogo;
+		-->
 	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>

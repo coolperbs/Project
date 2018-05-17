@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loginDisabled:false
+    loginDisabled: false
   },
 
   /**
@@ -16,8 +16,19 @@ Page({
    */
   onLoad: function (options) {
     this.optData = options;
+    console.log('login options')
+    console.log(options)
+    console.log('login options')
     //console.log('12312',options)
-    this.loginEVT();
+    // this.loginEVT();
+    login.isLogin((res) => {
+        if (!res) {
+
+        } else {
+          this.goPage();
+        }
+      }
+    )
   },
 
   /**
@@ -26,29 +37,31 @@ Page({
   onReady: function () {
 
   },
-  loginEVT() {
+  loginEVT (e) {
+    var data = e.detail;
+    console.log(data)
     this.setData({
-      loginDisabled:true
+      loginDisabled: true
     })
     login.isLogin((res) => {
       if (!res) {
-        login.login((res2) => {
+        login.login({iv: data.iv, encryptedData: data.encryptedData}, (res2) => {
           if (res2) {
-           this.goPage();
+            this.goPage();
           }
           this.setData({
-            loginDisabled:res2
+            loginDisabled: res2
           })
         });
       } else {
         this.setData({
-          loginDisabled:false
+          loginDisabled: false
         })
         this.goPage();
       }
     })
   },
-  goPage(){
+  goPage () {
     setTimeout(() => {
       util.redirectTo('../home/home', this.optData)
     }, 1000);

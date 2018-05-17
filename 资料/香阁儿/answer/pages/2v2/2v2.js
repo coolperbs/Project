@@ -114,6 +114,9 @@ Page({
       roomId: options.roomId || '',
       teamId: options.teamId || ''
     });
+    console.log('options')
+    console.log(options)
+    console.log('options')
     this.initPage();
     this.modal = this.selectComponent("#m-modal");
   },
@@ -145,22 +148,6 @@ Page({
    * */
   getMessage () {
     battle.TVT_onMessage((res) => {
-      //console.log('好友对战接收到消息了:----------------------')
-      // setTimeout(() => {
-      //   setInterval(() => {
-      //     res ={
-      //       "answerResult": true,
-      //       "mayNextSub": false,
-      //       "optionId": 3,
-      //       "point": 186,
-      //       "teamPoint": 23423,
-      //       "teamId": "5",
-      //       "type": 4,
-      //       "userId": 5
-      //     }
-      //     this.updatePoint(res)
-      //   }, 3000)
-      // }, 1000)
       if (res.code != '0000') {
         if (this.data.isConnect) {
           utils.showToast({
@@ -180,6 +167,7 @@ Page({
       if (res.type == 2) {
         //console.log('好友连接上了:-----------------------------');
         this.initRoom(res);
+        this.beginAnswer(res);
         if (this.keepTimer) {
           clearInterval(this.keepTimer)
         }
@@ -223,28 +211,26 @@ Page({
         utils.showToast({title: '玩家' + rest[runner].name + '离开房间~'})
         rest[runner] = {point: 0};
         //计算还有几个用户
-        let count = 0;
-        rest.map((el) => {
-          if (el.id) {
-            count++
-          }
-        });
         this.setData({
           roomUsers: rest
         })
         //区分开始对战没有
         if (this.data.isStart) {
-          if (count < 2) {
-            //console.log('人都跑了,去拿答案了');
-            this.clearCountAni();
-            this.clearTheInterval();
-            setTimeout(() => {
-              this.subjectAnimation(4, () => {
-                this.clearCountAni();
-                this.clearTheInterval();
-                this.sendMessage({type: 3})
-              })
-            }, 100)
+
+          // 这里判断 某一个组人为空就退出
+          let teamUsersMap = this.data.teamUsersMap;
+          for (var k  in teamUsersMap) {
+            if (teamUsersMap[k].length == 0) {
+              this.clearCountAni();
+              this.clearTheInterval();
+              setTimeout(() => {
+                this.subjectAnimation(4, () => {
+                  this.clearCountAni();
+                  this.clearTheInterval();
+                  this.sendMessage({type: 3})
+                })
+              }, 100)
+            }
           }
         } else {
           if (res.userId == this.data.roomOwner) {
@@ -329,6 +315,14 @@ Page({
     for (let i = 0; i < teamId.length; i++) {
       teamIdArr.push({teamId: teamId[i], teamPoint: 0})
     }
+
+    //这里 把 房主的 队伍放在前面
+    let index = teamIdArr.findIndex((el) => {
+      return el.teamId = this.data.roomOwner
+    });
+    let tempArr = teamIdArr[index];
+    teamIdArr.splice(index, 1);
+    teamIdArr.splice(0, 0, tempArr);
     this.setData({
       teamUsersMap: res,
       teamIdArr: teamIdArr
@@ -348,14 +342,14 @@ Page({
    * 开始对战
    * */
   startBattle () {
+    // 这个方法抛弃
     let count = 0;
     this.data.roomUsers.map((el) => {
       if (el.avatar) {
         count++;
       }
     })
-    //todo
-    this.sendMessage({"type": 4});
+
     if (count >= 2) {
       this.sendMessage({"type": 4});
     } else {
@@ -807,10 +801,21 @@ Page({
     this.playWinner();
     //console.log('玩家数据');
     //console.log(result[index]);
+    let resultA = result[index]
+    if (resultA.upExp !== undefined) {
+      resultA.exp += resultA.upExp
+    }
+    if (resultA.upGold !== undefined) {
+      resultA.gold += resultA.upGold
+    }
+    var showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
-      result: result
+      result: result,
+      showUPMask: showUPMask,
+      hasUpLevel: resultA.hasUpLevel || false,
+      hasUpDanGrading: resultA.hasUpDanGrading || false
     });
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
     let circle2 = this.canvasCircle2 = wx.createCanvasContext('canvasArcCir');
@@ -908,7 +913,29 @@ Page({
     this.stopBg();
     this.stopWinner();
   },
+  /**
+   * 判断是否开始答题
+   * */
+  beginAnswer (res) {
+    if (res.beginAnswer) {
+      if (this.data.vsAi == 'undefined') {
+        this.setData({
+          vsAi: false
+        })
+      }
+      setTimeout(() => {
+        this.animationEvt('start', () => {
+          this.getSubject()
+        })
+      }, 2000)
 
+    }
+  },
+  closeModal () {
+    this.setData({
+      showUPMask: false
+    })
+  },
   /**
    * 用户点击右上角分享
    */
@@ -939,7 +966,7 @@ Page({
       }
       return {
         title: '等你来战',
-        path: '/pages/login/login?direct=../2v2/2v2&roomId=' + this.data.roomId + '&teamId=' + teamId,
+        path: '/pages/login/login?direct=../2v2/2v2&roomId=' + this.data.roomId + '&teamId=' + teamId + '&leve=' + this.data.level,
         success: function (res) {
         },
         fail: function (res) {
