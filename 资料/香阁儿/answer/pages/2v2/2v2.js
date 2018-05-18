@@ -211,6 +211,7 @@ Page({
         this.setData({
           roomUsers: rest
         })
+        console.log(this.data.teamUsersMap)
         //区分开始对战没有
         if (this.data.isStart) {
 
@@ -229,8 +230,15 @@ Page({
               }, 100)
             }
           }
-        } else {
-          if (res.userId == this.data.roomOwner) {
+        } else{
+          let teamUsersMap = this.data.teamUsersMap;
+          let dismiss = false
+          for (var k  in teamUsersMap) {
+            if(k==res.userId){
+              dismiss = true;
+            }
+          }
+          if (res.userId == this.data.roomOwner || dismiss) {
             //房主都跑了
             utils.showToast({
               title: '房间解散~~'
