@@ -6,7 +6,7 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.teamId==roomOwner}}"
+						wx:if="{{item.teamId==roomOwner&&index<2}}"
 						class="user {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
@@ -23,7 +23,7 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.teamId!=roomOwner}}"
+						wx:if="{{item.teamId!=roomOwner &&index>1}}"
 						class="user {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
@@ -101,14 +101,14 @@
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="result {{isEnd?'active':''}}">
-		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
+		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{result}}" wx:key="{{index}}">
 			<view class="min-head-box">
 				<view class="mine-head">
-					<image class="head-image" src="{{item.avatar}}"></image>
+					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
 				<image wx:if="{{item.mvp}}" class="bigmvp" src="../../static/images/mvp.png"></image>
 			</view>
-			<view class="min-name">{{item.name}}</view>
+			<view class="min-name">{{item.userName}}</view>
 		</view>
 		<view class="result-bottom">
 			<view class="result-box">
