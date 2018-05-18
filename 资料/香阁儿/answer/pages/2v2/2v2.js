@@ -82,8 +82,6 @@ Page({
     this.playBg();
   },
   playBg () {
-    // todo 完了要移除
-    return
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
@@ -94,8 +92,6 @@ Page({
     }
   },
   playWinner () {
-    // TODO 完了要移除
-    return
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
@@ -165,7 +161,6 @@ Page({
         this.initRoom(res);
       }
       if (res.type == 2) {
-        //console.log('好友连接上了:-----------------------------');
         this.initRoom(res);
         this.beginAnswer(res);
         if (this.keepTimer) {
@@ -177,18 +172,18 @@ Page({
         }, 5000)
       }
       if (res.type == 3) {
-        //console.log('得到题目了:-----------------------------');
+
         this.setData({
           isStart: true
         })
         this.filterSubject(res);
       }
       if (res.type == 4) {
-        //console.log('得到答案了:-----------------------------');
+
         this.updatePoint(res)
       }
       if (res.type == 5) {
-        //console.log('游戏结束:-----------------------------');
+
         this.setData({
           showRoom: false
         });
@@ -201,7 +196,7 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
-        //判断有人逃跑 游戏没开始 房间解散 游戏开始后判断少于2个人 就结束游戏
+
         console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
@@ -890,19 +885,8 @@ Page({
     setTimeout(() => {
       wx.navigateBack();
     }, 50)
-    // if (this.data.roomOwner != this.data.userId) {
-    //   utils.redirectTo('../home/home')
-    // } else {
-    //   wx.navigateBack()
-    // }
   },
   onHide () {
-    //console.log('小程序隐藏了')
-    // if (this.data.isStart) {
-    //   //console.log('关闭连接');
-    //   this.closeConnect();
-    //   this.back();
-    // }
   },
   /**
    * 生命周期函数--监听页面卸载

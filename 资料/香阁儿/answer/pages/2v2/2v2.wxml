@@ -83,7 +83,7 @@
 			</view>
 		</view>
 	</view>
-	<!--<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
+	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
 			<view class="user-list">
 				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
@@ -98,9 +98,9 @@
 			</button>
 		</view>
 		<button class="cancel" bindtap="cancelBattle">退出房间</button>
-	</view>-->
+	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
-	<view class="result active{{isEnd?'active':''}}">
+	<view class="result {{isEnd?'active':''}}">
 		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
 			<view class="min-head-box">
 				<view class="mine-head">
@@ -118,8 +118,7 @@
 						<view class="rank">第{{item.ranking}}名</view>
 					</view>
 					<view class="rank-list">
-						<!--<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">-->
-						<view class="list-user">
+						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
 							<view class="rank">{{item.ranking}}</view>
 							<view class="head-out">
 								<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
@@ -138,11 +137,6 @@
 				</view>
 			</view>
 			<view style="display: flex; justify-content: space-between;align-items: center">
-				<!--<view wx:if="{{roomOwner==userId}}" class="btn-out">
-					<button class="btn-in" bindtap="playAgain">
-						再来一盘
-					</button>
-				</view>-->
 				<button class="share-result" open-type="share">
 					炫耀一下
 				</button>
@@ -171,11 +165,6 @@
 		<view class="close" bindtap="closeModal">
 			<image class="close-image" src="../../static/images/close.png"></image>
 		</view>
-		<!--
-		oldDanGradingName;
-newDanGradingName;
-newDanGradingLogo;
-		-->
 	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>
