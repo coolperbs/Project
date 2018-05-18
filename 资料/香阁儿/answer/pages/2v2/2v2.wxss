@@ -485,7 +485,8 @@
     .tvt .result .mine {
       display: flex;
       flex-direction: column;
-      align-items: center; }
+      align-items: center;
+      padding-top: 20rpx; }
       .tvt .result .mine .mine-head {
         border-radius: 50%;
         overflow: hidden;
@@ -547,7 +548,7 @@
       width: 560rpx;
       height: 400rpx;
       overflow-y: scroll;
-      margin: 20rpx 40rpx; }
+      padding: 20rpx 40rpx; }
       .tvt .result .rank-list .list-user {
         display: flex;
         justify-content: space-between;
@@ -711,11 +712,26 @@
   transform: scale(1);
   opacity: 1; }
 
+.head-out {
+  position: relative; }
+
 .mvp {
   width: 112.5rpx;
   height: 50rpx;
   position: absolute;
   z-index: 1;
-  top: 0; }
+  top: -20rpx;
+  left: -25rpx; }
+
+.min-head-box {
+  position: relative; }
+
+.bigmvp {
+  width: 200rpx;
+  height: 80rpx;
+  position: absolute;
+  z-index: 1;
+  top: -22rpx;
+  left: -25rpx; }
 
 /*# sourceMappingURL=2v2.wxss.map */

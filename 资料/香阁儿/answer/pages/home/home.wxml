@@ -17,7 +17,7 @@
 			<image mode="aspectFit" src="../../static/images/update-qa.png"></image>
 		</button>
 		<button hover-class="home-btn-hover" class="home-btn" bindtap="jumpPage" data-type="2v2">
-			<image mode="aspectFit" src="../../static/images/update-qa.png"></image>
+			<image mode="aspectFit" src="../../static/images/2v2.png"></image>
 		</button>
 		<view class="home-btn-group">
 			<button class="home-btn" hover-class="home-btn-hover" bindtap="jumpPage" data-type="billboard">

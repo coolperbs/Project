@@ -83,7 +83,7 @@
 			</view>
 		</view>
 	</view>
-	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
+	<!--<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
 			<view class="user-list">
 				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
@@ -98,12 +98,15 @@
 			</button>
 		</view>
 		<button class="cancel" bindtap="cancelBattle">退出房间</button>
-	</view>
+	</view>-->
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
-	<view class="result {{isEnd?'active':''}}">
+	<view class="result active{{isEnd?'active':''}}">
 		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{roomUsers}}" wx:key="{{index}}">
-			<view class="mine-head">
-				<image class="head-image" src="{{item.avatar}}"></image>
+			<view class="min-head-box">
+				<view class="mine-head">
+					<image class="head-image" src="{{item.avatar}}"></image>
+				</view>
+				<image wx:if="{{item.mvp}}" class="bigmvp" src="../../static/images/mvp.png"></image>
 			</view>
 			<view class="min-name">{{item.name}}</view>
 		</view>
@@ -115,11 +118,14 @@
 						<view class="rank">第{{item.ranking}}名</view>
 					</view>
 					<view class="rank-list">
-						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
+						<!--<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">-->
+						<view class="list-user">
 							<view class="rank">{{item.ranking}}</view>
-							<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
-								<image class="head" src="{{item.userAvatar}}"></image>
-								<image wx:if="{{item.mvp}}" class="mvp" src="../../static/images/vmp.png"></image>
+							<view class="head-out">
+								<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
+									<image class="head" src="{{item.userAvatar}}"></image>
+								</view>
+								<image wx:if="{{item.mvp}}" class="mvp" src="../../static/images/mvp.png"></image>
 							</view>
 							<view class="name">{{item.userName}}</view>
 							<view class="coin-box">
@@ -154,12 +160,12 @@
 			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
 		</view>
 		<view class="flag">
-			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
-			<image  class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
+			<image class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
+			<image class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
 		</view>
 		<view class="text" wx:if="{{result.hasUpDanGrading}}">
 			<view class="old-name">{{result.oldDanGradingName}}</view>
-			<view class="arrow"> > </view>
+			<view class="arrow"> ></view>
 			<view class="new-name">{{result.newDanGradingName}}</view>
 		</view>
 		<view class="close" bindtap="closeModal">
