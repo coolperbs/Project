@@ -56,15 +56,15 @@ Page({
     console.log('options', decodeURIComponent(options.direct))
     if (options.direct) {
       setTimeout(() => {
-        utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId})
+        utils.navigateTo(decodeURIComponent(options.direct), {roomId: options.roomId, teamId: options.teamId,level:options.level})
       }, 50)
     }
     this.lastBank();
   },
-  onShow() {
+  onShow () {
     this.createRoom();
   },
-  jumpPage(e) {
+  jumpPage (e) {
     let type = e.currentTarget.dataset.type;
     switch (type) {
       case 'rank':
@@ -94,9 +94,12 @@ Page({
       case 'update':
         utils.navigateTo('../update/update');//消息
         break;
+      case '2v2':
+        utils.navigateTo('../rank/rank',{tvt:true})//2v2
+        break;
     }
   },
-  check() {
+  check () {
     login.dailyCheck(this.data.checkWare, res => {
       if (res.code != '0000') {
         utils.showToast({title: res.msg || '签到失败,请稍候重试'})
@@ -108,7 +111,7 @@ Page({
       })
     })
   },
-  lastBank() {
+  lastBank () {
     login.lastBank(null, (res) => {
       if (res.code != '0000') {
         return
@@ -143,7 +146,7 @@ Page({
       }, 1000);
     })
   },
-  leftTime(endTime) {
+  leftTime (endTime) {
     var leftTime = (endTime); //计算剩余的毫秒数
     var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
     var hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10); //计算剩余的小时
@@ -158,13 +161,13 @@ Page({
       return null
     }
   },
-  checkTime(i) { //将0-9的数字前面加上0，例1变为01
+  checkTime (i) { //将0-9的数字前面加上0，例1变为01
     if (i < 10) {
       i = "0" + i;
     }
     return i;
   },
-  getBank() {
+  getBank () {
     console.log('领取金币');
     if (this.data.getCoins) {
       return
@@ -178,7 +181,7 @@ Page({
       utils.showToast({title: '暂时还有没有金币哦~'})
     }
   },
-  coinAni() {
+  coinAni () {
     this.playBg();
     this.setData({
       getCoins: true
@@ -196,22 +199,22 @@ Page({
     }, 1500)
 
   },
-  playBg() {
+  playBg () {
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/77408d79-00ba-4203-84c8-f2b5ec5e65dc.mp3');
     this.audioCtx.play();
   },
-  stopBg() {
+  stopBg () {
     if (this.audioCtx) {
       this.audioCtx.pause();
     }
   },
-  closeModal() {
+  closeModal () {
     this.setData({
       showCheck: false
     })
   },
-  createRoom() {
+  createRoom () {
     battle.createRoom((res) => {
       if (res.code != '0000') {
         return

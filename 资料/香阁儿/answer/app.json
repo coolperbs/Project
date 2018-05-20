@@ -13,7 +13,8 @@
     "pages/myshop/myshop",
     "pages/message/message",
     "pages/questionin/questionin",
-    "pages/update/update"
+    "pages/update/update",
+    "pages/2v2/2v2"
   ],
   "window": {
     "backgroundTextStyle": "#fff",

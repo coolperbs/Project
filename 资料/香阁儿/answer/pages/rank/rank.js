@@ -14,7 +14,11 @@ Page({
     modalValue: {}
   },
 
-
+  onLoad(option){
+    this.setData({
+      tvt:option.tvt
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -188,7 +192,11 @@ Page({
   rankBattleEvt (e) {
     let level = e.currentTarget.dataset.level || 1;
     setTimeout(()=>{
-      utils.navigateTo('../battleone/battleone', {level: level})
+      if(this.data.tvt){
+        utils.navigateTo('../2v2/2v2', {level: level})
+      }else{
+        utils.navigateTo('../battleone/battleone', {level: level})
+      }
     },500)
   },
   /**
