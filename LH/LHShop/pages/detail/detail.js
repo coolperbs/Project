@@ -1,6 +1,7 @@
 var ajax = require( '../../common/ajax/ajax' ),
 	service = require( '../../service/service' ),
 	utils = require( '../../common/utils/utils' ),
+	wxParse = require( '../../lib/wxParse/wxParse.js' ),
 	modules = require( '../../widgets/modules/modules.js' ),
 	app = getApp(),
 	pageParam, hasMore, 
@@ -440,6 +441,7 @@ _fn = {
 				return;
 			}
 			res.data = _fn.formatData( res.data );
+			wxParse.wxParse('detailNodes', 'html', res.data.description, caller, 5);
 			caller.setData( {
 				pageData : res.data
 			} );
@@ -447,3 +449,12 @@ _fn = {
 		} );
 	}	
 }
+
+
+
+
+
+
+
+
+
