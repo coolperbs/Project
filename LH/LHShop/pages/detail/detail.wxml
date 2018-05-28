@@ -102,7 +102,7 @@
         </view>
 
         <!-- 图文详情 start -->
-        <view class="images" catchtap="previewDetailImage" wx:if="{{ tab.current=='imgs' }}">
+        <view class="images parse" catchtap="previewDetailImage" wx:if="{{ tab.current=='imgs' }}">
             <template is="wxParse" data="{{wxParseData:detailNodes.nodes}}"/>
             <!--<image mode="widthFix" catchtap="privewSingleImg" data-src="{{ item }}" wx:for="{{pageData.detailImage}}" wx:key="index" src="{{item}}"></image>-->
         </view>
