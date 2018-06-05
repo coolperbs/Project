@@ -1,5 +1,5 @@
 <view class="rank">
-	<image class="rank-bg roate-animation" src="../../static/images/rank-bg.png"></image>
+	<image class="rank-bg roate-animation" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/rank-bg.png"></image>
 	<view class="rank-box">
 		<view class="rank-title">
 			<view class="rank-name">{{rankData.name}}</view>
@@ -7,7 +7,7 @@
 		</view>
 		<view class="rank-menu">
 			<view class="coins">
-				<image class="icon-coin" src="../../static/images/coins.png"></image>
+				<image class="icon-coin" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/coins.png"></image>
 				<view class="icon-count">{{rankData.user.gold}}</view>
 			</view>
 			<view class="skills">
@@ -46,7 +46,7 @@
 							<view class="top">
 								<view class="title">{{item.name}}</view>
 								<view class="coin">
-									<image class="coin-icon" src="../../static/images/coin.png"></image>
+									<image class="coin-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/coin.png"></image>
 									<view class="coin-count">{{item.gold}}</view>
 								</view>
 							</view>
@@ -55,8 +55,8 @@
 								<view class="star-list">
 									<view class="star {{processCount.active?'active':''}}" wx:for="{{item.processCountArr}}"
 												wx:for-item="processCount" wx:key="{{index}}">
-										<image class="start-box" src="../../static/images/star-bg.png"></image>
-										<image class="start-active" src="../../static/images/star.png"></image>
+										<image class="start-box" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/star-bg.png"></image>
+										<image class="start-active" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/star.png"></image>
 									</view>
 								</view>
 							</view>

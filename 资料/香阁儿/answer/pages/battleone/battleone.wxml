@@ -20,7 +20,7 @@
 				<view wx:if="{{roomUsers[1].id!=-1}}" class="level">{{roomUsers[1].level?'V'+roomUsers[1].level:''}}</view>
 			</view>
 		</view>
-		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/VS2.png"></image>
+		<image class="vs" animation="{{matchCenterData}}" mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/VS2.png"></image>
 	</view>
 	<view class="battle">
 		<view class="battle-user">
@@ -62,10 +62,10 @@
 				</canvas>
 				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
 			</view>
-				<image class="vs-png" src="../../static/images/vs-small.png"></image>
+				<image class="vs-png" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
 			</view>
 			<view class="winner {{WINNER?'active':''}}">
-				<image class="winner-icon" src="../../static/images/winner.png"></image>
+				<image class="winner-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/winner.png"></image>
 			</view>
 			<view class="looser"></view>
 		</view>
@@ -77,7 +77,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image class="q-double {{subject.doublePoint?'active':''}}" src="../../static/images/t.png"></image>
+					<image class="q-double {{subject.doublePoint?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
@@ -90,13 +90,13 @@
 		</view>
 		<view class="result {{isEnd?'active':''}}">
 			<view class="result-item">
-				<image class="item-icon" src="../../static/images/coin.png"></image>
+				<image class="item-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/coin.png"></image>
 				<view class="item-label">金币</view>
 				<view class="item-text">+{{result.gold}}</view>
 				<!--<view class="item-more" wx:if="{{result.upGold&&result.upGold>0}}">+{{result.upGold}}</view>-->
 			</view>
 			<view class="result-item">
-				<image class="item-icon" src="../../static/images/crown.png"></image>
+				<image class="item-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/crown.png"></image>
 				<view class="item-label">EXP</view>
 				<view class="item-text">+{{result.exp}}</view>
 				<!--<view class="item-more" wx:if="{{result.upExp&&result.upExp>0}}">+{{result.upExp}} <image class="more"></image></view>-->
@@ -112,13 +112,13 @@
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="level-up {{showUPMask?'active':''}}">
 		<view class="bg-box">
-			<image class="shinning" src="../../static/images/shinning.png"></image>
-			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
+			<image class="shinning" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/shinning.png"></image>
+			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelMain.png"></image>
 			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
 		</view>
 		<view class="flag">
-			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
-			<image  class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
+			<image  class="flag-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelUp.png"></image>
+			<image  class="flag-image {{result.hasUpDanGrading?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/danUp.png"></image>
 		</view>
 		<view class="text" wx:if="{{result.hasUpDanGrading}}">
 			<view class="old-name">{{result.oldDanGradingName}}</view>
@@ -126,7 +126,7 @@
 			<view class="new-name">{{result.newDanGradingName}}</view>
 		</view>
 		<view class="close" bindtap="closeModal">
-			<image class="close-image" src="../../static/images/close.png"></image>
+			<image class="close-image" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/close.png"></image>
 		</view>
 		<!--
 		oldDanGradingName;

@@ -1,6 +1,6 @@
 <!--pages/login/login.wxml-->
 <view class="login">
-	<image class="login-image" src="../../static/images/login.jpg"></image>
+	<image class="login-image" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/login.jpg"></image>
 	<button class="login-btn" open-type="getUserInfo" bindgetuserinfo="loginEVT" disabled="{{loginDisabled}}">微信登录</button>
 </view>
 

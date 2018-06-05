@@ -10,13 +10,13 @@
 						class="user {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
-						<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+						<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
 					</view>
 				</view>
 				<view class="team-point owner">{{teamIdArr[0].teamPoint}}</view>
 			</view>
 			<view class="user-vs">
-				<image src="../../static/images/vs-small.png"></image>
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
 			</view>
 			<view class="user-right-box">
 				<view class="box-user-list">
@@ -27,7 +27,7 @@
 						class="user {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
-						<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+						<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
 					</view>
 				</view>
 				<view class="team-point ">{{teamIdArr[1].teamPoint}}</view>
@@ -42,7 +42,7 @@
 				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
 			</view>
 			<view class="winner">
-				<image class="winner-icon" src="../../static/images/winner.png"></image>
+				<image class="winner-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/winner.png"></image>
 			</view>
 			<view class="looser"></view>
 		</view>
@@ -54,7 +54,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image class="q-double {{subject.doublePoint?'active':''}}" src="../../static/images/t.png"></image>
+					<image class="q-double {{subject.doublePoint?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
@@ -68,10 +68,10 @@
 	</view>
 	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
 		<!--<view class="battle-stage">-->
-		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/match-vs.png"></image>
+		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-vs.png"></image>
 		<view class="start-box">
-			<image class="start-left" src="../../static/images/match-left.png" animation="{{matchLeftData}}"></image>
-			<image class="start-right" src="../../static/images/match-right.png" animation="{{matchRightData}}"></image>
+			<image class="start-left" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-left.png" animation="{{matchLeftData}}"></image>
+			<image class="start-right" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-right.png" animation="{{matchRightData}}"></image>
 		</view>
 		<view class="match-user">
 			<view class="user {{item.teamId==teamIdArr[index<2?'0':'1'].teamId?'owner':''}}"
@@ -94,7 +94,7 @@
 				</view>
 			</view>
 			<button class="room-btn invite" open-type="share">
-				<image src="../../static/images/invite.png"></image>
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/invite.png"></image>
 			</button>
 		</view>
 		<button class="cancel" bindtap="cancelBattle">退出房间</button>
@@ -106,7 +106,7 @@
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image wx:if="{{item.mvp}}" class="bigmvp" src="../../static/images/mvp.png"></image>
+				<image wx:if="{{item.mvp}}" class="bigmvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
@@ -124,7 +124,7 @@
 								<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
 									<image class="head" src="{{item.userAvatar}}"></image>
 								</view>
-								<image wx:if="{{item.mvp}}" class="mvp" src="../../static/images/mvp.png"></image>
+								<image wx:if="{{item.mvp}}" class="mvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 							</view>
 							<view class="name">{{item.userName}}</view>
 							<view class="coin-box">
@@ -145,17 +145,17 @@
 				退出游戏
 			</button>
 		</view>
-		<image class="boom" src="../../static/images/boom.png"></image>
+		<image class="boom" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/boom.png"></image>
 	</view>
 	<view class="level-up  {{showUPMask?'active':''}}">
 		<view class="bg-box">
-			<image class="shinning" src="../../static/images/shinning.png"></image>
-			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
+			<image class="shinning" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/shinning.png"></image>
+			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelMain.png"></image>
 			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
 		</view>
 		<view class="flag">
-			<image class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
-			<image class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
+			<image class="flag-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelUp.png"></image>
+			<image class="flag-image {{result.hasUpDanGrading?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/danUp.png"></image>
 		</view>
 		<view class="text" wx:if="{{result.hasUpDanGrading}}">
 			<view class="old-name">{{result.oldDanGradingName}}</view>
@@ -163,7 +163,7 @@
 			<view class="new-name">{{result.newDanGradingName}}</view>
 		</view>
 		<view class="close" bindtap="closeModal">
-			<image class="close-image" src="../../static/images/close.png"></image>
+			<image class="close-image" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/close.png"></image>
 		</view>
 	</view>
 </view>
