@@ -12,7 +12,7 @@ conf.host = conf.host || config.host;
 conf.appid = conf.appid || 'wxaccdda8d2e9e827e';
 conf.secret = conf.secret || '60088a714462ddd6fb59bb7b8bbe2a1c';
 conf.title = conf.title || '商城';
-conf.uid = conf.cid || 2274;
+conf.uid = conf.cid || 4442 || 2274;
 conf.actHost = config.actHost;
 
 ajax.setGlobalParam( conf );

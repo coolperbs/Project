@@ -1,4 +1,5 @@
 <import src="../../widgets/modules/modules.wxml"/>
+<import src="../../lib/wxParse/wxParse.wxml"/>
 
 <scroll-view class="main {{pop.show ? 'showpop' : ''}}" bindscrolltolower="getMore" scroll-y="{{ true }}">
     <view class="head">
@@ -101,8 +102,9 @@
         </view>
 
         <!-- 图文详情 start -->
-        <view class="images" catchtap="previewDetailImage" wx:if="{{ tab.current=='imgs' }}">
-            <image mode="widthFix" catchtap="privewSingleImg" data-src="{{ item }}" wx:for="{{pageData.detailImage}}" wx:key="index" src="{{item}}"></image>
+        <view class="images parse" catchtap="previewDetailImage" wx:if="{{ tab.current=='imgs' }}">
+            <template is="wxParse" data="{{wxParseData:detailNodes.nodes}}"/>
+            <!--<image mode="widthFix" catchtap="privewSingleImg" data-src="{{ item }}" wx:for="{{pageData.detailImage}}" wx:key="index" src="{{item}}"></image>-->
         </view>
         <!-- 图文详情 end -->
 
