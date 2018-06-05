@@ -67,26 +67,37 @@
 		</view>
 	</view>
 	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
-		<!--<view class="battle-stage">-->
 		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-vs.png"></image>
 		<view class="start-box">
 			<image class="start-left" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-left.png" animation="{{matchLeftData}}"></image>
 			<image class="start-right" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-right.png" animation="{{matchRightData}}"></image>
 		</view>
 		<view class="match-user">
-			<view class="user {{item.teamId==teamIdArr[index<2?'0':'1'].teamId?'owner':''}}"
-						wx:for="{{roomUsers}}"
-						wx:key="{{index}}"
-						wx:if="{{item.name}}">
-				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
-				<view class="name">{{item.name}}</view>
+			<view class="user owner">
+				<image class="head" mode="scaleToFill"></image>
+				<view class="name">xxxxx</view>
+			</view>
+			<view class="user owner">
+				<image class="head" mode="scaleToFill"></image>
+				<view class="name">xxxxx</view>
+			</view>
+			<view class="user-vs">
+				<image mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
+			</view>
+			<view class="user">
+				<image class="head" mode="scaleToFill"></image>
+				<view class="name">xxxxx</view>
+			</view>
+			<view class="user">
+				<image class="head" mode="scaleToFill"></image>
+				<view class="name">xxxxx</view>
 			</view>
 		</view>
 	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
 			<view class="user-list">
-				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
+				<view wx:if="{{index<2}}" wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
 					<view class="head {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
 					</view>
@@ -97,7 +108,8 @@
 				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/invite.png"></image>
 			</button>
 		</view>
-		<button class="cancel" bindtap="cancelBattle">退出房间</button>
+		<button class="room-btn-start" bindtap="startBattle">开始</button>
+		<button class="room-btn-cancel" bindtap="cancelBattle">退出房间</button>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="result {{isEnd?'active':''}}">
