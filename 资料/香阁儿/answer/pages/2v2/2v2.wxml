@@ -33,6 +33,7 @@
 				<view class="team-point ">{{teamIdArr[1].teamPoint}}</view>
 			</view>
 		</view>
+		<view class="vs-bg"></view>
 		<view class="battle-title">
 			<view class="vs">
 				<canvas class="circle" style="z-index: -99;" canvas-id="canvasCircle">
