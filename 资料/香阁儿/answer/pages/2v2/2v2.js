@@ -112,9 +112,6 @@ Page({
       roomId: options.roomId || '',
       teamId: options.teamId || ''
     });
-    console.log('options')
-    console.log(options)
-    console.log('options')
     this.initPage();
     this.modal = this.selectComponent("#m-modal");
   },
@@ -146,6 +143,9 @@ Page({
    * */
   getMessage () {
     battle.TVT_onMessage((res) => {
+      console.log('---------------------')
+      console.log(res)
+      console.log('---------------------')
       if (res.code != '0000') {
         if (this.data.isConnect) {
           utils.showToast({
@@ -230,11 +230,11 @@ Page({
               }, 100)
             }
           }
-        } else{
+        } else {
           let teamUsersMap = this.data.teamUsersMap;
           let dismiss = false
           for (var k  in teamUsersMap) {
-            if(k==res.userId){
+            if (k == res.userId) {
               dismiss = true;
             }
           }
@@ -271,7 +271,19 @@ Page({
           }
         })
       }
+      if (res.type == 9) {
+        this.initTeam(res)
+      }
+      if(res.type==10){
+        this.initTeam(res)
+      }
     })
+  },
+  initTeam (res) {
+    this.setData({
+      teamId: res.teamId,
+    })
+    this.updateRoomUser(res.teamUsers)
   },
   /**
    * 初始化房间信息
@@ -291,9 +303,7 @@ Page({
    * 更新房间信息
    * */
   updateRoomUser (res) {
-    //console.log('房间信息更新:-----------------');
-    //console.log(res);
-    //console.log('房间信息更新:-----------------');
+    debugger
     let that = this;
     let roomUsers = res.map((el, index) => {
       el.point = 0;
@@ -357,6 +367,23 @@ Page({
 
     if (count >= 2) {
       this.sendMessage({"type": 4});
+    } else {
+      wx.showToast({
+        title: '至少2人才能开始对战！~',
+        icon: 'none'
+      })
+    }
+  },
+  startMatch(){
+    let count = 0;
+    this.data.roomUsers.map((el) => {
+      if (el.avatar) {
+        count++;
+      }
+    })
+
+    if (count >= 2) {
+      this.sendMessage({"type": 6});
     } else {
       wx.showToast({
         title: '至少2人才能开始对战！~',
@@ -951,16 +978,10 @@ Page({
         }
       }
     } else {
-      var teamId = ''
-      for (var i = 0; i < this.data.roomUsers.length; i++) {
-        if (this.data.roomUsers[i].id == this.data.userId) {
-          teamId = this.data.roomUsers[i].teamId;
-          break
-        }
-      }
+      var teamId = this.data.teamId;
       return {
         title: '等你来战',
-        path: '/pages/login/login?direct=../2v2/2v2&roomId=' + this.data.roomId + '&teamId=' + teamId + '&leve=' + this.data.level,
+        path: '/pages/login/login?direct=../2v2/2v2&teamId=' + teamId + '&leve=' + this.data.level,
         success: function (res) {
         },
         fail: function (res) {
