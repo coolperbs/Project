@@ -274,7 +274,7 @@ Page({
       if (res.type == 9) {
         this.initTeam(res)
       }
-      if(res.type==10){
+      if (res.type == 10) {
         this.initTeam(res)
       }
     })
@@ -289,9 +289,6 @@ Page({
    * 初始化房间信息
    * */
   initRoom (res) {
-    console.log('房间信息:-----------------');
-    //console.log('房间信息:-----------------');
-    console.log(res.roomId)
     this.setData({
       roomId: res.roomId || '',
       totalPoint: res.totlePoint || ''
@@ -356,25 +353,7 @@ Page({
   /**
    * 开始对战
    * */
-  startBattle () {
-    // 这个方法抛弃
-    let count = 0;
-    this.data.roomUsers.map((el) => {
-      if (el.avatar) {
-        count++;
-      }
-    })
-
-    if (count >= 2) {
-      this.sendMessage({"type": 4});
-    } else {
-      wx.showToast({
-        title: '至少2人才能开始对战！~',
-        icon: 'none'
-      })
-    }
-  },
-  startMatch(){
+  startMatch () {
     let count = 0;
     this.data.roomUsers.map((el) => {
       if (el.avatar) {
@@ -386,7 +365,7 @@ Page({
       this.sendMessage({"type": 6});
     } else {
       wx.showToast({
-        title: '至少2人才能开始对战！~',
+        title: '先去邀请你的队友吧！~',
         icon: 'none'
       })
     }

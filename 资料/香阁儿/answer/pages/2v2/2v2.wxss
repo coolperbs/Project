@@ -637,4 +637,24 @@
     transform: scale(1);
     opacity: 1; }
 
+.share-result {
+  width: 300rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background-image: linear-gradient(to top, #fd2f56, #fd2fa1);
+  color: #ffffff; }
+
+.cancel {
+  border-radius: 4rpx;
+  color: #fd2fa1;
+  font-size: 36rpx;
+  margin-top: 40rpx;
+  font-weight: bold;
+  background-color: transparent; }
+
+.boom {
+  position: absolute;
+  width: 643rpx;
+  height: 391rpx; }
+
 /*# sourceMappingURL=2v2.wxss.map */

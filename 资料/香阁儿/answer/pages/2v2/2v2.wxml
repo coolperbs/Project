@@ -109,7 +109,7 @@
 				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/invite.png"></image>
 			</button>
 		</view>
-		<button wx:if="" class="room-btn-start" bindtap="startMatch">开始匹配</button>
+		<button wx:if="teamId==userId" class="room-btn-start" bindtap="startMatch">开始匹配</button>
 		<button class="room-btn-cancel" bindtap="cancelBattle">退出房间</button>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
