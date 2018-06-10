@@ -276,11 +276,19 @@ Page({
         this.setData({
           isMach: true
         })
-        setTimeout(() => {
-          this.animationEvt('ready', () => {
-            this.beginAnswer(res)
+        if(this.data.showRoom){
+          this.animationEvt('start',()=>{
+            this.animationEvt('ready', () => {
+              this.beginAnswer(res)
+            })
           })
-        }, 200)
+        }else {
+          setTimeout(() => {
+            this.animationEvt('ready', () => {
+              this.beginAnswer(res)
+            })
+          }, 200)
+        }
       }
     })
   },
