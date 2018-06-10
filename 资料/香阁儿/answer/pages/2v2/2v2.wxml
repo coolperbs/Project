@@ -119,7 +119,7 @@
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image class="bigmvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
+				<image wx:if="{{item.mvp}}" class="bigmvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
