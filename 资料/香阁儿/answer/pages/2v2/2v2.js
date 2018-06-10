@@ -30,7 +30,9 @@ Page({
     isEnd: false,
     errorShaking: false,
     isStart: false,
-    MATCH: false
+    MATCH: false,
+    vsAi: undefined,
+    isMach: false
   },
   initCanvas () {
     let sys = wx.getSystemInfoSync();
@@ -135,7 +137,6 @@ Page({
         isConnect: true
       });
       this.getMessage();
-      battle.TVT_onError()
     })
   },
   /**
@@ -165,13 +166,6 @@ Page({
       if (res.type == 2) {
         this.initRoom(res);
         this.beginAnswer(res);
-        if (this.keepTimer) {
-          clearInterval(this.keepTimer)
-        }
-        this.keepTimer = setInterval(() => {
-          console.log('keep----')
-          battle.TVT_send({aba: 324})
-        }, 5000)
       }
       if (res.type == 3) {
 
@@ -198,7 +192,7 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
-
+        return
         console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
@@ -277,6 +271,17 @@ Page({
       if (res.type == 10) {
         this.initTeam(res)
       }
+      if (res.type == 11) {
+        this.initRoom(res);
+        this.setData({
+          isMach: true
+        })
+        setTimeout(() => {
+          this.animationEvt('ready', () => {
+            this.beginAnswer(res)
+          })
+        }, 200)
+      }
     })
   },
   initTeam (res) {
@@ -291,7 +296,7 @@ Page({
   initRoom (res) {
     this.setData({
       roomId: res.roomId || '',
-      totalPoint: res.totlePoint || ''
+      totalPoint: res.totlePoint || '',
     })
     this.updateRoomUser(res.roomUsers);
     this.updateTeam(res.teamUsersMap)
@@ -300,15 +305,8 @@ Page({
    * 更新房间信息
    * */
   updateRoomUser (res) {
-    debugger
-    let that = this;
     let roomUsers = res.map((el, index) => {
       el.point = 0;
-      if (el.owner) {
-        that.setData({
-          roomOwner: el.id
-        })
-      }
       return el;
     });
     //补全 4个用户
@@ -330,7 +328,7 @@ Page({
 
     //这里 把 房主的 队伍放在前面
     let index = teamIdArr.findIndex((el) => {
-      return el.teamId = this.data.roomOwner
+      return el.teamId = this.data.teamId
     });
     let tempArr = teamIdArr[index];
     teamIdArr.splice(index, 1);
@@ -363,12 +361,65 @@ Page({
 
     if (count >= 2) {
       this.sendMessage({"type": 6});
+      this.animationEvt('start');
+      // 准备 机器人
+      setTimeout(() => {
+        this.connectAI();
+      }, 5000)
     } else {
       wx.showToast({
         title: '先去邀请你的队友吧！~',
         icon: 'none'
       })
     }
+  },
+  connectAI () {
+    if (this.data.vsAi==undefined) {
+      battle.TVA_connect(this.data.level, this.data.teamId, () => {
+        this.setData({
+          aiConnect: true
+        })
+        this.getAiMessage()
+      })
+    }
+  },
+  getAiMessage () {
+    battle.TVA_onMessage((res) => {
+      console.log('aiMessage', res)
+      if (res.code != '0000') {
+        if (this.data.PVA_isConnect) {
+          utils.showToast({
+            title: '连接错误' + res.code
+          })
+        }
+        return
+      }
+      res = res.data;
+      if (res.type == 2) {
+        this.setData({
+          aiInfo: res
+        })
+      }
+      if (res.type == 3) {
+        //更PVP 同步 等2秒动画
+        setTimeout(() => {
+          this.startTheAiInterval()
+        }, 2000)
+      }
+      if (res.type == '6') {
+        battle.PVA_send({"type": 3});
+        setTimeout(() => {
+          this.clearTheAiInterval()
+          if (this.data.PVA_isConnect) {
+            battle.PVA_close();
+            this.setData({
+              PVA_isConnect: false,
+              vsAi: undefined
+            })
+          }
+        }, 500)
+      }
+    })
   },
   /**
    * 取消对战
@@ -443,11 +494,9 @@ Page({
         this.setData({
           showRoom: false
         });
-        this.animationEvt('ready', callback)
       }, 100)
     }
     if (type == 'ready') {
-      console.log('xxxxxxxxxx', width)
       matchLeftAni.translateX(0).step({delay: 500});
       matchRightAni.translateX(0).step({delay: 500});
       this.setData({
@@ -469,10 +518,10 @@ Page({
       });
       this.initCanvas();
       setTimeout(() => {
-        callback && callback();
         this.setData({
           MATCH: false
         });
+        callback && callback();
       }, 500)
     }
   },
@@ -923,12 +972,7 @@ Page({
           vsAi: false
         })
       }
-      setTimeout(() => {
-        this.animationEvt('start', () => {
-          this.getSubject()
-        })
-      }, 2000)
-
+      this.getSubject()
     }
   },
   closeModal () {

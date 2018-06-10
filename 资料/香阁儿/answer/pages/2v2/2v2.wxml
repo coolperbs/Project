@@ -6,7 +6,7 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.teamId==roomOwner&&index<2}}"
+						wx:if="{{index<2}}"
 						class="user {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
@@ -23,7 +23,7 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.teamId!=roomOwner &&index>1}}"
+						wx:if="{{index>1}}"
 						class="user {{item.teamId==roomOwner?'owner':''}}">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
@@ -67,33 +67,33 @@
 			</view>
 		</view>
 	</view>
-	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
+	<view class="match" wx:if="{{MATCH}}" animation="{{matchData}}">
 		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-vs.png"></image>
 		<view class="start-box">
 			<image class="start-left" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-left.png" animation="{{matchLeftData}}"></image>
 			<image class="start-right" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-right.png" animation="{{matchRightData}}"></image>
 		</view>
-		<view class="match-user">
-			<view class="user owner">
-				<image class="head" mode="scaleToFill"></image>
-				<view class="name">xxxxx</view>
-			</view>
-			<view class="user owner">
-				<image class="head" mode="scaleToFill"></image>
-				<view class="name">xxxxx</view>
+		<view wx:if="{{!isMach}}" class="waiting">匹配中...</view>
+		<view wx:if="{{isMach}}" class="match-user">
+			<view wx:for="{{roomUsers}}"
+						wx:key="{{index}}"
+						wx:if="{{teamIdArr[0].teamId==item.teamId}}"
+						class="user owner {{teamUserMap[0].indexOf(item.id)}}">
+				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
+				<view class="name">{{item.name?item.name:'待确认'}}</view>
 			</view>
 			<view class="user-vs">
 				<image mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
 			</view>
-			<view class="user">
-				<image class="head" mode="scaleToFill"></image>
-				<view class="name">xxxxx</view>
-			</view>
-			<view class="user">
-				<image class="head" mode="scaleToFill"></image>
-				<view class="name">xxxxx</view>
+			<view wx:for="{{roomUsers}}"
+						wx:key="{{index}}"
+						wx:if="{{teamIdArr[0].teamId!=item.teamId}}"
+						class="user">
+				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
+				<view class="name">{{item.name?item.name:'待确认'}}</view>
 			</view>
 		</view>
+		<button style="position: absolute;bottom:100rpx;left:0;right:0;" class="cancel" bindtap="cancelBattle">退出房间</button>
 	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
