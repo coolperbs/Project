@@ -6,8 +6,8 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{index<2}}"
-						class="user {{item.teamId==roomOwner?'owner':''}}">
+						wx:if="{{teamIdArr[0].teamId==item.teamId}}"
+						class="user owner">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
 						<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
@@ -23,8 +23,8 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{index>1}}"
-						class="user {{item.teamId==roomOwner?'owner':''}}">
+						wx:if="{{teamIdArr[0].teamId!=item.teamId}}"
+						class="user">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
 						<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
@@ -114,12 +114,12 @@
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="result {{isEnd?'active':''}}">
-		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{result}}" wx:key="{{index}}">
+		<view class="mine" wx:if="{{item.userId==userId}}" wx:for="{{result}}" wx:key="{{index}}">
 			<view class="min-head-box">
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image wx:if="{{item.mvp}}" class="bigmvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
+				<image class="bigmvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
@@ -134,10 +134,10 @@
 						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
 							<view class="rank">{{item.ranking}}</view>
 							<view class="head-out">
-								<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
+								<view class="head-box {{item.teamId==userId?'owner':''}}">
 									<image class="head" src="{{item.userAvatar}}"></image>
+									<image wx:if="{{item.mvp}}" class="mvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 								</view>
-								<image wx:if="{{item.mvp}}" class="mvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 							</view>
 							<view class="name">{{item.userName}}</view>
 							<view class="coin-box">
@@ -160,7 +160,7 @@
 		</view>
 		<image class="boom" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/boom.png"></image>
 	</view>
-	<view class="level-up  {{showUPMask?'active':''}}">
+	<view class="level-up {{showUPMask?'active':''}}">
 		<view class="bg-box">
 			<image class="shinning" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/shinning.png"></image>
 			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelMain.png"></image>

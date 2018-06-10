@@ -276,12 +276,12 @@ Page({
         this.setData({
           isMach: true
         })
-        if(this.data.showRoom){
+        if (this.data.showRoom) {
           this.animationEvt('start')
           this.animationEvt('ready', () => {
             this.beginAnswer(res)
           })
-        }else {
+        } else {
           setTimeout(() => {
             this.animationEvt('ready', () => {
               this.beginAnswer(res)
@@ -381,7 +381,7 @@ Page({
     }
   },
   connectAI () {
-    if (this.data.vsAi==undefined) {
+    if (this.data.vsAi == undefined) {
       battle.TVA_connect(this.data.level, this.data.teamId, () => {
         this.setData({
           aiConnect: true
@@ -410,6 +410,12 @@ Page({
       if (res.type == 3) {
         //更PVP 同步 等2秒动画
         setTimeout(() => {
+          let subject = this.data.subject;
+          if (subject.pushTime == res.subject.pushTime && this.aiTimer) {
+            console.log('2ci xuanranle ')
+            //避免题目二次渲染
+            return
+          }
           this.startTheAiInterval()
         }, 2000)
       }
@@ -426,6 +432,71 @@ Page({
           }
         }, 500)
       }
+    })
+  },
+  startTheAiInterval () {
+    this.clearTheAiInterval(() => {
+      let count = Math.ceil(parseInt(Math.random() * 5));
+      this.aiTimer = setInterval(() => {
+        //console.log('ai答题倒计时');
+        if (count <= 0) {
+          this.clearTheAiInterval(() => {
+            this.aiAnswerEvt();
+          });
+        } else {
+          count -= 1
+        }
+      }, 1000);
+    });
+  },
+  clearTheAiInterval (callback) {
+    if (this.aiTimer) {
+      clearInterval(this.aiTimer);
+      this.aiTimer = null;
+    }
+    callback && callback();
+  },
+  aiAnswerEvt () {
+    //console.log('ai答题了');
+    let percent = parseFloat(Math.random() * 1).toFixed(2);
+    //let aiWinRate = this.data.aiInfo.aiWinRate || 0;
+    let aiWinRate = 0.4;
+    //todo 差ai 胜率 0.4
+    let that = this;
+
+    //先随机取答案且保证答案不正确
+    function getError (right) {
+      let result = Math.floor(parseInt((Math.random() * that.data.subjectList.length) + 1));
+      if (right == result) {
+        return getError(right)
+      } else {
+        //console.log('随机答案' + result)
+        return result
+      }
+    }
+
+    let rightAnswer = this.data.subject.rightOption;
+    let answer = getError(rightAnswer);
+    let answer2 = getError(rightAnswer);
+    if (percent > aiWinRate) {
+      answer = rightAnswer;
+      answer2 = rightAnswer;
+    }
+    console.log('正确答案' + rightAnswer)
+    console.log('ai 答案' + answer)
+    battle.TVA_send({
+      "type": 2,
+      "optionId": answer,
+      "subjectOffset": this.data.subjectCount,
+      "aiUser": true,
+      "aiUserId": this.data.roomUsers[0].id
+    })
+    battle.TVA_send({
+      "type": 2,
+      "optionId": answer2,
+      "subjectOffset": this.data.subjectCount,
+      "aiUser": true,
+      "aiUserId": this.data.roomUsers[1].id
     })
   },
   /**
