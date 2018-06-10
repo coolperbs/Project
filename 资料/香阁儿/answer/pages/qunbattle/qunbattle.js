@@ -580,7 +580,7 @@ Page({
     this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
-      if (!this.data.hasMore) {
+      if (!this.data.hasMore&&this.data.isAnswered) {
         //获取对战结果
         /*结果展示2秒*/
         this.clearCountAni();

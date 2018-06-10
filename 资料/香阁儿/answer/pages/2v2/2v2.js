@@ -169,8 +169,7 @@ Page({
         this.initRoom(res);
       }
       if (res.type == 2) {
-        this.initRoom(res);
-        this.beginAnswer(res);
+       return
       }
       if (res.type == 3) {
 
@@ -479,6 +478,8 @@ Page({
       answer = rightAnswer;
       answer2 = rightAnswer;
     }
+    answer = rightAnswer;
+    answer2 = rightAnswer;
     console.log('正确答案' + rightAnswer)
     console.log('ai 答案' + answer)
     battle.TVA_send({
@@ -708,7 +709,7 @@ Page({
     }
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
-      if (!this.data.hasMore) {
+      if (!this.data.hasMore && this.data.isAnswered) {
         //获取对战结果
         /*结果展示2秒*/
         this.clearCountAni();

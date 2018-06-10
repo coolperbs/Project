@@ -1,5 +1,5 @@
 // pages/friendbattle/friendbattle.js
-import {battle,user} from '../../services/index'
+import {battle, user} from '../../services/index'
 import utils from '../../common/utils/utils'
 
 Page({
@@ -32,7 +32,7 @@ Page({
     isStart: false,
     MATCH: false
   },
-  initCanvas() {
+  initCanvas () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
@@ -49,13 +49,13 @@ Page({
     circle2.stroke();
     circle2.draw();
   },
-  clearCountAni(callback) {
+  clearCountAni (callback) {
     if (this.countTimer) {
       clearInterval(this.countTimer)
     }
     callback && callback()
   },
-  startCountAni() {
+  startCountAni () {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2;
@@ -78,31 +78,31 @@ Page({
       circle2.draw();
     }, 10)
   },
-  onShow() {
+  onShow () {
     this.playBg();
     this.initPage();
-    setTimeout(()=>{
-      if(this.data.hasError){
+    setTimeout(() => {
+      if (this.data.hasError) {
         this.back()
       }
-    },1000)
+    }, 1000)
   },
-  playBg() {
+  playBg () {
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
   },
-  stopBg() {
+  stopBg () {
     if (this.audioCtx) {
       this.audioCtx.pause();
     }
   },
-  playWinner() {
+  playWinner () {
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
   },
-  stopWinner() {
+  stopWinner () {
     if (this.audioCtx2) {
       this.audioCtx2.pause();
     }
@@ -120,7 +120,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage() {
+  initPage () {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -131,7 +131,7 @@ Page({
     this.setData({
       userId: UserInfo.user.id
     });
-    battle.PVF_connect(this.data.level, token, this.data.roomId,'',false, () => {
+    battle.PVF_connect(this.data.level, token, this.data.roomId, '', false, () => {
       //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true
@@ -143,7 +143,7 @@ Page({
   /**
    * 监听信息
    * */
-  getMessage() {
+  getMessage () {
     battle.PVF_onMessage((res) => {
       //console.log('好友对战接收到消息了:----------------------');
       if (res.code != '0000') {
@@ -154,7 +154,7 @@ Page({
         }
         this.closeConnect();
         this.setData({
-          hasError:true
+          hasError: true
         });
         return
       }
@@ -256,7 +256,7 @@ Page({
         this.modal.showModal({
           content: '房主发起再来一盘',
           confirmText: '确认加入',
-          success(res) {
+          success (res) {
             that.closeConnect();
             if (res.result == 'confirm') {
               utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
@@ -286,7 +286,7 @@ Page({
   /**
    * 初始化房间信息
    * */
-  initRoom(res) {
+  initRoom (res) {
     console.log('房间信息:-----------------');
     //console.log('房间信息:-----------------');
     console.log(res.roomId)
@@ -296,7 +296,7 @@ Page({
     })
     this.updateRoomUser(res.roomUsers);
   },
-  addFriend() {
+  addFriend () {
     if (this.data.roomOwner == this.data.userId) {
       return
     }
@@ -317,7 +317,7 @@ Page({
   /**
    * 更新房间信息
    * */
-  updateRoomUser(res) {
+  updateRoomUser (res) {
     //console.log('房间信息更新:-----------------');
     //console.log(res);
     //console.log('房间信息更新:-----------------');
@@ -349,7 +349,7 @@ Page({
   /**
    * 发送消息
    * */
-  sendMessage(data) {
+  sendMessage (data) {
     if (!this.data.isConnect) {
       this.back();
       return
@@ -359,7 +359,7 @@ Page({
   /**
    * 开始对战
    * */
-  startBattle() {
+  startBattle () {
     let count = 0;
     this.data.roomUsers.map((el) => {
       if (el.avatar) {
@@ -378,11 +378,11 @@ Page({
   /**
    * 取消对战
    * */
-  cancelBattle() {
+  cancelBattle () {
     let that = this;
     this.modal.showModal({
       content: '确定退出房间?',
-      success(res) {
+      success (res) {
         if (res.result == 'confirm') {
           that.closeConnect();
           that.back();
@@ -399,7 +399,7 @@ Page({
   /**
    * 场景动画
    * */
-  animationEvt(type, callback) {
+  animationEvt (type, callback) {
     let room = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
@@ -452,7 +452,7 @@ Page({
       }, 100)
     }
     if (type == 'ready') {
-      console.log('xxxxxxxxxx',width)
+      console.log('xxxxxxxxxx', width)
       matchLeftAni.translateX(0).step({delay: 500});
       matchRightAni.translateX(0).step({delay: 500});
       this.setData({
@@ -484,7 +484,7 @@ Page({
   /**
    * 获取题目
    * */
-  getSubject() {
+  getSubject () {
     if (!this.data.hasMore) {
       return
     }
@@ -497,7 +497,7 @@ Page({
   /**
    * 拿到题目
    * */
-  filterSubject(res) {
+  filterSubject (res) {
     //console.log('获取的题目:-------------------------------')
     //console.log(res)
     //console.log('获取的题目:-------------------------------')
@@ -529,7 +529,7 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint(res) {
+  updatePoint (res) {
     //console.log('得到答案更新用户分数:--------------------------------------')
     //console.log(res);
     //console.log('得到答案更新用户分数:--------------------------------------')
@@ -578,7 +578,7 @@ Page({
     this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
-      if (!this.data.hasMore) {
+      if (!this.data.hasMore && this.data.isAnswered) {
         //获取对战结果
         /*结果展示2秒*/
         this.clearCountAni();
@@ -605,7 +605,7 @@ Page({
   /**
    * updateRankList
    * */
-  updateRankList() {
+  updateRankList () {
     let roomUser = this.data.roomUsers;
     let sortData = [...roomUser];
     sortData.sort((a, b) => {
@@ -625,7 +625,7 @@ Page({
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt(res) {
+  filterSubjectListEvt (res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -686,7 +686,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation(type, callback) {
+  subjectAnimation (type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -743,7 +743,7 @@ Page({
   /**
    * 答题倒计时
    * */
-  startTheInterval() {
+  startTheInterval () {
     this.clearTheInterval(() => {
       this.clearCountAni(() => {
         this.startCountAni();
@@ -766,7 +766,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval(callback) {
+  clearTheInterval (callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -775,7 +775,7 @@ Page({
   /**
    * 答题
    * */
-  answerSubject(e) {
+  answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
       return
@@ -792,7 +792,7 @@ Page({
   /**
    * 结束游戏
    * */
-  endGame(res) {
+  endGame (res) {
     //console.log('游戏结束:--------------------------------------')
     //console.log(res)
     //console.log('游戏结束:--------------------------------------')
@@ -843,7 +843,7 @@ Page({
   /**
    * 关闭连接
    * */
-  closeConnect() {
+  closeConnect () {
     //console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
     this.clearCountAni();
@@ -860,7 +860,7 @@ Page({
   /**
    * 再来一把
    * */
-  playAgain() {
+  playAgain () {
     //房间重置
     this.setData({
       WINNER: false,
@@ -900,17 +900,17 @@ Page({
       this.sendMessage({type: 5});
     }, 50)
   },
-  back() {
-    setTimeout(()=>{
+  back () {
+    setTimeout(() => {
       wx.navigateBack();
-    },50)
+    }, 50)
     // if (this.data.roomOwner != this.data.userId) {
     //   utils.redirectTo('../home/home')
     // } else {
     //   wx.navigateBack()
     // }
   },
-  onHide() {
+  onHide () {
     //console.log('小程序隐藏了')
     // if (this.data.isStart) {
     //   //console.log('关闭连接');
@@ -932,23 +932,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    if(this.data.isEnd){
+    if (this.data.isEnd) {
       return {
         title: '我在知识大对战等你~',
         path: '/pages/login/login',
         success: function (res) {
-          user.shareGetGold( function( res ) {
-            if ( !res || res.code != '0000' ) {
+          user.shareGetGold(function (res) {
+            if (!res || res.code != '0000') {
               return;
             }
-            wx.showToast( { title : '分享成功' } );
-          } );
+            wx.showToast({title: '分享成功'});
+          });
         },
         fail: function (res) {
 
         }
       }
-    }else {
+    } else {
       return {
         title: '等你来战',
         path: '/pages/login/login?direct=../friendbattle/friendbattle&roomId=' + this.data.roomId,
