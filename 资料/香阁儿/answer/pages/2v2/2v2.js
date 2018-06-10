@@ -277,10 +277,9 @@ Page({
           isMach: true
         })
         if(this.data.showRoom){
-          this.animationEvt('start',()=>{
-            this.animationEvt('ready', () => {
-              this.beginAnswer(res)
-            })
+          this.animationEvt('start')
+          this.animationEvt('ready', () => {
+            this.beginAnswer(res)
           })
         }else {
           setTimeout(() => {
