@@ -82,11 +82,11 @@ Page({
   },
   onShow () {
     this.playBg();
-    setTimeout(()=>{
-      if(this.data.hasError){
+    setTimeout(() => {
+      if (this.data.hasError) {
         this.back()
       }
-    },1000)
+    }, 1000)
   },
   playBg () {
     return
@@ -160,7 +160,7 @@ Page({
         }
         this.closeConnect();
         this.setData({
-          hasError:true
+          hasError: true
         })
         return
       }
@@ -181,7 +181,9 @@ Page({
       }
       if (res.type == 4) {
 
-        this.updatePoint(res)
+        setTimeout(() => {
+          this.updatePoint(res)
+        }, 10)
       }
       if (res.type == 5) {
 
@@ -269,7 +271,8 @@ Page({
       if (res.type == 11) {
         this.initRoom(res);
         this.setData({
-          isMach: true
+          isMach: true,
+          vsAi: false
         })
         setTimeout(() => {
           this.animationEvt('ready', () => {
@@ -372,7 +375,9 @@ Page({
   },
   connectAI () {
     if (this.data.vsAi == undefined) {
+      console.log('准备AI')
       battle.TVA_connect(this.data.level, this.data.teamId, () => {
+        console.log('AI zhunbeihao ')
         this.setData({
           aiConnect: true
         })
@@ -399,6 +404,7 @@ Page({
       }
       if (res.type == 3) {
         //更PVP 同步 等2秒动画
+        console.log('开始AI 监听')
         setTimeout(() => {
           let subject = this.data.subject;
           if (subject.pushTime == res.subject.pushTime && this.aiTimer) {
@@ -410,13 +416,14 @@ Page({
         }, 2000)
       }
       if (res.type == '6') {
-        battle.PVA_send({"type": 3});
+        return
+        battle.TVA_send({"type": 3});
         setTimeout(() => {
           this.clearTheAiInterval()
-          if (this.data.PVA_isConnect) {
-            battle.PVA_close();
+          if (this.data.aiConnect) {
+            battle.TVA_close();
             this.setData({
-              PVA_isConnect: false,
+              aiConnect: false,
               vsAi: undefined
             })
           }
@@ -968,10 +975,10 @@ Page({
         isConnect: false
       })
     }
-    if(this.data.aiConnect){
-     setTimeout(()=>{
-       battle.TVA_close();
-     },50)
+    if (this.data.aiConnect) {
+      setTimeout(() => {
+        battle.TVA_close();
+      }, 50)
     }
     if (this.keepTimer) {
       clearInterval(this.keepTimer)
