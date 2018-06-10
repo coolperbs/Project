@@ -276,18 +276,14 @@ Page({
         this.setData({
           isMach: true
         })
-        if (this.data.showRoom) {
-          this.animationEvt('start')
+        setTimeout(() => {
           this.animationEvt('ready', () => {
             this.beginAnswer(res)
           })
-        } else {
-          setTimeout(() => {
-            this.animationEvt('ready', () => {
-              this.beginAnswer(res)
-            })
-          }, 200)
-        }
+        }, 200)
+      }
+      if (res.type == 12) {
+        this.animationEvt('start');
       }
     })
   },
@@ -368,7 +364,6 @@ Page({
 
     if (count >= 2) {
       this.sendMessage({"type": 6});
-      this.animationEvt('start');
       // 准备 机器人
       setTimeout(() => {
         this.connectAI();

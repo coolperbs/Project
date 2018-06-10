@@ -126,24 +126,24 @@
 		<view class="result-bottom">
 			<view class="result-box">
 				<view class="result-box-in">
-					<view class="mine-point" wx:if="{{item.userId==userId}}" wx:for="{{result}}" wx:key="{{index}}">
-						<view class="point">+{{item.gold}}金币</view>
-						<view class="rank">第{{item.ranking}}名</view>
+					<view class="mine-point" wx:if="{{userItem.userId==userId}}" wx:for="{{result}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="userItem">
+						<view class="point">+{{userItem.gold}}金币</view>
+						<view class="rank">第{{userItem.ranking}}名</view>
 					</view>
 					<view class="rank-list">
-						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
-							<view class="rank">{{item.ranking}}</view>
+						<view class="list-user" wx:for="{{result}}" wx:key="{{idx2}}" wx:for-index="idx2" wx:for-item="userItem2">
+							<view class="rank">{{userItem2.ranking}}</view>
 							<view class="head-out">
-								<view class="head-box {{item.teamId==userId?'owner':''}}">
-									<image class="head" src="{{item.userAvatar}}"></image>
-									<image wx:if="{{item.mvp}}" class="mvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
+								<view class="head-box {{userItem2.teamId==userId?'owner':''}}">
+									<image class="head" src="{{userItem2.userAvatar}}"></image>
+									<image wx:if="{{userItem2.mvp}}" class="mvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 								</view>
 							</view>
-							<view class="name">{{item.userName}}</view>
+							<view class="name">{{userItem2.userName}}</view>
 							<view class="coin-box">
-								<view class="coin">+{{item.gold}}金币</view>
-								<view class="coin">+{{item.exp}}经验</view>
-								<view class="point">{{item.totlePoint<0?'0':item.totlePoint}}分</view>
+								<view class="coin">+{{userItem2.gold}}金币</view>
+								<view class="coin">+{{userItem2.exp}}经验</view>
+								<view class="point">{{userItem2.totlePoint<0?'0':userItem2.totlePoint}}分</view>
 							</view>
 						</view>
 					</view>
