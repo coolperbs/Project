@@ -169,7 +169,7 @@ Page({
         this.initRoom(res);
       }
       if (res.type == 2) {
-       return
+        return
       }
       if (res.type == 3) {
 
@@ -455,8 +455,10 @@ Page({
   aiAnswerEvt () {
     //console.log('ai答题了');
     let percent = parseFloat(Math.random() * 1).toFixed(2);
+    let percent2 = parseFloat(Math.random() * 1).toFixed(2);
     //let aiWinRate = this.data.aiInfo.aiWinRate || 0;
     let aiWinRate = 0.4;
+    let aiWinRate2 = 0.1;
     //todo 差ai 胜率 0.4
     let that = this;
 
@@ -476,12 +478,14 @@ Page({
     let answer2 = getError(rightAnswer);
     if (percent > aiWinRate) {
       answer = rightAnswer;
+
+    }
+    if(percent2>aiWinRate2){
       answer2 = rightAnswer;
     }
-    answer = rightAnswer;
-    answer2 = rightAnswer;
     console.log('正确答案' + rightAnswer)
     console.log('ai 答案' + answer)
+    console.log('ai 答案' + answer2)
     battle.TVA_send({
       "type": 2,
       "optionId": answer,
@@ -489,13 +493,15 @@ Page({
       "aiUser": true,
       "aiUserId": this.data.roomUsers[0].id
     })
-    battle.TVA_send({
-      "type": 2,
-      "optionId": answer2,
-      "subjectOffset": this.data.subjectCount,
-      "aiUser": true,
-      "aiUserId": this.data.roomUsers[1].id
-    })
+   setTimeout(()=>{
+     battle.TVA_send({
+       "type": 2,
+       "optionId": answer2,
+       "subjectOffset": this.data.subjectCount,
+       "aiUser": true,
+       "aiUserId": this.data.roomUsers[1].id
+     })
+   },1000)
   },
   /**
    * 取消对战
