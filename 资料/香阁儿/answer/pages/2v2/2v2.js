@@ -205,7 +205,7 @@ Page({
         });
         let rest = [...roomUsers]
         utils.showToast({title: '玩家' + rest[runner].name + '离开房间~'})
-        rest[runner] = {point: 0};
+        //rest[runner] = {point: 0};
         //计算还有几个用户
         this.setData({
           roomUsers: rest
