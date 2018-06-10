@@ -119,7 +119,7 @@
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image wx:if="{{item.mvp}}" class="bigmvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
+				<image class="bigmvp {{item.mvp?'show':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
@@ -136,8 +136,8 @@
 							<view class="head-out">
 								<view class="head-box {{userItem2.teamId==userId?'owner':''}}">
 									<image class="head" src="{{userItem2.userAvatar}}"></image>
-									<image wx:if="{{userItem2.mvp}}" class="mvp" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 								</view>
+								<image class="mvp {{userItem2.mvp?'show':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
 							</view>
 							<view class="name">{{userItem2.userName}}</view>
 							<view class="coin-box">

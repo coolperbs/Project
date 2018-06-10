@@ -246,6 +246,7 @@ export default {
     });
     console.log('链接数据')
     console.log({
+      roomId: roomId,
       teamId: teamId,
       danGrading: danGrading || 1,
     })

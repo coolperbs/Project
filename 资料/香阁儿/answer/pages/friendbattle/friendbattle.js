@@ -80,6 +80,12 @@ Page({
   },
   onShow() {
     this.playBg();
+    this.initPage();
+    setTimeout(()=>{
+      if(this.data.hasError){
+        this.back()
+      }
+    },1000)
   },
   playBg() {
     this.audioCtx = wx.createAudioContext('myAudio');
@@ -109,7 +115,6 @@ Page({
       level: options.level || 1,
       roomId: options.roomId || ''
     });
-    this.initPage();
     this.modal = this.selectComponent("#m-modal");
   },
   /**
@@ -148,9 +153,9 @@ Page({
           })
         }
         this.closeConnect();
-        setTimeout(() => {
-          this.back()
-        }, 1500);
+        this.setData({
+          hasError:true
+        });
         return
       }
       res = res.data;

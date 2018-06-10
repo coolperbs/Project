@@ -211,11 +211,6 @@
           border: 2rpx solid #2fdefd;
           margin-right: 20rpx;
           position: relative; }
-          .tvt .result .rank-list .list-user .head-box .mvp {
-            width: 60rpx;
-            height: 40rpx;
-            position: absolute;
-            top: 0; }
           .tvt .result .rank-list .list-user .head-box.owner {
             border: 2rpx solid #fd2fa1; }
           .tvt .result .rank-list .list-user .head-box .head {
@@ -681,6 +676,23 @@
   width: 200rpx;
   height: 80rpx;
   top: 0;
-  left: 37%; }
+  left: 37%;
+  opacity: 0; }
+  .bigmvp.show {
+    opacity: 1; }
+
+.head-out {
+  position: relative; }
+
+.mvp {
+  width: 80rpx;
+  height: 40rpx;
+  position: absolute;
+  top: -16rpx;
+  opacity: 0;
+  z-index: 1;
+  left: -8rpx; }
+  .mvp.show {
+    opacity: 1; }
 
 /*# sourceMappingURL=2v2.wxss.map */

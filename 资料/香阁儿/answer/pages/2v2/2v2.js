@@ -82,6 +82,11 @@ Page({
   },
   onShow () {
     this.playBg();
+    setTimeout(()=>{
+      if(this.data.hasError){
+        this.back()
+      }
+    },1000)
   },
   playBg () {
     return
@@ -154,9 +159,9 @@ Page({
           })
         }
         this.closeConnect();
-        setTimeout(() => {
-          this.back()
-        }, 1500);
+        this.setData({
+          hasError:true
+        })
         return
       }
       res = res.data;
@@ -192,7 +197,6 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
-        return
         console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
@@ -205,10 +209,8 @@ Page({
         this.setData({
           roomUsers: rest
         })
-        console.log(this.data.teamUsersMap)
         //区分开始对战没有
         if (this.data.isStart) {
-
           // 这里判断 某一个组人为空就退出
           let teamUsersMap = this.data.teamUsersMap;
           for (var k  in teamUsersMap) {
@@ -225,14 +227,7 @@ Page({
             }
           }
         } else {
-          let teamUsersMap = this.data.teamUsersMap;
-          let dismiss = false
-          for (var k  in teamUsersMap) {
-            if (k == res.userId) {
-              dismiss = true;
-            }
-          }
-          if (res.userId == this.data.roomOwner || dismiss) {
+          if (res.userId == this.data.teamId) {
             //房主都跑了
             utils.showToast({
               title: '房间解散~~'
@@ -963,14 +958,20 @@ Page({
    * 关闭连接
    * */
   closeConnect () {
-    //console.log('关闭连接:-------------------------------------')
+    console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
+    this.clearTheAiInterval()
     this.clearCountAni();
     if (this.data.isConnect) {
       battle.TVT_close();
       this.setData({
         isConnect: false
       })
+    }
+    if(this.data.aiConnect){
+     setTimeout(()=>{
+       battle.TVA_close();
+     },50)
     }
     if (this.keepTimer) {
       clearInterval(this.keepTimer)
