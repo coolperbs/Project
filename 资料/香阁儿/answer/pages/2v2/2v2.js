@@ -704,6 +704,10 @@ Page({
       })
       let teamId = res.teamId;
       if (teamId === null) {
+        console.log('-----------')
+        console.log(res)
+        console.log(this.data.roomUsers)
+        console.log('-----------')
         //console.log('队伍ID 为空 没找到')
         return
       }
@@ -789,8 +793,15 @@ Page({
     } catch (e) {
       console.log('跟新分数异常')
       console.log(e)
+    }finally {
+      utils.showToast({
+        title:'游戏异常,已退出'
+      })
+      setTimeout(()=>{
+        this.closeConnect();
+        this.back();
+      },1500)
     }
-
   },
   /**
    * 题目选项过滤
@@ -922,7 +933,8 @@ Page({
             //console.log('用户到时间,自动答错 获取新题目');
             this.clearCountAni();
             this.clearTheInterval(() => {
-              // console.log('自动答题')
+              console.log('自动答题')
+              //todo 明天检查 是不是这里
               this.answerSubject();
             });
           } else {

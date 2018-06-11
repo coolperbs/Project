@@ -94,8 +94,8 @@ export default {
     })
   },
   TVT_send (data) {
-    console.log('发送：')
-    console.log(data)
+    // console.log('发送：')
+    // console.log(data)
     var messageList = this.TVT_messageList;
     messageList.push(data);
     if (this.TVT_isConnect) {
@@ -128,6 +128,7 @@ export default {
       utils.showToast({
         title: '连接错误！'
       });
+      wx.navigateBack();
     })
   },
   TVT_close () {
