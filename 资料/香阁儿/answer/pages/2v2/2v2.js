@@ -83,10 +83,10 @@ Page({
   onShow () {
     this.playBg();
   },
-  onReady(){
+  onReady () {
     this.initPage();
   },
-  checkStatus(){
+  checkStatus () {
     setTimeout(() => {
       if (this.data.hasError) {
         this.back()
@@ -153,9 +153,6 @@ Page({
    * */
   getMessage () {
     battle.TVT_onMessage((res) => {
-      console.log('---------------------')
-      console.log(res)
-      console.log('---------------------')
       if (res.code != '0000') {
         if (this.data.isConnect) {
           utils.showToast({
@@ -168,7 +165,7 @@ Page({
       }
       res = res.data;
       if (res.type == 1) {
-        this.initRoom(res);
+        //this.initRoom(res);
       }
       if (res.type == 2) {
         return
@@ -182,9 +179,7 @@ Page({
       }
       if (res.type == 4) {
 
-        setTimeout(() => {
-          this.updatePoint(res)
-        }, 10)
+        this.updatePoint(res)
       }
       if (res.type == 5) {
 
@@ -200,24 +195,21 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
-        console.log('有人离开了', res)
+        //console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
         });
         let rest = [...roomUsers]
         utils.showToast({title: '玩家' + rest[runner].name + '离开房间~'})
-        //rest[runner] = {point: 0};
-        //计算还有几个用户
-        this.setData({
-          roomUsers: rest
-        })
         //区分开始对战没有
         if (this.data.isStart) {
           // 这里判断 某一个组人为空就退出
-          let teamUsersMap = this.data.teamUsersMap;
-          for (var k  in teamUsersMap) {
-            if (teamUsersMap[k].length == 0) {
+          this.startRunner = this.startRunner || [];
+          this.startRunner.push(res.userId);
+          //对战ai 的时候 如果房主退出了 整个结束
+          if(this.data.aiConnect){
+            if(res.userId==this.data.teamId){
               this.clearCountAni();
               this.clearTheInterval();
               setTimeout(() => {
@@ -228,8 +220,38 @@ Page({
                 })
               }, 100)
             }
+          }else {
+            //真人对战  其中一个组退完 才整体退出
+
+            let teamUsersMap = this.data.teamUsersMap;
+            for (let k  in teamUsersMap) {
+              let count=0;
+              for(let y =0;y<teamUsersMap[k].length;y++){
+                let temp =teamUsersMap[k][y];
+                if(this.startRunner.indexOf(temp)>-1){
+                  count+=1;
+                }
+                if(count==2){
+                  this.clearCountAni();
+                  this.clearTheInterval();
+                  setTimeout(() => {
+                    this.subjectAnimation(4, () => {
+                      this.clearCountAni();
+                      this.clearTheInterval();
+                      this.sendMessage({type: 3})
+                    })
+                  }, 100)
+                  break;
+                }
+              }
+            }
           }
         } else {
+          rest[runner] = {point: 0};
+          //计算还有几个用户
+          this.setData({
+            roomUsers: rest
+          })
           if (res.userId == this.data.teamId) {
             //房主都跑了
             utils.showToast({
@@ -243,6 +265,8 @@ Page({
         }
       }
       if (res.type == '7') {
+
+        return
         this.animationEvt('start', () => {
           this.getSubject();
         })
@@ -269,9 +293,7 @@ Page({
           clearInterval(this.keepTimer)
         }
         this.keepTimer = setInterval(() => {
-          console.log('keep----')
           battle.TVT_send({type: 999})
-
         }, 5000)
       }
       if (res.type == 10) {
@@ -279,17 +301,26 @@ Page({
       }
       if (res.type == 11) {
         this.setData({
-          isMach: true,
           vsAi: false
         })
+        if (!this.get12) {
+          this.animationEvt('start');
+        }
         this.initRoom(res);
         setTimeout(() => {
+          this.setData({
+            isMach: true,
+          })
           this.animationEvt('ready', () => {
             this.beginAnswer(res)
           })
-        }, 200)
+        }, 2000)
+
+        //保持动画一致 都等2000ms
+
       }
       if (res.type == 12) {
+        this.get12 = true
         this.animationEvt('start');
       }
     })
@@ -362,14 +393,17 @@ Page({
    * 开始对战
    * */
   startMatch () {
+    if (this.isStartMatch) {
+      return
+    }
     let count = 0;
     this.data.roomUsers.map((el) => {
       if (el.avatar) {
         count++;
       }
     })
-
     if (count >= 2) {
+      this.isStartMatch = true;
       this.sendMessage({"type": 6});
       // 准备 机器人
       setTimeout(() => {
@@ -384,9 +418,7 @@ Page({
   },
   connectAI () {
     if (this.data.vsAi == undefined) {
-      console.log('准备AI')
       battle.TVA_connect(this.data.level, this.data.teamId, () => {
-        console.log('AI zhunbeihao ')
         this.setData({
           aiConnect: true
         })
@@ -396,7 +428,6 @@ Page({
   },
   getAiMessage () {
     battle.TVA_onMessage((res) => {
-      console.log('aiMessage', res)
       if (res.code != '0000') {
         if (this.data.PVA_isConnect) {
           utils.showToast({
@@ -413,11 +444,9 @@ Page({
       }
       if (res.type == 3) {
         //更PVP 同步 等2秒动画
-        console.log('开始AI 监听')
         setTimeout(() => {
           let subject = this.data.subject;
           if (subject.pushTime == res.subject.pushTime && this.aiTimer) {
-            console.log('2ci xuanranle ')
             //避免题目二次渲染
             return
           }
@@ -490,12 +519,9 @@ Page({
       answer = rightAnswer;
 
     }
-    if(percent2>aiWinRate2){
+    if (percent2 > aiWinRate2) {
       answer2 = rightAnswer;
     }
-    console.log('正确答案' + rightAnswer)
-    console.log('ai 答案' + answer)
-    console.log('ai 答案' + answer2)
     battle.TVA_send({
       "type": 2,
       "optionId": answer,
@@ -503,15 +529,15 @@ Page({
       "aiUser": true,
       "aiUserId": this.data.roomUsers[0].id
     })
-   setTimeout(()=>{
-     battle.TVA_send({
-       "type": 2,
-       "optionId": answer2,
-       "subjectOffset": this.data.subjectCount,
-       "aiUser": true,
-       "aiUserId": this.data.roomUsers[1].id
-     })
-   },1000)
+    setTimeout(() => {
+      battle.TVA_send({
+        "type": 2,
+        "optionId": answer2,
+        "subjectOffset": this.data.subjectCount,
+        "aiUser": true,
+        "aiUserId": this.data.roomUsers[1].id
+      })
+    }, 1000)
   },
   /**
    * 取消对战
@@ -595,6 +621,7 @@ Page({
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export(),
       });
+      console.log('ready animation')
       setTimeout(() => {
         this.animationEvt('gaming', callback)
       }, 1500)
@@ -625,7 +652,7 @@ Page({
       return
     }
     this.setData({
-      subjectCount: this.data.subjectCount + 1,
+      subjectCount: this.data.subjectCount,
       countDownTime: 10
     });
     this.sendMessage({type: 1, subjectOffset: this.data.subjectCount})
@@ -650,6 +677,7 @@ Page({
       return result
     });
     delete res.subject.optionList;
+    console.log('又可以答题了')
     this.setData({
       subject: res.subject,
       subjectList: subjectList,
@@ -666,88 +694,103 @@ Page({
    * 更新分数
    * */
   updatePoint (res) {
-    //console.log('得到答案更新用户分数:--------------------------------------')
-    //console.log(res);
-    //console.log('得到答案更新用户分数:--------------------------------------')
-    let resultUser = res.userId;
-    let index = this.data.roomUsers.findIndex((el) => {
-      return el.id == resultUser
-    })
-    let teamId = res.teamId;
-    let teamIndex = this.data.teamIdArr.findIndex((el) => {
-      return el.teamId == teamId
-    })
-    let teamIdArr = this.data.teamIdArr;
-    let updateTeam = teamIdArr[teamIndex];
-    let roomUser = this.data.roomUsers;
-    let updateUser = roomUser[index];
-    updateUser['point'] += res.point;
-    updateTeam['teamPoint'] += res.point;
-    if (updateUser['point'] < 0) {
-      updateUser['point'] = 0
-    }
-    if (updateTeam['teamPoint'] < 0) {
-      updateTeam['teamPoint'] = 0
-    }
-    roomUser[index] = updateUser;
-    teamIdArr[teamIndex] = updateTeam;
-    updateUser['pointAnimation'] = true;
-    let oldCombo = updateUser['comboCount'] || 0;
-    updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
-    updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
-    roomUser[index] = updateUser;
-    //console.log(roomUser)
-    this.setData({
-      roomUsers: roomUser,
-      teamIdArr: teamIdArr
-    });
-
-    //加分动画
-    if (updateUser['pointAnimation']) {
-      setTimeout(() => {
-        let users = this.data.roomUsers;
-        users[index]['pointAnimation'] = false;
-        //console.log('pointBar2',users[index].pointBar)
-        this.setData({
-          roomUsers: users
-        });
-      }, 1000);
-    }
-    //combo 动画
-    if (updateUser['comboCount'] > 1) {
-      setTimeout(() => {
-        let users = this.data.roomUsers;
-        users[index]['comboAnimation'] = false;
-        this.setData({
-          roomUsers: users
-        });
-      }, 1500);
-    }
-    this.filterSubjectListEvt(res);
-    if (res.mayNextSub) {
-      if (!this.data.hasMore && this.data.isAnswered) {
-        //获取对战结果
-        /*结果展示2秒*/
-        this.clearCountAni();
-        this.clearTheInterval();
-        setTimeout(() => {
-          this.subjectAnimation(4, () => {
-            this.sendMessage({type: 3});
-          })
-        }, 2000);
+    // console.log('得到答案更新用户分数:--------------------------------------')
+    // console.log(res);
+    // console.log('得到答案更新用户分数:--------------------------------------')
+    try {
+      let resultUser = res.userId;
+      let index = this.data.roomUsers.findIndex((el) => {
+        return el.id == resultUser
+      })
+      let teamId = res.teamId;
+      if(teamId===null){
+        console.log('队伍ID 为空 没找到')
         return
       }
-      //提前结束这道题
-      this.clearCountAni();
-      this.clearTheInterval(() => {
-        /*结果展示2秒*/
-        setTimeout(() => {
-          this.subjectAnimation(4, () => {
-            this.getSubject();
-          })
-        }, 2000)
+      console.log('更新 队伍id',teamId)
+      let teamIndex = this.data.teamIdArr.findIndex((el) => {
+        return el.teamId == teamId
       })
+      let teamIdArr = this.data.teamIdArr;
+      let updateTeam = teamIdArr[teamIndex];
+      console.log('待更新队伍',updateTeam)
+      let roomUser = this.data.roomUsers;
+      let updateUser = roomUser[index];
+      updateUser['point'] += res.point;
+      updateTeam['teamPoint'] += res.point;
+      if (updateUser['point'] < 0) {
+        updateUser['point'] = 0
+      }
+      if (updateTeam['teamPoint'] < 0) {
+        updateTeam['teamPoint'] = 0
+      }
+      roomUser[index] = updateUser;
+      teamIdArr[teamIndex] = updateTeam;
+      updateUser['pointAnimation'] = true;
+      let oldCombo = updateUser['comboCount'] || 0;
+      updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
+      updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
+      roomUser[index] = updateUser;
+      //console.log(roomUser)
+      this.setData({
+        roomUsers: roomUser,
+        teamIdArr: teamIdArr
+      });
+
+      //加分动画
+      if (updateUser['pointAnimation']) {
+        setTimeout(() => {
+          let users = this.data.roomUsers;
+          users[index]['pointAnimation'] = false;
+          //console.log('pointBar2',users[index].pointBar)
+          this.setData({
+            roomUsers: users
+          });
+        }, 1000);
+      }
+      //combo 动画
+      if (updateUser['comboCount'] > 1) {
+        setTimeout(() => {
+          let users = this.data.roomUsers;
+          users[index]['comboAnimation'] = false;
+          this.setData({
+            roomUsers: users
+          });
+        }, 1500);
+      }
+      this.filterSubjectListEvt(res);
+      if (res.mayNextSub) {
+        //console.log('可以进行下一题或者 提前结束')
+        if (!this.data.hasMore && this.data.isAnswered) {
+          //获取对战结果
+          /*结果展示2秒*/
+          console.log('获取结果')
+          this.clearCountAni();
+          this.clearTheInterval();
+          setTimeout(() => {
+            this.subjectAnimation(4, () => {
+              this.sendMessage({type: 3});
+            })
+          }, 2000);
+          return
+        }
+        console.log('提前结束')
+        //提前结束这道题
+        this.clearCountAni();
+        this.clearTheInterval(() => {
+          /*结果展示2秒*/
+          setTimeout(() => {
+            this.subjectAnimation(4, () => {
+              this.getSubject();
+            })
+          }, 2000)
+        })
+      }
+    } catch (e) {
+      console.log('跟新分数异常')
+      console.log(e)
     }
+
   },
   /**
    * 题目选项过滤
@@ -879,6 +922,7 @@ Page({
             //console.log('用户到时间,自动答错 获取新题目');
             this.clearCountAni();
             this.clearTheInterval(() => {
+             // console.log('自动答题')
               this.answerSubject();
             });
           } else {
@@ -905,15 +949,20 @@ Page({
   answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
+      //console.log('题目已经答过了',this.data.subjectCount)
       return
     }
-    this.setData({
-      isAnswered: true
-    });
+    //console.log('答题',this.data.subjectCount)
+    //console.log('答题用户',this.data.userId)
+
     this.sendMessage({
       "type": 2,
       "optionId": answer,		// 用户回答的选项ID，从1开始
       "subjectOffset": this.data.subjectCount	// 用户回答的题目ID
+    });
+    this.setData({
+      isAnswered: true,
+      subjectCount:this.data.subjectCount+1
     });
   },
   /**
