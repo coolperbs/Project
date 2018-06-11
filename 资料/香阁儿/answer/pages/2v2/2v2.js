@@ -34,7 +34,7 @@ Page({
     vsAi: undefined,
     isMach: false
   },
-  initCanvas () {
+  initCanvas() {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
@@ -51,13 +51,13 @@ Page({
     circle2.stroke();
     circle2.draw();
   },
-  clearCountAni (callback) {
+  clearCountAni(callback) {
     if (this.countTimer) {
       clearInterval(this.countTimer)
     }
     callback && callback()
   },
-  startCountAni () {
+  startCountAni() {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2;
@@ -80,37 +80,37 @@ Page({
       circle2.draw();
     }, 10)
   },
-  onShow () {
+  onShow() {
     this.playBg();
   },
-  onReady () {
+  onReady() {
     this.initPage();
   },
-  checkStatus () {
+  checkStatus() {
     setTimeout(() => {
       if (this.data.hasError) {
         this.back()
       }
     }, 1000)
   },
-  playBg () {
+  playBg() {
     return
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
   },
-  stopBg () {
+  stopBg() {
     if (this.audioCtx) {
       this.audioCtx.pause();
     }
   },
-  playWinner () {
+  playWinner() {
     return
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
   },
-  stopWinner () {
+  stopWinner() {
     if (this.audioCtx2) {
       this.audioCtx2.pause();
     }
@@ -129,7 +129,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage () {
+  initPage() {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -151,7 +151,7 @@ Page({
   /**
    * 监听信息
    * */
-  getMessage () {
+  getMessage() {
     battle.TVT_onMessage((res) => {
       if (res.code != '0000') {
         if (this.data.isConnect) {
@@ -208,8 +208,8 @@ Page({
           this.startRunner = this.startRunner || [];
           this.startRunner.push(res.userId);
           //对战ai 的时候 如果房主退出了 整个结束
-          if(this.data.aiConnect){
-            if(res.userId==this.data.teamId){
+          if (this.data.aiConnect) {
+            if (res.userId == this.data.teamId) {
               this.clearCountAni();
               this.clearTheInterval();
               setTimeout(() => {
@@ -220,18 +220,18 @@ Page({
                 })
               }, 100)
             }
-          }else {
+          } else {
             //真人对战  其中一个组退完 才整体退出
 
             let teamUsersMap = this.data.teamUsersMap;
             for (let k  in teamUsersMap) {
-              let count=0;
-              for(let y =0;y<teamUsersMap[k].length;y++){
-                let temp =teamUsersMap[k][y];
-                if(this.startRunner.indexOf(temp)>-1){
-                  count+=1;
+              let count = 0;
+              for (let y = 0; y < teamUsersMap[k].length; y++) {
+                let temp = teamUsersMap[k][y];
+                if (this.startRunner.indexOf(temp) > -1) {
+                  count += 1;
                 }
-                if(count==2){
+                if (count == 2) {
                   this.clearCountAni();
                   this.clearTheInterval();
                   setTimeout(() => {
@@ -277,7 +277,7 @@ Page({
         this.modal.showModal({
           content: '房主发起再来一盘',
           confirmText: '确认加入',
-          success (res) {
+          success(res) {
             that.closeConnect();
             if (res.result == 'confirm') {
               utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
@@ -309,7 +309,7 @@ Page({
         this.initRoom(res);
         setTimeout(() => {
           this.setData({
-            isMach: true,
+            isMach: true
           })
           this.animationEvt('ready', () => {
             this.beginAnswer(res)
@@ -325,19 +325,19 @@ Page({
       }
     })
   },
-  initTeam (res) {
+  initTeam(res) {
     this.setData({
-      teamId: res.teamId,
+      teamId: res.teamId
     })
     this.updateRoomUser(res.teamUsers)
   },
   /**
    * 初始化房间信息
    * */
-  initRoom (res) {
+  initRoom(res) {
     this.setData({
       roomId: res.roomId || '',
-      totalPoint: res.totlePoint || '',
+      totalPoint: res.totlePoint || ''
     })
     this.updateRoomUser(res.roomUsers);
     this.updateTeam(res.teamUsersMap)
@@ -345,7 +345,7 @@ Page({
   /**
    * 更新房间信息
    * */
-  updateRoomUser (res) {
+  updateRoomUser(res) {
     let roomUsers = res.map((el, index) => {
       el.point = 0;
       return el;
@@ -360,7 +360,7 @@ Page({
       roomUsers: roomUsers
     })
   },
-  updateTeam (res) {
+  updateTeam(res) {
     let teamId = Object.keys(res);
     var teamIdArr = [];
     for (let i = 0; i < teamId.length; i++) {
@@ -382,7 +382,7 @@ Page({
   /**
    * 发送消息
    * */
-  sendMessage (data) {
+  sendMessage(data) {
     if (!this.data.isConnect) {
       this.back();
       return
@@ -392,7 +392,7 @@ Page({
   /**
    * 开始对战
    * */
-  startMatch () {
+  startMatch() {
     if (this.isStartMatch) {
       return
     }
@@ -416,7 +416,7 @@ Page({
       })
     }
   },
-  connectAI () {
+  connectAI() {
     if (this.data.vsAi == undefined) {
       battle.TVA_connect(this.data.level, this.data.teamId, () => {
         this.setData({
@@ -426,7 +426,7 @@ Page({
       })
     }
   },
-  getAiMessage () {
+  getAiMessage() {
     battle.TVA_onMessage((res) => {
       if (res.code != '0000') {
         if (this.data.PVA_isConnect) {
@@ -469,7 +469,7 @@ Page({
       }
     })
   },
-  startTheAiInterval () {
+  startTheAiInterval() {
     this.clearTheAiInterval(() => {
       let count = Math.ceil(parseInt(Math.random() * 5));
       this.aiTimer = setInterval(() => {
@@ -484,14 +484,14 @@ Page({
       }, 1000);
     });
   },
-  clearTheAiInterval (callback) {
+  clearTheAiInterval(callback) {
     if (this.aiTimer) {
       clearInterval(this.aiTimer);
       this.aiTimer = null;
     }
     callback && callback();
   },
-  aiAnswerEvt () {
+  aiAnswerEvt() {
     //console.log('ai答题了');
     let percent = parseFloat(Math.random() * 1).toFixed(2);
     let percent2 = parseFloat(Math.random() * 1).toFixed(2);
@@ -502,7 +502,7 @@ Page({
     let that = this;
 
     //先随机取答案且保证答案不正确
-    function getError (right) {
+    function getError(right) {
       let result = Math.floor(parseInt((Math.random() * that.data.subjectList.length) + 1));
       if (right == result) {
         return getError(right)
@@ -542,11 +542,11 @@ Page({
   /**
    * 取消对战
    * */
-  cancelBattle () {
+  cancelBattle() {
     let that = this;
     this.modal.showModal({
       content: '确定退出房间?',
-      success (res) {
+      success(res) {
         if (res.result == 'confirm') {
           that.closeConnect();
           that.back();
@@ -563,7 +563,7 @@ Page({
   /**
    * 场景动画
    * */
-  animationEvt (type, callback) {
+  animationEvt(type, callback) {
     let room = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
@@ -619,7 +619,7 @@ Page({
       matchRightAni.translateX(0).step({delay: 500});
       this.setData({
         matchLeftData: matchLeftAni.export(),
-        matchRightData: matchRightAni.export(),
+        matchRightData: matchRightAni.export()
       });
       console.log('ready animation')
       setTimeout(() => {
@@ -647,12 +647,12 @@ Page({
   /**
    * 获取题目
    * */
-  getSubject () {
+  getSubject() {
     if (!this.data.hasMore) {
       return
     }
     this.setData({
-      subjectCount: this.data.subjectCount,
+      subjectCount: this.data.subjectCount + 1,
       countDownTime: 10
     });
     this.sendMessage({type: 1, subjectOffset: this.data.subjectCount})
@@ -660,7 +660,7 @@ Page({
   /**
    * 拿到题目
    * */
-  filterSubject (res) {
+  filterSubject(res) {
     //console.log('获取的题目:-------------------------------')
     //console.log(res)
     //console.log('获取的题目:-------------------------------')
@@ -693,7 +693,7 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint (res) {
+  updatePoint(res) {
     // console.log('得到答案更新用户分数:--------------------------------------')
     // console.log(res);
     // console.log('得到答案更新用户分数:--------------------------------------')
@@ -703,17 +703,17 @@ Page({
         return el.id == resultUser
       })
       let teamId = res.teamId;
-      if(teamId===null){
-        console.log('队伍ID 为空 没找到')
+      if (teamId === null) {
+        //console.log('队伍ID 为空 没找到')
         return
       }
-      console.log('更新 队伍id',teamId)
+      //console.log('更新 队伍id', teamId)
       let teamIndex = this.data.teamIdArr.findIndex((el) => {
         return el.teamId == teamId
       })
       let teamIdArr = this.data.teamIdArr;
       let updateTeam = teamIdArr[teamIndex];
-      console.log('待更新队伍',updateTeam)
+      //console.log('待更新队伍', updateTeam)
       let roomUser = this.data.roomUsers;
       let updateUser = roomUser[index];
       updateUser['point'] += res.point;
@@ -795,7 +795,7 @@ Page({
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt (res) {
+  filterSubjectListEvt(res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -856,7 +856,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation (type, callback) {
+  subjectAnimation(type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -913,7 +913,7 @@ Page({
   /**
    * 答题倒计时
    * */
-  startTheInterval () {
+  startTheInterval() {
     this.clearTheInterval(() => {
       this.clearCountAni(() => {
         this.startCountAni();
@@ -922,7 +922,7 @@ Page({
             //console.log('用户到时间,自动答错 获取新题目');
             this.clearCountAni();
             this.clearTheInterval(() => {
-             // console.log('自动答题')
+              // console.log('自动答题')
               this.answerSubject();
             });
           } else {
@@ -937,7 +937,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval (callback) {
+  clearTheInterval(callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -946,29 +946,33 @@ Page({
   /**
    * 答题
    * */
-  answerSubject (e) {
+  answerSubject(e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
       //console.log('题目已经答过了',this.data.subjectCount)
       return
     }
-    //console.log('答题',this.data.subjectCount)
-    //console.log('答题用户',this.data.userId)
-
+    // if (this.data.subjectCount === this.lastAnswerCount) {
+    //   //避免重复答题
+    //   return
+    // }
+    console.log('答题',this.data.subjectCount)
+    console.log('答题用户',this.data.userId)
+    console.log('答了几次',this.lastAnswerCount)
+    this.setData({
+      isAnswered: true
+    });
     this.sendMessage({
       "type": 2,
       "optionId": answer,		// 用户回答的选项ID，从1开始
       "subjectOffset": this.data.subjectCount	// 用户回答的题目ID
     });
-    this.setData({
-      isAnswered: true,
-      subjectCount:this.data.subjectCount+1
-    });
+    this.lastAnswerCount = this.data.subjectCount;
   },
   /**
    * 结束游戏
    * */
-  endGame (res) {
+  endGame(res) {
     //console.log('游戏结束:--------------------------------------')
     //console.log(res)
     //console.log('游戏结束:--------------------------------------')
@@ -1030,7 +1034,7 @@ Page({
   /**
    * 关闭连接
    * */
-  closeConnect () {
+  closeConnect() {
     console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
     this.clearTheAiInterval()
@@ -1053,7 +1057,7 @@ Page({
   /**
    * 再来一把
    * */
-  playAgain () {
+  playAgain() {
     //房间重置
     this.setData({
       WINNER: false,
@@ -1093,12 +1097,12 @@ Page({
       this.sendMessage({type: 5});
     }, 50)
   },
-  back () {
+  back() {
     setTimeout(() => {
       wx.navigateBack();
     }, 50)
   },
-  onHide () {
+  onHide() {
   },
   /**
    * 生命周期函数--监听页面卸载
@@ -1112,7 +1116,7 @@ Page({
   /**
    * 判断是否开始答题
    * */
-  beginAnswer (res) {
+  beginAnswer(res) {
     if (res.beginAnswer) {
       if (this.data.vsAi == 'undefined') {
         this.setData({
@@ -1122,7 +1126,7 @@ Page({
       this.getSubject()
     }
   },
-  closeModal () {
+  closeModal() {
     this.setData({
       showUPMask: false
     })
