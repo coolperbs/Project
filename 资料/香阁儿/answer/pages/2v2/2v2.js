@@ -82,6 +82,11 @@ Page({
   },
   onShow () {
     this.playBg();
+  },
+  onReady(){
+    this.initPage();
+  },
+  checkStatus(){
     setTimeout(() => {
       if (this.data.hasError) {
         this.back()
@@ -119,7 +124,6 @@ Page({
       roomId: options.roomId || '',
       teamId: options.teamId || ''
     });
-    this.initPage();
     this.modal = this.selectComponent("#m-modal");
   },
   /**
@@ -159,9 +163,7 @@ Page({
           })
         }
         this.closeConnect();
-        this.setData({
-          hasError: true
-        })
+        this.back();
         return
       }
       res = res.data;
@@ -263,16 +265,24 @@ Page({
       }
       if (res.type == 9) {
         this.initTeam(res)
+        if (this.keepTimer) {
+          clearInterval(this.keepTimer)
+        }
+        this.keepTimer = setInterval(() => {
+          console.log('keep----')
+          battle.TVT_send({type: 999})
+
+        }, 5000)
       }
       if (res.type == 10) {
         this.initTeam(res)
       }
       if (res.type == 11) {
-        this.initRoom(res);
         this.setData({
           isMach: true,
           vsAi: false
         })
+        this.initRoom(res);
         setTimeout(() => {
           this.animationEvt('ready', () => {
             this.beginAnswer(res)

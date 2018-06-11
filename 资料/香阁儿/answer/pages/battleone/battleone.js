@@ -94,10 +94,10 @@ Page({
     this.setData({
       level: options.level || 1
     })
-    this.initPage();
   },
   onReady () {
     this.playBg();
+    this.initPage();
   },
   playBg () {
     this.audioCtx = wx.createAudioContext('myAudio');

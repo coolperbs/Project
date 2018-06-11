@@ -161,6 +161,13 @@ Page({
       res = res.data;
       if (res.type == 1) {
         this.initRoom(res);
+        if (this.keepTimer) {
+          clearInterval(this.keepTimer)
+        }
+        this.keepTimer = setInterval(() => {
+          console.log('keep----')
+          battle.PVF_send({aba: 324})
+        }, 5000)
       }
       if (res.type == 2) {
         //console.log('好友连接上了:-----------------------------');
