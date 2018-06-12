@@ -371,26 +371,26 @@ Page({
   },
   updateTeam (res) {
     let teamId = Object.keys(res);
-    var teamIdArr = [];
+    let teamIdArr = [];
     for (let i = 0; i < teamId.length; i++) {
       teamIdArr.push({teamId: teamId[i], teamPoint: 0})
     }
-
+    //todo 这里的问题导致页面卡死  后面的id 变成一样了
     //这里 把 房主的 队伍放在前面
     let index = teamIdArr.findIndex((el) => {
       return el.teamId = this.data.teamId
     });
     let tempArr = teamIdArr[index];
-    let index2 = index === 0 ? 1 : 0
-    let tempB = teamIdArr[index2];
-    let final = [];
-    final.push(tempArr);
-    final.push(tempB);
-    // teamIdArr.splice(index, 1);
-    // teamIdArr.splice(0, 0, tempArr);
+    // let index2 = index === 0 ? 1 : 0
+    // let tempB = teamIdArr[index2];
+    // let final = [];
+    // final.push(tempArr);
+    // final.push(tempB);
+    teamIdArr.splice(index, 1);
+    teamIdArr.splice(0, 0, tempArr);
     this.setData({
       teamUsersMap: res,
-      teamIdArr: final
+      teamIdArr: teamIdArr
     })
   },
   /**
@@ -744,6 +744,9 @@ Page({
     let updateTeam = teamIdArr[teamIndex];
     console.log('待更新队伍', updateTeam)
     console.log('更新结果', res)
+    if(!updateTeam){
+      return
+    }
     try {
       let roomUser = this.data.roomUsers;
       let updateUser = roomUser[index];
