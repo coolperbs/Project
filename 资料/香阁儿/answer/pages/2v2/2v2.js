@@ -175,9 +175,6 @@ Page({
         this.setData({
           isStart: true
         })
-        console.log('获取到题目了')
-        console.log(res)
-        console.log('获取到题目了')
         this.filterSubject(res);
       }
       if (res.type == 4) {
@@ -348,19 +345,22 @@ Page({
       roomId: res.roomId || '',
       totalPoint: res.totlePoint || ''
     })
-    this.updateRoomUser(res.roomUsers);
-    this.updateTeam(res.teamUsersMap)
+    this.updateRoomUser(res.roomUsers, () => {
+      setTimeout(() => {
+        this.updateTeam(res.teamUsersMap)
+      }, 500)
+    });
   },
   /**
    * 更新房间信息
    * */
-  updateRoomUser (res) {
+  updateRoomUser (res, callback) {
     let roomUsers = res.map((el, index) => {
       el.point = 0;
       return el;
     });
     //补全 4个用户
-    for (var k = roomUsers.length; k < 4; k++) {
+    for (let k = roomUsers.length; k < 4; k++) {
       roomUsers.push({
         point: 0
       })
@@ -368,30 +368,39 @@ Page({
     this.setData({
       roomUsers: roomUsers
     })
+    callback && callback();
   },
   updateTeam (res) {
     let teamId = Object.keys(res);
+    console.log(teamId)
     let teamIdArr = [];
-    for (let i = 0; i < teamId.length; i++) {
-      teamIdArr.push({teamId: teamId[i], teamPoint: 0})
+    // for (let i = 0; i < teamId.length; i++) {
+    //   teamIdArr[i] = function (num) {
+    //     return {
+    //       teamId: teamId[num], teamPoint: 0
+    //     }
+    //   }(i)
+    // }
+
+    for (let k in res) {
+      let temp = {teamId: k, teamPoint: 0}
+      teamIdArr.push(temp)
     }
+
+    console.log('调整 位置 之前的数据', teamIdArr)
     //todo 这里的问题导致页面卡死  后面的id 变成一样了
-    //这里 把 房主的 队伍放在前面
     let index = teamIdArr.findIndex((el) => {
-      return el.teamId = this.data.teamId
+      return el.teamId == this.data.teamId
     });
-    let tempArr = teamIdArr[index];
-    // let index2 = index === 0 ? 1 : 0
-    // let tempB = teamIdArr[index2];
-    // let final = [];
-    // final.push(tempArr);
-    // final.push(tempB);
-    teamIdArr.splice(index, 1);
-    teamIdArr.splice(0, 0, tempArr);
+    let index2 = index === 0 ? 1 : 0;
+    let tempArrA = teamIdArr[index];
+    let tempArrB = teamIdArr[index2]
+    let final = [tempArrA, tempArrB]
     this.setData({
       teamUsersMap: res,
-      teamIdArr: teamIdArr
+      teamIdArr: final
     })
+    console.log('初始化 队伍IDArr', final)
   },
   /**
    * 发送消息
@@ -635,7 +644,6 @@ Page({
         matchLeftData: matchLeftAni.export(),
         matchRightData: matchRightAni.export()
       });
-      console.log('ready animation')
       setTimeout(() => {
         this.animationEvt('gaming', callback)
       }, 1500)
@@ -692,14 +700,14 @@ Page({
       return
     }
     //题目数据重构
-    var subjectList = res.subject.optionList.map((item) => {
-      var result = {};
+    let subjectList = res.subject.optionList.map((item) => {
+      let result = {};
       result.className = '';
       result.label = item;
       return result
     });
     delete res.subject.optionList;
-    console.log('又可以答题了')
+    //console.log('又可以答题了')
     this.setData({
       subject: res.subject,
       subjectList: subjectList,
@@ -728,15 +736,11 @@ Page({
       return el.id == resultUser
     })
     let teamId = res.teamId;
-    if (teamId === null) {
-      console.log('-----------')
-      console.log(res)
-      console.log(this.data.roomUsers)
-      console.log('-----------')
-      console.log('队伍ID 为空 没找到')
-      return
-    }
-    console.log('更新 队伍id', teamId)
+    console.log('-----------')
+    console.log(res)
+    console.log('队伍id 数组', this.data.teamIdArr)
+    console.log('-----------')
+
     let teamIndex = this.data.teamIdArr.findIndex((el) => {
       return el.teamId == teamId
     })
@@ -744,14 +748,13 @@ Page({
     let updateTeam = teamIdArr[teamIndex];
     console.log('待更新队伍', updateTeam)
     console.log('更新结果', res)
-    if(!updateTeam){
+    if (!updateTeam) {
       return
     }
     try {
       let roomUser = this.data.roomUsers;
       let updateUser = roomUser[index];
       updateUser['point'] += res.point;
-      console.log(updateTeam['teamPoint'])
       updateTeam['teamPoint'] += res.point;
       if (updateUser['point'] < 0) {
         updateUser['point'] = 0
@@ -985,7 +988,7 @@ Page({
   answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
-      //console.log('题目已经答过了',this.data.subjectCount)
+      console.log('题目已经答过了', this.data.subjectCount)
       return
     }
     // if (this.data.subjectCount === this.lastAnswerCount) {
@@ -1023,8 +1026,8 @@ Page({
     let currentUser = this.data.userId;
     let roomUser = this.data.roomUsers;
     //计算玩家分数
-    for (var i = 0; i < roomUser.length; i++) {
-      for (var k = 0; k < result.length; k++) {
+    for (let i = 0; i < roomUser.length; i++) {
+      for (let k = 0; k < result.length; k++) {
         if (roomUser[i].id == result[k].userId) {
           roomUser[i].point = result[k].totlePoint;
         }
@@ -1049,7 +1052,7 @@ Page({
     if (resultA.upGold !== undefined) {
       resultA.gold += resultA.upGold
     }
-    var showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
+    let showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
@@ -1188,7 +1191,7 @@ Page({
         }
       }
     } else {
-      var teamId = this.data.teamId;
+      let teamId = this.data.teamId;
       return {
         title: '等你来战',
         path: '/pages/login/login?direct=../2v2/2v2&teamId=' + teamId + '&leve=' + this.data.level,
