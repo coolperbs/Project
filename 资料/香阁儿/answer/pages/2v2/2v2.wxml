@@ -119,7 +119,7 @@
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image class="bigmvp {{item.mvp?'show':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
+				<image class="bigmvp show{{item.winTeamid==item.teamId?'show':''}}" src="./winner.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
@@ -131,18 +131,18 @@
 						<view class="rank">第{{userItem.ranking}}名</view>
 					</view>
 					<view class="rank-list">
-						<view class="list-user" wx:for="{{result}}" wx:key="{{idx2}}" wx:for-index="idx2" wx:for-item="userItem2">
+						<view class="list-user {{userItem2.teamId!=userId?'owner':''}}" wx:for="{{result}}" wx:key="{{idx2}}" wx:for-index="idx2" wx:for-item="userItem2" style="{{idx2==1?'margin-bottom:10rpx':''}}">
 							<view class="rank">{{userItem2.ranking}}</view>
 							<view class="head-out">
 								<view class="head-box {{userItem2.teamId==userId?'owner':''}}">
 									<image class="head" src="{{userItem2.userAvatar}}"></image>
 								</view>
-								<image class="mvp {{userItem2.mvp?'show':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/mvp.png"></image>
+								<image class="mvp {{userItem2.winTeamId==userItem2.teamId?'show':''}}" src="./winner.png"></image>
 							</view>
 							<view class="name">{{userItem2.userName}}</view>
 							<view class="coin-box">
 								<view class="coin">+{{userItem2.gold}}金币</view>
-								<view class="coin">+{{userItem2.exp}}经验</view>
+								<!--<view class="coin">+{{userItem2.exp}}经验</view>-->
 								<view class="point">{{userItem2.totlePoint<0?'0':userItem2.totlePoint}}分</view>
 							</view>
 						</view>
@@ -150,7 +150,7 @@
 				</view>
 			</view>
 			<view style="display: flex; justify-content: space-between;align-items: center">
-				<button class="share-result" open-type="share">
+				<button class="share-result" open-type="share" wx:if="{{WINNER}}">
 					炫耀一下
 				</button>
 			</view>
@@ -160,25 +160,6 @@
 		</view>
 		<image class="boom" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/boom.png"></image>
 	</view>
-	<!--<view class="level-up {{showUPMask?'active':''}}">-->
-		<!--<view class="bg-box">-->
-			<!--<image class="shinning" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/shinning.png"></image>-->
-			<!--<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelMain.png"></image>-->
-			<!--<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>-->
-		<!--</view>-->
-		<!--<view class="flag">-->
-			<!--<image class="flag-image {{result.hasUpLevel?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/levelUp.png"></image>-->
-			<!--<image class="flag-image {{result.hasUpDanGrading?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/danUp.png"></image>-->
-		<!--</view>-->
-		<!--<view class="text" wx:if="{{result.hasUpDanGrading}}">-->
-			<!--<view class="old-name">{{result.oldDanGradingName}}</view>-->
-			<!--<view class="arrow"> ></view>-->
-			<!--<view class="new-name">{{result.newDanGradingName}}</view>-->
-		<!--</view>-->
-		<!--<view class="close" bindtap="closeModal">-->
-			<!--<image class="close-image" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/close.png"></image>-->
-		<!--</view>-->
-	<!--</view>-->
 </view>
 <audio id="myAudio" loop="true"></audio>
 <audio id="myAudio2"></audio>

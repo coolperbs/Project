@@ -141,7 +141,6 @@ Page({
       userId: UserInfo.user.id
     });
     battle.TVT_connect(this.data.level, token, this.data.roomId, this.data.teamId, () => {
-      //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true
       });
@@ -195,7 +194,6 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
-        //console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
@@ -263,13 +261,6 @@ Page({
             }, 1500);
           }
         }
-      }
-      if (res.type == '7') {
-
-        return
-        this.animationEvt('start', () => {
-          this.getSubject();
-        })
       }
       if (res.type == '8') {
         let roomId = res.roomId || '';
@@ -372,7 +363,6 @@ Page({
   },
   updateTeam (res) {
     let teamId = Object.keys(res);
-    console.log(teamId)
     let teamIdArr = [];
     // for (let i = 0; i < teamId.length; i++) {
     //   teamIdArr[i] = function (num) {
@@ -386,9 +376,6 @@ Page({
       let temp = {teamId: k, teamPoint: 0}
       teamIdArr.push(temp)
     }
-
-    console.log('调整 位置 之前的数据', teamIdArr)
-    //todo 这里的问题导致页面卡死  后面的id 变成一样了
     let index = teamIdArr.findIndex((el) => {
       return el.teamId == this.data.teamId
     });
@@ -400,7 +387,6 @@ Page({
       teamUsersMap: res,
       teamIdArr: final
     })
-    console.log('初始化 队伍IDArr', final)
   },
   /**
    * 发送消息
@@ -496,7 +482,6 @@ Page({
     this.clearTheAiInterval(() => {
       let count = Math.ceil(parseInt(Math.random() * 5));
       this.aiTimer = setInterval(() => {
-        //console.log('ai答题倒计时');
         if (count <= 0) {
           this.clearTheAiInterval(() => {
             this.aiAnswerEvt();
@@ -515,7 +500,6 @@ Page({
     callback && callback();
   },
   aiAnswerEvt () {
-    //console.log('ai答题了');
     let percent = parseFloat(Math.random() * 1).toFixed(2);
     let percent2 = parseFloat(Math.random() * 1).toFixed(2);
     //let aiWinRate = this.data.aiInfo.aiWinRate || 0;
@@ -530,7 +514,6 @@ Page({
       if (right == result) {
         return getError(right)
       } else {
-        //console.log('随机答案' + result)
         return result
       }
     }
@@ -691,9 +674,6 @@ Page({
    * 拿到题目
    * */
   filterSubject (res) {
-    //console.log('获取的题目:-------------------------------')
-    //console.log(res)
-    //console.log('获取的题目:-------------------------------')
     let subject = this.data.subject;
     if (subject.pushTime == res.subject.pushTime) {
       //避免题目二次渲染
@@ -707,7 +687,6 @@ Page({
       return result
     });
     delete res.subject.optionList;
-    //console.log('又可以答题了')
     this.setData({
       subject: res.subject,
       subjectList: subjectList,
@@ -724,30 +703,17 @@ Page({
    * 更新分数
    * */
   updatePoint (res) {
-    // console.log('得到答案更新用户分数:--------------------------------------')
-    // console.log(res);
-    // console.log('得到答案更新用户分数:--------------------------------------')
-    console.log('更新分数了')
-    console.log('更新用户Id', res.userId)
-
     this.hasError = false;
     let resultUser = res.userId;
     let index = this.data.roomUsers.findIndex((el) => {
       return el.id == resultUser
     })
     let teamId = res.teamId;
-    console.log('-----------')
-    console.log(res)
-    console.log('队伍id 数组', this.data.teamIdArr)
-    console.log('-----------')
-
     let teamIndex = this.data.teamIdArr.findIndex((el) => {
       return el.teamId == teamId
     })
     let teamIdArr = this.data.teamIdArr;
     let updateTeam = teamIdArr[teamIndex];
-    console.log('待更新队伍', updateTeam)
-    console.log('更新结果', res)
     if (!updateTeam) {
       return
     }
@@ -769,7 +735,6 @@ Page({
       updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
       updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
       roomUser[index] = updateUser;
-      //console.log(roomUser)
       this.setData({
         roomUsers: roomUser,
         teamIdArr: teamIdArr
@@ -780,7 +745,6 @@ Page({
         setTimeout(() => {
           let users = this.data.roomUsers;
           users[index]['pointAnimation'] = false;
-          //console.log('pointBar2',users[index].pointBar)
           this.setData({
             roomUsers: users
           });
@@ -798,11 +762,9 @@ Page({
       }
       this.filterSubjectListEvt(res);
       if (res.mayNextSub) {
-        //console.log('可以进行下一题或者 提前结束')
         if (!this.data.hasMore && this.data.isAnswered) {
           //获取对战结果
           /*结果展示2秒*/
-          console.log('获取结果')
           this.clearCountAni();
           this.clearTheInterval();
           setTimeout(() => {
@@ -812,7 +774,6 @@ Page({
           }, 2000);
           return
         }
-        console.log('提前结束')
         //提前结束这道题
         this.clearCountAni();
         this.clearTheInterval(() => {
@@ -957,11 +918,8 @@ Page({
         this.startCountAni();
         this.Timer = setInterval(() => {
           if (this.data.countDownTime <= 0) {
-            //console.log('用户到时间,自动答错 获取新题目');
             this.clearCountAni();
             this.clearTheInterval(() => {
-              console.log('自动答题')
-              //todo 明天检查 是不是这里
               this.answerSubject();
             });
           } else {
@@ -988,16 +946,8 @@ Page({
   answerSubject (e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
     if (this.data.isAnswered) {
-      console.log('题目已经答过了', this.data.subjectCount)
       return
     }
-    // if (this.data.subjectCount === this.lastAnswerCount) {
-    //   //避免重复答题
-    //   return
-    // }
-    console.log('答题', this.data.subjectCount)
-    console.log('答题用户', this.data.userId)
-    console.log('答了几次', this.lastAnswerCount)
     this.setData({
       isAnswered: true
     });
@@ -1012,9 +962,7 @@ Page({
    * 结束游戏
    * */
   endGame (res) {
-    //console.log('游戏结束:--------------------------------------')
-    //console.log(res)
-    //console.log('游戏结束:--------------------------------------')
+    //res={"fightResults":[{"danGrading":1,"danGradingProcess":1,"exp":5,"gold":40,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":true,"ranking":1,"result":true,"teamId":"-15","teamTotlePoint":1120,"totlePoint":580,"userAvatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/e2b1e9f1-061d-47f3-8bce-a4a8537a3c3a","userId":-14,"userName":"不爽就来一刀","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":1,"exp":5,"gold":40,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":2,"result":true,"teamId":"-15","teamTotlePoint":1120,"totlePoint":540,"userAvatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/4cbf35cf-26f1-479f-b791-06e192be3171","userId":-15,"userName":"卡斯柯","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":-1,"exp":2,"gold":0,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":3,"result":false,"teamId":"7","teamTotlePoint":0,"totlePoint":0,"upExp":0,"userAvatar":"https://wx.qlogo.cn/mmopen/vi_32/BOqb0kpZJ2XUomNlWa9ETHZGqS3Q7J2SgVqAyRVmNxhtBE3n6YibzfNvhyOg79BibAguZ48C7pOhLu8arWfWFznw/132","userId":5,"userName":"前国家一级保护动物🐼","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":-1,"exp":2,"gold":0,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":3,"result":false,"teamId":"7","teamTotlePoint":0,"totlePoint":0,"upExp":0,"userAvatar":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJuJJibeJIXUzn20DsW5YWqoJjEFYN7FwNGc9sRy487PtyLd88271cxlPvYm6l8E0uPsmqQzndhyng/132","userId":7,"userName":"YPanda💤","winTeamId":"-15"}],"teamUsersMap":{"7":[7,5],"-15":[-15,-14]},"type":5}
     if (this.data.isEnd) {
       return
     }
@@ -1025,6 +973,7 @@ Page({
     let result = res.fightResults;
     let currentUser = this.data.userId;
     let roomUser = this.data.roomUsers;
+      //[{"avatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/4cbf35cf-26f1-479f-b791-06e192be3171","id":-15,"level":0,"name":"卡斯柯","owner":true,"point":0},{"avatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/e2b1e9f1-061d-47f3-8bce-a4a8537a3c3a","id":-14,"level":0,"name":"不爽就来一刀","owner":false,"point":0},{"avatar":"https://wx.qlogo.cn/mmopen/vi_32/BOqb0kpZJ2XUomNlWa9ETHZGqS3Q7J2SgVqAyRVmNxhtBE3n6YibzfNvhyOg79BibAguZ48C7pOhLu8arWfWFznw/132","id":5,"level":6,"name":"前国家一级保护动物🐼","owner":false,"teamId":"7","point":0},{"avatar":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJuJJibeJIXUzn20DsW5YWqoJjEFYN7FwNGc9sRy487PtyLd88271cxlPvYm6l8E0uPsmqQzndhyng/132","id":7,"level":6,"name":"YPanda💤","owner":false,"teamId":"7","point":0}];
     //计算玩家分数
     for (let i = 0; i < roomUser.length; i++) {
       for (let k = 0; k < result.length; k++) {
@@ -1043,8 +992,6 @@ Page({
     }
     this.stopBg();
     this.playWinner();
-    //console.log('玩家数据');
-    //console.log(result[index]);
     let resultA = result[index]
     if (resultA.upExp !== undefined) {
       resultA.exp += resultA.upExp
@@ -1074,7 +1021,6 @@ Page({
    * 关闭连接
    * */
   closeConnect () {
-    console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
     this.clearTheAiInterval()
     this.clearCountAni();
@@ -1147,7 +1093,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log('触发页面卸载了')
     this.closeConnect();
     this.stopBg();
     this.stopWinner();
