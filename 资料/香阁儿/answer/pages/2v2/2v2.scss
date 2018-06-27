@@ -25,22 +25,24 @@
     align-items: center;
     justify-content: flex-start;
     .room-box{
-      position: relative;
-      top: 0;
-      right: 0;
-      left: 0;
-      margin:150rpx auto;
-      width: 500rpx;
-      height: 500rpx;
-      border-radius: 50%;
-      background-image:url('https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/2v2_room.png');
-      background-repeat: no-repeat;
-      background-size: cover;
+      height: 200rpx;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 40rpx;
+      .vs{
+        width: 150rpx;
+        height: 150rpx;
+        image{
+          width: 150rpx;
+          height: 150rpx;
+        }
+      }
       .user{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        position: absolute;
         width: 100rpx;
         .head{
           border:4rpx solid #2fdefd;
@@ -76,17 +78,10 @@
             color: #fff;
           }
         }
-        &.set1{
-          bottom:0;
-          left: 0;
-          transform: translate3d(-44rpx, -160rpx, 0);
-        }
-        &.set2{
-          top:0;
-          right: 0;
-          transform: translate3d(44rpx,190rpx,0);
-        }
       }
+    }
+    .down{
+      margin-top: auto;
     }
     .room-btn{
       width: 200rpx;
@@ -100,7 +95,7 @@
         height: 200rpx;
       }
       &.invite{
-        transform: translate3d(150rpx,150rpx,0);
+        margin: 0 auto 300rpx auto;
       }
       &.start{
         width: 460rpx;
@@ -126,6 +121,7 @@
       text-align: center;
       background:transparent ;
       margin-top: 40rpx;
+      margin-bottom: 100rpx;
     }
   }
   .result{

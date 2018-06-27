@@ -25,22 +25,22 @@
     align-items: center;
     justify-content: flex-start; }
     .tvt .room .room-box {
-      position: relative;
-      top: 0;
-      right: 0;
-      left: 0;
-      margin: 150rpx auto;
-      width: 500rpx;
-      height: 500rpx;
-      border-radius: 50%;
-      background-image: url("https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/2v2_room.png");
-      background-repeat: no-repeat;
-      background-size: cover; }
+      height: 200rpx;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 40rpx; }
+      .tvt .room .room-box .vs {
+        width: 150rpx;
+        height: 150rpx; }
+        .tvt .room .room-box .vs image {
+          width: 150rpx;
+          height: 150rpx; }
       .tvt .room .room-box .user {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        position: absolute;
         width: 100rpx; }
         .tvt .room .room-box .user .head {
           border: 4rpx solid #2fdefd;
@@ -68,14 +68,8 @@
             color: #fff; }
         .tvt .room .room-box .user.active .name {
           color: #fff; }
-        .tvt .room .room-box .user.set1 {
-          bottom: 0;
-          left: 0;
-          transform: translate3d(-44rpx, -160rpx, 0); }
-        .tvt .room .room-box .user.set2 {
-          top: 0;
-          right: 0;
-          transform: translate3d(44rpx, 190rpx, 0); }
+    .tvt .room .down {
+      margin-top: auto; }
     .tvt .room .room-btn {
       width: 200rpx;
       height: 200rpx;
@@ -87,7 +81,7 @@
         width: 200rpx;
         height: 200rpx; }
       .tvt .room .room-btn.invite {
-        transform: translate3d(150rpx, 150rpx, 0); }
+        margin: 0 auto 300rpx auto; }
       .tvt .room .room-btn.start {
         width: 460rpx;
         height: 100rpx;
@@ -108,7 +102,8 @@
       color: #FD2FA1;
       text-align: center;
       background: transparent;
-      margin-top: 40rpx; }
+      margin-top: 40rpx;
+      margin-bottom: 100rpx; }
   .tvt .result {
     background-color: #1e0141;
     background-image: url("https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/home-bg.jpg");
