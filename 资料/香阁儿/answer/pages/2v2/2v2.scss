@@ -186,10 +186,26 @@
     .mine-point{
       width: 100%;
       text-align: center;
+      position: relative;
+      height:206rpx;
+      .banner-box{
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        top:-59rpx;
+        left: 0;
+        right: 0;
+        margin:0 auto;
+        image{
+          width: 239rpx;
+          height: 191rpx;
+        }
+      }
       .point{
-        font-size: 64rpx;
+        font-size: 60rpx;
         margin-bottom: 20rpx;
-        margin-top: 40rpx;
+        margin-top: 120rpx;
+        color:#FFF115;
       }
       .rank{
         font-size: 24rpx;

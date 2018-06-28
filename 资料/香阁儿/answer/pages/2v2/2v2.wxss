@@ -159,11 +159,25 @@
           align-items: center; }
     .tvt .result .mine-point {
       width: 100%;
-      text-align: center; }
+      text-align: center;
+      position: relative;
+      height: 206rpx; }
+      .tvt .result .mine-point .banner-box {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        top: -59rpx;
+        left: 0;
+        right: 0;
+        margin: 0 auto; }
+        .tvt .result .mine-point .banner-box image {
+          width: 239rpx;
+          height: 191rpx; }
       .tvt .result .mine-point .point {
-        font-size: 64rpx;
+        font-size: 60rpx;
         margin-bottom: 20rpx;
-        margin-top: 40rpx; }
+        margin-top: 120rpx;
+        color: #FFF115; }
       .tvt .result .mine-point .rank {
         font-size: 24rpx;
         position: relative;

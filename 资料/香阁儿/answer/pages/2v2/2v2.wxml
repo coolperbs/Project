@@ -128,7 +128,7 @@
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image class="bigmvp show{{item.winTeamid==item.teamId?'show':''}}" src="./winner.png"></image>
+				<image class="bigmvp {{(item.winTeamId==item.teamId&&item.userId==userId)?'show':''}}" src="./winner.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
@@ -137,7 +137,11 @@
 				<view class="result-box-in">
 					<view class="mine-point" wx:if="{{userItem.userId==userId}}" wx:for="{{result}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="userItem">
 						<view class="point">+{{userItem.gold}}金币</view>
-						<view class="rank">第{{userItem.ranking}}名</view>
+						<!--<view class="rank">第{{userItem.ranking}}名</view>-->
+						<view class="banner-box">
+							<image wx:if="{{WINNER}}" src="./winner2.png"></image>
+							<image wx:if="{{!WINNER}}" src="./fail.png"></image>
+						</view>
 					</view>
 					<view class="rank-list">
 						<view class="list-user {{userItem2.teamId!=userId?'owner':''}}" wx:for="{{result}}" wx:key="{{idx2}}" wx:for-index="idx2" wx:for-item="userItem2" style="{{idx2==1?'margin-bottom:10rpx':''}}">
