@@ -11,5 +11,5 @@
 
 <view class="act">
 	<view class="btn" catchtap="cancel">拒绝</view>
-	<view class="btn primary" catchtap="login">点我登录</view>
+	<button class="btn primary" open-type="getUserInfo" bindgetuserinfo="login">点我登录</button>
 </view>
