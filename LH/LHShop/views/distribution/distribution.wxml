@@ -9,7 +9,7 @@
 </view>
 
 <view class="distribution" wx:if="{{ userInfo.nickName }}">
-	<view class="noagent" wx:if="{{traderInfo.traderStatus * 1 != 1}}">
+	<view class="noagent" wx:if="{{ traderInfo && traderInfo.traderStatus * 1 != 1}}">
 		<view class="userinfo">
 		  <image class="logo" src="{{userInfo.avatarUrl}}"></image>
 		  <view class="name">{{userInfo.nickName}}</view>
@@ -25,7 +25,7 @@
 
 
 
-	<view class="noagent " wx:if="{{ !isBind && traderInfo.traderStatus * 1 == 1 }}">
+	<view class="noagent " wx:if="{{ ( !isBind && traderInfo.traderStatus * 1 == 1 ) || !traderInfo }}">
 		<form bindsubmit="distribitionClickProxy" data-fn="beAgent">
 		<view class="userinfo">
 		  <image class="logo" src="{{userInfo.avatarUrl}}"></image>
