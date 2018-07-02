@@ -34,7 +34,7 @@ Page({
     vsAi: undefined,
     isMach: false
   },
-  initCanvas () {
+  initCanvas() {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle = this.canvasCircle = wx.createCanvasContext('canvasCircle');
@@ -51,13 +51,13 @@ Page({
     circle2.stroke();
     circle2.draw();
   },
-  clearCountAni (callback) {
+  clearCountAni(callback) {
     if (this.countTimer) {
       clearInterval(this.countTimer)
     }
     callback && callback()
   },
-  startCountAni () {
+  startCountAni() {
     let sys = wx.getSystemInfoSync();
     let ratio = sys.windowWidth * (150 / 750);
     let circle2 = this.canvasCircle2;
@@ -80,37 +80,37 @@ Page({
       circle2.draw();
     }, 10)
   },
-  onShow () {
+  onShow() {
     this.playBg();
   },
-  onReady () {
+  onReady() {
     this.initPage();
   },
-  checkStatus () {
+  checkStatus() {
     setTimeout(() => {
       if (this.data.hasError) {
         this.back()
       }
     }, 1000)
   },
-  playBg () {
+  playBg() {
     return
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
   },
-  stopBg () {
+  stopBg() {
     if (this.audioCtx) {
       this.audioCtx.pause();
     }
   },
-  playWinner () {
+  playWinner() {
     return
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
   },
-  stopWinner () {
+  stopWinner() {
     if (this.audioCtx2) {
       this.audioCtx2.pause();
     }
@@ -129,7 +129,7 @@ Page({
   /**
    * 初始化
    * */
-  initPage () {
+  initPage() {
     let UserInfo = utils.getStorageSync('userInfo') || {};
     let token = utils.getValueByPath(UserInfo, 'token');
     if (!token) {
@@ -150,7 +150,7 @@ Page({
   /**
    * 监听信息
    * */
-  getMessage () {
+  getMessage() {
     battle.TVT_onMessage((res) => {
       if (res.code != '0000') {
         if (this.data.isConnect) {
@@ -177,7 +177,6 @@ Page({
         this.filterSubject(res);
       }
       if (res.type == 4) {
-
         this.updatePoint(res)
       }
       if (res.type == 5) {
@@ -268,7 +267,7 @@ Page({
         this.modal.showModal({
           content: '房主发起再来一盘',
           confirmText: '确认加入',
-          success (res) {
+          success(res) {
             that.closeConnect();
             if (res.result == 'confirm') {
               utils.redirectTo('../friendbattle/friendbattle', {roomId: roomId})
@@ -322,7 +321,7 @@ Page({
       }
     })
   },
-  initTeam (res) {
+  initTeam(res) {
     this.setData({
       teamId: res.teamId
     })
@@ -331,7 +330,7 @@ Page({
   /**
    * 初始化房间信息
    * */
-  initRoom (res) {
+  initRoom(res) {
     this.setData({
       roomId: res.roomId || '',
       totalPoint: res.totlePoint || ''
@@ -345,7 +344,7 @@ Page({
   /**
    * 更新房间信息
    * */
-  updateRoomUser (res, callback) {
+  updateRoomUser(res, callback) {
     let roomUsers = res.map((el, index) => {
       el.point = 0;
       return el;
@@ -361,7 +360,7 @@ Page({
     })
     callback && callback();
   },
-  updateTeam (res) {
+  updateTeam(res) {
     let teamId = Object.keys(res);
     let teamIdArr = [];
     // for (let i = 0; i < teamId.length; i++) {
@@ -391,7 +390,7 @@ Page({
   /**
    * 发送消息
    * */
-  sendMessage (data) {
+  sendMessage(data) {
     if (!this.data.isConnect) {
       this.back();
       return
@@ -401,7 +400,7 @@ Page({
   /**
    * 开始对战
    * */
-  startMatch () {
+  startMatch() {
     if (this.isStartMatch) {
       return
     }
@@ -425,7 +424,7 @@ Page({
       })
     }
   },
-  connectAI () {
+  connectAI() {
     if (this.data.vsAi == undefined) {
       battle.TVA_connect(this.data.level, this.data.teamId, () => {
         this.setData({
@@ -435,7 +434,7 @@ Page({
       })
     }
   },
-  getAiMessage () {
+  getAiMessage() {
     battle.TVA_onMessage((res) => {
       if (res.code != '0000') {
         if (this.data.PVA_isConnect) {
@@ -478,7 +477,7 @@ Page({
       }
     })
   },
-  startTheAiInterval () {
+  startTheAiInterval() {
     this.clearTheAiInterval(() => {
       let count = Math.ceil(parseInt(Math.random() * 5));
       this.aiTimer = setInterval(() => {
@@ -492,14 +491,14 @@ Page({
       }, 1000);
     });
   },
-  clearTheAiInterval (callback) {
+  clearTheAiInterval(callback) {
     if (this.aiTimer) {
       clearInterval(this.aiTimer);
       this.aiTimer = null;
     }
     callback && callback();
   },
-  aiAnswerEvt () {
+  aiAnswerEvt() {
     let percent = parseFloat(Math.random() * 1).toFixed(2);
     let percent2 = parseFloat(Math.random() * 1).toFixed(2);
     //let aiWinRate = this.data.aiInfo.aiWinRate || 0;
@@ -509,7 +508,7 @@ Page({
     let that = this;
 
     //先随机取答案且保证答案不正确
-    function getError (right) {
+    function getError(right) {
       let result = Math.floor(parseInt((Math.random() * that.data.subjectList.length) + 1));
       if (right == result) {
         return getError(right)
@@ -548,11 +547,11 @@ Page({
   /**
    * 取消对战
    * */
-  cancelBattle () {
+  cancelBattle() {
     let that = this;
     this.modal.showModal({
       content: '确定退出房间?',
-      success (res) {
+      success(res) {
         if (res.result == 'confirm') {
           that.closeConnect();
           that.back();
@@ -569,7 +568,7 @@ Page({
   /**
    * 场景动画
    * */
-  animationEvt (type, callback) {
+  animationEvt(type, callback) {
     let room = wx.createAnimation({
       duration: 500,
       timingFunction: 'ease'
@@ -652,31 +651,33 @@ Page({
   /**
    * 获取题目
    * */
-  getSubject () {
+  getSubject() {
     this.getSubjectMap = this.getSubjectMap || {}
     if (!this.data.hasMore) {
       return
     }
-
+var count=this.data.subjectCount + 1
     this.setData({
-      subjectCount: this.data.subjectCount + 1,
+      subjectCount:count ,
       countDownTime: 10
     });
-
-    if (this.getSubjectMap[this.data.subjectCount]) {
+    console.log('subjectMap',this.getSubjectMap)
+    if (this.getSubjectMap[count]) {
       return
     }
 
-    this.sendMessage({type: 1, subjectOffset: this.data.subjectCount})
-    this.getSubjectMap[this.data.subjectCount] = true;
+    this.sendMessage({type: 1, subjectOffset: count});
+    this.getSubjectMap[count] = true;
   },
   /**
    * 拿到题目
    * */
-  filterSubject (res) {
+  filterSubject(res) {
     let subject = this.data.subject;
     if (subject.pushTime == res.subject.pushTime) {
       //避免题目二次渲染
+      console.log('题目2次渲染了');
+      console.log(this.data.subjectCount)
       return
     }
     //题目数据重构
@@ -702,7 +703,7 @@ Page({
   /**
    * 更新分数
    * */
-  updatePoint (res) {
+  updatePoint(res) {
     this.hasError = false;
     let resultUser = res.userId;
     let index = this.data.roomUsers.findIndex((el) => {
@@ -762,7 +763,7 @@ Page({
       }
       this.filterSubjectListEvt(res);
       if (res.mayNextSub) {
-        if (!this.data.hasMore && this.data.isAnswered) {
+        if (!this.data.hasMore) {
           //获取对战结果
           /*结果展示2秒*/
           this.clearCountAni();
@@ -794,7 +795,7 @@ Page({
   /**
    * 题目选项过滤
    * */
-  filterSubjectListEvt (res) {
+  filterSubjectListEvt(res) {
     let subject = this.data.subject;
     let rightOption = subject.rightOption;
     let userId = this.data.userId;
@@ -855,7 +856,7 @@ Page({
   /**
    * 题目动画
    * */
-  subjectAnimation (type, callback) {
+  subjectAnimation(type, callback) {
     // 1 展示类型和第几题 自动展示 2
     // 2 展示题目 和选项
     // 3 展示此题答完状态
@@ -912,7 +913,7 @@ Page({
   /**
    * 答题倒计时
    * */
-  startTheInterval () {
+  startTheInterval() {
     this.clearTheInterval(() => {
       this.clearCountAni(() => {
         this.startCountAni();
@@ -934,7 +935,7 @@ Page({
   /**
    * 提前结束本道题
    * */
-  clearTheInterval (callback) {
+  clearTheInterval(callback) {
     if (this.Timer) {
       clearInterval(this.Timer)
     }
@@ -943,25 +944,31 @@ Page({
   /**
    * 答题
    * */
-  answerSubject (e) {
+  answerSubject(e) {
     let answer = e ? e.currentTarget.dataset.index : 0;
+    console.log('answered', this.data.isAnswered)
+    console.log('回答的哪一题', this.data.subjectCount)
     if (this.data.isAnswered) {
       return
     }
     this.setData({
       isAnswered: true
     });
+    var subjectOffset = this.data.subjectCount
+    if (this.data.subjectCount == this.lastAnswerCount) {
+      subjectOffset += 1;
+    }
     this.sendMessage({
       "type": 2,
       "optionId": answer,		// 用户回答的选项ID，从1开始
-      "subjectOffset": this.data.subjectCount	// 用户回答的题目ID
+      "subjectOffset": subjectOffset	// 用户回答的题目ID
     });
-    this.lastAnswerCount = this.data.subjectCount;
+    this.lastAnswerCount = subjectOffset;
   },
   /**
    * 结束游戏
    * */
-  endGame (res) {
+  endGame(res) {
     //res={"fightResults":[{"danGrading":1,"danGradingProcess":1,"exp":5,"gold":40,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":true,"ranking":1,"result":true,"teamId":"-15","teamTotlePoint":1120,"totlePoint":580,"userAvatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/e2b1e9f1-061d-47f3-8bce-a4a8537a3c3a","userId":-14,"userName":"不爽就来一刀","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":1,"exp":5,"gold":40,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":2,"result":true,"teamId":"-15","teamTotlePoint":1120,"totlePoint":540,"userAvatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/4cbf35cf-26f1-479f-b791-06e192be3171","userId":-15,"userName":"卡斯柯","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":-1,"exp":2,"gold":0,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":3,"result":false,"teamId":"7","teamTotlePoint":0,"totlePoint":0,"upExp":0,"userAvatar":"https://wx.qlogo.cn/mmopen/vi_32/BOqb0kpZJ2XUomNlWa9ETHZGqS3Q7J2SgVqAyRVmNxhtBE3n6YibzfNvhyOg79BibAguZ48C7pOhLu8arWfWFznw/132","userId":5,"userName":"前国家一级保护动物🐼","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":-1,"exp":2,"gold":0,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":3,"result":false,"teamId":"7","teamTotlePoint":0,"totlePoint":0,"upExp":0,"userAvatar":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJuJJibeJIXUzn20DsW5YWqoJjEFYN7FwNGc9sRy487PtyLd88271cxlPvYm6l8E0uPsmqQzndhyng/132","userId":7,"userName":"YPanda💤","winTeamId":"-15"}],"teamUsersMap":{"7":[7,5],"-15":[-15,-14]},"type":5}
     if (this.data.isEnd) {
       return
@@ -1020,7 +1027,7 @@ Page({
   /**
    * 关闭连接
    * */
-  closeConnect () {
+  closeConnect() {
     this.clearTheInterval();
     this.clearTheAiInterval()
     this.clearCountAni();
@@ -1042,7 +1049,7 @@ Page({
   /**
    * 再来一把
    * */
-  playAgain () {
+  playAgain() {
     //房间重置
     this.setData({
       WINNER: false,
@@ -1082,12 +1089,12 @@ Page({
       this.sendMessage({type: 5});
     }, 50)
   },
-  back () {
+  back() {
     setTimeout(() => {
       wx.navigateBack();
     }, 50)
   },
-  onHide () {
+  onHide() {
   },
   /**
    * 生命周期函数--监听页面卸载
@@ -1100,7 +1107,7 @@ Page({
   /**
    * 判断是否开始答题
    * */
-  beginAnswer (res) {
+  beginAnswer(res) {
     if (res.beginAnswer) {
       if (this.data.vsAi == 'undefined') {
         this.setData({
@@ -1110,7 +1117,7 @@ Page({
       this.getSubject()
     }
   },
-  closeModal () {
+  closeModal() {
     this.setData({
       showUPMask: false
     })
