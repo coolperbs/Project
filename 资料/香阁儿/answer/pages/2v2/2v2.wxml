@@ -6,33 +6,34 @@
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.teamId==roomOwner&&index<2}}"
-						class="user {{item.teamId==roomOwner?'owner':''}}">
+						wx:if="{{teamIdArr[0].teamId==item.teamId}}"
+						class="user owner">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
-						<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+						<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
 					</view>
 				</view>
 				<view class="team-point owner">{{teamIdArr[0].teamPoint}}</view>
 			</view>
 			<view class="user-vs">
-				<image src="../../static/images/vs-small.png"></image>
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
 			</view>
 			<view class="user-right-box">
 				<view class="box-user-list">
 					<view
 						wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.teamId!=roomOwner &&index>1}}"
-						class="user {{item.teamId==roomOwner?'owner':''}}">
+						wx:if="{{teamIdArr[0].teamId!=item.teamId}}"
+						class="user">
 						<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 						<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
-						<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+						<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
 					</view>
 				</view>
 				<view class="team-point ">{{teamIdArr[1].teamPoint}}</view>
 			</view>
 		</view>
+		<view class="vs-bg"></view>
 		<view class="battle-title">
 			<view class="vs">
 				<canvas class="circle" style="z-index: -99;" canvas-id="canvasCircle">
@@ -42,7 +43,7 @@
 				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
 			</view>
 			<view class="winner">
-				<image class="winner-icon" src="../../static/images/winner.png"></image>
+				<image class="winner-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/winner.png"></image>
 			</view>
 			<view class="looser"></view>
 		</view>
@@ -54,7 +55,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image class="q-double {{subject.doublePoint?'active':''}}" src="../../static/images/t.png"></image>
+					<image class="q-double {{subject.doublePoint?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
@@ -66,78 +67,103 @@
 			</view>
 		</view>
 	</view>
-	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
-		<!--<view class="battle-stage">-->
-		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/match-vs.png"></image>
+	<view class="match" wx:if="{{MATCH}}" animation="{{matchData}}">
+		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-vs.png"></image>
 		<view class="start-box">
-			<image class="start-left" src="../../static/images/match-left.png" animation="{{matchLeftData}}"></image>
-			<image class="start-right" src="../../static/images/match-right.png" animation="{{matchRightData}}"></image>
+			<image class="start-left" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-left.png" animation="{{matchLeftData}}"></image>
+			<image class="start-right" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-right.png" animation="{{matchRightData}}"></image>
 		</view>
-		<view class="match-user">
-			<view class="user {{item.teamId==teamIdArr[index<2?'0':'1'].teamId?'owner':''}}"
-						wx:for="{{roomUsers}}"
+		<view wx:if="{{!isMach}}" class="waiting">匹配中...</view>
+		<view wx:if="{{isMach}}" class="match-user">
+			<view wx:for="{{roomUsers}}"
 						wx:key="{{index}}"
-						wx:if="{{item.name}}">
+						wx:if="{{teamIdArr[0].teamId==item.teamId}}"
+						class="user owner {{teamUserMap[0].indexOf(item.id)}}">
 				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
-				<view class="name">{{item.name}}</view>
+				<view class="name">{{item.name?item.name:'待确认'}}</view>
+			</view>
+			<view class="user-vs">
+				<image mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
+			</view>
+			<view wx:for="{{roomUsers}}"
+						wx:key="{{index}}"
+						wx:if="{{teamIdArr[0].teamId!=item.teamId}}"
+						class="user">
+				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
+				<view class="name">{{item.name?item.name:'待确认'}}</view>
 			</view>
 		</view>
+		<button style="position: absolute;bottom:100rpx;left:0;right:0;" class="cancel" bindtap="cancelBattle">退出房间</button>
 	</view>
 	<view wx:if="{{showRoom}}" class="room" animation="{{roomAniData}}">
 		<view class="room-box">
-			<view class="user-list">
-				<view wx:for="{{roomUsers}}" wx:key="{{index}}" class="set{{index+1}} user">
-					<view class="head {{item.teamId==roomOwner?'owner':''}}">
-						<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
-					</view>
-					<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>
+			<view wx:for="{{roomUsers}}" wx:if="{{index<2}}" wx:key="{{index}}" class="user">
+				<view class="head owner}}">
+					<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
 				</view>
+				<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>
 			</view>
-			<button class="room-btn invite" open-type="share">
-				<image src="../../static/images/invite.png"></image>
-			</button>
+			<view class="vs">
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/vs-small.png"></image>
+			</view>
+			<view wx:for="{{roomUsers}}" wx:if="{{index>1}}" wx:key="{{index}}" class="user">
+				<view class="head}}">
+					<image class="head-image" src="{{item.avatar}}" mode="scaleToFill"></image>
+				</view>
+				<view class="name {{!item.name?'':'active'}}">{{item.name?item.name:'待确认'}}</view>
+			</view>
 		</view>
-		<button class="cancel" bindtap="cancelBattle">退出房间</button>
+		<view class="down">
+			<button class="room-btn invite" open-type="share">
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/invite.png"></image>
+			</button>
+			<button wx:if="{{teamId==userId}}" class="room-btn-start" bindtap="startMatch">开始匹配</button>
+			<button class="room-btn-cancel" bindtap="cancelBattle">退出房间</button>
+		</view>
 	</view>
 	<view wx:if="{{errorShaking}}" class="mask-shaking"></view>
 	<view class="result {{isEnd?'active':''}}">
-		<view class="mine" wx:if="{{item.id==userId}}" wx:for="{{result}}" wx:key="{{index}}">
+		<view class="mine" wx:if="{{item.userId==userId}}" wx:for="{{result}}" wx:key="{{index}}">
 			<view class="min-head-box">
 				<view class="mine-head">
 					<image class="head-image" src="{{item.userAvatar}}"></image>
 				</view>
-				<image wx:if="{{item.mvp}}" class="bigmvp" src="../../static/images/mvp.png"></image>
+				<image class="bigmvp {{(item.winTeamId==item.teamId&&item.userId==userId)?'show':''}}" src="./winner.png"></image>
 			</view>
 			<view class="min-name">{{item.userName}}</view>
 		</view>
 		<view class="result-bottom">
 			<view class="result-box">
 				<view class="result-box-in">
-					<view class="mine-point" wx:if="{{item.userId==userId}}" wx:for="{{result}}" wx:key="{{index}}">
-						<view class="point">+{{item.gold}}金币</view>
-						<view class="rank">第{{item.ranking}}名</view>
+					<view class="mine-point" wx:if="{{userItem.userId==userId}}" wx:for="{{result}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="userItem">
+						<view class="point">+{{userItem.gold}}金币</view>
+						<!--<view class="rank">第{{userItem.ranking}}名</view>-->
+						<view class="banner-box">
+							<image wx:if="{{WINNER}}" src="./winner2.png"></image>
+							<image wx:if="{{!WINNER}}" src="./fail.png"></image>
+						</view>
 					</view>
 					<view class="rank-list">
-						<view class="list-user" wx:for="{{result}}" wx:key="{{index}}">
-							<view class="rank">{{item.ranking}}</view>
+						<view class="list-user {{userItem2.teamId!=userId?'owner':''}}" wx:for="{{result}}" wx:key="{{idx2}}" wx:for-index="idx2" wx:for-item="userItem2" style="{{idx2==1?'margin-bottom:10rpx':''}}">
+							<view class="rank">{{userItem2.ranking}}</view>
 							<view class="head-out">
-								<view class="head-box {{item.teamId==roomOwner?'owner':''}}">
-									<image class="head" src="{{item.userAvatar}}"></image>
+								<view class="head-box {{userItem2.teamId==userId?'owner':''}}">
+									<image class="head" src="{{userItem2.userAvatar}}"></image>
 								</view>
-								<image wx:if="{{item.mvp}}" class="mvp" src="../../static/images/mvp.png"></image>
+								<image class="mvp {{userItem2.winTeamId==userItem2.teamId?'show':''}}" src="./winner.png"></image>
 							</view>
-							<view class="name">{{item.userName}}</view>
+							<view class="name">{{userItem2.userName}}</view>
 							<view class="coin-box">
-								<view class="coin">+{{item.gold}}金币</view>
-								<view class="coin">+{{item.exp}}经验</view>
-								<view class="point">{{item.totlePoint<0?'0':item.totlePoint}}分</view>
+								<view class="coin">+{{userItem2.gold}}金币</view>
+								<!--<view class="coin">+{{userItem2.exp}}经验</view>-->
+								<view class="point">{{userItem2.totlePoint<0?'0':userItem2.totlePoint}}分</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
 			<view style="display: flex; justify-content: space-between;align-items: center">
-				<button class="share-result" open-type="share">
+				<button class="share-result" open-type="share" wx:if="{{WINNER}}">
 					炫耀一下
 				</button>
 			</view>
@@ -145,26 +171,7 @@
 				退出游戏
 			</button>
 		</view>
-		<image class="boom" src="../../static/images/boom.png"></image>
-	</view>
-	<view class="level-up  {{showUPMask?'active':''}}">
-		<view class="bg-box">
-			<image class="shinning" src="../../static/images/shinning.png"></image>
-			<image wx:if="{{result.hasUpLevel}}" class="up-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelMain.png"></image>
-			<image wx:if="{{result.hasUpDanGrading}}" class="up-image {{result.hasUpDanGrading?'active':''}}" src="{{result.newDanGradingLogo}}"></image>
-		</view>
-		<view class="flag">
-			<image class="flag-image {{result.hasUpLevel?'active':''}}" src="../../static/images/levelUp.png"></image>
-			<image class="flag-image {{result.hasUpDanGrading?'active':''}}" src="../../static/images/danUp.png"></image>
-		</view>
-		<view class="text" wx:if="{{result.hasUpDanGrading}}">
-			<view class="old-name">{{result.oldDanGradingName}}</view>
-			<view class="arrow"> ></view>
-			<view class="new-name">{{result.newDanGradingName}}</view>
-		</view>
-		<view class="close" bindtap="closeModal">
-			<image class="close-image" src="../../static/images/close.png"></image>
-		</view>
+		<image class="boom" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/boom.png"></image>
 	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>

@@ -80,6 +80,12 @@ Page({
   },
   onShow() {
     this.playBg();
+    this.initPage();
+    setTimeout(()=>{
+      if(this.data.hasError){
+        this.back()
+      }
+    },1000)
   },
   playBg() {
     this.audioCtx = wx.createAudioContext('myAudio');
@@ -110,7 +116,7 @@ Page({
       roomId: options.roomId || '',
       isOwner: options.isOwner || false
     });
-    this.initPage();
+
     this.modal = this.selectComponent("#m-modal");
   },
   /**
@@ -149,9 +155,9 @@ Page({
           })
         }
         this.closeConnect();
-        setTimeout(() => {
-          this.back()
-        }, 1500);
+        this.setData({
+          hasError:true
+        });
         return
       }
       res = res.data;
@@ -574,7 +580,7 @@ Page({
     this.updateRankList();
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
-      if (!this.data.hasMore) {
+      if (!this.data.hasMore&&this.data.isAnswered) {
         //获取对战结果
         /*结果展示2秒*/
         this.clearCountAni();

@@ -14,6 +14,9 @@ export default {
   TVT_messageList: [],
   TVT_isConnect: false,
   TVT_socket: {},
+  TVA_messageList: [],
+  TVA_isConnect: false,
+  TVA_socket: {},
   PVA_messageList: [],
   PVA_socket: {},
   PVA_isConnect: false,
@@ -91,8 +94,8 @@ export default {
     })
   },
   TVT_send (data) {
-    console.log('发送：')
-    console.log(data)
+    // console.log('发送：')
+    // console.log(data)
     var messageList = this.TVT_messageList;
     messageList.push(data);
     if (this.TVT_isConnect) {
@@ -121,15 +124,16 @@ export default {
   },
   TVT_onError (callback) {
     this.TVT_socket.onError(res => {
-      console.log(res)
+      //console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
+      wx.navigateBack();
     })
   },
   TVT_close () {
     if (this.TVT_isConnect) {
-      console.log('PVP close')
+      //console.log('VT close')
       this.TVT_socket.close({})
     }
   },
@@ -169,7 +173,7 @@ export default {
   },
   PVA_onError (callback) {
     this.PVA_socket.onError(res => {
-      console.log(res)
+      //console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -177,7 +181,7 @@ export default {
   },
   PVA_close () {
     if (this.PVA_isConnect) {
-      console.log('PVA close')
+      //console.log('PVA close')
       this.PVA_socket.close({})
     }
   },
@@ -223,7 +227,7 @@ export default {
   },
   PVF_onError (callback) {
     this.PVF_socket.onError(res => {
-      console.log(res)
+      //console.log(res)
       utils.showToast({
         title: '连接错误！'
       });
@@ -231,8 +235,68 @@ export default {
   },
   PVF_close () {
     if (this.PVF_isConnect) {
-      console.log('PVF close')
+      //console.log('PVF close')
       this.PVF_socket.close({})
+    }
+  },
+  TVA_connect (danGrading, teamId, callback) {
+    this.TVA_socket = ajax.connectSocket(this.apiList.TVT, {
+      type: 'ai',
+      teamId: teamId,
+      danGrading: danGrading || 1,
+    });
+    //console.log('链接数据')
+    console.log({
+      teamId: teamId,
+      danGrading: danGrading || 1,
+    })
+    //console.log('链接数据')
+    this.TVA_socket.onOpen(res => {
+      this.TVA_isConnect = true;
+      callback(res);
+    })
+  },
+  TVA_send (data) {
+    //console.log('发送：')
+    //console.log(data)
+    var messageList = this.TVA_messageList;
+    messageList.push(data);
+    if (this.TVA_isConnect) {
+      for (var i = 0; i < this.TVA_messageList.length; i++) {
+        let data = JSON.stringify(this.TVA_messageList[i]);
+        this.TVA_socket.send({
+          data: data
+        })
+        this.TVA_messageList = [];
+      }
+    }
+  },
+  TVA_onMessage (callback) {
+    this.TVA_socket.onMessage(res => {
+      var res = (typeof res.data == 'string' ? JSON.parse(res.data) : res.data) || null;
+      if (res.code != '0000') {
+        if (this.TVA_isConnect) {
+          utils.showToast({
+            title: res.msg || res.message || ''
+          });
+        }
+        callback(res);
+      }
+      callback(res);
+    })
+  },
+  TVA_onError (callback) {
+    this.TVA_socket.onError(res => {
+      //console.log(res)
+      utils.showToast({
+        title: '连接错误！'
+      });
+    })
+  },
+  TVA_close () {
+    if (this.TVA_isConnect) {
+      //console.log('VT close')
+      this.TVA_socket.close({})
     }
   },
   addFriend (roomUsers, callback) {

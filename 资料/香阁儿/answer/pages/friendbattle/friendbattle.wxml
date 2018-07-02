@@ -33,8 +33,8 @@
 				<image class="head" mode="scaleToFill" src="{{item.avatar}}"></image>
 				<!--<view class="name">{{item.name}}</view>-->
 				<view class="point {{item.pointAnimation?'active':''}}">{{item.point}}</view>
-				<!--<image class="combo active" src=".../../static/images/combo{{item.combo}}.png"></image>-->
-				<image class="combo {{item.comboAnimation?'active':''}}" src="../../static/images/combo{{item.comboCount}}.png"></image>
+				<!--<image class="combo active" src=".https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.combo}}.png"></image>-->
+				<image class="combo {{item.comboAnimation?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/combo{{item.comboCount}}.png"></image>
 			</view>
 		</view>
 		<view class="battle-title">
@@ -46,7 +46,7 @@
 				<view class="count draw_btn" bindtap="drawCircle">{{countDownTime}}</view>
 			</view>
 			<view class="winner">
-				<image class="winner-icon" src="../../static/images/winner.png"></image>
+				<image class="winner-icon" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/winner.png"></image>
 			</view>
 			<view class="looser"></view>
 		</view>
@@ -58,7 +58,7 @@
 			<view class="answer-step" animation="{{qListData}}">
 				<view class="q-title">
 					{{subject.title}}
-					<image class="q-double {{subject.doublePoint?'active':''}}" src="../../static/images/t.png"></image>
+					<image class="q-double {{subject.doublePoint?'active':''}}" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/t.png"></image>
 				</view>
 				<button wx:for="{{subjectList}}"
 								wx:key="{{index}}"
@@ -72,10 +72,10 @@
 	</view>
 	<view class="battle-stage" wx:if="{{MATCH}}" animation="{{matchData}}">
 	<!--<view class="battle-stage">-->
-		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="../../static/images/match-vs.png"></image>
+		<image class="match-vs" animation="{{matchCenterData}}" mode="aspectFit" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-vs.png"></image>
 		<view class="start-box">
-			<image class="start-left"  src="../../static/images/match-left.png"  animation="{{matchLeftData}}"></image>
-			<image class="start-right" src="../../static/images/match-right.png" animation="{{matchRightData}}"></image>
+			<image class="start-left"  src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-left.png"  animation="{{matchLeftData}}"></image>
+			<image class="start-right" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/match-right.png" animation="{{matchRightData}}"></image>
 		</view>
 		<view class="match-user">
 			<view class="user {{item.owner?'owner':''}}"
@@ -98,7 +98,7 @@
 				</view>
 			</view>
 			<button class="room-btn invite" open-type="share">
-				<image src="../../static/images/invite.png"></image>
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/invite.png"></image>
 			</button>
 		</view>
 		<button class="room-btn start" bindtap="startBattle" wx:if="{{roomOwner==userId&&roomOwner!=''}}">
@@ -150,7 +150,7 @@
 				退出游戏
 			</button>
 		</view>
-		<image class="boom" src="../../static/images/boom.png"></image>
+		<image class="boom" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/boom.png"></image>
 	</view>
 </view>
 <audio id="myAudio" loop="true"></audio>

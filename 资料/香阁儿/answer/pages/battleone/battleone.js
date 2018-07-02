@@ -1,5 +1,5 @@
 import utils from "../../common/utils/utils";
-import {battle,user} from "../../services/index";
+import {battle, user} from "../../services/index";
 
 Page({
 
@@ -94,10 +94,10 @@ Page({
     this.setData({
       level: options.level || 1
     })
-    this.initPage();
   },
   onReady () {
     this.playBg();
+    this.initPage();
   },
   playBg () {
     this.audioCtx = wx.createAudioContext('myAudio');
@@ -544,7 +544,7 @@ Page({
     }
     this.filterSubjectListEvt(res);
     if (res.mayNextSub) {
-      if (!this.data.hasMore) {
+      if (!this.data.hasMore && this.data.isAnswered) {
         //获取对战结果
         /*结果展示2秒*/
         this.clearCountAni();

@@ -19,7 +19,7 @@
 				<view class="sub-info">
 					<view class="point">
 						<view>{{item.totleCrown}}</view>
-						<image class="star" src="../../static/images/star.png"></image>
+						<image class="star" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/star.png"></image>
 					</view>
 					<view wx:if="{{ item.city }}" class="location">来自{{item.city}}</view>
 					<view wx:else class="location">未知区域</view>

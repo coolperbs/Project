@@ -6,7 +6,7 @@
 				<view class="desc">{{ item.name }}</view>
 				<!--<view class="btn-wrapper">-->
 					<view class="coin btn" data-id="{{ item.wareId }}" catchtap="buy">
-						<image src="../../static/images/coin.png"></image>
+						<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/coin.png"></image>
 						{{ item.price }}元
 				<!--</view>-->
 				</view>
@@ -29,13 +29,13 @@
 				<view class="btn" data-id="{{pageInfo[currentIndex].wareId}}" data-index="{{currentIndex}}" catchtap="useItem">使用</view>
 			</view>-->
 			<view class="close" catchtap="hidePop">
-				<image src="../../static/images/cross-white.png"/>
+				<image src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/cross-white.png"/>
 			</view>
 		</view>
 		<view class="mask" catchtap="hidePop"></view>
 	</view>
 	<view wx:if="{{platform!='android'}}" class="ios">
-		<image class="shop-close" src="../../static/images/shop-close.png"></image>
+		<image class="shop-close" src="https://xgross.oss-cn-shenzhen.aliyuncs.com/201806/shop-close.png"></image>
 		<view wx:if="{{platform!='android'}}" class="act">
 			<button class="button-wrapper" open-type="share"><view class="button">分享免费领取金币</view></button>
 		</view>

@@ -30,7 +30,9 @@ Page({
     isEnd: false,
     errorShaking: false,
     isStart: false,
-    MATCH: false
+    MATCH: false,
+    vsAi: undefined,
+    isMach: false
   },
   initCanvas () {
     let sys = wx.getSystemInfoSync();
@@ -81,7 +83,18 @@ Page({
   onShow () {
     this.playBg();
   },
+  onReady () {
+    this.initPage();
+  },
+  checkStatus () {
+    setTimeout(() => {
+      if (this.data.hasError) {
+        this.back()
+      }
+    }, 1000)
+  },
   playBg () {
+    return
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
@@ -92,6 +105,7 @@ Page({
     }
   },
   playWinner () {
+    return
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
@@ -110,10 +124,6 @@ Page({
       roomId: options.roomId || '',
       teamId: options.teamId || ''
     });
-    console.log('options')
-    console.log(options)
-    console.log('options')
-    this.initPage();
     this.modal = this.selectComponent("#m-modal");
   },
   /**
@@ -131,12 +141,10 @@ Page({
       userId: UserInfo.user.id
     });
     battle.TVT_connect(this.data.level, token, this.data.roomId, this.data.teamId, () => {
-      //console.log('好友对战连接成功:----------------------');
       this.setData({
         isConnect: true
       });
       this.getMessage();
-      battle.TVT_onError()
     })
   },
   /**
@@ -151,25 +159,15 @@ Page({
           })
         }
         this.closeConnect();
-        setTimeout(() => {
-          this.back()
-        }, 1500);
+        this.back();
         return
       }
       res = res.data;
       if (res.type == 1) {
-        this.initRoom(res);
+        //this.initRoom(res);
       }
       if (res.type == 2) {
-        this.initRoom(res);
-        this.beginAnswer(res);
-        if (this.keepTimer) {
-          clearInterval(this.keepTimer)
-        }
-        this.keepTimer = setInterval(() => {
-          console.log('keep----')
-          battle.TVT_send({aba: 324})
-        }, 5000)
+        return
       }
       if (res.type == 3) {
 
@@ -196,27 +194,20 @@ Page({
         }, 1000)
       }
       if (res.type == '6') {
-
-        console.log('有人离开了', res)
         let roomUsers = this.data.roomUsers;
         let runner = roomUsers.findIndex((el) => {
           return el.id == res.userId
         });
         let rest = [...roomUsers]
         utils.showToast({title: '玩家' + rest[runner].name + '离开房间~'})
-        rest[runner] = {point: 0};
-        //计算还有几个用户
-        this.setData({
-          roomUsers: rest
-        })
-        console.log(this.data.teamUsersMap)
         //区分开始对战没有
         if (this.data.isStart) {
-
           // 这里判断 某一个组人为空就退出
-          let teamUsersMap = this.data.teamUsersMap;
-          for (var k  in teamUsersMap) {
-            if (teamUsersMap[k].length == 0) {
+          this.startRunner = this.startRunner || [];
+          this.startRunner.push(res.userId);
+          //对战ai 的时候 如果房主退出了 整个结束
+          if (this.data.aiConnect) {
+            if (res.userId == this.data.teamId) {
               this.clearCountAni();
               this.clearTheInterval();
               setTimeout(() => {
@@ -227,16 +218,39 @@ Page({
                 })
               }, 100)
             }
-          }
-        } else{
-          let teamUsersMap = this.data.teamUsersMap;
-          let dismiss = false
-          for (var k  in teamUsersMap) {
-            if(k==res.userId){
-              dismiss = true;
+          } else {
+            //真人对战  其中一个组退完 才整体退出
+
+            let teamUsersMap = this.data.teamUsersMap;
+            for (let k  in teamUsersMap) {
+              let count = 0;
+              for (let y = 0; y < teamUsersMap[k].length; y++) {
+                let temp = teamUsersMap[k][y];
+                if (this.startRunner.indexOf(temp) > -1) {
+                  count += 1;
+                }
+                if (count == 2) {
+                  this.clearCountAni();
+                  this.clearTheInterval();
+                  setTimeout(() => {
+                    this.subjectAnimation(4, () => {
+                      this.clearCountAni();
+                      this.clearTheInterval();
+                      this.sendMessage({type: 3})
+                    })
+                  }, 100)
+                  break;
+                }
+              }
             }
           }
-          if (res.userId == this.data.roomOwner || dismiss) {
+        } else {
+          rest[runner] = {point: 0};
+          //计算还有几个用户
+          this.setData({
+            roomUsers: rest
+          })
+          if (res.userId == this.data.teamId) {
             //房主都跑了
             utils.showToast({
               title: '房间解散~~'
@@ -247,11 +261,6 @@ Page({
             }, 1500);
           }
         }
-      }
-      if (res.type == '7') {
-        this.animationEvt('start', () => {
-          this.getSubject();
-        })
       }
       if (res.type == '8') {
         let roomId = res.roomId || '';
@@ -269,41 +278,80 @@ Page({
           }
         })
       }
+      if (res.type == 9) {
+        this.initTeam(res)
+        if (this.keepTimer) {
+          clearInterval(this.keepTimer)
+        }
+        this.keepTimer = setInterval(() => {
+          battle.TVT_send({type: 999})
+        }, 5000)
+      }
+      if (res.type == 10) {
+        if (this.keepTimer) {
+          clearInterval(this.keepTimer)
+        }
+        this.keepTimer = setInterval(() => {
+          battle.TVT_send({type: 999})
+        }, 5000)
+        this.initTeam(res)
+      }
+      if (res.type == 11) {
+        this.setData({
+          vsAi: false
+        })
+        if (!this.get12) {
+          this.animationEvt('start');
+        }
+        this.initRoom(res);
+        setTimeout(() => {
+          this.setData({
+            isMach: true
+          })
+          this.animationEvt('ready', () => {
+            this.beginAnswer(res)
+          })
+        }, 2000)
+
+        //保持动画一致 都等2000ms
+
+      }
+      if (res.type == 12) {
+        this.get12 = true
+        this.animationEvt('start');
+      }
     })
+  },
+  initTeam (res) {
+    this.setData({
+      teamId: res.teamId
+    })
+    this.updateRoomUser(res.teamUsers)
   },
   /**
    * 初始化房间信息
    * */
   initRoom (res) {
-    console.log('房间信息:-----------------');
-    //console.log('房间信息:-----------------');
-    console.log(res.roomId)
     this.setData({
       roomId: res.roomId || '',
       totalPoint: res.totlePoint || ''
     })
-    this.updateRoomUser(res.roomUsers);
-    this.updateTeam(res.teamUsersMap)
+    this.updateRoomUser(res.roomUsers, () => {
+      setTimeout(() => {
+        this.updateTeam(res.teamUsersMap)
+      }, 500)
+    });
   },
   /**
    * 更新房间信息
    * */
-  updateRoomUser (res) {
-    //console.log('房间信息更新:-----------------');
-    //console.log(res);
-    //console.log('房间信息更新:-----------------');
-    let that = this;
+  updateRoomUser (res, callback) {
     let roomUsers = res.map((el, index) => {
       el.point = 0;
-      if (el.owner) {
-        that.setData({
-          roomOwner: el.id
-        })
-      }
       return el;
     });
     //补全 4个用户
-    for (var k = roomUsers.length; k < 4; k++) {
+    for (let k = roomUsers.length; k < 4; k++) {
       roomUsers.push({
         point: 0
       })
@@ -311,24 +359,33 @@ Page({
     this.setData({
       roomUsers: roomUsers
     })
+    callback && callback();
   },
   updateTeam (res) {
     let teamId = Object.keys(res);
-    var teamIdArr = [];
-    for (let i = 0; i < teamId.length; i++) {
-      teamIdArr.push({teamId: teamId[i], teamPoint: 0})
-    }
+    let teamIdArr = [];
+    // for (let i = 0; i < teamId.length; i++) {
+    //   teamIdArr[i] = function (num) {
+    //     return {
+    //       teamId: teamId[num], teamPoint: 0
+    //     }
+    //   }(i)
+    // }
 
-    //这里 把 房主的 队伍放在前面
+    for (let k in res) {
+      let temp = {teamId: k, teamPoint: 0}
+      teamIdArr.push(temp)
+    }
     let index = teamIdArr.findIndex((el) => {
-      return el.teamId = this.data.roomOwner
+      return el.teamId == this.data.teamId
     });
-    let tempArr = teamIdArr[index];
-    teamIdArr.splice(index, 1);
-    teamIdArr.splice(0, 0, tempArr);
+    let index2 = index === 0 ? 1 : 0;
+    let tempArrA = teamIdArr[index];
+    let tempArrB = teamIdArr[index2]
+    let final = [tempArrA, tempArrB]
     this.setData({
       teamUsersMap: res,
-      teamIdArr: teamIdArr
+      teamIdArr: final
     })
   },
   /**
@@ -344,23 +401,149 @@ Page({
   /**
    * 开始对战
    * */
-  startBattle () {
-    // 这个方法抛弃
+  startMatch () {
+    if (this.isStartMatch) {
+      return
+    }
     let count = 0;
     this.data.roomUsers.map((el) => {
       if (el.avatar) {
         count++;
       }
     })
-
     if (count >= 2) {
-      this.sendMessage({"type": 4});
+      this.isStartMatch = true;
+      this.sendMessage({"type": 6});
+      // 准备 机器人
+      setTimeout(() => {
+        this.connectAI();
+      }, 5000)
     } else {
       wx.showToast({
-        title: '至少2人才能开始对战！~',
+        title: '先去邀请你的队友吧！~',
         icon: 'none'
       })
     }
+  },
+  connectAI () {
+    if (this.data.vsAi == undefined) {
+      battle.TVA_connect(this.data.level, this.data.teamId, () => {
+        this.setData({
+          aiConnect: true
+        })
+        this.getAiMessage()
+      })
+    }
+  },
+  getAiMessage () {
+    battle.TVA_onMessage((res) => {
+      if (res.code != '0000') {
+        if (this.data.PVA_isConnect) {
+          utils.showToast({
+            title: '连接错误' + res.code
+          })
+        }
+        return
+      }
+      res = res.data;
+      if (res.type == 2) {
+        this.setData({
+          aiInfo: res
+        })
+      }
+      if (res.type == 3) {
+        //更PVP 同步 等2秒动画
+        setTimeout(() => {
+          let subject = this.data.subject;
+          if (subject.pushTime == res.subject.pushTime && this.aiTimer) {
+            //避免题目二次渲染
+            return
+          }
+          this.startTheAiInterval()
+        }, 2000)
+      }
+      if (res.type == '6') {
+        return
+        battle.TVA_send({"type": 3});
+        setTimeout(() => {
+          this.clearTheAiInterval()
+          if (this.data.aiConnect) {
+            battle.TVA_close();
+            this.setData({
+              aiConnect: false,
+              vsAi: undefined
+            })
+          }
+        }, 500)
+      }
+    })
+  },
+  startTheAiInterval () {
+    this.clearTheAiInterval(() => {
+      let count = Math.ceil(parseInt(Math.random() * 5));
+      this.aiTimer = setInterval(() => {
+        if (count <= 0) {
+          this.clearTheAiInterval(() => {
+            this.aiAnswerEvt();
+          });
+        } else {
+          count -= 1
+        }
+      }, 1000);
+    });
+  },
+  clearTheAiInterval (callback) {
+    if (this.aiTimer) {
+      clearInterval(this.aiTimer);
+      this.aiTimer = null;
+    }
+    callback && callback();
+  },
+  aiAnswerEvt () {
+    let percent = parseFloat(Math.random() * 1).toFixed(2);
+    let percent2 = parseFloat(Math.random() * 1).toFixed(2);
+    //let aiWinRate = this.data.aiInfo.aiWinRate || 0;
+    let aiWinRate = 0.4;
+    let aiWinRate2 = 0.1;
+    //todo 差ai 胜率 0.4
+    let that = this;
+
+    //先随机取答案且保证答案不正确
+    function getError (right) {
+      let result = Math.floor(parseInt((Math.random() * that.data.subjectList.length) + 1));
+      if (right == result) {
+        return getError(right)
+      } else {
+        return result
+      }
+    }
+
+    let rightAnswer = this.data.subject.rightOption;
+    let answer = getError(rightAnswer);
+    let answer2 = getError(rightAnswer);
+    if (percent > aiWinRate) {
+      answer = rightAnswer;
+
+    }
+    if (percent2 > aiWinRate2) {
+      answer2 = rightAnswer;
+    }
+    battle.TVA_send({
+      "type": 2,
+      "optionId": answer,
+      "subjectOffset": this.data.subjectCount,
+      "aiUser": true,
+      "aiUserId": this.data.roomUsers[0].id
+    })
+    setTimeout(() => {
+      battle.TVA_send({
+        "type": 2,
+        "optionId": answer2,
+        "subjectOffset": this.data.subjectCount,
+        "aiUser": true,
+        "aiUserId": this.data.roomUsers[1].id
+      })
+    }, 1000)
   },
   /**
    * 取消对战
@@ -435,16 +618,14 @@ Page({
         this.setData({
           showRoom: false
         });
-        this.animationEvt('ready', callback)
       }, 100)
     }
     if (type == 'ready') {
-      console.log('xxxxxxxxxx', width)
       matchLeftAni.translateX(0).step({delay: 500});
       matchRightAni.translateX(0).step({delay: 500});
       this.setData({
         matchLeftData: matchLeftAni.export(),
-        matchRightData: matchRightAni.export(),
+        matchRightData: matchRightAni.export()
       });
       setTimeout(() => {
         this.animationEvt('gaming', callback)
@@ -461,10 +642,10 @@ Page({
       });
       this.initCanvas();
       setTimeout(() => {
-        callback && callback();
         this.setData({
           MATCH: false
         });
+        callback && callback();
       }, 500)
     }
   },
@@ -472,30 +653,35 @@ Page({
    * 获取题目
    * */
   getSubject () {
+    this.getSubjectMap = this.getSubjectMap || {}
     if (!this.data.hasMore) {
       return
     }
+
     this.setData({
       subjectCount: this.data.subjectCount + 1,
       countDownTime: 10
     });
+
+    if (this.getSubjectMap[this.data.subjectCount]) {
+      return
+    }
+
     this.sendMessage({type: 1, subjectOffset: this.data.subjectCount})
+    this.getSubjectMap[this.data.subjectCount] = true;
   },
   /**
    * 拿到题目
    * */
   filterSubject (res) {
-    //console.log('获取的题目:-------------------------------')
-    //console.log(res)
-    //console.log('获取的题目:-------------------------------')
     let subject = this.data.subject;
     if (subject.pushTime == res.subject.pushTime) {
       //避免题目二次渲染
       return
     }
     //题目数据重构
-    var subjectList = res.subject.optionList.map((item) => {
-      var result = {};
+    let subjectList = res.subject.optionList.map((item) => {
+      let result = {};
       result.className = '';
       result.label = item;
       return result
@@ -517,9 +703,7 @@ Page({
    * 更新分数
    * */
   updatePoint (res) {
-    //console.log('得到答案更新用户分数:--------------------------------------')
-    //console.log(res);
-    //console.log('得到答案更新用户分数:--------------------------------------')
+    this.hasError = false;
     let resultUser = res.userId;
     let index = this.data.roomUsers.findIndex((el) => {
       return el.id == resultUser
@@ -530,74 +714,81 @@ Page({
     })
     let teamIdArr = this.data.teamIdArr;
     let updateTeam = teamIdArr[teamIndex];
-    let roomUser = this.data.roomUsers;
-    let updateUser = roomUser[index];
-    updateUser['point'] += res.point;
-    updateTeam['teamPoint'] += res.point;
-    if (updateUser['point'] < 0) {
-      updateUser['point'] = 0
+    if (!updateTeam) {
+      return
     }
-    if (updateTeam['teamPoint'] < 0) {
-      updateTeam['teamPoint'] = 0
-    }
-    roomUser[index] = updateUser;
-    teamIdArr[teamIndex] = updateTeam;
-    updateUser['pointAnimation'] = true;
-    let oldCombo = updateUser['comboCount'] || 0;
-    updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
-    updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
-    roomUser[index] = updateUser;
-    //console.log(roomUser)
-    this.setData({
-      roomUsers: roomUser,
-      teamIdArr: teamIdArr
-    });
-
-    //加分动画
-    if (updateUser['pointAnimation']) {
-      setTimeout(() => {
-        let users = this.data.roomUsers;
-        users[index]['pointAnimation'] = false;
-        //console.log('pointBar2',users[index].pointBar)
-        this.setData({
-          roomUsers: users
-        });
-      }, 1000);
-    }
-    //combo 动画
-    if (updateUser['comboCount'] > 1) {
-      setTimeout(() => {
-        let users = this.data.roomUsers;
-        users[index]['comboAnimation'] = false;
-        this.setData({
-          roomUsers: users
-        });
-      }, 1500);
-    }
-    this.filterSubjectListEvt(res);
-    if (res.mayNextSub) {
-      if (!this.data.hasMore) {
-        //获取对战结果
-        /*结果展示2秒*/
-        this.clearCountAni();
-        this.clearTheInterval();
-        setTimeout(() => {
-          this.subjectAnimation(4, () => {
-            this.sendMessage({type: 3});
-          })
-        }, 2000);
-        return
+    try {
+      let roomUser = this.data.roomUsers;
+      let updateUser = roomUser[index];
+      updateUser['point'] += res.point;
+      updateTeam['teamPoint'] += res.point;
+      if (updateUser['point'] < 0) {
+        updateUser['point'] = 0
       }
-      //提前结束这道题
-      this.clearCountAni();
-      this.clearTheInterval(() => {
-        /*结果展示2秒*/
+      if (updateTeam['teamPoint'] < 0) {
+        updateTeam['teamPoint'] = 0
+      }
+      roomUser[index] = updateUser;
+      teamIdArr[teamIndex] = updateTeam;
+      updateUser['pointAnimation'] = true;
+      let oldCombo = updateUser['comboCount'] || 0;
+      updateUser['comboCount'] = res.answerResult ? oldCombo + 1 : 0;
+      updateUser['comboAnimation'] = updateUser['comboCount'] > 1 ? true : false;
+      roomUser[index] = updateUser;
+      this.setData({
+        roomUsers: roomUser,
+        teamIdArr: teamIdArr
+      });
+
+      //加分动画
+      if (updateUser['pointAnimation']) {
         setTimeout(() => {
-          this.subjectAnimation(4, () => {
-            this.getSubject();
-          })
-        }, 2000)
-      })
+          let users = this.data.roomUsers;
+          users[index]['pointAnimation'] = false;
+          this.setData({
+            roomUsers: users
+          });
+        }, 1000);
+      }
+      //combo 动画
+      if (updateUser['comboCount'] > 1) {
+        setTimeout(() => {
+          let users = this.data.roomUsers;
+          users[index]['comboAnimation'] = false;
+          this.setData({
+            roomUsers: users
+          });
+        }, 1500);
+      }
+      this.filterSubjectListEvt(res);
+      if (res.mayNextSub) {
+        if (!this.data.hasMore && this.data.isAnswered) {
+          //获取对战结果
+          /*结果展示2秒*/
+          this.clearCountAni();
+          this.clearTheInterval();
+          setTimeout(() => {
+            this.subjectAnimation(4, () => {
+              this.sendMessage({type: 3});
+            })
+          }, 2000);
+          return
+        }
+        //提前结束这道题
+        this.clearCountAni();
+        this.clearTheInterval(() => {
+          /*结果展示2秒*/
+          setTimeout(() => {
+            this.subjectAnimation(4, () => {
+              this.getSubject();
+            })
+          }, 2000)
+        })
+      }
+    } catch (e) {
+      console.log('跟新分数异常')
+      console.log(e)
+      this.hasError = true;
     }
   },
   /**
@@ -727,7 +918,6 @@ Page({
         this.startCountAni();
         this.Timer = setInterval(() => {
           if (this.data.countDownTime <= 0) {
-            //console.log('用户到时间,自动答错 获取新题目');
             this.clearCountAni();
             this.clearTheInterval(() => {
               this.answerSubject();
@@ -766,14 +956,13 @@ Page({
       "optionId": answer,		// 用户回答的选项ID，从1开始
       "subjectOffset": this.data.subjectCount	// 用户回答的题目ID
     });
+    this.lastAnswerCount = this.data.subjectCount;
   },
   /**
    * 结束游戏
    * */
   endGame (res) {
-    //console.log('游戏结束:--------------------------------------')
-    //console.log(res)
-    //console.log('游戏结束:--------------------------------------')
+    //res={"fightResults":[{"danGrading":1,"danGradingProcess":1,"exp":5,"gold":40,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":true,"ranking":1,"result":true,"teamId":"-15","teamTotlePoint":1120,"totlePoint":580,"userAvatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/e2b1e9f1-061d-47f3-8bce-a4a8537a3c3a","userId":-14,"userName":"不爽就来一刀","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":1,"exp":5,"gold":40,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":2,"result":true,"teamId":"-15","teamTotlePoint":1120,"totlePoint":540,"userAvatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/4cbf35cf-26f1-479f-b791-06e192be3171","userId":-15,"userName":"卡斯柯","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":-1,"exp":2,"gold":0,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":3,"result":false,"teamId":"7","teamTotlePoint":0,"totlePoint":0,"upExp":0,"userAvatar":"https://wx.qlogo.cn/mmopen/vi_32/BOqb0kpZJ2XUomNlWa9ETHZGqS3Q7J2SgVqAyRVmNxhtBE3n6YibzfNvhyOg79BibAguZ48C7pOhLu8arWfWFznw/132","userId":5,"userName":"前国家一级保护动物🐼","winTeamId":"-15"},{"danGrading":1,"danGradingProcess":-1,"exp":2,"gold":0,"hasUpDanGrading":false,"hasUpLevel":false,"mvp":false,"ranking":3,"result":false,"teamId":"7","teamTotlePoint":0,"totlePoint":0,"upExp":0,"userAvatar":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJuJJibeJIXUzn20DsW5YWqoJjEFYN7FwNGc9sRy487PtyLd88271cxlPvYm6l8E0uPsmqQzndhyng/132","userId":7,"userName":"YPanda💤","winTeamId":"-15"}],"teamUsersMap":{"7":[7,5],"-15":[-15,-14]},"type":5}
     if (this.data.isEnd) {
       return
     }
@@ -784,9 +973,10 @@ Page({
     let result = res.fightResults;
     let currentUser = this.data.userId;
     let roomUser = this.data.roomUsers;
+    //=[{"avatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/4cbf35cf-26f1-479f-b791-06e192be3171","id":-15,"level":0,"name":"卡斯柯","owner":true,"point":0},{"avatar":"http://xgross.oss-cn-shenzhen.aliyuncs.com/201804/e2b1e9f1-061d-47f3-8bce-a4a8537a3c3a","id":-14,"level":0,"name":"不爽就来一刀","owner":false,"point":0},{"avatar":"https://wx.qlogo.cn/mmopen/vi_32/BOqb0kpZJ2XUomNlWa9ETHZGqS3Q7J2SgVqAyRVmNxhtBE3n6YibzfNvhyOg79BibAguZ48C7pOhLu8arWfWFznw/132","id":5,"level":6,"name":"前国家一级保护动物🐼","owner":false,"teamId":"7","point":0},{"avatar":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJuJJibeJIXUzn20DsW5YWqoJjEFYN7FwNGc9sRy487PtyLd88271cxlPvYm6l8E0uPsmqQzndhyng/132","id":7,"level":6,"name":"YPanda💤","owner":false,"teamId":"7","point":0}];
     //计算玩家分数
-    for (var i = 0; i < roomUser.length; i++) {
-      for (var k = 0; k < result.length; k++) {
+    for (let i = 0; i < roomUser.length; i++) {
+      for (let k = 0; k < result.length; k++) {
         if (roomUser[i].id == result[k].userId) {
           roomUser[i].point = result[k].totlePoint;
         }
@@ -802,8 +992,6 @@ Page({
     }
     this.stopBg();
     this.playWinner();
-    //console.log('玩家数据');
-    //console.log(result[index]);
     let resultA = result[index]
     if (resultA.upExp !== undefined) {
       resultA.exp += resultA.upExp
@@ -811,7 +999,7 @@ Page({
     if (resultA.upGold !== undefined) {
       resultA.gold += resultA.upGold
     }
-    var showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
+    let showUPMask = resultA.hasUpLevel || resultA.hasUpDanGrading;
     this.setData({
       roomUsers: roomUser,
       WINNER: flag,
@@ -833,14 +1021,19 @@ Page({
    * 关闭连接
    * */
   closeConnect () {
-    //console.log('关闭连接:-------------------------------------')
     this.clearTheInterval();
+    this.clearTheAiInterval()
     this.clearCountAni();
     if (this.data.isConnect) {
       battle.TVT_close();
       this.setData({
         isConnect: false
       })
+    }
+    if (this.data.aiConnect) {
+      setTimeout(() => {
+        battle.TVA_close();
+      }, 50)
     }
     if (this.keepTimer) {
       clearInterval(this.keepTimer)
@@ -900,7 +1093,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log('触发页面卸载了')
     this.closeConnect();
     this.stopBg();
     this.stopWinner();
@@ -915,12 +1107,7 @@ Page({
           vsAi: false
         })
       }
-      setTimeout(() => {
-        this.animationEvt('start', () => {
-          this.getSubject()
-        })
-      }, 2000)
-
+      this.getSubject()
     }
   },
   closeModal () {
@@ -949,16 +1136,10 @@ Page({
         }
       }
     } else {
-      var teamId = ''
-      for (var i = 0; i < this.data.roomUsers.length; i++) {
-        if (this.data.roomUsers[i].id == this.data.userId) {
-          teamId = this.data.roomUsers[i].teamId;
-          break
-        }
-      }
+      let teamId = this.data.teamId;
       return {
         title: '等你来战',
-        path: '/pages/login/login?direct=../2v2/2v2&roomId=' + this.data.roomId + '&teamId=' + teamId + '&leve=' + this.data.level,
+        path: '/pages/login/login?direct=../2v2/2v2&teamId=' + teamId + '&leve=' + this.data.level,
         success: function (res) {
         },
         fail: function (res) {
