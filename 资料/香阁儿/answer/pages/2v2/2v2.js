@@ -94,7 +94,6 @@ Page({
     }, 1000)
   },
   playBg() {
-    return
     this.audioCtx = wx.createAudioContext('myAudio');
     this.audioCtx.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/b456ace7-7cfb-44b1-80ff-81af24a794bb.mp3');
     this.audioCtx.play();
@@ -105,7 +104,6 @@ Page({
     }
   },
   playWinner() {
-    return
     this.audioCtx2 = wx.createAudioContext('myAudio2');
     this.audioCtx2.setSrc('https://xgross.oss-cn-shenzhen.aliyuncs.com/201804/bdf4c431-a246-4992-afb9-5c6e0eb42307.mp3');
     this.audioCtx2.play();
@@ -656,12 +654,12 @@ Page({
     if (!this.data.hasMore) {
       return
     }
-var count=this.data.subjectCount + 1
+    var count = this.data.subjectCount + 1
     this.setData({
-      subjectCount:count ,
+      subjectCount: count,
       countDownTime: 10
     });
-    console.log('subjectMap',this.getSubjectMap)
+    console.log('subjectMap', this.getSubjectMap)
     if (this.getSubjectMap[count]) {
       return
     }
