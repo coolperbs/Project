@@ -129,11 +129,11 @@
 					</div>
 					<div class="text">党员积分</div>
 				</div>
-				<a href="#index/wuhou/links" class="tab" style="background-color : rgba( 73, 122, 104, 0.5 );">
+				<a href="#index/wuhou/oldpm" class="tab" style="background-color : rgba( 73, 122, 104, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon7.png"/>
 					</div>
-					<div class="text">友情链接</div>
+					<div class="text">老党员在行动</div>
 				</a>
 			</div>			
 		</div>
