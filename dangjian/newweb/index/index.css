@@ -2,9 +2,10 @@
 
 .page { width : 1130px; margin : 0 auto; }
 
-body { background-color: #fcfcfc; }
+body { background-color: #f4f4f4; }
+body a { text-decoration: none; color : #444; }
 
-.header { height : 50px; width : 100%; position: fixed; top : 0; left : 0; border-bottom : solid 1px #ccc;  background: -webkit-linear-gradient( to top, #eee, #fff);
+.header { z-index: 100; height : 50px; width : 100%; position: fixed; top : 0; left : 0; border-bottom : solid 1px #ccc;  background: -webkit-linear-gradient( to top, #eee, #fff);
   background: -o-linear-gradient( to top, #eee, #fff);
   background: -moz-linear-gradient( to top, #eee, #fff);
   background: linear-gradient( to top, #ccc, #fff); }
@@ -14,21 +15,61 @@ body { background-color: #fcfcfc; }
 .header .nav { float: right; }
 .header .nav .tab { height : 50px; line-height: 50px; float: left; margin-left : 40px; }
 
+.ellipsis-1 { -webkit-line-clamp: 1; overflow : hidden; text-overflow: ellipsis;display: -webkit-box; -webkit-box-orient: vertical; }
+.ellipsis-2 { -webkit-line-clamp: 2; overflow : hidden; text-overflow: ellipsis;display: -webkit-box; -webkit-box-orient: vertical; }
+.ellipsis-3 { -webkit-line-clamp: 3; overflow : hidden; text-overflow: ellipsis;display: -webkit-box; -webkit-box-orient: vertical; }
+.ellipsis-4 { -webkit-line-clamp: 4; overflow : hidden; text-overflow: ellipsis;display: -webkit-box; -webkit-box-orient: vertical; }
+
 .cont { z-index: 10; }
 .cont .banner { width : 100%; }
 .cont .banner img { width : 100%; display: block; }
 
-.actives { margin-top: 20px; border : solid 1px; }
-.actives .item { position: relative; overflow: hidden; float :left; margin-left : 20px; width : 208px; height : 270px; border : solid 1px #f0f0f0; border-radius : 5px; position: relative; background-color: #fff; }
+/* 活动区域 */
+.actives { margin-top: 20px; }
+.actives .item { position: relative; overflow: hidden; float :left; margin-left : 20px; width : 210px; height : 270px; border-radius : 5px; position: relative; background-color: #fff; }
 .actives .item:first-child { margin-left : 0; }
 .actives .item .pic { width : 100%; height : 156px; display: block; }
 .actives .item .detail { padding : 10px; height : 94px; }
 .actives .item .detail .title { font-size : 14px; line-height : 20px; }
 .actives .item .detail .sub-title { font-size : 12px; color : #bbb; margin-top : 10px; }
 
-.entry { margin-top : 20px; padding-left : 460px; border : solid 1px; width : 670px; }
-.entry .center { width: 440px; margin-left : -460px; background-color: #fff; }
-.entry .content {  }
+
+/* 两党、咨询区域 */
+.entry { margin-top : 20px; padding-left : 460px; width : 670px; }
+.entry .mod { border-radius : 5px; background-color: #fff; }
+.entry .zf { height : 365px; overflow: hidden; border-radius : 5px; width: 440px; margin-left : -460px; background-color: #fff; float : left; }
+.entry .zf .title { padding : 0 20px; font-size : 18px; height : 56px; line-height: 56px; border-bottom : solid 1px #f0f0f0; }
+.entry .zf .sorts { padding-left : 130px; }
+.entry .zf .sorts .menu { height : 307px; border-right : solid 1px #f0f0f0; width : 100px; float : left; margin-left : -110px; }
+.entry .zf .sorts .menu .item { position: relative; padding-left : 10px; font-size : 14px; height : 30px; line-height: 30px; }
+.entry .zf .sorts .menu .item.current { font-size : 14px; font-weight : bold; color : #EE2C2C; }
+.entry .zf .sorts .menu .item.current:before { content : '·'; display: block; float: left; margin-left : -10px; height : 100%; width : 10px; }
+
+.entry .news { height : 365px; overflow: hidden; }
+.entry .news .title { font-size : 18px; height : 56px; line-height: 56px; padding : 0 20px; border-bottom : solid 1px #f0f0f0; }
+.entry .news .main { height : 130px; padding : 20px 20px 20px 215px; display: block; }
+.entry .news .main img { height : 130px; float: left; margin-left : -195px; width : 173.33px; }
+.entry .news .main .t { font-size : 16px; line-height: 22px; }
+.entry .news .main .c { font-size : 12px; color : #888; line-height : 20px; margin-top : 15px; height : 60px; }
+
+.entry .news .sub { padding : 0 20px 20px 20px; }
+.entry .news .items { float : left; margin-left : 20px; width : 304px; }
+.entry .news .items:first-child { margin-left : 0; }
+.entry .news .items .item { color : #555; font-size : 14px; height : 16px; line-height: 16px; width : 100%; float : left; clear : both; margin-top : 10px; }
+.entry .news .items .item:first-child { margin-top : 0; }
+.entry .news .items .item em { border-radius: 3px; background-color: #999; margin-right : 10px; height : 16px; line-height: 16px; padding : 0 4px; font-size : 12px; color :#fff; }
+.entry .news .items .item em.red { background-color: #EE3B3B; }
+.entry .news .items .item em.blue { background-color : #6495ED; }
+
+/* 办事大厅 */
+.center { margin-top : 20px; background-color: #fff; border-radius : 5px; }
+.center .title { font-size : 18px; padding : 20px; }
+.center .list { padding : 0 20px 20px 20px; }
+.center .list li { cursor: pointer; border : solid 1px #fff; float : left; width : 136px; height : 100px; padding-left : 80px; }
+.center .list li .primary { float: left; margin-left : -80px; width : 60px; height : 100px; line-height: 100px; font-size : 18px; font-weight : bold; text-align: center; }
+.center .list li .sub { height : 100px; overflow: hidden; }
+.center .list li .sub a { display: block; font-size : 14px; line-height: 25px; }
+.center .list li:hover { border : solid 1px #ccc; }
 
 .footer { height : 100px; background-color: #000; margin-top : 20px; }
 
