@@ -1,0 +1,119 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.5.4",
+	"appid": "wxc56642067fa3ea36",
+	"projectname": "%E6%99%BA%E6%85%A7%E5%85%9A%E5%BB%BA",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "党员学习",
+					"pathName": "pages/CPStudyList/CPStudyList",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "项目列表",
+					"pathName": "pages/taskSearch/taskSearch",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/signup/signup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "文章详情",
+					"pathName": "pages/artical/artical",
+					"query": "id=66"
+				},
+				{
+					"id": 5,
+					"name": "创建项目",
+					"pathName": "pages/taskApply/taskApply",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "入党申请",
+					"pathName": "pages/CPApply/CPApply",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "转移党组织",
+					"pathName": "pages/CPMove/CPMove",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "项目查询",
+					"pathName": "pages/taskSearch/taskSearch",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "样式修改",
+					"pathName": "pages/CPMoveTemp/CPMoveTemp",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录/注册",
+					"pathName": "pages/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "三会一课",
+					"pathName": "pages/meetingStudy/meetingStudy",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "找党组织",
+					"pathName": "pages/CPMove/CPMove",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "流动党组织简介",
+					"pathName": "pages/rules/rules",
+					"query": ""
+				},
+				{
+					"id": 14,
+					"name": "党章",
+					"pathName": "pages/rules/rules",
+					"query": "type=CPApply"
+				}
+			]
+		}
+	}
+}

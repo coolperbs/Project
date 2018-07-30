@@ -1,0 +1,6 @@
+<template name ="module-concat">
+	<view class="module-concat" style="display: flex;flex-direction: column;align-items: center;height: 100rpx;color: #ccc ;margin-top:50rpx">
+		<view style="font-size: 24rpx">技术支持</view>
+		<view style="font-size: 24rpx;margin-top:10rpx">17502846460 陈先生</view>
+	</view>
+</template>

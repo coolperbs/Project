@@ -1,0 +1,42 @@
+
+
+
+@import '../../common/basestyle/module.wxss'
+.btn-wrapper{
+	margin-top: 20rpx;
+}
+
+
+.form-wrapper{
+	margin-top: 1px;
+	border-radius:0;
+}
+
+.page-register {
+	margin-top:20rpx;
+}
+.page-register .tab-btn-wrapper{
+	display:flex;
+	width:730rpx;
+	margin:auto;
+	border-top-right-radius: 8rpx;
+	border-top-left-radius: 8rpx;
+
+}
+.page-register .tab-btn{
+	width:50%;
+	text-align:center;
+	height: 100rpx;
+	line-height: 100rpx;
+	background-color:white;
+
+}
+.page-register .tab-btn.active{
+	color:#EA4834;
+}
+/*.page-register .tab-btn:first-child{
+	margin-right:1px;
+}
+.page-register .tab-btn:last-child{
+	margin-left:1px;
+}*/

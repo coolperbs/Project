@@ -1,0 +1,4 @@
+.view-movement .banner-img{
+	width: 750rpx;
+	height: 300rpx;
+}

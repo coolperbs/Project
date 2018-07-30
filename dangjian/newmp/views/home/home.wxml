@@ -1,0 +1,150 @@
+<template name="home">
+<view class="view-home" wx:if="{{home&&home.data}}">
+	<view class="head">
+		<view class="sub">
+			<view class="date shadow">
+				<image mode="aspectFill" src="https://img.zcool.cn/community/031c69d5716f43d0000016d9476a759.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="text">Today</view> 
+				<view class="text em">12</view>
+			</view>
+			<view class="message shadow">
+				<image class="icon" src="../../asset/message.png"></image>消息
+			</view>
+		</view>
+		<view class="main shadow">
+			<swiper class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-active-color="#fff" indicator-color="rgba( 0, 0, 0, 0.5)">
+				<swiper-item>
+					<image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532530001481&di=2d93752e143877203dc7a4fcc5259d34&imgtype=0&src=http%3A%2F%2Fwww.lanhai.cn%2FLHJD%2FoutImages%2Fhotel%2F20171011093833691_5960557.jpg"></image>
+				</swiper-item>
+				<swiper-item>
+					<image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531414297395&di=79f11dc9f97a866b136b708885a7e0a9&imgtype=0&src=http%3A%2F%2Fpic.97uimg.com%2Fback_pic%2F20%2F15%2F11%2F03%2F25bdde72b22bf685d85171424d953c4e.jpg"></image>
+				</swiper-item>
+				<swiper-item>
+					<image mode="aspectFill" src="http://img3.imgtn.bdimg.com/it/u=1524246332,2160329713&fm=27&gp=0.jpg"></image>
+				</swiper-item>
+			</swiper>
+		</view>
+	</view>
+
+	<view class="services">
+		<view class="item">
+			<image src="../../asset/house.png"></image>
+			小区信息
+		</view>
+		<view class="item">
+			<image src="../../asset/fix.png"></image>
+			报事报修
+		</view>
+		<view class="item">
+			<image src="../../asset/admin.png"></image>
+			片警信息
+		</view>
+		<view class="item">
+			<image src="../../asset/sort.png"></image>
+			综合服务
+		</view>
+	</view>
+
+	<view class="mod">
+		<view class="mod-name">社区公告</view>
+		<view class="message">
+			<view class="title">停电通知<view class="em">置顶</view></view>
+			<view class="msg">
+				尊敬的业主：您好！燃气公司回复物业燃气检测安全问题，计划2018年5月31日下午14:00-17:45停气，对整个小区的燃气管道设备进行检修，给大家带来不便请谅解。 
+			</view>
+		</view>
+	</view>
+
+	<view class="mod">
+		<view class="mod-name">近期活动</view>
+		<scroll-view scroll-x="{{true}}" class="list-wrapper">
+			<view class="list">
+				<view class="item">
+					<view class="pic">
+						<image mode="aspectFill" src="https://img.zcool.cn/community/03125ad5566d403000001cc29338f42.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+						<view class="text">如何有效学习新知识</view>
+					</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image mode="aspectFill" src="https://img.zcool.cn/community/01c63c5b46c0f9a80121ade03b0fdb.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+						<view class="text">夏季旅游报名</view>
+					</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image mode="aspectFill" src="https://img.zcool.cn/community/03188605566cc40000001cc291cf4a1.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+						<view class="text">网上购物注意事项</view>
+					</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image mode="aspectFill" src="https://img.zcool.cn/community/014eca5b557663a8012036be557e66.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+						<view class="text">摆件不简单</view>
+					</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image mode="aspectFill" src="https://img.zcool.cn/community/01353e5a728717a801213466687a58.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+						<view class="text">勿忘国史学习活动</view>
+					</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image mode="aspectFill" src="https://img.zcool.cn/community/007cb459882bada801215603434061.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+						<view class="text">装修知识大讲座</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+
+	<view class="mod news">
+		<view class="mod-name">咨询中心</view>
+		<view class="list">
+			<view class="item">
+				<image src="https://img.zcool.cn/community/0317eba5566cd7e000001cc292638e1.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">2018年上半年核心事件回顾，对内容进行分析，产生合适字数的标题</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/031a9d85566cd3a000001cc29192a49.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">顺和社区顺利开展第10届“顺和一家亲”活动。</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/031b8675566c966000001cc29acc124.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">人工智能应发的猜想，人类是否能在2020年全面普及人工自能。</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/0318ba85566d459000001cc29f92fd7.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">最美城市活动评选已开始，投出你心中的一票</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/0188705abc80fea8012062e3a1e587.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">我与我的城市，用手机记录我与我所在城市的故事！</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item more">查看更多</view>
+		</view>
+	</view>	
+
+	<view class="mod">
+		<view class="mod-name">精品课堂</view>
+		<view class="message">
+		</view>
+	</view>
+</view>
+</template>

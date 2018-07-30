@@ -1,0 +1,62 @@
+
+<import src="../../widgets/contact/contact.wxml"/>
+<template name="mine">
+	<view wx:if="{{mine.userInfo}}" class="view-mine">
+		<view class="view-mine-wrapper">
+			<template is="mine-header"></template>
+			<template is="mine-menu"></template>
+			<template is="module-concat"></template>
+		</view>
+	</view>
+	<view wx:else class="view-mine">
+		<template is="need-login"></template>
+	</view>
+</template>
+
+
+
+<template name="mine-header">
+	<view class="mine-header-wrapper">
+		<image class="header-logo" src="/asset/mine-header.png"></image>
+		<text class="user-name">您好</text>
+		<!-- <view class="jifen">
+			<image src="../../asset/mine-jifen.png" class="jifen-logo"/>
+			<text class="jifen-val">100</text>
+		</view> -->
+	</view>
+</template>
+<template name="mine-menu">
+	<view class="mine-menu-wrapper">
+		<view class="mine-menu-content">
+			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="taskApply">
+				<text class="text">创建申报</text>
+			</view>
+			<!-- <view class="menu-item">
+				<text class="text">我的创建的申报</text>
+			</view -->
+			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="taskSearch" data-param="type=1">
+				<text class="text">我创建的申报</text>
+			</view>
+
+			<view class="menu-item" catchtap="events" data-func="redirect" data-pagename="taskSearch" data-param="type=mine">
+				<text class="text">我认领的申报</text>
+			</view>
+
+
+			<view class="menu-item" catchtap="events" data-func="logout" data-pagename="taskSearch" data-param="type=1">
+				<text class="text">退出登录</text>
+			</view>
+
+		</view>
+	</view>
+</template>
+
+
+<template name= "need-login">
+	<view class="goLogin-wrapper">
+		<!-- <image class="login-logo" src="../../asset/empty-order.png" ></image> -->
+		<view class="login-msg">您还没有登录</view>
+		<view class="login-btn" catchtap="events" data-func="redirect" data-pagename="register">去登陆</view>
+	</view>
+</template>
+
