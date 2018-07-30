@@ -66,6 +66,8 @@ Page({
 
 			if ( res && res.data && res.data.defaultAddress && !self.data.address ) {
 				_fn.initAddress( self, res.data.defaultAddress );
+			} else if ( self.data.address ) {
+				return;
 			} else {
 				_fn.initAddress( self, {} );
 			}
