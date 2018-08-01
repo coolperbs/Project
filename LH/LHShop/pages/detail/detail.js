@@ -260,8 +260,8 @@ _fn = {
 			return;
 		}
 		caller.killTimmer = setInterval( function() {
-			caller.setData( {
-				'pageData.seckillObj' : _fn.setKillObj( caller )
+			caller.setData( { 
+				'pageData.seckillObj' : _fn.setKillObj( caller ) || {}
 			} ); 
 		}, 1000 );
 	},

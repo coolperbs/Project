@@ -1,4 +1,4 @@
-.view-home{	padding-bottom: 120rpx; font-size: 28rpx; color : #444; }
+.view-home{	/*padding-bottom: 120rpx;*/ font-size: 28rpx; color : #444; }
 .view-home .shadow { box-shadow: 0 6rpx 14rpx rgba( 0, 0, 0, 0.1 ); }
 .view-home .head { display: flex; align-items: center; justify-content: space-between; height : 240rpx; padding : 10rpx 20rpx; }
 .view-home .head .sub { width : 140rpx; height : 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
@@ -17,10 +17,11 @@
 .view-home .services .item image { width : 40rpx; height: 40rpx; margin-bottom : 10rpx; }
 
 .view-home .mod { padding : 40rpx 20rpx; border-bottom : solid 1px #f0f0f0; }
-.view-home .mod:last-child { border-bottom: 0; }
+.view-home .mod:last-child,
+.view-home .mod.last { border-bottom: 0; }
 .view-home .mod .mod-name { font-size : 36rpx; }
 .view-home .mod .message .title { position: relative; padding-left : 30rpx; font-size:30rpx; margin : 20rpx 0; }
-.view-home .mod .message .title:before { display: block; height : 30rpx; width : 8rpx; content : ''; background-color: #EE4000; position: absolute; left: 0; top: 50%; margin-top: -15rpx; }
+.view-home .mod .message .title:before { border-radius: 8rpx; display: block; height : 30rpx; width : 8rpx; content : ''; background-color: #EE4000; position: absolute; left: 0; top: 50%; margin-top: -15rpx; }
 .view-home .mod .message .title .em { position: absolute; right : 0; top: 0; color : #fff; background-color: #000; display: inline-block; font-size: 20rpx; padding : 6rpx 10rpx; background-color: #FFC125; }
 .view-home .mod .message .msg { color : #999; margin-top : 10rpx; text-indent: 30rpx; line-height: 32rpx; letter-spacing: 2rpx; font-size : 24rpx; }
 
@@ -41,7 +42,7 @@
 .view-home .news .item .info .i-cont { font-size : 24rpx; color : #999; }
 .view-home .news .item.more { margin-top : 40rpx; justify-content: center; font-size : 28rpx; color : #999; }
 
-
+.view-home .bottom { background-color: #fcfcfc; text-align: center; padding : 40rpx 0; font-size : 20rpx; color : #999; }
 
 
 

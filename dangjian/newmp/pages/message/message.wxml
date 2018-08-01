@@ -1,0 +1,35 @@
+<view class="list">
+	<view class="item">
+		<view class="title">停电通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的业主：您好！燃气公司回复物业燃气检测安全问题，计划2018年5月31日下午14:00-17:45停气，对整个小区的燃气管道设备进行检修，给大家带来不便请谅解。</view>
+	</view>
+
+	<view class="item">
+		<view class="title">维修结果通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的用户您好，您申请的管道维修，我们已经派人处理，预计在2018年7月18日下午1点到现场进行维修，届时请保证联系方式通畅。</view>
+	</view>
+
+	<view class="item">
+		<view class="title">管道维修通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的业主：您好！由于排水管道年久失常，需要维修处理，计划2018年5月31日下午14:00-17:45停气，对整个小区的排水管道设备进行检修，给大家带来不便请谅解。</view>
+		<view class="pics">
+			<image mode="aspectFill" src="http://img0.imgtn.bdimg.com/it/u=3828388530,4025039062&fm=200&gp=0.jpg"></image>
+			<image mode="aspectFill" src="http://img1.imgtn.bdimg.com/it/u=2671277624,481454111&fm=200&gp=0.jpg"></image>
+		</view>
+	</view>	
+
+	<view class="item">
+		<view class="title">停气通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的业主：您好！燃气公司回复物业燃气检测安全问题，计划2018年5月31日下午14:00-17:45停气，对整个小区的燃气管道设备进行检修，给大家带来不便请谅解。</view>
+	</view>	
+
+	<view class="item">
+		<view class="title">房产证办理通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的业主：您好！2018年7月15日我们将在中华名园集中办理房产证手续，还未办理的业主可以按时办理，办理时需本人携带身份证到现场办理。</view>
+	</view>		
+</view>

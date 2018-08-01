@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.5.4",
+	"libVersion": "2.0.6",
 	"appid": "wxc56642067fa3ea36",
 	"projectname": "%E6%99%BA%E6%85%A7%E5%85%9A%E5%BB%BA",
 	"condition": {
@@ -20,98 +20,45 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"plugin": {
 			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
-					"name": "党员学习",
-					"pathName": "pages/CPStudyList/CPStudyList",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "项目列表",
-					"pathName": "pages/taskSearch/taskSearch",
+					"name": "新闻",
+					"pathName": "pages/news/news",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "注册",
-					"pathName": "pages/signup/signup",
+					"name": "办事大厅",
+					"pathName": "pages/services/services",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "登录",
-					"pathName": "pages/login/login",
-					"query": ""
-				},
-				{
-					"id": 4,
-					"name": "文章详情",
-					"pathName": "pages/artical/artical",
-					"query": "id=66"
-				},
-				{
-					"id": 5,
-					"name": "创建项目",
-					"pathName": "pages/taskApply/taskApply",
+					"name": "消息中心",
+					"pathName": "pages/message/message",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "入党申请",
-					"pathName": "pages/CPApply/CPApply",
+					"name": "活动中心",
+					"pathName": "pages/actives/actives",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "转移党组织",
-					"pathName": "pages/CPMove/CPMove",
+					"name": "详情",
+					"pathName": "pages/detail/detail",
 					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "项目查询",
-					"pathName": "pages/taskSearch/taskSearch",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "样式修改",
-					"pathName": "pages/CPMoveTemp/CPMoveTemp",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "登录/注册",
-					"pathName": "pages/register/register",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "三会一课",
-					"pathName": "pages/meetingStudy/meetingStudy",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "找党组织",
-					"pathName": "pages/CPMove/CPMove",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "流动党组织简介",
-					"pathName": "pages/rules/rules",
-					"query": ""
-				},
-				{
-					"id": 14,
-					"name": "党章",
-					"pathName": "pages/rules/rules",
-					"query": "type=CPApply"
 				}
 			]
 		}

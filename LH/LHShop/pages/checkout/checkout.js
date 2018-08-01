@@ -386,7 +386,9 @@ _fn = {
 				return;
 			}
 
+			// 余额支付的情况
 			if ( orderRes && orderRes && orderRes.data && orderRes.data.payPrice * 1 === 0 ) {
+				wx.redirectTo( { url : '../orderdetail/orderdetail?orderid=' + orderId  } );
 				return;
 			}
 
