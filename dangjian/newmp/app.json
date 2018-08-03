@@ -5,7 +5,9 @@
     "pages/services/services",
     "pages/message/message",
     "pages/actives/actives",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/admin/admin",
+    "pages/yard/yard"
   ],
   "window":{
     "navigationBarBackgroundColor": "#fff",

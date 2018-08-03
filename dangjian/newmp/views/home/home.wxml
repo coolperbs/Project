@@ -27,10 +27,10 @@
 	</view>
 
 	<view class="services">
-		<view class="item">
+		<navigator url="../admin/admin" class="item">
 			<image src="../../asset/house.png"></image>
-			小区信息
-		</view>
+			片区信息
+		</navigator>
 		<view class="item">
 			<image src="../../asset/fix.png"></image>
 			报事报修
@@ -62,40 +62,52 @@
 		<scroll-view scroll-x="{{true}}" class="list-wrapper">
 			<view class="list">
 				<view class="item">
+					<navigator url="../detail/detail?id=1">
 					<view class="pic">
 						<image mode="aspectFill" src="https://img.zcool.cn/community/03125ad5566d403000001cc29338f42.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
 						<view class="text">如何有效学习新知识</view>
 					</view>
+					</navigator>
 				</view>
 				<view class="item">
+					<navigator url="../detail/detail?id=1">
 					<view class="pic">
 						<image mode="aspectFill" src="https://img.zcool.cn/community/01c63c5b46c0f9a80121ade03b0fdb.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
 						<view class="text">夏季旅游报名</view>
 					</view>
+					</navigator>
 				</view>
 				<view class="item">
+					<navigator url="../detail/detail?id=1">
 					<view class="pic">
 						<image mode="aspectFill" src="https://img.zcool.cn/community/03188605566cc40000001cc291cf4a1.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
 						<view class="text">网上购物注意事项</view>
 					</view>
+					</navigator>
 				</view>
 				<view class="item">
+					<navigator url="../detail/detail?id=1">
 					<view class="pic">
 						<image mode="aspectFill" src="https://img.zcool.cn/community/014eca5b557663a8012036be557e66.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
 						<view class="text">摆件不简单</view>
 					</view>
+					</navigator>
 				</view>
 				<view class="item">
+					<navigator url="../detail/detail?id=1">
 					<view class="pic">
 						<image mode="aspectFill" src="https://img.zcool.cn/community/01353e5a728717a801213466687a58.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
 						<view class="text">勿忘国史学习活动</view>
 					</view>
+					</navigator>
 				</view>
 				<view class="item">
+					<navigator url="../detail/detail?id=1">
 					<view class="pic">
 						<image mode="aspectFill" src="https://img.zcool.cn/community/007cb459882bada801215603434061.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
 						<view class="text">装修知识大讲座</view>
 					</view>
+					</navigator>
 				</view>
 			</view>
 		</scroll-view>

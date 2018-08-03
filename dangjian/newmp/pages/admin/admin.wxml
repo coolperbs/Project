@@ -1,0 +1,43 @@
+<view class="banner">
+    <view class="content">
+        <view class="title">簇锦街道 · 顺和社区</view>
+        <view class="desc">四川省成都市武侯区簇锦街道顺和社区东以中粮祥云为界，南以三环路为界，西以晋阳街道吉福村为界，北以双楠片区2.5环为界，社区占地1.8平方公里，小区8个，居民住宅楼81栋，住户4700余户，人口1.7万余人。</view>
+    </view>
+    <image mode="aspectFill" src="http://p0.qhimgs4.com/t01f611fe0f296804c6.jpg"></image>
+</view>
+
+<view class="mod police">
+    <view class="mod-name">片区民警</view>
+    <view class="list">
+        <view class="item">
+            <view class="user">
+                <image mode="aspectFill" src="http://image.tupian114.com/20140213/18242481.jpg"></image>
+                <view class="info">
+                    <view class="name">张三<view class="em">(大队长)</view></view>
+                    <view class="phone"><image src="../../asset/phone.png"></image>13488888888</view>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="user">
+                <image mode="aspectFill" src="http://image.tupian114.com/20140213/18242481.jpg"></image>
+                <view class="info">
+                    <view class="name">李四<view class="em">(副队长)</view></view>
+                    <view class="phone"><image src="../../asset/phone.png"></image>13488888888</view>
+                </view>
+            </view>
+        </view>        
+    </view>
+</view>
+
+<view class="loc">
+    <map show-location="{{true}}" longitude="{{104.00453}}" markers="{{markers}}" latitude="{{30.63008}}" scale="{{18}}"></map>
+</view>
+
+<view class="baseinfo">
+    <view>文字信息</view>
+</view>
+
+<view class="">
+    
+</view>

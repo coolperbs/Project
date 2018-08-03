@@ -11,12 +11,12 @@
 .swiper image { width : 100%; height : 100%; border-radius: 20rpx; }
 
 .acts { padding-bottom : 100rpx; width : 690rpx; margin : 90rpx 30rpx 0 30rpx; display: flex; flex-wrap: wrap; justify-content: space-between; }
-.acts .item { width : 345rpx; margin-top : 30rpx; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.acts .item { border-radius : 20rpx; padding-bottom: 20rpx; overflow : hidden; box-shadow: 0 6rpx 14rpx rgba( 0, 0, 0, 0.1 ); width : 330rpx; margin-top : 30rpx; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .acts .item .pic { position: relative; }
 .acts .item .pic .tag { background-color: #EE4000; color : #fff; font-size : 24rpx; display: inline-block; padding : 6rpx 20rpx; position: absolute; top : 20rpx; left : -10rpx; }
 .acts .item .pic .tag.green { background-color : #00CD66; }
-.acts .item .pic image { width : 280rpx; height : 280rpx; border-radius: 20rpx; }
-.acts .item .name { width : 280rpx; height : 80rpx; font-size : 28rpx; margin-top : 10rpx; }
+.acts .item .pic image { width : 330rpx; height : 330rpx; }
+.acts .item .name { padding : 0 20rpx; height : 80rpx; font-size : 28rpx; margin-top : 20rpx; }
 
 
 
