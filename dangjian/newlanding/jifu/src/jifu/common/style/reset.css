@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/* ==========================================================================
+   Base styles:dmall weixin project
+   ========================================================================== */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Border-Box */
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
+}
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+body{
+    font-family: sans-serif; /* 1 */
+    -webkit-user-select: text;
+    -webkit-user-drag: none;
+    -webkit-text-size-adjust: 100%;/* 2 */
+    width : 100%;
+    /* overflow-x : hidden; */
+    /*line-height: 1.4;*/
+}
+
+i {
+    font-style : normal;
+}
+
+a{
+    text-decoration: none;
+    color : #808080;
+}
+input{
+    -webkit-user-modify: read-write-plaintext-only;
+}
+a,input,button,textarea,fieldset,ul,span{
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    outline: none;
+}
+input[type='text'],input[type='tel'] ,textarea ,fieldset{
+    border: none;
+    outline: none;
+}
+/* iPad Input Shadows */
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none; /* mobile firefox too! */
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+img {
+    vertical-align: middle;
+}
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

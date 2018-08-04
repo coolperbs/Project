@@ -1,0 +1,10 @@
+html, body { height : 100%; position: relative; overflow-y: hidden; }
+/* 单换行 */
+.ellipsis-1 { text-overflow:ellipsis; overflow:hidden; white-space:nowrap;  }
+/* 双换行 */
+.ellipsis-2 { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+
+/* 3行 */
+.ellipsis-3 { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; }
+/* 6行 */
+.ellipsis-6 { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:6; }

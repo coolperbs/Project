@@ -1,0 +1,72 @@
+.cabin {
+  .bread{
+    height: 60px;
+    line-height: 60px;
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    @include box-shadow(0 5px 30px 0 rgba(0,0,0,0.05));
+    .btn{
+      height: 40px;
+      margin-left: auto;
+      margin-right: 20px;
+    }
+    &-back{
+      width: 80px;
+      background-image: url(cabin/src/cabin/common/img/back-arrow.png);
+      background-repeat: no-repeat;
+      background-size:24px ;
+      background-position: center;
+      border-right: 1px solid $color-border;
+      height: 100%;
+      cursor: pointer;
+    }
+    &-content{
+      display: inline-block;
+      padding: 0 10px;
+      >ul{
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 0;
+        height: inherit;
+        line-height: inherit;
+        padding-left: 10px;
+        font-size: 14px;
+        li{
+          &:after{
+            margin: 0 8px;
+            padding: 0 5px;
+            color: #ccc;
+            display: inline-block;
+            content: '';
+            height: 24px;
+            width: 24px;
+            background-image: url(cabin/src/cabin/common/img/arrow-right.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+            vertical-align: middle;
+          }
+          &:last-child:after{
+            display: none;
+          }
+          a{
+            display: inline-block;
+            color: $bread-color;
+            cursor: pointer;
+            &:hover{
+              text-decoration:none;
+              color: $bread-color-active;
+            }
+          }
+          &.active{
+            a{
+              color: $bread-color-active;
+            }
+          }
+        }
+      }
+    }
+  }
+}

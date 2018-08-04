@@ -1,0 +1,6 @@
+.errorpage-mod { position: fixed; top : 44px; background-color: #fff; width : 100%; z-index : 902; }
+.errorpage-mod .pannel { color : #979797; height : 100%; width : 100%; text-align: center; padding-top : 64px; }
+.errorpage-mod .pannel img { width : 100px;height: 100px;margin-top: 20%;}
+.errorpage-mod .noservice img { position: relative;}
+.errorpage-mod .pannel .info { margin-bottom: 30px;font-size: 14px;}
+.errorpage-mod .pannel .btn {display:inline-block; background-color: #ff712b; border-radius: 4px; color : #fff;padding: 12px 24px; cursor: pointer;font-size: 14px;}

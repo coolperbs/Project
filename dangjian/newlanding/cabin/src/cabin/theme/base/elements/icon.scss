@@ -1,0 +1,39 @@
+.cabin-icon {
+	height: 14px;
+	width: 14px;
+	margin: 0 4px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto;
+	vertical-align: -2px;
+	&.add {
+		background-image: url(cabin/src/cabin/common/img/add.png);
+	}
+	&.addgray {
+		background-image: url(cabin/src/cabin/common/img/add-gray.png);
+	}
+	&.check {
+		background-image: url(cabin/src/cabin/common/img/check.png);
+	}
+	&.arrow-right {
+		background-image: url(cabin/src/cabin/common/img/arrow-right.png);
+	}
+	&.arrow-left {
+		background-image: url(cabin/src/cabin/common/img/arrow-left.png);
+	}
+}
+.cabin-big-icon {
+	height: 30px;
+	width: 30px;
+	margin: 0 8px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto;
+	vertical-align: -2px;
+	opacity: 1;
+	&.close {
+		background-image: url(cabin/src/cabin/common/img/close.png);
+	}
+}
