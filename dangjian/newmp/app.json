@@ -7,7 +7,8 @@
     "pages/actives/actives",
     "pages/detail/detail",
     "pages/admin/admin",
-    "pages/yard/yard"
+    "pages/tasklist/tasklist",
+    "pages/task/task"
   ],
   "window":{
     "navigationBarBackgroundColor": "#fff",

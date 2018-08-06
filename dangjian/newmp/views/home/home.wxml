@@ -31,10 +31,10 @@
 			<image src="../../asset/house.png"></image>
 			片区信息
 		</navigator>
-		<view class="item">
+		<navigator url="../task/task" class="item">
 			<image src="../../asset/fix.png"></image>
 			报事报修
-		</view>
+		</navigator>
 		<view class="item">
 			<image src="../../asset/admin.png"></image>
 			片警信息
