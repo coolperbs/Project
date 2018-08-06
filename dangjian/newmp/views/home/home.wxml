@@ -27,7 +27,7 @@
 	</view>
 
 	<view class="services">
-		<navigator url="../admin/admin" class="item">
+		<navigator url="../yard/yard" class="item">
 			<image src="../../asset/house.png"></image>
 			片区信息
 		</navigator>

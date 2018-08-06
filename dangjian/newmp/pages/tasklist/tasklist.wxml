@@ -1,1 +1,89 @@
-<view></view>
+<!--<view class="head">
+	<view class="filter">全部</view>
+	<view class="create">创建申请</view>
+</view>-->
+
+<view class="list">
+	<view class="item on">
+		<view class="title">维修申报<view class="status on">待处理</view></view>
+		<view class="events">
+			<view class="event">
+				<view class="key">上报时间：</view>
+				<view class="value">2018年8月1日 12:30</view>
+			</view>
+			<view class="event">
+				<view class="key">上报人：</view>
+				<view class="value">张三</view>
+			</view>
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">问题描述：</view>
+				<view class="value">3单元4楼管道漏水严重，严重影响正常生活，请及时处理</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="item over">
+		<view class="title">居民投诉<view class="status over">已处理</view></view>
+		<view class="events">
+			<view class="event">
+				<view class="key">上报时间：</view>
+				<view class="value">2018年8月1日 12:30</view>
+			</view>
+			<view class="event">
+				<view class="key">上报人：</view>
+				<view class="value">张三</view>
+			</view>
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">问题描述：</view>
+				<view class="value">
+					中华名园晚上有施工噪音，影响睡眠。
+					<view class="pics">
+						<image src="https://img.zcool.cn/community/03169c5580d7ca2a84a0e282b003129.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031feca576d2d7e0000012e7eb90386.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031a4835a6ffa0ea80120a1230608ca.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="item over">
+		<view class="title">居民投诉<view class="status over">已处理</view></view>
+		<view class="events">
+			<view class="event">
+				<view class="key">上报时间：</view>
+				<view class="value">2018年8月1日 12:30</view>
+			</view>
+			<view class="event">
+				<view class="key">上报人：</view>
+				<view class="value">张三</view>
+			</view>
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">问题描述：</view>
+				<view class="value">
+					中华名园晚上有施工噪音，影响睡眠。
+					<view class="pics">
+						<image src="https://img.zcool.cn/community/03169c5580d7ca2a84a0e282b003129.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031feca576d2d7e0000012e7eb90386.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031a4835a6ffa0ea80120a1230608ca.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>	
+</view>
+
+
+<navigator url="../task/task" class="bottom"><view class="create">创建任务</view></navigator>

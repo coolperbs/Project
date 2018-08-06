@@ -4,8 +4,9 @@
 .banner .content .title { padding : 30rpx; font-size : 48rpx; }
 .banner .content .desc { font-size : 24rpx; padding : 0 30rpx; }
 
-.loc { border-radius: 20rpx; overflow: hidden; width : 690rpx; height : 300rpx; margin : 20rpx 30rpx 0 30rpx; }
-.loc map { width : 100%; height : 100%; }
+.loc { border-radius: 20rpx; overflow: hidden; width : 690rpx; margin : 20rpx 30rpx 0 30rpx; }
+.loc .info { font-size : 28rpx; margin-top : 30rpx;}
+.loc map { width : 100%; height : 300rpx; }
 
 
 .mod { padding : 40rpx 20rpx; border-bottom : solid 1px #f0f0f0; }

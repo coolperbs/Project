@@ -9,7 +9,7 @@
 <view class="mod police">
     <view class="mod-name">片区民警</view>
     <view class="list">
-        <view class="item">
+        <view class="item" catchtap="callPhone">
             <view class="user">
                 <image mode="aspectFill" src="http://image.tupian114.com/20140213/18242481.jpg"></image>
                 <view class="info">
@@ -18,9 +18,9 @@
                 </view>
             </view>
         </view>
-        <view class="item">
+        <view class="item" catchtap="callPhone">
             <view class="user">
-                <image mode="aspectFill" src="http://image.tupian114.com/20140213/18242481.jpg"></image>
+                <image mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=3619581000,3101050934&fm=27&gp=0.jpg"></image>
                 <view class="info">
                     <view class="name">李四<view class="em">(副队长)</view></view>
                     <view class="phone"><image src="../../asset/phone.png"></image>13488888888</view>
@@ -31,13 +31,7 @@
 </view>
 
 <view class="loc">
-    <map show-location="{{true}}" longitude="{{104.00453}}" markers="{{markers}}" latitude="{{30.63008}}" scale="{{18}}"></map>
+    <map bindtap="showMap" show-location="{{true}}" longitude="{{104.00453}}" markers="{{markers}}" latitude="{{30.63008}}" scale="{{18}}"></map>
+    <view class="info">顺和社区地址：成都市武侯区中粮祥云大悦路779号</view>
 </view>
 
-<view class="baseinfo">
-    <view>文字信息</view>
-</view>
-
-<view class="">
-    
-</view>

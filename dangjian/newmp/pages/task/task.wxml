@@ -1,32 +1,24 @@
 
 
-<view class="form userinfo">
+<view class="form">
     <view class="item">
         <view class="key">类型</view>
         <view class="value">报修<image src="../../asset/arrow-right.png" class="arrow"></image></view>
     </view> 
+    <view class="item">
+        <view class="key">投诉人</view>
+        <view class="value"><input placeholder="请填写姓名" /></view>
+    </view>
+    <view class="item">
+        <view class="key">联系电话</view>
+        <view class="value"><input placeholder="请填写联系电话" /></view>
+    </view>
+</view>
+<view class="form">
     <view class="detail">
         <view>问题描述</view>
         <view><textarea placeholder="请输入描述信息"></textarea></view>
     </view>
 </view>
 
-<view class="userinfo">
-    <view class="user">
-        <view class="main"></view>
-        <view class="sub">
-            <view class="title"></view>
-            <view class="desc"></view>
-        </view>
-    </view>
-    <view class="联系人">
-        <view class="key">投诉人</view>
-        <view class="value">微信名称</view>
-    </view>    
-    <view class="item">
-        <view class="key">联系电话</view>
-        <view class="value">微信手机</view>
-    </view>
-</view>
-
-<view>提交</view>
+<navigator url="../tasklist/tasklist" class="act">提交</navigator>
