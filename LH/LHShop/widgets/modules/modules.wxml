@@ -212,7 +212,7 @@
 		<view class="m-key {{ data.must == 1 ? 'must' : '' }}">{{data.content}}</view>
 		<view class="m-value">
 			<view class="picker"><picker data-instanceid="{{moduleInstanceId}}" bindchange="moduleClickProxy" data-fn="changeSelector" range="{{data.selectValue}}" mode="selector">{{ data.selectValue[data.selectedValue] || '请选择'}}</picker></view>
-			<input class="input-hidden" value="{{ data.selectedValue || ''}}" name="{{ data.must + '_' + data.content}}" type=""></input>
+			<input class="input-hidden" value="{{ data.selectValue[data.selectedValue] || ''}}" name="{{ data.must + '_' + data.content}}" type=""></input>
 		</view>
 	</view>
 </template>
