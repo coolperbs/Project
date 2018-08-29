@@ -11,6 +11,9 @@ import DistributionIndex from '@/pages/distribution/index/index'
 import DistributionTeam from '@/pages/distribution/team/team'
 import DistributionRakeback from '@/pages/distribution/rakeback/rakeback'
 import DistributionRakebackrecord from '@/pages/distribution/rakebackrecord/rakebackrecord'
+import DistributionRank from '@/pages/distribution/rank/rank'
+import DistributionOrders from '@/pages/distribution/orders/orders'
+import DistributionCrashAccount from '@/pages/distribution/crashaccount/crashaccount'
 
 
 Vue.use(Router)
@@ -50,5 +53,14 @@ export default new Router({
     },{
         path : '/distribution/rakebackrecord',
         component : DistributionRakebackrecord
+    },{
+        path : '/distribution/rank',
+        component : DistributionRank
+    },{
+        path : '/distribution/orders',
+        component : DistributionOrders
+    },{
+        path : '/distribution/crashaccount',
+        component : DistributionCrashAccount
     }]
 })

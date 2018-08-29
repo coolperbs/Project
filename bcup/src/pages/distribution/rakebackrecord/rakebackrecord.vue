@@ -7,7 +7,7 @@
 
 
 <style scoped>
-  .orderlist { padding : 40px 10px 20px 10px; }
+  .orderlist { padding : 90px 10px 20px 10px; }
   .mod { border-radius: 5px; background-color: #fff; margin-top : 10px;  box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); }
 </style>
 

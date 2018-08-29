@@ -10,8 +10,10 @@
         <div class="more">></div>
       </li>
       <li class="clearfix">
+        <router-link :to="{ path : '/distribution/rank' }">
         <div class="key">rank</div>
         <div class="more">></div>
+        </router-link>
       </li>
     </ul>
   </div>

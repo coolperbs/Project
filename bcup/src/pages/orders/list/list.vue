@@ -1,7 +1,7 @@
 <template>
   <div class="orderlist">
     <order-tab/>
-    <order v-for="order in [1,2,2,3,4,5,4]" :key="item" class="mod"/>
+    <order v-for="order in [1,2,3,4,5]" :key="order" class="mod"/>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path : '/orders/detail', query : { userId : linkPath } }" class="order">
+  <router-link :to="{ path : '/orders/detail' }" class="order">
     <div class="status">status</div>
     <div class="main ellipsis-2">【loc】many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info </div>
     <ul class="list">
