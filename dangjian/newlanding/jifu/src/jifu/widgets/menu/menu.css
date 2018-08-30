@@ -1,4 +1,17 @@
-.w-w-menu { width : 100%; height : 100%; position: relative; }
-.w-w-menu .info { height : 200px; width : 100%; }
-.w-w-menu .list .item { cursor : pointer; }
+
+
+.w-w-menu { width : 100%; height : 100%; position: relative;  background : url( jifu/src/jifu/widgets/menu/images/menu-bg.png ) no-repeat 0 -10px; background-size: 100% 110%; }
+.w-w-menu .info { height : 200px; width : 100%; display: flex; justify-content: center; align-items : center; position: relative; }
+.w-w-menu .info .icon { border-bottom : solid 1px rgba(227, 188, 82, 0.7); box-shadow:0px 3px 3px rgba( 0, 0, 0, 0.3 ) inset; display: flex; justify-content: center; align-items: center; height : 140px; width : 140px; border-radius: 50%; background-color: rgba( 0, 0, 0, 0.4 ); margin-left : -5px; position: relative; z-index: 10; }
+.w-w-menu .info .icon img { z-index: 10; box-shadow:0px 3px 3px rgba( 0, 0, 0, 0.3 ); background-color: #fff; width : 120px; height : 120px; border-radius: 50%; }
+.w-w-menu .info .knot { top : 0; left : 5px; position: absolute; z-index: 20; width : 60px; height : 196px; background: url( jifu/src/jifu/widgets/menu/images/knot.png ) 0 0 no-repeat; background-size: 100%; }
+
+
+.w-w-menu .list .item { padding-left : 50px; height : 60px; cursor : pointer; color : rgba( 255, 255, 255, 0.85); text-shadow: -2px 2px 2px rgba( 0,0,0,0.2 ); display: flex; font-size : 16px; align-items: center; position: relative; }
+.w-w-menu .list .item img { opacity: 0.6; width : 20px; height : 20px; position: absolute; left : 20px; }
+.w-w-menu .list .item.current { border-bottom : solid 1px rgba( 227, 188, 82, 0.5 ); box-shadow: 0 3px 3px rgba( 0,0,0,0.25) inset; background-color : rgba( 0, 0, 0, 0.3 ); }
+
+
+
+
 
