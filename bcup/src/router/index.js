@@ -37,7 +37,10 @@ export default new Router({
         component : OrderDetail
     },{
         path : '/orders/list',
-        component : OrderList
+        component : OrderList,
+        meta: {
+            keepAlive: true // 需要被缓存
+        }
     },{
         path : '/mine',
         component : Mine

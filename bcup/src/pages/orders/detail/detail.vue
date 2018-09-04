@@ -21,6 +21,7 @@
   import checkoutOrder from './order'
   import checkoutUser from './user'
   import checkoutSubmit from './submit'
+  import orderServ from '@/services/order/order'
 
   export default {
     components : {
@@ -29,6 +30,11 @@
     data : function() {
       return {
       }
+    },
+    mounted : function() {
+      let self = this;
+      orderServ.get( { orderId : this.$route.query.orderid }, function( res ) {
+      } );
     }
   }
 </script>

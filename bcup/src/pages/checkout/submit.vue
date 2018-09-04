@@ -23,21 +23,25 @@ export default {
     props : [ 'pageInfo' ],
     methods : {
         submit : function() {
-            orderServ.create( this.pageInfo.formInfo, function( res ) {
-                if ( utils.isErrorRes( res ) ) {
-                    utils.showError( res.msg || '创建订单失败' );
+            // @TODO : 这里要对form格式进行验证，或者和后端商量后端验证，也避免xxs攻击
+            // 1.创建订单
+            orderServ.create( this.pageInfo.formInfo, function( orderRes ) {
+                if ( utils.isErrorRes( orderRes ) || !orderRes.data.orderId  ) {
+                    utils.showError( orderRes.msg || '创建订单失败' );
                     return;
                 }
-                payServ.getPayInfo( { orderId : res.data.orderId }, function() {
-                    
-                } );
-            } );
-            return;
-            ajax.get( '/app/pay/wechatPrePay', { param : { orderId : 10000000 } }, function( res ) {
-                pay.pay( res.data, function( res ) {
-                    console.log( res );
-                    alert( '支付成功' );
-                    Router.push( { path : '/orderdetail' } );
+                // 2.获取支付信息
+                payServ.getPayInfo( { orderId : orderRes.data.orderId }, function( payRes ) {
+                    if ( utils.isErrorRes( payRes ) ) {
+                        utils.showError( payRes.msg || '创建订单失败' );
+                        Router.push( { path : '/orders/detail?orderid=' + orderRes.data.orderId } );
+                        return;
+                    }
+                    // 3.换起微信支付
+                    payServ.WXPay( payRes.data, function( wxpayRes ) {
+                        let msg;
+                        Router.push( { path : '/orders/detail?orderid=' + orderRes.data.orderId } );
+                    } );
                 } );
             } );
         }

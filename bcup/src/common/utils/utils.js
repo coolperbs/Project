@@ -2,7 +2,7 @@ let handle;
 
 handle = {
 	isErrorRes : function( res ) {
-		if ( !res || !res.success ) {
+		if ( !res || !res.success || res.code != '0000' ) {
 			return true;
 		}
 		return false;

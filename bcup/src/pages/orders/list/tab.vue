@@ -1,8 +1,8 @@
 <template>  
   <div class="orderlist-tab">
     <ul class="list">
-      <li v-for="item in ['all','wait','working','finished','other']" :key="item">
-        <span class="text" :class="{current : item == 'all' }">{{ item }}</span>
+      <li v-for="item in tab.list" :key="item.value">
+        <span class="text" :class="{current : item.value == tab.current }" @click="changeTab( item )">{{ item.name }}</span>
       </li>
     </ul>
   </div>
@@ -18,8 +18,19 @@
 
 <script>
   export default {
+    props : ['value'],
+    computed : {
+      tab : function() {
+        return this.value;
+      }
+    },
     data : function() {
       return {
+      }
+    },
+    methods : {
+      changeTab : function( tab ) {
+        this.$emit( 'changeTab', tab );
       }
     }
   }

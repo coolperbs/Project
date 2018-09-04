@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path : '/orders/detail' }" class="order">
+  <router-link :to="{ path : '/orders/detail?orderid=' + orderId }" class="order">
     <div class="status">status</div>
     <div class="main ellipsis-2">【loc】many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info </div>
     <ul class="list">
@@ -45,6 +45,7 @@
 
 <script>
   export default {
+    props : ['orderId'],
     data : function() {
       return {
       }
