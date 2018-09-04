@@ -4,25 +4,26 @@
     <ul class="list">
       <li>
         <div class="key"><em>*</em>name :</div>
-        <div class="value">haha</div>
+        <div class="value"><input v-model="pageInfo.formInfo.userName" @input="changePageInfo(pageInfo)" placeholder="name" /></div>
       </li>
       <li>
         <div class="key"><em>*</em>phone :</div>
-        <div class="value">11111111111</div>
+        <div class="value"><input type="number" v-model="pageInfo.formInfo.userPhone"  @input="changePageInfo(pageInfo)" placeholder="phone" /></div>
       </li>
       <li>
         <div class="key"><em></em>num :</div>
         <div class="value">
           <div class="num-picker clearfix">
-            <div class="num-picker-mod btn">-</div>
-            <input class="num-picker-mod" value="1"/>
-            <div class="num-picker-mod btn">+</div>
+            <div class="num-picker-mod btn" @click="changeNum( pageInfo.formInfo.skuNum - 1 )">-</div>
+            <div class="num-picker-mod num">{{pageInfo.formInfo.skuNum}}</div>
+            <!--<input class="num-picker-mod"  v-model="pageInfo.formInfo.skuNum"/>-->
+            <div class="num-picker-mod btn" @click="changeNum( pageInfo.formInfo.skuNum + 1 )">+</div>
           </div>
         </div>
       </li>
       <li>
         <div class="key"><em></em>mark :</div>
-        <div class="value"><input placeholder="holder"/></div>
+        <div class="value"><input v-model="pageInfo.formInfo.remark"  @input="changePageInfo(pageInfo)" placeholder="holder"/></div>
       </li>
     </ul>
   </div>
@@ -42,13 +43,36 @@
   .num-picker .num-picker-mod { float: left; display: inline-block; height : 30px; line-height: 30px; text-align: center; width : 30px; border-right : solid 1px #ccc; font-size : 24px; }
   .num-picker .num-picker-mod:last-child { border-right : none; }
   .num-picker input.num-picker-mod { height : 100%; width : 40px; font-size : 18px; }
+  .num-picker .num-picker-mod.num { font-size : 18px;  }
 </style>
 
 <script>
   export default {
+    props : ['value'],
+    computed : {
+      pageInfo : function() {
+        return this.value;
+      }
+    },
     data : function() {
       return {
       }
-    }
+    },
+    methods : {
+      changeNum : function( num ) {
+        num = num * 1;
+        num = num <= 0 ? 1 : num;
+        this.pageInfo.formInfo.skuNum = num;
+      },
+      changePageInfo : function( val ) {
+        this.$emit( 'setData', val );
+      }
+    },
+    mounted : function() {
+    } 
   }
 </script>
+
+
+
+

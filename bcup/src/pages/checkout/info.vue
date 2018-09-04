@@ -1,6 +1,6 @@
 <template>
   <div class="checkout-info">
-    <div class="main">【loc】many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info </div>
+    <div class="main">【loc】{{ pageInfo.skuInfo.title }} </div>
     <div class="spec"><span class="tag">spec</span>info info info info info info info info info info info info info info info info info info </div>
   </div>
 </template>
@@ -14,6 +14,12 @@
 
 <script>
   export default {
+    props : ['value'],
+    computed : {
+      pageInfo : function() {
+        return this.value;
+      }
+    },    
     data : function() {
       return {
       }

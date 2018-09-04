@@ -1,26 +1,30 @@
 <template>
   <div class="home">
     <b-header/>
-    <swiper class="banner" :options="swiperOption">
-      <swiper-slide>I'm Slide 1</swiper-slide>
-      <swiper-slide>I'm Slide 2</swiper-slide>
-      <swiper-slide>I'm Slide 3</swiper-slide>
+    <swiper class="banner" :options="swiperOption" v-if="pageInfo.swipers && pageInfo.swipers.length">
+      <swiper-slide v-for="slide in pageInfo.swipers" :key="slide.imgUrl">
+        <!--<router-link :to="{ path : 'http://www.baidu.com' }">-->
+        <a :href="slide.url">
+        <img :src="slide.imgUri"/>
+        </a>
+        <!--</router-link>-->
+      </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
 
-    <router-link :to="{ path : '/detail', query : { userId : linkPath } }" v-for="item in [{age:1},{age:2},{age:3}]" :key="item.age">
+    <router-link :to="{ path : '/detail', query : { id : item.shopId + '-' + item.skuId } }" v-for="item in pageInfo.wares" :key="item.skuId">
       <div class="mod">
         <div class="pic">
-          <img src=""/>
+          <img :src="item.mainImage"/>
         </div>
         <div class="info">
-          <div class="title ellipsis-2 ">name name name name name name name name name name name name name name name name name name name name name name </div>
+          <div class="title ellipsis-2 ">{{ item.title }}</div>
           <div class="more clearfix">
             <div class="price">
-              <span class="origin">$100.00</span>
-              <span class="counter">co:$10.00</span>
+              <span class="origin">￥{{ fixPrice( item.price || item.originPrice ) }}</span>
+              <span class="counter">返:￥{{ fixPrice( 0 ) }}</span>
             </div>
-            <div class="sale-num">sale：10</div>
+            <div class="sale-num">已售：10</div>
           </div>
         </div>
       </div>
@@ -33,8 +37,10 @@
 <style scoped>
   .home { padding : 54px 10px 30px 10px; }
   .banner { height : 200px; border-radius : 5px; background-color: #fff; box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); }
+  .banner img { display: block; width : 100%; height : 200px; }
   .mod { border-radius : 5px; overflow: hidden;  box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); margin-top : 20px; background-color: #fff; }
   .mod .pic { background-color: #f0f0f0; min-height : 100px; }
+  .mod .pic img { width : 100%; }
   .mod .info { padding : 10px; }
   .mod .more { margin-top : 5px; padding : 5px 0; }
   .mod .more .price { float : left; }
@@ -43,27 +49,70 @@
 </style>
 
 <script>
-    import bHeader from '@/widgets/header/header'
-    export default {
-      mounted : function() {
-      },
-      components : {
-        bHeader
-      },
-      data : function() {
-        return {
-          linkPath : 'link',
-          swiperOption : {
-            autoplay: {
-              delay: 2500,
-              disableOnInteraction: false
-            },            
-            pagination: {
-              el: '.swiper-pagination',
-              clickable : true
-            }
-          }
+import bHeader from '@/widgets/header/header'
+import ajax from '@/common/ajax/ajax'
+import utils from '@/common/utils/utils'
+let _fn;
+
+export default {
+  mounted : function() {
+    let self = this;
+    _fn.getData( function( res ) {
+
+      self.pageInfo = res.data || { name : 1 };
+    } );
+  },
+
+  methods : {
+    fixPrice : utils.fixPrice
+  },
+
+  components : {
+    bHeader
+  },
+  data : function() {
+    return {
+      pageInfo : {},
+      linkPath : 'link',
+      swiperOption : {
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        },            
+        pagination: {
+          el: '.swiper-pagination',
+          clickable : true
         }
       }
     }
+  }
+}
+
+_fn = {
+  getData : function( callback ) {
+    ajax.get( '/app/index', function( res) {
+      if ( utils.isErrorRes( res ) ) {
+        utils.showError( res.msg || '请求接口出错' );
+        return;
+      }
+      callback( res );
+    } );
+  }
+}
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

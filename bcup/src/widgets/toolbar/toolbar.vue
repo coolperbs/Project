@@ -3,7 +3,7 @@
         <router-link :to="{ path : '/' }" class="home">H</router-link>
         <div class="cont">
             <div class="btn" @click="toggleService">services</div>
-            <router-link :to="{ path : '/checkout' }" class="btn primary">now</router-link>
+            <router-link :to="{ path : '/checkout', query : { skuId : skuId } }" class="btn primary">now</router-link>
         </div>
         <transition name="fade">
             <div v-if="showService" class="pop">
@@ -35,6 +35,7 @@
 
 <script>
     export default {
+        props: ['skuId'],
         data : function() {
             return {
                 showService : false

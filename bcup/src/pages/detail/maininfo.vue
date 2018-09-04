@@ -4,7 +4,7 @@
       <div class="item" :class="{ 'current' : tab.currentTab == 1 || !tab.currentTab }" @click="changeTab(1)">d</div>
       <div class="item" :class="{ 'current' : tab.currentTab == 2 }" @click="changeTab(2)">p</div>
     </div>
-    <div class="text-imgs" v-if="tab.currentTab == 1 ||  !tab.currentTab">asdf</div>
+    <div class="text-imgs" v-if="tab.currentTab == 1 ||  !tab.currentTab" v-html="pageInfo.description"></div>
     <div class="parameter" v-if="tab.currentTab == 2">
       <div class="p-mod" v-for="item in [1,2,3]" :key="item.index">
         <div class="p-title">product</div>
@@ -34,12 +34,17 @@
 
 <script>
     export default {
+      props: ['pageInfo'],
       data : function() {
         return {
           tab : {
             currentTab : 2
-          }
+          },
+          content : 'adsfasf'
         }
+      },
+      mounted : function() {
+        console.log( this.pageInfo );
       },
       methods : {
         changeTab : function( type ) {
@@ -48,3 +53,6 @@
       }
     }
 </script>
+
+
+
