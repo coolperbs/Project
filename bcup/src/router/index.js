@@ -16,16 +16,17 @@ import DistributionOrders from '@/pages/distribution/orders/orders'
 import DistributionCrashAccount from '@/pages/distribution/crashaccount/crashaccount'
 import Invite from '@/pages/invite/invite'
 import FocusOA from '@/pages/focusoa/focusoa'
+import ServiceCenterFindECode from '@/pages/servicecenter/findecode/findecode'
 
 Vue.use(Router)
 
 export default new Router({
     mode : 'history',
-    routes: [{   
-        path : '/', 
-        component : Home 
+    routes: [{
+        path : '/',
+        component : Home
     },{
-        path : '/home', 
+        path : '/home',
         component  : Home
     },{
         path : '/detail',
@@ -72,5 +73,8 @@ export default new Router({
     },{
         path : '/focusoa',
         component : FocusOA
+    },{
+        path : '/servicecenter/findecode',
+        component : ServiceCenterFindECode
     }]
 })
