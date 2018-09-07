@@ -14,7 +14,8 @@ import DistributionRakebackrecord from '@/pages/distribution/rakebackrecord/rake
 import DistributionRank from '@/pages/distribution/rank/rank'
 import DistributionOrders from '@/pages/distribution/orders/orders'
 import DistributionCrashAccount from '@/pages/distribution/crashaccount/crashaccount'
-
+import Invite from '@/pages/invite/invite'
+import FocusOA from '@/pages/focusoa/focusoa'
 
 Vue.use(Router)
 
@@ -65,5 +66,11 @@ export default new Router({
     },{
         path : '/distribution/crashaccount',
         component : DistributionCrashAccount
+    },{
+        path : '/invite',
+        component : Invite
+    },{
+        path : '/focusoa',
+        component : FocusOA
     }]
 })
