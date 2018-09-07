@@ -14,17 +14,18 @@ import DistributionRakebackrecord from '@/pages/distribution/rakebackrecord/rake
 import DistributionRank from '@/pages/distribution/rank/rank'
 import DistributionOrders from '@/pages/distribution/orders/orders'
 import DistributionCrashAccount from '@/pages/distribution/crashaccount/crashaccount'
+import ServiceCenterFindECode from '@/pages/servicecenter/findecode/findecode'
 
 
 Vue.use(Router)
 
 export default new Router({
     mode : 'history',
-    routes: [{   
-        path : '/', 
-        component : Home 
+    routes: [{
+        path : '/',
+        component : Home
     },{
-        path : '/home', 
+        path : '/home',
         component  : Home
     },{
         path : '/detail',
@@ -65,5 +66,8 @@ export default new Router({
     },{
         path : '/distribution/crashaccount',
         component : DistributionCrashAccount
+    },{
+      path : '/servicecenter/findecode',
+      component : ServiceCenterFindECode
     }]
 })
