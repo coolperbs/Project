@@ -85,16 +85,32 @@
 </template>
 
 <script>
+  import bookingDetailService from '@/services/bookingdetail/bookingdetail'
+  import utils from '@/common/utils/utils'
   export default {
     name: "bookingdetail",
     data () {
       return {
-        showModal:true
+        showModal: false
       }
+    },
+    mounted () {
+      this.getBookingDetail()
     },
     methods: {
       hideModal () {
         this.showModal = false
+      },
+      getBookingDetail () {
+        let query = this.$route.query;
+        let wareId = query.id;
+        if (!wareId) {
+          utils.showError('缺少wareId');
+          return
+        }
+        bookingDetailService.getBookingDetail(wareId, (res) => {
+          debugger
+        })
       }
     }
   }
@@ -198,10 +214,12 @@
     justify-content: center;
     align-items: flex-start;
   }
-  .modal-body{
+
+  .modal-body {
     max-height: 500px;
     overflow: auto;
   }
+
   .modal-content {
     background: #fff;
     width: 100%;
@@ -229,14 +247,16 @@
     border-bottom: 1px solid #eee;
     padding: 10px 5px;
   }
-  .btn.booking{
+
+  .btn.booking {
     padding: 10px;
     background: #3aa83b;
     border-radius: 4px;
     color: #fff;
     text-align: center;
   }
-  .btn.booking.disabled{
+
+  .btn.booking.disabled {
     opacity: .4;
   }
 </style>

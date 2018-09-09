@@ -14,7 +14,7 @@
     <div class="booking-list">
       <div class="list-item" v-for="el,index in filterSearch(bookingList)" :key="index">
         <div class="item-title">【预约】{{el.title}}({{el.price/1000}}抢购)</div>
-        <router-link :to="{path:'/servicecenter/bookingdetail' ,query : { id : el.shopId + '-' + el.skuId}}" class="item-booking">点击预约 ></router-link>
+        <router-link :to="{path:'/servicecenter/bookingdetail' ,query : { id : el.wareId}}" class="item-booking">点击预约 ></router-link>
       </div>
       <div class="empty-list" v-if="filterSearch(bookingList).length==0">
         暂无结果
