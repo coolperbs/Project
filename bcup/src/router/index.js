@@ -15,6 +15,8 @@ import DistributionRank from '@/pages/distribution/rank/rank'
 import DistributionOrders from '@/pages/distribution/orders/orders'
 import DistributionCrashAccount from '@/pages/distribution/crashaccount/crashaccount'
 import ServiceCenterFindECode from '@/pages/servicecenter/findecode/findecode'
+import ServiceCenter from '@/pages/servicecenter/servicecenter/servicecenter'
+import ServiceCenterBookingUse from '@/pages/servicecenter/bookinguse/bookinguse'
 
 
 Vue.use(Router)
@@ -69,5 +71,11 @@ export default new Router({
     },{
       path : '/servicecenter/findecode',
       component : ServiceCenterFindECode
+    },{
+      path : '/servicecenter',
+      component : ServiceCenter
+    },{
+      path : '/servicecenter/bookinguse',
+      component : ServiceCenterBookingUse
     }]
 })
