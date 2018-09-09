@@ -1,84 +1,145 @@
 <template>
-  <!--服务中心主页-->
-  <div class="service-center">
-    <div class="title">自助服务</div>
-    <div class="cell">
-      <div class="item">
-        <div class="item-img"></div>
-        <div class="item-name">找回电子码</div>
-      </div>
-      <div class="item">
-        <div class="item-img"></div>
-        <div class="item-name">预约使用</div>
-      </div>
-      <div class="item">
-        <div class="item-img"></div>
-        <div class="item-name">更多服务</div>
-      </div>
-      <div class="item">
-        <div class="item-img"></div>
-        <div class="item-name">查看订单</div>
+  <!--找回电子码-->
+  <div class="find-code">
+    <div class="code-title">身份验证</div>
+    <div class="form-row">
+      <label class="row-label">手机号：</label>
+      <input type="text" class="row-input" v-model="phone">
+    </div>
+    <div class="form-row">
+      <label class="row-label">短信验证码：</label>
+      <div class="row-input-group">
+        <input type="text" class="row-input" v-model="checkCode">
+        <div class="row-code" @click="getRegCode">{{codeText}}</div>
       </div>
     </div>
-    <div class="title">常见问题</div>
-    <div class="qr-list">
-      <router-link :to="{ path : '/detailservicecenter/findecode', query : { id : item.shopId + '-' + item.skuId } }"  class="qr-item">短信丢了/电子码丢了如何找回？</router-link>
-      <router-link :to="{ path : '/servicecenter/findecode', query : { id : item.shopId + '-' + item.skuId } }"  class="qr-item">要怎样预约使用？</router-link>
-    </div>
+    <div class="btn" @click="submitEvt"> 进入系统</div>
   </div>
+
 </template>
 
 <script>
+  import ECodeService from '@/services/findecode/findecode'
+  import utils from '@/common/utils/utils'
+
   export default {
-    name: "findecode"
+    name: "findecode",
+    data () {
+      return {
+        phone: '',
+        checkCode: '',
+        orderId: '',
+        codeText: '获取验证码'
+      }
+    },
+    methods: {
+      istel (tel) {
+        var rtn = false;
+        //移动号段
+        var regtel = /^((13[4-9])|(15([0-2]|[7-9]))|(18[2|3|4|7|8])|(178)|(147))[\d]{8}$/;
+        if (regtel.test(tel)) {
+          rtn = true;
+        }
+        //电信号段
+        regtel = /^((133)|(153)|(18[0|1|9])|(177))[\d]{8}$/;
+        if (regtel.test(tel)) {
+          rtn = true;
+        }
+        //联通号段
+        regtel = /^((13[0-2])|(145)|(15[5-6])|(176)|(18[5-6]))[\d]{8}$/;
+        if (regtel.test(tel)) {
+          rtn = true;
+        }
+        return rtn;
+      },
+      getRegCode () {
+        if (!this.istel(this.phone)) {
+          utils.showError('请输入合法的手机号');
+
+          return
+        }
+
+        ECodeService.getPhoneCode(this.phone, (res) => {
+          this.codeText = '验证码已发送';
+          setTimeout(() => {
+            this.codeText = '获取验证码';
+          }, 30000)
+        })
+      },
+      submitEvt () {
+        ECodeService.getECode({phone: this.phone, checkCode: this.checkCode, orderId: this.orderId}, (res) => {
+
+        })
+
+      }
+    }
   }
 </script>
 
 <style scoped>
-  .service-center{
-    background: #fff;
+  .find-code {
+    border: 1px solid #eee;
+    margin: 40px 10px;
+    padding: 20px;
   }
-  .title{
-    font-size: 16px;
-    font-weight: bold;
+
+  .find-code .code-title {
     color: #000;
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  .cell{
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
-    margin-bottom: 20px;
-    padding: 20px 0 10px 0;
-  }
-  .item{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-  }
-  .item .item-img{
-    width: 60px;
-    height: 60px;
-    background: #eee;
+    font-size: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
     margin-bottom: 10px;
   }
-  .item .item-name{
-    text-align: center;
-    font-size: 13px;
-    color: #666;
+
+  .find-code .form-row {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
   }
-  .qr-list{
-    padding: 10px;
+
+  .row-label {
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
   }
-  .qr-item{
-    color: #666;
+
+  .row-input {
+    height: 38px;
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 0 10px;
+    transition: all .45s ease-in;
+  }
+
+  .row-input:focus {
+    border: 1px solid #5a8ffa;
+    box-shadow: 0 0 5px 0 #5a8ffa;;
+  }
+
+  .row-input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .row-code {
+    word-break: keep-all;
+    background: #eee;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 10px;
     font-size: 12px;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    color: #000;
+  }
+
+  .btn {
+    background: #3a55ee;
+    color: #fff;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
   }
 
 </style>
