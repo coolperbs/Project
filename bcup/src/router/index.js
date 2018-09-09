@@ -19,6 +19,7 @@ import FocusOA from '@/pages/focusoa/focusoa'
 import ServiceCenterFindECode from '@/pages/servicecenter/findecode/findecode'
 import ServiceCenter from '@/pages/servicecenter/servicecenter/servicecenter'
 import ServiceCenterBookingUse from '@/pages/servicecenter/bookinguse/bookinguse'
+import ServiceCenterBookingDetail from '@/pages/servicecenter/bookingdetail/bookingdetail'
 
 
 Vue.use(Router)
@@ -85,5 +86,8 @@ export default new Router({
     },{
       path : '/servicecenter/bookinguse',
       component : ServiceCenterBookingUse
+    },{
+      path : '/servicecenter/bookingdetail',
+      component : ServiceCenterBookingDetail
     }]
 })
