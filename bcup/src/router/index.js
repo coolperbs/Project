@@ -20,6 +20,7 @@ import ServiceCenterFindECode from '@/pages/servicecenter/findecode/findecode'
 import ServiceCenter from '@/pages/servicecenter/servicecenter/servicecenter'
 import ServiceCenterBookingUse from '@/pages/servicecenter/bookinguse/bookinguse'
 import ServiceCenterBookingDetail from '@/pages/servicecenter/bookingdetail/bookingdetail'
+import ServiceCenterBookingCheckout from '@/pages/servicecenter/bookingcheckout/bookingcheckout'
 
 
 Vue.use(Router)
@@ -89,5 +90,8 @@ export default new Router({
     },{
       path : '/servicecenter/bookingdetail',
       component : ServiceCenterBookingDetail
+    },{
+      path : '/servicecenter/bookingcheckout',
+      component : ServiceCenterBookingCheckout
     }]
 })
