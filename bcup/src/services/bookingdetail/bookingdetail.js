@@ -10,5 +10,14 @@ export default {
       }
       callback(res);
     });
+  },
+  getDateTable ({wareId, bespeakId}, callback) {
+    ajax.get('/app/bespoke/detail/' + wareId + '/' + bespeakId, {}, function (res) {
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback(res);
+    });
   }
 }

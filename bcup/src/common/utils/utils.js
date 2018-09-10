@@ -26,14 +26,33 @@ handle = {
         s=s.replace(/,(\d\d)$/,".$1");
         return s.replace(/^\./,"0.")
     },
-	getCookie : function(name) { 
+	getCookie : function(name) {
 	    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-	 
+
 	    if(arr=document.cookie.match(reg))
-	        return unescape(arr[2]); 
-	    else 
-	        return null; 
-	} 
+	        return unescape(arr[2]);
+	    else
+	        return null;
+	} ,
+  formatDateTime(inputTime,type) {
+    var date = new Date(inputTime);
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h = h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    second = second < 10 ? ('0' + second) : second;
+    if(type=='md'){
+      return m + '-' + d;
+    }else {
+      return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+    }
+  }
 }
 
 export default handle;
