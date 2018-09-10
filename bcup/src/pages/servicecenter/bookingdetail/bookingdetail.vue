@@ -22,7 +22,7 @@
       <div class="date-box">
         <div class="booking-date" :class="{active:el.checked}" v-for="el,index in detailData.stockDateList" :key="index" @click="bookingEVT(el)">
           <div class="time">{{formatDate(el.preDate)}}({{el.week}})</div>
-          <div class="last more" v-if="el.stock>10">多于10'</div>
+          <div class="last more" v-if="el.stock>10">多于10</div>
           <div class="last" v-if="el.stock<=10&&el.stock!=0">{{'剩余'+el.stock}}</div>
         </div>
       </div>
@@ -46,7 +46,7 @@
             <tr v-for="el,index in modalData" :key="index">
               <td>{{el.features}}</td>
               <td style="white-space: nowrap;word-break: keep-all">{{el.stock}}</td>
-              <td style="white-space: nowrap;word-break: keep-all">{{(el.price/100).toFixed(0)}}元</td>
+              <td style="white-space: nowrap;word-break: keep-all">{{fixPrice(el.price)}}元</td>
               <td>
                 <div v-if="el.stock>0" class="btn booking " @click="confirmBooking(el)">预约</div>
                 <div v-if="el.stock==0" class="btn booking disabled">预约</div>
@@ -139,6 +139,9 @@
         let Y = Top + document.documentElement.scrollTop;
         window.scrollTo(0, Y);
         this.scrolled = true;
+      },
+      fixPrice(price){
+        return utils.fixPrice(price)
       }
     }
   }
