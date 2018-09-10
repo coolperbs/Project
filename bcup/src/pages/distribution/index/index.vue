@@ -1,7 +1,7 @@
 <template>
   <div>
     <userinfo/>
-    <saledata class="mod"/>
+    <saledata :pageInfo="pageInfo" class="mod"/>
     <entrys class="mod"/>
   </div>
 </template>
@@ -15,6 +15,7 @@
   import userinfo from './userinfo'
   import saledata from './data'
   import entrys from './entrys'
+  import distributionServ from '@/services/distribution/distribution'  
 
   export default {
     components : {
@@ -22,7 +23,15 @@
     },
     data : function() {
       return {
+        pageInfo : {}
       }
+    },
+    mounted : function() {
+      let self = this;
+      distributionServ.getBaseInfo( function( baseInfo ) {
+        
+        self.pageInfo = baseInfo.data;
+      } );
     }
   }
 </script>
