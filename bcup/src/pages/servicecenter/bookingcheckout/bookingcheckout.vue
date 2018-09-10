@@ -41,7 +41,7 @@
         <div class="num" style="color:#ee8e34;">￥{{fromatPrice(item.wareWare?item.wareWare.price:'')}}</div>
       </div>
     </div>
-    <div class="cell-box">
+    <div class="cell-box" style="margin-bottom: 100px">
       <div class="cell" style="justify-content: flex-start">
         <div class="radio" :class="{active:isChecked}" @click="changeCheck"></div>
         我统一提交预约后不可更改或取消
@@ -125,7 +125,7 @@
 
 <style scoped>
   .booking-checkout {
-
+    overflow: scroll;
   }
 
   .name {
@@ -149,9 +149,6 @@
     padding: 0 10px;
   }
 
-  .cell-box:last-child {
-    margin-bottom: 100px;
-  }
 
   .cell {
     border-bottom: 1px solid #eee;
@@ -196,6 +193,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    background: #fff;
   }
 
   .stitle {
