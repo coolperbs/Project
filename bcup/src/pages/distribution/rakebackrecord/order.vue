@@ -5,7 +5,7 @@
       </div>
       <div class="price">+{{fixPrice(item.userMoney.price)}}</div>
     </div>
-    <div class="time">{{fixTime(item.userMoney.created)}}</div>
+    <div class="time">{{fixTime(item.order.orderTime)}}</div>
   </router-link>
 </template>
 
@@ -28,9 +28,7 @@
   import utils from '@/common/utils/utils'
   export default {
     props:{
-      item:{
-        required:true
-      }
+      item:{}
     },
     methods:{
       fixPrice(val){

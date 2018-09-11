@@ -2,7 +2,8 @@
   <div class="orderlist">
     <order-tab :tab-list="TABENUM" :current-key="type" @tabChange="tabChange" @searchEvt="searchEvt"></order-tab>
     <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
-      <order v-for="order,index in filterList(renderList)" :item="order" :key="index" class="mod"/>
+      <order v-if="filterList(renderList).length>0" v-for="order,index in filterList(renderList)" :item="order" :key="index" class="mod"/>
+      <div v-if="filterList(renderList).length==0" style="text-align: center;font-size: 12px;">没有更多数据</div>
     </PullTo>
   </div>
 </template>
@@ -35,7 +36,7 @@
     },
     data: function () {
       return {
-        TABENUM: [{key: 3, name: '全部'}, {key: 1, name: '店铺'}, {key: 2, name: '达人'}],
+        TABENUM: [{key: 3, name: '全部'}, {key: 1, name: '店铺返佣'}, {key: 2, name: '达人返佣'}],
         filterKey: '',
         type: 3,
         currentPage: 1,
