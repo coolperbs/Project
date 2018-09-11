@@ -1,14 +1,14 @@
-<template>  
+<template>
   <div class="orderlist-tab">
     <div class="search">
       <div class="input">
-        <input />
+        <input style="padding: 0 10px;" v-model="searchKey" placeholder="请输入"/>
       </div>
-      <div class="btn">search</div>
+      <div class="btn" @click="searchEvt">搜索</div>
     </div>
     <ul class="list">
-      <li v-for="item in ['all','shop','team']" :key="item">
-        <span class="text" :class="{current : item == 'all' }">{{ item }}</span>
+      <li v-for="item,index in tabList" :key="index" @click="changeCurrentKey(item)">
+        <span class="text" :class="{current : item.key== currentKey }">{{ item.name}}</span>
       </li>
     </ul>
   </div>
@@ -29,8 +29,32 @@
 
 <script>
   export default {
-    data : function() {
-      return {
+    data(){
+      return{
+        searchKey:''
+      }
+    },
+    props: {
+      tabList: {
+        type: Array,
+        required: true
+      },
+      currentKey: {
+        type: Number,
+        required: true
+      }
+    },
+    methods:{
+      changeCurrentKey(el){
+        if(el.key==this.currentKey){
+          return
+        }
+        this.searchKey='';
+        this.searchEvt();
+        this.$emit('tabChange',el)
+      },
+      searchEvt(){
+        this.$emit('searchEvt',this.searchKey)
       }
     }
   }
