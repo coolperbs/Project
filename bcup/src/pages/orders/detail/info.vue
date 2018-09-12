@@ -1,10 +1,10 @@
 <template>
   <div class="checkout-info">
-    <div class="status">status</div>
-    <div class="main">【loc】many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info many info </div>
-    <div class="spec"><span class="tag">spec</span>info info info info info info info info info info info info info info info info info info </div>
+    <div class="status">{{fixEnum(data.order)}}</div>
+    <div class="main">【预约】{{data.store?data.store.name:''}};{{data.store?data.store.introduce:''}}</div>
+    <div class="spec"><span class="tag">地址/电话</span>{{data.store?data.store.address:''}}/{{data.store?data.store.telphone:''}}</div>
   </div>
-</template> 
+</template>
 
 
 <style scoped>
@@ -19,9 +19,20 @@
 </style>
 
 <script>
+  import ENUM from '@/pages/distribution/enum'
+
   export default {
-    data : function() {
-      return {
+    props: {
+      data: {}
+    },
+    methods: {
+      fixEnum (el) {
+        if(el){
+          return ENUM[el.orderStatus]
+        }else {
+          return ''
+        }
+
       }
     }
   }

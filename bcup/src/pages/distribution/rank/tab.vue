@@ -1,8 +1,7 @@
-<template>  
+<template>
   <div class="tab">
     <div class="nav clearfix">
-      <div class="item current">all (0)</div>
-      <div class="item">month (1)</div>
+      <div v-for="el,index in data" class="item" :class="{current:el.key==currentKey}" @click="changeTab(el)">{{el.value}}</div>
     </div>
   </div>
 </template>
@@ -16,8 +15,15 @@
 </style>
 <script>
   export default {
-    data : function() {
-      return {
+    props:{
+      data:{},
+      currentKey:{}
+    },
+    methods:{
+      changeTab(el){
+        if(el.key!=this.currentKey){
+          this.$emit('tabChange',el)
+        }
       }
     }
   }

@@ -1,20 +1,18 @@
 <template>
   <div class="entrys">
     <ul class="list">
-      <li class="clearfix">
-        <div class="key">orders</div>
+      <router-link tag="li" :to="{path : '/distribution/rakebackrecord',query:{type:2}}" class="clearfix">
+        <div class="key">团队订单</div>
         <div class="more">></div>
-      </li>
-      <li class="clearfix">
-        <div class="key">team rake-back</div>
+      </router-link>
+      <router-link tag="li" :to="{path : '/distribution/orders',query:{type:2}}" class="clearfix">
+        <div class="key">团队返佣</div>
         <div class="more">></div>
-      </li>
-      <li class="clearfix">
-        <router-link :to="{ path : '/distribution/rank' }">
-        <div class="key">rank</div>
+      </router-link>
+      <router-link tag="li" :to="{ path : '/distribution/rank' }" class="clearfix">
+        <div class="key">排行榜</div>
         <div class="more">></div>
-        </router-link>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>

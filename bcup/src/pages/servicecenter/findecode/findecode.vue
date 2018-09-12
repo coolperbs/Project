@@ -7,6 +7,10 @@
       <input type="text" class="row-input" v-model="phone">
     </div>
     <div class="form-row">
+      <label class="row-label">订单号：</label>
+      <input type="text" class="row-input" v-model="orderId">
+    </div>
+    <div class="form-row">
       <label class="row-label">短信验证码：</label>
       <div class="row-input-group">
         <input type="text" class="row-input" v-model="checkCode">
@@ -55,7 +59,6 @@
       getRegCode () {
         if (!this.istel(this.phone)) {
           utils.showError('请输入合法的手机号');
-
           return
         }
 
@@ -67,6 +70,10 @@
         })
       },
       submitEvt () {
+        if(this.orderId==''){
+          utils.showError('请输入订单号');
+          return
+        }
         ECodeService.getECode({phone: this.phone, checkCode: this.checkCode, orderId: this.orderId}, (res) => {
 
         })

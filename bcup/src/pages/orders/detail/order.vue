@@ -1,24 +1,24 @@
-<template>  
+<template>
   <div class="checkout-order">
     <ul class="list">
       <li>
-        <div class="key">time :</div>
+        <div class="key">订单时间 :</div>
         <div class="value">2019-2-1 10:11:11</div>
       </li>
       <li>
-        <div class="key">orderC :</div>
+        <div class="key">订单号 :</div>
         <div class="value">12123123</div>
       </li>
       <li>
-        <div class="key">detail :</div>
+        <div class="key">备注 :</div>
         <div class="value">
-          12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info 12341234 info
+          差字段 还是说这里不是 备注信息
         </div>
       </li>
       <li class="total">
-        <div class="key">total :</div>
+        <div class="key">价格 :</div>
         <div class="value">
-          <span class="all-price"><em>$</em> 10.00</span>
+          <span class="all-price"><em>￥</em> {{fixprice(data.order)}}</span>
         </div>
       </li>
     </ul>
@@ -45,9 +45,22 @@
 </style>
 
 <script>
+  import utils from '@/common/utils/utils'
   export default {
-    data : function() {
-      return {
+    props:{
+      data:{}
+    },
+    methods:{
+      fixDate(el){
+        let time = utils.formatDateTime(val)
+        return `${time.year}-${time.month}-${time.day}   ${time.hour}:${time.minute}`
+      },
+      fixprice(order){
+        if(order){
+          return utils.fixPrice(order.payPrice)
+        }else {
+          return ''
+        }
       }
     }
   }

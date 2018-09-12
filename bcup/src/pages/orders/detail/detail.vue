@@ -1,9 +1,9 @@
 <template>
   <div class="checkout">
     <b-header/>
-    <checkout-info class="mod"/>
-    <checkout-user class="mod"/>
-    <checkout-order class="mod"/>
+    <checkout-info :data='orderData' class="mod"/>
+    <checkout-user :data='orderData' class="mod"/>
+    <checkout-order :data='orderData' class="mod"/>
     <checkout-submit />
   </div>
 </template>
@@ -29,11 +29,12 @@
     },
     data : function() {
       return {
+        orderData:{}
       }
     },
-    mounted : function() {
-      let self = this;
-      orderServ.get( { orderId : this.$route.query.orderid }, function( res ) {
+    mounted () {
+      orderServ.get( { orderId : this.$route.query.orderid }, ( res )=> {
+        this.orderData = res.data
       } );
     }
   }
