@@ -1,20 +1,20 @@
 <template>
   <div class="entrys">
     <ul class="list">
-      <li class="clearfix">
-        <div class="key">my rake-back</div>
+      <router-link tag="li" :to="{path : '/distribution/rakebackrecord',query:{type:3} }" class="clearfix">
+        <div class="key">我的返佣</div>
         <div class="more">></div>
-      </li>
-      <li class="clearfix">
-        <div class="key">account</div>
-        none
+      </router-link>
+      <router-link tag="li" :to="{path : '/distribution/crashaccount' }" class="clearfix">
+        <div class="key">提现账号</div>
+        展示设置的账号
         <div class="more">></div>
-      </li>
-      <li class="clearfix">
-        <div class="key">record</div>
-        has $100.00
+      </router-link>
+      <router-link tag="li" :to="{path : '/distribution/crashrecord' }" class="clearfix">
+        <div class="key">提现记录</div>
+       展示已经提现的金额
         <div class="more">></div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>

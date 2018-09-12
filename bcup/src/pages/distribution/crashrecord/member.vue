@@ -12,7 +12,7 @@
       $100
     </div>
   </div>
-</template> 
+</template>
 
 
 <style scoped>
@@ -26,10 +26,10 @@
 </style>
 
 <script>
+  //todo 差字段核对
   export default {
-    data : function() {
-      return {
-      }
-    }
+   props:{
+     item:{}
+   }
   }
 </script>

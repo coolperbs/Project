@@ -14,6 +14,7 @@ import DistributionRakebackrecord from '@/pages/distribution/rakebackrecord/rake
 import DistributionRank from '@/pages/distribution/rank/rank'
 import DistributionOrders from '@/pages/distribution/orders/orders'
 import DistributionCrashAccount from '@/pages/distribution/crashaccount/crashaccount'
+import DistributionCrashRecord from '@/pages/distribution/crashrecord/crashrecord'
 import Invite from '@/pages/invite/invite'
 import FocusOA from '@/pages/focusoa/focusoa'
 import ServiceCenterFindECode from '@/pages/servicecenter/findecode/findecode'
@@ -72,6 +73,9 @@ export default new Router({
     },{
         path : '/distribution/crashaccount',
         component : DistributionCrashAccount
+    },{
+      path : '/distribution/crashrecord',
+      component : DistributionCrashRecord
     },{
         path : '/invite',
         component : Invite

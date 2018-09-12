@@ -41,7 +41,7 @@
       </li>
       <li class="clearfix">
         <router-link :to="{ path : '/distribution/orders',query:{type:1} }">
-          <div class="key">revers</div>
+          <div class="key">返佣</div>
           共{{ pageInfo.totalOrderCount }}单
           <div class="more">></div>
         </router-link>

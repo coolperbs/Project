@@ -2,15 +2,15 @@
   <div class="account">
     <ul class="list">
       <li>
-        <div class="key">name :</div>
-        <div class="value"><input /></div>
+        <div class="key">姓名 :</div>
+        <div class="value"><input  v-model="userName"/></div>
       </li>
       <li>
-        <div class="key">account :</div>
-        <div class="value"><input /></div>
+        <div class="key">手机号 :</div>
+        <div class="value"><input  v-model="userPhone"/></div>
       </li>
     </ul>
-    <div class="save">save</div>
+    <div class="save" @click="bindAccount">保存</div>
   </div>
 </template>
 
@@ -24,17 +24,32 @@
   .list .key { float : left; width : 70px; margin-left : -70px; height : 40px; line-height: 40px; }
   .list .key em { color : red; font-style: normal; margin-right :5px; position: relative; top : 3px; display: inline-block; width : 5px; }
   .list .value { position: relative; }
-  .list input { height : 40px; display: inline-block; width : 100%; border : none; }  
+  .list input { height : 39px; display: inline-block; width : 100%; border : none; }
 
   .save { background-color: #eee; margin-top : 20px; height : 40px; line-height: 40px; text-align: center; border-radius : 22px; }
 </style>
 
 <script>
+  import  distributionService from '@/services/distribution/distribution'
   export default {
     components : {
     },
     data : function() {
       return {
+        userName:'',
+        userPhone:''
+      }
+    },
+    mounted(){
+      this.userName=this.$route.query.userName||''
+      this.userPhone=this.$route.query.userPhone||''
+    },
+    methods:{
+      bindAccount(){
+        distributionService.bindAccount({userName:this.userName,userPhone:this.userPhone},(res)=>{
+          debugger
+          this.$router.back()
+        })
       }
     }
   }

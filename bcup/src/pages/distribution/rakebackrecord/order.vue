@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path : '/orders/detail' }" class="order">
+  <router-link :to="{ path : '/orders/detail' ,query:{orderid:item.order.orderId}}" class="order">
     <div class="main clearfix">
       <div class="text ellipsis-2">{{item.wareVO.title}}
       </div>
