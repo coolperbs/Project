@@ -1,7 +1,7 @@
 <template>
   <div class="data">
     <img class="icon" :src="item.user?item.user.avatarUrl:''" alt="">
-    <div class="main">可提现余额 ￥{{fixPrice(item.totalSale)}}</div>
+    <div class="main">可提现余额 ￥{{fixPrice()}}</div>
     <div class="sub">总返佣余额 ￥{{fixPrice(item.totalRakeBack)}}</div>
   </div>
 </template>
@@ -16,6 +16,7 @@
 
 <script>
   import utils from '@/common/utils/utils'
+  //todo 待确定
   export default {
     props:{
       item:{}
