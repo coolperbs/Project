@@ -1,20 +1,20 @@
-<template>  
+<template>
   <div class="checkout-user">
     <ul class="list">
       <li>
-        <div class="key">name :</div>
-        <div class="value">haha</div>
+        <div class="key">姓名 :</div>
+        <div class="value">{{data.order?data.order.userName:''}}</div>
       </li>
       <li>
-        <div class="key">phone :</div>
-        <div class="value">11111111111</div>
+        <div class="key">手机号 :</div>
+        <div class="value">{{data.order?data.order.userPhone:''}}</div>
       </li>
-      <li>
-        <div class="key">code :</div>
+      <!--<li>
+        <div class="key">电子码 :</div>
         <div class="value">
-          12341234
+          {{data.order?data.order.orderId:''}}
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
 </template>
@@ -37,9 +37,8 @@
 
 <script>
   export default {
-    data : function() {
-      return {
-      }
+    props:{
+      data:{}
     }
   }
 </script>
