@@ -16,6 +16,22 @@
 			<img src="jifu/src/jifu/widgets/menu/images/minzu.png"/>
 			民族同心推
 		</div>
+		<div class="item">
+			<img src="jifu/src/jifu/widgets/menu/images/minzu.png"/>
+			党员模范带动
+		</div>
+		<div class="item">
+			<img src="jifu/src/jifu/widgets/menu/images/minzu.png"/>
+			区域多方联动
+		</div>
+		<div class="item">
+			<img src="jifu/src/jifu/widgets/menu/images/minzu.png"/>
+			三社齐力互动
+		</div>
+		<div class="item">
+			<img src="jifu/src/jifu/widgets/menu/images/minzu.png"/>
+			双找双报到
+		</div>
 	</div>
 </div>
 
