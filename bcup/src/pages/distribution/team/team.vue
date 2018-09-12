@@ -17,6 +17,7 @@
 <script>
   import saledata from './data'
   import entrys from './entrys'
+  import teamService from '@/services/team/team'
 
   export default {
     components : {
@@ -24,6 +25,16 @@
     },
     data : function() {
       return {
+      }
+    },
+    mounted(){
+      this.getData()
+    },
+    methods:{
+      getData(){
+        /*teamService.getTeam({type:2},(res)=>{
+          debugger
+        })*/
       }
     }
   }

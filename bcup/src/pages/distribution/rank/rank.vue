@@ -1,7 +1,7 @@
 <template>
   <div class="rank">
-    <order-tab/>
-    <order v-for="order in [1,2,3,4,5]" :key="order" class="mod"/>
+    <order-tab @tabChange="changeType" :data="ENUMDATA" :currentKey="type"/>
+    <order v-for="item,index in rankData" :key="index" :item="item" :rank="index+1" class="mod"/>
   </div>
 </template>
 
@@ -16,13 +16,31 @@
   import bHeader from '@/widgets/header/header'
   import orderTab from './tab'
   import order from './member'
+  import rankService from '@/services/rank/rank'
 
   export default {
-    components : {
+    components: {
       bHeader, orderTab, order
     },
-    data : function() {
+    data: function () {
       return {
+        type: 1,
+        rankData: {},
+        ENUMDATA:[{key:1,value:'总榜'},{key:2,value:'月榜'}]
+      }
+    },
+    mounted () {
+      this.getRank()
+    },
+    methods: {
+      getRank () {
+        rankService.getRank({type: this.type}, (res) => {
+          this.rankData = res.data;
+        })
+      },
+      changeType (e) {
+        this.type = e.key;
+        this.getRank();
       }
     }
   }

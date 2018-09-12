@@ -17,30 +17,30 @@
           <div class="tag" style="margin-left : -22.5px;">{{fixPrice( pageInfo.thirtySale )}}</div>
         </div>
       </div>
-    </div>  
+    </div>
     <div class="data-line clearfix">
       <div class="key">all:</div>
       <div class="value">
         {{ fixPrice( pageInfo.totalRakeBack ) }}
       </div>
-    </div>  
+    </div>
     <div class="data-line clearfix">
       <div class="key">all num:</div>
       <div class="value">
         {{ pageInfo.totalOrderCount }}
       </div>
-    </div>    
+    </div>
 
     <ul class="list">
       <li class="clearfix">
-        <router-link :to="{ path : '/distribution/rakebackrecord' }">
+        <router-link :to="{ path : '/distribution/rakebackrecord',query:{type:1} }">
           <div class="key">revers</div>
           累计总返佣{{ pageInfo.totalRakeBack }}
           <div class="more">></div>
         </router-link>
       </li>
       <li class="clearfix">
-        <router-link :to="{ path : '/distribution/orders' }">
+        <router-link :to="{ path : '/distribution/orders',query:{type:1} }">
           <div class="key">revers</div>
           共{{ pageInfo.totalOrderCount }}单
           <div class="more">></div>

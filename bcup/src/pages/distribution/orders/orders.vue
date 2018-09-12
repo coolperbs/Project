@@ -52,6 +52,7 @@
       }
     },
     mounted(){
+      this.type=this.$route.query.type;
       this.getDataByType();
     },
     methods:{

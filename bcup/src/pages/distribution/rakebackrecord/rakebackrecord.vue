@@ -56,6 +56,7 @@
       }
     },
     mounted () {
+      this.type = Number(this.$route.query.type);
       this.getDataByType();
 
     },
