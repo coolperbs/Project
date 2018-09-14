@@ -1,4 +1,4 @@
-<template>  
+<template>
   <div class="orderlist-tab">
     <ul class="list">
       <li v-for="item in tab.list" :key="item.value">
@@ -10,27 +10,52 @@
 
 
 <style scoped>
-  .orderlist-tab { position: fixed; top : 0; left : 0; width : 100%; box-shadow : 0 5px 5px rgba( 100, 100, 100, 0.1 ); z-index: 100; }
-  .list li { display: inline-block; height : 40px; width : 20%; background-color: #fff; text-align: center; }
-  .list li .text { display: inline-block; height : 100%; line-height: 40px; padding : 0 5px; }
-  .list li .text.current { border-bottom : solid 2px; }
+  .orderlist-tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 5px 5px rgba(100, 100, 100, 0.1);
+    z-index: 100;
+  }
+
+  .list li {
+    display: inline-block;
+    height: 40px;
+    width: 20%;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .list li .text {
+    display: inline-block;
+    height: 100%;
+    line-height: 40px;
+    padding: 0 5px;
+  }
+
+  .list li .text.current {
+    border-bottom: solid 2px;
+  }
 </style>
 
 <script>
   export default {
-    props : ['value'],
-    computed : {
-      tab : function() {
+    props: ['value'],
+    computed: {
+      tab: function () {
         return this.value;
       }
     },
-    data : function() {
-      return {
-      }
+    data: function () {
+      return {}
     },
-    methods : {
-      changeTab : function( tab ) {
-        this.$emit( 'changeTab', tab );
+    methods: {
+      changeTab: function (tab) {
+        if (tab.value == this.value) {
+          return
+        }
+        this.$emit('changeTab', tab);
       }
     }
   }
