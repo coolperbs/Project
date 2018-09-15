@@ -1,7 +1,7 @@
 <template>
   <div class="data">
     <div class="data-line clearfix">
-      <div class="key">30days:</div>
+      <div class="key">近30营业额:</div>
       <div class="value">
         <div class="line">
           <div class="color" style="width : 20%"></div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="data-line has-line clearfix">
-      <div class="key">30days:</div>
+      <div class="key">近30天返佣:</div>
       <div class="value">
         <div class="line">
           <div class="color" style="width : 20%"></div>
@@ -19,13 +19,13 @@
       </div>
     </div>
     <div class="data-line clearfix">
-      <div class="key">all:</div>
+      <div class="key">总返佣:</div>
       <div class="value">
         {{ fixPrice( pageInfo.totalRakeBack ) }}
       </div>
     </div>
     <div class="data-line clearfix">
-      <div class="key">all num:</div>
+      <div class="key">总返佣单数:</div>
       <div class="value">
         {{ pageInfo.totalOrderCount }}
       </div>
@@ -34,14 +34,14 @@
     <ul class="list">
       <li class="clearfix">
         <router-link :to="{ path : '/distribution/rakebackrecord',query:{type:1} }">
-          <div class="key">revers</div>
-          累计总返佣{{ pageInfo.totalRakeBack }}
+          <div class="key">返佣记录</div>
+          累计总返佣￥{{ pageInfo.totalRakeBack }}
           <div class="more">></div>
         </router-link>
       </li>
       <li class="clearfix">
         <router-link :to="{ path : '/distribution/orders',query:{type:1} }">
-          <div class="key">revers</div>
+          <div class="key">订单记录</div>
           共{{ pageInfo.totalOrderCount }}单
           <div class="more">></div>
         </router-link>

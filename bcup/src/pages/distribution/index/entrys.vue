@@ -2,12 +2,12 @@
   <div class="entrys">
     <ul class="list">
       <li class="clearfix" @click="forward( '/distribution/team' )">
-        <div class="key">team</div>
+        <div class="key">达人团队</div>
         <div class="more">></div>
       </li>
       <li class="clearfix" @click="forward( '/distribution/rakeback' )">
-        <div class="key">revers</div>
-        has $9.00
+        <div class="key">返佣</div>
+       已返￥{{fixPrice(item.totalRakeBack)}}
         <div class="more">></div>
       </li>
     </ul>
@@ -29,14 +29,16 @@
 
 <script>
   import Router from '@/router'
-
+  import utils from '@/common/utils/utils'
   export default {
-    components : {
-    },
+   props:{
+     item:{}
+   },
     methods : {
-      forward : function( path ){ 
+      forward : function( path ){
         Router.push( { path : path } );
-      }
+      },
+      fixPrice : utils.fixPrice
     },
     data : function() {
       return {

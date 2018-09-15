@@ -3,11 +3,11 @@
     <ul class="list">
       <li>
         <div class="key">订单时间 :</div>
-        <div class="value">2019-2-1 10:11:11</div>
+        <div class="value">{{fixDate(data.order)}}</div>
       </li>
       <li>
         <div class="key">订单号 :</div>
-        <div class="value">12123123</div>
+        <div class="value">{{data.order?data.order.orderId:''}}</div>
       </li>
       <li>
         <div class="key">备注 :</div>
@@ -52,8 +52,10 @@
     },
     methods:{
       fixDate(el){
-        let time = utils.formatDateTime(val)
-        return `${time.year}-${time.month}-${time.day}   ${time.hour}:${time.minute}`
+        if(el){
+          let time = utils.formatDateTime(el.orderTime)
+          return `${time.year}-${time.month}-${time.day}   ${time.hour}:${time.minute}`
+        }
       },
       fixprice(order){
         if(order){

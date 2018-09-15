@@ -46,7 +46,27 @@ handle = {
       }
       callback && callback(res);
     });
-  }
+  },
+  // 绑定账号
+  bindAccount({userName,userPhone},callback){
+    ajax.get('/app/trader/account', {userName, userPhone},  (res) =>{
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback && callback(res);
+    });
+  },
+  //提现记录
+  rakeBackList({currentPage},callback){
+    ajax.get('/app/money/apply/list', {currentPage,},  (res) =>{
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback && callback(res);
+    });
+  },
 }
 
 export default handle;

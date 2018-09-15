@@ -1,9 +1,9 @@
 <template>
     <div class="userinfo">
-      <div class="logo"><img /></div>
+      <div class="logo"><img :src="item.user?item.user.avatarUrl:''"/></div>
       <div class="info">
-        <div class="name">name</div>
-        <div class="sub">id:subinfo</div>
+        <div class="name">{{item.user?item.user.nickName:''}}</div>
+        <div class="sub">id:{{item.user?item.user.id:''}}</div>
       </div>
     </div>
 </template>
@@ -14,16 +14,17 @@
   .info { position: relative; top : 20px; }
   .info .name { font-size : 20px; }
   .info .sub { font-size : 12px; color : #999; }
-  .userinfo .logo { height : 50px; width : 50px; border-radius : 50%; background-color: #ccc; float: left; margin-left : -60px; margin-top : 15px; }
+  .userinfo .logo { height : 50px; width : 50px; border-radius : 50%; background-color: #ccc; float: left; margin-left : -60px; margin-top : 15px; overflow: hidden}
+  .userinfo .logo img{
+    height: inherit;
+    width: inherit;
+  }
 </style>
 
 <script>
   export default {
-    components : {
-    },
-    data : function() {
-      return {
-      }
+    props:{
+      item:{}
     }
   }
 </script>
