@@ -1,5 +1,32 @@
-.w-p-home { padding : 30px; }
-.w-p-home .head { width : 100%; }
+.w-p-home { padding : 30px; height : 100%; position: relative; }
+
+.w-p-home .head { width : 100%; position: absolute; top : 30px; left : 0; padding : 0 30px; }
 .w-p-home .head .logo { float : left; height : 30px; line-height: 30px; font-size : 16px; width : 100px; color : #ccc; }
 .w-p-home .head .subinfo { float : right; height : 30px; line-height: 30px; font-size : 16px; color : #ccc; }
+
+.w-p-home .cont { padding-right : 320px; margin-bottom : 0; height : 100%; padding-top : 40px; }
+.w-p-home .main { display: flex; flex-direction: column; justify-content: space-between; float : left; width : 100%; height : 100%; }
+.w-p-home .main .banner { background-color: #eee; height : 50%; }
+.w-p-home .main .news { height : 1px; flex-grow : 1; display: flex; margin-top : 30px; } 
+.w-p-home .main .news .mod { height : 100%; display: flex; flex-direction: column; justify-content: space-between; width : 33.3333%; margin-left : 30px; border : solid 1px #ccc; }
+.w-p-home .main .news .mod:first-child { margin-left : 0; }
+.w-p-home .main .news .mod img { height : 66.66%; background-color: #fff; }
+.w-p-home .main .news .mod .title { padding : 0 15px; }
+.w-p-home .main .news .mod .subinfo { padding : 0 15px; margin-bottom : 15px; }
+
+.w-p-home .sub { float : right; width : 290px; height : 100%; margin-right : -320px; display: flex; flex-direction: column; justify-content: space-between; }
+.w-p-home .sub .area-desc { height : 50%; display: flex; flex-direction: column; }
+.w-p-home .sub .area-desc img { height : 60%; background-color: #eee; }
+.w-p-home .sub .area-desc .text { height : 40%; padding : 15px; background-color: #fff; font-size : 12px; line-height: 16px; overflow: hidden; }
+.w-p-home .sub .info { flex-grow: 1; margin-top : 30px; display: flex; flex-direction: column; }
+.w-p-home .sub .info .mod { display: flex; margin-top: 15px; height : 50%; padding : 20px; flex-grow : 1; background-color: #fff; }
+.w-p-home .sub .info .mod:first-child { margin-top : 0; }
+.w-p-home .sub .info .mod .user { font-size : 14px; width : 80px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.w-p-home .sub .info .mod .user img { width : 80px; border : 0; height : 100px; background-color: #eee; }
+.w-p-home .sub .info .mod .user .more { font-size : 10px; }
+.w-p-home .sub .info .mod .desc { margin-left : 10px; flex-grow : 1; }
+
+
+
+
 
