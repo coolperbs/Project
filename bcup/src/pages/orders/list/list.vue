@@ -24,8 +24,8 @@
 
 <script>
   import bHeader from '@/widgets/header/header'
-  import orderTab from './tab'
-  import order from './order'
+  import orderTab from '@/pages/orders/list/tab.vue'
+  import order from '@/pages/orders/list/order.vue'
   import orderServ from '@/services/order/order'
   import utils from '@/common/utils/utils'
   import PullTo from 'vue-pull-to'

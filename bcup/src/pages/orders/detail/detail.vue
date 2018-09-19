@@ -4,7 +4,7 @@
     <checkout-info :data='orderData' class="mod"/>
     <checkout-user :data='orderData' class="mod"/>
     <checkout-order :data='orderData' class="mod"/>
-    <checkout-submit />
+    <checkout-submit v-if="orderData.order.orderStatus==512" :data="orderData"/>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <router-link tag="div" :to="{ path : '/orders/detail?orderid=' + item.orderId }" class="order">
+  <div class="order">
     <div class="status">{{fixEnum(item)}}</div>
     <div class="main ellipsis-2">{{item.skus[0].title}}{{item.skus[0].subTitle}}</div>
     <ul class="list">
@@ -18,12 +18,12 @@
         </div>
       </li>
     </ul>
-    <div class="act clearfix" >
-      <div v-if="item.orderStatus==8" class="btn pay" @click="goPay">去支付</div>
-      <div v-if="item.orderStatus==8" class="btn pay" @click="cancelEvt">取消</div>
-      <div class="btn" @click="goDetail">订单详情</div>
+    <div class="act clearfix">
+      <div v-if="item.orderStatus==8" class="btn pay" @click="orderGoPayEvt">去支付</div>
+      <div v-if="item.orderStatus==8" class="btn pay" >取消</div>
+      <router-link tag="div" :to="{ path : '/orders/detail?orderid=' + item.orderId }" class="btn">订单详情</router-link>
     </div>
-  </router-link>
+  </div>
 </template>
 
 
@@ -113,18 +113,20 @@
   .act .btn {
     display: inline-block;
     background-color: #fff;
-    border:1px solid #eee;
+    border: 1px solid #eee;
     padding: 8px 15px;
     border-radius: 20px;
   }
-  .act .btn.pay{
-    border:1px solid #ee8e34;
+
+  .act .btn.pay {
+    border: 1px solid #ee8e34;
     color: #ee8e34;
   }
 </style>
 
 <script>
   import ENUM from '@/pages/distribution/enum'
+  import orderService from '@/services/order/order'
 
   export default {
     props: ['item'],
@@ -132,14 +134,15 @@
       fixEnum (el) {
         return ENUM[el.orderStatus] || ''
       },
-      goPay(){
-
+      orderGoPayEvt () {
+        //todo goPay
+        debugger
       },
-      goDetail(){
+      orderCancelEvt () {
+        debugger
+        orderService.cancelOrder({orderId: item.order.orderId}, (res) => {
 
-      },
-      cancelEvt(){
-
+        })
       }
     }
   }
