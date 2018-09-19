@@ -136,10 +136,9 @@
       },
       orderGoPayEvt () {
        alert('orderGopay')
-
+        //todo
       },
       orderCancelEvt () {
-        alert('orderXancel')
         orderService.cancelOrder({orderId: this.item.orderId}, (res) => {
           window.location.reload()
         })

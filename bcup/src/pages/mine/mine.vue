@@ -33,10 +33,10 @@
     </ul>
     <ul class="list">
       <router-link tag="li" :to="{path:'/distribution/index'}">
-        <img src=""/>达人
+        <img src=""/>达人后台
         <div class="icon">></div>
       </router-link>
-      <!--<li class="sub">
+      <li class="sub">
         <router-link :to="{path:'/distribution/index'}">
           <div class="cell">
             <img />
@@ -55,7 +55,7 @@
             <div class="text">other</div>
           </div>
         </router-link>
-      </li>-->
+      </li>
     </ul>
   </div>
 

@@ -29,7 +29,9 @@
     },
     data : function() {
       return {
-        orderData:{}
+        orderData:{
+          order:{}
+        }
       }
     },
     mounted () {
