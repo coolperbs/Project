@@ -2,7 +2,7 @@
   <div class="orderlist-tab">
     <ul class="list">
       <li v-for="item in tab.list" :key="item.value">
-        <span class="text" :class="{current : item.value == tab.current }" @click="changeTab( item )">{{ item.name }}</span>
+        <span class="text" :class="{current : item.value == tab.current }" @click.self="changeTab( item )">{{ item.name }}</span>
       </li>
     </ul>
   </div>
@@ -52,6 +52,7 @@
     },
     methods: {
       changeTab: function (tab) {
+        debugger
         if (tab.value == this.value) {
           return
         }

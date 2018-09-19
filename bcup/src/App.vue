@@ -23,4 +23,7 @@ export default {
   margin : 0 auto;
   /*margin-top: 60px;*/
 }
+.scroll-container {
+  overflow: visible !important;;
+}
 </style>

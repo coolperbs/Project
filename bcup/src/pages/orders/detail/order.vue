@@ -12,7 +12,7 @@
       <li>
         <div class="key">备注 :</div>
         <div class="value">
-          差字段 还是说这里不是 备注信息
+          <!--{{todo 备注信息}}-->
         </div>
       </li>
       <li class="total">

@@ -37,6 +37,16 @@ handle = {
       callback && callback(res);
     });
   },
+  //userinfo
+  getUserInfo: function (callback) {
+    ajax.get('/app/user/info', function (res) {
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback && callback(res);
+    });
+  },
   // 获取返佣记录
   getRakeBackRecord ({type, currentPage}, callback) {
     ajax.get('/app/user/money', {type, currentPage}, function (res) {
