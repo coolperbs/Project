@@ -5,6 +5,7 @@
 		<div class="logo">
 			<img src="tongzilin/src/tongzilin/widgets/header/images/logo.png"/>
 		</div>
+		<!--
 		<div class="info">
 		 	<div class="mod">现有党支部<em><%= info.partyCount%></em>个</div>
 		 	<div class="mod">现有党员<em><%= info.partyMemberCount%></em>个</div>
@@ -13,7 +14,7 @@
 		 	<% } else { %>
 		 		<div class="mod login J_Logout">退出</div>
 		 	<% } %>
-		</div>
+		</div>-->
 	</script>
 	<div class="J_HSub h-cont sub">
 
