@@ -1,2 +1,3 @@
-.w-p-home {}
+.w-p-list { display: flex; height : 100%; }
+.w-p-list .list { width : 440px; border : solid 1px #eee; }
 

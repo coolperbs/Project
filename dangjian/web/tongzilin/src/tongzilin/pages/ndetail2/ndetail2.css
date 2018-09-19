@@ -1,0 +1,29 @@
+.w-p-ndetail2 { color : #434552; height: 100%; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+
+.w-p-ndetail2 .cont { height : 7.6rem; width : 100%; display: flex; display: -webkit-flex; justify-content: space-between; }
+
+/* 菜单 */
+.w-p-ndetail2 .cont .menu { width : 6rem; height : 100%; overflow-y: hidden; display: flex; justify-content: center; align-items: center; background: url() no-repeat center center #fff; background-size : cover; }
+
+
+.w-p-ndetail2 .cont .main { background-color: #fff; width : 11.6rem; overflow-y: auto; overflow-x: hidden; }
+.w-p-ndetail2 .cont .main .detail .pic img { display: block; max-width: 10.1rem; }
+
+.w-p-ndetail2 .cont .news-wrap { height: 100%; width : 100%; overflow-y: auto; }
+.w-p-ndetail2 .cont .main .btn { cursor : pointer; position: absolute; right : 0.1rem;bottom:-0.4rem; width : 2rem; height : 0.8rem; display: flex; align-items: center; z-index: 2; justify-content: center; color : #fff; background-color : #EA4834; font-size : 0.32rem; }
+.w-p-ndetail2 .cont .main .btn_back { content: ''; width : 2.2rem;height: 0.5rem; background-color : #fff; position: absolute; right : 0rem; bottom : -0.5rem; z-index: 1; }
+.w-p-ndetail2 .cont .main .news .video-wrap { display: flex; align-items: center; justify-content: center; }
+.w-p-ndetail2 .cont .main .news .video { margin : 0 auto; }
+
+
+.w-p-ndetail2 .cont .main .commentlist { margin-top : 0.2rem; }
+.w-p-ndetail2 .cont .main .commentlist .title { font-size : 0.32rem; border-bottom: solid 1px #9ea8b7; padding : 0.03rem; }
+.w-p-ndetail2 .cont .main .commentlist .title span { font-size : 0.24rem; margin-left : 0.1rem; }
+.w-p-ndetail2 .cont .main .commentlist .c-list .mod { margin-top : 0.2rem; }
+.w-p-ndetail2 .cont .main .commentlist .c-list .mod .user { font-size : 0.24rem; }
+.w-p-ndetail2 .cont .main .commentlist .c-list .mod .user span { font-size : 0.16rem; color : #9ea8b7; }
+.w-p-ndetail2 .cont .main .commentlist .c-list .mod .c-text { font-size : 0.18rem; margin-top : 0.1rem; }
+
+
+

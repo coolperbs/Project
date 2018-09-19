@@ -1,0 +1,25 @@
+.w-p-sub-list { color : #434552; background-color: #fff; height : 100%; width : 100%; overflow: hidden; }
+.w-p-sub-list .head { background: #fff; z-index: 1; border-bottom : solid 1px #9ea8b7; width : 100%; height: 1rem; display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; }
+.w-p-sub-list .head .title { font-size : 0.4rem; height : 0.6rem; border-left : solid 0.1rem #EA4834; padding-left : 0.4rem; height: 0.6rem; line-height: 0.6rem; }
+
+.w-p-sub-list .cont { padding : 0.5rem; height: 6.6rem; overflow-y: auto; }
+.w-p-sub-list .list { display: flex; display: -webkit-flex; flex-wrap: wrap; justify-content: space-between; }
+.w-p-sub-list .list .project { overflow: hidden; position: relative; cursor: pointer; width : 6.8rem; background-color : rgba(158, 168, 183, 0.1); padding : 0.35rem; margin-bottom : 0.4rem; }
+.w-p-sub-list .list .project .title { font-size : 0.32rem; height : 0.86rem; }
+.w-p-sub-list .list .project .sub-info { color : #9ea8b7; font-size: 0.14rem; margin-top : 0.1rem; display: flex; display: -webkit-flex; justify-content: space-between; }
+.w-p-sub-list .list .project .detail { height : 0.85rem; line-height: 0.3rem; margin-top : 0.2rem; font-size : 0.18rem; }
+.w-p-sub-list .list .project .act { cursor: default; margin-top : 0.3rem;font-size : 0.22rem; display: flex; display: -webkit-flex; justify-content: flex-end; align-items: center; }
+.w-p-sub-list .list .project .act .status { background-color: #9ea8b7; color : #fff; font-size : 0.18rem; height : 0.9rem; width : 2rem; text-align: center; position: absolute; bottom : -0.25rem; left : -0.85rem; padding-top : 0.1rem; transform : rotateZ( 45deg ); }
+.w-p-sub-list .list .project .act .status.wait { background-color: #EA4834; }
+.w-p-sub-list .list .project .act .status.working { color : #fff; }
+.w-p-sub-list .list .project .act .btns { display: flex; display: -webkit-flex; }
+.w-p-sub-list .list .project .act .btns .btn { color : #EA4834; border : solid 1px #EA4834; margin-left : 0.2rem; font-size: 0.24rem; line-height: 0.6rem; cursor : pointer; height : 0.6rem; width : 1.6rem; text-align: center; }
+.w-p-sub-list .list .project .act .btns .btn.primary { background-color: #EA4834; color : #fff; }
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+.w-p-links { color : #434552; height: 100%; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+
+.w-p-links .cont { display: none; align-items: center; padding : 0.4rem; background-color: #fff; height : 7.6rem; width : 100%; display: flex; display: -webkit-flex; justify-content: space-between; }
+.w-p-links .cont .link { cursor: pointer; display: flex; padding : 0.1rem; border : solid 1px #ccc; height : 3rem; width : 5rem; }
+.w-p-links .cont .link .pic { width : 2.4rem; height : 100%; border : solid 1px #ccc; }
+.w-p-links .cont .link .info { width : 2.2rem; flex-flow: 1; margin-left : 0.1rem; }
+.w-p-links .cont .link .info .title { font-size : 0.32rem;  }
+.w-p-links .cont .link .info .detail { overflow-y: auto; height : 2.34rem; }
+.w-p-links .cont .iframe { height : 100%; width : 100%; }
+
+

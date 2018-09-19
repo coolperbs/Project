@@ -1,0 +1,12 @@
+.w-w-login { z-index : 1000; position: fixed; background-color : rgba( 0,0,0,0.6 ); width : 100%; height : 100%; left : 0; top : 0; display: flex; display: -webkit-flex; justify-content: center; align-items: center; }
+.w-w-login .pop { width : 7rem; background-color : #fff; padding : 0.8rem; font-size : 0.24rem; color : #434552; position: relative; }
+.w-w-login .pop .nav { margin-bottom : 0.2rem; display: flex; font-size : 0.4rem; cursor:  pointer; justify-content: center; }
+.w-w-login .pop .nav .tab { margin-left : 0.2rem; }
+.w-w-login .pop .nav .tab.current { color : #EA4834; }
+.w-w-login .pop .nav .tab:first-child { margin-left : 0; }
+.w-w-login .pop .close { cursor: pointer; height : 0.7rem; width : 0.7rem; position: absolute; right : 0; top : 0; background-color : #EA4834; color : #fff; display: flex; justify-content: center; align-items: center; }
+.w-w-login .pop .form .key { width : 1rem; }
+.w-w-login .pop .form.register .key { width : 1.5rem; }
+.w-w-login .pop .act { margin-top : 0.4rem; display: flex; justify-content: flex-end; }
+.w-w-login .pop .act .btn { cursor: pointer; width : 2rem; height : 0.7rem; color : #fff; background-color: #EA4834; display: flex; justify-content: center; align-items: center; font-size : 0.28rem; }
+.w-w-login .pop .msg { color : #EA4834; } 
