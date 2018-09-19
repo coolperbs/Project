@@ -29,7 +29,6 @@
     mounted : function() {
       let self = this;
       distributionServ.getBaseInfo( function( baseInfo ) {
-
         self.pageInfo = baseInfo.data;
       } );
     }

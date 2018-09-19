@@ -3,7 +3,7 @@
     <order-tab v-model="tab" @changeTab="changeTab"/>
     <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
       <order v-if="renderList.length>0" v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
-      <div v-if="renderList.length==0" style="text-align: center;font-size: 12px;">没有更多数据</div>
+      <div v-if="renderList.length==0" style="text-align: center;font-size: 12px;padding: 10px;">没有更多数据</div>
     </PullTo>
   </div>
 </template>
@@ -72,6 +72,7 @@
       }
     },
     mounted: function () {
+      this.tab.current = this.$route.query.type || 1
       this.render();
     },
     methods: {
