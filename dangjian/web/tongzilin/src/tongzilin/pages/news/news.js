@@ -9,6 +9,7 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
         ajax = require( 'tongzilin/common/ajax/ajax' ),
         comment = require( 'tongzilin/widgets/comment/comment' ),
         login = require( 'tongzilin/widgets/login/login' ),
+        HP = require( 'tongzilin/pages/news/headerparam' ),
         kRouter = kayak.router,
         isLoading = false,
 		header = require( 'tongzilin/widgets/header/header' ), searchKey = '',
@@ -27,49 +28,7 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
             self.jView.find( '.J_List' ).html( '' );
             self.jView.find( '.J_NewsCont' ).html( '' );
             pageType = pageType || 1;   // 1三会一课，2党员学习平台
-            if ( pageType == 2 ) {
-                headParam = {
-                    id : 'news2',
-                    sorts : [{
-                        text : '党员风采',
-                        value : 1
-                    },{
-                        text : '会议学习',
-                        value : 2
-                    },{
-                        text : '年度工作计划',
-                        value : 3
-                    },{
-                        text : '学习计划',
-                        value : 4
-                    },{
-                        text : '工作总结',
-                        value : 5
-                    }],
-                    search : true
-                }
-            } else if ( pageType == 3 ) {
-                headParam = {
-                    id : 'news3',
-                    sorts : [{
-                        text : '任务清单',
-                        value : 1
-                    },{
-                        text : '财务公开',
-                        value : 2
-                    },{
-                        text : '重大事项',
-                        value : 3
-                    }],
-                    search : true
-                }                
-            } else {
-                headParam = {
-                    id : 'news1',
-                    title : '三会一课',
-                    search : true
-                }
-            }
+            headParam = HP[ pageType ];
             searchKey = '';
         	header.showSub( headParam );
             isLoading = false;

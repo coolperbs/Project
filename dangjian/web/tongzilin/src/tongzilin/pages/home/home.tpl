@@ -12,7 +12,7 @@
 					</div>
 					<div class="text">
 						<div class="ellipsis-2">
-						<%= shequ.description%></div>
+						桐梓林社区是四川省成都市武侯区火车南站街道下辖的一个行政社区，东起人民南路四段，西至新光路，南起桐梓林南路，北至二环路南三段，面积0.6平方公里；有常住人口13576人，暂住人口约3000人。</div>
 					</div>					
 				</script>
 			</a>
@@ -87,56 +87,51 @@
 		<div class="menu">
 			<div class="big title">菜单</div>
 			<div class="list">
-				<a href="#index/tongzilin/sub:tab=list" class="tab">
+				<a href="#index/tongzilin/news:type=1" class="tab">
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon1-white.png"/>
 					</div>
 					<div class="text">
-                        <div style="margin-bottom: 10px">双找</div>
-                        <div>双报到</div>
+                        <!--<div style="margin-bottom: 10px">双找</div>
+                        <div>双报到</div>-->
+                        <div class="text">
+                        	组织孵化
+                        	<div class="en">Social organization incubation base</div>
+                        </div>
                     </div>
-				</a>
-				<!--<a href="#index/tongzilin/news:type=3" class="tab" style="background-color : rgba(68, 42, 69, 0.5);">-->
-					<!--<div class="icon">-->
-						<!--<img src="tongzilin/src/tongzilin/pages/home/images/icon10.png"/>-->
-					<!--</div>-->
-					<!--<div class="text">廉洁晋阳</div>-->
-				<!--</a>-->
-				<a href="#index/tongzilin/ndetail2:id=2" class="tab red" >
-					<div class="icon">
-						<img src="tongzilin/src/tongzilin/pages/home/images/icon2.png"/>
-					</div>
-					<div class="text">党组织信息</div>
-				</a>
-				<a href="#index/tongzilin/analysis" class="tab" >
-					<div class="icon">
-						<img src="tongzilin/src/tongzilin/pages/home/images/icon3.png"/>
-					</div>
-					<div class="text">党员信息</div>
-				</a>
-				<a href="#index/tongzilin/news:type=1" class="tab" >
-					<div class="icon">
-						<img src="tongzilin/src/tongzilin/pages/home/images/icon4.png"/>
-					</div>
-					<div class="text">三会一课</div>
 				</a>
 				<a href="#index/tongzilin/news:type=2" class="tab" >
 					<div class="icon">
+						<img src="tongzilin/src/tongzilin/pages/home/images/icon2.png"/>
+					</div>
+					<div class="text">
+						艺术交流
+						<div class="en">International art exchange</div>
+					</div>
+				</a>
+				<a href="#index/tongzilin/news:type=3" class="tab" >
+					<div class="icon">
+						<img src="tongzilin/src/tongzilin/pages/home/images/icon3.png"/>
+					</div>
+					<div class="text">
+						生活服务
+						<div class="en">Life Services</div>
+					</div>
+				</a>
+				<a href="#index/tongzilin/news:type=4" class="tab" >
+					<div class="icon">
+						<img src="tongzilin/src/tongzilin/pages/home/images/icon4.png"/>
+					</div>
+					<div class="text">
+						邻里融合
+						<div class="en">Community News</div>
+					</div>
+				</a>
+				<a href="#index/tongzilin/news:type=5" class="tab" >
+					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon5.png"/>
 					</div>
-					<div class="text">党员学习平台</div>
-				</a>
-				<div class="tab J_Bonus" >
-					<div class="icon">
-						<img src="tongzilin/src/tongzilin/pages/home/images/icon6.png"/>
-					</div>
-					<div class="text">党员积分</div>
-				</div>
-				<a href="#index/tongzilin/oldpm" class="tab">
-					<div class="icon">
-						<img src="tongzilin/src/tongzilin/pages/home/images/icon7.png"/>
-					</div>
-					<div class="text">老党员在行动</div>
+					<div class="text">信息平台</div>
 				</a>
 			</div>			
 		</div>
