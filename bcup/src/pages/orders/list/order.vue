@@ -20,7 +20,7 @@
     </ul>
     <div class="act clearfix">
       <div v-if="item.orderStatus==8" class="btn pay" @click="orderGoPayEvt">去支付</div>
-      <div v-if="item.orderStatus==8" class="btn pay" >取消</div>
+      <div v-if="item.orderStatus==8" class="btn pay" @click="orderCancelEvt">取消</div>
       <router-link tag="div" :to="{ path : '/orders/detail?orderid=' + item.orderId }" class="btn">订单详情</router-link>
     </div>
   </div>
@@ -135,13 +135,13 @@
         return ENUM[el.orderStatus] || ''
       },
       orderGoPayEvt () {
-        //todo goPay
-        debugger
+       alert('orderGopay')
+
       },
       orderCancelEvt () {
-        debugger
-        orderService.cancelOrder({orderId: item.order.orderId}, (res) => {
-
+        alert('orderXancel')
+        orderService.cancelOrder({orderId: this.item.orderId}, (res) => {
+          window.location.reload()
         })
       }
     }
