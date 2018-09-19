@@ -24,7 +24,7 @@
               <span class="origin">￥{{ fixPrice( item.price || item.originPrice ) }}</span>
               <span class="counter">返:￥{{ fixPrice( 0 ) }}</span>
             </div>
-            <div class="sale-num">已售：10</div>
+            <div class="sale-num">已售：10<!--todo --></div>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ export default {
         autoplay: {
           delay: 2500,
           disableOnInteraction: false
-        },            
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable : true
