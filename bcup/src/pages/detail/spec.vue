@@ -38,12 +38,9 @@
 </style>
 
 <script>
-    export default {
-      mounted : function() {
-      },
-      data : function() {
-        return {
-        }
-      }
+  export default {
+    props: {
+      pageInfo: {}
     }
+  }
 </script>

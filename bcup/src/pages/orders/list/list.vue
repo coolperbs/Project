@@ -2,8 +2,8 @@
   <div class="orderlist">
     <order-tab v-model="tab" @changeTab="changeTab"/>
     <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
-      <order v-if="renderList.length>0" v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
-      <div v-if="renderList.length==0" style="text-align: center;font-size: 12px;padding: 10px;">没有更多数据</div>
+      <order v-if="realList.length>0" v-for="order,index in realList " :item="order" :key="index" class="mod"/>
+      <div v-if="realList.length==0" style="text-align: center;font-size: 12px;padding: 10px;">没有更多数据</div>
     </PullTo>
   </div>
 </template>
@@ -24,8 +24,8 @@
 
 <script>
   import bHeader from '@/widgets/header/header'
-  import orderTab from '@/pages/orders/list/tab.vue'
-  import order from '@/pages/orders/list/order.vue'
+  import orderTab from './tab'
+  import order from './order'
   import orderServ from '@/services/order/order'
   import utils from '@/common/utils/utils'
   import PullTo from 'vue-pull-to'
@@ -43,19 +43,20 @@
             value: 1,
           }, {
             name: '待支付',
-            value: 5
+            value: 8
           }, {
             name: '已支付',
-            value: 3
+            value: 16
           }, {
             name: '已完成',
-            value: 4
+            value: 512
           }, {
             name: '已取消',
-            value: 2
+            value: 1024
           }]
         },
         currentPage: 1,
+        realList: [],
         switch: true,
         hasMore: false,
         renderList: [],
@@ -104,15 +105,28 @@
             callback(res.data.order || [])
           } else {
             this.renderList = res.data.order || [];
+            this.filterList()
           }
         });
       },
       changeTab (el) {
-        this.type = el.value;
-        this.tab.current = this.type;
-        this.currentPage = 1;
-        this.hasMore = true;
-        this.render()
+        this.tab.current = el.value;
+        this.filterList()
+      },
+      filterList () {
+        if (this.tab.current == 1) {
+          this.realList = this.renderList;
+          return
+        }
+        let temp = [];
+        for (let i = 0; i < this.renderList.length; i++) {
+          let item = this.renderList[i];
+          if (item.orderStatus == this.tab.current) {
+            temp.push(item)
+          }
+        }
+        this.realList = temp;
+
       },
       loadBottom (loaded) {
         if (!this.hasMore) {
@@ -128,6 +142,7 @@
         this.render((res) => {
           this.renderList.push(res);
           this.switch = true;
+          this.filterList();
           loaded()
         })
       }

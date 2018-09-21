@@ -32,7 +32,7 @@ handle = {
     });
   },
   cancelOrder ({orderId}, callback) {
-    ajax.get('/app/order/cancel', param, (res) => {
+    ajax.get('/app/order/cancel', {orderId}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;

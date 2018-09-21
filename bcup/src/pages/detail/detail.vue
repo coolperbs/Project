@@ -15,15 +15,15 @@
       </div>
       <div class="info clearfix">
         <div class="sale">已售:12</div>
-        <div class="stock">库存:122</div>
+        <div class="stock">库存:{{pageInfo.lastStock}}</div>
       </div>
       <div class="loc ellipsis-1">
-        location info location infolocation info location infolocation info location infolocation info location infolocation info location infolocation info location infolocation info location info
+        {{pageInfo.subTitle}}
         <div class="icon">></div>
       </div>
     </div>
 
-    <div class="shareIcon" @click="showSharePop">share</div>
+    <div class="shareIcon" @click="showSharePop">分享海报</div>
     <div class="sharePop" v-if="showPop">
       <div class="pop">
         <div class="close" @click="hideSharePop"></div>
@@ -45,8 +45,8 @@
   .head .banner img { width : 100%; height : 100%; }
   .head .price { margin-top : 10px; padding : 0 10px; }
   .head .price .counter,
-  .head .price .origin { display: inline-block; }
-  .head .price .counter { margin-left : 10px; }
+  .head .price .origin { display: inline-block; color: #ee8e34;font-size: 18px}
+  .head .price .counter { margin-left : 10px;font-weight: bold;color: #54a849;font-size: 12px; }
   .head .info { padding : 0 10px; margin-top : 10px; }
   .head .info .sale{ float : left; }
   .head .info .stock { float : right; }
@@ -89,7 +89,7 @@ export default {
         autoplay: {
           delay: 2500,
           disableOnInteraction: false
-        },            
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable : true
