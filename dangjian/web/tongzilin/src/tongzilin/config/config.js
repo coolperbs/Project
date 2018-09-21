@@ -1,7 +1,7 @@
 define('tongzilin/config/config', function( require ) {
 	var handle,
 		host = 'http://zfgw.yimeixinxijishu.com',
-		newsHost = 'http://zfcmsgw.yimeixinxijishu.com';
+		newsHost = 'http://tzlcmsgw.yimeixinxijishu.com';
 
 	handle = {
 		url : {

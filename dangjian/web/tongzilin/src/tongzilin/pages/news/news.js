@@ -56,9 +56,9 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
 
 
             header.on( 'search', function( e, data ) {
-                if ( data.id != 'news2' && data.id !='news3' ) {
-                    return;
-                }
+                // if ( data.id != 'news2' && data.id !='news3' ) {
+                //     return;
+                // }
                 searchKey = data.key;
                 _fn.loadMore( 1 );
             } );
@@ -178,14 +178,11 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
             var url,
                 param = {};
 
+            param.type = pageType;
             if ( pageType == 2 ) {
-                param.type = 2;
                 param.subType = subType;
             } else if ( pageType == 3 ) {
-                param.type = 3;
                 param.subType = subType;
-            } else {
-                param.type = 1;
             }
             param.currentPage = page;
             param.title = searchKey;
@@ -207,7 +204,7 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
                 pageIndex = res.data.currentPage;
                 _fn.renderList( res.data );
                 if ( page == 1 && res && res.data && res.data.news && res.data.news[0] && res.data.news[0].id ) {
-                    _fn.renderDetail( res.data.news[0].id );
+                    _fn.renderDetail( res.data.news[0].id, true );
                 } else if ( page == 1 ) {
                     self.jView.find( '.J_NewsCont' ).html( '没有数据' );
                 }
@@ -240,7 +237,8 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
                 res.data.id = id;
                 jCont.html( temp( res.data ) );
                 if ( toTop ) {
-                    jCont.parent().scrollTop( 0 );
+                    jCont.scrollTop( 0 );
+                    //jCont.parent().scrollTop( 0 );
                 }
                 newsId = id;
                 _fn.loadComment( 1, newsId );

@@ -1,7 +1,7 @@
 <div class="w-p-ndetail2">
 	<div class="cont">
-		<div class="menu" style="background-image:url( ./tongzilin/src/tongzilin/pages/ndetail2/images/back.jpg )">
-		</div>
+		<!--<div class="menu" style="background-image:url( ./tongzilin/src/tongzilin/pages/ndetail2/images/back.jpg )">
+		</div>-->
 		<div class="main">
 			<div class="news news-wrap">
 				<div class="detail J_NewsCont">

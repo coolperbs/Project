@@ -12,7 +12,7 @@ define( 'tongzilin/pages/links/links', function( require, exports, module ) {
         show : function() {
         	var url = kayak.router.requestParam.url,
         		jView = this.jView;
-        	header.showSub( { title : '友情链接' } );
+        	header.showSub( { title : '信息平台', en : 'Information platform' } );
         	if ( url ) {
         		jView.find( '.J_Iframe' ).attr( 'src', decodeURIComponent( url ) );
         		jView.find( '.J_IframeCont' ).show();

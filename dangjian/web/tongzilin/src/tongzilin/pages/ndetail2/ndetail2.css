@@ -7,7 +7,7 @@
 .w-p-ndetail2 .cont .menu { width : 6rem; height : 100%; overflow-y: hidden; display: flex; justify-content: center; align-items: center; background: url() no-repeat center center #fff; background-size : cover; }
 
 
-.w-p-ndetail2 .cont .main { background-color: #fff; width : 11.6rem; overflow-y: auto; overflow-x: hidden; }
+.w-p-ndetail2 .cont .main { background-color: #fff; /*width : 11.6rem;*/ width : 100%; overflow-y: auto; overflow-x: hidden; }
 .w-p-ndetail2 .cont .main .detail .pic img { display: block; max-width: 10.1rem; }
 
 .w-p-ndetail2 .cont .news-wrap { height: 100%; width : 100%; overflow-y: auto; }

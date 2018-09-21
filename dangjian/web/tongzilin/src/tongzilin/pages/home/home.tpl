@@ -1,14 +1,15 @@
 <div class="w-p-home">
 	<div class="cont">
 		<div class="sub">
-			<a href="#index/tongzilin/ndetail2:id=1" class="mod">
-				<div class="big title">社区简介</div>
+			<a href="#index/tongzilin/ndetail2:id=91" class="mod">
+				<div class="big title">社区简介 · Introduction</div>
 				<div class="intro J_IntroCont">
 
 				</div>
 				<script class="J_IntroTemp" type="text/html">
 					<div class="pic">
-						<img src="<%= shequ.adImgUrl%>"/>
+						<img src="tongzilin/src/tongzilin/pages/home/images/timg3.jpeg"/>
+						<!--<img src="<%= shequ.adImgUrl%>"/>-->
 					</div>
 					<div class="text">
 						<div class="ellipsis-2">
@@ -18,48 +19,31 @@
 			</a>
 
 			<div class="mod">
-				<div class="title">信息公开</div>
+				<div class="title">邻里中心 · Neighborhood Center</div>
 				<div class="info">
-					<div class="info-mod">
-						<div class="head">
-							<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/home/images/lihanrong.jpg) 50% 50%  no-repeat #f0f0f0; background-size : contain;">
-							</div>
-							<div class="userinfo">
-								<div class="name">李含荣</div>
-								<div class="honor">党委书记</div>
-							</div>
-						</div>
-						<div class="record ellipsis-6">
+					<a href="#index/tongzilin/ndetail2:id=89" class="info-mod">
+						<div class="record ellipsis-10">
 							<div>
-							主持社区党委全面工作。分管社区党建、党务、人事、宣传、统战、工会、团委、民政、残协、综治、司法、流口及一标三实、武装以及社会治理工作。
+							欢迎来到邻里中心，邻里相恤、毗邻而居是我国的文化传统，和睦健康的邻里关系对于家庭和谐、社区和谐、社会和谐都起着至关重要的作用，友善、互助、文明、和谐的邻里关系对于会让外来居民对社区更有归属感和认同感。
 							</div>
 						</div>
-						<div class="phone">电话: 87432226</div>
-					</div>
+					</a>
 
-					<div class="info-mod">
-						<div class="head">
-							<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/home/images/huangfang.jpg) 50% 50%  no-repeat #f0f0f0; background-size : contain;">
-							</div>
-							<div class="userinfo">
-								<div class="name">黄 芳</div>
-								<div class="honor">党委副书记</div>
-							</div>
-						</div>
-						<div class="record ellipsis-6">
+					<a href="#index/tongzilin/ndetail2:id=90" class="info-mod">
+						<div class="record ellipsis-10">
 							<div>
-							协助社区党委工作，主持社区居委会全面工作。分管社区网格化运行及管理、妇联、计生、劳动保障、文体科教、社区财务、居民自治、目标管理、消防安全工作。
+							Welcome to the Neighborhood Center. It is the cultural tradition of our country to be compassionate and live close to each other. Harmonious and healthy neighbourliness plays a vital role in family harmony, community harmony and social harmony. Friendly, mutual assistance, civilized and harmonious neighbourliness will make the foreign residents feel more belonging and identity to the community.
 							</div>
 						</div>
-						<div class="phone">电话: 87432226</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
 		<div class="main J_HomeCont">
 		</div>
 		<script type="text/html" class="J_HomeTemp">
-			<div class="big m-title">新闻</div>
+			<div class="big m-title">新闻 · News</div>
+			<% if ( news && news[0] ) { %>
 			<a href="#index/tongzilin/ndetail2:id=<%= news[0].id%>" class="news">
 				<div class="pic"><img src="<%= news[0].adImgUrl%>"/></div>
 				<div class="n-cont">
@@ -67,15 +51,18 @@
 					<div class="sub-title ellipsis-1"><%= date(news[0].created, true )%></div>
 				</div>
 			</a>
+			<% } %>
 			<div class="news-list">
-				<% for ( var i = 1; i < 4; ++i ) { %>
-					<a href="#index/tongzilin/ndetail2:id=<%= news[i].id%>" class="small news">
-						<div class="pic" style="background-image:url(<%= news[i].adImgUrl%>); background-size:cover; background-position : center center;"></div>
-						<div class="n-cont">
-							<div class="title ellipsis-2"><%= news[i].name%></div>
-							<div class="sub-title ellipsis-1"><%= date( news[i].created, true )%></div>
-						</div>
-					</a>
+				<% if ( news && news.length >= 4 ) { %>
+					<% for ( var i = 1; i < 4; ++i ) { %>
+						<a href="#index/tongzilin/ndetail2:id=<%= news[i].id%>" class="small news">
+							<div class="pic" style="background-image:url(<%= news[i].adImgUrl%>); background-size:cover; background-position : center center;"></div>
+							<div class="n-cont">
+								<div class="title ellipsis-2"><%= news[i].name%></div>
+								<div class="sub-title ellipsis-1"><%= date( news[i].created, true )%></div>
+							</div>
+						</a>
+					<% } %>
 				<% } %>
 			</div>
 		</script>
@@ -85,7 +72,7 @@
 
 
 		<div class="menu">
-			<div class="big title">菜单</div>
+			<div class="big title">菜单 · Menu</div>
 			<div class="list">
 				<a href="#index/tongzilin/news:type=1" class="tab">
 					<div class="icon">
@@ -127,11 +114,15 @@
 						<div class="en">Community News</div>
 					</div>
 				</a>
-				<a href="#index/tongzilin/news:type=5" class="tab" >
+				<!--<a href="#index/tongzilin/news:type=5" class="tab" >-->
+				<a href="#index/tongzilin/links" class="tab" >
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon5.png"/>
 					</div>
-					<div class="text">信息平台</div>
+					<div class="text">
+						信息平台
+						<div class="en">Information platform</div>
+					</div>
 				</a>
 			</div>			
 		</div>

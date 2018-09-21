@@ -74,10 +74,12 @@ define('tongzilin/widgets/header/header', function (require, exports, module) {
 
             // 切换tab
             jView.on( 'click', '.J_Tab', function( e ) {
-                var jTarget = $( e.target );
+                var jTarget = $( e.target ),
+                    jTab = jTarget.hasClass( 'J_Tab' ) ? jTarget : jTarget.parents( '.J_Tab' );
+
                 jView.find( '.J_Tab' ).removeClass( 'current' );
-                $( e.target ).addClass( 'current' );
-                CB.trigger( 'changeSort', { value : jTarget.attr( 'data-value' ), id : self.opt.id } );
+                jTab.addClass( 'current' );
+                CB.trigger( 'changeSort', { value : jTab.attr( 'data-value' ), id : self.opt.id } );
             } );
 
             jView.on( 'click', '.J_Login', function() {

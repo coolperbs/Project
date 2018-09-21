@@ -1,4 +1,4 @@
-html, body { height : 100%; position: relative; overflow-x: hidden; overflow-y: hidden; background-color: #dce3ee; }
+html, body { font-weight: lighter; height : 100%; position: relative; overflow-x: hidden; overflow-y: hidden; background-color: #dce3ee; }
 body {  background-image:linear-gradient(180deg,#7e8ba0,#dce3ee); }
 @keyframes sun-rotate{from{transform: rotate(0deg)}
     to{transform: rotate(359deg)}
@@ -14,6 +14,8 @@ a { color : #434552; }
 .ellipsis-3 { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; }
 /* 6行 */
 .ellipsis-6 { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:6; }
+
+.ellipsis-10 { -webkit-line-clamp:10; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; }
 
 /* 大新闻 */
 .news-wrap .main-pic{ width : 100%; max-height : 6.4rem; overflow: hidden; display: flex; display: -webkit-flex; align-items: center; }

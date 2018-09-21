@@ -2,7 +2,7 @@
 	<div class="J_HMain h-cont">
 	</div>
 	<script class="J_HMainTemp" type="text/html">
-		<div class="logo">
+		<div class="logo" style="-webkit-app-region:drag;">
 			<img src="tongzilin/src/tongzilin/widgets/header/images/logo.png"/>
 		</div>
 		<!--
@@ -31,11 +31,17 @@
 				<div class="back J_Back">
 					<img src="./tongzilin/src/tongzilin/widgets/header/images/back.png"/>
 				</div>
-				<%= title %>
+				<div class="main-title">
+					<div><%= title %></div>
+					<div class="en"><%= en%></div>
+				</div>
 			</div>
 			<div class="nav">
 				<% for ( var i = 0,len = sorts.length; i< len; ++i ) { %>
-					<div class="tab J_Tab <%= i == 0 ? 'current' : '' %>" data-value="<%= sorts[i].value%>"><%= sorts[i].text%></div>
+					<div class="tab J_Tab <%= i == 0 ? 'current' : '' %>" data-value="<%= sorts[i].value%>">
+						<div><%= sorts[i].text%></div>
+						<div class="en"><%= sorts[i].en%></div>
+					</div>
 				<% } %>
 			</div>
 		</div>

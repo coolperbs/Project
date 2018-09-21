@@ -5,21 +5,26 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 		1 : {
 			id : 'news1',
 			title : '组织孵化',
+			en : 'Social organization incubation base',
 			search : true
 		},
 		2 : {
 			id : 'news2',
 			sorts : [{
-			    text : '非物质遗产',
+			    text : '非物质文化遗产',
+			    en : 'Intangible cultural heritage',
 			    value : 1
 			},{
 			    text : '节庆活动',
+			    en : 'Festival activities',
 			    value : 2
 			},{
 			    text : '兴趣爱好',
+			    en : 'Hobbies & interests',
 			    value : 3
 			},{
 			    text : '艺术展览',
+			    en : 'Exhibition',
 			    value : 4
 			}],
 			search : true			
@@ -28,15 +33,19 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 			id : 'news3',
 			sorts : [{
 			    text : '就学',
+			    en : 'Education',
 			    value : 1
 			},{
 			    text : '医疗',
+			    en : 'Medical care',
 			    value : 2
 			},{
 			    text : '运动',
+			    en : 'Sports',
 			    value : 3
 			},{
 			    text : '宗教',
+			    en : 'Religion',
 			    value : 4
 			}],
 			search : true			
@@ -44,11 +53,13 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 		4 : {
 			id : 'news2',
 			title : '邻里融合',
+			en : 'Community News',
 			search : true			
 		},
 		5 : {
 			id : 'news2',
 			title : '信息平台',
+			en : 'Information platform',
 			search : true			
 		}
 	}
