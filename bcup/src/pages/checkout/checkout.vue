@@ -45,7 +45,7 @@
     },
     mounted : function() {
       let self = this;
-      detailServ.query( this.$route.query.skudId, function( res ) {
+      detailServ.query( this.$route.query.skuId, function( res ) {
         self.pageInfo.skuInfo = res.data || {};
         self.pageInfo.formInfo.skuId = res.data.skuId;
       } );

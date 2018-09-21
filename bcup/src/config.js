@@ -1,3 +1,3 @@
 export default {
-	host : 'http://gw.jwcms.net'
+	host : 'http://gw.ypzmkj.com'
 }
