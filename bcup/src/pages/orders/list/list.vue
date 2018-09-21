@@ -1,19 +1,19 @@
 <template>
   <div class="orderlist">
     <order-tab v-model="tab" @changeTab="changeTab"/>
-    <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
-      <order v-if="realList.length>0" v-for="order,index in realList " :item="order" :key="index" class="mod"/>
-      <div v-if="realList.length==0" style="text-align: center;font-size: 12px;padding: 10px;">没有更多数据</div>
-    </PullTo>
+    <div class="pull-down">
+      <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
+        <div class="pull-item">
+          <order v-if="realList.length>0" v-for="order,index in realList " :item="order" :key="index" class="mod"/>
+        </div>
+        <div v-if="realList.length==0" style="text-align: center;font-size: 12px;padding: 10px;">没有更多数据</div>
+      </PullTo>
+    </div>
   </div>
 </template>
 
 
 <style scoped>
-  .orderlist {
-    padding: 40px 10px 20px 10px;
-  }
-
   .mod {
     border-radius: 5px;
     background-color: #fff;
