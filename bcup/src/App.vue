@@ -37,4 +37,10 @@
   .pull-item{
     padding: 0 10px;
   }
+  .text-imgs{
+    width: inherit;
+  }
+  .text-imgs>img{
+    width: inherit;
+  }
 </style>

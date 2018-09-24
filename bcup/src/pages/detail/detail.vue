@@ -38,7 +38,7 @@
 
 
 <style scoped>
-  .detail { padding : 44px 0 54px 0; }
+  .detail { padding : 44px 0 54px 0; width: 100%;}
   .name { margin-top : 10px; padding : 0 10px; }
   .head { background-color: #fff; box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); }
   .head .banner { height : 200px; background-color: #ccc; }
