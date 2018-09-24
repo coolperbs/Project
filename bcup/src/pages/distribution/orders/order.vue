@@ -1,35 +1,35 @@
 <template>
   <div class="order">
-    <div class="main ellipsis-2">{{item.wareVO.title}}</div>
+    <div class="main ellipsis-2">{{item.wareVO?item.wareVO.title:''}}</div>
     <ul class="list">
-      <li v-if="fixStatus(item.order.orderStatus)">
+      <li v-if="fixStatus(item.order?item.order.orderStatus:'')">
         <div class="key">状态 :</div>
-        <div class="value">{{fixStatus(item.order.orderStatus)}}</div>
+        <div class="value">{{fixStatus(item.order?item.order.orderStatus:'')}}</div>
       </li>
       <li>
         <div class="key">订单时间 :</div>
-        <div class="value">{{fixTime(item.order.orderTime)}}</div>
+        <div class="value">{{fixTime(item.order?item.order.orderTime:'')}}</div>
       </li>
       <li>
         <div class="key">订单价格 :</div>
-        <div class="value">￥{{fixPrice(item.order.payPrice)}}</div>
+        <div class="value">￥{{fixPrice(item.order?item.order.payPrice:'')}}</div>
       </li>
       <li>
         <div class="key">佣金 :</div>
-        <div class="value">￥{{fixPrice(item.userMoney.price)}}</div>
+        <div class="value">￥{{fixPrice(item.userMoney?item.userMoney.price:'')}}</div>
       </li>
       <li>
         <div class="key">姓名 :</div>
-        <div class="value">{{item.order.userName}}</div>
+        <div class="value">{{item.order?item.order.userName:''}}</div>
       </li>
       <li>
         <div class="key">手机号 :</div>
-        <div class="value">{{item.order.userPhone}}</div>
+        <div class="value">{{item.order?item.order.userPhone:''}}</div>
       </li>
     </ul>
     <div class="act clearfix">
       <div class="btn">功能按钮</div>
-      <router-link :to="{ path : '/orders/detail',query:{orderid:item.order.orderId} }" class="btn">功能按钮</router-link>
+      <router-link :to="{ path : '/orders/detail',query:{orderid:item.order?item.order.orderId:''} }" class="btn">功能按钮</router-link>
     </div>
   </div>
 </template>
@@ -146,7 +146,8 @@
       },
       fixStatus (el) {
         return ENUM[el]
-      }
+      },
+      //todo 返佣列表 的功能按钮
     }
   }
 </script>

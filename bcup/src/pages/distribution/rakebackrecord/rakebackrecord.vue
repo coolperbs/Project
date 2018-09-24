@@ -1,10 +1,15 @@
 <template>
   <div class="orderlist">
     <order-tab :tab-list="TABENUM" :current-key="type" @tabChange="tabChange" @searchEvt="searchEvt"></order-tab>
-    <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
-      <order v-if="filterList(renderList).length>0" v-for="order,index in filterList(renderList)" :item="order" :key="index" class="mod"/>
-      <div v-if="filterList(renderList).length==0" style="text-align: center;font-size: 12px;">没有更多数据</div>
-    </PullTo>
+    <div class="pull-down" style="top: 90px;">
+      <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
+        <div class="pull-item">
+          <order v-if="filterList(renderList).length>0" v-for="order,index in filterList(renderList)" :item="order" :key="index" class="mod"/>
+          <div v-if="filterList(renderList).length==0" style="text-align: center;font-size: 12px;">没有更多数据</div>
+        </div>
+      </PullTo>
+    </div>
+
   </div>
 </template>
 

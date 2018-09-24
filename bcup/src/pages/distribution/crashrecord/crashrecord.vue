@@ -1,18 +1,34 @@
 <template>
   <div class="rank">
     <!--<order-tab/>-->
-    <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
-      <order v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
-      <div v-if="renderList.length==0" style="text-align: center">暂无记录</div>
-    </PullTo>
+    <div class="pull-down" style="top:0;">
+      <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
+        <div class="pull-item">
+          <order v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
+          <div v-if="renderList.length==0" style="text-align: center">暂无记录</div>
+        </div>
+      </PullTo>
+    </div>
+
+
   </div>
 </template>
 
 
 <style scoped>
-  .rank { padding : 10px; }
-  .mod { background-color: #fff; border-bottom : solid 1px #f0f0f0; }
-  .mod:last-child { box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); border-bottom : 0; }
+  .rank {
+    padding: 10px;
+  }
+
+  .mod {
+    background-color: #fff;
+    border-bottom: solid 1px #f0f0f0;
+  }
+
+  .mod:last-child {
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.1);
+    border-bottom: 0;
+  }
 </style>
 
 <script>
@@ -23,10 +39,10 @@
   import PullTo from 'vue-pull-to'
 
   export default {
-    components : {
-      bHeader, orderTab, order,PullTo
+    components: {
+      bHeader, orderTab, order, PullTo
     },
-    data : function() {
+    data: function () {
       return {
         currentPage: 1,
         switch: true,
@@ -44,12 +60,12 @@
         }
       }
     },
-    mounted(){
+    mounted () {
       this.rakeBackList()
     },
-    methods:{
-      rakeBackList(callback){
-        distributionService.rakeBackList({currentPage:this.currentPage},(res)=>{
+    methods: {
+      rakeBackList (callback) {
+        distributionService.rakeBackList({currentPage: this.currentPage}, (res) => {
           this.hasMore = res.data.hasMore;
           if (!this.hasMore) {
             this.bottomconfig.doneText = ''
