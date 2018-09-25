@@ -26,6 +26,7 @@
 
 <script>
   import bookingUserService from '@/services/bookinguse/bookinguse'
+  import utils from '@/common/utils/utils'
 
   export default {
     name: "bookinguse",
@@ -51,6 +52,7 @@
             temp.push(a)
           }
         }
+        alert(temp)
         return temp
 
       },

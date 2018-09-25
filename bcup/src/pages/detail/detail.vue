@@ -84,7 +84,7 @@ export default {
       linkPath : 'link',
       pageInfo : {},
       showPop : false,
-      shareImgUrl : 'http://gw.jwcms.net//app/ware/shareimage/1?token=77321572C240F84D2BD7E5239462683435D3421A4B22812DE3A70D03668C05A4F4FD7A4CBEA6C6989A3E38B027130751DEBE5623FFBC6CC6D13509BB336A1EEBAB2E7A88C6786E36B608BB04B41B64A25AA7293A8DD198DFF653067C76A19986581E6ECE0B77BAA1F60DB2DC0414C63A37F202137E4D84D3CCE84FAC4CBCE245',
+      shareImgUrl : CFG.host + '/app/ware/shareimage/1?token=' + utils.getCookie( 'ticketWeChat' ),
       swiperOption : {
         autoplay: {
           delay: 2500,
@@ -115,7 +115,7 @@ export default {
     fixPrice : utils.fixPrice,
     showSharePop : function() {
       this.showPop = true;
-      this.shareImgUrl = this.shareImgUrl || CFG.host + '/app/ware/shareimage/' + this.pageInfo.skuId + '?token=' + utils.getCookie( 'tikectWechart' );
+      this.shareImgUrl = this.shareImgUrl || CFG.host + '/app/ware/shareimage/' + this.pageInfo.skuId + '?token=' + utils.getCookie( 'ticketWeChat' );
     },
     hideSharePop : function() {
       this.showPop = false;
