@@ -28,6 +28,6 @@
 		</div>
 	</div>
 	<div class="cont J_IframeCont">
-		<iframe  security="restricted" sandbox="" class="J_Iframe iframe" target="_self" frameborder="0"></iframe>
+		<iframe  security="restricted" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" class="J_Iframe iframe" target="_self" frameborder="0"></iframe>
 	</div>
 </div>
