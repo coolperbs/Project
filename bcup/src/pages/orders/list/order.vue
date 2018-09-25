@@ -127,16 +127,26 @@
 <script>
   import ENUM from '@/pages/distribution/enum'
   import orderService from '@/services/order/order'
-
+  import payServ from '@/services/pay/pay'
+  import utils from '@/common/utils/utils'
   export default {
     props: ['item'],
     methods: {
       fixEnum (el) {
         return ENUM[el.orderStatus] || ''
       },
-      orderGoPayEvt () {
-       alert('orderGopay')
-        //todo
+      orderGoPayEvt(){
+        payServ.getPayInfo( { orderId : this.item.orderId }, function( payRes ) {
+          if ( utils.isErrorRes( payRes ) ) {
+            utils.showError( payRes.msg || '创建订单失败' );
+            window.location.reload()
+            return;
+          }
+          // 3.换起微信支付
+          payServ.WXPay( payRes.data, function( wxpayRes ) {
+            window.location.reload()
+          } );
+        } );
       },
       orderCancelEvt () {
         orderService.cancelOrder({orderId: this.item.orderId}, (res) => {

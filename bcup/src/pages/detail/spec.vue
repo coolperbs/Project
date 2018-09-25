@@ -1,7 +1,7 @@
 <template>
     <div class="spec">
-      <div class="title ellipsis-1">【spec】</div>
-      <div class="sub-title">name name name name name name name name name</div>
+      <div class="title ellipsis-1">【预约】</div>
+      <div class="sub-title">{{pageInfo.title}}{{pageInfo.subTitle}}</div>
       <div class="list clearfix">
         <span class="cell">aasewrf</span>
         <span class="cell">aasf</span>

@@ -1,9 +1,13 @@
 <template>
   <div class="orderlist">
     <!--<order-tab/>-->
-    <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
-      <order v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
-    </PullTo>
+    <div class="pull-down" style="top: 0;">
+      <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
+        <div class="pull-item">
+          <order v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
+        </div>
+      </PullTo>
+    </div>
   </div>
 </template>
 
