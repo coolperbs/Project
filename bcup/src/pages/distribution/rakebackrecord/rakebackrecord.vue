@@ -1,7 +1,7 @@
 <template>
   <div class="orderlist">
     <order-tab :tab-list="TABENUM" :current-key="type" @tabChange="tabChange" @searchEvt="searchEvt"></order-tab>
-    <div class="pull-down" style="top: 140px;">
+    <div class="pull-down" style="top: 100px;">
       <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
         <div class="pull-item">
           <order v-if="filterList(renderList).length>0" v-for="order,index in filterList(renderList)" :item="order" :key="index" class="mod"/>
@@ -17,7 +17,11 @@
 <style scoped>
   .orderlist {
     padding: 0 10px;
-    margin-top: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   .mod {
