@@ -79,7 +79,7 @@
     methods: {
       render: function (callback) {
         let self = this;
-        orderServ.getList({type: self.tab.current, currentPage: this.currentPage}, (res) => {
+        orderServ.getList({type: 1, currentPage: this.currentPage}, (res) => {
           if (utils.isErrorRes(res)) {
             utils.showError(res.msg || '获取列表信息错误');
             return;
@@ -126,7 +126,6 @@
           }
         }
         this.realList = temp;
-
       },
       loadBottom (loaded) {
         if (!this.hasMore) {

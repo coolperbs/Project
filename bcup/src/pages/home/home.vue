@@ -5,7 +5,7 @@
       <swiper-slide v-for="slide in pageInfo.swipers" :key="slide.imgUrl">
         <!--<router-link :to="{ path : 'http://www.baidu.com' }">-->
         <a :href="slide.url">
-        <img :src="slide.imgUri"/>
+          <img :src="slide.imgUri"/>
         </a>
         <!--</router-link>-->
       </swiper-slide>
@@ -22,9 +22,9 @@
           <div class="more clearfix">
             <div class="price">
               <span class="origin">￥{{ fixPrice( item.price || item.originPrice ) }}</span>
-              <span class="counter">返:￥{{ fixPrice( 0 ) }}</span>
+              <span class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( item.brokeragePrice) }}</span>
             </div>
-            <div class="sale-num">已售：10<!--todo --></div>
+            <div class="sale-num">已售：{{item.saledNum}}</div>
           </div>
         </div>
       </div>
@@ -35,70 +35,118 @@
 
 
 <style scoped>
-  .home { padding : 54px 10px 30px 10px; }
-  .banner { height : 200px; border-radius : 5px; background-color: #fff; box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); }
-  .banner img { display: block; width : 100%; height : 200px; }
-  .mod { border-radius : 5px; overflow: hidden;  box-shadow : 0 3px 5px rgba( 100, 100, 100, 0.1 ); margin-top : 20px; background-color: #fff; }
-  .mod .pic { background-color: #f0f0f0; min-height : 100px; }
-  .mod .pic img { width : 100%; }
-  .mod .info { padding : 10px; }
-  .mod .more { margin-top : 5px; padding : 5px 0; }
-  .mod .more .price { float : left; }
-  .mod .more .price .counter { margin-left : 10px; }
-  .mod .more .sale-num { float : right; }
+  .home {
+    padding: 54px 10px 30px 10px;
+  }
+
+  .banner {
+    height: 200px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.1);
+  }
+
+  .banner img {
+    display: block;
+    width: 100%;
+    height: 200px;
+  }
+
+  .mod {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.1);
+    margin-top: 20px;
+    background-color: #fff;
+  }
+
+  .mod .pic {
+    background-color: #f0f0f0;
+    min-height: 100px;
+  }
+
+  .mod .pic img {
+    width: 100%;
+  }
+
+  .mod .info {
+    padding: 10px;
+  }
+
+  .mod .more {
+    margin-top: 5px;
+    padding: 5px 0;
+  }
+
+  .mod .more .price {
+    float: left;
+  }
+
+  .mod .more .price .counter {
+    margin-left: 10px;
+  }
+
+  .mod .more .sale-num {
+    float: right;
+  }
 </style>
 
 <script>
-import bHeader from '@/widgets/header/header'
-import ajax from '@/common/ajax/ajax'
-import utils from '@/common/utils/utils'
-let _fn;
+  import bHeader from '@/widgets/header/header'
+  import ajax from '@/common/ajax/ajax'
+  import utils from '@/common/utils/utils'
+  import distributionService from '@/services/distribution/distribution'
+  let _fn;
 
-export default {
-  mounted : function() {
-    let self = this;
-    _fn.getData( function( res ) {
+  export default {
+    mounted: function () {
+      let self = this;
+      distributionService.getUserInfo((res) => {
+        this.userData = res.data;
+      })
+      _fn.getData(function (res) {
 
-      self.pageInfo = res.data || { name : 1 };
-    } );
-  },
+        self.pageInfo = res.data || {name: 1};
+      });
+    },
 
-  methods : {
-    fixPrice : utils.fixPrice
-  },
+    methods: {
+      fixPrice: utils.fixPrice
+    },
 
-  components : {
-    bHeader
-  },
-  data : function() {
-    return {
-      pageInfo : {},
-      linkPath : 'link',
-      swiperOption : {
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable : true
+    components: {
+      bHeader
+    },
+    data: function () {
+      return {
+        pageInfo: {},
+        linkPath: 'link',
+        userData: {},
+        swiperOption: {
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
         }
       }
     }
   }
-}
 
-_fn = {
-  getData : function( callback ) {
-    ajax.get( '/app/index', function( res) {
-      if ( utils.isErrorRes( res ) ) {
-        utils.showError( res.msg || '请求接口出错' );
-        return;
-      }
-      callback( res );
-    } );
+  _fn = {
+    getData: function (callback) {
+      ajax.get('/app/index', function (res) {
+        if (utils.isErrorRes(res)) {
+          utils.showError(res.msg || '请求接口出错');
+          return;
+        }
+        callback(res);
+      });
+    }
   }
-}
 </script>
 
 

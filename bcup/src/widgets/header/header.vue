@@ -2,11 +2,11 @@
     <div class="header clearfix">
         <div class="main clearfix">
             <div class="logo"></div>
-            <div class="name">name</div>
+            <div class="name"></div>
         </div>
         <div class="nav">
             <router-link :to="{ path : '/mine' }" class="more">
-                more
+                更多
             </router-link>
             <!--<div class="more" @click="toggleList">more</div>-->
         </div>
@@ -29,7 +29,7 @@
     .main .logo { height : 30px; width : 30px; background-color: #ddd; border-radius: 50%; margin-top : 5px; display: inline-block; float: left; margin-left : 10px; }
     .main .name { display: inline-block; float: left; margin-left : 10px; }
 
-    .nav { float : right; margin-right : 10px; }        
+    .nav { float : right; margin-right : 10px; }
     .nav .more { display: block; height : 30px; cursor: pointer; width : 30px; line-height: 30px; margin-top : 5px; font-size : 12px; }
     .list { border-radius : 5px; overflow:hidden; z-index: 1; transform-origin : top right; position: absolute; top : 40px; right : 5px; background-color: #fff; transition : all 0.3s; transform : scale( 1 ); box-shadow : 0 3px 5px rgba( 0, 0, 0, 0.1 ); }
     .list li {  padding : 5px 10px; border-bottom : solid 1px #f0f0f0; background-color: #fcfcfc; }
@@ -62,6 +62,6 @@
             toggleList : function() {
                 this.status.showList = !this.status.showList;
             }
-        }       
+        }
     }
 </script>

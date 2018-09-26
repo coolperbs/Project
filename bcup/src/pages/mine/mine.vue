@@ -13,25 +13,25 @@
         <div class="icon">></div>
       </router-link>
       <li class="sub clearfix">
-        <router-link tag="div" :to="{path:'/orders/list?type=5'}" class="cell">
+        <router-link tag="div" :to="{path:'/orders/list?type=8'}" class="cell">
           <img/>
           <div class="text">待支付</div>
         </router-link>
-        <router-link tag="div" :to="{path:'/orders/list?type=3'}" class="cell">
+        <router-link tag="div" :to="{path:'/orders/list?type=16'}" class="cell">
           <img/>
           <div class="text">已支付</div>
         </router-link>
-        <router-link tag="div" :to="{path:'/orders/list?type=4'}" class="cell">
+        <router-link tag="div" :to="{path:'/orders/list?type=512'}" class="cell">
           <img/>
           <div class="text">已完成</div>
         </router-link>
-        <router-link tag="div" :to="{path:'/orders/list?type=2'}" class="cell">
+        <router-link tag="div" :to="{path:'/orders/list?type=1024'}" class="cell">
           <img/>
           <div class="text">已取消</div>
         </router-link>
       </li>
     </ul>
-    <ul class="list">
+    <ul class="list" v-if="userData.trader==1">
       <router-link tag="li" :to="{path:'/distribution/index'}">
         <img src=""/>达人后台
         <div class="icon">></div>
@@ -39,19 +39,19 @@
       <li class="sub">
         <router-link :to="{path:'/distribution/index'}">
           <div class="cell">
-            <img />
+            <img/>
             <div class="text">wait</div>
           </div>
           <div class="cell">
-            <img />
+            <img/>
             <div class="text">working</div>
           </div>
           <div class="cell">
-            <img />
+            <img/>
             <div class="text">finished</div>
           </div>
           <div class="cell">
-            <img />
+            <img/>
             <div class="text">other</div>
           </div>
         </router-link>

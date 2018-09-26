@@ -4,8 +4,8 @@
       <div class="key">近30营业额:</div>
       <div class="value">
         <div class="line">
-          <div class="color"  :style="{width:fixPrice( pageInfo.thirtyRakeBack )/1000+'%'}"></div>
-          <div class="tag"  :style="{left:fixPrice( pageInfo.thirtyRakeBack )/1000+'%'}">{{fixPrice( pageInfo.thirtyRakeBack )}}</div>
+          <div class="color"  :style="{width:fixPrice( pageInfo.thirtySale )/1000+'%'}"></div>
+          <div class="tag"  :style="{left:fixPrice( pageInfo.thirtySale )/1000+'%'}">{{fixPrice( pageInfo.thirtySale )}}</div>
         </div>
       </div>
     </div>
@@ -13,8 +13,8 @@
       <div class="key">近30天返佣:</div>
       <div class="value">
         <div class="line">
-          <div class="color"  :style="{width:fixPrice( pageInfo.thirtySale )/10000+'%'}"></div>
-          <div class="tag" :style="{left:fixPrice( pageInfo.thirtySale )/10000+'%'}">{{fixPrice( pageInfo.thirtySale )}}</div>
+          <div class="color"  :style="{width:fixPrice( pageInfo.thirtyRakeBack )/10000+'%'}"></div>
+          <div class="tag" :style="{left:fixPrice( pageInfo.thirtyRakeBack )/10000+'%'}">{{fixPrice( pageInfo.thirtyRakeBack )}}</div>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
     <ul class="list">
       <router-link tag="li" class="clearfix" :to="{ path : '/distribution/rakebackrecord',query:{type:1} }">
         <div class="key">返佣记录</div>
-        累计总返佣￥{{ pageInfo.totalRakeBack }}
+        累计总返佣￥{{fixPrice( pageInfo.totalRakeBack )  }}
         <div class="more">></div>
       </router-link>
       <router-link tag="li" class="clearfix" :to="{ path : '/distribution/orders',query:{type:1} }">
