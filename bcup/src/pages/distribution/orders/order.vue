@@ -28,8 +28,8 @@
       </li>
     </ul>
     <div class="act clearfix">
-      <div class="btn">功能按钮</div>
-      <router-link :to="{ path : '/orders/detail',query:{orderid:item.order?item.order.orderId:''} }" class="btn">功能按钮</router-link>
+      <div class="btn">申请返佣</div>
+      <!--<router-link :to="{ path : '/orders/detail',query:{orderid:item.order?item.order.orderId:''} }" class="btn">详情</router-link>-->
     </div>
   </div>
 </template>

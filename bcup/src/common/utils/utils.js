@@ -10,7 +10,7 @@ handle = {
 
   // 便于后面替换
   showError: function (msg) {
-    console.error('页面错误:' + msg);
+    window.alert('页面错误:' + msg);
   },
 
   fixPrice: function (s) {

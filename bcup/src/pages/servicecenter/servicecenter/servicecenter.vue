@@ -11,14 +11,10 @@
         <div class="item-img"></div>
         <div class="item-name">预约使用</div>
       </router-link>
-      <div class="item">
-        <div class="item-img"></div>
-        <div class="item-name">更多服务</div>
-      </div>
-      <div class="item">
+      <router-link :to="{path : '/orders/list?type=1'}" class="item">
         <div class="item-img"></div>
         <div class="item-name">查看订单</div>
-      </div>
+      </router-link>
     </div>
     <div class="title">常见问题</div>
     <div class="qr-list">

@@ -1,16 +1,16 @@
-<template>  
+<template>
   <div class="invite">
     <ul class="list">
       <li>
-        <div class="key"><em>*</em>name :</div>
+        <div class="key"><em>*</em>姓名 :</div>
         <div class="value"><input placeholder="name" v-model="form.userName" /></div>
       </li>
       <li>
-        <div class="key"><em>*</em>phone :</div>
+        <div class="key"><em>*</em>电话 :</div>
         <div class="value"><input placeholder="phone" maxlength="11" v-model="form.phone" /></div>
       </li>
       <li class="msg">
-        <div class="key"><em>*</em><em></em>msg :</div>
+        <div class="key"><em>*</em><em></em>验证码 :</div>
         <div class="value clearfix">
           <input placeholder="holder" type="number" v-model="form.checkCode"/>
           <div v-if="counter <= 0" class="msgbtn" @click="getMsgCode">获取验证码</div>
@@ -19,9 +19,9 @@
       </li>
     </ul>
 
-    <div class="warn">text text text text text text text text text text text</div>
+    <div class="warn">{{errormgs}}</div>
 
-    <div class="submit" @click="submit">submit</div>
+    <div class="submit" @click="submit">提交</div>
   </div>
 </template>
 
@@ -60,7 +60,8 @@ export default {
         phone : '',
         checkCode : ''
       },
-      counter : 0
+      counter : 0,
+      errormgs:''
     }
   },
   methods : {
@@ -115,7 +116,7 @@ export default {
       Router.replace( '/' );
     }
     this.form.parentUserId = this.$route.query.userId;
-  } 
+  }
 }
 </script>
 
