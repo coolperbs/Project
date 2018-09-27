@@ -24,7 +24,7 @@
               <span class="origin">￥{{ fixPrice( item.price || item.originPrice ) }}</span>
               <span class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( item.brokeragePrice) }}</span>
             </div>
-            <div class="sale-num">已售：{{item.saledNum}}</div>
+            <div class="sale-num">已售：{{item.saledNum?item.saledNum:0}}</div>
           </div>
         </div>
       </div>
@@ -96,6 +96,7 @@
   import ajax from '@/common/ajax/ajax'
   import utils from '@/common/utils/utils'
   import distributionService from '@/services/distribution/distribution'
+
   let _fn;
 
   export default {

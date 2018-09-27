@@ -8,6 +8,7 @@
         <transition name="fade">
             <div v-if="showService" class="pop">
                 <div class="list">
+                  <!--todo 电话需要配置-->
                   <a class="item" :href="'tel:'+{}">拨打电话</a>
                   <router-link tag="div" :to="{ path : '/servicecenter'}"  class="item">服务中心</router-link>
                 </div>

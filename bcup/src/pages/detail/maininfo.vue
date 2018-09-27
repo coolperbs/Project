@@ -6,20 +6,10 @@
     </div>
     <div class="text-imgs" v-if="tab.currentTab == 1 ||  !tab.currentTab" v-html="pageInfo.description"></div>
     <div class="parameter" v-if="tab.currentTab == 2">
-      <!--<div class="p-mod" v-for="item in [1,2,3]" :key="item.index">
-        <div class="p-title">product</div>
+      <div class="p-mod" v-for="item,key in pageInfo.pros" :key="item.index">
+        <div class="p-title">{{key}}</div>
         <div class="cont">
-          <p>asfasdfasf</p>
-          <p>asfasasf</p>
-          <p>safdasfasf</p>
-        </div>
-      </div>-->
-      <div class="p-mod">
-        <div class="p-title">{{pageInfo.title}}</div>
-        <div class="cont">
-          <p>{{pageInfo.subTitle}}</p>
-          <p><!--todo 使用说明 还有外部的标签--></p>
-          <p>safdasfasf</p>
+          <p>{{item}}</p>
         </div>
       </div>
     </div>
