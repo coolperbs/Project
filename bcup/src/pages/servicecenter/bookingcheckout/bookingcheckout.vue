@@ -24,7 +24,7 @@
       <div class="cell">
         <div class="label"><span class="mark">*</span>手机</div>
         <div class="input-box">
-          <input type="number" placeholder="请输入" class="cell-input" v-model.trim="userphone">
+          <input type="text" placeholder="请输入" class="cell-input" v-model.trim="userphone">
         </div>
       </div>
       <div class="cell">
@@ -44,7 +44,7 @@
     <div class="cell-box" style="margin-bottom: 100px">
       <div class="cell" style="justify-content: flex-start">
         <div class="radio" :class="{active:isChecked}" @click="changeCheck"></div>
-        我统一提交预约后不可更改或取消
+        我同意提交预约后不可更改或取消
       </div>
     </div>
     <div class="submit-box">
@@ -97,14 +97,36 @@
       changeCheck () {
         this.isChecked = !this.isChecked;
       },
+      istel (tel) {
+        var rtn = false;
+        //移动号段
+        var regtel = /^((13[4-9])|(15([0-2]|[7-9]))|(18[2|3|4|7|8])|(178)|(147))[\d]{8}$/;
+        if (regtel.test(tel)) {
+          rtn = true;
+        }
+        //电信号段
+        regtel = /^((133)|(153)|(18[0|1|9])|(177))[\d]{8}$/;
+        if (regtel.test(tel)) {
+          rtn = true;
+        }
+        //联通号段
+        regtel = /^((13[0-2])|(145)|(15[5-6])|(176)|(18[5-6]))[\d]{8}$/;
+        if (regtel.test(tel)) {
+          rtn = true;
+        }
+        return rtn;
+      },
       bookingEvt () {
         if (!this.isChecked) {
+          alert('请勾选协议')
           return
         }
         if (this.username == '') {
+          alert('请输入姓名')
           return
         }
-        if (this.userphone == '') {
+        if (this.istel(this.userphone)) {
+          alert('请输入正确的手机号')
           return
         }
         bookingCheckoutService.submit({
@@ -114,8 +136,7 @@
           userphone: this.userphone,
           remark: this.remark
         }, (res) => {
-          //todo
-          console.lo('预约成功要跳转到哪？？')
+          this.$router.replace('/orders/list?type=1')
         })
       }
 
@@ -148,7 +169,6 @@
     border: 1px solid #eee;
     padding: 0 10px;
   }
-
 
   .cell {
     border-bottom: 1px solid #eee;
