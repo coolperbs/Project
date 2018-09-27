@@ -1,7 +1,7 @@
 <template>
   <div class="data">
     <img class="icon" :src="item.user?item.user.avatarUrl:''" alt="">
-    <div class="main">可提现余额 ￥{{fixPrice()}}</div>
+    <div class="main">可提现余额 ￥{{item.user.userMoneyShow}}</div>
     <div class="sub">总返佣余额 ￥{{fixPrice(item.totalRakeBack)}}</div>
   </div>
 </template>
