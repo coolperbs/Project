@@ -23,7 +23,7 @@
       </a>
     </div>
 
-    <div class="shareIcon" @click="showSharePop">分享海报</div>
+    <div v-if="userData.trader==1" class="shareIcon" @click="showSharePop">分享海报</div>
     <div class="sharePop" v-if="showPop">
       <div class="pop">
         <div class="close" @click="hideSharePop"></div>

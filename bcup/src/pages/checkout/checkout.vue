@@ -20,7 +20,7 @@
   import checkoutInfo from '@/pages/checkout/info'
   import checkoutOrder from '@/pages/checkout/order'
   import checkoutPayment from '@/pages/checkout/payment'
-  import checkoutSubmit from '@/pages/checkout/submit'
+  import checkoutSubmit from '@/pages/checkout/checkoutsubmit'
   import detailServ from '@/services/detail/detail'
 
   export default {
@@ -29,7 +29,7 @@
     },
     data : function() {
       return {
-        pageInfo : { 
+        pageInfo : {
           skuInfo : {},
           formInfo : {
             userName : '',

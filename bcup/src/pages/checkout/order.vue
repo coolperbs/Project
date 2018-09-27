@@ -1,17 +1,17 @@
-<template>  
+<template>
   <div class="checkout-order">
-    <div class="title">order info</div>
+    <div class="title">订单信息</div>
     <ul class="list">
       <li>
-        <div class="key"><em>*</em>name :</div>
-        <div class="value"><input v-model="pageInfo.formInfo.userName" @input="changePageInfo(pageInfo)" placeholder="name" /></div>
+        <div class="key"><em>*</em>姓名 :</div>
+        <div class="value"><input v-model="pageInfo.formInfo.userName" @input="changePageInfo(pageInfo)" placeholder="请输入姓名" /></div>
       </li>
       <li>
-        <div class="key"><em>*</em>phone :</div>
-        <div class="value"><input type="number" v-model="pageInfo.formInfo.userPhone"  @input="changePageInfo(pageInfo)" placeholder="phone" /></div>
+        <div class="key"><em>*</em>电话 :</div>
+        <div class="value"><input type="number" v-model="pageInfo.formInfo.userPhone"  @input="changePageInfo(pageInfo)" placeholder="请输入手机号" /></div>
       </li>
       <li>
-        <div class="key"><em></em>num :</div>
+        <div class="key"><em></em>数量 :</div>
         <div class="value">
           <div class="num-picker clearfix">
             <div class="num-picker-mod btn" @click="changeNum( pageInfo.formInfo.skuNum - 1 )">-</div>
@@ -22,8 +22,8 @@
         </div>
       </li>
       <li>
-        <div class="key"><em></em>mark :</div>
-        <div class="value"><input v-model="pageInfo.formInfo.remark"  @input="changePageInfo(pageInfo)" placeholder="holder"/></div>
+        <div class="key"><em></em>备注:</div>
+        <div class="value"><input v-model="pageInfo.formInfo.remark"  @input="changePageInfo(pageInfo)" placeholder="请输入"/></div>
       </li>
     </ul>
   </div>
@@ -47,15 +47,20 @@
 </style>
 
 <script>
+  import distributionServ from '@/services/distribution/distribution'
   export default {
     props : ['value'],
     computed : {
       pageInfo : function() {
+        let value=this.value;
+        value.formInfo.userPhone=this.userData.idCard;
+        value.formInfo.userName=this.userData.nickName;
         return this.value;
       }
     },
     data : function() {
       return {
+        userData:{}
       }
     },
     methods : {
@@ -68,8 +73,12 @@
         this.$emit( 'setData', val );
       }
     },
-    mounted : function() {
-    } 
+    mounted () {
+      //获取用户信息判断是否是达人
+      distributionServ.getUserInfo((res) => {
+        this.userData = res.data;
+      })
+    }
   }
 </script>
 

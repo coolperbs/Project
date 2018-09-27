@@ -10,6 +10,10 @@
         <div class="value">{{data.order?data.order.orderId:''}}</div>
       </li>
       <li>
+        <div class="key">数量 :</div>
+        <div class="value">{{data.order?data.order.skuNum:''}}</div>
+      </li>
+      <li>
         <div class="key">备注 :</div>
         <div class="value">
           <!--{{todo 备注信息}}-->

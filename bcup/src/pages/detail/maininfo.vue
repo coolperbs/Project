@@ -34,6 +34,7 @@
     line-height: 40px;
     text-align: center;
     position: relative;
+    color: #ccc;
   }
 
   .tab .item:first-child:before {
@@ -48,13 +49,13 @@
   }
 
   .tab .item.current {
-    color: #ccc;
+    color: #000;
   }
 
   .tab .item.current:after {
     content: '';
     height: 4px;
-    background-color: #ccc;
+    background-color: #000;
     display: block;
     position: absolute;
     bottom: 0;
