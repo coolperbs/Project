@@ -1,28 +1,62 @@
 <template>
   <div class="data">
     <img class="icon" :src="item.user?item.user.avatarUrl:''" alt="">
-    <div class="main">可提现余额 ￥{{item.user.userMoneyShow}}</div>
-    <div class="sub">总返佣余额 ￥{{fixPrice(item.totalRakeBack)}}</div>
+    <div class="main">可提现余额 ￥{{fixPrice(tradeData.availableGet)}}</div>
+    <div class="sub">总返佣余额 ￥{{fixPrice(tradeData.totalGet)}}</div>
   </div>
 </template>
 
 
 <style scoped>
-  .data { padding : 10px; padding-bottom : 20px; display: flex;flex-direction: column;align-items: center}
-  .icon { width : 80px; height : 80px; background-color: #ccc; margin : 0 auto; border-radius : 50%; margin-top : 20px; overflow: hidden}
-  .main { font-size : 20px; margin-top : 20px; text-align: center; }
-  .sub { text-align: center; margin-top : 10px; }
+  .data {
+    padding: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+  }
+
+  .icon {
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    margin: 0 auto;
+    border-radius: 50%;
+    margin-top: 20px;
+    overflow: hidden
+  }
+
+  .main {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .sub {
+    text-align: center;
+    margin-top: 10px;
+  }
 </style>
 
 <script>
   import utils from '@/common/utils/utils'
-  //todo 待确定
+  import distributionService from '@/services/distribution/distribution'
   export default {
-    props:{
-      item:{}
+    props: {
+      item: {}
+    },
+    data () {
+      return {
+        tradeData: {}
+      }
     },
     methods: {
       fixPrice: utils.fixPrice
+    },
+    mounted () {
+      distributionService.rakeInfo((res) => {
+        this.tradeData = res.data;
+      })
     }
   }
 </script>

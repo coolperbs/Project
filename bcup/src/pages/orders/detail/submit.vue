@@ -2,7 +2,6 @@
   <div class="checkout-submit">
     <div v-if="data.order.orderStatus==8" class="btn pay" @click="orderGoPayEvt">去支付</div>
     <div v-if="data.order.orderStatus==8" class="btn pay" @click="orderCancelEvt">取消</div>
-    <div v-if="data.order.orderStatus==512" class="btn pay" @click="submit">申请返佣</div>
   </div>
 </template>
 
@@ -47,9 +46,6 @@
       data: {}
     },
     methods: {
-      submit: function () {
-        //todo 申请返佣
-      },
       orderGoPayEvt(){
         payServ.getPayInfo( { orderId : this.data.order.orderId }, function( payRes ) {
           if ( utils.isErrorRes( payRes ) ) {

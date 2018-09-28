@@ -4,7 +4,7 @@
     <div class="pull-down" style="top:0;">
       <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
         <div class="pull-item">
-          <order v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
+          <order v-for="order,index in renderList" :item="order" :key="index+1" class="mod"/>
           <div v-if="renderList.length==0" style="text-align: center">暂无记录</div>
         </div>
       </PullTo>

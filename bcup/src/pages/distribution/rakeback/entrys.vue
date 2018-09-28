@@ -12,7 +12,7 @@
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashrecord' }" class="clearfix">
         <div class="key">提现记录</div>
-        已提:￥{{fixPrice(item.totalRakeBack)}}
+        已提:￥{{fixPrice(tradeData.alreadyGet)}}
         <div class="more">></div>
       </router-link>
     </ul>
@@ -53,13 +53,22 @@
 
 <script>
   import utils from '@/common/utils/utils'
+  import distributionService from '@/services/distribution/distribution'
 
   export default {
     props: {
       item: {}
     },
+    data () {
+      return {tradeData: {}}
+    },
     methods: {
       fixPrice: utils.fixPrice
+    },
+    mounted () {
+      distributionService.rakeInfo((res) => {
+        this.tradeData = res.data;
+      })
     }
   }
 </script>

@@ -58,8 +58,8 @@ handle = {
     });
   },
   // 绑定账号
-  bindAccount({userName,userPhone},callback){
-    ajax.get('/app/trader/account', {userName, userPhone},  (res) =>{
+  bindAccount ({userName, userPhone}, callback) {
+    ajax.get('/app/trader/account', {userName, userPhone}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;
@@ -68,8 +68,18 @@ handle = {
     });
   },
   //提现记录
-  rakeBackList({currentPage},callback){
-    ajax.get('/app/money/apply/list', {currentPage,},  (res) =>{
+  rakeBackList ({currentPage}, callback) {
+    ajax.get('/app/money/apply/list', {currentPage}, (res) => {
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback && callback(res);
+    });
+  },
+  //返佣信息
+  rakeInfo (callback) {
+    ajax.get('/app/money/info', {}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;

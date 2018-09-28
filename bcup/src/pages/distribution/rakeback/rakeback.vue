@@ -45,6 +45,7 @@
       distributionService.getBaseInfo((res) => {
         this.userData = res.data;
       })
+
     }
   }
 </script>

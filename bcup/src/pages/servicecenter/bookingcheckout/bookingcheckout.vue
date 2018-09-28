@@ -136,7 +136,7 @@
           userphone: this.userphone,
           remark: this.remark
         }, (res) => {
-          this.$router.replace('/orders/list?type=1')
+          this.$router.back(-1)
         })
       }
 
