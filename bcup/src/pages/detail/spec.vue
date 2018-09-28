@@ -11,7 +11,7 @@
       <span class="cell" :class="{checked:el.valueId==checkedB}" v-for="el,index in pageInfo.saleProSku.pros[1].values" @click="checkpos(el.valueId)">{{el.valueName}}</span>
     </div>
     <div class="more">
-      备注:
+      备注:{{pageInfo.remark}}
     </div>
   </div>
 </template>

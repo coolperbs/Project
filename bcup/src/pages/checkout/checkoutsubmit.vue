@@ -61,6 +61,7 @@
               return;
             }
             // 3.换起微信支付
+            //todo 取消支付 的触发
             payServ.WXPay(payRes.data, function (wxpayRes) {
               that.$router.push({path: '/orders/detail?orderid=' + orderRes.data.orderId});
             });

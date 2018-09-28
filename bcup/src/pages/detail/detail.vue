@@ -200,30 +200,34 @@
         },
         userData: {},
         locationStr: '',
-        checkedSkuId:''
+        checkedSkuId: ''
       }
     },
     mounted: function () {
       let query = this.$route.query;
       let ids = (query.id + '').split('-');
-      let self = this;
-
-      detailServ.query({skuId: ids[1]}, function (res) {
-        self.pageInfo = res.data;
-        // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`
-        self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
-
-        // 如果有userId，进行关系绑定
-        if (query.userId) {
-          distributionServ.applyBinding({origin: query.userId * 1});
-        }
-        //获取用户信息判断是否是达人
-        distributionServ.getUserInfo((res) => {
-          self.userData = res.data;
-        })
-      })
+      this.checkedSkuId = ids[1];
+      this.getData(ids[1])
     },
     methods: {
+      getData (skuId) {
+        let self = this;
+        let query = this.$route.query;
+        detailServ.query({skuId: skuId}, function (res) {
+          self.pageInfo = res.data;
+          // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`
+          self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
+
+          // 如果有userId，进行关系绑定
+          if (query.userId) {
+            distributionServ.applyBinding({origin: query.userId * 1});
+          }
+          //获取用户信息判断是否是达人
+          distributionServ.getUserInfo((res) => {
+            self.userData = res.data;
+          })
+        })
+      },
       fixPrice: utils.fixPrice,
       showSharePop: function () {
         this.showPop = true;
@@ -234,6 +238,12 @@
         this.shareImgUrl = '';
       },
       changeSkuIdEvt: function (e) {
+        if (e != this.checkedSkuId) {
+          var lastPath = this.$route.path + '?id=' + this.$route.query.id.split('-')[0] + '-' + e;
+          console.log(lastPath)
+          console.log(this.$router)
+          this.getData(e)
+        }
         this.checkedSkuId = e;
       }
     }
