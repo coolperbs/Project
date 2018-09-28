@@ -1,15 +1,11 @@
 <template>
   <div class="member clearfix">
-    <div class="logo">
-      <div class="num">{{key}}</div>
-      <img/>
-    </div>
     <div class="info">
-      <div class="name">{{item.realName}}</div>
-      <div class="sub">all 100</div>
+      <div class="name">{{item.userName}}</div>
+      <div class="sub">{{item.carnum}} 状态:{{myEnmu[item.applyStatus]}}</div>
     </div>
     <div class="sales">
-      $100
+      ￥{{item.priceShow}}
     </div>
   </div>
 </template>
@@ -18,7 +14,7 @@
 <style scoped>
   .member {
     height: 60px;
-    padding: 10px 90px 10px 60px;
+    padding: 10px 90px 10px 10px;
     position: relative;
   }
 
@@ -70,11 +66,19 @@
 </style>
 
 <script>
-  //todo 差字段核对
   export default {
     props: {
       item: {},
       key: {}
+    },
+    data () {
+      return {
+        myEnmu: {
+          1: '申请中',
+          2: '申请失败',
+          3: '已处理'
+        }
+      }
     }
   }
 </script>

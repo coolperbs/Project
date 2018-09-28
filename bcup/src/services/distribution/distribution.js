@@ -87,6 +87,15 @@ handle = {
       callback && callback(res);
     });
   },
+  applyMoney ({price}, callback) {
+    ajax.get('/app/money/apply', {price}, (res) => {
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback && callback(res);
+    });
+  }
 }
 
 export default handle;

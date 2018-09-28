@@ -32,7 +32,7 @@
     </div>
     <b-spec class="mod" :pageInfo="pageInfo" @changeSkuId="changeSkuIdEvt"/>
     <b-maininfo class="mod" :pageInfo="pageInfo"/>
-    <b-toolbar :skuId="checkedSkuId"/>
+    <b-toolbar :pageInfo="pageInfo" :skuId="checkedSkuId"/>
   </div>
 </template>
 

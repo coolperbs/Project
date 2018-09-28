@@ -2,7 +2,7 @@
   <div class="team">
     <saledata :data="pageInfo" class="mod"/>
     <entrys :data="pageInfo" class="mod"/>
-    <div class="invite" @click="inviteEVT(true)">邀请</div>
+    <div class="invite" @click="inviteEVT(true)" v-if="shareImgUrl">邀请</div>
     <div class="sharePop" v-if="showPop">
       <div class="pop">
         <div class="close" @click="inviteEVT(false)"></div>
@@ -31,17 +31,49 @@
     text-align: center;
     border-radius: 22px;
   }
-  .sharePop { position: fixed; top : 0; left : 0; width : 100%; height : 100%; background-color: rgba( 0, 0, 0, 0.3 ); z-index: 10000; }
-  .sharePop { text-align: center; }
-  .pop { margin : 0 auto; width : 80%; margin-top : 20%; position: relative; }
-  .pop .close { width : 40px; height: 40px; background-color: #fff; border-radius: 50%; top: -20px; right :-20px; position: absolute; }
-  .pop img { width : 100%; background-color: #fff; }
+
+  .sharePop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+  }
+
+  .sharePop {
+    text-align: center;
+  }
+
+  .pop {
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 20%;
+    position: relative;
+  }
+
+  .pop .close {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: -20px;
+    right: -20px;
+    position: absolute;
+  }
+
+  .pop img {
+    width: 100%;
+    background-color: #fff;
+  }
 </style>
 
 <script>
   import saledata from './data'
   import entrys from './entrys'
   import teamServer from '@/services/team/team'
+  import distributionS from '@/services/distribution/distribution'
   import utils from '@/common/utils/utils'
 
   export default {
@@ -52,11 +84,13 @@
       return {
         pageInfo: {},
         showPop: false,
-        shareImgUrl: false
+        shareImgUrl: false,
+        userData: {}
       }
     },
     mounted () {
-      this.getData()
+      this.getData();
+      this.getUser();
     },
     methods: {
       getData () {
@@ -78,9 +112,13 @@
       inviteEVT (type) {
         this.showPop = type;
         if (type) {
-          //todo 拼接邀请地址
-          this.shareImgUrl = ''
+          this.shareImgUrl = this.userData.qrcurl
         }
+      },
+      getUser () {
+        distributionS.getUserInfo((res) => {
+          this.userData = res.data
+        })
       }
     }
   }

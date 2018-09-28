@@ -7,7 +7,7 @@
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashaccount' }" class="clearfix">
         <div class="key">提现账号</div>
-        {{item.user?item.user.idCard?item.user.idCard:'暂未设置':'暂未设置'}}
+        {{tradeData.account?tradeData.account:'暂未设置'}}
         <div class="more">></div>
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashrecord' }" class="clearfix">
@@ -57,18 +57,13 @@
 
   export default {
     props: {
-      item: {}
+      tradeData: {}
     },
-    data () {
-      return {tradeData: {}}
-    },
+
     methods: {
       fixPrice: utils.fixPrice
     },
     mounted () {
-      distributionService.rakeInfo((res) => {
-        this.tradeData = res.data;
-      })
     }
   }
 </script>

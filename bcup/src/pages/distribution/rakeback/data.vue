@@ -43,20 +43,11 @@
   import distributionService from '@/services/distribution/distribution'
   export default {
     props: {
-      item: {}
-    },
-    data () {
-      return {
-        tradeData: {}
-      }
+      item: {},
+      tradeData:{}
     },
     methods: {
       fixPrice: utils.fixPrice
-    },
-    mounted () {
-      distributionService.rakeInfo((res) => {
-        this.tradeData = res.data;
-      })
     }
   }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="rank">
     <!--<order-tab/>-->
-    <div class="pull-down" style="top:0;">
+    <div class="pull-down" style="top:10px;">
       <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
         <div class="pull-item">
           <order v-for="order,index in renderList" :item="order" :key="index+1" class="mod"/>

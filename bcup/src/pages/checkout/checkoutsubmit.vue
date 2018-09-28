@@ -1,6 +1,6 @@
 <template>
   <div class="checkout-submit">
-    <div class="btn" @click="submitEvt">submit</div>
+    <div class="btn" @click="submitEvt">提交</div>
   </div>
 </template>
 
