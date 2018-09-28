@@ -13,6 +13,15 @@ handle = {
       callback(res);
     });
   },
+  buyNow ({skuId,skuNum}, callback) {
+    ajax.get('/app/trade/buynow', {skuId, skuNum}, function (res) {
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback(res);
+    });
+  },
   get: function (param, callback) {
     ajax.get('/app/order/info', param, function (res) {
       if (utils.isErrorRes(res)) {
