@@ -150,7 +150,6 @@
         this.$emit('setData', val);
       },
       getBuyInfo () {
-        debugger
         OrderS.buyNow({skuId: this.$route.query.skuId, skuNum: this.pageInfo.formInfo.skuNum}, (res) => {
           this.userData = res.data;
         })
