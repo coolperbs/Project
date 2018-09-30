@@ -107,7 +107,7 @@
 
         self.pageInfo = res.data || {name: 1};
         distributionService.getUserInfo((res) => {
-          this.userData = res.data;
+          self.userData = res.data;
         })
       });
     },

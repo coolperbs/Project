@@ -36,7 +36,6 @@
     methods: {
       submitEvt: function () {
         // @TODO : 这里要对form格式进行验证，或者和后端商量后端验证，也避免xxs攻击
-        debugger
         let that = this;
         if (this.pageInfo.formInfo.userName == '') {
           utils.showError('请输入姓名');

@@ -1,0 +1,15 @@
+.w-p-qrcode { color : #434552; height: 100%; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+
+.w-p-qrcode .cont { display: none; padding : 0.4rem; background-color: #fff; height : 7.6rem; width : 100%; overflow-y: auto; }
+.w-p-qrcode .cont .link { float : left; margin-top : 0.5rem; margin-left : 0.6rem; cursor: pointer; display: flex; padding : 0.1rem; border : solid 1px #ccc; height : 2.5rem; width : 8rem; }
+.w-p-qrcode .cont .link:nth-child(2n+1){ margin-left : 0; }
+.w-p-qrcode .cont .link .pic { width : 2.3rem; height : 100%; border : solid 1px #fff; display: flex; justify-content: center; align-items: center; }
+.w-p-qrcode .cont .link .info { width : 5.6rem; flex-flow: 1; margin-left : 0.1rem; overflow-y: auto; }
+.w-p-qrcode .cont .link .info .title { font-size : 0.3rem; font-weight : bold; }
+.w-p-qrcode .cont .link .info .sub-title { font-weight : bold; font-size : 12px; }
+.w-p-qrcode .cont .link .info .d-link { margin-top : 0.1rem; color : #8b97aa; }
+.w-p-qrcode .cont .link .info .detail { line-height: 0.25rem; margin-top : 0.1rem; }
+.w-p-qrcode .cont .iframe { height : 100%; width : 100%; }
+
+

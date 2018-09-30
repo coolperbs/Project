@@ -73,7 +73,7 @@
 .w-p-home .cont .sub .info .info-mod .head .userinfo { margin-left : 0.1rem; }
 .w-p-home .cont .sub .info .info-mod .head .userinfo .name { font-size : 0.24rem; font-weight: bold; }
 .w-p-home .cont .sub .info .info-mod .head .userinfo .honor { font-size : 0.14rem; }
-.w-p-home .cont .sub .info .info-mod .record { font-size : 0.14rem; height: 100%; overflow: hidden; }
+.w-p-home .cont .sub .info .info-mod .record { font-size : 11px; line-height: 0.17rem; height: 100%; overflow: hidden; }
 .w-p-home .cont .sub .info .info-mod .phone { height : 0.45rem; line-height: 0.45rem; padding : 0 0.2rem; background-color: #dce3ee; }
 
 /*.w-p-home .cont .sub,

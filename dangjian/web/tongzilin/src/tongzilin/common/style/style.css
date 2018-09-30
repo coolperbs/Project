@@ -15,7 +15,7 @@ a { color : #434552; }
 /* 6行 */
 .ellipsis-6 { overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:6; }
 
-.ellipsis-10 { -webkit-line-clamp:10; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; }
+.ellipsis-17 { -webkit-line-clamp:17; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; }
 
 /* 大新闻 */
 .news-wrap .main-pic{ width : 100%; max-height : 6.4rem; overflow: hidden; display: flex; display: -webkit-flex; align-items: center; }

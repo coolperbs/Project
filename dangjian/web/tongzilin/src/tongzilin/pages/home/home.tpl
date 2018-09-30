@@ -22,17 +22,22 @@
 				<div class="title">邻里中心 · Neighborhood Center</div>
 				<div class="info">
 					<a href="#index/tongzilin/ndetail2:id=89" class="info-mod">
-						<div class="record ellipsis-10">
+						<div class="record">
 							<div>
-							欢迎来到邻里中心，邻里相恤、毗邻而居是我国的文化传统，和睦健康的邻里关系对于家庭和谐、社区和谐、社会和谐都起着至关重要的作用，友善、互助、文明、和谐的邻里关系对于会让外来居民对社区更有归属感和认同感。
+							欢迎来到邻里中心，邻里相恤、毗邻而居是我国的文化传统，和睦健康的邻里关系对于家庭和谐、社区和谐、社会和谐都起着至关重要的作用，友善、互助、文明、和谐的邻里关系对于会让外来居民对社区更有归属感和认同感。<br>
+							我们将在这里为大家准备了一个可以交流、体验的文化艺术休闲空间，同时还提供最贴心的生活服务咨询，内容包括就学、就医、购物、旅游、签证、购车、购房、法务、应急、运动及宗教场所等内容的查询。<br>
+							我们联动各类国际机构和政府服务机构为在国际社区入驻的中外居民提供多方发展双向供需信息咨询和服务。为中外机构和个人在成都落户提供最便捷最有效的保障，这里将是你们另一个家园。
 							</div>
 						</div>
 					</a>
 
 					<a href="#index/tongzilin/ndetail2:id=90" class="info-mod">
-						<div class="record ellipsis-10">
+						<div class="record">
 							<div>
-							Welcome to the Neighborhood Center. It is the cultural tradition of our country to be compassionate and live close to each other. Harmonious and healthy neighbourliness plays a vital role in family harmony, community harmony and social harmony. Friendly, mutual assistance, civilized and harmonious neighbourliness will make the foreign residents feel more belonging and identity to the community.
+							Welcome to the Neighborhood Center. It is the cultural tradition of our country to be compassionate and live close to each other. Harmonious and healthy neighbourliness plays a vital role in family harmony, community harmony and social harmony. Friendly, mutual assistance, civilized and harmonious neighbourliness will make the foreign residents feel more belonging and identity to the community.<br>
+							We are here to prepare a cultural and artistic leisure space for you to exchange and experience. At the same time, we also provide the most intimate life service consultation, including school, medical treatment, shopping, tourism, visa, car purchase, house purchase, legal affairs, emergency, sports and religious sites, etc.<br>
+							We coordinate various international agencies and government service agencies to provide information consultation and services for Chinese and foreign residents residing in the international community. To provide the most convenient and effective guarantee for Chinese and foreign organizations and individuals to settle down in Chengdu, this will be another home for you.
+
 							</div>
 						</div>
 					</a>
@@ -115,7 +120,7 @@
 					</div>
 				</a>
 				<!--<a href="#index/tongzilin/news:type=5" class="tab" >-->
-				<a href="#index/tongzilin/links" class="tab" >
+				<a href="#index/tongzilin/qrcode" class="tab" >
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon5.png"/>
 					</div>

@@ -47,6 +47,18 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 			    text : '宗教',
 			    en : 'Religion',
 			    value : 4
+			},{
+			    text : '购物',
+			    en : 'Shopping',
+			    value : 5
+			},{
+			    text : '旅游',
+			    en : 'Tourism',
+			    value : 6
+			},{
+			    text : '健身',
+			    en : 'Exercise',
+			    value : 7
 			}],
 			search : true			
 		},
