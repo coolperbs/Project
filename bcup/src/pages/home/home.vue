@@ -102,12 +102,13 @@
   export default {
     mounted: function () {
       let self = this;
-      distributionService.getUserInfo((res) => {
-        this.userData = res.data;
-      })
+
       _fn.getData(function (res) {
 
         self.pageInfo = res.data || {name: 1};
+        distributionService.getUserInfo((res) => {
+          this.userData = res.data;
+        })
       });
     },
 
