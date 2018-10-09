@@ -18,7 +18,9 @@
   }
 
   .invite {
-    background-color: #eee;
+    background-color: #ef8d56;
+    color : #fff;
+    font-size : 18px;
     margin: 0 10px;
     height: 44px;
     line-height: 44px;

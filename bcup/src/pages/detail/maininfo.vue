@@ -26,7 +26,7 @@
   .tab {
     border-bottom: solid 1px #f0f0f0;
   }
-  
+
   .tab .item {
     width: 50%;
     float: left;
@@ -49,13 +49,14 @@
   }
 
   .tab .item.current {
-    color: #000;
+    color: #ff6e1d;
+    font-size : 18px;
   }
 
   .tab .item.current:after {
     content: '';
     height: 4px;
-    background-color: #000;
+    background-color: #ff6e1d;
     display: block;
     position: absolute;
     bottom: 0;

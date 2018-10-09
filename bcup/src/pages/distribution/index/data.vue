@@ -19,14 +19,14 @@
       </div>
     </div>
     <div class="data-line clearfix">
-      <div class="key">总返佣:</div>
-      <div class="value">
-        {{ fixPrice( pageInfo.totalRakeBack ) }}
+      <div class="key price">总返佣:</div>
+      <div class="value price">
+        ￥<em>{{ fixPrice( pageInfo.totalRakeBack ) }}</em>
       </div>
     </div>
     <div class="data-line clearfix">
-      <div class="key">总返佣单数:</div>
-      <div class="value">
+      <div class="key price">总返佣单数:</div>
+      <div class="value allnum">
         {{ pageInfo.totalOrderCount }}
       </div>
     </div>
@@ -35,12 +35,12 @@
       <router-link tag="li" class="clearfix" :to="{ path : '/distribution/rakebackrecord',query:{type:1} }">
         <div class="key">返佣记录</div>
         累计总返佣￥{{fixPrice( pageInfo.totalRakeBack )  }}
-        <div class="more">></div>
+        <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
       <router-link tag="li" class="clearfix" :to="{ path : '/distribution/orders',query:{type:1} }">
         <div class="key">订单记录</div>
         共{{ pageInfo.totalOrderCount }}单
-        <div class="more">></div>
+        <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
     </ul>
 
@@ -49,10 +49,14 @@
 
 
 <style scoped>
-  .data { padding : 30px 10px 0 10px; background-color: #fff; }
-  .data-line { padding : 10px 0 10px 80px; }
+  .data { padding : 30px 10px 0 10px; background-color: #fff; position: relative; }
+  .data-line { padding : 10px 0 10px 90px; }
   .data-line.has-line { margin-top : 30px; }
-  .data-line .key { float : left; margin-left : -80px; }
+  .data-line .key { float : left; margin-left : -90px; }
+  .key.price { margin-top : 6px; }
+  .value.price { font-size : 14px; font-weight: bold; color : #ef8d56; }
+  .value.price em { font-size : 24px; font-style: normal; }
+  .allnum { font-size : 24px; font-size : bold; }
   .data-line .line,
   .data-line .line .color { width : 100%; background-color: #ccc; height : 10px; border-radius : 10px; margin-top : 3px; position: relative; }
   .data-line .line .color { background-color: #999; }
@@ -62,6 +66,7 @@
   .list li { text-align: right; padding : 13px 0; border-top : solid 1px #f0f0f0; color : #999; }
   .list li .key { float : left; color : #2c3e50; }
   .list li .more { float : right; margin-left : 5px; }
+  .list li .more img { width : 18px; height : 18px; }
 </style>
 
 <script>

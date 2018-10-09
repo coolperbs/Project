@@ -3,17 +3,17 @@
     <ul class="list">
       <router-link tag="li" :to="{path : '/distribution/rakebackrecord',query:{type:3} }" class="clearfix">
         <div class="key">我的返佣</div>
-        <div class="more">></div>
+        <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashaccount' }" class="clearfix">
         <div class="key">提现账号</div>
         {{tradeData.account?tradeData.account:'暂未设置'}}
-        <div class="more">></div>
+        <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashrecord' }" class="clearfix">
         <div class="key">提现记录</div>
         已提:￥{{fixPrice(tradeData.alreadyGet)}}
-        <div class="more">></div>
+        <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
     </ul>
   </div>
@@ -49,6 +49,7 @@
     float: right;
     margin-left: 5px;
   }
+  .list li .more img { width : 18px; height : 18px; }
 </style>
 
 <script>

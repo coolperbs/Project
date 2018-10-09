@@ -6,7 +6,7 @@
         <div class="pull-item">
           <order v-if="realList.length>0" v-for="order,index in realList " :item="order" :key="index" class="mod"/>
         </div>
-        <div v-if="realList.length==0" style="text-align: center;font-size: 12px;padding: 10px;">没有更多数据</div>
+        <div v-if="realList.length==0" style="text-align: center;font-size: 12px;padding: 10px; margin-top : 20px">没有更多数据</div>
       </PullTo>
     </div>
   </div>
@@ -17,7 +17,7 @@
   .mod {
     border-radius: 5px;
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 20px;
     box-shadow: 0 3px 5px rgba(100, 100, 100, 0.1);
   }
 </style>

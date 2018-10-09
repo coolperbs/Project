@@ -26,7 +26,9 @@
     <div v-if="userData.trader==1" class="shareIcon" @click="showSharePop">分享海报</div>
     <div class="sharePop" v-if="showPop">
       <div class="pop">
-        <div class="close" @click="hideSharePop"></div>
+        <div class="close" @click="hideSharePop">
+          <img src="static/cross.png"/>
+        </div>
         <img :src="shareImgUrl"/>
       </div>
     </div>
@@ -171,7 +173,16 @@
     border-radius: 50%;
     top: -20px;
     right: -20px;
+    overflow : hidden;
     position: absolute;
+  }
+
+  .pop .close img {
+    width : 24px;
+    height : 24px;
+    position: absolute;
+    left : 8px;
+    top : 8px;
   }
 
   .pop img {

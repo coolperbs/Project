@@ -23,8 +23,12 @@
     padding: 10px 10px 0 10px;
   }
 
+  .title {
+    font-size : 16px;
+  }
+
   .sub-title {
-    margin-top: 5px;
+    margin-top: 10px;
   }
 
   .list {
@@ -34,16 +38,18 @@
   .list .cell {
     background-color: #ccc;
     color: #fff;
-    padding: 3px 5px;
+    padding: 5px 5px;
     display: inline-block;
     margin: 2px 0;
     border-radius: 5px;
     float: left;
     margin-left: 10px;
+    font-size : 14px;
+    font-weight : bold;    
   }
 
   .list .cell.checked {
-    background-color: #ee8e34;
+    background-color: #ff6e1d;
   }
 
   .list .cell:first-child {

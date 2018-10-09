@@ -15,16 +15,16 @@
       </div>
     </div>
     <div class="data-line clearfix">
-      <div class="key">总销售额:</div>
-      <div class="value">
-        {{fixPrice(data.totalTraderSale)}}
+      <div class="key price">总销售额:</div>
+      <div class="value price">
+        ￥<em>{{fixPrice(data.totalTraderSale)}}</em>
       </div>
     </div>
 
     <div class="data-line clearfix">
-      <div class="key">总返利:</div>
-      <div class="value">
-        {{fixPrice(data.totalTraderBack)}}
+      <div class="key price">总返利:</div>
+      <div class="value price">
+        ￥<em>{{fixPrice(data.totalTraderBack)}}</em>
       </div>
     </div>
 
@@ -33,6 +33,9 @@
 
 
 <style scoped>
+  .key.price { margin-top : 6px; }
+  .value.price { font-size : 14px; font-weight: bold; color : #ef8d56; }
+  .value.price em { font-size : 24px; font-style: normal; }
   .data {
     padding: 30px 10px 0 10px;
     background-color: #fff;

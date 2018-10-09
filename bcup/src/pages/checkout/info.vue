@@ -7,6 +7,9 @@
 
 
 <style scoped>
+  .main { 
+    font-size : 18px;
+  }
   .checkout-info {
     padding: 10px;
   }
@@ -23,10 +26,10 @@
     line-height: 20px;
     display: inline-block;
     padding: 0 10px;
-    background-color: #ccc;
+    background-color: #ff6e1d;
     border-radius: 10px;
     margin-right: 10px;
-    color: #444;
+    color : #fff;
   }
 </style>
 

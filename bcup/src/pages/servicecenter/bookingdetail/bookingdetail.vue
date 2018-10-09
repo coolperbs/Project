@@ -290,7 +290,7 @@
 
   .btn.booking {
     padding: 10px;
-    background: #3aa83b;
+    background: #ef8d56;
     border-radius: 4px;
     color: #fff;
     text-align: center;

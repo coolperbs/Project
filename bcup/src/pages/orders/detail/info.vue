@@ -15,7 +15,7 @@
 
   .status {
     padding: 5px 10px;
-    background-color: #ee8e34;
+    background-color: #5f3f95;
     color: #fff;
     position: absolute;
     left: -5px;
@@ -27,7 +27,7 @@
     display: block;
     width: 0;
     height: 0;
-    border: 3px solid #ee8e34;
+    border: 3px solid #000;
     border-left: 3px solid transparent;
     border-bottom: 3px solid transparent;
     position: absolute;
@@ -36,7 +36,8 @@
   }
 
   .main {
-    margin-top: 25px;
+    margin-top: 30px;
+    font-size : 18px;
   }
 
   .spec {
@@ -51,10 +52,10 @@
     line-height: 20px;
     display: inline-block;
     padding: 0 10px;
-    background-color: #ccc;
+    background-color: #ef8d56;
     border-radius: 10px;
     margin-right: 10px;
-    color: #444;
+    color: #fff;
   }
 
   .orderinfo {

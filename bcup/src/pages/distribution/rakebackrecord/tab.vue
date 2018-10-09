@@ -19,12 +19,12 @@
   .orderlist-tab { position: fixed; top : 0; left : 0; width : 100%; box-shadow : 0 5px 5px rgba( 100, 100, 100, 0.1 ); z-index: 100; background-color: #fff; }
   .list li { display: inline-block; height : 40px; width : 33.33%; background-color: #fff; text-align: center; }
   .list li .text { display: inline-block; height : 100%; line-height: 40px; padding : 0 5px; }
-  .list li .text.current { border-bottom : solid 2px; }
+  .list li .text.current { color : #ef8d56; font-weight: bold; font-size : 16px; border-bottom : solid 2px #ef8d56; }
 
   .search { padding : 10px 60px 10px 10px; position: relative; }
   .search .input {}
   .search input { width : 100%; height : 30px; line-height: 30px; border-radius : 15px; border  : 0; background-color: #ddd; }
-  .search .btn { height : 30px; line-height: 30px; width : 40px; overflow: hidden; float : right; position: absolute; right : 10px; top : 10px; }
+  .search .btn { font-weight : bold; font-size : 16px; color : #ef8d56; height : 30px; line-height: 30px; width : 40px; overflow: hidden; float : right; position: absolute; right : 10px; top : 10px; }
 </style>
 
 <script>

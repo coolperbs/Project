@@ -23,9 +23,9 @@
 <style scoped>
   .checkout-user { padding : 5px 0; }
   .title { font-size : 12px; padding : 10px; }
-  .list li { padding : 0 10px 0 80px; height : 30px; line-height: 30px; }
+  .list li { padding : 0 10px 0 90px; height : 30px; line-height: 30px; }
   .list li:after { content:""; display: block; clear:both; }
-  .list .key { float : left; width : 70px; margin-left : -70px; }
+  .list .key { float : left; width : 70px; margin-left : -80px; }
   .list .key em { color : red; font-style: normal; margin-right :5px; position: relative; top : 3px; display: inline-block; width : 5px; }
   .list .value { position: relative; }
   .list input { height : 30px; display: inline-block; width : 100%; border : none; }

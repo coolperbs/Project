@@ -41,7 +41,7 @@
   }
 
   .list li {
-    padding: 5px 10px 5px 80px;
+    padding: 5px 10px 5px 90px;
   }
 
   .list li:after {
@@ -53,7 +53,7 @@
   .list .key {
     float: left;
     width: 70px;
-    margin-left: -70px;
+    margin-left: -80px;
   }
 
   .list .key em {
@@ -78,11 +78,13 @@
   }
 
   .list li.total .key {
-    line-height: 20px;
+    line-height: 30px;
   }
 
   .list li.total .value {
     font-size: 20px;
+    color : #ef8d56;
+    font-weight : bold;
   }
 
   .list li.total .value em {

@@ -17,7 +17,7 @@
         <div class="row-code" @click="getRegCode">{{codeText}}</div>
       </div>
     </div>
-    <div class="btn" @click="submitEvt"> 进入系统</div>
+    <div class="btn" @click="submitEvt"> 提交</div>
   </div>
 
 </template>
@@ -141,7 +141,9 @@
   }
 
   .btn {
-    background: #3a55ee;
+    background: #ef8d56;
+    border-radius: 20px;
+    font-size : 18px;
     color: #fff;
     text-align: center;
     height: 40px;

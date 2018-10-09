@@ -6,7 +6,7 @@
         </div>
         <div class="nav">
             <router-link :to="{ path : '/mine' }" class="more">
-                <img src="static/user.png"/>
+                <img src="/static/user.png"/>
             </router-link>
             <!--<div class="more" @click="toggleList">more</div>-->
         </div>

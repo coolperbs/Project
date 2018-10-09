@@ -36,7 +36,7 @@
 
   .status {
     padding: 5px 10px;
-    background-color: #ee8e34;
+    background-color: #5f3f95;
     color: #fff;
     position: absolute;
     left: -5px;
@@ -48,7 +48,7 @@
     display: block;
     width: 0;
     height: 0;
-    border: 3px solid #ee8e34;
+    border: 3px solid #000;
     border-left: 3px solid transparent;
     border-bottom: 3px solid transparent;
     position: absolute;
@@ -57,12 +57,14 @@
   }
 
   .main {
-    margin-top: 25px;
+    margin-top: 30px;
+    font-size : 18px;
   }
 
   .list {
     border-top: dashed 1px #f0f0f0;
     margin-top: 10px;
+    padding : 5px 0;
   }
 
   .list li {
@@ -112,15 +114,15 @@
 
   .act .btn {
     display: inline-block;
-    background-color: #fff;
     border: 1px solid #eee;
-    padding: 8px 15px;
+    padding: 5px 15px;
+    background: linear-gradient( #ffff, #f0f0f0 );
     border-radius: 20px;
   }
 
   .act .btn.pay {
-    border: 1px solid #ee8e34;
-    color: #ee8e34;
+    background-color : #ff6e1d;
+    color: #fff;
   }
 </style>
 

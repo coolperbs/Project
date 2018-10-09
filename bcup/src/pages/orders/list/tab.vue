@@ -21,7 +21,7 @@
 
   .list li {
     display: inline-block;
-    height: 40px;
+    height: 50px;
     width: 20%;
     background-color: #fff;
     text-align: center;
@@ -30,12 +30,16 @@
   .list li .text {
     display: inline-block;
     height: 100%;
-    line-height: 40px;
+    line-height: 50px;
+    font-size : 12px;
     padding: 0 5px;
   }
 
   .list li .text.current {
-    border-bottom: solid 2px;
+    color : #ff6e1d;
+    border-bottom: solid 2px #ff6e1d;
+    font-weight : bold;
+    font-size : 16px;
   }
 </style>
 

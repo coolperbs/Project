@@ -13,7 +13,9 @@
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    background: linear-gradient( #EF648F,#ef8d56 );
+    color : #fff;
   }
 
   .icon {

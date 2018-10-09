@@ -5,7 +5,7 @@
       <div class="sub">{{item.carnum}} 状态:{{myEnmu[item.applyStatus]}}</div>
     </div>
     <div class="sales">
-      ￥{{item.priceShow}}
+      ￥<em>{{item.priceShow}}</em>
     </div>
   </div>
 </template>
@@ -61,7 +61,13 @@
     top: 0;
     text-align: center;
     line-height: 60px;
-    font-size: 16px;
+    font-size: 14px;
+    color : #ef8d56;
+  }
+  .member .sales em {
+    font-size : 18px; 
+    font-weight : bold;
+    font-style: normal;
   }
 </style>
 

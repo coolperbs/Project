@@ -16,7 +16,7 @@
 
   .btn {
     height: 44px;
-    background-color: #ccc;
+    background-color: #ff6e1d;
     border-radius: 22px;
     text-align: center;
     line-height: 44px;

@@ -12,10 +12,10 @@
       </div>
     </div>
     <div class="booking-list">
-      <div class="list-item" v-for="el,index in filterSearch(bookingList)" :key="index">
+      <router-link :to="{path:'/servicecenter/bookingdetail' ,query : { id : el.wareId}}" class="list-item" v-for="el,index in filterSearch(bookingList)" :key="index">
         <div class="item-title">【预约】{{el.title}}({{fixPrice(el.price)}}抢购)</div>
-        <router-link :to="{path:'/servicecenter/bookingdetail' ,query : { id : el.wareId}}" class="item-booking">点击预约 ></router-link>
-      </div>
+       <!--<router-link :to="{path:'/servicecenter/bookingdetail' ,query : { id : el.wareId}}" class="item-booking">点击预约 ></router-link>-->
+      </router-link>
       <div class="empty-list" v-if="filterSearch(bookingList).length==0">
         暂无结果
       </div>
@@ -163,7 +163,8 @@
     border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 15px 5px;
+    font-size : 16px;
   }
 
   .empty-list {

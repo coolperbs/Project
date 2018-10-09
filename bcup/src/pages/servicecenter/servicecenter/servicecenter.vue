@@ -4,15 +4,15 @@
     <div class="title">自助服务</div>
     <div class="cell">
       <router-link :to="{path : '/servicecenter/findecode'}" class="item">
-        <div class="item-img"></div>
+        <div class="item-img"><img src="/static/code.png"></div>
         <div class="item-name">找回电子码</div>
       </router-link>
       <router-link :to="{path : '/servicecenter/bookinguse'}" class="item">
-        <div class="item-img"></div>
+        <div class="item-img"><img src="/static/pre-order.png"></div>
         <div class="item-name">预约使用</div>
       </router-link>
       <router-link :to="{path : '/orders/list?type=1'}" class="item">
-        <div class="item-img"></div>
+        <div class="item-img"><img src="/static/order-list.png"></div>
         <div class="item-name">查看订单</div>
       </router-link>
     </div>
@@ -59,9 +59,18 @@
   .item .item-img{
     width: 60px;
     height: 60px;
-    background: #eee;
     margin-bottom: 10px;
+    position: relative;
   }
+
+  .item .item-img img {
+    width : 48px;
+    height: 48px;
+    position: absolute;
+    left : 6px;
+    top : 6px;
+  }
+
   .item .item-name{
     text-align: center;
     font-size: 13px;
@@ -75,8 +84,9 @@
   .qr-item{
     color: #666;
     font-size: 12px;
-    padding: 5px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #eee;
   }
+  .qr-item:last-child { border-bottom : 0; }
 
 </style>
