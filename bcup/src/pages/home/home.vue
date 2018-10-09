@@ -21,7 +21,7 @@
           <div class="title ellipsis-2 ">{{ item.title }}</div>
           <div class="more clearfix">
             <div class="price">
-              <span class="origin">￥{{ fixPrice( item.price || item.originPrice ) }}</span>
+              <span class="origin">￥<em>{{ fixPrice( item.price || item.originPrice ) }}</em></span>
               <span class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( item.brokeragePrice) }}</span>
             </div>
             <div class="sale-num">已售：{{item.saledNum?item.saledNum:0}}</div>
@@ -46,6 +46,7 @@
     box-shadow: 0 3px 5px rgba(100, 100, 100, 0.1);
   }
 
+  .title { font-size :18px; }
   .banner img {
     display: block;
     width: 100%;
@@ -80,10 +81,21 @@
 
   .mod .more .price {
     float: left;
+    font-size : 12px;
+    font-weight: bold;
+    color : #ff6e1d;
+  }
+
+  .mod .more .price em {
+    font-size : 20px;
+    font-style: normal;
   }
 
   .mod .more .price .counter {
     margin-left: 10px;
+    font-size : 12px;
+    font-weight: normal;
+    color : #54a849;
   }
 
   .mod .more .sale-num {

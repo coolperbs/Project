@@ -53,8 +53,8 @@
 					<div class="commentlist J_CommentCont">
 					</div>
 				</div>
-				<div class="btn J_Comment" data-id="<%= id%>">评论</div>
-				<div class="btn_back"></div>
+				<!--<div class="btn J_Comment" data-id="<%= id%>">评论</div>-->
+				<!--<div class="btn_back"></div>-->
 			</script>
 
 			<script type="text/html" class="J_CommentTemp">

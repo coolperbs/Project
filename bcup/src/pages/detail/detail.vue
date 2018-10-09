@@ -10,7 +10,7 @@
       </swiper>
       <div class="name ellipsis-2">{{ pageInfo.title }}</div>
       <div class="price clearfix">
-        <div class="origin">￥{{ fixPrice( pageInfo.price || pageInfo.originPrice ) }}</div>
+        <div class="origin">￥<em>{{ fixPrice( pageInfo.price || pageInfo.originPrice ) }}</em></div>
         <div class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( pageInfo.brokeragePrice ) }}</div>
       </div>
       <div class="info clearfix">
@@ -19,7 +19,7 @@
       </div>
       <a :href="locationStr" class="loc ellipsis-1" style="display: block">
         {{pageInfo.storeVO.address}}
-        <div class="icon">></div>
+        <div class="icon"><img src="static/arrow-right.png"/></div>
       </a>
     </div>
 
@@ -46,6 +46,7 @@
   .name {
     margin-top: 10px;
     padding: 0 10px;
+    font-size : 18px;
   }
 
   .head {
@@ -71,20 +72,27 @@
   .head .price .counter,
   .head .price .origin {
     display: inline-block;
-    color: #ee8e34;
-    font-size: 18px
+    color: #ff6e1d;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .head .price .origin em {
+    font-size : 24px;
+    font-style: normal;
   }
 
   .head .price .counter {
     margin-left: 10px;
     font-weight: bold;
     color: #54a849;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .head .info {
     padding: 0 10px;
     margin-top: 10px;
+    color : #999;
   }
 
   .head .info .sale {
@@ -97,21 +105,25 @@
 
   .head .loc {
     padding: 0 50px 0 10px;
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     margin-top: 10px;
     border-top: solid 1px #f0f0f0;
     position: relative;
   }
 
   .head .loc .icon {
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
     text-align: center;
     position: absolute;
-    right: 10px;
+    right: 0;
     top: 0;
+  }
+
+  .head .loc .icon img {
+    height : 20px;
   }
 
   .mod {

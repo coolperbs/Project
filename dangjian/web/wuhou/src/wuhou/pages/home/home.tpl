@@ -115,25 +115,26 @@
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon4.png"/>
 					</div>
-					<div class="text">三会一课</div>
+					<div class="text">党员在线</div>
 				</a>
 				<a href="#index/wuhou/news:type=2" class="tab" style="background-color : rgba( 84, 31, 61, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon5.png"/>
 					</div>
-					<div class="text">党员学习平台</div>
-				</a>
+					<div class="text">老党员工作室</div>
+		
+		</a>
 				<div class="tab J_Bonus" style="background-color : rgba( 39, 31, 84, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon6.png"/>
 					</div>
 					<div class="text">党员积分</div>
 				</div>
-				<a href="#index/wuhou/oldpm" class="tab" style="background-color : rgba( 73, 122, 104, 0.5 );">
+				<a href="#index/wuhou/news:type=4" class="tab" style="background-color : rgba( 73, 122, 104, 0.5 );">
 					<div class="icon">
 						<img src="wuhou/src/wuhou/pages/home/images/icon7.png"/>
 					</div>
-					<div class="text">老党员在行动</div>
+					<div class="text">和谐劳动宜居晋阳</div>
 				</a>
 			</div>			
 		</div>

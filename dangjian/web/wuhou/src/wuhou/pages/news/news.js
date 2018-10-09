@@ -31,10 +31,10 @@ define( 'wuhou/pages/news/news', function( require, exports, module ) {
                 headParam = {
                     id : 'news2',
                     sorts : [{
-                        text : '党员风采',
+                        text : '老党员风采',
                         value : 1
                     },{
-                        text : '会议学习',
+                        text : '常青藤之家',
                         value : 2
                     },{
                         text : '年度工作计划',
@@ -63,10 +63,16 @@ define( 'wuhou/pages/news/news', function( require, exports, module ) {
                     }],
                     search : true
                 }                
+            } else if ( pageType == 4 ) {
+                headParam = {
+                    id : 'news4',
+                    title : '和谐劳动宜居晋阳',
+                    search : true
+                }
             } else {
                 headParam = {
                     id : 'news1',
-                    title : '三会一课',
+                    title : '党员在线',
                     search : true
                 }
             }
@@ -225,6 +231,8 @@ define( 'wuhou/pages/news/news', function( require, exports, module ) {
             } else if ( pageType == 3 ) {
                 param.type = 3;
                 param.subType = subType;
+            } else if ( pageType == 4 ) {
+                param.type = 4;
             } else {
                 param.type = 1;
             }

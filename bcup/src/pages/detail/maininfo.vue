@@ -26,7 +26,7 @@
   .tab {
     border-bottom: solid 1px #f0f0f0;
   }
-
+  
   .tab .item {
     width: 50%;
     float: left;
@@ -96,7 +96,7 @@
     data: function () {
       return {
         tab: {
-          currentTab: 2
+          currentTab: 1
         },
         content: 'adsfasf',
         pageWidth: '1px'

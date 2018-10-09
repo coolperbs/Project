@@ -29,6 +29,7 @@ body{
     -webkit-user-drag: none;
     -webkit-text-size-adjust: 100%;/* 2 */
     width : 100%;
+    color : #444;
     overflow-x : hidden;
     /*line-height: 1.4;*/
 }
@@ -39,7 +40,7 @@ i {
 
 a{
     text-decoration: none;
-    color : #808080;
+    color : #444;
 }
 input{
     -webkit-user-modify: read-write-plaintext-only;
