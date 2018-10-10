@@ -59,6 +59,10 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 			    text : '健身',
 			    en : 'Exercise',
 			    value : 7
+			},{
+			    text : '应急',
+			    en : 'Emergency',
+			    value : 8
 			}],
 			search : true			
 		},
