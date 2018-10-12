@@ -2,7 +2,7 @@
 .w-w-comment .pop { width : 10rem; background-color : #fff; padding : 0.6rem; font-size : 0.24rem; color : #434552; position: relative; }
 .w-w-comment .pop .header { font-size : 0.4rem; padding-left : 0.4rem; line-height: 0.6rem; height : 0.6rem; border-left : solid 0.1rem #EA4834; position: relative; left : -0.6rem; margin-top : -0.4rem; }
 .w-w-comment .pop .nav { display: flex; font-size : 0.4rem; cursor:  pointer; }
-.w-w-comment .pop .nav .tab { margin-left : 0.2rem; }
+.w-w-comment .pop .nav .tab { }
 .w-w-comment .pop .nav .tab.current { color : #EA4834; }
 .w-w-comment .pop .nav .tab:first-child { margin-left : 0; }
 .w-w-comment .pop .close { cursor: pointer; height : 0.7rem; width : 0.7rem; position: absolute; right : 0; top : 0; background-color : #EA4834; color : #fff; display: flex; justify-content: center; align-items: center; }
