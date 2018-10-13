@@ -129,6 +129,10 @@
           alert('请输入正确的手机号')
           return
         }
+        if (this.ecode=='') {
+          alert('请输入核销码')
+          return
+        }
         bookingCheckoutService.submit({
           bespeakId: this.bespeakId,
           ecode: this.ecode,
