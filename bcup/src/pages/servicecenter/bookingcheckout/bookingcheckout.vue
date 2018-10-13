@@ -125,11 +125,11 @@
           alert('请输入姓名')
           return
         }
-        if (this.istel(this.userphone)) {
+        if (!this.istel(this.userphone)) {
           alert('请输入正确的手机号')
           return
         }
-        if (this.ecode=='') {
+        if (this.ecode == '') {
           alert('请输入核销码')
           return
         }
@@ -140,7 +140,15 @@
           userphone: this.userphone,
           remark: this.remark
         }, (res) => {
-          this.$router.back(-1)
+          var r = confirm('预约成功,点击去首页')
+          if (r) {
+            this.$router.replace({path: '/home'});
+            setTimeout(() => {
+              window.location.reload()
+            })
+          } else {
+            this.$router.back(-1)
+          }
         })
       }
 
@@ -218,6 +226,7 @@
     left: 0;
     right: 0;
     background: #fff;
+    border-top: 1px solid #eee;
   }
 
   .stitle {
