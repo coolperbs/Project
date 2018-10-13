@@ -36,8 +36,9 @@
     </div>
     <div class="cell-box">
       <div class="cell">
+        <!--todo 这里价格 不对 ？？？ 还有文案展示-->
         <div class="label" style="width: 60%">{{formatDateV(item.preDate)}}:{{item.wareWare?item.wareWare.title:''}}</div>
-        <div class="desc" style="width: 30px">加收</div>
+        <div class="desc" style="width: 30px">到店支付</div>
         <div class="num" style="color:#ee8e34;">￥{{fromatPrice(item.wareWare?item.wareWare.price:'')}}</div>
       </div>
     </div>
@@ -48,7 +49,7 @@
       </div>
     </div>
     <div class="submit-box">
-      <div class="stitle">在线加收：</div>
+      <div class="stitle">到店支付：</div>
       <div class="price" style="color:#ee8e34;">￥{{fromatPrice(item.wareWare?item.wareWare.price:'')}}</div>
       <div class="btn " @click="bookingEvt">{{isChecked?'确定预约':'请先同意预约条款'}}</div>
     </div>

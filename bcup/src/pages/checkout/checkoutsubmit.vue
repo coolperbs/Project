@@ -1,11 +1,42 @@
 <template>
   <div class="checkout-submit">
     <div class="btn" @click="submitEvt">提交</div>
+    <div class="modal" v-if="showModal" @click.self="cancelEvt">
+      <div class="box">
+        <div class="body">
+          <img :src="mpSrc" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <style scoped>
+  .modal {
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .box {
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px 10px 0 10px;
+  }
+
+  .body {
+    display: flex;
+  }
   .checkout-submit {
     position: fixed;
     bottom: 0;
@@ -29,6 +60,7 @@
   import payServ from '@/services/pay/pay'
   import orderServ from '@/services/order/order'
   import utils from '@/common/utils/utils'
+
   var lock = false;
   var timmer = null;
 
@@ -36,11 +68,11 @@
     props: ['pageInfo'],
     methods: {
       submitEvt: function () {
-        if ( timmer ) {
-          clearTimeout( timmer );
+        if (timmer) {
+          clearTimeout(timmer);
           timmer = null;
         }
-        if ( lock ) {
+        if (lock) {
           return;
         }
 
@@ -72,20 +104,28 @@
               return;
             }
             // 3.换起微信支付
-            //todo 取消支付 的触发
-            timmer = setTimeout( function() {
+            timmer = setTimeout(function () {
               lock = false;
-            }, 500 );
+            }, 500);
             payServ.WXPay(payRes.data, function (wxpayRes) {
-              // TODO 这里 需要展示 引导关注公众号？？？
-              that.$router.push({path: '/orders/detail?orderid=' + orderRes.data.orderId});
+              //展示modal
+              this.orderId = orderRes.data.orderId;
+              that.showModal = true;
             });
           });
         });
+      },
+      hideModal: function () {
+        this.showModal = false;
+        this.$router.push({path: '/orders/detail?orderid=' + this.orderId});
       }
     },
     data: function () {
-      return {}
+      return {
+        showModal: false,
+        orderId: '',
+        mpSrc:''// TODO 差图片地址
+      }
     }
   };
 </script>

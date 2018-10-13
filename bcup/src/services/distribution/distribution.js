@@ -95,6 +95,16 @@ handle = {
       }
       callback && callback(res);
     });
+  },
+  //预约列表
+  getBespokeList(callback){
+    ajax.get('/app/bespoke/list', {}, (res) => {
+      if (utils.isErrorRes(res)) {
+        utils.showError(res.msg || '请求接口出错');
+        return;
+      }
+      callback && callback(res);
+    });
   }
 }
 
