@@ -24,7 +24,7 @@
               <span class="origin">￥<em>{{ fixPrice( item.price || item.originPrice ) }}</em></span>
               <span class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( item.brokeragePrice) }}</span>
             </div>
-            <div class="sale-num">已售：{{item.saledNum?item.saledNum:0}}</div>
+            <!--<div class="sale-num">已售：{{item.saledNum?item.saledNum:0}}</div>-->
           </div>
         </div>
       </div>
