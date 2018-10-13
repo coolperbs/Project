@@ -1,0 +1,7 @@
+<import src="../../widgets/modules/modules.swan" />
+
+<view class="modules">
+	<block s-for="item, index in pageData.moduleList" s-key="index">
+		<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{{...item, index}}}"></template>
+	</block>
+</view>

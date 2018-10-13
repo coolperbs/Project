@@ -1,0 +1,96 @@
+<import src="../../widgets/modules/modules.wxml"/>
+
+<template name="home">
+	<view class="home modules">
+		<view class="h-head">
+			<view catchtap="homeClickProxy" data-fn="goCity" class="city">
+				<image src="../../asset/loc.png"></image>
+				<view class="ellipsis-1">{{city.name}}</view>
+			</view>
+			<navigator url="../search/search" class="searchbox">
+				<view class="input">
+					<image src="../../asset/search-gray.png"></image>
+					请输入搜索内容
+				</view>
+			</navigator>
+			<view class="shops" catchtap="homeClickProxy" data-fn="toggleShops">
+				<image src="../../asset/shop.png"></image>
+			</view>
+		</view>
+		<block wx:for="{{pageData.moduleList}}" wx:key="index">
+			<!-- <template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{shops, index}}" wx:if="{{ item.modulePrototypeId == 6 && item.templatePrototypeId == 9 }}"></template>
+			<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{...item, index}}" wx:else></template> -->
+			<block wx:if="{{item.modulePrototypeId/1===3 && item.templatePrototypeId/1===4}}">
+				<template is="3-4" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===5 && item.templatePrototypeId/1===6}}">
+				<template is="5-6" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===4 && item.templatePrototypeId/1===5}}">
+				<template is="4-5" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===2 && item.templatePrototypeId/1===3}}">
+				<template is="2-3" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===2 && item.templatePrototypeId/1===18}}">
+				<template is="2-18" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===2 && item.templatePrototypeId/1===19}}">
+				<template is="2-19" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===1 && item.templatePrototypeId/1===1}}">
+				<template is="1-1" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===1 && item.templatePrototypeId/1===2}}">
+				<template is="1-2" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===1 && item.templatePrototypeId/1===7}}">
+				<template is="1-7" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===1 && item.templatePrototypeId/1===8}}">
+				<template is="1-8" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===6 && item.templatePrototypeId/1===9}}">
+				<template is="6-9" data="{{shops, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===9 && item.templatePrototypeId/1===12}}">
+				<template is="9-12" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===10 && item.templatePrototypeId/1===13}}">
+				<template is="10-13" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===11 && item.templatePrototypeId/1===14}}">
+				<template is="11-14" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===12 && item.templatePrototypeId/1===15}}">
+				<template is="12-15" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===13 && item.templatePrototypeId/1===16}}">
+				<template is="13-16" data="{{...item, index}}"></template>
+			</block>
+			<block wx:if="{{item.modulePrototypeId/1===14 && item.templatePrototypeId/1===17}}">
+				<template is="14-17" data="{{...item, index}}"></template>
+			</block>
+			
+		</block>	
+
+		<view class="mask {{ showShops ? 'show' : '' }}" catchtap="homeClickProxy" data-fn="hideShops"></view>
+		<view class="shop-list {{ showShops ? 'show' : '' }}">
+			<scroll-view scroll-x="{{true}}">
+				<view class="scroll-wrapper" style="width:{{180*shops.length}}rpx;">
+					<view class="tab" wx:for="{{shops}}" data-shopid="{{item.id}}" catchtap="homeClickProxy" data-fn="goHome" wx:key="index">
+						<image mode="aspectFit" src="{{item.logo}}"></image>
+						<view class="name ellipsis-1">{{item.name}}</view>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+	</view>	
+	<block wx:if="{{ false }}">
+		<view class="home goLogin-wrapper">
+			<view class="login-msg">当前地址没有服务，请切换城市试试</view>
+			<navigator class="login-btn" url="../city/city">切换地址</navigator>
+		</view>
+	</block>	
+</template>
+

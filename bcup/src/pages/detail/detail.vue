@@ -14,8 +14,8 @@
         <div class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( pageInfo.brokeragePrice ) }}</div>
       </div>
       <div class="info clearfix">
-        <div class="sale">已售:{{pageInfo.saledNum?pageInfo.saledNum:0}}</div>
-        <div class="stock">库存:{{pageInfo.lastStock}}</div>
+        <!--<div class="sale">已售:{{pageInfo.saledNum?pageInfo.saledNum:0}}</div>-->
+        <div class="stock" v-if="pageInfo.lastStock<=200">库存:{{pageInfo.lastStock}}</div>
       </div>
       <a :href="locationStr" class="loc ellipsis-1" style="display: block">
         {{pageInfo.storeVO.address}}

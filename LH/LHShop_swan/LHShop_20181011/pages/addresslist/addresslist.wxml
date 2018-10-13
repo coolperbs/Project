@@ -1,0 +1,47 @@
+<view class="barline"></view>
+<view class="address-wrap">
+    <view class="address-list">
+        <block wx:for="{{address}}" wx:key="id">
+            <template is="address" data="{{...item}}"></template> 
+        </block>
+
+    </view>
+    <view class="empty" wx:if="{{addRessList.length == 0}}">
+        <text>暂无地址</text>
+    </view>
+    <view class="add-btn btn-default" bindtap="toAddress" data-name="create">
+        <!--<image src="../../asset/add-white.png"/>-->
+        新建地址
+    </view>
+</view>
+<template name="address">
+    <view class="address-item">
+        <view class="info">
+            <view class="name">
+                <text>{{userName}}</text>
+                <text class="mobile">{{userPhone}}</text>
+            </view>
+            <view class="address text-ellipsis">
+                <text>{{provinceName}} {{cityName}} {{countryName}} {{address}}</text>
+            </view>
+            <view class="status">
+                <view  catchtap="delete" data-addressid="{{addressId}}">
+                    <image src="../../asset/delete-icon.png"/>
+                </view>
+                <view catchtap="toModify" data-addressid="{{addressId}}" data-name="edit">
+                    <image src="../../asset/edit-icon.png"/>
+                </view>
+            </view>
+        </view>
+        <view class="handle">
+            <view class="default" catchtap="update" data-key="defaulted" data-addressid="{{addressId}}">
+                <view class="check">
+                    <image wx:if="{{defaulted===2}}" src="../../asset/check-box-empty.png" />
+                    <image wx:if="{{defaulted===1}}" src="../../asset/check-box.png" />
+                </view>
+                设为默认
+            </view>
+        </view>
+    </view>
+    
+</template>

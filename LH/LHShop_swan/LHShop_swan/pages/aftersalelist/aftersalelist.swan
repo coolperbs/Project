@@ -1,0 +1,79 @@
+<view class="page-aftersalelist aftersaleList">
+	<view class="head">
+		<block s-for="item, index in tab.tabData" s-key="index">
+			<view class="box {{item.isCur?'current':''}}" data-param="{{item.param}}" data-extra="{{item.extra}}" bindtap="changeTab" style="{{item.style}}">{{item.name}}</view>
+		</block>
+		<view class="tab_ul" style="left:{{tab.hlLeft}}"></view>
+	</view>
+
+	<scroll-view class="list-container" style="height:{{height}}px" scroll-y="true" bing bindscrolltolower="loadMore">
+		<block s-for="item, index in aftersaleList" s-key="aftersale.id">
+			<template is="aftersale-good" data="{{{...item}}}"></template>
+		</block>
+	</scroll-view>	
+</view>
+
+
+<template name="aftersale-good">
+	<view class="gooditem" bindtap="toDetail" data-id="{{aftersale.id}}">
+		<view class="header">
+			<view class="left">
+				<view class="headerMsg">售后单号:{{aftersale.id}}</view>
+				<view class="headerMsg">订单号:{{aftersale.orderId}}</view>
+			</view>
+			<view class="right">
+				<view class="headerMsg">申请日期:{{aftersale.showCreated}}</view>
+			</view>
+		</view>
+		<view class="body">
+			<view class="left">
+				<image src='{{ware.mainImage}}'></image>
+			</view>
+			<view class="right">
+				<text class="name ellipsis-2">{{ware.title}}</text>
+				<!-- <text class="num">x222</text> -->
+				<view class="price">
+					<text class="unitPrice">{{ware.showPrice}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+
+
+<template name="aftersale-item">
+	<view class="aftersale-wrapper" bindtap="selectaftersale">
+		<view class="left">
+			<block s-if="userAvatarUrl">
+				<image src="{{userAvatarUrl}}"></image>
+			</block>
+			<block s-else>
+				<image src="../../asset/default-user.png"></image>
+			</block>
+			<!-- <image src="{{userHeadImage}}"></image> -->
+		</view>
+		<view class="right">
+			<view>
+				<view class="name">{{username}}</view>
+				<view class="starts">
+					<block s-for='item, index in stars' s-key="id">
+						<view class="star" data-value="{{item.val}}" data-id="{{id}}">
+							<block s-if="!score || item.val>score">
+								<image src="../../asset/star-nor.png"></image>
+							</block>
+							<block s-else>
+								<image src="../../asset/star-sel.png"></image>
+							</block>
+						</view>
+					</block>
+				</view>
+				<view class="content ellipsis-2">{{content}}</view>
+			</view>
+			<view class='time-wrapper'>
+				<view class="time">{{showCreateTime}}</view>
+			</view>
+		</view>
+	</view>
+	
+</template>

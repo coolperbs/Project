@@ -18,7 +18,7 @@ a { color : #434552; }
 .ellipsis-17 { -webkit-line-clamp:17; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; }
 
 /* 大新闻 */
-.news-wrap .main-pic{ width : 100%; max-height : 6.4rem; overflow: hidden; display: flex; display: -webkit-flex; align-items: center; }
+.news-wrap .main-pic{ width : 100%;  overflow: hidden; display: flex; display: -webkit-flex; align-items: center; }
 .news-wrap .main-pic img { width : 100%; }
 .news-wrap .detail { padding : 0.3rem; }
 .news-wrap .detail .title { margin : 0.05rem 0; font-size : 0.4rem; line-height: 0.49rem; }

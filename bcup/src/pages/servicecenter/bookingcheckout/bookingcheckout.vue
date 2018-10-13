@@ -7,9 +7,9 @@
     </div>
     <div class="cell-box">
       <div class="cell">
-        <div class="label">电子码</div>
+        <div class="label">核销码</div>
         <div class="input-box">
-          <input type="text" placeholder="请输入电子码" class="cell-input" v-model.trim="ecode">
+          <input type="text" placeholder="请输入核销码" class="cell-input" v-model.trim="ecode">
         </div>
       </div>
 
@@ -131,8 +131,12 @@
           alert('请输入姓名')
           return
         }
-        if (this.istel(this.userphone)) {
+        if (!this.istel(this.userphone)) {
           alert('请输入正确的手机号')
+          return
+        }
+        if (this.ecode == '') {
+          alert('请输入核销码')
           return
         }
         bookingCheckoutService.submit({
@@ -142,7 +146,15 @@
           userphone: this.userphone,
           remark: this.remark
         }, (res) => {
-          this.$router.back(-1)
+          var r = confirm('预约成功,点击去首页')
+          if (r) {
+            this.$router.replace({path: '/home'});
+            setTimeout(() => {
+              window.location.reload()
+            })
+          } else {
+            this.$router.back(-1)
+          }
         })
       }
 
@@ -220,6 +232,7 @@
     left: 0;
     right: 0;
     background: #fff;
+    border-top: 1px solid #eee;
   }
 
   .stitle {

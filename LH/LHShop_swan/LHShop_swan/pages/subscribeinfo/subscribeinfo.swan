@@ -1,0 +1,4 @@
+<view class="row" s-for="item, index in  list " s-key="index">
+	<view class="key">{{ item.key }} :</view>
+	<view class="value">{{ item.value }}</view>
+</view>

@@ -1,0 +1,229 @@
+<import src="../../widgets/modules/modules.wxml"/>
+<import src="../../lib/wxParse/wxParse.wxml"/>
+
+<scroll-view class="main {{pop.show ? 'showpop' : ''}}" bindscrolltolower="getMore" scroll-y="{{ true }}">
+    <view class="head">
+        <swiper catchtap="previewImage" class="banner" indicator-color="rgba(0, 0, 0, 0.3)" indicator-active-color="#111111" indicator-dots="{{true}}">
+            <swiper-item wx:for="{{pageData.mainImage}}" wx:key="index">
+                <image mode="aspectFill" src="{{item}}"></image>
+            </swiper-item>
+        </swiper> 
+
+        <view class="desc">
+            <view class="time-info" wx:if="{{ pageData.seckillObj.status == 0 }}">
+                距离秒杀开始还有
+                <view class="time">
+                    <view class="s">{{ pageData.seckillObj.startTime.day }}</view>
+                    <view class="t">天</view>
+                    <view class="s">{{ pageData.seckillObj.startTime.hours }}</view>
+                    <view class="t">时</view>
+                    <view class="s">{{ pageData.seckillObj.startTime.minutes }}</view>
+                    <view class="t">分</view>
+                    <view class="s">{{ pageData.seckillObj.startTime.seconds }}</view>
+                    <view class="t">秒</view>
+                </view>
+            </view>
+
+
+            <view class="time-info" wx:if="{{ pageData.seckillObj.status == 1 }}">
+                距离秒杀结束还有
+                <view class="time">
+                    <view class="s">{{ pageData.seckillObj.endTime.day }}</view>
+                    <view class="t">天</view>
+                    <view class="s">{{ pageData.seckillObj.endTime.hours }}</view>
+                    <view class="t">时</view>
+                    <view class="s">{{ pageData.seckillObj.endTime.minutes }}</view>
+                    <view class="t">分</view>
+                    <view class="s">{{ pageData.seckillObj.endTime.seconds }}</view>
+                    <view class="t">秒</view>
+                </view>
+            </view>
+
+            <view class="time-info" wx:if="{{ pageData.seckillObj.status == 2 }}">
+                秒杀已经结束
+            </view>
+
+
+
+            <view class="title ellipsis-2">{{pageData.title}}</view>
+            <view class="sub-title">{{pageData.subTitle}}</view>
+            <view class="spec-info" catchtap="addCart">
+                <image mode="aspectFit" src="{{pageData.skuImage}}"></image>
+                <block wx:for="{{ pageData.saleProSku.pros }}" wx:for-index="proIndex" wx:key="proId">
+                    <view wx:if="{{pageData.attributesObj[ item.proId + ':' + slt.valueId ]}}" class="cell" wx:for="{{item.values}}" wx:key="valueId" wx:for-item="slt">{{slt.valueName}}
+                    </view>
+                </block>
+            </view>
+            <view class="price-info">
+                <view class="price"><view class="sub">¥</view>{{ pageData.price ? pageData.price / 100 : pageData.originPrice / 100 }}<view class="sub">元</view></view>
+                <view class="origin-price" wx:if="{{ pageData.originPrice }}">¥{{pageData.originPrice / 100}}</view>
+                <view class="tags" wx:if="{{pageData.tags && pageData.tags.length}}">{{pageData.tags[0]}}</view>
+            </view>
+        </view>
+
+        <view class="services">
+            <view class="cell">
+                <image src="../../asset/right-small.png"></image>
+                100% 正品保证
+            </view>
+            <view class="cell">
+                <image src="../../asset/right-small.png"></image>
+                7天无理由退货
+            </view>
+            <view class="cell">
+                <image src="../../asset/right-small.png"></image>
+                48小时快速退款
+            </view>
+        </view>
+        <navigator wx:if="{{ pageData.shopId }}" class="entrance" url="../shop/shop?shopid={{pageData.shopId}}">进店逛逛</navigator>
+    </view>
+
+    <view class="comment-list">
+        <view class="all">宝贝评价（{{allcomments || 0}}）</view>
+        <view class="comment" wx:if="{{comments[0]}}">
+            <view class="c-head">
+                <image src="{{comments[0].userAvatarUrl}}"></image>
+                {{comments[0].username}}:
+            </view>
+            <view class="c-content">{{comments[0].content}}</view>
+            <view class="c-img">
+                <image wx:for="{[1,2,3,4,5,6,7,8,9]}" wx:key="index" wx:if="{{comments[0]['img' + item]}}" src="{{comments[0]['img' + item]}}"></image>
+            </view>
+            <view class="c-sub">{{comments[0].commentCreatedObj.year}}-{{comments[0].commentCreatedObj.month}}-{{comments[0].commentCreatedObj.day}} {{comments[0].commentCreatedObj.hours}}:{{comments[0].commentCreatedObj.minutes}}:{{comments[0].commentCreatedObj.seconds}}</view>
+        </view>
+        <navigator url="../commentlist/commentlist?skuid={{pageData.skuId}}" class="c-more">查看全部评价</navigator>
+    </view>
+
+    <view class="cont">
+        <view class="tabs">
+            <view class="tab {{ tab.current=='imgs' ? 'current' : '' }}" catchtap="changeTab" data-id="imgs">图文详情</view>
+            <view class="tab {{ tab.current=='param' ? 'current' : '' }}" catchtap="changeTab" data-id="param">参数规格</view>
+            <view class="tab {{ tab.current=='desc' ? 'current' : '' }}" catchtap="changeTab" data-id="desc">品牌描述</view>
+        </view>
+
+        <!-- 图文详情 start -->
+        <view class="images parse" catchtap="previewDetailImage" wx:if="{{ tab.current=='imgs' }}">
+            <template is="wxParse" data="{{wxParseData:detailNodes.nodes}}"/>
+            <!--<image mode="widthFix" catchtap="privewSingleImg" data-src="{{ item }}" wx:for="{{pageData.detailImage}}" wx:key="index" src="{{item}}"></image>-->
+        </view>
+        <!-- 图文详情 end -->
+
+        <!-- 参数规格 start -->
+        <view class="parameters" wx:if="{{ tab.current=='param' }}">
+            <view class="row" wx:for="{{pageData.pros}}" wx:key="index">
+                <view class="key">{{index}}：</view>
+                <view class="value">{{item}}</view>
+            </view>
+        </view>
+        <!-- 参数规格 end -->
+
+        <!-- 品牌描述 start -->
+        <view class="brand" wx:if="{{pageData.brand && tab.current=='desc'}}" >
+            <view class="brief">
+                <image class="logo" src="{{pageData.brand.logo}}"></image>
+                <view class="name">{{pageData.brand.name}}</view>
+            </view>
+            <view class="desc">
+                {{pageData.brand.introduce}}
+            </view>
+        </view>
+        <!-- 品牌描述 end -->
+    </view>
+
+    <view class="more modules" wx:if="{{ moduleList && moduleList.length }}">
+        <view class="m-title">猜你喜欢</view>
+        <block wx:for="{{moduleList}}" wx:key="modulePrototypeId">
+            <template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{...item, index}}"></template>
+        </block>
+    </view>
+
+
+
+    <view class="last-node"></view>
+</scroll-view>
+
+<view class="pop {{pop.show ? 'showpop' : '' }}">
+    <view class="head">
+        <image class="img"  catchtap="privewSingleImg" data-src="{{ pageData.skuImage }}" src="{{pageData.skuImage}}"></image>
+        <view class="info">
+            <!--<view class="title">中秋便携茶具礼盒限量版时光小黑盒 Pertouch泊喜</view>-->
+            <view class="main">
+                <view class="price"><view class="sub">¥</view>{{ pageData.price ? pageData.price / 100 : pageData.originPrice / 100 }}</view>
+                <view class="stock">库存{{pageData.lastStock}}件</view>
+            </view>
+            <view class="name ellipsis-2">{{pageData.title}}</view>
+            <!--J<view class="sub ellipsis-2">{{pageData.subTitle}}</view>-->
+        </view>
+    </view>
+
+    <scroll-view class="cont" scroll-y="{{ true }}" wx:if="{{ pageData.saleProSku.pros && pageData.saleProSku.pros.length }}">
+        <view class="spec">
+            <view class="row" wx:for="{{ pageData.saleProSku.pros }}" wx:for-index="proIndex" wx:key="proId">
+                <view class="name">{{item.proName}}</view>
+                <view class="cells">
+                    <view catchtap="changePros" class="slt {{ pageData.attributesObj[ item.proId + ':' + slt.valueId ] ? 'current' : ''}}" wx:for="{{item.values}}" wx:key="valueId" wx:for-item="slt" data-level="{{proIndex}}" data-id="{{item.proId}}:{{slt.valueId}}">{{slt.valueName}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="count">
+            <view class="name">数量</view>
+            <view class="act">
+                <view class="minus" catchtap="minus">-</view>
+                <view class="num">{{buyNum}}</view>
+                <view class="plus" catchtap="plus">+</view>
+            </view>
+        </view>
+        <view class="last"></view>
+    </scroll-view>
+</view>
+
+<view catchtap="hidePop" class="mask  {{pop.show ? 'showpop' : '' }}"></view>
+
+<view class="toolbar">
+    <block wx:if="{{ !pop.show }}">
+        <view class="icons">
+            <view class="cell">
+                <button class="call" open-type="contact"></button>
+                <image src="../../asset/message-white.png"></image>
+            </view>
+            <view class="cell" catchtap="toCart">
+                <view wx:if="{{ cartNum > 0}}" class="num">{{cartNum || ''}}</view>
+
+                <image src="../../asset/cart-white.png"></image>
+            </view>
+            <view class="cell" catchtap="follow">
+                <image wx:if="{{pageData.favorite == 1}}" src="../../asset/heart-red.png"></image>
+                <image wx:else src="../../asset/heart-line.png"></image>
+            </view>
+        </view>
+        <view class="buttons" wx:if="{{ pageData && pageData.seckillObj.status == 1 }}">
+            <view class="btn primary" catchtap="buyNow">立即抢购</view>
+        </view>
+
+        <view class="buttons" wx:if="{{ !pageData.seckillVO }}">
+            <view class="btn" catchtap="addCart">加入购物车</view>
+            <view class="btn primary" catchtap="buyNow">马上购买</view>
+        </view>
+    </block>
+    <view wx:if="{{ pop.show }}" catchtap="submit" class="btn primary">确定</view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

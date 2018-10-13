@@ -1,0 +1,17 @@
+page { width: 100%; background-color: #f9f9f9; color : #333; padding-bottom : 8vw; }
+
+.mod {}
+.mod .title { font-size : 3.7333333333333334vw; padding : 4vw; }
+.mod .cont { font-size : 3.2vw; padding : 4vw; background-color: #fff; color : #777; border-top : solid 1px #f0f0f0; border-bottom : solid 1px #f0f0f0; }
+.mod .list .cell { display: flex; margin-top : 4vw; }
+.mod .list .cell:first-child { margin-top : 0; }
+.mod .list .cell .t { width : 18.666666666666668vw; }
+.mod .list .cell .i { width : 73.33333333333333vw; }
+
+.mod .list.icon { display: flex; flex-wrap : wrap; justify-content : flex-start; padding-top : 0; }
+.mod .list.icon .cell { margin : 0; width : 18.4vw; display: flex; flex-direction : column; margin-top : 4vw; }
+.mod .list.icon .cell .t,
+.mod .list.icon .cell .i { width : auto; display: flex; justify-content : center;  }
+.mod .list.icon .cell .t { height: 8vw; display: flex; justify-content : center; align-items : center; }
+.mod .list.icon .cell .t image { width : 8vw; background-color: #fefefe; }
+.mod .list.icon .cell .i { margin-top : 2.6666666666666665vw; }

@@ -1,0 +1,20 @@
+[
+    {
+        "type": "delete api",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 105,
+        "column": 2,
+        "before": "wx.showShareMenu({})",
+        "after": "",
+        "message": "wx.showShareMenu:没有相对应的函数"
+    },
+    {
+        "type": "delete api",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 54,
+        "column": 8,
+        "before": "wx.showShareMenu({\n  withShareTicket: true\n})",
+        "after": "",
+        "message": "wx.showShareMenu:没有相对应的函数"
+    }
+]

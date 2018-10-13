@@ -1,0 +1,38 @@
+@import "../../views/home/home.css";
+@import "../../views/mine/mine.css";
+@import "../../views/cart/cart.css";
+@import "../../views/category/category.css";
+@import "../../views/distribution/distribution.css";
+
+page { height : 100%; }
+
+.toolbar { display: flex; height : 13.333333333333334vw; border-top: solid 1px #eee; position: fixed; bottom : 0; width : 100%; background-color: white;z-index:100010;}
+.toolbar .tab { width : 20vw; flex-grow : 1; flex-direction: column; display: flex; align-items: center; font-size : 3.2vw; color : #888; position: relative; justify-content : center; }
+.toolbar .tab .text { font-size : 2.6666666666666665vw; }
+.toolbar .tab .icon { width:5.866666666666666vw; margin-bottom : 0.26666666666666666vw; }
+.toolbar .tab image { opacity : 0.5; }
+.toolbar image.current { opacity: 1; }
+.toolbar .tab .num { background-color: #eb2243; color : #fff; width : 4.8vw; height : 4.8vw; border-radius : 50%; text-align: center; line-height: 4.8vw; font-size : 2.6666666666666665vw; position: absolute; left : 50%; margin-left : 1.3333333333333333vw; top : 1.3333333333333333vw; z-index: 1; }
+.toolbar .line { position: absolute; width : 10.666666666666666vw; height : 0.8vw; background-color: #000; bottom : 0; left : 11.733333333333333vw;  }
+
+.toolbar .tab image { transition:opacity ease-out 0.2s; }
+.toolbar .line { transition:left ease-out 0.2s; }
+
+.tips { position: fixed; top : 0; left : 0; height : 100%; width : 100%; background-color: rgba( 0, 0, 0, 0.5 ); z-index: 1000; display: flex; align-items : center; justify-content : center; }
+.tips .pop { padding : 6.666666666666667vw 5.333333333333333vw; position: relative; top : -10.666666666666666vw; background-color: #fff; width : 74.66666666666667vw; border-radius: 1.0666666666666667vw; position: relative; box-shadow: 0 1.3333333333333333vw 2.6666666666666665vw rgba( 0, 0, 0, 0.1 ); }
+.tips .pop .title { font-size : 4.8vw; }
+.tips .pop .close { position: absolute; right : -2.6666666666666665vw; top : -2.6666666666666665vw; background-color: #fff; display: flex; align-items : center; justify-content : center; width : 8vw; height : 8vw; border-radius: 4vw; box-shadow: 0 1.3333333333333333vw 2.6666666666666665vw rgba( 0, 0, 0, 0.1 ); }
+
+/* 评论列表 */
+.comment-item { display : flex; margin-top : 10.666666666666666vw; align-items : center; justify-content : space-between; }
+.comment-item .pics { width : 28vw; position: relative; height : 24vw; }
+.comment-item .pics.img-floor .box{ background-color: #fff; width:21.333333333333332vw; height:21.333333333333332vw; box-shadow: 0 0.8vw 1.6vw 0 rgba(0,0,0,0.05); position: absolute; left : 0; top : 0; border : solid 0.13333333333333333vw #f0f0f0; }
+.comment-item .pics.img-floor .box.l-1{ z-index: 3; }
+.comment-item .pics.img-floor .box.l-2{ left : 0.8vw; top : 0.8vw; z-index: 2; }
+.comment-item .pics.img-floor .box.l-3{ left : 1.6vw; top : 1.6vw; z-index: 1; }
+.comment-item .info { width : 46.666666666666664vw; height: 18.666666666666668vw; display: flex; flex-direction : column; justify-content : space-between; }
+.comment-item .info .title,
+.comment-item .info .price {  font-size : 3.7333333333333334vw; color : #4a4a4a; }
+
+.act { margin-top : 13.333333333333334vw; text-align: center; }
+.act .btn { font-size : 4.533333333333333vw; margin : 0 auto; color : #fff; box-shadow: 0 1.3333333333333333vw 2.6666666666666665vw rgba( 0, 0, 0, 0.22 ); background-color: #161823; height : 13.333333333333334vw; border-radius: 6.666666666666667vw; padding : 0 9.333333333333334vw; line-height: 13.333333333333334vw; text-align: center; display: inline-block; }

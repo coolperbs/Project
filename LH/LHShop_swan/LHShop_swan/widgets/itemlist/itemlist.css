@@ -1,0 +1,8 @@
+/* 商品列表 */
+.itemlist { overflow: hidden;}
+.itemlist .item { border-bottom: solid 1px #eee; height : 17.333333333333332vw; padding: 2.6666666666666665vw 2.6666666666666665vw 2.6666666666666665vw 21.333333333333332vw; position: relative; }
+.itemlist .item image { width : 17.333333333333332vw; height : 17.333333333333332vw; position: absolute; left : 1.3333333333333333vw; top : 50%; margin-top: -8.666666666666666vw; }
+.itemlist .item .title { font-size: 3.7333333333333334vw; height : 8vw; line-height: 4vw; overflow: hidden; }
+.itemlist .item .price { font-size : 3.2vw; color : #f5692e; position: absolute; bottom : 1.3333333333333333vw;  }
+.itemlist .item .price .strong { display: inline; font-size : 4.8vw; margin-left : 0.6666666666666666vw; }
+.itemlist .item .icon.plus { position: absolute; right : 2.6666666666666665vw; bottom : 1.3333333333333333vw; }

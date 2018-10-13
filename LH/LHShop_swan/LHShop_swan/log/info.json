@@ -1,0 +1,3161 @@
+[
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 9,
+        "column": 11,
+        "before": "wx.getExtConfigSync",
+        "after": "swan.getExtConfigSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 9,
+        "column": 34,
+        "before": "wx.getExtConfigSync",
+        "after": "swan.getExtConfigSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 9,
+        "column": 58,
+        "before": "wx.getExtConfigSync",
+        "after": "swan.getExtConfigSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 26,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 41,
+        "column": 2,
+        "before": "wx.removeStorageSync",
+        "after": "swan.removeStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 67,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 68,
+        "column": 8,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 75,
+        "column": 16,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 76,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 78,
+        "column": 25,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/app.js",
+        "row": 99,
+        "column": 4,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/ajax/ajax.js",
+        "row": 9,
+        "column": 4,
+        "before": "wx.request",
+        "after": "swan.request",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/ajax/ajax.js",
+        "row": 29,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/query/ajax.js",
+        "row": 19,
+        "column": 6,
+        "before": "wx.request",
+        "after": "swan.request",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/query/ajax.js",
+        "row": 28,
+        "column": 12,
+        "before": "wx.hideToast",
+        "after": "swan.hideToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/query/query.js",
+        "row": 26,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/query/query.js",
+        "row": 48,
+        "column": 6,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/address.js",
+        "row": 92,
+        "column": 2,
+        "before": "wx.request",
+        "after": "swan.request",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/address.js",
+        "row": 114,
+        "column": 2,
+        "before": "wx.request",
+        "after": "swan.request",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/address.js",
+        "row": 136,
+        "column": 2,
+        "before": "wx.request",
+        "after": "swan.request",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 71,
+        "column": 8,
+        "before": "wx.chooseImage",
+        "after": "swan.chooseImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 79,
+        "column": 20,
+        "before": "wx.showLoading",
+        "after": "swan.showLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 84,
+        "column": 24,
+        "before": "wx.hideLoading",
+        "after": "swan.hideLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 97,
+        "column": 8,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 116,
+        "column": 23,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 117,
+        "column": 8,
+        "before": "wx.uploadFile",
+        "after": "swan.uploadFile",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/fileUploader.js",
+        "row": 133,
+        "column": 20,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 2,
+        "column": 14,
+        "before": "wx.getSystemInfoSync",
+        "after": "swan.getSystemInfoSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 43,
+        "column": 6,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 65,
+        "column": 8,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 69,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 83,
+        "column": 8,
+        "before": "wx.showLoading",
+        "after": "swan.showLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 88,
+        "column": 4,
+        "before": "wx.showLoading",
+        "after": "swan.showLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 125,
+        "column": 4,
+        "before": "wx.hideLoading",
+        "after": "swan.hideLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 128,
+        "column": 4,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/common/utils/utils.js",
+        "row": 129,
+        "column": 4,
+        "before": "wx.reLaunch",
+        "after": "swan.reLaunch",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/lib/wxParse/wxParse.js",
+        "row": 22,
+        "column": 0,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/lib/wxParse/wxParse.js",
+        "row": 60,
+        "column": 4,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/active/active.js",
+        "row": 46,
+        "column": 15,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/active/active.js",
+        "row": 60,
+        "column": 3,
+        "before": "wx.setNavigationBarTitle",
+        "after": "swan.setNavigationBarTitle",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 38,
+        "column": 2,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 112,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 116,
+        "column": 5,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 119,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 139,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 143,
+        "column": 5,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 146,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/address/address.js",
+        "row": 185,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 20,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 32,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 87,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 97,
+        "column": 7,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 104,
+        "column": 7,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 125,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/addresslist/addresslist.js",
+        "row": 132,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 66,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 75,
+        "column": 7,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 81,
+        "column": 10,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 86,
+        "column": 7,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 111,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 117,
+        "column": 7,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersale/aftersale.js",
+        "row": 122,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersalelist/aftersalelist.js",
+        "row": 51,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/aftersalelist/aftersalelist.js",
+        "row": 61,
+        "column": 3,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 87,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 92,
+        "column": 6,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 117,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 157,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 173,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 235,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/artical/artical.js",
+        "row": 246,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/articallist/articallist.js",
+        "row": 48,
+        "column": 2,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/articallist/articallist.js",
+        "row": 75,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/articallist/articallist.js",
+        "row": 86,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/cashdetail/cashdetail.js",
+        "row": 20,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/cashdetail/cashdetail.js",
+        "row": 45,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 56,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 61,
+        "column": 6,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 108,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 164,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 220,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 233,
+        "column": 5,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 246,
+        "column": 5,
+        "before": "wx.hideLoading",
+        "after": "swan.hideLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 248,
+        "column": 6,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 251,
+        "column": 7,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 265,
+        "column": 6,
+        "before": "wx.hideLoading",
+        "after": "swan.hideLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 268,
+        "column": 7,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 270,
+        "column": 8,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout-old.js",
+        "row": 276,
+        "column": 7,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 51,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 186,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 190,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 193,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 235,
+        "column": 10,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 242,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 254,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 266,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 335,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 339,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 343,
+        "column": 9,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 347,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 374,
+        "column": 4,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 382,
+        "column": 5,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 384,
+        "column": 5,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 391,
+        "column": 4,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 401,
+        "column": 5,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 405,
+        "column": 30,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 417,
+        "column": 5,
+        "before": "wx.showLoading",
+        "after": "swan.showLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 419,
+        "column": 6,
+        "before": "wx.hideLoading",
+        "after": "swan.hideLoading",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 422,
+        "column": 7,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 424,
+        "column": 7,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 437,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 449,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 453,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 468,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 495,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 511,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 515,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context && method",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/checkout/checkout.js",
+        "row": 559,
+        "column": 2,
+        "before": "wx.requestPayment",
+        "after": "swan.requestPayment",
+        "message": "转换上下文和方法"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/city/city.js",
+        "row": 40,
+        "column": 22,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/city/city.js",
+        "row": 46,
+        "column": 12,
+        "before": "wx.removeStorageSync",
+        "after": "swan.removeStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/city/city.js",
+        "row": 48,
+        "column": 8,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/city/city.js",
+        "row": 53,
+        "column": 12,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/comment/comment.js",
+        "row": 66,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/comment/comment.js",
+        "row": 72,
+        "column": 7,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/comment/comment.js",
+        "row": 77,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/commentlist/commentlist.js",
+        "row": 49,
+        "column": 3,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/coupon-fetch/coupon-fetch.js",
+        "row": 31,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/coupon-fetch/coupon-fetch.js",
+        "row": 37,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/coupon-mine/coupon-mine.js",
+        "row": 50,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/coupon-use/coupon-use.js",
+        "row": 51,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/coupon-use/coupon-use.js",
+        "row": 77,
+        "column": 2,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/date/date.js",
+        "row": 19,
+        "column": 20,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/date/date.js",
+        "row": 58,
+        "column": 6,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/date/date.js",
+        "row": 59,
+        "column": 6,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/date/date.js",
+        "row": 72,
+        "column": 18,
+        "before": "wx.getSystemInfoSync",
+        "after": "swan.getSystemInfoSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/date/date.js",
+        "row": 216,
+        "column": 21,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 16,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 43,
+        "column": 2,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 50,
+        "column": 2,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 59,
+        "column": 2,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 132,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 139,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 148,
+        "column": 5,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 154,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 238,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/detail/detail.js",
+        "row": 331,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 43,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 51,
+        "column": 7,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 65,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 69,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 83,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 88,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/favorite/favorite.js",
+        "row": 95,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/fx-money/fx-money.js",
+        "row": 70,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/fx-takemoney/fx-takemoney.js",
+        "row": 68,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/fx-takemoney/fx-takemoney.js",
+        "row": 73,
+        "column": 6,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/fx-takemoney/fx-takemoney.js",
+        "row": 116,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/fx-team/fx-team.js",
+        "row": 51,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 41,
+        "column": 12,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 49,
+        "column": 8,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 59,
+        "column": 8,
+        "before": "wx.reLaunch",
+        "after": "swan.reLaunch",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 64,
+        "column": 8,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 70,
+        "column": 8,
+        "before": "wx.reLaunch",
+        "after": "swan.reLaunch",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 132,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 142,
+        "column": 23,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-detail/gp-detail.js",
+        "row": 198,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-index/gp-index.js",
+        "row": 24,
+        "column": 8,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-index/gp-index.js",
+        "row": 32,
+        "column": 8,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 29,
+        "column": 2,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 96,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 110,
+        "column": 5,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 116,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 200,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 220,
+        "column": 2,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 236,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 418,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 437,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 441,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/gp-waredetail/gp-waredetail.js",
+        "row": 443,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 90,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 94,
+        "column": 12,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 98,
+        "column": 2,
+        "before": "wx.removeStorageSync",
+        "after": "swan.removeStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 140,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 159,
+        "column": 3,
+        "before": "wx.setNavigationBarColor",
+        "after": "swan.setNavigationBarColor",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 164,
+        "column": 3,
+        "before": "wx.setNavigationBarColor",
+        "after": "swan.setNavigationBarColor",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 173,
+        "column": 4,
+        "before": "wx.setNavigationBarTitle",
+        "after": "swan.setNavigationBarTitle",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 213,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 222,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/index/index.js",
+        "row": 226,
+        "column": 2,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/info/info.js",
+        "row": 41,
+        "column": 6,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/info/info.js",
+        "row": 46,
+        "column": 10,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/info/info.js",
+        "row": 52,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/info/info.js",
+        "row": 85,
+        "column": 19,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/join/join.js",
+        "row": 61,
+        "column": 5,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/join/join.js",
+        "row": 65,
+        "column": 7,
+        "before": "wx.reLaunch",
+        "after": "swan.reLaunch",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/join/join.js",
+        "row": 71,
+        "column": 5,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/join/join.js",
+        "row": 112,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 30,
+        "column": 4,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 41,
+        "column": 2,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 52,
+        "column": 4,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 55,
+        "column": 4,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 59,
+        "column": 26,
+        "before": "wx.canIUse",
+        "after": "swan.canIUse",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 63,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 71,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/login/login.js",
+        "row": 76,
+        "column": 4,
+        "before": "wx.openSetting",
+        "after": "swan.openSetting",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 18,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 31,
+        "column": 5,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 45,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 65,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 83,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 91,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 97,
+        "column": 2,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 105,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderdetail/orderdetail.js",
+        "row": 116,
+        "column": 8,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderinfo/orderinfo.js",
+        "row": 27,
+        "column": 4,
+        "before": "wx.makePhoneCall",
+        "after": "swan.makePhoneCall",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderinfo/orderinfo.js",
+        "row": 51,
+        "column": 8,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderinfo/orderinfo.js",
+        "row": 73,
+        "column": 4,
+        "before": "wx.openLocation",
+        "after": "swan.openLocation",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context && method",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderinfo/orderinfo.js",
+        "row": 125,
+        "column": 4,
+        "before": "wx.requestPayment",
+        "after": "swan.requestPayment",
+        "message": "转换上下文和方法"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 53,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 61,
+        "column": 2,
+        "before": "wx.reLaunch",
+        "after": "swan.reLaunch",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 78,
+        "column": 5,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 91,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 112,
+        "column": 2,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 134,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/orderlist/orderlist.js",
+        "row": 144,
+        "column": 3,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/pointToMoney/pointToMoney.js",
+        "row": 21,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/pointToMoney/pointToMoney.js",
+        "row": 39,
+        "column": 5,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/pointToMoney/pointToMoney.js",
+        "row": 46,
+        "column": 5,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/scoredetail/scoredetail.js",
+        "row": 20,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/scoredetail/scoredetail.js",
+        "row": 45,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/search/search.js",
+        "row": 52,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/search/search.js",
+        "row": 110,
+        "column": 12,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/search/search.js",
+        "row": 114,
+        "column": 12,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/seckilllist/seckilllist.js",
+        "row": 45,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/seckilllist/seckilllist.js",
+        "row": 63,
+        "column": 2,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/seckilllist/seckilllist.js",
+        "row": 90,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/seckilllist/seckilllist.js",
+        "row": 180,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/shop/shop.js",
+        "row": 36,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/shopdetails/shopdetails.js",
+        "row": 26,
+        "column": 4,
+        "before": "wx.makePhoneCall",
+        "after": "swan.makePhoneCall",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/shopdetails/shopdetails.js",
+        "row": 32,
+        "column": 5,
+        "before": "wx.openLocation",
+        "after": "swan.openLocation",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/subscribe/subscribe.js",
+        "row": 17,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/subscribe/subscribe.js",
+        "row": 52,
+        "column": 3,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/subscribe/subscribe.js",
+        "row": 57,
+        "column": 5,
+        "before": "wx.navigateBack",
+        "after": "swan.navigateBack",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/subscribe/subscribe.js",
+        "row": 119,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/subscribe/subscribe.js",
+        "row": 138,
+        "column": 15,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/subscribe/subscribe.js",
+        "row": 152,
+        "column": 3,
+        "before": "wx.setNavigationBarTitle",
+        "after": "swan.setNavigationBarTitle",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 49,
+        "column": 2,
+        "before": "wx.getStorage",
+        "after": "swan.getStorage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 55,
+        "column": 5,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context && method",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 113,
+        "column": 4,
+        "before": "wx.requestPayment",
+        "after": "swan.requestPayment",
+        "message": "转换上下文和方法"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 120,
+        "column": 6,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 125,
+        "column": 6,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 158,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/pages/wallet/wallet.js",
+        "row": 193,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/active/active.js",
+        "row": 40,
+        "column": 16,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/active/active.js",
+        "row": 41,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/active/active.js",
+        "row": 46,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/active/active.js",
+        "row": 50,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/active/active.js",
+        "row": 53,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 117,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 122,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 125,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 131,
+        "column": 16,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 132,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 137,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 141,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/cart/cart.js",
+        "row": 144,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 15,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 16,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 29,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 46,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 47,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 52,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 59,
+        "column": 2,
+        "before": "wx.getLocation",
+        "after": "swan.getLocation",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 73,
+        "column": 6,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 78,
+        "column": 8,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 96,
+        "column": 5,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 102,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/loc/loc.js",
+        "row": 107,
+        "column": 6,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/order/order.js",
+        "row": 99,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context && method",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/order/order.js",
+        "row": 136,
+        "column": 2,
+        "before": "wx.requestPayment",
+        "after": "swan.requestPayment",
+        "message": "转换上下文和方法"
+    },
+    {
+        "type": "transform context && method",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/trade/trade.js",
+        "row": 66,
+        "column": 2,
+        "before": "wx.requestPayment",
+        "after": "swan.requestPayment",
+        "message": "转换上下文和方法"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 32,
+        "column": 9,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 36,
+        "column": 15,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 41,
+        "column": 2,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 45,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 50,
+        "column": 2,
+        "before": "wx.checkSession",
+        "after": "swan.checkSession",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 69,
+        "column": 2,
+        "before": "wx.checkSession",
+        "after": "swan.checkSession",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 168,
+        "column": 2,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 185,
+        "column": 2,
+        "before": "wx.getUserInfo",
+        "after": "swan.getUserInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 187,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/service/user/user.js",
+        "row": 194,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/cart/cart.js",
+        "row": 51,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/cart/cart.js",
+        "row": 68,
+        "column": 6,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/cart/cart.js",
+        "row": 72,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/cart/cart.js",
+        "row": 99,
+        "column": 4,
+        "before": "wx.showModal",
+        "after": "swan.showModal",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 12,
+        "column": 17,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 20,
+        "column": 14,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 24,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 28,
+        "column": 9,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 44,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 49,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 53,
+        "column": 2,
+        "before": "wx.getImageInfo",
+        "after": "swan.getImageInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 56,
+        "column": 6,
+        "before": "wx.saveImageToPhotosAlbum",
+        "after": "swan.saveImageToPhotosAlbum",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 59,
+        "column": 10,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 62,
+        "column": 10,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 69,
+        "column": 6,
+        "before": "wx.previewImage",
+        "after": "swan.previewImage",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 82,
+        "column": 18,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/distribution/distribution.js",
+        "row": 92,
+        "column": 3,
+        "before": "wx.setStorageSync",
+        "after": "swan.setStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/home/home.js",
+        "row": 23,
+        "column": 16,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/home/home.js",
+        "row": 35,
+        "column": 15,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/home/home.js",
+        "row": 85,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/home/home.js",
+        "row": 88,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 52,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 56,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 61,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 66,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 71,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 76,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 81,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 86,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 95,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 100,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 105,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 110,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 115,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 141,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine-old/mine.js",
+        "row": 153,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 52,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 56,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 62,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 67,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 72,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 77,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 82,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 87,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 92,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 97,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 106,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 111,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 116,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 121,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 126,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 151,
+        "column": 2,
+        "before": "wx.getSystemInfo",
+        "after": "swan.getSystemInfo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/views/mine/mine.js",
+        "row": 163,
+        "column": 13,
+        "before": "wx.getStorageSync",
+        "after": "swan.getStorageSync",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/widgets/modules/modules.js",
+        "row": 38,
+        "column": 2,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/widgets/modules/modules.js",
+        "row": 45,
+        "column": 2,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/widgets/modules/modules.js",
+        "row": 104,
+        "column": 3,
+        "before": "wx.redirectTo",
+        "after": "swan.redirectTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/widgets/modules/modules.js",
+        "row": 106,
+        "column": 3,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/widgets/modules/modules.js",
+        "row": 235,
+        "column": 4,
+        "before": "wx.navigateTo",
+        "after": "swan.navigateTo",
+        "message": "只转换了上下文, wx ==> swan"
+    },
+    {
+        "type": "transform context",
+        "file": "/Users/admin/Documents/workspace/Project/LH/LHShop_swan/LHShop_swan/widgets/modules/modules.js",
+        "row": 243,
+        "column": 3,
+        "before": "wx.showToast",
+        "after": "swan.showToast",
+        "message": "只转换了上下文, wx ==> swan"
+    }
+]

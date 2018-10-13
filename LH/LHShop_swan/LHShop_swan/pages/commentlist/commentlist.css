@@ -1,0 +1,192 @@
+
+.page-commentlist{
+	/*background-color: red;*/
+}
+
+
+.page-commentlist .head { z-index:100;border-bottom: solid 0.26666666666666666vw #f0f0f0; background-color: #fff; position: fixed; top : 0; left : 0; width : 100%; display: flex; align-items: center; justify-content: space-around; }
+.page-commentlist .head .box { text-align:center;height : 13.333333333333334vw; line-height: 13.333333333333334vw; padding : 0 2.6666666666666665vw; font-size : 3.7333333333333334vw; }
+.page-commentlist .head .box.current { color : #d6204b;  }
+.tab_ul{
+	position:absolute;
+	height:0.8vw;
+	background-color:#d6204b;
+	left:0;
+	bottom:0;
+	width:12vw;
+	transition: all .3s;
+
+}
+
+
+.page-commentlist .tab{
+	display:flex;
+	height:13.333333333333334vw;
+	align-items:center;
+	position: fixed;
+	top:0;
+	background-color: #fff;
+	width:100%;
+	z-index: 100
+}
+.page-commentlist .tab .tab-item{
+	display:flex;
+	height:13.333333333333334vw;
+	align-items:center;
+	border-bottom:1px solid #f8f8f8;
+	width:25%;
+	text-align:center;
+	justify-content:center;
+	flex-direction:column;
+	color:#434552;
+}
+.page-commentlist .tab .tab-item .content{
+	display:flex;
+	height:100%;
+	align-items:center;
+	text-align:center;
+	justify-content:center;
+	flex-direction:column;
+	color:#999999;
+	width:13.333333333333334vw;
+	position: relative;
+}
+.page-commentlist .tab .tab-item.active .content{
+	color:#434552;
+}
+.page-commentlist .tab .tab-item .tab-title{
+	font-size: 3.466666666666667vw;
+	margin-bottom: 2.2666666666666666vw;
+}
+.page-commentlist .tab .tab-item .tab-num{
+	font-size: 3.2vw
+}
+.page-commentlist .tab .tab-item.active .content:after{
+	content:'';
+	height: 0.8vw;
+	width:100%;
+	background-color: #434552; 
+	position: absolute;
+	bottom: 0;
+}
+.page-commentlist .list-container{
+	margin-top:13.333333333333334vw;
+	padding-bottom:6.666666666666667vw;
+}
+.page-commentlist .comment-wrapper{
+	/*height:28vw;*/
+	border-bottom:0.26666666666666666vw solid #f8f8f8;
+	display:flex;
+	padding:5.333333333333333vw 5.333333333333333vw 0.8vw 5.333333333333333vw;
+	flex-direction: column;
+}
+.page-commentlist .comment-wrapper .main{
+	display:flex;
+}
+.page-commentlist .left{
+	height:13.333333333333334vw;
+	width:13.333333333333334vw;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+
+
+}
+.page-commentlist .left image{
+	height:13.333333333333334vw;
+	width:13.333333333333334vw;
+	border-radius: 50%
+}
+.page-commentlist .right{
+	display:flex;
+	justify-content:space-between;
+	width:72vw;
+	font-size: 4vw;
+	padding-left:2.4vw;
+	position: relative;
+
+}
+.page-commentlist .right .top{}
+.page-commentlist .right .bottom{}
+.page-commentlist .right .name{
+	font-size: 4.266666666666667vw;
+	color: #434552;
+	letter-spacing: 0;
+	padding-bottom: 2vw;
+	line-height: 4.266666666666667vw;
+}
+.page-commentlist .right .time{
+	font-family: PingFangSC-Regular;
+	font-size: 3.2vw;
+	color: #CCCCCC;
+	letter-spacing: 0;
+}
+.page-commentlist .right .content{}
+.page-commentlist .starts{
+	display:flex;
+	/*justify-content:space-between;*/
+	margin-bottom: 1.6vw;
+	line-height: 4vw
+
+
+}
+.page-commentlist .starts image{
+	width:4vw;
+	height:4vw;
+	margin-right:1.6vw;
+
+}
+.page-commentlist .tickets{
+	/*position:absolute;*/
+	display:flex;
+	flex-wrap:wrap;
+	min-height: 9.6vw
+}
+.page-commentlist .ticket{
+	font-family:PingFangSC-Light;
+	font-size:2.933333333333333vw;
+	color:#4A4A4A;
+	letter-spacing:0;
+	line-height:3.2vw;
+	background:#F5F5F5;
+	border-radius:26.666666666666668vw;
+	padding:0 4vw;
+	margin-right:2.6666666666666665vw;
+	margin-bottom:2.6666666666666665vw;
+	height:5.866666666666666vw;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.page-commentlist .time-wrapper{
+	position: absolute;
+	right: 0;
+}
+.page-commentlist .content{
+	width:73.33333333333333vw;
+	color:#bababa;
+	font-size:3.466666666666667vw;
+
+}
+.page-commentlist .files{
+	display: flex;
+	padding-left:16vw;
+margin-top:2.6666666666666665vw;
+flex-wrap:wrap;
+
+}
+
+
+.page-commentlist .files image{
+	width:10.666666666666666vw;
+	height:10.666666666666666vw;
+	border:1px solid #f0f0f0;
+	margin:1.3333333333333333vw;
+
+}
+.page-commentlist .files .msg{
+	height: 10.666666666666666vw;
+	line-height: 10.666666666666666vw;
+	font-size: 3.7333333333333334vw;
+	color :#bababa
+}

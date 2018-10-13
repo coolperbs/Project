@@ -13,7 +13,7 @@
 
 .w-p-bonus .cont .main { background-color: #fff; padding : 0 0.5rem; width : 11.6rem; overflow-y: auto; overflow-x: hidden; }
 .w-p-bonus .cont .main .nav { display: flex; align-items: center; height: 1rem; border-bottom: solid 1px #9ea8b7; }
-.w-p-bonus .cont .main .nav .tab { transition: all 0.2s ease; cursor : pointer; font-size : 0.24rem; color : #434552; margin-left : 0.75rem; height: 100%; display: flex; align-items: center; }
+.w-p-bonus .cont .main .nav .tab { transition: all 0.2s ease; cursor : pointer; font-size : 0.24rem; color : #434552;  height: 100%; display: flex; align-items: center; }
 .w-p-bonus .cont .main .nav .tab.current { position: relative; top : 1px; font-size : 0.32rem; border-bottom : solid 0.1rem #EA4834; }
 .w-p-bonus .cont .main .nav .tab:first-child { margin-left : 0; }
 

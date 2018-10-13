@@ -1,0 +1,71 @@
+.page-showdetail{padding-bottom : 13.333333333333334vw;}
+.header{
+	width:100vw;
+	height:46.666666666666664vw;
+}
+.header .bg-img{
+	width:100vw;
+	height:46.666666666666664vw;
+}
+.body{}
+.shop-logo-wrapper{
+height:53.333333333333336vw;
+display:flex;
+flex-direction:column;
+align-items:center;
+border-bottom:1px solid #f0f0f0;
+
+}
+.shop-img{
+	width:26.666666666666668vw;
+position:relative;
+bottom:28px;
+	border-radius: 0.5333333333333333vw;
+	border : solid 1px #f0f0f0;
+	box-shadow: 0 1.3333333333333333vw 1.3333333333333333vw #eee;
+
+}
+.btn-wrapper{
+display:flex;
+width:46.666666666666664vw;
+justify-content:center;
+font-size:14px;
+margin-top:25px;
+}
+.shop-btn{
+/*color:#b9b9b9;
+border:1px solid #b8b8b8;*/
+padding:0 3.3333333333333335vw;
+border-radius:4px;
+height:6.666666666666667vw;
+line-height:6.666666666666667vw
+}
+.shop-btn.collect{
+	color:red;
+	border:1px solid red;
+}
+.shop-btn.location{
+	color:#df393c;
+	border:1px solid #df393c;
+}
+.msg{
+border-bottom:1px solid #f0f0f0;
+font-size:14px;
+color:#b9b9b9;
+padding:2.6666666666666665vw;
+display : flex;
+justify-content: space-between;
+}
+.msg .label { width : 21.333333333333332vw; }
+.msg .value{
+	width : 66.66666666666667vw;
+}
+.msg .call{
+
+	width:6.666666666666667vw;
+	height:6.666666666666667vw;
+	position:relative;
+	right:0px;
+	float:right;
+	top:3.7333333333333334vw;
+}

@@ -1,0 +1,5 @@
+page { height : 100%; }
+
+.title { font-size : 5.333333333333333vw; text-align: center; margin: 2.6666666666666665vw 0; }
+.row { border-bottom : solid 1px #f0f0f0;  padding : 2.6666666666666665vw; display: flex; }
+.row .key { width : 21.333333333333332vw; margin-right : 2.6666666666666665vw; }
