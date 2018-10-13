@@ -7,9 +7,9 @@
     </div>
     <div class="cell-box">
       <div class="cell">
-        <div class="label">电子码</div>
+        <div class="label">核销码</div>
         <div class="input-box">
-          <input type="text" placeholder="请输入电子码" class="cell-input" v-model.trim="ecode">
+          <input type="text" placeholder="请输入核销码" class="cell-input" v-model.trim="ecode">
         </div>
       </div>
 
