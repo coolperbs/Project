@@ -1,0 +1,121 @@
+page{
+
+}
+.page-cashdetail{
+	/*background-color: #f0f0f0;*/
+}
+.page-cashdetail .header{
+	background-image:linear-gradient(0deg,#da3633,#e05e39);
+	padding:2.6666666666666665vw;
+	height:26.666666666666668vw;
+	position:relative;
+}
+.page-cashdetail .header .cashdetail-header-wrapper{
+	width:100%;
+	height:100%;
+	position:relative;
+}
+
+.page-cashdetail .header .msg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 3.7333333333333334vw;
+	color: white;
+}
+.page-cashdetail .header .toWallet{
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 3.7333333333333334vw;
+	color: white;
+}
+.page-cashdetail .header .toCharge{
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 3.7333333333333334vw;
+	color: yellow;
+}
+.page-cashdetail .header .toCharge image{
+	width: 3.7333333333333334vw;
+	height: 3.7333333333333334vw;
+}
+.page-cashdetail .header .total{
+	position:absolute;
+	width:33.333333333333336vw;
+	left:29.333333333333332vw;
+	text-align:center;
+	color:yellow;
+	top:6.666666666666667vw;
+	color: #fff;
+}
+.page-cashdetail .header .total .mark{
+	font-size: 5.333333333333333vw;
+}
+.page-cashdetail .header .total .int{
+	font-size: 13.333333333333334vw;
+}
+.page-cashdetail .header .total .float{
+	font-size: 5.333333333333333vw;
+}
+.page-cashdetail .list{
+	width: 100%;
+	background-color: white;
+}
+.page-cashdetail .list .list-wrapper{
+	/*margin:0 2.6666666666666665vw;*/
+}
+.page-cashdetail .list .list-wrapper .title{
+	height:11.733333333333333vw;
+	line-height:11.733333333333333vw;
+	background-color:#f0f0f0;
+	padding:0 2.6666666666666665vw;
+
+}
+.page-cashdetail .list .list-wrapper .list-item{
+	padding:2.6666666666666665vw;
+	font-size:3.7333333333333334vw;
+	border-bottom:1px solid #f0f0f0;
+	height:13.333333333333334vw;
+	position:relative;
+
+
+}
+.page-cashdetail .list .list-wrapper .list-item .p-lt{
+	position: absolute;
+	font-size : 4.266666666666667vw;
+	top: 2.6666666666666665vw;
+	left: 2.6666666666666665vw;
+}
+.page-cashdetail .list .list-wrapper .list-item .p-rt{
+	position: absolute;
+	top: 2.6666666666666665vw;
+	font-size : 4.266666666666667vw;
+	right:  2.6666666666666665vw;
+}
+.page-cashdetail .list .list-wrapper .list-item .p-lb{
+	position: absolute;
+	left:  2.6666666666666665vw;
+	bottom:   2.6666666666666665vw;
+	font-size : 3.2vw;
+}
+.page-cashdetail .list .list-wrapper .list-item .p-rb{
+	position: absolute;
+	right: 2.6666666666666665vw;
+	bottom:  2.6666666666666665vw;
+	font-size : 3.2vw;
+}
+.page-cashdetail .list .list-wrapper .list-item .name{
+	color: #333;
+}
+.page-cashdetail .list .list-wrapper .list-item .orderId,
+.page-cashdetail .list .list-wrapper .list-item .time{
+	color: #CCC;
+}
+.page-cashdetail .list .list-wrapper .list-item .delete{
+	color:#1AAD16;
+}
+.page-cashdetail .list .list-wrapper .list-item .add{
+	color: #cc0033;
+}

@@ -1,0 +1,17 @@
+page { height : 100%; font-size : 3.7333333333333334vw; display: flex; align-items : center; justify-content : center; flex-direction : column; }
+
+.head, .body, .act { margin : 0 auto; width : 80vw; }
+.head { padding : 8vw 0; margin-top : 2.6666666666666665vw; display: flex; flex-wrap : wrap; justify-content : center; border-bottom : solid 1px #E5E5E5; }
+.head .logo { width : 21.333333333333332vw; height : 21.333333333333332vw; border : solid 1px #ccc; border-radius : 10.666666666666666vw; }
+.head .line { width : 100%; text-align: center; }
+.head .title { font-size : 5.333333333333333vw; color : #333; /*  */margin-top : 6.666666666666667vw; }
+.head .sub-title { font-size : 3.466666666666667vw; color : #999; margin-top : 3.466666666666667vw; }
+
+.body { padding : 9.066666666666666vw 0; margin-top: -13.333333333333334vw; }
+.body .info { font-size : 4.266666666666667vw; color : #333; }
+.body .item { font-size : 3.7333333333333334vw; margin-top : 6.666666666666667vw; color : #999; }
+
+.act { padding : 9.066666666666666vw 0; display: flex; justify-content : space-between; }
+.act .btn { font-size : 3.7333333333333334vw; width : 37.333333333333336vw; height : 13.333333333333334vw; line-height: 13.333333333333334vw; text-align: center; border-radius: 6.666666666666667vw; color : #fff; background-color : #96979B; box-shadow: 0 5px 10px rgba( 150, 151, 155, 0.2 );  }
+.act .btn.primary { color : #fff; background-color: #df393c;  box-shadow: 0 5px 10px rgba( 219, 192, 149, 0.2 ); }
+

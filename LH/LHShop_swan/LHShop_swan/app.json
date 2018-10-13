@@ -1,0 +1,75 @@
+{
+  "pages":[
+    "pages/index/index",  
+    "pages/date/date",
+    "pages/detail/detail",
+    "pages/info/info",
+    "pages/checkout/checkout",
+    "pages/orderinfo/orderinfo",
+    "pages/artical/artical",
+    "pages/articallist/articallist",
+    "pages/city/city",
+    "pages/login/login",
+    "pages/map/map",
+    "pages/shopdetails/shopdetails",
+    "pages/fx-money/fx-money",
+    "pages/fx-team/fx-team",
+    "pages/fx-takemoney/fx-takemoney",
+    "pages/orderlist/orderlist",
+    "pages/orderdetail/orderdetail",
+    "pages/address/address",
+    "pages/addresslist/addresslist",
+    "pages/coupon-mine/coupon-mine",
+    "pages/coupon-fetch/coupon-fetch",
+    "pages/coupon-use/coupon-use",
+    "pages/comment/comment",
+    "pages/commentlist/commentlist",
+    "pages/favorite/favorite",
+    "pages/aftersale/aftersale",
+    "pages/aftersalelist/aftersalelist",
+    "pages/search/search",
+    "pages/join/join",
+    "pages/active/active",
+    "pages/shop/shop",
+    "pages/subscribe/subscribe",
+    "pages/subscribeinfo/subscribeinfo",
+    "pages/cashdetail/cashdetail",
+    "pages/scoredetail/scoredetail",
+    "pages/wallet/wallet",
+    "pages/pointToMoney/pointToMoney",
+    "pages/seckilllist/seckilllist",
+    "pages/gp-index/gp-index",
+    "pages/gp-detail/gp-detail",
+    "pages/gp-waredetail/gp-waredetail"
+  ],
+
+  "window":{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText" : " ",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh" : false,
+    "onReachBottomDistance" : 100
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+<import src="../../widgets/modules/modules.swan" />
+
+<view class="head">
+	<view class="shop-info">
+		<image class="logo" mode="aspectFit" src="{{shopInfo.logo}}"></image>
+		<view class="info">
+			<view class="name">{{shopInfo.name}}</view>
+			<view class="sub">
+				<image src="../../asset/star-gold.png"></image>
+				<image src="../../asset/star-gold.png"></image>
+				<image src="../../asset/star-gold.png"></image>
+				<image src="../../asset/star-gold.png"></image>
+				<image src="../../asset/star-gold.png"></image>
+			</view>
+		</view>
+	</view>
+	<view class="act">
+		<view class="star">
+			<view class="num">{{shopInfo.favoriteCount}}</view>
+			<view>粉丝数</view>
+		</view>
+		<view class="follow" catchtap="follow" s-if=" !shopInfo.favoriteId ">
+			<image src="../../asset/heart-line.png"></image>关注
+		</view>
+		<view class="follow" catchtap="follow" s-if=" shopInfo.favoriteId ">
+			<image src="../../asset/heart-white.png"></image>已关注
+		</view>
+	</view>
+	<image mode="aspectFill" class="back-pic" src="{{shopInfo.backLogo}}"></image>
+</view>
+
+<view class="nav">
+	<view class="tab {{ tab.currentTab.name == 'home' ? 'current' : '' }}" catchtap="changeTab" data-index="1" data-name="home">店铺首页</view>
+	<view class="tab {{ tab.currentTab.name == 'all' ? 'current' : '' }}" catchtap="changeTab" data-index="2" data-name="all">全部宝贝</view>
+	<view class="tab {{ tab.currentTab.name == 'new' ? 'current' : '' }}" catchtap="changeTab" data-index="3" data-name="new">新品上架</view>
+	<view class="tab" catchtap="goShopDetail" data-index="4">店铺信息</view>
+	<view class="line" style="width : {{750/4}}0vw;transform: translate3d( {{ 750 / 4 * ( tab.currentTab.index - 1 ) }}0vw, 0, 0);"></view>
+</view>
+
+<scroll-view class="cont" scroll-top="{=scrollTop=}" scroll-y="{{ true }}" bindscrolltolower="getMore">
+	<view class="block"></view>
+	<view class="list modules">
+		<block s-for="item, index in pageData.moduleList" s-key="modulePrototypeId">
+			<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{{...item, index}}}"></template>
+		</block>
+	</view>
+</scroll-view>
+
+<!--<view>活动楼层</view>-->

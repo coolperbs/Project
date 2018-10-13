@@ -1,0 +1,119 @@
+@import '../../views/mine/mine.css';
+@import '../../widgets/common/common.css';
+@import '../../widgets/modules/modules.css';
+.search-content{
+	width: 100%;
+}
+.seach-header{
+	z-index:100;
+	position:fixed;
+	top:1px;
+	left:0;
+	width: 100%
+}
+.search-box{
+	height:13.333333333333334vw;
+	border-bottom:solid 1px #f8f8f8;
+	background-color:#fff;
+	width:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.sort-menu{
+	display:flex;
+	height: 10.666666666666666vw;
+	border-bottom:solid 1px #f8f8f8;
+	background-color: white;
+}
+.sort-menu .menu-item{
+	width: 33.333333333333336vw;
+	text-align: center;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.search-box input{ width : 81.33333333333333vw; height : 8vw; line-height: 8vw; color : #999; border-radius: 4vw; padding : 0 2.6666666666666665vw; padding-left : 8vw; background-color: #eee; }
+.search-box image{
+	width:4.266666666666667vw;
+	height:4.266666666666667vw;
+	position:absolute;
+	z-index:10;
+	left:6.666666666666667vw;
+}
+.search-scroll{
+	width: 100%;
+	position: absolute;
+	/*padding: 5.866666666666666vw 5.866666666666666vw 0 5.866666666666666vw;*/
+	margin-top: 21.333333333333332vw
+}
+.sort-logo{
+	width: 8vw;
+	height: 8vw;
+	position: relative;
+	left : -1.3333333333333333vw;
+}
+.sort-logo.up {
+	top : 1.0666666666666667vw;
+}
+
+.sort-logo.down {
+	top : -1.0666666666666667vw;
+}
+
+.page-search .tpl-recommond-ware{
+	/*width:44.13333333333333vw;*/
+	width: 50%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+.page-search .tpl-recommond-ware .top{}
+.page-search .tpl-recommond-ware .top .ware-img{
+	width:40vw;
+	height:40vw;
+}
+.page-search .tpl-recommond-ware .bottom{
+	display:flex;
+	flex-direction:column;
+	height:26.666666666666668vw;
+	width:40vw;
+	position: relative;
+}
+.page-search .tpl-recommond-ware .bottom .ware-name{
+	font-size:14px;
+	color:#232323;
+	height:25px;
+	line-height:25px;
+}
+.page-search .tpl-recommond-ware .bottom .feature{
+	font-size:13px;
+	color:#969696;
+	height:25px;
+	line-height:25px;
+}
+.page-search .tpl-recommond-ware .bottom .price-info{}
+.page-search .tpl-recommond-ware .bottom .price-info .new-price:before,
+.page-search .tpl-recommond-ware .bottom .price-info .old-price:before{
+	content:'￥';
+}
+.page-search .tpl-recommond-ware .bottom .price-info .new-price{
+	color:#d24740;
+	font-size: 14px;
+	margin-right: 1.3333333333333333vw;
+}
+.page-search .tpl-recommond-ware .bottom .price-info .old-price{
+	color:#969696;
+	font-size: 12px;
+	text-decoration: line-through;
+}
+.page-search .tpl-recommond-ware .bottom .addCart{
+	position:absolute;
+	top:14.666666666666666vw;
+	right:0;
+}
+.page-search .tpl-recommond-ware .bottom .addCart .cartimg{
+	width: 6.666666666666667vw;
+	height: 6.666666666666667vw
+}

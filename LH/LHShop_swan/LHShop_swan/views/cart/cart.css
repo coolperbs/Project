@@ -1,0 +1,41 @@
+.cart { background-color: #f6f6f6; min-height: 100%; font-size : 3.7333333333333334vw; }
+
+.cart .checkbox { display: inline-block; width : 6.4vw; height : 6.4vw; border-radius: 50%; }
+.cart .checkbox image { display: none; width : 100%; height : 100%; }
+.cart .checkbox .off { display: block;  }
+.cart .checkbox.checked .on { display: block; }
+.cart .checkbox.checked .off { display: none; }
+.cart .price { display: inline-block; font-size : 4.266666666666667vw;   color : #df393c; }
+.cart .price .sub { display: inline-block; font-size : 3.2vw; color : #df393c; }
+
+.cart .shop { padding : 2.6666666666666665vw; background-color: #fff; margin-top : 2.6666666666666665vw; }
+.cart .shop:first-child { margin-top : 0; }
+.cart .last-child { height : 16vw; }
+.cart .shop .head { display: flex; align-items: center; padding : 2.6666666666666665vw 1.3333333333333333vw; border-bottom : solid 1px #f9f9f9; }
+.cart .shop .head .info { margin-left : 4vw; flex-grow: 1; display: flex; justify-content: space-between; align-items: center; }
+.cart .shop .head .info .name { display: flex; align-items: center; }
+.cart .shop .head .info .name .logo { margin-right : 1.3333333333333333vw; height : 5.333333333333333vw; width : 5.333333333333333vw; }
+.cart .shop .head .info .act {  margin : 0; height : 100%; }
+
+.cart .cont-list .item { display: flex; padding : 2.6666666666666665vw 1.3333333333333333vw; align-items: center; }
+.cart .cont-list .item .cont { display: flex; margin-left : 4vw; width : 13.333333333333334vw; flex-grow: 1; }
+.cart .cont-list .item .cont .pics { width : 26.666666666666668vw; height : 26.666666666666668vw; }
+.cart .cont-list .item .cont .info { width : 1.3333333333333333vw; flex-grow: 1; margin-left : 2.6666666666666665vw; display: flex; flex-direction: column; justify-content: space-between; }
+.cart .cont-list .item .cont .info .name { font-size : 4.266666666666667vw; }
+.cart .cont-list .item .cont .info .sub-info { font-size : 3.2vw; color : #ccc; }
+.cart .cont-list .item .cont .count { display: flex; align-items: center; justify-content: space-between; }
+.cart .cont-list .item .cont .count .cart-act { display: flex; border-radius: 1.0666666666666667vw; overflow: hidden; }
+.cart .cont-list .item .cont .count .cart-act view { text-align: center; line-height: 8vw; height : 8vw; width : 8vw; background-color: #efefef; margin-left : 1px; }
+.cart .cont-list .item .cont .count .cart-act view:first-child { margin-left : 0; }
+.cart .all { border-top : solid 1px #f9f9f9; padding-top : 2.6666666666666665vw; display: flex; justify-content: space-between; align-items: center; }
+.cart .all .btn { padding : 0 5.333333333333333vw; line-height: 8vw; font-size : 4.266666666666667vw; border-radius: 1.0666666666666667vw; height : 8vw; background-color: #df393c; color : #fff; }
+
+/* 未登录、为空状态 */
+.cart .goLogin-wrapper { position:fixed; height:100%;  top:0; left : 0; width : 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+.cart .goLogin-wrapper .login-logo { width:20vw; height:21.333333333333332vw; margin-bottom:18.666666666666668vw; }
+.cart .goLogin-wrapper .login-msg { font-size:16px; color:#999999; margin-bottom:14.933333333333334vw; }
+.cart .goLogin-wrapper .login-btn { font-size:17px; color:#FFFFFF; background:#d6204b; box-shadow:0 5px 10px 0 rgba(0,0,0,0.20); border-radius:80px; width:42.666666666666664vw; height:13.333333333333334vw; display:flex; justify-content:center; align-items:center; margin-bottom:26.666666666666668vw; }
+
+
+
+

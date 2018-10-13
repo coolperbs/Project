@@ -1,0 +1,65 @@
+<view class="page-comment">
+	<view class="ware-comment">
+			<view class="ware-body pannel">
+			<view class="ware-wrapper innerPadding">
+				<view class="goodimg">
+					<image class="" src="{{ware.mainImage}}"></image>
+				</view>
+				<view class="ware-detail">
+					<view class="ware-name ellipsis-1">{{ware.title}}</view>
+					<view class="ware-price">{{ware.showOriginPrice}}</view>
+					<view class="ware-count">x{{ware.skuNum}}</view>
+				</view>
+			</view>
+			<view class="warestar">
+				<block wx:for='{{[0,1,2,3,4]}}' wx:key="id">
+					<view class="star" bindtap="changeStar" data-value="{{item}}">
+						<block wx:if="{{formData.star-1<item}}">
+							<image src="../../asset/star-nor.png"></image>
+						</block>
+						<block wx:else>
+							<image src="../../asset/star-sel.png"></image>
+						</block>
+					</view>
+				</block>
+			</view>
+			<view class="comment-ticks innerPadding">
+				<block wx:for="{{commentTicks}}" wx:key="id">
+						<text class="tick {{item.active?'active':''}}" bindtap="selectTicked" data-value="{{item.id}}" data-id="{{id}}">{{item.text}}</text>
+				</block>
+			</view>
+			<view class="user-comment innerPadding">
+				<textarea cursor-spacing="100" 
+				class="comment-input" data-id="{{id}}" 
+				data-key="content"
+				bindinput="changeInput" 
+				placeholder="写点什么吧..." 
+				placeholderStyle="font-size:28rpx;z-index:0" >
+				</textarea>
+
+				<text class="title">上传凭证</text>
+				<view class="btn-wrapper" >
+					<block wx:for="{{uploadData.btns}}">
+						<image src="{{item.imgUrl}}" data-param="{{item.eventParam}}" class="logo" catchtap="changeFile"/>
+					</block>
+				</view>
+			</view>
+			<view class="isNoName" data-key="type" bindtap="changeInput">
+				<image wx:if="{{formData.type===1}}" class="checkbox" src="../../asset/check-ok.png"></image>
+				<image wx:if="{{formData.type===2}}" class="checkbox" src="../../asset/check-no.png"></image>
+				匿名评论
+			</view>
+		</view>
+	</view>
+	<view class="submit-btn" catchtap="submit">
+		提交评价
+	</view>
+	
+</view>
+
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+page{
+	background-color: #f8f8f8
+}
+.page-aftersale{padding-top:4vw;}
+.page-aftersale .pannel{
+	/*width:96vw;*/
+	margin:0 1.8666666666666667vw 5.333333333333333vw 1.8666666666666667vw;
+	box-shadow:0 1.0666666666666667vw 2.6666666666666665vw 0 rgba(0,0,0,0.05);
+	display:flex;
+	background-color: #fff
+	/*flex-wrap:wrap*/
+}
+.page-aftersale .ware{
+	height:32vw;
+	/*padding:2.6666666666666665vw;*/
+
+}
+.page-aftersale .ware .ware-img{
+	width:24vw;
+	height:24vw;
+	margin:3.7333333333333334vw 0 4.266666666666667vw 4.266666666666667vw;
+	border:0.26666666666666666vw solid #f0f0f0;
+	border-radius: 1.3333333333333333vw;
+}
+.page-aftersale .ware .ware-detail{
+	position:relative;
+	font-size:4.266666666666667vw;
+	color:#4A4A4A;
+	margin:5.333333333333333vw 0vw 7.2vw 2.6666666666666665vw;
+	width:60vw;
+}
+.page-aftersale .ware .ware-detail .price{
+	position: absolute;
+	bottom:0;
+	left: 0;
+}
+.page-aftersale .ware .ware-detail .num{
+	position: absolute;
+	bottom: 0;
+	right:0;
+}
+.page-aftersale .return-detail{
+	flex-wrap: wrap;
+}
+.page-aftersale .line{
+height:13.333333333333334vw;
+display:flex;
+border-bottom:0.13333333333333333vw solid #f8f8f8;
+align-items:center;
+/*padding:0 2.6666666666666665vw;*/
+width:100%;
+justify-content:space-between;
+font-size: 4vw;
+}
+.page-aftersale .line.big{
+	height: 40vw;
+	align-items: flex-start;
+}
+.page-aftersale .line.big .title{
+	margin-top: 2.6666666666666665vw
+}
+.page-aftersale .line .title{
+	width:26.666666666666668vw;
+	margin-left: 2.6666666666666665vw;
+}
+.page-aftersale .line .content{
+	height:100%;
+	display:flex;
+	align-items:center;
+	color: #999999;
+	margin-right: 2.6666666666666665vw;
+}
+.page-aftersale .line .logo{
+	width:4vw;
+	height: 4vw;
+}
+.page-aftersale .upload{
+	flex-wrap: wrap;
+	font-size: 4.266666666666667vw;
+	padding:2.6666666666666665vw 0;
+}
+.page-aftersale .upload .btn-wrapper{
+width:100%;
+margin:0 2.6666666666666665vw;
+margin-top:5.333333333333333vw;
+}
+.page-aftersale .upload .btn-wrapper .logo{
+	width:16vw;
+	height:16vw;
+	margin-right:1.3333333333333333vw;
+}
+.page-aftersale .upload .title{
+	margin:0 2.6666666666666665vw;
+}
+.page-aftersale .notice{
+	width:66.66666666666667vw;
+}
+.page-aftersale .submit-btn{
+	margin:2.6666666666666665vw;
+	height:10.666666666666666vw;
+	background-color:#d6204b;
+	color:white;
+	border-radius:1.3333333333333333vw;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	font-size: 4vw;
+}
+.page-aftersale .cancel-btn{
+	margin:2.6666666666666665vw;
+	height:10.666666666666666vw;
+	background-color:#ddd;
+	color:white;
+	border-radius:1.3333333333333333vw;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	font-size: 4vw;
+}

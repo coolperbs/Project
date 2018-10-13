@@ -1,0 +1,79 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.93",
+	"appid": "wxaccdda8d2e9e827e",
+	"projectname": "LHShop",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "拼团首页",
+					"pathName": "pages/gp-index/gp-index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "拼团详情",
+					"pathName": "pages/gp-detail/gp-detail",
+					"query": "grouponId=75"
+				},
+				{
+					"id": 2,
+					"name": "订单",
+					"pathName": "pages/orderdetail/orderdetail",
+					"query": "orderid=10001090&bizType=undefined"
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/favorite/favorite",
+					"query": "grouponId=44"
+				},
+				{
+					"id": 4,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "商详",
+					"pathName": "pages/detail/detail",
+					"query": "id=212375"
+				},
+				{
+					"id": 6,
+					"name": "结算",
+					"pathName": "pages/checkout/checkout",
+					"query": "shopid=100001"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,28 @@
+@import "../../widgets/modules/modules.css";
+
+page { height : 100%; width : 100%; font-size : 3.7333333333333334vw; }
+
+.head { top : 0; left : 0; height : 18.666666666666668vw; width : 100%; background-color: #ccc; display : flex; position: fixed; justify-content: space-between; align-items: center; z-index: 100; }
+.head .shop-info { color : #fff; position: relative; z-index: 10; margin-left: 2.6666666666666665vw; display: flex; }
+.head .shop-info .logo { width : 10.666666666666666vw; height: 10.666666666666666vw; border-radius: 1.0666666666666667vw; }
+.head .shop-info .info { margin-left : 2.6666666666666665vw; display: flex; flex-direction: column; justify-content: space-around; }
+.head .shop-info .info .name { font-size: 4.266666666666667vw; }
+.head .shop-info .info .sub { font-size : 3.2vw; display: flex; }
+.head .shop-info .info .sub image { width : 4.266666666666667vw; height : 4.266666666666667vw; margin-right: 0.8vw; }
+
+.head .act { position: relative; z-index: 10; color : #fff; margin-right: 2.6666666666666665vw; display: flex; align-items: center; }
+.head .act .star { font-size : 3.2vw; display: flex; flex-direction: column; align-items: flex-end; }
+.head .act .star .num { font-size : 3.7333333333333334vw; }
+.head .act .follow { height : 5.866666666666666vw; position: relative; justify-content: center; align-items: center; padding-left : 5.333333333333333vw; padding-right : 2.6666666666666665vw; border-radius: 2.8vw; display: flex; align-items: center; margin-left: 2.6666666666666665vw; background-color: #df393c; font-size : 2.6666666666666665vw; }
+.head .act .follow.followed { background-color: #2c2c2c; }
+.head .act .follow image { width : 3.2vw; height: 3.2vw; position: absolute; left : 1.3333333333333333vw; margin-right : 0vw; }
+.head .back-pic { width: 100%; height: 100%; position: absolute; left : 0; top : 0; z-index: 1; }
+.head .back-pic::before { content : ''; display: block; width: 100%; height : 100%; position: absolute; left: 0; top: 0; background-color: #000; z-index: 2; opacity: 0.3; }
+
+.nav { border-bottom : solid 1px #f0f0f0; height : 10.666666666666666vw; display: flex; width : 100%; position: fixed; width : 100%; left : 0vw; top : 18.666666666666668vw; background-color: #fff; z-index: 100; }
+.nav .tab { flex-grow: 1; height : 100%; display: flex; align-items: center; justify-content: center;color : #ccc; }
+.nav .tab.current { color : #404040; }
+.nav .line { position: absolute; left : 0; bottom : 0; height : 0.8vw; transition: all 0.3s ease; background-color: #df393c; }
+
+.cont { height : 100%; }
+.block { height : 29.333333333333332vw; width : 100%; }

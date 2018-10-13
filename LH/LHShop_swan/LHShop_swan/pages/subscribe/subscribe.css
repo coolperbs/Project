@@ -1,0 +1,19 @@
+@import "../../widgets/modules/modules.css";
+
+page { height : 100%; }
+.head { display: flex; height : 13.333333333333334vw; width : 100%; background-color: #fff; z-index: 10; font-size : 4.266666666666667vw; position: fixed; top : 0; left : 0; }
+.head .tab { border-bottom : solid 1.0666666666666667vw transparent; width : 100%; display: flex; align-items: center; justify-content: center; }
+.head .tab.current { border-bottom-color : #df393c; color : #df393c; }
+.modules { height : auto; }
+.form { padding : 16vw 0; }
+.submit { position: fixed; border-radius: 0; bottom : 0; left : 0; height : 13.333333333333334vw; background-color: #df393c; width : 100%; display: flex; justify-content: center; align-items: center; color : #fff; font-size : 4.266666666666667vw; }
+
+.list { padding-top : 16vw;}
+.list .empty { text-align: center; margin-top : 13.333333333333334vw; }
+.list.no-head { padding-top : 0; }
+.list .item { border-bottom : solid 1px #f0f0f0;  }
+.list .title { font-size : 4.266666666666667vw; margin-top : 2.6666666666666665vw; padding : 0 2.6666666666666665vw; margin : 1.3333333333333333vw 0; }
+.list .sub { display: flex; justify-content: space-between; margin : 2.6666666666666665vw 0; padding : 0 2.6666666666666665vw; }
+.list .sub .status-1 { color : red; }
+.list .sub .status-2 { color : green; }
+

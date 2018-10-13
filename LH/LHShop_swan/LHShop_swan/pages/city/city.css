@@ -1,0 +1,53 @@
+page{
+    display:block;
+    width:100vw;
+    height:100%;
+}
+.city-wrap{
+    width:100vw;
+    height:100%;
+}
+
+.scroll-wrap{
+    width:100vw;
+    height:100%;
+}
+.city-container{
+    overflow:hidden;
+}
+
+.city-all { color : #df393c; text-align: center; position: fixed; right : 2.6666666666666665vw; top : 0; height: 100%; display: flex; flex-direction: column;  }
+.city-all .block { height : 4vw; }
+.city-all .city-list { flex-grow: 1; display: flex; flex-direction: column; }
+.city-all .city-list .city-item { flex-grow: 1;  }
+
+.city-container .city-title{
+    padding : 2.6666666666666665vw;    
+    font-size:3.466666666666667vw;
+    background-color: #f0f0f0;
+}
+.city-container .city-list {
+    display: flex;
+    flex-direction: column;
+}
+.city-container .city-list .city-item{
+    padding : 2.6666666666666665vw;
+    border-bottom: solid 1px #f0f0f0;
+    font-size:3.466666666666667vw;
+}
+.city-list-wrap{
+    overflow:hidden;
+}
+.city-list-wrap .city-list{
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+.city-list-wrap .city-list .city-item:first-child {
+    background-color: #f0f0f0;
+}
+.city-list-wrap .city-list .city-item{
+    padding : 2.6666666666666665vw;
+    border-bottom: solid 1px #f0f0f0;
+    font-size:3.466666666666667vw;
+}

@@ -1,0 +1,46 @@
+<view class="articallist">
+	<!--<view class="header">
+		<view class="h-head">
+			<view catchtap="homeClickProxy" data-fn="goCity" class="city">
+				<view class="ellipsis-1">{{city.name}}</view>
+			</view>
+			<navigator url="../search/search" class="searchbox">
+				<view class="input">
+					<image src="../../asset/search-gray.png"></image>
+					请输入搜索内容
+				</view>
+			</navigator>
+		</view>
+		<scroll-view scroll-x="{{true}}" class="menu-scroll" >
+			<view class="menu-wrapper">
+				<block wx:for="{{tab.tabData}}" wx:key="index">
+					<view class="menu-item box {{item.isCur?'current':''}}" 
+					data-param="{{item.param}}" 
+					data-extra = "{{item.extra}}"
+					bindtap="changeTab"
+					style="{{item.style}}">{{item.name}}</view>
+				</block>
+			</view> 
+		</scroll-view>
+
+	</view>-->
+	<view class="list">
+		<scroll-view scroll-y="true" style="height:{{scrollHeight}}" class="CPStudyList-list-wrapper" bindscrolltolower="loadMore">
+				<block s-if="listData && listData.length" s-for="item, index in listData" s-key="id">
+					<view class="artical-item artical" catchtap="toDetail" data-id="{{item.id}}">
+						<view class="left mod" s-if=" item.adImgUrl ">
+							<image mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+						</view>
+						<view class="right mod">
+							<view class="artical-title ellipsis-1">{{item.name}}</view>
+							<!--<view class="artical-date">date{{item.showCreateTime}}<view class="artical-type">type{{item.showType}}</view></view>-->
+							<view class="artical-cont ellipsis-2">描述{{item.description}}</view>
+						</view>
+					</view>
+				</block> 
+				<view class="empty-list" s-if="!listData || !listData.length">没有数据</view>
+		</scroll-view>
+	</view>  
+</view>
+
+

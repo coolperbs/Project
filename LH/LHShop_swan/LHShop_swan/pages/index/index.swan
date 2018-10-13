@@ -1,0 +1,56 @@
+<import src="../../views/home/home.swan" />
+<import src="../../views/category/category.swan" />
+<!-- <import src="../../views/orders/activity.wxml"/> -->
+<import src="../../views/cart/cart.swan" />
+<import src="../../views/distribution/distribution.swan" />
+<import src="../../views/mine/mine.swan" />
+
+
+<!--<view class="content">-->
+	<!-- <template wx:if="{{currentView}}" is="{{currentView}}" data="{{ ...viewData }}"></template> -->
+
+
+	<block s-if="currentView==='home'">
+		<template is="home" data="{{{ ...viewData }}}"></template>
+	</block>
+	<block s-elif="currentView==='category'">
+		<template is="category" data="{{{ ...viewData }}}"></template>
+	</block>
+	<block s-elif="currentView==='cart'">
+		<template is="cart" data="{{{ ...viewData }}}"></template>
+	</block>
+	<block s-elif="currentView==='mine'">
+		<template is="mine" data="{{{ ...viewData }}}"></template>
+	</block>
+<!--</view>-->
+
+
+<view class="tips" s-if="tips.show">
+	<view class="pop">
+		<view class="title">{{ userInfo.user.sex == 2 ? 'Miss' : 'Mr' }} {{userInfo.user.nickName}}，这单商品您还满意吗？</view>
+		<view class="content comment-item">
+			<view class="pics img-floor">
+				<image class="box l-1" src="{{tips.orderInfo.wares[0].wareImgUrl}}"></image>
+				<view class="box l-2"></view>
+				<view class="box l-3"></view>
+			</view>
+			<view class="info">
+				<view class="title">{{tips.orderInfo.wares[0].wareName}}{{ tips.orderInfo.wares.length > 1 ? '等' + tips.orderInfo.wares.length + '件商品' : '' }}</view>
+				<view class="price">共 ¥{{ tips.orderInfo.payPriceStr }}</view>
+			</view>
+		</view>
+		<view class="act">
+			<view class="btn" catchtap="jump" data-url="../comment/comment?orderId={{tips.orderInfo.id}}">评价抽免单</view>
+		</view>
+		<view class="close" catchtap="closeTips">x</view>
+	</view>
+</view>
+
+<view class="base toolbar">
+	<view s-for="item, index in tab.list" data-view="{{item.view}}" s-key="index" data-index="{{index}}" bindtap="changeTab" class="tab">
+		<view s-if="item.view == 'cart' && cartNum > 0" class="num">{{cartNum || ''}}</view>
+		<image src="../../asset/{{item.className}}.png" mode="widthFix" class="icon bar {{ item.view == currentView ? 'current' : ''}}"></image>
+		<view class="text">{{item.text}}</view>
+	</view>
+	<view class="line" style="left : {{ tab.currentTab * 150 + 35 }}0vw"></view>
+</view>

@@ -1,0 +1,36 @@
+<import src="../../widgets/modules/modules.swan" />
+
+<view class="head" s-if="!hideHead">
+	<view class="tab {{ tab == 1 ? 'current' : '' }}" catchtap="changeTab" data-type="1">{{pageData.renderData.title}}</view>
+	<view class="tab {{ tab == 2 ? 'current' : '' }}" catchtap="changeTab" data-type="2">等待处理</view>
+</view>
+
+<view s-if=" tab==1 ">
+	<form bindsubmit="submit">
+		<view class="form">
+			<view s-if="pageData.moduleList" class="modules">
+				<block s-for="item, index in pageData.moduleList" s-key="index">
+					<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{{...item, index}}}"></template>
+				</block>
+			</view>
+		</view>
+
+
+		<button class="submit" formType="submit">
+			立即预约
+		</button>
+	</form>
+</view>
+
+<view class="list {{ hideHead ? 'no-head' : '' }}" s-if=" tab == 2 ">
+	<view class="empty" s-if=" listData.bespeakList && !listData.bespeakList.length ">
+		没有数据	
+	</view>
+	<view catchtap="goDetail" data-index="{{ index }}" class="item" s-if=" listData.bespeakList && listData.bespeakList.length " s-for="item, index in  listData.bespeakList " s-key="index">
+		<view class="title ellipsis-2">{{item.bespeakTitle}}</view>
+		<view class="sub">
+			<view class="time">申请时间: {{ item.createdStr }}</view>
+			<view class="stauts status-{{ item.status }}">{{ item.statusStr }}</view>
+		</view>
+	</view>
+</view>

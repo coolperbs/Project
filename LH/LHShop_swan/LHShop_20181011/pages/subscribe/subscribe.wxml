@@ -1,0 +1,36 @@
+<import src="../../widgets/modules/modules.wxml"/>
+
+<view class="head" wx:if="{{!hideHead}}">
+	<view class="tab {{ tab == 1 ? 'current' : '' }}" catchtap="changeTab" data-type="1">{{pageData.renderData.title}}</view>
+	<view class="tab {{ tab == 2 ? 'current' : '' }}" catchtap="changeTab" data-type="2">等待处理</view>
+</view>
+
+<view wx:if="{{ tab==1 }}">
+	<form bindsubmit="submit">
+		<view class="form">
+			<view wx:if="{{pageData.moduleList}}" class="modules">
+				<block wx:for="{{pageData.moduleList}}" wx:key="index">
+					<template is="{{item.modulePrototypeId}}-{{item.templatePrototypeId}}" data="{{...item, index}}"></template>
+				</block>
+			</view>
+		</view>
+
+
+		<button class="submit" formType="submit">
+			立即预约
+		</button>
+	</form>
+</view>
+
+<view class="list {{ hideHead ? 'no-head' : '' }}" wx:if="{{ tab == 2 }}">
+	<view class="empty" wx:if="{{ listData.bespeakList && !listData.bespeakList.length }}">
+		没有数据	
+	</view>
+	<view catchtap="goDetail" data-index="{{ index }}" class="item" wx:if="{{ listData.bespeakList && listData.bespeakList.length }}" wx:for="{{ listData.bespeakList }}" wx:key="index">
+		<view class="title ellipsis-2">{{item.bespeakTitle}}</view>
+		<view class="sub">
+			<view class="time">申请时间: {{ item.createdStr }}</view>
+			<view class="stauts status-{{ item.status }}">{{ item.statusStr }}</view>
+		</view>
+	</view>
+</view>
