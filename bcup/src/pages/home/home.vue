@@ -120,6 +120,9 @@
         self.pageInfo = res.data || {name: 1};
         distributionService.getUserInfo((res) => {
           self.userData = res.data;
+            if ( res.data && res.data.trader == 1 && res.data.venderId ) {
+              utils.addTraderId( res.data.id );
+            }          
         })
       });
     },

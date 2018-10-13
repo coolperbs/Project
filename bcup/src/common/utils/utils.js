@@ -34,6 +34,52 @@ handle = {
     else
       return null;
   },
+
+  addTraderId : function( id ) {
+    if ( !id ) {
+      return;
+    }
+
+    // 这里要判断这个参数是否有userId了
+
+    var href = window.location.href + '',
+        search, hash,link, list = [], i, s,
+        result = '', k, v;
+
+    if ( href.indexOf( 'userId' ) < 0 ) {
+      href = href.indexOf('?') > 0 ? href : href + '?';
+      setTimeout( function() {
+        window.history.replaceState( null, null, href + '&userId=' + id );
+      }, 10 );
+      return;
+    }
+    search = href.split( '#' ); 
+    hash = search[1] || '';
+    search = search[0] || '';
+    search = search.split( '?' );
+    link = search[0] || '';
+    search = search[1] || '';
+
+    search = search.split( '&' );
+    for ( i = 0; s = search[i]; ++i ) {
+      s = s.split( '=' );
+      if ( s[0] == 'userId' && ( s[1] + '' ) != ( id + '' )  ) {
+        list.push( s[0] + '=' + id );
+      } else {
+        list.push( s[0] + '=' + s[1] );
+      }
+    }
+
+    link = link + '?' + list.join( '&' );
+    link = hash ? link + '#' + hash : link;
+    if ( link == href ) {
+      return;
+    }
+    setTimeout( function() {
+      window.history.replaceState( null, null, link );
+    }, 10 );
+  },
+
   formatDateTime (inputTime, type) {
     var date = new Date(inputTime);
     var y = date.getFullYear();

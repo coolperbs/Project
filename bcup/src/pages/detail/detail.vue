@@ -248,6 +248,9 @@
           //获取用户信息判断是否是达人
           distributionServ.getUserInfo((res) => {
             self.userData = res.data;
+            if ( res.data && res.data.trader == 1 && res.data.venderId ) {
+              utils.addTraderId( res.data.id );
+            }
           })
         })
       },
@@ -263,8 +266,6 @@
       changeSkuIdEvt: function (e) {
         if (e != this.checkedSkuId) {
           var lastPath = this.$route.path + '?id=' + this.$route.query.id.split('-')[0] + '-' + e;
-          console.log(lastPath)
-          console.log(this.$router)
           this.getData(e)
         }
         this.checkedSkuId = e;

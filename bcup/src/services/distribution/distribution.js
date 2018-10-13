@@ -19,10 +19,10 @@ handle = {
   // 绑定普通分销关系
   applyBinding: function (param, callback) {
     ajax.get('/app/trader/binding', param, function (res) {
-      if (utils.isErrorRes(res)) {
-        utils.showError(res.msg || '请求接口出错');
-        return;
-      }
+      // if (utils.isErrorRes(res)) {
+      //   utils.showError(res.msg || '请求接口出错');
+      //   return;
+      // }
       callback && callback(res);
     });
   },
