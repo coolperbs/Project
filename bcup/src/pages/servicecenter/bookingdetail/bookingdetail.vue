@@ -112,6 +112,8 @@
         el.checked = true;
         this.bespeakId = el.id;
         bookingDetailService.getDateTable({wareId: el.wareId, bespeakId: el.id}, (res) => {
+          console.log( '0--------' );
+          console.log( res );
           this.modalData = res.data;
           this.$nextTick(() => {
             this.hideModal();

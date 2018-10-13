@@ -31,7 +31,7 @@
 .w-p-home .cont .menu .tab .icon { flex-grow: 1; display: flex; align-items: center; justify-content: center; display: -webkit-flex; }
 .w-p-home .cont .menu .tab img { height : 0.8rem; width : 0.8rem; }
 .w-p-home .cont .menu .tab .text { height : 0.9rem; font-size : 0.25rem; line-height: 0.25rem; text-align: center; color : #444; }
-.w-p-home .cont .menu .tab .text .en { font-size: 0.05em; margin-top : 0.5em; color : #777; transform : scale(0.84) ; }
+.w-p-home .cont .menu .tab .text .en { font-size: 0.05em; margin-top : 0.5em; color : #777; }
 .w-p-home .cont .menu .tab.big { width : 100%; height: 1.84; flex-direction: row; justify-content: flex-start; align-items: center; }
 .w-p-home .cont .menu .tab.big .icon { width: 1.8rem; }
 .w-p-home .cont .menu .tab.big img { width : 0.72rem; height: 0.72rem }

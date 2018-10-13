@@ -99,22 +99,28 @@
       },
       istel (tel) {
         var rtn = false;
-        //移动号段
-        var regtel = /^((13[4-9])|(15([0-2]|[7-9]))|(18[2|3|4|7|8])|(178)|(147))[\d]{8}$/;
-        if (regtel.test(tel)) {
-          rtn = true;
-        }
-        //电信号段
-        regtel = /^((133)|(153)|(18[0|1|9])|(177))[\d]{8}$/;
-        if (regtel.test(tel)) {
-          rtn = true;
-        }
-        //联通号段
-        regtel = /^((13[0-2])|(145)|(15[5-6])|(176)|(18[5-6]))[\d]{8}$/;
-        if (regtel.test(tel)) {
+        var reg = /^1\\d{10}$/;
+        if (reg.test(tel)) {
           rtn = true;
         }
         return rtn;
+
+        // //移动号段
+        // var regtel = /^((13[4-9])|(15([0-2]|[7-9]))|(18[2|3|4|7|8])|(178)|(147))[\d]{8}$/;
+        // if (regtel.test(tel)) {
+        //   rtn = true;
+        // }
+        // //电信号段
+        // regtel = /^((133)|(153)|(18[0|1|9])|(177)|(171))[\d]{8}$/;
+        // if (regtel.test(tel)) {
+        //   rtn = true;
+        // }
+        // //联通号段
+        // regtel = /^((13[0-2])|(145)|(15[5-6])|(176)|(18[1-6]))[\d]{8}$/;
+        // if (regtel.test(tel)) {
+        //   rtn = true;
+        // }
+        // return rtn;
       },
       bookingEvt () {
         if (!this.isChecked) {

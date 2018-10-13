@@ -23,7 +23,7 @@
 </template>
 
 <style scoped>
-    .header { height : 44px; z-index : 100; box-shadow: 0 3px 5px rgba(100, 100, 100, 0.1); background: linear-gradient( #EF648F,#ef8d56 ); position: fixed; top : 0; left : 0; width : 100%; color : #fff; }
+    .header { height : 44px; z-index : 100; background: linear-gradient( #fff,#efefef ); position: fixed; top : 0; left : 0; width : 100%; color : #fff; }
 
     .main { float: left; height : 100%; line-height: 44px; }
     .main .logo { height : 30px; width : 30px; background-color: #fff; border-radius: 50%; margin-top : 8px; display: inline-block; float: left; margin-left : 10px; }

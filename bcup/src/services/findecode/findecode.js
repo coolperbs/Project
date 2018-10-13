@@ -12,11 +12,12 @@ export default {
     });
   },
   getECode ({phone, checkCode, orderId = ''}, callback) {
-    ajax.get('/app/findEcode', {phone, checkCode, orderId}, function (res) {
+    ajax.get('/findEcode', {phone, checkCode, orderId}, function (res) {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;
       }
+      alert( '电子码已发出' );
       callback(res);
     });
   }

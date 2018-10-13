@@ -162,6 +162,7 @@ define( 'tongzilin/pages/news/news', function( require, exports, module ) {
                 commentObj.total = res.data.totalCount;
                 commentIndex = res.data.currentPage;
                 commentHasmore = res.data.hasMore;
+                commentObj.pageType = pageType;
 
                 temp = template.compile( jView.find( '.J_CommentTemp' ).text() );
                 jView.find( '.J_CommentCont' ).html( temp( commentObj ) );              

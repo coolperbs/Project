@@ -29,12 +29,21 @@
   import payServ from '@/services/pay/pay'
   import orderServ from '@/services/order/order'
   import utils from '@/common/utils/utils'
-
+  var lock = false;
+  var timmer = null;
 
   export default {
     props: ['pageInfo'],
     methods: {
       submitEvt: function () {
+        if ( timmer ) {
+          clearTimeout( timmer );
+          timmer = null;
+        }
+        if ( lock ) {
+          return;
+        }
+
         // @TODO : 这里要对form格式进行验证，或者和后端商量后端验证，也避免xxs攻击
         let that = this;
         if (this.pageInfo.formInfo.userName == '') {
@@ -46,10 +55,12 @@
           return
         }
 
+        lock = true;
         // 1.创建订单
         orderServ.create(this.pageInfo.formInfo, function (orderRes) {
           if (utils.isErrorRes(orderRes) || !orderRes.data.orderId) {
             utils.showError(orderRes.msg || '创建订单失败');
+            lock = false;
             return;
           }
           // 2.获取支付信息
@@ -57,10 +68,14 @@
             if (utils.isErrorRes(payRes)) {
               utils.showError(payRes.msg || '创建订单失败');
               Router.push({path: '/orders/detail?orderid=' + orderRes.data.orderId});
+              lock = false;
               return;
             }
             // 3.换起微信支付
             //todo 取消支付 的触发
+            timmer = setTimeout( function() {
+              lock = false;
+            }, 500 );
             payServ.WXPay(payRes.data, function (wxpayRes) {
               that.$router.push({path: '/orders/detail?orderid=' + orderRes.data.orderId});
             });
