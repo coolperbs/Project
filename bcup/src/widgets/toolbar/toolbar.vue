@@ -1,6 +1,6 @@
 <template>
     <div class="toolbar clearfix">
-        <router-link :to="{ path : '/' }" class="home"><img src="static/home.png"/></router-link>
+        <router-link :to="{ path : '/' }" class="home"><img src="/static/home.png"/></router-link>
         <div class="cont">
             <div class="btn" @click="toggleService">咨询客服 </div>
             <router-link :to="{ path : '/checkout', query : { skuId : skuId } }" class="btn primary">立即购买</router-link>
