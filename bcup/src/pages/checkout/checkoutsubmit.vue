@@ -109,7 +109,7 @@
             }, 500);
             payServ.WXPay(payRes.data, function (wxpayRes) {
               //展示modal
-              this.orderId = orderRes.data.orderId;
+              that.orderId = orderRes.data.orderId;
               that.showModal = true;
             });
           });
