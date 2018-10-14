@@ -1,7 +1,7 @@
 <template>
   <div class="checkout-info">
-    <div class="main">【预约】{{ pageInfo.skuInfo.title }}</div>
-    <div class="spec"><span class="tag">地址/电话</span>{{pageInfo.skuInfo.title}}{{pageInfo.skuInfo.subTitle}}/{{pageInfo.skuInfo.storeVO.telphone}}</div>
+    <div class="main">{{ pageInfo.skuInfo.title }}</div>
+    <!--<div class="spec"><span class="tag">地址/电话</span>{{pageInfo.skuInfo.title}}{{pageInfo.skuInfo.subTitle}}/{{pageInfo.skuInfo.storeVO.telphone}}</div>-->
   </div>
 </template>
 

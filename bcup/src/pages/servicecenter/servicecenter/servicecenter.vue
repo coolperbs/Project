@@ -3,6 +3,10 @@
   <div class="service-center">
     <div class="title">自助服务</div>
     <div class="cell">
+      <router-link :to="{path:'/servicecenter/bookinglist'}" class="item">
+        <div class="item-img"><img src="/static/yuyuedingdan.png"></div>
+        <div class="item-name">我的预约</div>
+      </router-link>
       <router-link :to="{path : '/servicecenter/findecode'}" class="item">
         <div class="item-img"><img src="/static/code.png"></div>
         <div class="item-name">找回电子码</div>
@@ -16,11 +20,11 @@
         <div class="item-name">查看订单</div>
       </router-link>
     </div>
-    <div class="title">常见问题</div>
+    <!--<div class="title">常见问题</div>
     <div class="qr-list">
       <router-link :to="{ path : '/servicecenter/findecode', query : { id : ''} }"  class="qr-item">短信丢了/电子码丢了如何找回？</router-link>
       <router-link :to="{ path : '/servicecenter/findecode', query : { id : ''} }"  class="qr-item">要怎样预约使用？</router-link>
-    </div>
+    </div>-->
   </div>
 </template>
 

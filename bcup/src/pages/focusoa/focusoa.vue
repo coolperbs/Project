@@ -1,18 +1,17 @@
 <template>
 <div class="page">
  	<div class="focus">
- 		<div class="title">xxxx请扫下方二维码</div>
- 		<img src="https://baokeyoupin.oss-cn-hangzhou.aliyuncs.com/qrcode_for_gh_2be9d80ffde9_430.jpg"/>
+ 		<img src="/static/wechat.jpg"/>
+ 		<div class="title">请识别二维码，关注暴客优品公众号，分享爆款！</div>
  	</div>
- 	需要一张logo图、需要一个注册流程图
 </div>
 </template>
 
 <style scoped>
 .page { height : 100%; text-align: center; }
 .focus { text-align: center; }
-.focus .title { font-size : 20px; }
-.focus img { width : 60%; margin-top : 10x; }
+.focus .title { font-size : 14px; }
+.focus img { width : 60%; margin-top : 100px; }
 </style>
 
 <script>

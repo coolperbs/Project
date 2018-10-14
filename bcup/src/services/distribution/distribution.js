@@ -40,6 +40,12 @@ handle = {
   //userinfo
   getUserInfo: function (callback) {
     ajax.get('/app/user/info', function (res) {
+
+      if ( res && res.code * 1 == 8888 ) {
+        window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + window.location.href); 
+        return;
+      }
+
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;

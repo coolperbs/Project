@@ -114,6 +114,12 @@
   export default {
     mounted: function () {
       let self = this;
+      let query = this.$route.query;
+
+      // 达人关系绑定
+      if (query.userId) {
+        distributionService.applyBinding({origin: query.userId * 1});
+      }
 
       _fn.getData(function (res) {
 

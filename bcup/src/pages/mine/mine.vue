@@ -38,6 +38,10 @@
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
       <li class="sub clearfix">
+        <router-link tag="div" :to="{path:'/servicecenter/bookinglist'}" class="cell">
+          <img src="static/yuyuedingdan.png"/>
+          <div class="text">我的预约</div>
+        </router-link>
         <router-link tag="div" :to="{path:'/servicecenter/findecode'}" class="cell">
           <img src="static/code.png"/>
           <div class="text">找回电子码</div>
@@ -78,12 +82,12 @@
       </li>
     </ul>
 
-    <ul class="list services">
+    <!--<ul class="list services">
       <router-link tag="li" class="mod-title" :to="{path:'/servicecenter/bookinglist'}">
         <img src=""/>我的预约
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
-    </ul>
+    </ul>-->
   </div>
 
 </template>
@@ -174,7 +178,6 @@
     position: realtive;
   }
 
-  .list.services li.sub .cell,
   .list.ordercenter li.sub .cell {
     width : 33.33%;
   }

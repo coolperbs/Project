@@ -8,7 +8,7 @@
         <transition name="fade">
             <div v-if="showService" class="pop">
                 <div class="list">
-                  <a class="item" :href="'tel:'+pageInfo.storeVO.telphone">拨打电话</a>
+                  <a class="item" href="tel:02887053832">拨打电话</a>
                   <router-link tag="div" :to="{ path : '/servicecenter'}"  class="item">服务中心</router-link>
                 </div>
                 <div class="shim" @click="toggleService"></div>

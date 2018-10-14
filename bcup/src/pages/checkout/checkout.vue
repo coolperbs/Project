@@ -45,6 +45,7 @@
     },
     mounted : function() {
       let self = this;
+      self.pageInfo.formInfo.skuId = this.$route.query.skuId;
       detailServ.query( { skuId : this.$route.query.skuId }, function( res ) {
         self.pageInfo.skuInfo = res.data || {};
         self.pageInfo.formInfo.skuId = res.data.skuId;

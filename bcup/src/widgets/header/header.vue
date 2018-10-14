@@ -1,9 +1,9 @@
 <template>
     <div class="header clearfix">
         <div class="main clearfix">
-            <div class="logo">
+            <router-link tag="li" class="logo" :to="{path:'/'}">
                 <img src="/static/logo.jpeg"/>
-            </div>
+            </router-link>
             <div class="name"></div>
         </div>
         <div class="nav">

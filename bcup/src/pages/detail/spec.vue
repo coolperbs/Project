@@ -2,7 +2,7 @@
   <div class="spec">
     <div class="title ellipsis-1">【规格选择】</div>
     <div class="sub-title">{{pageInfo.title}}{{pageInfo.subTitle}}</div>
-    <div class="sub-title">{{pageInfo.saleProSku.pros[0].proName}}:</div>
+    <div class="sub-title">{{pageInfo.saleProSku.pros[0].proName}}:</div>-->
     <div class="list clearfix">
       <span class="cell" :class="{checked:el.valueId==checkedA}" v-for="el,index in pageInfo.saleProSku.pros[0].values" @click="checkItem(el.valueId)">{{el.valueName}}</span>
     </div>

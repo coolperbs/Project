@@ -32,6 +32,10 @@
     </div>
 
     <ul class="list">
+      <li class="clearfix" @click="showSharePop">
+        <div class="key">邀请达人</div>
+        <div class="more"><img src="/static/arrow-right.png"/></div>
+      </li>
       <router-link tag="li" class="clearfix" :to="{ path : '/distribution/rakebackrecord',query:{type:1} }">
         <div class="key">返佣记录</div>
         累计总返佣￥{{fixPrice( pageInfo.totalRakeBack )  }}
@@ -43,6 +47,15 @@
         <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
     </ul>
+
+    <div class="sharePop" v-if="showPop">
+      <div class="pop">
+        <div class="close" @click="hideSharePop">
+          <img src="/static/cross.png"/>
+        </div>
+        <img :src="shareImgUrl"/>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -67,6 +80,50 @@
   .list li .key { float : left; color : #2c3e50; }
   .list li .more { float : right; margin-left : 5px; }
   .list li .more img { width : 18px; height : 18px; }
+
+  .sharePop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+  }
+  .sharePop {
+    text-align: center;
+  }
+
+  .pop {
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 10%;
+    position: relative;
+  }
+
+  .pop .close {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: -20px;
+    right: -20px;
+    overflow : hidden;
+    position: absolute;
+  }
+
+  .pop .close img {
+    width : 24px;
+    height : 24px;
+    position: absolute;
+    left : 8px;
+    top : 8px;
+  }
+
+  .pop img {
+    width: 100%;
+    background-color: #fff;
+  }  
 </style>
 
 <script>
@@ -78,10 +135,20 @@
     },
     data : function() {
       return {
+        showPop: false
       }
     },
+
     methods : {
-      fixPrice : utils.fixPrice
+      fixPrice : utils.fixPrice,
+      showSharePop: function () {
+        this.showPop = true;
+        this.shareImgUrl = this.shareImgUrl || this.pageInfo.user.qrcurl;
+      },
+      hideSharePop: function () {
+        this.showPop = false;
+        this.shareImgUrl = '';
+      },
     }
   }
 </script>

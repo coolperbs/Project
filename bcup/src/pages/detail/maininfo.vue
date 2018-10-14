@@ -1,9 +1,9 @@
 <template>
   <div class="maininfo" :style="{width:pageWidth}">
-    <div class="tab clearfix">
+    <!--<div class="tab clearfix">
       <div class="item" :class="{ 'current' : tab.currentTab == 1 || !tab.currentTab }" @click="changeTab(1)">详情</div>
       <div class="item" :class="{ 'current' : tab.currentTab == 2 }" @click="changeTab(2)">使用说明</div>
-    </div>
+    </div>-->
     <div class="text-imgs" v-if="tab.currentTab == 1 ||  !tab.currentTab" v-html="pageInfo.description"></div>
     <div class="parameter" v-if="tab.currentTab == 2">
       <div class="p-mod" v-for="item,key in pageInfo.pros" :key="item.index">

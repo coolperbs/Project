@@ -6,6 +6,7 @@
         <div class="pull-item">
           <order v-for="order,index in renderList" :item="order" :key="index" class="mod"/>
         </div>
+        <div v-if="!renderList || !renderList.length" style="text-align:center; padding : 20px;">暂无数据</div>
       </PullTo>
     </div>
   </div>
