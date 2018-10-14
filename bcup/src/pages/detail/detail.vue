@@ -2,7 +2,7 @@
   <div class="detail">
     <b-header/>
     <div class="head">
-      <swiper class="banner" :options="swiperOption" v-if="pageInfo.mainImage">
+      <swiper class="banner" :style="{height:bannerHeight + 'px'}" :options="swiperOption" v-if="pageInfo.mainImage">
         <swiper-slide v-for="item in pageInfo.mainImage" :key="item.skuId">
           <img :src="item"/>
         </swiper-slide>
@@ -57,7 +57,7 @@
   }
 
   .head .banner {
-    height: 200px;
+    height: 300px;
     background-color: #ccc;
   }
 
@@ -209,6 +209,7 @@
       return {
         linkPath: 'link',
         pageInfo: {},
+        bannerHeight : 300,
         showPop: false,
         shareImgUrl: CFG.host + '/app/ware/shareimage/1?token=' + utils.getCookie('ticketWeChat'),
         swiperOption: {
@@ -228,6 +229,7 @@
     },
     mounted: function () {
       let query = this.$route.query;
+      this.bannerHeight = document.body.clientWidth;
       let ids = (query.id + '').split('-');
       this.checkedSkuId = ids[1];
       this.getData(ids[1])

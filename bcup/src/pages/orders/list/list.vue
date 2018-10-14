@@ -50,10 +50,10 @@
           }, {
             name: '已完成',
             value: 512
-          }, {
+          }/*, {
             name: '已取消',
             value: 1024
-          }]
+          }*/]
         },
         currentPage: 1,
         realList: [],

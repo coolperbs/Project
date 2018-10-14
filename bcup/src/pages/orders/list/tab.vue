@@ -22,7 +22,7 @@
   .list li {
     display: inline-block;
     height: 50px;
-    width: 20%;
+    width: 25%;
     background-color: #fff;
     text-align: center;
   }

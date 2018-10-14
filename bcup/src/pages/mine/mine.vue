@@ -7,7 +7,7 @@
         <div class="sub">id:{{userData.id}}</div>
       </div>
     </div>
-    <ul class="list">
+    <ul class="list ordercenter">
       <router-link tag="li" class="mod-title" :to="{path:'/orders/list?type=1'}">
         <img src=""/>订单
         <div class="icon"><img src="static/arrow-right.png"></div>
@@ -25,10 +25,10 @@
           <img src="static/order-finished.png"/>
           <div class="text">已完成</div>
         </router-link>
-        <router-link tag="div" :to="{path:'/orders/list?type=1024'}" class="cell">
+       <!-- <router-link tag="div" :to="{path:'/orders/list?type=1024'}" class="cell">
           <img src="static/order-canceled.png"/>
           <div class="text">已取消</div>
-        </router-link>
+        </router-link>-->
       </li>
     </ul>
 
@@ -174,7 +174,8 @@
     position: realtive;
   }
 
-  .list.services li.sub .cell {
+  .list.services li.sub .cell,
+  .list.ordercenter li.sub .cell {
     width : 33.33%;
   }
 
