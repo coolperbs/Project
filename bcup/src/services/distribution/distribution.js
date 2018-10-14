@@ -98,7 +98,7 @@ handle = {
   },
   //预约列表
   getBespokeList(callback){
-    ajax.get('/app/bespoke/list', {}, (res) => {
+    ajax.get('/app/bespeak/list', {}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;

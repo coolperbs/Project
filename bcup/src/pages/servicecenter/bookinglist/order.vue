@@ -1,16 +1,19 @@
 <template>
   <div class="order">
-    <!--TODO 预约列表展示文案-->
-    <div class="status">{{fixEnum(item)}}</div>
-    <div class="main ellipsis-2">{{item.skus[0].title}}{{item.skus[0].subTitle}}</div>
+  <!--  <div class="status">{{fixEnum(item)}}</div>-->
+    <div class="main ellipsis-2">{{item.wareSkuStore.features}}{{item.wareSkuStore.subTitle}}</div>
     <ul class="list">
       <li>
+        <div class="key">到店支付:</div>
+        <div class="value">￥{{item.wareStockOrder.plusPrice}}</div>
+      </li>
+      <li>
         <div class="key">名称:</div>
-        <div class="value">{{item.userName}}</div>
+        <div class="value">{{item.username}}</div>
       </li>
       <li>
         <div class="key">手机号 :</div>
-        <div class="value">{{item.userPhone}}</div>
+        <div class="value">{{item.userphone}}</div>
       </li>
       <li>
         <div class="key">订单号 :</div>

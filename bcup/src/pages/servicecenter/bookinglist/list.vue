@@ -1,6 +1,6 @@
 <template>
   <div class="orderlist">
-    <div class="pull-down">
+    <div class="pull-down" style="top:0;">
       <PullTo :bottom-load-method="loadBottom" :bottom-config="bottomconfig">
         <div class="pull-item">
           <order v-if="realList.length>0" v-for="order,index in realList " :item="order" :key="index" class="mod"/>
@@ -29,7 +29,7 @@
 
   export default {
     components: {
-        order, PullTo
+      order, PullTo
     },
     data: function () {
       return {
@@ -55,13 +55,13 @@
     },
     methods: {
       render: function (callback) {
-        distributionServ.getBespokeList({type: 1, currentPage: this.currentPage}, (res) => {
+        distributionServ.getBespokeList((res) => {
           if (utils.isErrorRes(res)) {
             utils.showError(res.msg || '获取列表信息错误');
             return;
           }
           //TODO 核对接口数据格式
-          this.hasMore = res.data.hasMore;
+          this.hasMore = false;
           if (!this.hasMore) {
             this.bottomconfig.doneText = ''
             this.bottomconfig.pullText = ''
@@ -79,9 +79,9 @@
             }
           }
           if (callback) {
-            callback(res.data.order || [])
+            callback(res.data.bespeakList || [])
           } else {
-            this.renderList = res.data.order || [];
+            this.renderList = res.data.bespeakList || [];
             this.filterList()
           }
         });
@@ -91,18 +91,7 @@
         this.filterList()
       },
       filterList () {
-        if (this.tab.current == 1) {
-          this.realList = this.renderList;
-          return
-        }
-        let temp = [];
-        for (let i = 0; i < this.renderList.length; i++) {
-          let item = this.renderList[i];
-          if (item.orderStatus == this.tab.current) {
-            temp.push(item)
-          }
-        }
-        this.realList = temp;
+        this.realList = this.renderList;
       },
       loadBottom (loaded) {
         if (!this.hasMore) {
