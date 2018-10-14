@@ -60,7 +60,6 @@
             utils.showError(res.msg || '获取列表信息错误');
             return;
           }
-          //TODO 核对接口数据格式
           this.hasMore = false;
           if (!this.hasMore) {
             this.bottomconfig.doneText = ''
