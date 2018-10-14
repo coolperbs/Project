@@ -77,6 +77,13 @@
         </router-link>
       </li>
     </ul>
+
+    <ul class="list services">
+      <router-link tag="li" class="mod-title" :to="{path:'/servicecenter/bookinglist'}">
+        <img src=""/>我的预约
+        <div class="icon"><img src="static/arrow-right.png"></div>
+      </router-link>
+    </ul>
   </div>
 
 </template>

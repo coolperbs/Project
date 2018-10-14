@@ -1,10 +1,10 @@
 <template>
   <div class="checkout-submit">
     <div class="btn" @click="submitEvt">提交</div>
-    <div class="modal" v-if="showModal" @click.self="cancelEvt">
+    <div class="modal"  @click.self="cancelEvt">
       <div class="box">
         <div class="body">
-          <img :src="mpSrc" alt="">
+          <img src="/static/wechat.jpg"  style="width: 100%;height: 100%;" alt="">
         </div>
       </div>
     </div>
@@ -123,8 +123,7 @@
     data: function () {
       return {
         showModal: false,
-        orderId: '',
-        mpSrc:''// TODO 差图片地址
+        orderId: ''
       }
     }
   };
