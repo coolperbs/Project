@@ -33,7 +33,7 @@ function getCookie (name) {
 }
 
 if (!getCookie('ticketWeChat')) {
-  window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=http://bc.ypzmkj.com')
+  window.location.replace('http://bc.ypzmkj.com/login?callbackUrl=http://bc.ypzmkj.com')
 }
 
 
