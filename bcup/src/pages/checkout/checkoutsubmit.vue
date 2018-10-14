@@ -115,7 +115,7 @@
           });
         });
       },
-      hideModal: function () {
+      cancelEvt: function () {
         this.showModal = false;
         this.$router.push({path: '/orders/detail?orderid=' + this.orderId});
       }
