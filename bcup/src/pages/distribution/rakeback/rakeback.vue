@@ -3,7 +3,7 @@
     <saledata :item="userData" :tradeData="tradeData"/>
     <entrys :tradeData="tradeData" class="mod"/>
     <div class="invite" @click="getApply">申请返佣</div>
-    <div class="rakeback">目前为人工提现，每次提现时，请向暴客优品的可财务客服人员（微信号：）发送：“爆米花妹儿，我要提现！”的指令，即可很快到账</div>
+    <div class="rakeback">目前为人工提现，每次提现时，请向暴客优品的可财务客服人员（微信号：bc-up001）发送：“爆米花妹儿，我要提现！”的指令，即可很快到账</div>
     <div class="modal" v-if="showRebackModal" @click.self="cancelEvt">
       <div class="box">
         <div class="body">

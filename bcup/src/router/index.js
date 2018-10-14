@@ -22,6 +22,7 @@ import ServiceCenter from '@/pages/servicecenter/servicecenter/servicecenter'
 import ServiceCenterBookingUse from '@/pages/servicecenter/bookinguse/bookinguse'
 import ServiceCenterBookingDetail from '@/pages/servicecenter/bookingdetail/bookingdetail'
 import ServiceCenterBookingCheckout from '@/pages/servicecenter/bookingcheckout/bookingcheckout'
+import ServiceCenterBookingList from '@/pages/servicecenter/bookinglist/list'
 
 
 Vue.use(Router)
@@ -97,5 +98,8 @@ export default new Router({
     },{
       path : '/servicecenter/bookingcheckout',
       component : ServiceCenterBookingCheckout
+    },{
+      path : '/servicecenter/bookinglist',
+      component : ServiceCenterBookingList
     }]
 })

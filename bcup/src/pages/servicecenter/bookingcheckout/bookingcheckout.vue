@@ -36,10 +36,9 @@
     </div>
     <div class="cell-box">
       <div class="cell">
-        <!--todo 这里价格 不对 ？？？ 还有文案展示-->
         <div class="label" style="width: 60%">{{formatDateV(item.preDate)}}:{{item.wareWare?item.wareWare.title:''}}</div>
         <div class="desc" style="width: 30px">到店支付</div>
-        <div class="num" style="color:#ee8e34;">￥{{fromatPrice(item.wareWare?item.wareWare.price:'')}}</div>
+        <div class="num" style="color:#ee8e34;">￥{{(item.plusPrice?item.plusPrice:'')}}</div>
       </div>
     </div>
     <div class="cell-box" style="margin-bottom: 100px">
@@ -50,7 +49,7 @@
     </div>
     <div class="submit-box">
       <div class="stitle">到店支付：</div>
-      <div class="price" style="color:#ee8e34;">￥{{fromatPrice(item.wareWare?item.wareWare.price:'')}}</div>
+      <div class="price" style="color:#ee8e34;">￥{{(item?item.plusPrice:'')}}</div>
       <div class="btn " @click="bookingEvt">{{isChecked?'确定预约':'请先同意预约条款'}}</div>
     </div>
   </div>
@@ -132,7 +131,8 @@
           alert('请输入姓名')
           return
         }
-        if (!this.istel(this.userphone)) {
+
+        if (this.istel(this.userphone)) {
           alert('请输入正确的手机号')
           return
         }

@@ -29,7 +29,7 @@
 
   export default {
     components: {
-      bHeader, orderTab, order, PullTo
+        order, PullTo
     },
     data: function () {
       return {
@@ -51,7 +51,6 @@
       }
     },
     mounted: function () {
-      this.tab.current = this.$route.query.type || 1
       this.render();
     },
     methods: {
