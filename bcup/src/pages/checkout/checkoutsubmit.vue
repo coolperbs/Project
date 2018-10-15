@@ -82,8 +82,8 @@
           utils.showError('请输入姓名');
           return
         }
-        if (this.pageInfo.formInfo.userPhone == '') {
-          utils.showError('请输入手机号');
+        if (this.pageInfo.formInfo.userPhone == '' || this.pageInfo.formInfo.userPhone.length != 11 ) {
+          utils.showError('请输入正确的手机号');
           return
         }
 

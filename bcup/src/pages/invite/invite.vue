@@ -183,10 +183,14 @@
           alert('请填写姓名');
           return;
         }
-        if (!(/^1[3|5|7|8][0-9]\d{4,8}$/.test(this.form.phone * 1))) {
-          alert('请填写正确的手机号');
-          return;
-        }
+        // if (!(/^1[3|5|7|8][0-9]\d{4,8}$/.test(this.form.phone * 1))) {
+        //   alert('请填写正确的手机号');
+        //   return;
+        // }
+        if (this.form.phone == '' || this.form.phone.length != 11 ) {
+          alert('请输入正确的手机号');
+          return
+        }        
         if (!this.form.checkCode) {
           alert('短信验证码');
           return;
