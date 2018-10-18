@@ -13,6 +13,10 @@ axios.interceptors.request.use( function( config ) {
 } );
 
 axios.interceptors.response.use( function( config ) {
+	if ( config && config.data && config.data.code * 1 == 8888 ) {
+		window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + encodeURIComponent( window.location.href) ); 
+		return;
+	}	
 	return config.data || { code : -1 };
 } );
 

@@ -3,7 +3,7 @@
 	</div>
 	<script class="J_HMainTemp" type="text/html">
 		<div class="logo" style="-webkit-app-region:drag;">
-			<img src="tongzilin/src/tongzilin/widgets/header/images/logo.png"/>
+			<img src="tongzilin/src/tongzilin/widgets/header/images/logo2.png"/>
 		</div>
 		<!--
 		<div class="info">

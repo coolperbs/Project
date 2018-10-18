@@ -26,14 +26,13 @@ Vue.use(swiperSlide);
 //setCookie( 'ticketWeChat', '77321572C240F84D2BD7E5239462683435D3421A4B22812DE3A70D03668C05A4F4FD7A4CBEA6C6989A3E38B027130751DEBE5623FFBC6CC6D13509BB336A1EEBAB2E7A88C6786E36B608BB04B41B64A25AA7293A8DD198DFF653067C76A19986581E6ECE0B77BAA1F60DB2DC0414C63A37F202137E4D84D3CCE84FAC4CBCE245' );
 //setCookie( 'ticketWeChat', '' );
 
-
 function getCookie (name) {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
   return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
 }
 
-if (!getCookie('ticketWeChat')) {
-  window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=http://bc.ypzmkj.com');
+if (!getCookie('ticketWeChat') ) {
+  window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + encodeURIComponent( window.location.href) );
 }
 
 

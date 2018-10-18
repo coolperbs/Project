@@ -7,7 +7,7 @@
 				<div class="detail J_NewsCont">
 				</div>
 				<script class="J_NewsTemp" type="text/html">
-					<% if ( imageUrl ) { %>
+					<% if ( false && imageUrl ) { %>
 						<div class="main-pic">
 							<img src="<%= imageUrl%>"/>
 						</div>

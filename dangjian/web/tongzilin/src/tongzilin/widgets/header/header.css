@@ -14,13 +14,13 @@
 .w-w-header .act { flex-grow: 1; height : 1rem; display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; font-size : 0.4rem; }
 .w-w-header .act .head { display: flex; display: -webkit-flex; align-items: center; }
 .w-w-header .act .main-title { display: flex; flex-direction: column; }
-.w-w-header .act .main-title .en { font-size : 0.05rem; }
+.w-w-header .act .main-title .en { font-size : 0.2rem; }
 .w-w-header .act .back { cursor: pointer; margin-right : 0.25rem; height : 0.8rem; width: 0.8rem; border-radius: 50%; background-color: #fff; display: flex; align-items: center; justify-content: center; }
 .w-w-header .act .back img { width : 0.32rem; height: 0.32rem }
 .w-w-header .act .nav { display: flex; display: -webkit-flex; flex-grow: 1; height: 100%; align-items: center; justify-content: space-around}
 .w-w-header .act .nav .tab {word-break: keep-all; transition: all 0.3s ease; cursor: pointer; border-top : solid 0.1rem transparent; border-bottom : solid 0.1rem transparent; font-size : 0.28rem; text-align : center; opacity: 0.8; margin-left : 0.7rem; padding : 0.05rem 0.1rem; display: flex; flex-direction: column; }
 .w-w-header .act .nav>div {word-break: keep-all; white-space: nowrap}
-.w-w-header .act .nav .tab .en { font-size : 0.05rem; }
+.w-w-header .act .nav .tab .en { font-size : 0.2rem; }
 .w-w-header .act .nav .tab:first-child { margin-left : 0; }
 .w-w-header .act .nav .tab.current { position: relative; font-size : 0.4rem; font-weight : bold; opacity: 1; border-bottom-color : #EA4834; }
 .w-w-header .search { display: flex; display: -webkit-flex; height: 100%; align-items: center; }

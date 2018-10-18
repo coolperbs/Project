@@ -1,6 +1,6 @@
 <div class="w-p-qrcode">
 	<div class="cont J_Links">
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/USA.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">美利坚合众国驻成都总领事馆</div>
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Germany.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">德意志联邦共和国驻成都总领事馆</div>
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Korea.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">大韩民国驻成都总领事馆</div>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/France.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">法兰西共和国驻成都总领事馆</div>
@@ -60,7 +60,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Singapore.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">新加坡共和国驻成都总领事馆</div>
@@ -75,7 +75,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Pakistan.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">巴基斯坦伊斯兰共和国驻成都总领事馆</div>
@@ -90,7 +90,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/SriLanka.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">斯里兰卡民主社会主义共和国驻成都领事馆</div>
@@ -105,7 +105,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Australia.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">澳大利亚联邦驻成都总领事馆</div>
@@ -120,7 +120,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/NewZealand.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">新西兰驻成都总领事馆</div>
@@ -135,7 +135,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Israel.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">以色列驻成都总领事馆</div>
@@ -150,7 +150,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" >暂无网站信息</div>
 			<div class="info">
 				<div class="title">捷克驻成都总领事馆</div>
@@ -166,7 +166,7 @@
 		</div>	
 
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Poland.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">波兰驻成都总领事馆</div>
@@ -181,7 +181,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Swiss.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">瑞士驻成都总领事馆</div>
@@ -196,7 +196,7 @@
 			</div>
 		</div>	
 
-		<div class="link J_Link" data-url="http://www.people.com.cn/">
+		<div class="link J_Link" cancel-url="http://www.people.com.cn/">
 			<div class="pic" style="background : url(tongzilin/src/tongzilin/pages/qrcode/images/Austria.png) 50% 50% no-repeat; background-size : contain;"></div>
 			<div class="info">
 				<div class="title">奥地利驻成都总领事馆</div>

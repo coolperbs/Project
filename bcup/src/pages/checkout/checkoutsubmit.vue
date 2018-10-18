@@ -95,6 +95,7 @@
             lock = false;
             return;
           }
+          that.orderId = orderRes.data.orderId;
           // 2.获取支付信息
           payServ.getPayInfo({orderId: orderRes.data.orderId}, function (payRes) {
             if (utils.isErrorRes(payRes)) {
@@ -109,7 +110,7 @@
             }, 500);
             payServ.WXPay(payRes.data, function (wxpayRes) {
               //展示modal
-              this.orderId = orderRes.data.orderId;
+              that.orderId = orderRes.data.orderId;
               that.showModal = true;
             });
           });

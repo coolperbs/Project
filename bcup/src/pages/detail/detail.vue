@@ -244,7 +244,7 @@
         detailServ.query({skuId: skuId}, function (res) {
           self.pageInfo = res.data;
           // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`
-          self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
+          // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
 
           // 如果有userId，进行关系绑定
           if (query.userId) {

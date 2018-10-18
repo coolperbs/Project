@@ -28,6 +28,7 @@ define( 'tongzilin/pages/qrcode/qrcode', function( require, exports, module ) {
         on : {
             'click .J_Link' : function( e ) {
                 var jTarget = $( this );
+                return;
                 kayak.router.go( '#index/tongzilin/links:url=' + encodeURIComponent( jTarget.attr( 'data-url' ) ) );
             }
         }
