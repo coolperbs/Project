@@ -42,7 +42,7 @@
 		<div class="main J_HomeCont">
 		</div>
 		<script type="text/html" class="J_HomeTemp">
-			<div class="big m-title">武侯区桐梓林国际社区 · <span>Wuhou Tongzilin iinternational community</span></div>
+			<div class="big m-title">三中心 · Three center</div>
 			<a href="#index/tongzilin/ndetail2:id=149" class="news">
 				<div class="pic"><img src="tongzilin/src/tongzilin/pages/home/images/01.jpg"/></div>
 				<div class="n-cont">
@@ -68,7 +68,7 @@
 					</div>
 				</a>
 				<a href="#index/tongzilin/ndetail2:id=147" class="small news">
-					<div class="pic" style="background-image:url(tongzilin/src/tongzilin/pages/home/images/15.jpg); background-size:cover; background-position : center center;"></div>
+					<div class="pic" style="background-image:url(tongzilin/src/tongzilin/pages/home/images/15.jpeg); background-size:cover; background-position : center center;"></div>
 					<div class="n-cont">
 						<div class="title ellipsis-2">桐梓林境外人员服务中心</div>
 						<div class="sub-title ellipsis-1">2018年10月18日 22:10</div>
@@ -93,7 +93,7 @@
 
 
 		<div class="menu">
-			<div class="big title">菜单 · Menu</div>
+			<div class="big title">五平台 · Five platform</div>
 			<div class="list">
 				<a href="#index/tongzilin/news:type=1" class="tab">
 					<div class="icon">

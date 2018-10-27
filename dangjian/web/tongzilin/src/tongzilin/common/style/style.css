@@ -26,7 +26,7 @@ a { color : #434552; }
 .news-wrap .detail .sub-title em { margin-left : 0.15rem; font-style: normal; }
 .news-wrap .detail .text { font-size : 0.2rem; margin : 0.3rem 0; text-indent: 0.4rem; }
 .news-wrap .detail .pic { width : 100%; padding : 0.2rem; display: flex; align-items: center; justify-content: center; }
-.news-wrap .detail .pic img { display: block; max-width: 11.6rem; }
+.news-wrap .detail .pic img { display: block; width: 10.1rem; }
 
 /* 表单 */
 .form { font-size : 0.24rem; width : 100%; }
