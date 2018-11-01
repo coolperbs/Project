@@ -49,7 +49,7 @@
   .name {
     margin-top: 10px;
     padding: 0 10px;
-    font-size : 18px;
+    font-size: 18px;
   }
 
   .head {
@@ -81,7 +81,7 @@
   }
 
   .head .price .origin em {
-    font-size : 24px;
+    font-size: 24px;
     font-style: normal;
   }
 
@@ -95,7 +95,7 @@
   .head .info {
     padding: 0 10px;
     margin-top: 10px;
-    color : #999;
+    color: #999;
   }
 
   .head .info .sale {
@@ -126,7 +126,7 @@
   }
 
   .head .loc .icon img {
-    height : 20px;
+    height: 20px;
   }
 
   .mod {
@@ -174,16 +174,16 @@
     border-radius: 50%;
     top: -20px;
     right: -20px;
-    overflow : hidden;
+    overflow: hidden;
     position: absolute;
   }
 
   .pop .close img {
-    width : 24px;
-    height : 24px;
+    width: 24px;
+    height: 24px;
     position: absolute;
-    left : 8px;
-    top : 8px;
+    left: 8px;
+    top: 8px;
   }
 
   .pop img {
@@ -210,7 +210,7 @@
       return {
         linkPath: 'link',
         pageInfo: {},
-        bannerHeight : 300,
+        bannerHeight: 300,
         showPop: false,
         swiperOption: {
           autoplay: {
@@ -244,10 +244,11 @@
         let query = this.$route.query;
         detailServ.query({skuId: skuId}, function (res) {
           self.pageInfo = res.data;
-          self.locationStr = decodeURIComponent(`http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`);
+          var url = `https://apis.map.qq.com/uri/v1/marker?marker=coord:${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat};title:${self.pageInfo.storeVO.name};addr:${self.pageInfo.storeVO.name}&referer=myapp`
+          self.locationStr = decodeURIComponent(url);
           // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
 
-          if ( self.pageInfo && self.pageInfo.mainImage && self.pageInfo.mainImage.length > 1 ) {
+          if (self.pageInfo && self.pageInfo.mainImage && self.pageInfo.mainImage.length > 1) {
             self.pageInfo.mainImage.shift();
           }
 
@@ -258,8 +259,8 @@
           //获取用户信息判断是否是达人
           distributionServ.getUserInfo((res) => {
             self.userData = res.data;
-            if ( res.data && res.data.trader == 1 && res.data.venderId ) {
-              utils.addTraderId( res.data.id );
+            if (res.data && res.data.trader == 1 && res.data.venderId) {
+              utils.addTraderId(res.data.id);
             }
           })
         })
@@ -268,7 +269,7 @@
       showSharePop: function () {
         let query = this.$route.query;
         let id = query.id || '';
-        id = id.split( '-' )[1] || 0; 
+        id = id.split('-')[1] || 0;
         this.showPop = true;
         this.shareImgUrl = this.shareImgUrl || CFG.host + '/app/ware/shareimage/' + id + '?token=' + utils.getCookie('ticketWeChat');
       },
