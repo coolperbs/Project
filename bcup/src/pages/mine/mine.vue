@@ -7,7 +7,7 @@
         <div class="sub">id:{{userData.id}}</div>
       </div>
     </div>
-    <ul class="list">
+    <ul class="list ordercenter">
       <router-link tag="li" class="mod-title" :to="{path:'/orders/list?type=1'}">
         <img src=""/>订单
         <div class="icon"><img src="static/arrow-right.png"></div>
@@ -19,16 +19,16 @@
         </router-link>
         <router-link tag="div" :to="{path:'/orders/list?type=16'}" class="cell">
           <img src="static/order-pay.png"/>
-          <div class="text">已支付</div>
+          <div class="text">待消费</div> <!-- 已支付 -->
         </router-link>
         <router-link tag="div" :to="{path:'/orders/list?type=512'}" class="cell">
           <img src="static/order-finished.png"/>
           <div class="text">已完成</div>
         </router-link>
-        <router-link tag="div" :to="{path:'/orders/list?type=1024'}" class="cell">
+       <!-- <router-link tag="div" :to="{path:'/orders/list?type=1024'}" class="cell">
           <img src="static/order-canceled.png"/>
           <div class="text">已取消</div>
-        </router-link>
+        </router-link>-->
       </li>
     </ul>
 
@@ -38,9 +38,13 @@
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
       <li class="sub clearfix">
+        <router-link tag="div" :to="{path:'/servicecenter/bookinglist'}" class="cell">
+          <img src="static/yuyuedingdan.png"/>
+          <div class="text">我的预约</div>
+        </router-link>
         <router-link tag="div" :to="{path:'/servicecenter/findecode'}" class="cell">
           <img src="static/code.png"/>
-          <div class="text">找回电子码</div>
+          <div class="text">找回核销码</div>
         </router-link>
         <router-link tag="div" :to="{path:'/servicecenter/bookinguse'}" class="cell">
           <img src="static/pre-order.png"/>
@@ -78,12 +82,12 @@
       </li>
     </ul>
 
-    <ul class="list services">
+    <!--<ul class="list services">
       <router-link tag="li" class="mod-title" :to="{path:'/servicecenter/bookinglist'}">
         <img src=""/>我的预约
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
-    </ul>
+    </ul>-->
   </div>
 
 </template>
@@ -174,7 +178,7 @@
     position: realtive;
   }
 
-  .list.services li.sub .cell {
+  .list.ordercenter li.sub .cell {
     width : 33.33%;
   }
 

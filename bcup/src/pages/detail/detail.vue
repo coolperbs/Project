@@ -2,13 +2,13 @@
   <div class="detail">
     <b-header/>
     <div class="head">
-      <swiper class="banner" :options="swiperOption" v-if="pageInfo.mainImage">
+      <swiper class="banner" :style="{ height : bannerHeight + 'px' }" :options="swiperOption" v-if="pageInfo.mainImage">
         <swiper-slide v-for="item in pageInfo.mainImage" :key="item.skuId">
           <img :src="item"/>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
-      <div class="name ellipsis-2">{{ pageInfo.title }}</div>
+      <div class="name">{{ pageInfo.title }}</div>
       <div class="price clearfix">
         <div class="origin">￥<em>{{ fixPrice( pageInfo.price || pageInfo.originPrice ) }}</em></div>
         <div class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( pageInfo.brokeragePrice ) }}</div>
@@ -17,9 +17,10 @@
         <!--<div class="sale">已售:{{pageInfo.saledNum?pageInfo.saledNum:0}}</div>-->
         <div class="stock" v-if="pageInfo.lastStock<=200">库存:{{pageInfo.lastStock}}</div>
       </div>
+
       <a :href="locationStr" class="loc ellipsis-1" style="display: block">
         {{pageInfo.storeVO.address}}
-        <div class="icon"><img src="static/arrow-right.png"/></div>
+        <!--<div class="icon"><img src="static/arrow-right.png"/></div>-->
       </a>
     </div>
 
@@ -57,7 +58,7 @@
   }
 
   .head .banner {
-    height: 200px;
+    height: 300px;
     background-color: #ccc;
   }
 
@@ -161,8 +162,8 @@
 
   .pop {
     margin: 0 auto;
-    width: 80%;
-    margin-top: 20%;
+    width: 70%;
+    margin-top: 10%;
     position: relative;
   }
 
@@ -209,8 +210,8 @@
       return {
         linkPath: 'link',
         pageInfo: {},
+        bannerHeight : 300,
         showPop: false,
-        shareImgUrl: CFG.host + '/app/ware/shareimage/1?token=' + utils.getCookie('ticketWeChat'),
         swiperOption: {
           autoplay: {
             delay: 2500,
@@ -228,6 +229,11 @@
     },
     mounted: function () {
       let query = this.$route.query;
+
+      this.bannerHeight = document.body.clientWidth;
+      //this.bannerHeight = document.body.clientWidth / 300 * 180;
+
+
       let ids = (query.id + '').split('-');
       this.checkedSkuId = ids[1];
       this.getData(ids[1])
@@ -238,8 +244,12 @@
         let query = this.$route.query;
         detailServ.query({skuId: skuId}, function (res) {
           self.pageInfo = res.data;
-          // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`
-          self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
+          self.locationStr = decodeURIComponent(`http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`);
+          // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
+
+          if ( self.pageInfo && self.pageInfo.mainImage && self.pageInfo.mainImage.length > 1 ) {
+            self.pageInfo.mainImage.shift();
+          }
 
           // 如果有userId，进行关系绑定
           if (query.userId) {
@@ -256,8 +266,11 @@
       },
       fixPrice: utils.fixPrice,
       showSharePop: function () {
+        let query = this.$route.query;
+        let id = query.id || '';
+        id = id.split( '-' )[1] || 0; 
         this.showPop = true;
-        this.shareImgUrl = this.shareImgUrl || CFG.host + '/app/ware/shareimage/' + this.pageInfo.skuId + '?token=' + utils.getCookie('ticketWeChat');
+        this.shareImgUrl = this.shareImgUrl || CFG.host + '/app/ware/shareimage/' + id + '?token=' + utils.getCookie('ticketWeChat');
       },
       hideSharePop: function () {
         this.showPop = false;

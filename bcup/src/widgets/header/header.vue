@@ -1,7 +1,9 @@
 <template>
     <div class="header clearfix">
         <div class="main clearfix">
-            <div class="logo"></div>
+            <router-link tag="li" class="logo" :to="{path:'/'}">
+                <img src="/static/logo.jpeg"/>
+            </router-link>
             <div class="name"></div>
         </div>
         <div class="nav">
@@ -23,10 +25,11 @@
 </template>
 
 <style scoped>
-    .header { height : 44px; z-index : 100; background: linear-gradient( #fff,#efefef ); position: fixed; top : 0; left : 0; width : 100%; color : #fff; }
+    .header { height : 44px; z-index : 100; /*background: linear-gradient( #fff,#efefef );*/ background: #fff; position: fixed; top : 0; left : 0; width : 100%; color : #fff; box-shadow : 0 3px 5px rgba( 0, 0, 0, 0.1 ); }
 
     .main { float: left; height : 100%; line-height: 44px; }
-    .main .logo { height : 30px; width : 30px; background-color: #fff; border-radius: 50%; margin-top : 8px; display: inline-block; float: left; margin-left : 10px; }
+    .main .logo { height : 40px; width : 40px; background-color: #fff; margin-top : 2px;float: left; display: block; position: relative; margin-left : 10px; }
+    .main .logo img { width : 100%; height : 100%; display: block; }
     .main .name { display: inline-block; float: left; margin-left : 10px; }
 
     .nav { float : right; margin-right : 10px; }

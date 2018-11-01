@@ -1,0 +1,19 @@
+.w-p-sub-apply { color : #434552; background-color: #fff; height : 100%; width : 100%; overflow-x: hidden; overflow-y: auto; }
+.w-p-sub-apply .head {  border-bottom : solid 1px #CEB997; width : 100%; height: 1rem; display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; }
+.w-p-sub-apply .head .title { font-size : 0.4rem; height : 0.6rem; border-left : solid 0.1rem #EA4834; padding-left : 0.4rem; height: 0.6rem; line-height: 0.6rem; }
+.w-p-sub-apply .head .steps { background-color: rgba( 239, 233, 223, 1 ); display: flex; height: 0.8rem; font-size : 0.32rem; align-items: center; position: relative; top : 0.3rem; z-index: 1; }
+.w-p-sub-apply .head .steps:before { content : ''; width : 0; height : 0; border-bottom : solid 0.8rem rgba( 239, 233, 223, 1 ); border-left : solid 0.3rem transparent; position: absolute; left : -0.3rem; top : 0; }
+.w-p-sub-apply .head .steps .step { padding : 0 0.6rem; }
+.w-p-sub-apply .head .steps .step.current { color : #EA4834;  }
+
+.w-p-sub-apply .cont { padding : 0.5rem; height: 5.4rem; overflow-y: auto; }
+.w-p-sub-apply .act { border-top : solid 1px rgba( 206, 185, 151, 0.4 ); height : 1.2rem; display: flex; align-items: center; justify-content: center; }
+.w-p-sub-apply .act .btn { min-width : 2rem; height : 0.8rem; background-color: #EA4834; color : #fff; }
+
+
+.w-p-sub-apply .d-title { margin : 0.2rem 0; font-size : 0.36rem; text-align: center; }
+.w-p-sub-apply .d-title.sub { font-size : 0.28rem; }
+.w-p-sub-apply .p { font-size : 0.24rem; text-indent : 0.48rem; }
+
+
+

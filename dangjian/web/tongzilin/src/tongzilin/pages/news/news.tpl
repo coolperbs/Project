@@ -23,7 +23,7 @@
 			<div class="news news-wrap J_NewsCont">
 			</div>
 			<script class="J_NewsTemp" type="text/html">
-				<% if ( imageUrl ) { %>
+				<% if ( imageUrl && false ) { %>
 					<div class="main-pic">
 						<img src="<%= imageUrl%>"/>
 					</div>

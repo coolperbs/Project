@@ -1,6 +1,6 @@
 <template>
     <div class="toolbar clearfix">
-        <router-link :to="{ path : '/' }" class="home"><img src="static/home.png"/></router-link>
+        <router-link :to="{ path : '/' }" class="home"><img src="/static/home.png"/></router-link>
         <div class="cont">
             <div class="btn" @click="toggleService">咨询客服 </div>
             <router-link :to="{ path : '/checkout', query : { skuId : skuId } }" class="btn primary">立即购买</router-link>
@@ -8,7 +8,7 @@
         <transition name="fade">
             <div v-if="showService" class="pop">
                 <div class="list">
-                  <a class="item" :href="'tel:'+pageInfo.storeVO.telphone">拨打电话</a>
+                  <a class="item" href="tel:02887053832">拨打电话</a>
                   <router-link tag="div" :to="{ path : '/servicecenter'}"  class="item">服务中心</router-link>
                 </div>
                 <div class="shim" @click="toggleService"></div>

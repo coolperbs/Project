@@ -8,7 +8,7 @@
 
 
 .w-p-ndetail2 .cont .main { background-color: #fff; /*width : 11.6rem;*/ width : 100%; overflow-y: auto; overflow-x: hidden; }
-.w-p-ndetail2 .cont .main .detail .pic img { display: block; max-width: 10.1rem; }
+.w-p-ndetail2 .cont .main .detail .pic img { display: block; width: 10.1rem; }
 
 .w-p-ndetail2 .cont .news-wrap { height: 100%; width : 100%; overflow-y: auto; }
 .w-p-ndetail2 .cont .main .btn { cursor : pointer; position: absolute; right : 0.1rem;bottom:-0.4rem; width : 2rem; height : 0.8rem; display: flex; align-items: center; z-index: 2; justify-content: center; color : #fff; background-color : #EA4834; font-size : 0.32rem; }

@@ -1,0 +1,7 @@
+.w-p-sub-change { color : #434552; background-color: #fff; height : 100%; width : 100%; overflow: hidden; }
+.w-p-sub-change .head { background: #fff; z-index: 1; border-bottom : solid 1px #CEB997; height : 1rem; width : 100%; display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; }
+.w-p-sub-change .head .title { font-size : 0.4rem; height : 0.6rem; border-left : solid 0.1rem #EA4834; padding-left : 0.4rem; height: 0.6rem; line-height: 0.6rem; }
+
+.w-p-sub-change .cont { padding : 0.5rem; height: 5.4rem; overflow-y: auto; }
+.w-p-sub-change .act { border-top : solid 1px rgba( 206, 185, 151, 0.4 ); height : 1.2rem; display: flex; align-items: center; justify-content: center; }
+.w-p-sub-change .act .btn { width : 2rem; height : 0.8rem; background-color: #EA4834; color : #fff; }

@@ -45,15 +45,15 @@
             name: '待支付',
             value: 8
           }, {
-            name: '已支付',
+            name: '待消费', // 已支付
             value: 16
           }, {
             name: '已完成',
             value: 512
-          }, {
+          }/*, {
             name: '已取消',
             value: 1024
-          }]
+          }*/]
         },
         currentPage: 1,
         realList: [],

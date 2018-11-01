@@ -1,7 +1,7 @@
 <template>
   <div class="checkout-info">
     <div class="status">{{fixEnum(data)}}</div>
-    <div class="main">【预约】{{data.store?data.store.name:''}};{{data.store?data.store.introduce:''}}</div>
+    <div class="main">{{data.store?data.store.name:''}};{{data.store?data.store.introduce:''}}</div>
     <div class="spec"><span class="tag">地址/电话</span>{{data.store?data.store.address:''}}/{{data.store?data.store.telphone:''}}</div>
   </div>
 </template>

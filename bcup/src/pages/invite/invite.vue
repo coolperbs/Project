@@ -3,17 +3,17 @@
     <ul class="list">
       <li>
         <div class="key"><em>*</em>姓名 :</div>
-        <div class="value"><input placeholder="name" v-model="form.userName"/></div>
+        <div class="value"><input placeholder="请输入姓名" v-model="form.userName"/></div>
       </li>
       <li>
         <div class="key"><em>*</em>电话 :</div>
-        <div class="value"><input placeholder="phone" maxlength="11" v-model="form.phone"/></div>
+        <div class="value"><input placeholder="请输入手机号" maxlength="11" v-model="form.phone"/></div>
       </li>
       <li class="msg">
         <div class="key"><em>*</em><em></em>验证码 :</div>
         <div class="value clearfix">
-          <input placeholder="holder" type="number" v-model="form.checkCode"/>
-          <div v-if="counter <= 0" class="msgbtn" @click="getMsgCode">获取验证码</div>
+          <input placeholder="请输入验证码" type="number" v-model="form.checkCode"/>
+          <div v-if="counter <= 0" class="msgbtn active" @click="getMsgCode">获取验证码</div>
           <div v-if="counter > 0" class="msgbtn">{{counter}}s</div>
         </div>
       </li>
@@ -37,7 +37,7 @@
   }
 
   .list li {
-    padding: 0 10px 0 80px;
+    padding: 0 10px 0 90px;
     border-bottom: solid 1px #f0f0f0;
     height: 50px;
     line-height: 50px;
@@ -52,7 +52,8 @@
   .list .key {
     float: left;
     width: 70px;
-    margin-left: -70px;
+    text-align: right;
+    margin-left: -80px;
   }
 
   .list .key em {
@@ -128,6 +129,10 @@
     background-color: #ccc;
   }
 
+  .msg .value .msgbtn.active {
+    background-color : #ff6e1d;
+  }
+
   .warn {
     padding: 10px;
     color: #999;
@@ -136,7 +141,7 @@
   .submit {
     margin: 50px 10px 0 10px;
     height: 44px;
-    background-color: #ccc;
+    background-color: #ff6e1d;
     border-radius: 22px;
     text-align: center;
     line-height: 44px;
@@ -165,10 +170,14 @@
     methods: {
       getMsgCode: function () {
         let self = this;
-        if (!(/^1[3|5|7|8][0-9]\d{4,8}$/.test(this.form.phone * 1))) {
-          alert('请填写正确的手机号');
-          return;
-        }
+        // if (!(/^1[3|5|7|8][0-9]\d{4,8}$/.test(this.form.phone * 1))) {
+        //   alert('请填写正确的手机号');
+        //   return;
+        // }
+        if (this.form.phone == '' || this.form.phone.length != 11 ) {
+          alert('请输入正确的手机号');
+          return
+        }          
         baseServ.getMsgCode(this.form.phone * 1, function (res) {
           self.startCount(60);
         });
@@ -183,10 +192,14 @@
           alert('请填写姓名');
           return;
         }
-        if (!(/^1[3|5|7|8][0-9]\d{4,8}$/.test(this.form.phone * 1))) {
-          alert('请填写正确的手机号');
-          return;
-        }
+        // if (!(/^1[3|5|7|8][0-9]\d{4,8}$/.test(this.form.phone * 1))) {
+        //   alert('请填写正确的手机号');
+        //   return;
+        // }
+        if (this.form.phone == '' || this.form.phone.length != 11 ) {
+          alert('请输入正确的手机号');
+          return
+        }        
         if (!this.form.checkCode) {
           alert('短信验证码');
           return;
@@ -210,10 +223,19 @@
       }
     },
     mounted: function () {
+      var self = this;
+
       if (!this.$route.query.userId) {
         alert('缺少达人参数');
-        Router.replace('/');
+        self.$router.replace('/');
+        return;
       }
+      distributionServ.getUserInfo( function( res ) {
+        if ( res && res.data && res.data.trader == 1 ) {
+          alert( '你已经是达人，不需要再次注册。' );
+          self.$router.replace( '/' );
+        }
+      } );
       this.form.parentUserId = this.$route.query.userId;
     }
   }
