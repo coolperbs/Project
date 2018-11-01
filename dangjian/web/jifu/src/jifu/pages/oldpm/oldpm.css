@@ -1,0 +1,7 @@
+.w-p-oldpm { color : #434552; height: 100%; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+
+.w-p-oldpm .cont { overflow: auto; /*padding : 0.4rem;*/ background-color: #fff; height : 7.6rem; width : 100%; display: flex; }
+.w-p-oldpm .cont img { display : block; width: 100%;height: 15rem; }
+
+

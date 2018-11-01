@@ -44,7 +44,7 @@
 		<script type="text/html" class="J_HomeTemp">
 			<div class="big m-title">三中心 · Three center</div>
 			<a href="#index/tongzilin/ndetail2:id=149" class="news">
-				<div class="pic"><img src="tongzilin/src/tongzilin/pages/home/images/01.jpg"/></div>
+				<div class="pic"><img src="tongzilin/src/tongzilin/pages/home/images/01.jpeg"/></div>
 				<div class="n-cont">
 					<div class="title ellipsis-1">武侯区桐梓林国际社区邻里中心</div>
 					<div class="sub-title ellipsis-1">2018年10月18日 22:10</div>

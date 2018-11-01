@@ -1,5 +1,5 @@
 <template>
-  <!--找回电子码-->
+  <!--找回核销码-->
   <div class="find-code">
     <div class="code-title">身份验证</div>
     <div class="form-row">

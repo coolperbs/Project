@@ -1,0 +1,25 @@
+.w-w-ppop {  z-index : 1000; position: fixed; background-color : rgba( 0,0,0,0.6 ); width : 100%; height : 100%; left : 0; top : 0; display: flex; display: -webkit-flex; justify-content: center; align-items: center; }
+.w-w-ppop .pop { width : 15rem; background-color : #fff; font-size : 0.24rem; color : #434552; position: relative; }
+.w-w-ppop .pop .header { border-bottom : solid 1px #CEB997; padding-top : 0.2rem; padding-bottom : 0.2rem;}
+.w-w-ppop .pop .title { height : 0.6rem; line-height: 0.6rem; font-size : 0.32rem; padding : 0 1rem 0 0.5rem;  border-left : solid 0.1rem #EA4834;  }
+.w-w-ppop .pop .sub { color : #C3AE91; font-size : 0.14rem; padding-left : 0.6rem; display: flex; }
+.w-w-ppop .pop .sub .cell { margin-right : 1rem; }
+.w-w-ppop .pop .nav { display: flex; font-size : 0.4rem; cursor:  pointer; }
+.w-w-ppop .pop .nav .tab { margin-left : 0.2rem; }
+.w-w-ppop .pop .nav .tab.current { color : #EA4834; }
+.w-w-ppop .pop .nav .tab:first-child { margin-left : 0; }
+.w-w-ppop .pop .close { cursor: pointer; height : 0.7rem; width : 0.7rem; position: absolute; right : 0; top : 0; background-color : #EA4834; color : #fff; display: flex; justify-content: center; align-items: center; }
+.w-w-ppop .pop .form .key { width : 1rem; }
+.w-w-ppop .pop .form.register .key { width : 1.5rem; }
+.w-w-ppop .pop .msg { color : #EA4834; } 
+.w-w-ppop .pop .cont { height : 6rem; overflow-x: hidden; overflow-y: auto; padding : 0.4rem 0.6rem; }
+.w-w-ppop .pop .cont .desc { font-size : 0.24rem; line-height: 0.5rem; color : #434552 ; }
+.w-w-ppop .pop .act { border-top : solid 1px #CEB997; padding : 0.4rem 0; display: flex; justify-content: center; }
+.w-w-ppop .pop .act .btn { margin-left : 0.2rem; cursor: pointer; width : 2rem; color : #EA4834; border : solid 1px #EA4834; height : 0.7rem; display: flex; justify-content: center; align-items: center; font-size : 0.28rem; }
+.w-w-ppop .pop .act .btn:first-child { margin-left : 0; }
+.w-w-ppop .pop .act .btn.primary { color : #fff; background-color: #EA4834; }
+.w-w-ppop .pop .act .btn { height: 0.8rem; width: 2rem; }
+
+.w-w-ppop .pop .comments { margin-top : 0.3rem; color : #c4b7ae; }
+.w-w-ppop .pop .comments .c-title { border-bottom : solid 1px #efe9df; padding : 0.05rem 0; }
+.w-w-ppop .pop .comments .cell { margin-top : 0.2rem; }

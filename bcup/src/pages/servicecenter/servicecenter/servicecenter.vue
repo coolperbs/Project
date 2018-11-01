@@ -9,7 +9,7 @@
       </router-link>
       <router-link :to="{path : '/servicecenter/findecode'}" class="item">
         <div class="item-img"><img src="/static/code.png"></div>
-        <div class="item-name">找回电子码</div>
+        <div class="item-name">找回核销码</div>
       </router-link>
       <router-link :to="{path : '/servicecenter/bookinguse'}" class="item">
         <div class="item-img"><img src="/static/pre-order.png"></div>

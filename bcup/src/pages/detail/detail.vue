@@ -17,10 +17,11 @@
         <!--<div class="sale">已售:{{pageInfo.saledNum?pageInfo.saledNum:0}}</div>-->
         <div class="stock" v-if="pageInfo.lastStock<=200">库存:{{pageInfo.lastStock}}</div>
       </div>
-      <div class="loc ellipsis-1" style="display: block">
+
+      <a :href="locationStr" class="loc ellipsis-1" style="display: block">
         {{pageInfo.storeVO.address}}
         <!--<div class="icon"><img src="static/arrow-right.png"/></div>-->
-      </div>
+      </a>
     </div>
 
     <div v-if="userData.trader==1" class="shareIcon" @click="showSharePop">分享海报</div>
@@ -243,8 +244,12 @@
         let query = this.$route.query;
         detailServ.query({skuId: skuId}, function (res) {
           self.pageInfo = res.data;
-          // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`
+          self.locationStr = decodeURIComponent(`http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lng},${self.pageInfo.storeVO.lat}&title=目标地址&content=${self.pageInfo.storeVO.name}&output=html`);
           // self.locationStr = `http://api.map.baidu.com/marker?location=${self.pageInfo.storeVO.lat},${self.pageInfo.storeVO.lng}=${self.pageInfo.storeVO.name}&content=${self.pageInfo.storeVO.name}&output=html`
+
+          if ( self.pageInfo && self.pageInfo.mainImage && self.pageInfo.mainImage.length > 1 ) {
+            self.pageInfo.mainImage.shift();
+          }
 
           // 如果有userId，进行关系绑定
           if (query.userId) {

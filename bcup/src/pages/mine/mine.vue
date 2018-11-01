@@ -19,7 +19,7 @@
         </router-link>
         <router-link tag="div" :to="{path:'/orders/list?type=16'}" class="cell">
           <img src="static/order-pay.png"/>
-          <div class="text">已支付</div>
+          <div class="text">待消费</div> <!-- 已支付 -->
         </router-link>
         <router-link tag="div" :to="{path:'/orders/list?type=512'}" class="cell">
           <img src="static/order-finished.png"/>
@@ -44,7 +44,7 @@
         </router-link>
         <router-link tag="div" :to="{path:'/servicecenter/findecode'}" class="cell">
           <img src="static/code.png"/>
-          <div class="text">找回电子码</div>
+          <div class="text">找回核销码</div>
         </router-link>
         <router-link tag="div" :to="{path:'/servicecenter/bookinguse'}" class="cell">
           <img src="static/pre-order.png"/>
