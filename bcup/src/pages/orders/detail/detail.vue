@@ -36,7 +36,7 @@
     },
     mounted () {
       orderServ.get( { orderId : this.$route.query.orderid }, ( res )=> {
-        this.orderData = res.data
+        this.orderData = res.data;
       } );
     }
   }

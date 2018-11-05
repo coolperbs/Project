@@ -5,7 +5,7 @@
         <div class="search-icon"></div>
         搜索
       </div>
-      <div class="search-show" v-else>
+      <div class="search-show" v-if="active">
         <div class="search-icon"></div>
         <input type="text" class="search-input" id="search" placeholder="搜索" @blur="changeActive" v-model="filterKey">
         <div class="search-clear" @click="cleanFilter"></div>

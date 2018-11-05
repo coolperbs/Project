@@ -116,12 +116,12 @@
     display: inline-block;
     border: 1px solid #eee;
     padding: 5px 15px;
-    background: linear-gradient( #ffff, #f0f0f0 );
+    background:  #fff ;
     border-radius: 20px;
   }
 
   .act .btn.pay {
-    background-color : #ff6e1d;
+    background : #ff6e1d !important;
     color: #fff;
   }
 </style>

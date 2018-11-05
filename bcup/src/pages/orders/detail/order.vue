@@ -9,6 +9,18 @@
         <div class="key">订单号 :</div>
         <div class="value">{{data.order?data.order.orderId:''}}</div>
       </li>
+      <li v-if="data.order?data.order.type==2:false">
+        <div class="key">快递公司 :</div>
+        <div class="value">{{data.order?data.order.transoport:''}}</div>
+      </li>
+      <li v-if="data.order?data.order.type==2:false">
+        <div class="key">运单号 :</div>
+        <div class="value">{{data.order?data.order.ecode:''}}</div>
+      </li>
+      <li v-if="data.order?data.order.type==2:false">
+        <div class="key">快递地址 :</div>
+        <div class="value">{{data.order?data.order.address:''}}</div>
+      </li>
       <li>
         <div class="key">数量 :</div>
         <div class="value">{{data.order?data.order.skuNum:''}}</div>

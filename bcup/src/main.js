@@ -31,10 +31,19 @@ function getCookie (name) {
   return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
 }
 
-if (!getCookie('ticketWeChat') ) {
-  window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + encodeURIComponent( window.location.href) );
-}
 
+let whiteList=['/servicecenter/bookinglist']
+router.beforeEach((to, from, next) => {
+ if(whiteList.indexOf(to.path)>-1){
+   next()
+ }else {
+   if (!getCookie('ticketWeChat') ) {
+     window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + encodeURIComponent( window.location.href) );
+   }else {
+     next()
+   }
+ }
+})
 
 /* eslint-disable no-new */
 new Vue({

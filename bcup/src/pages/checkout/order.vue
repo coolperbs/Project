@@ -10,6 +10,10 @@
         <div class="key"><em>*</em>电话 :</div>
         <div class="value"><input type="number" v-model="pageInfo.formInfo.userPhone" @input="changePageInfo(pageInfo)" placeholder="请输入手机号"/></div>
       </li>
+      <li v-if="userData.sku.type==2">
+        <div class="key"><em>*</em>地址 :</div>
+        <div class="value"><input type="number" v-model="pageInfo.formInfo.address" @input="changePageInfo(pageInfo)" placeholder="请输入收货地址"/></div>
+      </li>
       <li>
         <div class="key"><em></em>数量 :</div>
         <div class="value">
@@ -144,6 +148,7 @@
         num = num * 1;
         num = num <= 0 ? 1 : num;
         this.pageInfo.formInfo.skuNum = num;
+        this.pageInfo.formInfo.type = 1
         this.getBuyInfo()
       },
       changePageInfo: function (val) {
@@ -152,6 +157,7 @@
       getBuyInfo () {
         OrderS.buyNow({skuId: this.$route.query.skuId, skuNum: this.pageInfo.formInfo.skuNum}, (res) => {
           this.userData = res.data;
+          this.pageInfo.formInfo.type = this.userData.sku.type;
         })
       }
     },

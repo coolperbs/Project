@@ -4,7 +4,7 @@
     <div class="modal" v-if="showModal" @click.self="cancelEvt">
       <div class="box">
         <div class="body">
-          <img src="/static/wechat.jpg"  style="width: 100%;height: 100%;" alt="">
+          <img src="/static/wechat.jpg" style="width: 100%;height: 100%;" alt="">
         </div>
       </div>
     </div>
@@ -37,6 +37,7 @@
   .body {
     display: flex;
   }
+
   .checkout-submit {
     position: fixed;
     bottom: 0;
@@ -82,14 +83,21 @@
           utils.showError('请输入姓名');
           return
         }
-        if (this.pageInfo.formInfo.userPhone == '' || this.pageInfo.formInfo.userPhone.length != 11 ) {
+        if (this.pageInfo.formInfo.userPhone == '' || this.pageInfo.formInfo.userPhone.length != 11) {
           utils.showError('请输入正确的手机号');
           return
         }
+        if (this.pageInfo.formInfo.address == '' && this.pageInfo.formInfo.type == 2) {
+          debugger
+          utils.showError('请输入收货地址');
+          return
+        }
 
+        let forminfo = this.pageInfo.formInfo;
+        delete forminfo.type;
         lock = true;
         // 1.创建订单
-        orderServ.create(this.pageInfo.formInfo, function (orderRes) {
+        orderServ.create(forminfo, function (orderRes) {
           if (utils.isErrorRes(orderRes) || !orderRes.data.orderId) {
             utils.showError(orderRes.msg || '创建订单失败');
             lock = false;
