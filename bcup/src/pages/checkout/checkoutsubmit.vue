@@ -88,7 +88,7 @@
           return
         }
         if (this.pageInfo.formInfo.address == '' && this.pageInfo.formInfo.type == 2) {
-          debugger
+
           utils.showError('请输入收货地址');
           return
         }

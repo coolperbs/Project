@@ -47,7 +47,7 @@
     methods:{
       bindAccount(){
         distributionService.bindAccount({userName:this.userName,userPhone:this.userPhone},(res)=>{
-          debugger
+
           this.$router.back()
         })
       }
