@@ -38,7 +38,8 @@
             remark : '',
             payType : 1, // 1=微信, 2=余额
             skuId : '',
-            skuNum : 1
+            skuNum : 1,
+            type:1
           }
         }
       }

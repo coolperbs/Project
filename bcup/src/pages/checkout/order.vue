@@ -12,7 +12,7 @@
       </li>
       <li v-if="userData.sku.type==2">
         <div class="key"><em>*</em>地址 :</div>
-        <div class="value"><input type="number" v-model="pageInfo.formInfo.address" @input="changePageInfo(pageInfo)" placeholder="请输入收货地址"/></div>
+        <div class="value"><input  v-model="pageInfo.formInfo.address" @input="changePageInfo(pageInfo)" placeholder="请输入收货地址"/></div>
       </li>
       <li>
         <div class="key"><em></em>数量 :</div>
