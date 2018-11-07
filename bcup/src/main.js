@@ -32,17 +32,19 @@ function getCookie (name) {
 }
 
 
-let whiteList=['/servicecenter/bookinglist']
+let whiteList = ['/servicecenter/bookinglist','/servicecenter/bookinguse']
 router.beforeEach((to, from, next) => {
- if(whiteList.indexOf(to.path)>-1){
-   next()
- }else {
-   if (!getCookie('ticketWeChat') ) {
-     window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + encodeURIComponent( window.location.href) );
-   }else {
-     next()
-   }
- }
+
+  if (whiteList.indexOf(to.path) > -1) {
+
+    next()
+  } else {
+    if (!getCookie('ticketWeChat')) {
+      window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + encodeURIComponent(window.location.href));
+    } else {
+      next()
+    }
+  }
 })
 
 /* eslint-disable no-new */

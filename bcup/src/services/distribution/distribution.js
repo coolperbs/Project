@@ -42,7 +42,7 @@ handle = {
     ajax.get('/app/user/info', function (res) {
 
       if ( res && res.code * 1 == 8888 ) {
-        window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + window.location.href); 
+        window.location.replace('http://gw.ypzmkj.com/login?callbackUrl=' + window.location.href);
         return;
       }
 
@@ -104,6 +104,7 @@ handle = {
   },
   //预约列表
   getBespokeList(callback){
+    debugger
     ajax.get('/app/bespeak/list', {}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');

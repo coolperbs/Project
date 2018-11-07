@@ -3,10 +3,10 @@
   <div class="service-center">
     <div class="title">自助服务</div>
     <div class="cell">
-      <router-link :to="{path:'/servicecenter/bookinglist'}" class="item">
+      <!--<router-link :to="{path:'/servicecenter/bookinglist'}" class="item">
         <div class="item-img"><img src="/static/yuyuedingdan.png"></div>
         <div class="item-name">我的预约</div>
-      </router-link>
+      </router-link>-->
       <router-link :to="{path : '/servicecenter/findecode'}" class="item">
         <div class="item-img"><img src="/static/code.png"></div>
         <div class="item-name">找回核销码</div>
