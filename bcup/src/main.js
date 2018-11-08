@@ -32,7 +32,7 @@ function getCookie (name) {
 }
 
 
-let whiteList = ['/servicecenter/bookinglist','/servicecenter/bookinguse','/servicecenter/bookingdetai','/servicecenter/findecode','/servicecenter/bookingdetail','/servicecenter']
+let whiteList = ['/servicecenter/bookinglist','/servicecenter/bookinguse','/servicecenter/bookingdetai','/servicecenter/findecode','/servicecenter/bookingdetail','/servicecenter/bookingcheckout','/servicecenter']
 router.beforeEach((to, from, next) => {
 
   if (whiteList.indexOf(to.path) > -1) {

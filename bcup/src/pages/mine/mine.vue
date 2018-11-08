@@ -38,10 +38,10 @@
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
       <li class="sub clearfix">
-        <router-link tag="div" :to="{path:'/servicecenter/bookinglist'}" class="cell">
+       <!-- <router-link tag="div" :to="{path:'/servicecenter/bookinglist'}" class="cell">
           <img src="static/yuyuedingdan.png"/>
           <div class="text">我的预约</div>
-        </router-link>
+        </router-link>-->
         <router-link tag="div" :to="{path:'/servicecenter/findecode'}" class="cell">
           <img src="static/code.png"/>
           <div class="text">找回核销码</div>

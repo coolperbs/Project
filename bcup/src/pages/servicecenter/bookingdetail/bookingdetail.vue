@@ -1,7 +1,7 @@
 <template>
   <div class="booking-detail">
     <div class="nav">
-      <router-link :to="{path:'/home'}" class="my-booking">我的预约</router-link>
+     <!-- <router-link :to="{path:'/home'}" class="my-booking">我的预约</router-link>-->
       <router-link :to="{path:'/servicecenter'}" class="my-booking">服务中心</router-link>
     </div>
     <div class="item-title">
