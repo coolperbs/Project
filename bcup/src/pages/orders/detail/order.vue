@@ -64,7 +64,7 @@
 
   .list .key {
     float: left;
-    width: 70px;
+    width: 75px;
     margin-left: -80px;
   }
 

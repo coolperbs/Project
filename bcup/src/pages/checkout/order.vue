@@ -134,6 +134,7 @@
         let value = this.value;
         value.formInfo.userPhone = this.userData.userPhone;
         value.formInfo.userName = this.userData.userName;
+        value.formInfo.address = this.userData.address;
         return this.value;
       }
     },
