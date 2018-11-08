@@ -3,7 +3,7 @@
     <div class="name">【预约】{{item.wareWare?item.wareWare.title:''}}</div>
     <div class="type-box">
       <div class="date">消费日期:{{formatDateV(item.preDate)}}</div>
-      <div class="type">规格:</div>
+
     </div>
     <div class="cell-box">
       <div class="cell">
@@ -147,15 +147,8 @@
           userphone: this.userphone,
           remark: this.remark
         }, (res) => {
-          var r = confirm('预约成功,点击去首页')
-          if (r) {
-            this.$router.replace({path: '/home'});
-            setTimeout(() => {
-              window.location.reload()
-            })
-          } else {
-            this.$router.back(-1)
-          }
+          var r = confirm('预约成功')
+          this.$router.back(-1)
         })
       }
 

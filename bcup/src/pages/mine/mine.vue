@@ -169,10 +169,12 @@
 
   .list li.sub {
     height: 90px;
+    display: flex;
+    justify-content: space-around;
   }
 
   .list li.sub .cell {
-    width: 25%;
+    width: 100%;
     float: left;
     height: 100%;
     position: realtive;
