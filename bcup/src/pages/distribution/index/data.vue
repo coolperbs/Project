@@ -128,6 +128,7 @@
 
 <script>
   import utils from '@/common/utils/utils'
+  import config from '@/config.js'
 
   export default {
     props : ['pageInfo'],
@@ -143,7 +144,7 @@
       fixPrice : utils.fixPrice,
       showSharePop: function () {
         this.showPop = true;
-        this.shareImgUrl = this.shareImgUrl || this.pageInfo.user.qrcurl;
+        this.shareImgUrl = this.shareImgUrl || config.host + '/app/user/shareimage';
       },
       hideSharePop: function () {
         this.showPop = false;
