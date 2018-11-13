@@ -4,7 +4,7 @@
  		<img src="/static/wechat.jpg"/>
  		<div class="title">请识别二维码，关注暴客优品公众号，分享爆款！</div>
  	</div>
- 	<div @click="goHome" class="btn">去首页，直接购物</div>
+ 	<!--<div @click="goHome" class="btn">去首页，直接购物</div>-->
 </div>
 </template>
 
