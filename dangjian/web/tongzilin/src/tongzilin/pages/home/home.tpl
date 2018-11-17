@@ -2,7 +2,7 @@
 	<div class="cont">
 		<div class="sub">
 			<div class="mod">
-				<div class="big title">社区简介 · Introduction</div>
+				<!--<div class="big title">社区简介 · Introduction</div>-->
 				<div class="intro J_IntroCont">
 
 				</div>
@@ -42,7 +42,7 @@
 		<div class="main J_HomeCont">
 		</div>
 		<script type="text/html" class="J_HomeTemp">
-			<div class="big m-title">三中心 · Three center</div>
+			<!--<div class="big m-title">三中心 · Three center</div>-->
 			<a href="#index/tongzilin/ndetail2:id=149" class="news">
 				<div class="pic"><img src="tongzilin/src/tongzilin/pages/home/images/01.jpeg"/></div>
 				<div class="n-cont">
@@ -93,18 +93,38 @@
 
 
 		<div class="menu">
-			<div class="big title">五平台 · Five platform</div>
+			<!--<div class="big title">五平台 · Five platform</div>-->
 			<div class="list">
+				<!--<a href="#index/tongzilin/news:type=1" class="tab">
+					<div class="icon">
+						<img src="tongzilin/src/tongzilin/pages/home/images/icon1-white.png"/>
+					</div>
+					<div class="text">
+                        <div class="text">
+                        	组织孵化
+                        	<div class="en">Social organization incubation base</div>
+                        </div>
+                    </div>
+				</a>-->
 				<a href="#index/tongzilin/news:type=1" class="tab">
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon1-white.png"/>
 					</div>
 					<div class="text">
-                        <!--<div style="margin-bottom: 10px">双找</div>
-                        <div>双报到</div>-->
                         <div class="text">
                         	组织孵化
                         	<div class="en">Social organization incubation base</div>
+                        </div>
+                    </div>
+				</a>
+				<a href="#index/tongzilin/news:type=7" class="tab">
+					<div class="icon">
+						<img src="tongzilin/src/tongzilin/pages/home/images/icon8.png"/>
+					</div>
+					<div class="text">
+                        <div class="text">
+                        	活动公告
+                        	<div class="en">Notice</div>
                         </div>
                     </div>
 				</a>

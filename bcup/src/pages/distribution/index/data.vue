@@ -4,8 +4,8 @@
       <div class="key">近30营业额:</div>
       <div class="value">
         <div class="line">
-          <div class="color"  :style="{width:fixPrice( pageInfo.thirtySale )/1000+'%'}"></div>
-          <div class="tag"  :style="{left:fixPrice( pageInfo.thirtySale )/1000+'%'}">{{fixPrice( pageInfo.thirtySale )}}</div>
+          <div class="color"  :style="{width:pageInfo.thirtySale/10000+'%'}"></div>
+          <div class="tag"  :style="{left: pageInfo.thirtySale /10000+'%'}">{{fixPrice( pageInfo.thirtySale )}}</div>
         </div>
       </div>
     </div>
@@ -13,11 +13,12 @@
       <div class="key">近30天返佣:</div>
       <div class="value">
         <div class="line">
-          <div class="color"  :style="{width:fixPrice( pageInfo.thirtyRakeBack )/10000+'%'}"></div>
-          <div class="tag" :style="{left:fixPrice( pageInfo.thirtyRakeBack )/10000+'%'}">{{fixPrice( pageInfo.thirtyRakeBack )}}</div>
+          <div class="color"  :style="{width: pageInfo.thirtyRakeBack/10000+'%'}"></div>
+          <div class="tag" :style="{left:pageInfo.thirtyRakeBack /10000+'%'}">{{fixPrice( pageInfo.thirtyRakeBack )}}</div>
         </div>
       </div>
     </div>
+
     <div class="data-line clearfix">
       <div class="key price">总返佣:</div>
       <div class="value price">
@@ -30,6 +31,20 @@
         {{ pageInfo.totalOrderCount }}
       </div>
     </div>
+
+    <div class="data-line clearfix">
+      <div class="key price">今日销售额:</div>
+      <div class="value allnum price black">
+      ￥<em>{{ fixPrice( pageInfo.todaySale ) }}</em>
+      </div>
+    </div>
+
+    <div class="data-line clearfix">
+      <div class="key price">今日总返佣:</div>
+      <div class="value allnum price black">
+       ￥<em>{{ fixPrice( pageInfo.todayRakeBack ) }}</em>
+      </div>      
+    </div>    
 
     <ul class="list">
       <li class="clearfix" @click="showSharePop">
@@ -69,12 +84,13 @@
   .key.price { margin-top : 6px; }
   .value.price { font-size : 14px; font-weight: bold; color : #ef8d56; }
   .value.price em { font-size : 24px; font-style: normal; }
+  .value.price.black { color : #2c3e50; }
   .allnum { font-size : 24px; font-size : bold; }
   .data-line .line,
-  .data-line .line .color { width : 100%; background-color: #ccc; height : 10px; border-radius : 10px; margin-top : 3px; position: relative; }
-  .data-line .line .color { background-color: #999; }
-  .data-line .line .tag { background-color: #ee8e34;color: #fff; position: absolute; height : 20px; line-height: 20px; padding : 0 5px; border-radius : 5px; top : -30px; left : 20%; }
-  .data-line .line .tag:after { content : ''; display: block; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid  #ee8e34; position: absolute; left : 50%; margin-left : -5px; bottom : -6px; }
+  .data-line .line .color { width : 100%; background-color: #efefef; height : 10px; border-radius : 10px; margin-top : 3px; position: relative; }
+  .data-line .line .color { background-color: #ee8e34; }
+  .data-line .line .tag { background-color: #ee8e34;color: #fff; position: absolute; height : 20px; line-height: 20px; padding : 0 5px; border-radius : 5px; top : -30px; border-bottom-left-radius: 0; }
+  .data-line .line .tag:after { content : ''; display: block; width: 0; height: 0; /*border-left: 5px solid transparent; */border-right: 5px solid transparent; border-top: 4px solid  #ee8e34; position: absolute; left : 0px; bottom : -4px; }
 
   .list li { text-align: right; padding : 13px 0; border-top : solid 1px #f0f0f0; color : #999; }
   .list li .key { float : left; color : #2c3e50; }
