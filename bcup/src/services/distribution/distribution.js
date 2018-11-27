@@ -64,8 +64,8 @@ handle = {
     });
   },
   // 绑定账号
-  bindAccount ({userName, userPhone}, callback) {
-    ajax.get('/app/trader/account', {userName, userPhone}, (res) => {
+  bindAccount ({tradeName, tradePhone}, callback) {
+    ajax.get('/app/trader/account', {tradeName, tradePhone}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;
@@ -104,7 +104,6 @@ handle = {
   },
   //预约列表
   getBespokeList(callback){
-    debugger
     ajax.get('/app/bespeak/list', {}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');

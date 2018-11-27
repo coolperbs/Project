@@ -6,8 +6,8 @@
         <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashaccount' }" class="clearfix">
-        <div class="key">提现账号</div>
-        {{tradeData.account?tradeData.account:'暂未设置'}}
+        <div class="key">达人账号</div>
+        <!--{{tradeData.account?tradeData.account:'暂未设置'}}-->
         <div class="more"><img src="/static/arrow-right.png"/></div>
       </router-link>
       <router-link tag="li" :to="{path : '/distribution/crashrecord' }" class="clearfix">

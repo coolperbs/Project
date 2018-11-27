@@ -170,6 +170,14 @@
       cancelEvt () {
         this.showRebackModal = false;
       },
+      // rakeback : function() {
+      //   console.log( this.tradeData );
+      //   if ( this ) {
+      //     alert( '请完善达人信息' );
+      //     return;
+      //   }
+      //   this.showPop();
+      // },
       showPop : function() {
         this.isShowPop = true;
       },

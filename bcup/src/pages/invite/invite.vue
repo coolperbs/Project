@@ -1,6 +1,8 @@
 <template>
   <div class="invite">
-    <ul class="list">
+    <img class="code" src="/static/wechat.jpg"/>
+    <div class="text">长按关注公众号，完成达人注册。</div>
+    <!--<ul class="list">
       <li>
         <div class="key"><em>*</em>姓名 :</div>
         <div class="value"><input placeholder="请输入姓名" v-model="form.userName"/></div>
@@ -21,12 +23,18 @@
 
     <div class="warn">{{errormgs}}</div>
 
-    <div class="submit" @click="submit">提交</div>
+    <div class="submit" @click="submit">提交</div>-->
   </div>
 </template>
 
 
 <style scoped>
+  .invite { text-align: center; }
+  .code {
+    width : 60%; margin : 100px auto 50px auto;
+  }
+  .text { color : red; font-size : 18px; } 
+
   .title {
     font-size: 12px;
     padding: 10px;
@@ -230,12 +238,17 @@
         self.$router.replace('/');
         return;
       }
-      distributionServ.getUserInfo( function( res ) {
-        if ( res && res.data && res.data.trader == 1 ) {
-          alert( '你已经是达人，不需要再次注册。' );
-          self.$router.replace( '/' );
-        }
-      } );
+
+      distributionServ.applyTrader(this.form, function (res) {
+        // alert('注册成功');
+        // that.$router.replace('/focusoa');
+      });      
+      // distributionServ.getUserInfo( function( res ) {
+      //   if ( res && res.data && res.data.trader == 1 ) {
+      //     alert( '你已经是达人，不需要再次注册。' );
+      //     self.$router.replace( '/' );
+      //   }
+      // } );
       this.form.parentUserId = this.$route.query.userId;
     }
   }

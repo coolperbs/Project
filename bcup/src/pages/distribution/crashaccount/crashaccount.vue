@@ -2,13 +2,21 @@
   <div class="account">
     <ul class="list">
       <li>
-        <div class="key">姓名 :</div>
-        <div class="value"><input  v-model="userName"/></div>
+        <div class="key">用户姓名 :</div>
+        <div class="value"><input  v-model="tradeName"/></div>
       </li>
       <li>
         <div class="key">手机号 :</div>
-        <div class="value"><input  v-model="userPhone"/></div>
+        <div class="value"><input  v-model="tradePhone"/></div>
+      </li>    
+      <!--<li>
+        <div class="key">支付宝账号 :</div>
+        <div class="value"><input  v-model="userName"/></div>
       </li>
+      <li>
+        <div class="key">支付宝手机号 :</div>
+        <div class="value"><input  v-model="userPhone"/></div>
+      </li>-->
     </ul>
     <div class="save" @click="bindAccount">保存</div>
   </div>
@@ -37,17 +45,21 @@
     data : function() {
       return {
         userName:'',
-        userPhone:''
+        userPhone:'',
+        tradeName : '',
+        tradePhone : ''
       }
     },
     mounted(){
-      this.userName=this.$route.query.userName||''
-      this.userPhone=this.$route.query.userPhone||''
+      distributionService.getUserInfo((res) => {
+        this.userData = res.data;
+        this.tradeName=this.userData.realName;
+        this.tradePhone=this.userData.phoneNumber;
+      })      
     },
     methods:{
       bindAccount(){
-        distributionService.bindAccount({userName:this.userName,userPhone:this.userPhone},(res)=>{
-
+        distributionService.bindAccount({tradeName:this.tradeName,tradePhone:this.tradePhone},(res)=>{
           this.$router.back()
         })
       }

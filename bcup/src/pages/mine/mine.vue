@@ -7,6 +7,41 @@
         <div class="sub">id:{{userData.id}}</div>
       </div>
     </div>
+
+    <div class="mod">
+      <div class="title">我的店铺</div>
+      <div class="row">
+        <div class="sale-info">
+          <div class="sub-title">个人销售额<em>(元)</em></div>
+          <div class="price orange">{{ fixPrice( pageInfo.totalSale ) }}</div>
+          <div class="sub-title">今日销售额<em>(元)</em>：{{ fixPrice( pageInfo.todaySale ) }}</div>
+        </div>
+
+        <div class="sale-info">
+          <div class="sub-title">个人收益<em>(元)</em></div>
+          <div class="price">{{ fixPrice( pageInfo.totalRakeBack ) }}</div>
+          <div class="sub-title">今日收益<em>(元)</em>：{{ fixPrice( pageInfo.todayRakeBack ) }}</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="sale-info">
+          <div class="sub-title">团队销售额<em>(元)</em>：{{ fixPrice( totalTraderSale ) }}</div>
+        </div>
+
+        <div class="sale-info">
+          <div class="sub-title">团队收益<em>(元)</em>：{{ fixPrice( totalTraderBack ) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mod" >
+      <div class="title">
+        <router-link tag="div" class="text" :to="{path : '/distribution/rank'}">我的团队</router-link>
+        <div class="btn"  @click="showSharePop">邀请达人</div>
+      </div>
+    </div>
+
     <ul class="list ordercenter">
       <router-link tag="li" class="mod-title" :to="{path:'/orders/list?type=1'}">
         <img src=""/>订单
@@ -88,6 +123,14 @@
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
     </ul>-->
+    <div class="sharePop" v-if="showPop">
+      <div class="pop">
+        <div class="close" @click="hideSharePop">
+          <img src="/static/cross.png"/>
+        </div>
+        <img :src="shareImgUrl"/>
+      </div>
+    </div>    
   </div>
 
 </template>
@@ -96,6 +139,17 @@
 <style scoped>
   .mine {
   }
+
+  .mod { margin-top : 10px; background-color : #fff; padding : 10px; }
+  .mod .title { display: flex; font-size : 16px; align-items: center; }
+  .mod .title .btn { border-radius : 8px; background-color: #ef8d56; color : #fff; padding : 5px 10px; font-size : 16px; }
+  .mod .title .text { width : 50%; }
+  .mod .row { border-bottom : solid 1px #f0f0f0; padding : 0 10px 10px 10px; margin-top : 10px; display: flex; }
+  .mod .row:last-child { border-bottom : 0; }
+  .mod .row .sale-info { width : 50%; }
+  .mod .row .sale-info .sub-title em { color : #999; margin : 0 5px; font-style : normal; }
+  .mod .row .sale-info .price { font-size : 24px; font-weight : bold; }
+  .mod .row .sale-info .price.orange { color : #ef8d56; }
 
   .mod-title {
     font-size : 16px;
@@ -198,22 +252,96 @@
     text-align: center;
     margin-top: 10px;
   }
+
+  .sharePop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+  }
+  .sharePop {
+    text-align: center;
+  }
+
+  .pop {
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 10%;
+    position: relative;
+  }
+
+  .pop .close {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: -20px;
+    right: -20px;
+    overflow : hidden;
+    position: absolute;
+  }
+
+  .pop .close img {
+    width : 24px;
+    height : 24px;
+    position: absolute;
+    left : 8px;
+    top : 8px;
+  }
+
+  .pop img {
+    width: 100%;
+    background-color: #fff;
+  }    
 </style>
 
 <script>
   import distributionService from '@/services/distribution/distribution'
+  import utils from '@/common/utils/utils'
+  import config from '@/config.js'
+  import teamServer from '@/services/team/team'
 
   export default {
     components: {},
     data: function () {
       return {
-        userData: {}
+        showPop : false,
+        userData: {},
+        pageInfo : {},
+        totalTraderBack : 0,
+        totalTraderSale : 0
+      }
+    },
+    methods : {
+      fixPrice : utils.fixPrice,
+      showSharePop: function ( e ) {
+        console.log( e );
+        this.showPop = true;
+        this.shareImgUrl = this.shareImgUrl || config.host + '/app/user/shareimage';
+        return false;
+      },
+      hideSharePop: function () {
+        this.showPop = false;
+        this.shareImgUrl = '';
       }
     },
     mounted () {
+      var self = this;
       distributionService.getUserInfo((res) => {
-        this.userData = res.data;
+        self.userData = res.data;
       })
+
+      distributionService.getBaseInfo( function( baseInfo ) {
+        self.pageInfo = baseInfo.data;
+      } ); 
+
+      teamServer.getTeam((baseInfo) => {
+        self.totalTraderBack = baseInfo.data.totalTraderBack;
+        self.totalTraderSale = baseInfo.data.totalTraderSale;
+      });
     }
   }
 </script>
