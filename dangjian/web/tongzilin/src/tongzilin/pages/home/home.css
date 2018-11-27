@@ -9,7 +9,7 @@
 .w-p-home .cont .menu .title.big { height : 0.36rem; margin-top: -0.53rem; }
 .w-p-home .cont .menu .list { height : 100%; width: 4.76rem; display: flex; display: -webkit-flex; flex-wrap : wrap; align-content : space-between; justify-content : space-between; }
 .w-p-home .cont .menu .tab { font-weight:lighter; cursor : pointer; color : #434552;  display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; padding : 0.1rem; width : 2.34rem; height: 32.5%; background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)); }
-/*.w-p-home .cont .menu .tab:first-child{
+.w-p-home .cont .menu .tab:first-child{
     width : 100%;
     flex-direction: row;
     align-items: center;
@@ -21,7 +21,7 @@
     line-height: 1;
     height: auto;
 }
-.w-p-home .cont .menu .tab:first-child img { width : 1.2rem; height : 1.2rem; }*/
+.w-p-home .cont .menu .tab:first-child img { width : 1.2rem; height : 1.2rem; }
 
 
 .w-p-home .cont .menu .tab:nth-child(1),

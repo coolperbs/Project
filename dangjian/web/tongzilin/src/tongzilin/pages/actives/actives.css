@@ -1,0 +1,12 @@
+.w-p-actives { color : #434552; display: flex; display: -webkit-flex; align-items : flex-end; font-size : 0.16rem; position: absolute; bottom : 0; left : 0; width : 100%; }
+
+.w-p-actives .cont { position: relative; height : 7.6rem; width : 100%; overflow-y: auto; display: flex; justify-content: space-around; flex-wrap: wrap; }
+.w-p-actives .cont .item { box-shadow : 0.05rem 0.1rem 0.1rem rgba( 0, 0, 0, 0.2 ); overflow:hidden; margin : 0.3rem 0; width : 4rem; height : 5.2rem; background-color : #fff; border-radius : 0.1rem; }
+.w-p-actives .shadow { width : 100%; height : 0.5rem; background-color : #fff; position: absolute; left : 0; z-index: 100; }
+.w-p-actives .shadow.up { top : 0; background: linear-gradient(rgba(152, 164, 181, 0.5), rgba(152, 164, 181, 0)); }
+.w-p-actives .shadow.down { bottom : 0; background: linear-gradient(rgba(152, 164, 181, 0), rgba(152, 164, 181, 0.2)); }
+.w-p-actives .cont .item .pic { height : 4rem; width: 4rem; background: #ccc; }
+.w-p-actives .cont .item .title { height : 1rem; font-size : 0.2rem; padding : 0.2rem 0.1rem; }
+
+
+

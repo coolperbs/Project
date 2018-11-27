@@ -23,8 +23,8 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 			    en : 'Hobbies & interests',
 			    value : 3
 			},{
-			    text : '艺术展览',
-			    en : 'Exhibition',
+			    text : '照片直播',
+			    en : 'Photo live broadcast',
 			    value : 4
 			}],
 			search : true			
@@ -76,6 +76,90 @@ define( 'tongzilin/pages/news/headerparam', function( require, exports, module )
 			id : 'news2',
 			title : '信息平台',
 			en : 'Information platform',
+			search : true			
+		},
+
+		7 : {
+			id : 'news2',
+			sorts : [{
+			    text : '境外人员服务',
+			    en : 'Service for overseas personnel',
+			    value : 1
+			},{
+			    text : '医疗服务',
+			    en : 'Medical service',
+			    value : 2
+			},{
+			    text : '教育服务',
+			    en : 'Education Service',
+			    value : 3
+			},{
+			    text : '应急服务',
+			    en : 'Emergency service',
+			    value : 4
+			}/*,{
+			    text : '服务机构',
+			    en : 'Service organization',
+			    value : 5
+			}*/],
+			search : true			
+		},
+		8 : {
+			id : 'news2',
+			sorts : [{
+			    text : '旅游',
+			    en : 'Tourism',
+			    value : 1
+			},{
+			    text : '购物',
+			    en : 'Shopping',
+			    value : 2
+			},{
+			    text : '美食',
+			    en : 'Delicious food',
+			    value : 3
+			},{
+			    text : '运动',
+			    en : 'Sports',
+			    value : 4
+			},{
+			    text : '中介服务',
+			    en : 'Intermediary services',
+			    value : 5
+			}],
+			search : true			
+		},
+		9 : {
+			id : 'news2',
+			sorts : [{
+			    text : '活动计划',
+			    en : 'Activity Plans',
+			    value : 1
+			},{
+			    text : '品牌项目',
+			    en : 'Star Projects',
+			    value : 2
+			},{
+			    text : '照片直播',
+			    en : 'Photo live broadcast',
+			    value : 3
+			}/*,{
+			    text : '报名方式',
+			    en : 'Registration',
+			    value : 4
+			}*/],
+			search : true			
+		},
+		10 : {
+			id : 'news2',
+			title : '政策介绍',
+			en : 'Policy introduction',
+			search : true			
+		},
+		11 : {
+			id : 'news2',
+			title : '入住企业',
+			en : 'Settled Enterprise',
 			search : true			
 		}
 	}

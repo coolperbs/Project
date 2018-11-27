@@ -5,13 +5,13 @@
 
 /* 菜单 */
 .w-p-news .cont .menu { width : 4.5rem; height : 100%; overflow-y: auto; background-color : #fff; }
-.w-p-news .cont .menu > section { cursor: pointer; background-color: #fff; padding : 0.2rem 0.2rem 0.2rem 0.1rem; width : 100%; height : 1.4rem; border-left : solid 0.1rem #fff; display: flex; display: -webkit-flex; align-items: center; justify-content: space-between; }
+.w-p-news .cont .menu > section { cursor: pointer; background-color: #fff; padding : 0.2rem 0.2rem 0.2rem 0.1rem; width : 100%; /*height : 1.5rem;*/ border-left : solid 0.1rem #fff; display: flex; display: -webkit-flex; align-items: center; justify-content: space-between; }
 .w-p-news .cont .menu > section.current { border-left-color : #EA4834; }
 .w-p-news .cont .menu > section .pic { width : 1.6rem; background-color: #f0f0f0; overflow: hidden; height: 0.9rem; display: flex; display: -webkit-flex; align-items: center; }
 .w-p-news .cont .menu > section .pic img { width : 100%; }
 .w-p-news .cont .menu > section .info { flex-flow: 1; width: 100%; height: 100%; margin-left : 0.15rem; display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; }
 .w-p-news .cont .menu > section .info .title { font-size : 0.2rem; }
-.w-p-news .cont .menu > section .info .sub { font-size : 0.16rem; color : #9ea8b7; }
+.w-p-news .cont .menu > section .info .sub { margin-top : 0.1rem; font-size : 0.16rem; color : #9ea8b7; }
 
 .w-p-news .cont .main { position: relative; background-color: #fff; width : 12.8rem; margin-left : 0.3rem; overflow : visible; }
 .w-p-news .cont .news-wrap { height: 100%; width : 100%; overflow-y: auto; }

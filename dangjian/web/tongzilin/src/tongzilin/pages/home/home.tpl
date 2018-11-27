@@ -7,10 +7,10 @@
 
 				</div>
 				<script class="J_IntroTemp" type="text/html">
-					<div class="pic">
+					<a  href="#index/tongzilin/ndetail2:id=89" class="pic">
 						<img src="tongzilin/src/tongzilin/pages/home/images/1.jpeg"/>
 						<!--<img src="<%= shequ.adImgUrl%>"/>-->
-					</div>
+					</a>
 					<!--<div class="text">
 						<div class="ellipsis-2">
 						桐梓林社区是四川省成都市武侯区火车南站街道下辖的一个行政社区，东起人民南路四段，西至新光路，南起桐梓林南路，北至二环路南三段，面积0.6平方公里；有常住人口13576人，暂住人口约3000人。</div>
@@ -21,7 +21,7 @@
 			<div class="mod">
 				<!--<div class="title">邻里中心 · Neighborhood Center</div>-->
 				<div class="info">
-					<a href="#index/tongzilin/ndetail2:id=89" class="info-mod">
+					<a href="#index/tongzilin/ndetail2:id=91" class="info-mod">
 						<div class="record">
 							<div>
 							社区东起人民南路四段，西到新光路，南从桐梓林南路起，北到二环路南三段，面积0.6平方公里，高档物管小区16个、单位院落3个，双流国际机场高速主城区出入口、天府国际机场18号线、地铁1号线、二环路联动整个区域，交通便利。辖区人口2万余人，其中外籍人士近4300人，来自于美国、英国、德国、韩国、日本等三十八个国家和地区，多数为国外驻成都机构中高层管理人员、外资企业高端人才，是近20年来成都市外籍人士居住最为集中的社区。成都最美街道——“欧洲风情街”是桐梓林社区的标志性街道，成为成都的一张国际名片，中英双语门牌，欧式风情浓郁。培育孵化出武侯区欣迪社会服务中心、志合服务中心等12家社会服务组织，拥有1所小学、2所中学、2所幼儿园，2家医院、4家医疗美容院等医美资源。聚集日本料理、韩国菜品、泰国餐吧的成都老外美食街，鳍合轩、雍雅河鲜、虾佬圣汤等10余家大中型餐饮场所，凯宾斯基饭店、成都富豪首座万丽酒店2家五星级涉外酒店，中国银行、工商银行等11家银行以及涵盖凯莱帝景、观南上域、上善国际、首座4座高端商务楼宇等资源进驻，让桐梓林成为“开放、包容、和谐”的宜商宜居宜业居住生活型国际社区。
@@ -43,7 +43,7 @@
 		</div>
 		<script type="text/html" class="J_HomeTemp">
 			<!--<div class="big m-title">三中心 · Three center</div>-->
-			<a href="#index/tongzilin/ndetail2:id=149" class="news">
+			<a href="#index/tongzilin/actives:type=12" class="news">
 				<div class="pic"><img src="tongzilin/src/tongzilin/pages/home/images/01.jpeg"/></div>
 				<div class="n-cont">
 					<div class="title ellipsis-1">武侯区桐梓林国际社区邻里中心</div>
@@ -60,14 +60,14 @@
 			</a>
 			<% } %>
 			<div class="news-list">
-				<a href="#index/tongzilin/ndetail2:id=148" class="small news">
+				<a href="#index/tongzilin/actives:type=13" class="small news">
 					<div class="pic" style="background-image:url(tongzilin/src/tongzilin/pages/home/images/01.png); background-size:cover; background-position : center center;"></div>
 					<div class="n-cont">
 						<div class="title ellipsis-2">桐梓林社区党群服务中心</div>
 						<div class="sub-title ellipsis-1">2018年10月18日 22:10</div>
 					</div>
 				</a>
-				<a href="#index/tongzilin/ndetail2:id=147" class="small news">
+				<a href="#index/tongzilin/actives:type=14" class="small news">
 					<div class="pic" style="background-image:url(tongzilin/src/tongzilin/pages/home/images/15.jpeg); background-size:cover; background-position : center center;"></div>
 					<div class="n-cont">
 						<div class="title ellipsis-2">桐梓林境外人员服务中心</div>
@@ -76,7 +76,7 @@
 				</a>									
 				<% if ( false && news && news.length >= 4 ) { %>
 					<% for ( var i = 1; i < 4; ++i ) { %>
-						<a href="#index/tongzilin/ndetail2:id=<%= news[i].id%>" class="small news">
+						<a href="#index/tongzilin/actives:type=<%= 12+i%>" class="small news">
 							<div class="pic" style="background-image:url(<%= news[i].adImgUrl%>); background-size:cover; background-position : center center;"></div>
 							<div class="n-cont">
 								<div class="title ellipsis-2"><%= news[i].name%></div>
@@ -95,18 +95,18 @@
 		<div class="menu">
 			<!--<div class="big title">五平台 · Five platform</div>-->
 			<div class="list">
-				<!--<a href="#index/tongzilin/news:type=1" class="tab">
+				<a href="#index/tongzilin/news:type=7" class="tab">
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon1-white.png"/>
 					</div>
 					<div class="text">
                         <div class="text">
-                        	组织孵化
-                        	<div class="en">Social organization incubation base</div>
+                        	服务项目
+                        	<div class="en">Service item</div>
                         </div>
                     </div>
-				</a>-->
-				<a href="#index/tongzilin/news:type=1" class="tab">
+				</a>
+				<!--<a href="#index/tongzilin/news:type=1" class="tab">
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon1-white.png"/>
 					</div>
@@ -127,42 +127,42 @@
                         	<div class="en">Notice</div>
                         </div>
                     </div>
-				</a>
-				<a href="#index/tongzilin/news:type=2" class="tab" >
-					<div class="icon">
-						<img src="tongzilin/src/tongzilin/pages/home/images/icon2.png"/>
-					</div>
-					<div class="text">
-						艺术交流
-						<div class="en">International art exchange</div>
-					</div>
-				</a>
-				<a href="#index/tongzilin/news:type=3" class="tab" >
+				</a>-->
+				<a href="#index/tongzilin/news:type=8" class="tab" >
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon3.png"/>
 					</div>
 					<div class="text">
-						生活服务
+						便民服务
 						<div class="en">Life Services</div>
 					</div>
 				</a>
-				<a href="#index/tongzilin/news:type=4" class="tab" >
+				<a href="#index/tongzilin/news:type=9" class="tab" >
+					<div class="icon">
+						<img src="tongzilin/src/tongzilin/pages/home/images/icon2.png"/>
+					</div>
+					<div class="text">
+						文化交流
+						<div class="en">Cultural exchange</div>
+					</div>
+				</a>
+				<a href="#index/tongzilin/news:type=10" class="tab" >
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon4.png"/>
 					</div>
 					<div class="text">
-						邻里融合
-						<div class="en">Community News</div>
+						政策介绍
+						<div class="en">Policy introduction</div>
 					</div>
 				</a>
 				<!--<a href="#index/tongzilin/news:type=5" class="tab" >-->
-				<a href="#index/tongzilin/qrcode" class="tab" >
+				<a href="#index/tongzilin/news:type=11" class="tab" >
 					<div class="icon">
 						<img src="tongzilin/src/tongzilin/pages/home/images/icon5.png"/>
 					</div>
 					<div class="text">
-						信息平台
-						<div class="en">Information platform</div>
+						入驻企业
+						<div class="en">Settled Enterprise</div>
 					</div>
 				</a>
 			</div>			

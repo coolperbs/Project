@@ -11,7 +11,7 @@
 					</div>
 					<% } %>
 					<div class="info">
-						<div class="title ellipsis-2"><%= n.name%></div>
+						<div class="title ellipsis-3"><%= n.name%></div>
 						<div class="sub"><%= date( n.created, true)%></div>
 					</div>
 				</section>
