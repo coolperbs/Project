@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="mod">
+    <div class="mod"  v-if="userData.trader==1">
       <div class="title">我的店铺</div>
       <div class="row">
         <div class="sale-info">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="mod" >
+    <div class="mod"  v-if="userData.trader==1">
       <div class="title">
         <router-link tag="div" class="text" :to="{path : '/distribution/rank'}">我的团队</router-link>
         <div class="btn"  @click="showSharePop">邀请达人</div>

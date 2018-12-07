@@ -3,7 +3,8 @@
         <router-link :to="{ path : '/' }" class="home"><img src="/static/home.png"/></router-link>
         <div class="cont">
             <div class="btn" @click="toggleService">咨询客服 </div>
-            <router-link :to="{ path : '/checkout', query : { skuId : skuId } }" class="btn primary">立即购买</router-link>
+            <router-link v-if="pageInfo.lastStock" :to="{ path : '/checkout', query : { skuId : skuId } }" class="btn primary">立即购买</router-link>
+            <div v-if="!pageInfo.lastStock" class="btn gray">已售罄</div>
         </div>
         <transition name="fade">
             <div v-if="showService" class="pop">
@@ -23,6 +24,7 @@
     .home img { position: absolute; width : 24px; height : 24px; display: inline-block; display: block; top: 50%; left : 50%; margin-left : -12px; margin-top:-12px; }
     .cont .btn { height : 100%; width : 50%; display: inline-block; float : left; text-align: center; }
     .cont .btn.primary { background-color : #ff6e1d; transition : all 0.5s; color  : #fff; font-size : 16px; }
+    .cont .btn.gray { background-color : #bbb; color : #fff; }
     .pop { height : 100%; width : 100%; position: fixed; top : -44px; left : 0; z-index: 10000; overflow: hidden; }
     .pop .list { position: absolute; bottom : 0; left : 0; width : 100%; z-index: 1; transform : translate( 0, 0 ); transition : all 0.3s;  }
     .pop .list .item {display: block; background-color: #fff; border-bottom : solid 1px #f0f0f0; padding : 0 10px; height : 60px; line-height: 60px; }
@@ -41,6 +43,8 @@
             return {
                 showService : false
             };
+        },
+        mounted : function() {
         },
         methods : {
             toggleService : function() {

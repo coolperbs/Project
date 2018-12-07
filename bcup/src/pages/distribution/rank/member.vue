@@ -5,7 +5,7 @@
       <img :src="item.avatarUrl"/>
     </div>
     <div class="info">
-      <div class="name">{{item.realName}}</div>
+      <div class="name">{{item.nickName ||item.realName}}</div>
       <div class="sub"></div>
     </div>
     <div class="sales">
