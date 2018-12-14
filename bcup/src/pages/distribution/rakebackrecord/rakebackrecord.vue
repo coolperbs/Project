@@ -49,7 +49,7 @@
         filterKey: '',
         type: 3,
         currentPage: 1,
-        switch: true,
+        switch: false,
         hasMore: false,
         renderList: [],
         bottomconfig: {
@@ -58,9 +58,9 @@
           loadingText: '加载中...',
           doneText: '加载完成',
           failText: '加载失败',
-          loadedStayTime: 400,
-          stayDistance: 50,
-          triggerDistance: 70
+          loadedStayTime: 200,
+          stayDistance: 10,
+          triggerDistance: 10
         }
       }
     },
@@ -107,7 +107,6 @@
             Temp.push(tem);
           }
         }
-        console.log(Temp)
         return Temp
       },
       tabChange (el) {
@@ -126,10 +125,11 @@
           return
         }
         this.currentPage += 1;
-        this.switch = false;
+        this.switch = true;
+        let that = this;
         this.getDataByType((res) => {
-          this.renderList.push(res);
-          this.switch = true;
+          that.renderList = [...that.renderList, ...res];
+          that.switch = false;
           loaded()
         })
       }

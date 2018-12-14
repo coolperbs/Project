@@ -35,7 +35,7 @@
       return {
         currentPage: 1,
         realList: [],
-        switch: true,
+        switch: false,
         hasMore: false,
         renderList: [],
         bottomconfig: {
@@ -102,11 +102,11 @@
           return
         }
         this.currentPage += 1;
-        this.switch = false;
-        this.render((res) => {
-          this.renderList.push(res);
-          this.switch = true;
-          this.filterList();
+        this.switch = true;
+        let that = this;
+        this.getDataByType((res) => {
+          that.renderList = [...that.renderList, ...res];
+          that.switch = false;
           loaded()
         })
       }
