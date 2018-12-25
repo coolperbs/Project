@@ -161,7 +161,8 @@
 
   _fn = {
     getData: function (callback) {
-      ajax.get('/app/index', function (res) {
+      var id = localStorage.getItem( 'venderId' ) || 1;
+      ajax.get('/app/index', { venderId : id }, function (res) {
         if (utils.isErrorRes(res)) {
           utils.showError(res.msg || '请求接口出错');
           return;
