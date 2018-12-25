@@ -11,6 +11,7 @@
                 <div class="list">
                   <a class="item" href="tel:4007728772">拨打电话</a>
                   <router-link tag="div" :to="{ path : '/servicecenter'}"  class="item">服务中心</router-link>
+                  <div @click="showServices" class="item">在线客服</div>
                 </div>
                 <div class="shim" @click="toggleService"></div>
             </div>
@@ -49,6 +50,10 @@
         methods : {
             toggleService : function() {
                 this.showService = !this.showService;
+            },
+            showServices : function() {
+                qimoChatClick();
+                this.showService = false;
             }
         }
     }
