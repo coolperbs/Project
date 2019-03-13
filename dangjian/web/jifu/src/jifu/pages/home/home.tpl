@@ -120,11 +120,20 @@
 				</a>
 				<a href="#index/jifu/news:type=4" class="tab">
 					<div class="icon">
-						<img src="jifu/src/jifu/pages/home/images/3.png"/>
+						<img src="jifu/src/jifu/pages/home/images/5.png"/>
 					</div>
 					<div class="text">
 						三社齐力互动
 						<div class="en">Organizational interaction</div>
+					</div>
+				</a>
+				<a href="#index/jifu/news:type=6" class="tab">
+					<div class="icon">
+						<img src="jifu/src/jifu/pages/home/images/3.png"/>
+					</div>
+					<div class="text">
+						领英计划驱动
+						<div class="en">Talented interaction</div>
 					</div>
 				</a>
 			</div>			

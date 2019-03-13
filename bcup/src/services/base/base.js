@@ -2,7 +2,7 @@ import ajax from '@/common/ajax/ajax'
 import utils from '@/common/utils/utils'
 
 let handle;
-
+let logo = true;
 
 handle = {
 	getMsgCode : function( phone, callback ) {
@@ -14,8 +14,7 @@ handle = {
 	      callback( res );
 	    } );
 	},
-	test : function() {
-		
+	setLogo : function( logo ) {
 	}
 }
 

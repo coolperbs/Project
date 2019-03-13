@@ -6,8 +6,7 @@ let handle;
 
 handle = {
 	query : function( param, callback ) {
-		console.log( param );
-	    ajax.get( '/app/ware/detail/' + param.skuId, function( res) {
+	    ajax.get( '/app/ware/detail/' + param.skuId, param, function( res) {
 	      if ( utils.isErrorRes( res ) ) {
 	        utils.showError( res.msg || '请求接口出错' );
 	        return;

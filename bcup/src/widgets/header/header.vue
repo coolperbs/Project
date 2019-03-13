@@ -1,8 +1,12 @@
 <template>
     <div class="header clearfix">
         <div class="main clearfix">
-            <router-link tag="li" class="logo" :to="{path:'/'}">
+            <router-link tag="li" class="logo" :to="{path:'/'}" v-if="logo">
                 <img src="/static/logo.jpeg"/>
+            </router-link>
+            <router-link tag="li" class="logo logo2" :to="{path:'/'}" v-if="!logo">
+                <!--<img src="/static/logo.jpeg"/>-->
+                <img src="/static/logo2.png">
             </router-link>
             <div class="name"></div>
         </div>
@@ -37,6 +41,7 @@
     .city .select .arrow { position : absolute; right :-20px; width: 0;height: 0;border-width: 6px; border-style: solid;border-color: #ccc transparent transparent transparent; top : 50%; margin-top : -3px; }
     .main { position : absolute; left : 0; height : 100%; line-height: 44px; }
     .main .logo { height : 40px; width : 40px; background-color: #fff; margin-top : 2px;float: left; display: block; position: relative; margin-left : 10px; }
+    .main .logo2 { height : 30px; margin-top : 7px; width : 110px; }
     .main .logo img { width : 100%; height : 100%; display: block; }
     .main .name { display: inline-block; float: left; margin-left : 10px; }
 
@@ -55,10 +60,12 @@
 </style>
 
 <script>
+    let logo = true;
     export default {
         inited : false,
         data : function() {
             return {
+                logo : true,
                 status : {
                     showList : false
                 },
@@ -73,6 +80,7 @@
             };
         },
         mounted : function() {
+            this.logo = logo;
             var id = localStorage.getItem( 'venderId' ) || 1,
                 self = this,
                 nav = this.nav, i = 0, n;
@@ -85,6 +93,11 @@
             }
         },
         methods : {
+            setTitle : function() {
+                logo = false;
+                this.logo = logo;
+                document.getElementsByTagName("title")[0].innerText = '自如专享.暴客优品';
+            },
             toggleList : function() {
                 this.status.showList = !this.status.showList;
             },

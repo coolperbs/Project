@@ -10,7 +10,7 @@
 .w-p-home .cont .menu .list { height : 100%; width: 3.76rem; display: flex; display: -webkit-flex; flex-wrap : wrap; align-content : space-between; justify-content : space-between; }
 .w-p-home .cont .menu .tab { cursor : pointer; color : #434552;  display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-between; padding : 0.1rem; width : 100%; background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)); }
 .w-p-home .cont .menu .tab {
-	height: 24%;
+	height: 19%;
     width : 100%;
     flex-direction: row;
     align-items: center;

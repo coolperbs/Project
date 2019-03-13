@@ -64,8 +64,8 @@ handle = {
     });
   },
   // 绑定账号
-  bindAccount ({tradeName, tradePhone}, callback) {
-    ajax.get('/app/trader/account', {tradeName, tradePhone}, (res) => {
+  bindAccount ({namenew, phonenew, idcardnew, cardz, cardf}, callback) {
+    ajax.postForm('/app/trader/account', {namenew, phonenew, idcardnew, cardz, cardf}, (res) => {
       if (utils.isErrorRes(res)) {
         utils.showError(res.msg || '请求接口出错');
         return;

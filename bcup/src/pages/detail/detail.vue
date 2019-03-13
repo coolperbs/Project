@@ -1,6 +1,6 @@
 <template>
   <div class="detail">
-    <b-header/>
+    <b-header ref="header2"/>
     <div class="head">
       <swiper class="banner" :style="{ height : bannerHeight + 'px' }" :options="swiperOption" v-if="pageInfo.mainImage">
         <swiper-slide v-for="item in pageInfo.mainImage" :key="item.skuId">
@@ -201,6 +201,7 @@
   import detailServ from '@/services/detail/detail'
   import CFG from '@/config'
   import distributionServ from '@/services/distribution/distribution'
+  import weixin from '@/common/weixin/weixin'
 
   export default {
     components: {
@@ -233,12 +234,31 @@
       this.bannerHeight = document.body.clientWidth;
       //this.bannerHeight = document.body.clientWidth / 300 * 180;
 
-
       let ids = (query.id + '').split('-');
       this.checkedSkuId = ids[1];
-      this.getData(ids[1])
+      this.getData(ids[1]);
+    
+    },
+    updated(){
+      if ( this.$route.query.c == 1 ) {
+          this.$refs.header2.setTitle( 1 );
+        }
     },
     methods: {
+
+      setShareInfo : function(  ) {
+        let self = this;
+        let query = this.$route.query;
+        detailServ.query({skuId: self.checkedSkuId, signUrl : window.location.href.split( '#' )[0] }, function (res) {
+          weixin.share( res.data.shareInfo, {
+            url : window.location.href.split( '#' )[0],
+            imgUrl : self.pageInfo.mainImage[0],
+            title : '暴客优品',
+            desc : self.pageInfo.title,
+          } );          
+        });
+      }, 
+           
       getData (skuId) {
         let self = this;
         let query = this.$route.query;
@@ -262,6 +282,7 @@
             if (res.data && res.data.trader == 1 && res.data.venderId) {
               utils.addTraderId(res.data.id);
             }
+            self.setShareInfo();
           })
         })
       },

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <b-header/>
+    <b-header ref="header"/>
     <swiper class="banner" :options="swiperOption" v-if="pageInfo.swipers && pageInfo.swipers.length">
       <swiper-slide v-for="slide in pageInfo.swipers" :key="slide.imgUrl">
         <!--<router-link :to="{ path : 'http://www.baidu.com' }">-->
@@ -108,11 +108,13 @@
   import ajax from '@/common/ajax/ajax'
   import utils from '@/common/utils/utils'
   import distributionService from '@/services/distribution/distribution'
+  import weixin from '@/common/weixin/weixin'
 
   let _fn;
 
   export default {
     mounted: function () {
+      //document.getElementsByTagName("title")[0].innerText = 'a';
       let self = this;
       let query = this.$route.query;
 
@@ -120,6 +122,7 @@
       if (query.userId) {
         distributionService.applyBinding({origin: query.userId * 1});
       }
+
 
       _fn.getData(function (res) {
 
@@ -129,8 +132,16 @@
             if ( res.data && res.data.trader == 1 && res.data.venderId ) {
               utils.addTraderId( res.data.id );
             }          
+            _fn.setShareInfo();
         })
       });
+    },
+
+    updated : function() {
+
+      if ( this.$route.query.c == 1 ) {
+        this.$refs.header.setTitle( 1 );
+      }
     },
 
     methods: {
@@ -161,14 +172,26 @@
 
   _fn = {
     getData: function (callback) {
-      var id = localStorage.getItem( 'venderId' ) || 1;
-      ajax.get('/app/index', { venderId : id }, function (res) {
+      var id = localStorage.getItem( 'venderId' ) || 1,
+          url = window.location.href.split( '#' )[0];
+      ajax.get('/app/index', { venderId : id, signUrl : window.location.href }, function (res) {
         if (utils.isErrorRes(res)) {
           utils.showError(res.msg || '请求接口出错');
           return;
         }
+        //weixin.share( res.data.shareInfo );
         callback(res);
       });
+    },
+    setShareInfo : function(  ) {
+      _fn.getData( function( res ) {
+        weixin.share( res.data.shareInfo, {
+          url : window.location.href.split( '#' )[0],
+          imgUrl : 'http://bc.ypzmkj.com/static/logo.jpeg',
+          title : '暴客优品',
+          desc : '整点巴适的！'
+        } );
+      } );
     }
   }
 </script>

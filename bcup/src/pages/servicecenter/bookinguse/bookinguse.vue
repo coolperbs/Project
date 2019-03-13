@@ -52,7 +52,6 @@
             temp.push(a)
           }
         }
-        alert(temp)
         return temp
 
       },

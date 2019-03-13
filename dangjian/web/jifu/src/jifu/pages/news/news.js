@@ -192,7 +192,7 @@ define( 'jifu/pages/news/news', function( require, exports, module ) {
             //     param.type = 1;
             // }
             param.type = pageType;
-            if ( pageType == 1 || pageType == 2 || pageType == 3 ) {
+            if ( pageType == 1 || pageType == 2 || pageType == 3 || pageType == 6 ) {
                 param.subType = subType;
             }
 

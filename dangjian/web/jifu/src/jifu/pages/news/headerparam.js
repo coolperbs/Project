@@ -64,6 +64,18 @@ define( 'jifu/pages/news/headerparam', function( require, exports, module ) {
 			title : '三社齐力互动',
 			en : 'Organizational interaction',
 			search : true			
+		},
+		6 : {
+			id : 'news6',
+			sorts : [{
+				value : 1,
+				text : '自组织',
+				en : ''
+			},{
+				value : 2,
+				text : '百姓故事汇',
+				en : ''
+			}]
 		}
 	}
 
