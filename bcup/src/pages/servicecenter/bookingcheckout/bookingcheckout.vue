@@ -80,7 +80,7 @@
     },
     methods: {
       getCheckoutData () {
-        bookingCheckoutService.getDisplayData({bespeakId: this.bespeakId}, (res) => {
+        bookingCheckoutService.getDisplayData({wareId:this.wareId,bespeakId: this.bespeakId}, (res) => {
           this.item = res.data;
         })
       },
