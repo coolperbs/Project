@@ -6,10 +6,10 @@ let handle;
 handle = {
   create: function (param, callback) {
     ajax.get('/app/order/buynow/submit', param, function (res) {
-      if (utils.isErrorRes(res)) {
-        utils.showError(res.msg || '请求接口出错');
-        return;
-      }
+      // if (utils.isErrorRes(res)) {
+      //   utils.showError(res.msg || '请求接口出错');
+      //   return;
+      // }
       callback(res);
     });
   },

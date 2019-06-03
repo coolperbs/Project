@@ -1,0 +1,125 @@
+<!--<view class="head">
+	<view class="filter">全部</view>
+	<view class="create">创建申请</view>
+</view>-->
+<view class="head">
+<view class="search">
+	<view class="box">
+		<image class="icon" src="../../asset/search.png"></image>
+		<input placeholder="按企业检索" />
+	</view>
+</view>
+
+ <scroll-view class="nav" scroll-x="{{true}}">
+ 	<view class="nav-list clearfix">
+ 		<view class="item current">全部</view>
+ 		<view class="item">隐患列表</view>
+ 		<view class="item">待受理 (10)</view>
+ 		<view class="item">处理中 (2)</view>
+ 		<view class="item">已处理</view>
+ 		<view class="item">即将逾期 (5)</view>
+ 		<view class="item">已逾期 (3)</view>
+ 	</view>
+ </scroll-view>
+ </view>
+
+<view class="list">
+	<view class="item hight">
+		<navigator url="../addcom/addcom" class="title">北京搜狐科技发展有限公司<view class="status">有隐患</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">北京市海淀区科学院南路2号院3号楼</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">张先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">隐患描述：</view>
+				<view class="value">
+					工程旁边施工现场有天然气管道，最近一期安全上报显示消防设施不够齐全，需重点关注。
+					<view class="pics">
+						<image src="https://img.zcool.cn/community/03169c5580d7ca2a84a0e282b003129.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031feca576d2d7e0000012e7eb90386.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031a4835a6ffa0ea80120a1230608ca.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					</view>
+				</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn">处理隐患</navigator>
+			</view>
+		</view>
+	</view>	
+
+	<view class="item hight">
+		<navigator url="../addcom/addcom" class="title">网易(杭州)网络有限公司<view class="status">待观察</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">浙江省杭州市滨江区长河街道网商路599号4幢7层</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">丁先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">隐患描述：</view>
+				<view class="value">
+					1.消防设施不够齐全。2.已有消防设施年久失修。
+					<view class="pics">
+						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556791943219&di=f65d7934685cde35798fd07000c71672&imgtype=0&src=http%3A%2F%2Fwww.chinatat.com%2Fupload%2Fhtml%2F2016%2F02%2F17%2Fsh014b3b1a84b5422c9c2e2df287b4d663.jpg"/>
+						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556791961057&di=38b74145eb5ca680fa79a0f494147c11&imgtype=0&src=http%3A%2F%2Fs6.sinaimg.cn%2Fmw690%2F005xwDS3zy6JmfX7lT745%26690"/>
+						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556791973775&di=9106b6d2453dcf622cec5cd5ac582eb6&imgtype=0&src=http%3A%2F%2Fimg.anhuinews.com%2F0%2F01%2F81%2F31%2F1813132_877147.jpg"/>
+					</view>
+				</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn">处理隐患</navigator>
+			</view>
+		</view>
+	</view>	
+
+	<view class="item hight">
+		<navigator url="../addcom/addcom" class="title">阿里巴巴网络技术有限公司<view class="status">有隐患</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">浙江省杭州市滨江区网商路699号</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">马先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">隐患描述：</view>
+				<view class="value">
+					1.燃气管道旁有易燃设备。2.消防设施不够齐全。3.没有演练措施。
+					<view class="pics">
+						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556792056756&di=1d805eb3fac286d9c1f6017f3962ad57&imgtype=0&src=http%3A%2F%2Fwww.ehssafety.com%2Fupload%2F201401%2F1390359365.JPG"/>
+						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556792056754&di=351630d6cc751be550fdb530b766be96&imgtype=0&src=http%3A%2F%2Fs7.sinaimg.cn%2Fmiddle%2F8a89e222xabf3ead723f6%26690%26690"/>
+						<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556792056753&di=c795c9c4b00fcd3b179c6b7dac271526&imgtype=0&src=http%3A%2F%2Fimg007.hc360.cn%2Fm1%2FM00%2F7D%2FAE%2FwKhQcFRG4u2EMofWAAAAAOOnvK0433.jpg"/>
+					</view>
+				</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn">处理隐患</navigator>
+			</view>
+		</view>
+	</view>		
+</view>
+
+
+<!--<navigator url="../task/task" class="bottom"><view class="create">创建任务</view></navigator>-->

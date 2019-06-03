@@ -27,7 +27,11 @@
       </li>
       <li>
         <div class="key">价格 :</div>
-        <div class="value">{{fixPrice(userData.payPrice)}}</div>
+        <div class="value">{{fixPrice(userData.payPrice)}} 
+          <span 
+            v-if="pageInfo.formInfo.payType == 2"
+          >（可用余额：{{ fixPrice( userData.moneyPrice ) }}元）</span>
+        </div>
       </li>
       <li>
         <div class="key"><em></em>备注:</div>
@@ -163,6 +167,7 @@
       }
     },
     mounted () {
+
       this.getBuyInfo()
     }
   }

@@ -9,6 +9,10 @@
         <div class="key">订单号 :</div>
         <div class="value">{{data.order?data.order.orderId:''}}</div>
       </li>
+      <li>
+        <div class="key">支付方式 :</div>
+        <div class="value">{{ data.order.payType == 1 ? '微信支付' : '余额支付' }}</div>
+      </li>
       <li v-if="data.order?data.order.type==2:false">
         <div class="key">快递公司 :</div>
         <div class="value">{{data.order?data.order.transoport:''}}</div>

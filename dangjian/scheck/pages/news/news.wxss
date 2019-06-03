@@ -1,0 +1,26 @@
+
+.nav { background-color: #fff; z-index: 10; position: fixed; top : 0; width : 0; height : 60rpx; width : 710rpx; padding : 0 20rpx 10rpx 20rpx; display: block; overflow: hidden; }
+.nav .list { white-space:nowrap; }
+.nav .list .item { position: relative; margin-left : 60rpx; height : 60rpx; line-height: 60rpx; font-size : 28rpx; display: inline-block; }
+.nav .list .item:first-child { margin-left : 0; }
+.nav .list .item.current { font-size : 32rpx; }
+.nav .list .item.current:after { border-radius: 8rpx; content: ''; display: block; height : 8rpx; width : 32rpx; margin-left : -10rpx; background-color: #EE4000; position: absolute; bottom : 0; left : 50%; }
+
+.swiper { box-shadow: 0 6rpx 14rpx rgba( 0, 0, 0, 0.1 ); border-radius: 20rpx; overflow: hidden; width : 710rpx; margin : 90rpx 20rpx 0 20rpx; height : 300rpx; }
+.swiper image { width : 100%; height : 100%; border-radius: 20rpx; }
+
+.mod { padding : 40rpx 20rpx; border-bottom : solid 1px #f0f0f0; }
+.mod:last-child,
+.mod.last { border-bottom: 0; }
+.mod .mod-name { font-size : 36rpx; }
+
+.news .list { margin-top : 30rpx; }
+.news .item { margin-top : 30rpx; display: flex; justify-content: space-between; }
+.news .item:first-child { margin-top: 0; }
+.news .item image { width : 140rpx; height : 140rpx; border-radius: 10rpx; }
+.news .item .info { flex-flow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.news .item .info .i-title { width : 560rpx; font-size : 30rpx; }
+.news .item .info .i-cont { font-size : 24rpx; color : #999; }
+.news .item.more { margin-top : 40rpx; justify-content: center; font-size : 28rpx; color : #999; }
+
+

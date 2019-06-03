@@ -2,7 +2,7 @@
     <div class="header clearfix">
         <div class="main clearfix">
             <router-link tag="li" class="logo" :to="{path:'/'}" v-if="logo">
-                <img src="/static/logo.jpeg"/>
+                <img src="/static/logo.png"/>
             </router-link>
             <router-link tag="li" class="logo logo2" :to="{path:'/'}" v-if="!logo">
                 <!--<img src="/static/logo.jpeg"/>-->
@@ -35,14 +35,14 @@
 </template>
 
 <style scoped>
-    .header { height : 44px; z-index : 100; /*background: linear-gradient( #fff,#efefef );*/ background: #fff; position: fixed; top : 0; left : 0; width : 100%; color : #fff; box-shadow : 0 3px 5px rgba( 0, 0, 0, 0.1 ); }
+    .header { height : 44px; z-index : 100; /*background: linear-gradient( #fff,#efefef );*/ background: #ed8325; position: fixed; top : 0; left : 0; width : 100%; color : #fff; box-shadow : 0 3px 5px rgba( 0, 0, 0, 0.1 ); }
     .city { height : 100%; color : #000; text-align: center; }
-    .city .select { padding : 0; display: inline-block; margin : 0 auto; height : 44px; color : #444; line-height: 44px; font-size : 18px; position: relative; }
-    .city .select .arrow { position : absolute; right :-20px; width: 0;height: 0;border-width: 6px; border-style: solid;border-color: #ccc transparent transparent transparent; top : 50%; margin-top : -3px; }
+    .city .select { padding : 0; display: inline-block; margin : 0 auto; height : 44px; color : #fff; line-height: 44px; font-size : 18px; position: relative; }
+    .city .select .arrow { position : absolute; right :-20px; width: 0;height: 0;border-width: 6px; border-style: solid;border-color: #fff transparent transparent transparent; top : 50%; margin-top : -3px; }
     .main { position : absolute; left : 0; height : 100%; line-height: 44px; }
-    .main .logo { height : 40px; width : 40px; background-color: #fff; margin-top : 2px;float: left; display: block; position: relative; margin-left : 10px; }
+    .main .logo { height : 32px; width : auto; margin-top : 6px;float: left; display: block; position: relative; margin-left : 10px; }
     .main .logo2 { height : 30px; margin-top : 7px; width : 110px; }
-    .main .logo img { width : 100%; height : 100%; display: block; }
+    .main .logo img { height : 100%; display: block; }
     .main .name { display: inline-block; float: left; margin-left : 10px; }
 
     .nav { position: absolute; right :10px; top :0; }

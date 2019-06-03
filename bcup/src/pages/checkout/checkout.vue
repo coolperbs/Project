@@ -47,6 +47,7 @@
     mounted : function() {
       let self = this;
       self.pageInfo.formInfo.skuId = this.$route.query.skuId;
+      self.pageInfo.formInfo.payType = this.$route.query.paytype || 1;
       detailServ.query( { skuId : this.$route.query.skuId }, function( res ) {
         self.pageInfo.skuInfo = res.data || {};
         self.pageInfo.formInfo.skuId = res.data.skuId;

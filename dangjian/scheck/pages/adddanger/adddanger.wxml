@@ -1,0 +1,49 @@
+
+
+<view class="form">
+    <!--<view class="item">
+        <view class="key">类型</view>
+        <view class="value">报修<image src="../../asset/arrow-right.png" class="arrow"></image></view>
+    </view> -->
+    <view class="item">
+        <view class="key">选择企业</view>
+        <view class="value" url="../comlist/comlist">
+            深圳市腾讯计算机系统有限公司
+            <image src="../../asset/arrow-right.png" class="arrow"></image>
+        </view>
+    </view>
+    <view class="item">
+        <view class="key">隐患等级</view>
+        <view class="value">
+            一般
+            <image src="../../asset/arrow-right.png" class="arrow"></image>
+        </view>
+    </view>
+    <view class="item">
+        <view class="key">检查内容</view>
+        <view class="value">
+            现场
+            <image src="../../asset/arrow-right.png" class="arrow"></image>
+        </view>
+    </view>
+    <view class="item">
+        <view class="key">隐患数量</view>
+        <view class="value">
+            <input placeholder="请填写隐患数量" />
+        </view>
+    </view>
+    <view class="item">
+        <view class="key">现场取证</view>
+        <view class="value">
+            <image bindtap="getLocalImage" class="add" src="../../asset/add-photo.png"></image>
+        </view>
+    </view>
+</view>
+<view class="form">
+    <view class="detail">
+        <view>工作内容</view>
+        <view><textarea placeholder="请输入内容"></textarea></view>
+    </view>
+</view>
+
+<navigator url="../tasklist/tasklist" class="act">提交</navigator>

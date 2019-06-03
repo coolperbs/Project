@@ -1,0 +1,23 @@
+.swiper { box-shadow: 0 6rpx 14rpx rgba( 0, 0, 0, 0.1 ); border-radius: 20rpx; overflow: hidden; width : 690rpx; margin : 0 30rpx; height : 300rpx; }
+.swiper image { width : 100%; height : 100%; }
+
+.sorts { border-bottom : solid 1px #f0f0f0; width : 690rpx; padding : 30rpx 0; margin : 0 30rpx; display: flex; flex-wrap: wrap; }
+.sorts .item { padding : 20rpx 0; display: flex; flex-direction: column; width : 20%; justify-content: center; align-items: center; }
+.sorts .item image { width : 40rpx; height : 40rpx; margin-bottom: 10rpx; }
+
+.mod { padding : 40rpx 20rpx; border-bottom : solid 1px #f0f0f0; }
+.mod:last-child,
+.mod.last { border-bottom: 0; }
+.mod .mod-name { font-size : 36rpx; }
+
+.news .list { margin-top : 30rpx; }
+.news .item { margin-top : 30rpx; display: flex; justify-content: space-between; }
+.news .item:first-child { margin-top: 0; }
+.news .item image { width : 140rpx; height : 140rpx; border-radius: 10rpx; }
+.news .item .info { flex-flow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.news .item .info .i-title { width : 560rpx; font-size : 30rpx; }
+.news .item .info .i-cont { font-size : 24rpx; color : #999; }
+.news .item.more { margin-top : 40rpx; justify-content: center; font-size : 28rpx; color : #999; }
+
+
+

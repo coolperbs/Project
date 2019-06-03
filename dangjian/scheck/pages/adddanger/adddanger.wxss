@@ -1,0 +1,14 @@
+Page { background-color: #fafafa; color : #444; }
+.form { background-color: #fff; margin-top : 20rpx; }
+.form .item { font-size : 32rpx; padding : 30rpx 40rpx 30rpx 30rpx; border-bottom : solid 1px #fafafa; display: flex; align-items : center; justify-content : space-between; }
+.form .item .value { font-size : 28rpx; margin-left : 40rpx; color : #999; flex-grow : 1; display: flex; justify-content : flex-end; align-items : center; }
+.form .item .arrow { margin-right : -20rpx; width : 48rpx; height : 48rpx; }
+.form .value input { width : 100%; text-align : right; }
+.form .value .add { width : 48rpx; height : 48rpx; }
+.form .detail { font-size : 32rpx; border-bottom : solid 1px #fafafa; padding : 30rpx; }
+.form .detail textarea { font-size: 28rpx; margin-top: 20rpx; height : 400rpx; }
+
+.act { position: fixed; bottom : 30rpx; left : 30rpx; width : 690rpx; margin-top : 30rpx; border-radius: 10rpx; height : 100rpx; font-size : 32rpx; display: flex; justify-content: center; align-items : center; background: linear-gradient( to top, #4169E1, #6495ED); color : #fff; }
+
+
+

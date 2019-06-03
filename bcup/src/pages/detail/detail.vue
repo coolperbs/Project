@@ -12,6 +12,7 @@
       <div class="price clearfix">
         <div class="origin">￥<em>{{ fixPrice( pageInfo.price || pageInfo.originPrice ) }}</em></div>
         <div class="counter" v-if="userData.trader==1">返:￥{{ fixPrice( pageInfo.brokeragePrice ) }}</div>
+        <div class="counter" v-if="userData.trader==1">暴返:￥{{ fixPrice( pageInfo.brokerageSucondPrice ) }}</div>
       </div>
       <div class="info clearfix">
         <!--<div class="sale">已售:{{pageInfo.saledNum?pageInfo.saledNum:0}}</div>-->
@@ -49,7 +50,7 @@
   .name {
     margin-top: 10px;
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .head {

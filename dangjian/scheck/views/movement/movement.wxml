@@ -1,0 +1,38 @@
+<!-- 会议学习 -->
+<template name="movement">
+	<view class="view-movement">
+		<scroll-view scroll-y="true" 
+			style="height:{{scrollHeight}}"
+			class="CPStudyList-list-wrapper"
+			data-func="loadMore"
+			bindscrolltolower="events">
+				<!--<view class="banner">
+					<image mode="widthFix" class="banner-img" src="../../asset/CPmovement.png"/>
+				</view>-->
+				<view class="view-movement-wrapper" wx:if="{{movement}}">
+				<template is="movement-articals" data="{{...movement}}"></template>
+				</view>
+		</scroll-view>
+	</view>
+</template>
+
+
+
+<template name="movement-articals">
+	<view class="home-articals-wrapper">
+		<block wx:for="{{movementList}}" wx:key="id">
+			<view class="artical-item artical" data-id="{{item.id}}" catchtap="events" data-func="toArtical">
+				<view class="left">
+					<image mode="aspectFit" class="artical-img" src="{{item.adImgUrl?item.adImgUrl:'../../asset/default.png'}}"></image>
+				</view>
+				<view class="right">
+					<view class="artical-title ellipsis-1">{{item.name}}</view>
+					<view class="artical-date">{{item.showCreateTime}}<view class="artical-type">{{item.showType}}</view></view>
+					<view classs="artical-cont ellipsis-2">{{item.description}}</view>
+					<!--<view class="artical-type">{{item.showType}}</view>-->
+				</view>
+			</view>
+		</block>
+		<view class="empty-list" wx:if="{{!movementList || !movementList.length}}">没有数据</view>
+	</view>
+</template>

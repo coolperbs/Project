@@ -1,0 +1,54 @@
+page { height : 100%; }
+.view-home{ height : 100%; display: flex;  flex-direction: column; justify-content: space-between;	/*padding-bottom: 120rpx;*/ font-size: 28rpx; color : #444; min-height : 100%; background-color : #fafafa; }
+.view-home .shadow { box-shadow: 0 6rpx 14rpx rgba( 0, 0, 0, 0.1 ); }
+.view-home .head { background-color: #fff; display: flex; align-items: center; justify-content: space-between; height : 140rpx; padding : 10rpx 20rpx; }
+.view-home .head .sub { width : 140rpx; height : 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.view-home .head .sub .date { border-radius: 20rpx; overflow: hidden; width : 140rpx; height : 150rpx; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.view-home .head .sub .date image { position: absolute; left: 0; top: 0; width: 100%; height : 100%; }
+.view-home .head .sub .date .text { z-index: 10; color : #fff; }
+.view-home .head .sub .date .text.em { font-size : 60rpx; letter-spacing: 8rpx; }
+.view-home .head .sub .message { border : solid 1px #fafafa; border-radius: 20rpx; height : 60rpx; width: 100%; background-color: #fff; display: flex; align-items: center; }
+.view-home .head .sub .message .icon { width : 50rpx; height : 50rpx; margin : 0 10rpx 0 10rpx; }
+.view-home .head .main { position: relative; border-radius: 20rpx; width : 550rpx; overflow: hidden; height: 140rpx; background-color: #fafafa; }
+.view-home .head .main .swiper { width: 100%; height: 100%; }
+.view-home .head .main image { border-radius: 20rpx; width: 100%; height: 100%; }
+.view-home .head .main .shim { position: absolute; z-index: 1; width: 100%; height: 100%; background-color: rgba( 0, 0, 0, 0.3 ); }
+.view-home .head .main .userinfo{ color : #fff; position: absolute; z-index: 2; width: 100%; height: 100%; }
+.view-home .head .main .userinfo { padding : 0 20rpx; display: flex; align-items: center; }
+.view-home .head .main .userinfo .info {  display: flex; align-items: center; }
+.view-home .head .main .userinfo .info .img { width : 96rpx; height : 96rpx; border-radius : 50%; overflow:hidden;  }
+.view-home .head .main .userinfo .info .img image { width : 100%; height : 100%; }
+.view-home .head .main .userinfo .info .more { margin-left : 20rpx; }
+.view-home .head .main .userinfo .info .more .name { font-size : 28rpx; font-weight : bold; }
+.view-home .head .main .userinfo .info .more .phone { margin-top : 10rpx; font-size : 24rpx; }
+
+.view-home .services { background-color: #fff; padding : 30rpx 0 40rpx 0; border-bottom: solid 1px #f0f0f0; display: flex; align-items: center; justify-content: space-around; }
+.view-home .services .item { margin : 0 30rpx; font-size: 24rpx; display: flex; align-items: center; justify-content: space-between; flex-direction: column; }
+.view-home .services .item .num {  font-size : 38rpx; font-weight: bold; color : #444; }
+.view-home .services .item image { width : 40rpx; height: 40rpx; margin-bottom : 10rpx; }
+
+.view-home .mod { background-color: #fff; border-bottom : solid 2rpx #f0f0f0;  border-top : solid 30rpx #fcfcfc; }
+.view-home .mod .name { font-size : 32rpx; display: flex; align-items: center; padding : 20rpx; border-bottom : solid 2rpx #f0f0f0; border-top : solid 2rpx #f0f0f0; }
+.view-home .mod .name .line { display: none; width : 12rpx; height : 12rpx; border-radius: 50%; background-color: #ee4000; margin-right : 10rpx; }
+.view-home .mod .entrys { padding : 60rpx 20rpx; display: flex; flex-wrap : wrap; }
+.view-home .mod .entrys .icon { font-size : 24rpx; width : 25%;  display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.view-home .mod .entrys .icon image { margin-bottom: 10rpx; width : 40rpx; height : 40rpx; }
+
+.view-home .news .list { margin-top : 30rpx; }
+.view-home .news .item { padding : 0 20rpx; border-bottom : solid 2rpx #fafafa; margin-top : 30rpx; display: flex; justify-content: space-between; }
+.view-home .news .item:first-child { margin-top: 0; }
+.view-home .news .item image { width : 140rpx; height : 140rpx; border-radius: 10rpx; }
+.view-home .news .item .info { flex-flow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.view-home .news .item .info .i-title { width : 560rpx; font-size : 30rpx; }
+.view-home .news .item .info .i-cont { font-size : 24rpx; color : #999; }
+.view-home .news .item.more { margin-top : 40rpx; justify-content: center; font-size : 28rpx; color : #999; }
+
+
+.view-home .bottom { background-color: #fcfcfc; text-align: center; padding : 40rpx 0; font-size : 20rpx; color : #999; }
+
+
+
+
+
+
+

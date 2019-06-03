@@ -1,0 +1,50 @@
+
+
+<view class="form">
+    <!--<view class="item">
+        <view class="key">类型</view>
+        <view class="value">报修<image src="../../asset/arrow-right.png" class="arrow"></image></view>
+    </view> -->
+    <view class="item">
+        <view class="key">企业名称</view>
+        <view class="value"><input placeholder="请填写企业名称" /></view>
+    </view>
+    <view class="item">
+        <view class="key">企业地址</view>
+        <view class="value"><input placeholder="请填写企业地址" /></view>
+    </view>
+    <view class="item">
+        <view class="key">成立日期</view>
+        <view class="value"><input placeholder="请填写日期" /></view>
+    </view>
+    <view class="item">
+        <view class="key">营业执照注册号</view>
+        <view class="value"><input placeholder="请填写注册号" /></view>
+    </view>
+    <view class="item">
+        <view class="key">法人代表</view>
+        <view class="value"><input placeholder="请填写姓名" /></view>
+    </view>
+    <view class="item">
+        <view class="key">联系人</view>
+        <view class="value"><input placeholder="请填写联系人姓名" /></view>
+    </view>
+    <view class="item">
+        <view class="key">联系方式</view>
+        <view class="value"><input placeholder="请填写联系电话" /></view>
+    </view>
+    <view class="item">
+        <view class="key">营业执照照片</view>
+        <view class="value">
+            <image bindtap="getLocalImage" class="add" src="../../asset/add-photo.png"></image>
+        </view>
+    </view>
+</view>
+<view class="form">
+    <view class="detail">
+        <view>其他备注</view>
+        <view><textarea placeholder="请输入备注"></textarea></view>
+    </view>
+</view>
+
+<navigator url="../tasklist/tasklist" class="act">提交</navigator>

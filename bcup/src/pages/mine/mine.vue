@@ -5,6 +5,7 @@
       <div class="info">
         <div class="name">{{userData.nickName}}</div>
         <div class="sub">id:{{userData.id}}</div>
+        <div class="money">余额 ：{{ fixPrice( userData.userPoint ) }}元</div>
       </div>
     </div>
 
@@ -42,7 +43,7 @@
       </div>
     </div>
 
-    <ul class="list ordercenter">
+    <!--<ul class="list ordercenter">
       <router-link tag="li" class="mod-title" :to="{path:'/orders/list?type=1'}">
         <img src=""/>订单
         <div class="icon"><img src="static/arrow-right.png"></div>
@@ -55,28 +56,28 @@
         <router-link tag="div" :to="{path:'/orders/list?type=16'}" class="cell">
           <img src="static/order-pay.png"/>
           <div class="text">待消费</div> <!-- 已支付 -->
-        </router-link>
+        <!--</router-link>
         <router-link tag="div" :to="{path:'/orders/list?type=512'}" class="cell">
           <img src="static/order-finished.png"/>
           <div class="text">已完成</div>
-        </router-link>
+        </router-link>-->
        <!-- <router-link tag="div" :to="{path:'/orders/list?type=1024'}" class="cell">
           <img src="static/order-canceled.png"/>
           <div class="text">已取消</div>
-        </router-link>-->
+        </router-link>
       </li>
-    </ul>
+    </ul>-->
 
-    <ul class="list services">
+    <!--<ul class="list services">
       <router-link tag="li" class="mod-title" :to="{path:'/servicecenter'}">
         <img src=""/>服务中心
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
       <li class="sub clearfix">
-       <!-- <router-link tag="div" :to="{path:'/servicecenter/bookinglist'}" class="cell">
+       <router-link tag="div" :to="{path:'/servicecenter/bookinglist'}" class="cell">
           <img src="static/yuyuedingdan.png"/>
           <div class="text">我的预约</div>
-        </router-link>-->
+        </router-link>
         <router-link tag="div" :to="{path:'/servicecenter/findecode'}" class="cell">
           <img src="static/code.png"/>
           <div class="text">找回核销码</div>
@@ -90,11 +91,11 @@
           <div class="text">常见问题</div>
         </router-link>
       </li>
-    </ul>
+    </ul>-->
 
     <ul class="list" v-if="userData.trader==1">
       <router-link tag="li"  class="mod-title" :to="{path:'/distribution/index'}">
-        <img src=""/>达人后台
+        <img src=""/>我的团队
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
       <li class="sub">
@@ -117,12 +118,14 @@
       </li>
     </ul>
 
-    <!--<ul class="list services">
-      <router-link tag="li" class="mod-title" :to="{path:'/servicecenter/bookinglist'}">
-        <img src=""/>我的预约
+    <ul class="list services">
+      <router-link tag="li" class="mod-title" :to="{path:'/charge'}">
+        <img src=""/>余额充值
         <div class="icon"><img src="static/arrow-right.png"></div>
       </router-link>
-    </ul>-->
+    </ul>
+
+
     <div class="sharePop" v-if="showPop">
       <div class="pop">
         <div class="close" @click="hideSharePop">
@@ -130,7 +133,10 @@
         </div>
         <img :src="shareImgUrl"/>
       </div>
-    </div>    
+    </div>   
+
+    <b-bottom/>
+
   </div>
 
 </template>
@@ -138,6 +144,7 @@
 
 <style scoped>
   .mine {
+    padding-bottom : 80px;
   }
 
   .mod { margin-top : 10px; background-color : #fff; padding : 10px; }
@@ -156,7 +163,7 @@
   }
 
   .head {
-    height: 80px;
+    height: 100px;
     background: linear-gradient( #EF648F,#ef8d56 );
     color : #fff;
     padding-left: 70px;
@@ -176,6 +183,8 @@
     font-size: 12px;
   }
 
+  .info .money { font-size : 12px; color : #fff; }
+
   .head .logo {
     height: 50px;
     width: 50px;
@@ -183,7 +192,7 @@
     background-color: #ccc;
     float: left;
     margin-left: -60px;
-    margin-top: 15px;
+    margin-top: 25px;
     overflow: hidden
   }
 
@@ -302,10 +311,11 @@
   import distributionService from '@/services/distribution/distribution'
   import utils from '@/common/utils/utils'
   import config from '@/config.js'
+  import bBottom from '@/widgets/bottom/bottom'
   import teamServer from '@/services/team/team'
 
   export default {
-    components: {},
+    components: {bBottom},
     data: function () {
       return {
         showPop : false,

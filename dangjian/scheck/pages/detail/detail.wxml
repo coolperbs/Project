@@ -1,0 +1,84 @@
+<block wx:if="{{ !id }}">
+<view class="main-title">28个省份公布上半年GDP增速 贵州以10%领跑 云南位居第二</view>
+<view class="time">2018年7月31日 14:30 转自腾讯网</view>
+<view class="content">
+	<image mode="widthFix" src="https://img.zcool.cn/community/031c35a57e234720000012e7e7ebefa.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+	<view class="p">各地近期相继公布2018年上半年的经济运行情况。截至目前，全国31个省、自治区、直辖市里，已有28个公布了最新GDP增速，除北京、山西两地与全国持平以外，15个地区跑赢全国。目前，仅吉林、新疆与西藏尚未公布。</view>
+	<view class="p">在GDP增速方面，贵州以10.0%的增速继续领跑，并且成为目前唯一增速“上双”的省级区域，云南以9.2%的增速排名第二，增速高于8%的还有江西、陕西、安徽、福建、四川。</view>
+	<view class="p">那么，贵州上半年经济增速遥遥领先有哪些原因呢？贵州省统计局有关负责人近期表示，贵州以稳生产调结构为目标，农业经济呈现新气象，以现代化信息化为方向，服务业发展实现新提升，以补短板优长板为重点，投资增长注入新动力。上半年，贵州固定资产投资比上年同期增长17.4%，增速高于全国平均水平11.4个百分点。</view>
+	<view class="p">有关专家表示，从整体看，上半年各地区经济增长仍有一定分化，在当前改革转型的关键时期，所在区位对于地区经济发展的影响有所减弱，而改革力度与转型方向开始起到更为关键的作用。</view>
+	<view class="p">就下一步货币政策走势，兴业银行首席经济学家、华福证券首席经济学家鲁政委昨日告诉《证券日报》记者，7月份国务院常务会议进一步明确财政货币政策取向，要求“积极财政政策要更加积极”，货币政策要“保持适度的社会融资规模和流动性合理充裕”。货币政策与财政政策的调整有助于固定资产投资与社会融资规模增速企稳。然而在防范化解金融风险的大背景下，货币政策与财政政策的积极将表现为有限度的积极，避免宏观杠杆率加速上升。</view>
+	<view class="p">华泰证券首席宏观分析师李超对记者表示，未来GDP增速快速回落的可能性较低，但下半年外需将面临较大不确定性。在考虑贸易摩擦对经济拖累的情况下，维持三季度GDP增速预测为6.7%不变，将四季度增速预测修正为6.5%，预计下半年可能还将有1次至2次定向降准。</view>
+	<view class="p">国家统计局新闻发言人毛盛勇表示，从下半年来看，外部环境确实有很多的变数，不确定性、不平衡性有所上升。从外部来看，上半年世界经济呈现复苏的态势，复苏的同时也有一些分化，但是世界贸易保护主义持续升温，这对世界经济复苏会构成一个重大的挑战，对我们来讲也增加了一些挑战和不确定性。从内部来讲，经济发展的不平衡性、不稳定性还有，当前正处在结构调整转型升级的攻关期，下一步，要坚定地推进供给侧结构性改革，持续扩大内需，使经济运行始终平稳运行在合理区间。</view>
+</view>
+</block>
+
+<block wx:if="{{ id == 1 }}">
+	<view class="main-title">第五届全国书籍装帧艺术展在京举办 经国务院办公厅正式批准为国家级奖项 </view>
+	<view class="time">2018年7月31日 14:30 转自腾讯网</view>
+	<view class="content">
+		<view class="p">1999年10月12日至17日，第五届全国书籍装帧艺术展览暨评奖活动在北京中国美术馆举行。12日上午，原全国人大副委员长王炳乾、中宣部副部长龚心翰，中国出版协会主席宋木文、新闻出版署副署长杨牧之等领导同志出席开幕式。王炳乾、宋木文、杨牧之和中国美术家协会常务副主席刘大为为开幕式剪彩，开幕式后各位领导和广大观众共同观看了各展厅的展品。这届展览是继1995年11月第四届全国书籍装帧艺术展览之后，对我国近年来书籍装帧精品的一次大检阅，展出从全国各省市自治区，中央各部门装帧艺委会、全国大学装帧艺委会等31个分展场选送的优秀装帧，插图作品共1200件(种）。经评选，评出金奖16件(种)。银奖42件(种)，铜奖71件(种) 。</view>
+
+		<view class="t">［1999年］第五届全国书籍装帧艺术展览获奖作品展示</view>
+		<image src="https://img.zcool.cn/community/01cf665b435c58a80120b959128e85.jpg"></image>
+		<image src="https://img.zcool.cn/community/01b0b85b435c63a80120b959e3b886.jpg"></image>
+		<image src="https://img.zcool.cn/community/0105055b435c74a80121b99415184b.jpg"></image>
+		<image src="https://img.zcool.cn/community/0169e55b435c7fa80121b9941091f4.jpg"></image>
+		<image src="https://img.zcool.cn/community/0199895b435c8aa80121b99480a8c1.jpg"></image>
+	</view>
+</block>
+
+<view class="comment">
+	<view class="item">
+		<view class="title">
+			<image class="icon" src="https://img.zcool.cn/community/00e4b9599d7217a8012017948efff4.jpg@160w_160h_1c_1e_1o_100sh.jpg"></image>
+			治疗波
+		</view>
+		<view class="sub">2018年7月31日 13:00</view>
+		<view class="main">
+			厉害了我的黔
+		</view>
+	</view>
+
+	<view class="item">
+		<view class="title">
+			<image class="icon" src="https://img.zcool.cn/community/0480d6553fb6cc0000014027bc18e8.jpg@160w_160h_1c_1e_1o_100sh.jpg"></image>
+			gooncoo
+		</view>
+		<view class="sub">2018年7月31日 13:00</view>
+		<view class="main">
+			扶贫攻坚项目的投入，也不容小觑。
+		</view>
+	</view>	
+
+	<view class="item">
+		<view class="title">
+			<image class="icon" src="https://img.zcool.cn/community/04d699554838490000019ae9ec541b.jpg@160w_160h_1c_1e_1o_100sh.jpg"></image>
+			鱼头
+		</view>
+		<view class="sub">2018年7月31日 13:00</view>
+		<view class="main">
+			贵州是不是上半年一直在盖楼？
+		</view>
+	</view>	
+
+	<view class="item">
+		<view class="title">
+			<image class="icon" src="https://img.zcool.cn/community/00392f5a912c24a801219231820575.jpg@160w_160h_1c_1e_1o_100sh.jpg"></image>
+			十寳Bao
+		</view>
+		<view class="sub">2018年7月31日 13:00</view>
+		<view class="main">
+			刮目相看。
+		</view>
+	</view>	
+
+</view>
+
+
+<view class="act" wx:if="{{ id == 1 }}">立即报名</view>
+
+
+
+
+

@@ -1,0 +1,173 @@
+<swiper class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-active-color="#fff" indicator-color="rgba( 0, 0, 0, 0.5)">
+	<swiper-item>
+		<image mode="aspectFill" src="https://img.zcool.cn/community/0141e15b5f18b5a801215c8f065da8.png"></image>
+	</swiper-item>
+	<swiper-item>
+		<image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531414297395&di=79f11dc9f97a866b136b708885a7e0a9&imgtype=0&src=http%3A%2F%2Fpic.97uimg.com%2Fback_pic%2F20%2F15%2F11%2F03%2F25bdde72b22bf685d85171424d953c4e.jpg"></image>
+	</swiper-item>
+	<swiper-item>
+		<image mode="aspectFill" src="https://img.zcool.cn/community/0176435b5f18c4a801206a35ee3623.png"></image>
+	</swiper-item>	
+</swiper>
+
+<view class="sorts">
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/gjj.png"></image>
+		公积金
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/sbk.png"></image>
+		社保
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/hz.png"></image>
+		护照通行证
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/car.png"></image>
+		行驶驾驶
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/hy.png"></image>
+		婚姻
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/book.png"></image>
+		户政
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/yx.png"></image>
+		医学证明
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/tp.png"></image>
+		调解仲裁
+	</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/gy.png"></image>
+		助残</view>
+	<view class="item">
+		<image mode="aspectFit" src="../../asset/ggfw.png"></image>
+		公共服务
+	</view>
+</view>
+
+<view class="mod news">
+	<view class="mod-name">近期新闻</view>
+	<view class="list">
+		<view class="item">
+			<image mode="aspectFill" src="https://img.zcool.cn/community/031295357bbc9070000018c1b63b8b7.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">年底严防诈骗，公积金提取你应该了解的10大事项</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/01546f5a8b89b9a8012192316090dc.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">近期关于社保缴纳金调整通告</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/03158c0571a35040000014a6d44b327.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">武侯区社区平台开通网上缴费功能，足不出户，一键搞定。</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/0170775b53f728a8012036be1adcf4.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">最美城市活动评选已开始，投出你心中的一票</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/03188605566cc40000001cc291cf4a1.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">我与我的城市，用手机记录我与我所在城市的故事！</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/01353e5a728717a801213466687a58.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">2018年上半年核心事件回顾，对内容进行分析，产生合适字数的标题</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/01c70259f02f04a801202b0cf55f24.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">顺和社区顺利开展第10届“顺和一家亲”活动。</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/00027b5995a2f90000002129157ebc.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">人工智能应发的猜想，人类是否能在2020年全面普及人工自能。</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/032aa6a560a4dde32f875a132012e15.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">最美城市活动评选已开始，投出你心中的一票</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/031fa2c5ae5e2fba801219b7f4afb5b.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">我与我的城市，用手机记录我与我所在城市的故事！</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/0317eba5566cd7e000001cc292638e1.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">2018年上半年核心事件回顾，对内容进行分析，产生合适字数的标题</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/031a9d85566cd3a000001cc29192a49.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">顺和社区顺利开展第10届“顺和一家亲”活动。</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/031b8675566c966000001cc29acc124.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">人工智能应发的猜想，人类是否能在2020年全面普及人工自能。</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/0318ba85566d459000001cc29f92fd7.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">最美城市活动评选已开始，投出你心中的一票</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>
+		<view class="item">
+			<image src="https://img.zcool.cn/community/0188705abc80fea8012062e3a1e587.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+			<view class="info">
+				<view class="i-title ellipsis-2">我与我的城市，用手机记录我与我所在城市的故事！</view>
+				<view class="i-cont">2018-1-10 转自：腾讯网</view>
+			</view>
+		</view>		
+		<view class="item more">查看更多</view>
+	</view>
+</view>	
+
+
+
+
+
+
+
+

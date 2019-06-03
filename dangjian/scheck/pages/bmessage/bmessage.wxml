@@ -1,0 +1,23 @@
+<view class="list">
+	<view class="item">
+		<view class="title">你有一项扣分项</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">逾期未完成2019年1月1日 消防演练任务，请尽快补齐演练信息，完成上报工作。</view>
+		<view class="act">
+			<navigator url="../adddanger/adddanger" class="btn">立即处理</navigator>
+		</view>
+	</view>
+
+	<view class="item">
+		<view class="title">隐患检查通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">本月将开展安全隐患检查工作，工作人员将不定期抽查片区企业，对于不合格企业将扣15分，请相关企业做好安全隐患检查工作。</view>
+		
+	</view>	
+
+	<view class="item">
+		<view class="title">系统维护通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的用户你好，由于系统升级，我们将于2018年10月1日 24:00整开始对系统进行升级工作，预计将在2018年10月2日 9:00完成系统升级，期间企业上报功能将暂停使用，其他功能不受影响，为此带来的不便尽请谅解。</view>
+	</view>		
+</view>

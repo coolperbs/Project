@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/news/news",
+    "pages/services/services",
+    "pages/bmessage/bmessage",
+    "pages/actives/actives",
+    "pages/detail/detail",
+    "pages/yard/yard",
+    "pages/comlist/comlist",
+    "pages/addcom/addcom",
+    "pages/comhome/comhome",
+    "pages/adddanger/adddanger",
+    "pages/dangerlist/dangerlist",
+    "pages/tasklist/tasklist",
+    "pages/scorelist/scorelist"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 100
+  },
+  "sitemapLocation": "sitemap.json"
+}

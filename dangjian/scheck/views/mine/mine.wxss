@@ -1,0 +1,343 @@
+  .view-mine{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.view-mine .pannel{
+	margin-bottom:20rpx;
+	background-color: white;
+	padding: 0 20rpx 40rpx 20rpx;
+}
+
+.view-mine .user{
+	display:flex;
+height:140rpx;
+position:relative;
+width:710rpx;
+
+/*justify-content:space-between;*/
+/*padding:44rpx;*/
+}
+.view-mine .user .charge{
+	width:50rpx;
+	height:50rpx;
+	position:absolute;
+	right:0;
+	bottom:0.5px;
+}
+
+.view-mine .user .left{
+	margin-right:30rpx;
+	width:20%;
+
+}
+.view-mine .user .right{
+	position:relative;
+	width:80%;
+}
+.view-mine .user .vip-wrapper{
+	margin-top:6rpx;
+	position:relative;
+	/*position: absolute;
+	bottom: 0;
+	left: 0;*/
+}
+.view-mine .user .name{
+	font-size:40rpx;
+	height:40rpx;
+	line-height:40rpx;
+}
+.view-mine .user .vip{
+	width:30rpx;
+	height:30rpx;
+	/*margin-left:10rpx;*/
+	vertical-align:bottom;
+}
+.view-mine .user .vip-level{
+	vertical-align:bottom;
+	color:#f0b41b;
+	font-size:30rpx;
+	position:absolute;
+	bottom:-8rpx;
+
+}
+.view-mine .user .notice{
+	position:absolute;
+	bottom:0;
+}
+.view-mine .user .check-user{
+	font-size:24rpx;
+color:#a6a6a6;
+height:28rpx;
+line-height:28rpx;
+}
+.view-mine .user .header-img{
+	width:140rpx;
+height:140rpx;
+border-radius:50%;
+}
+
+
+.view-mine .order{}
+.view-mine .order .header{
+	display:flex;
+	justify-content:space-between;
+	padding : 20rpx 0;
+	align-items:center;
+	border-bottom:1rpx solid #f0f0f0;
+}
+.view-mine .order .header .title{
+	font-size:32rpx;
+	color:#202020;
+}
+.view-mine .order .header .check-more{
+	font-size:24rpx;
+color:#9e9e9e;
+}
+
+.view-mine .order .content{
+	padding : 0 40rpx;
+	display:flex;
+	justify-content:space-between;
+	margin-top: 34rpx;
+}
+.view-mine .order .content .item{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+
+}
+.view-mine .order .content .item .item-logo{
+	width: 50rpx;
+	height: 50rpx;
+}
+.view-mine .view-mine-wrapper{
+
+}
+.view-mine .mine-header-wrapper{
+	height:300rpx;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	background-image:linear-gradient(90deg,#da3633,#e05e39);
+}
+.view-mine .mine-header-wrapper .header-logo{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 50%;
+	/*border : solid 1px rgba( 0, 0, 0, 0.5 );*/
+	box-shadow: 0 10rpx 20rpx rgba( 0, 0, 0, 0.3 );
+}
+.view-mine .mine-header-wrapper .header-logo image{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 50%;
+	/*border:1px solid #f0f0f0;*/
+	background-color: white;
+}
+.view-mine .mine-header-wrapper .user-name{
+	color : #fff;
+	font-size: 30rpx;
+	margin-top:10rpx;
+}
+.view-mine .mine-header-wrapper .jifen{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20rpx;
+}
+.view-mine .mine-header-wrapper .jifen-logo{
+	width: 30rpx;
+	height: 30rpx;
+}
+.view-mine .mine-header-wrapper .jifen-val{
+	font-size:30rpx;
+	color:#f4ea2a;
+	margin-left:5rpx;
+
+}
+.view-mine .my-service .content{
+	display:flex;
+	/*justify-content:space-between;*/
+	margin-top: 20rpx;
+	/*padding : 0 40rpx;*/
+	flex-wrap: wrap;
+}
+.view-mine .my-service .content .item{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width: 25%;
+	margin-bottom: 40rpx;
+}
+.view-mine .my-service .content .item .item-logo{
+	width: 50rpx;
+	height: 50rpx;
+}
+.view-mine .my-service .content .item .item-txt{
+		font-size: 26rpx;
+	color:#1d1d1d;
+	margin-top: 12rpx;
+	color: #313131
+}
+.view-mine .my-service .cash{
+	color:#f6951a;
+	font-size: 24rpx
+}
+.view-mine .my-service .cash .cash-pre{
+	font-size: 20rpx
+}
+.view-mine .my-service .cash .cash-int{
+	font-size: 28rpx
+}
+.view-mine .my-service .cash .cash-float{
+	font-size: 24rpx
+}
+.view-mine .recommond{}
+.view-mine .recommond .header{
+	display:flex;
+	justify-content:space-between;
+	padding : 20rpx 0;
+	align-items:center;
+	border-bottom:1rpx solid #f0f0f0;
+}
+.view-mine .recommond .header .title{
+	font-size:32rpx;
+	color:#202020;
+}
+.view-mine .recommond .content{
+	margin-top: 34rpx;
+	display:flex;
+flex-wrap:wrap;
+}
+.view-mine .tpl-recommond-ware{
+	width:50%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+.view-mine .tpl-recommond-ware .top{}
+.view-mine .tpl-recommond-ware .top .ware-img{
+	width:300rpx;
+	height:300rpx;
+}
+.view-mine .tpl-recommond-ware .bottom{
+	display:flex;
+	flex-direction:column;
+	height:200rpx;
+	width:300rpx;
+	position: relative;
+}
+.view-mine .tpl-recommond-ware .bottom .ware-name{
+	font-size:28rpx;
+	color:#232323;
+	height:50rpx;
+	line-height:50rpx;
+}
+.view-mine .tpl-recommond-ware .bottom .feature{
+	font-size:26rpx;
+	color:#969696;
+	height:50rpx;
+	line-height:50rpx;
+}
+.view-mine .tpl-recommond-ware .bottom .price-info{}
+.view-mine .tpl-recommond-ware .bottom .price-info .new-price:before,
+.view-mine .tpl-recommond-ware .bottom .price-info .old-price:before{
+	content:'￥';
+}
+.view-mine .tpl-recommond-ware .bottom .price-info .new-price{
+	color:#d24740;
+	font-size: 28rpx;
+	margin-right: 10rpx;
+}
+.view-mine .tpl-recommond-ware .bottom .price-info .old-price{
+	color:#969696;
+	font-size: 24rpx;
+	text-decoration: line-through;
+}
+.view-mine .tpl-recommond-ware .bottom .addCart{
+	position:absolute;
+	top:110rpx;
+	right:0;
+}
+.view-mine .tpl-recommond-ware .bottom .addCart .cartimg{
+	width: 50rpx;
+	height: 50rpx
+}
+
+
+.view-mine .goLogin-wrapper{
+	position:relative;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	/*background-color: #F8F8F8*/
+}
+
+.view-mine .mine-menu-wrapper{
+/*	width: 700rpx;
+	margin:auto;*/
+	/*margin-top: 40rpx;*/
+	/*margin:20rpx;*/
+}
+.view-mine .mine-menu-wrapper .mine-menu-content{
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border:1px solid #f0f0f0;
+}
+.view-mine .mine-menu-wrapper .menu-item{
+	height:60rpx;
+	display: flex;
+	align-items: center;
+	padding : 20rpx;
+	font-size : 32rpx;
+	background-image:linear-gradient(0deg,#fafafa,#ffffff);
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.view-mine .mine-menu-wrapper .menu-item:last-child { border-bottom: 0; }
+
+.view-mine .mine-menu-wrapper .menu-item .text{
+	font-size: 30rpx;
+}
+
+
+
+.view-mine .goLogin-wrapper{
+	position:relative;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	/*background-color: #F8F8F8*/
+
+}
+.view-mine .goLogin-wrapper .login-logo{
+	width:150rpx;
+	height:160rpx;
+	margin-bottom:140rpx;
+}
+.view-mine .goLogin-wrapper .login-msg{
+	font-size:32rpx;
+	color:#999999;
+	margin-bottom:112rpx;
+}
+.view-mine .goLogin-wrapper .login-btn{
+	font-size:34rpx;
+	color:#FFFFFF;
+	background:#EA4834;
+	box-shadow:0 5px 10px 0 rgba(0,0,0,0.20);
+	border-radius:160rpx;
+	width:320rpx;
+	height:100rpx;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-bottom:200rpx;
+}

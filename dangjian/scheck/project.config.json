@@ -1,0 +1,136 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.6",
+	"appid": "wxc56642067fa3ea36",
+	"projectname": "%E5%AE%89%E6%A3%80",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 14,
+			"list": [
+				{
+					"id": -1,
+					"name": "新闻",
+					"pathName": "pages/news/news",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "办事大厅",
+					"pathName": "pages/services/services",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "消息中心",
+					"pathName": "pages/message/message",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "活动中心",
+					"pathName": "pages/actives/actives",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "详情",
+					"pathName": "pages/detail/detail",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "小区信息",
+					"pathName": "pages/yard/yard",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "小区信息",
+					"pathName": "pages/yard/yard",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "添加企业",
+					"pathName": "pages/addcom/addcom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "企业列表",
+					"pathName": "pages/comlist/comlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加隐患",
+					"pathName": "pages/adddanger/adddanger",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "隐患列表",
+					"pathName": "pages/dangerlist/dangerlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "企业首页",
+					"pathName": "pages/comhome/comhome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "企业消息",
+					"pathName": "pages/bmessage/bmessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "任务列表",
+					"pathName": "pages/tasklist/tasklist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "扣分列表",
+					"pathName": "pages/scorelist/scorelist",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

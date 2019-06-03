@@ -1,0 +1,151 @@
+<template name="home">
+<view class="view-home" wx:if="{{home&&home.data}}">
+	<view>
+		<view class="head">
+			<view class="main shadow">
+				<view class="userinfo">
+					<view class="info">
+						<view class="img">
+							<image mode="aspectFill" src="../../asset/user-white.png"></image>
+						</view>
+						<view class="more">
+							<view class="name">周群英</view>
+							<view class="phone">13488888888</view>
+						</view>
+					</view>
+				</view>
+				<view class="shim"></view>
+				<image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531414297395&di=79f11dc9f97a866b136b708885a7e0a9&imgtype=0&src=http%3A%2F%2Fpic.97uimg.com%2Fback_pic%2F20%2F15%2F11%2F03%2F25bdde72b22bf685d85171424d953c4e.jpg"></image>
+			</view>
+
+			<view class="sub">
+				<navigator url="../message/message" class="date shadow">
+					<image mode="aspectFill" src="https://img.zcool.cn/community/031c69d5716f43d0000016d9476a759.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+					<view class="text">消息</view> 
+					<view class="text em">12</view>
+				</navigator>
+				<!--<navigator url="../message/message" class="message shadow">
+					<image class="icon" src="../../asset/message.png"></image>消息
+				</navigator>-->
+			</view>
+
+		</view>
+
+		<view class="services shadow">
+			<view url="../yard/yard" class="item">
+				<!--<image src="../../asset/house.png"></image>-->
+				<view class="num">1114</view>
+				安全隐患
+			</view>
+			<view url="../task/task" class="item">
+				<view class="num">20</view>
+				今日上报
+			</view>
+			<view class="item">
+				<view class="num">2222</view>
+				所有单位
+			</view>
+			<view url="../services/services" class="item">
+				<view class="num">1</view>
+				今日新增
+			</view>
+		</view>
+
+		<view class="mod shadow">
+			<view class="name">
+				<view class="line"></view>安全管理
+			</view>
+			<view class="entrys">
+				<navigator class="icon" url="../adddanger/adddanger">
+					<image src="../../asset/upload.png"></image>
+					隐患上报
+				</navigator>
+				<navigator class="icon" url="../dangerlist/dangerlist">
+					<image src="../../asset/wait.png"></image>
+					待受理 (10)
+				</navigator>		
+				<navigator class="icon" url="../dangerlist/dangerlist">
+					<image src="../../asset/working.png"></image>
+					处理中 (2)
+				</navigator>
+				<navigator class="icon" url="../dangerlist/dangerlist">
+					<image src="../../asset/checked.png"></image>
+					已处理
+				</navigator>
+				<navigator class="icon" url="../dangerlist/dangerlist">
+					<image src="../../asset/list.png"></image>
+					隐患列表
+				</navigator>
+			</view>
+		</view>
+		<view class="mod">
+			<view class="name">
+				<view class="line"></view>企业管理
+			</view>
+			<view class="entrys">
+				<navigator class="icon" url="../addcom/addcom">
+					<image src="../../asset/add.png"></image>
+					企业采集
+				</navigator>
+				<navigator class="icon" url="../comlist/comlist">
+					<image src="../../asset/enterprise.png"></image>
+					已采集
+				</navigator>		
+				<navigator class="icon" url="../comlist/comlist">
+					<image src="../../asset/dan.png"></image>
+					重点关注
+				</navigator>
+			</view>
+		</view>
+	</view>
+
+	<!--<view class="mod news">
+		<view class="name"><navigator url="../news/news">咨询中心</navigator></view>
+		<view class="list">
+			<navigator url="../detail/detail">
+			<view class="item">
+				<image src="https://img.zcool.cn/community/0317eba5566cd7e000001cc292638e1.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">2018年上半年核心事件回顾，对内容进行分析，产生合适字数的标题</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/031a9d85566cd3a000001cc29192a49.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">顺和社区顺利开展第10届“顺和一家亲”活动。</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/031b8675566c966000001cc29acc124.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">人工智能应发的猜想，人类是否能在2020年全面普及人工自能。</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/0318ba85566d459000001cc29f92fd7.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">最美城市活动评选已开始，投出你心中的一票</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			<view class="item">
+				<image src="https://img.zcool.cn/community/0188705abc80fea8012062e3a1e587.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+				<view class="info">
+					<view class="i-title ellipsis-2">我与我的城市，用手机记录我与我所在城市的故事！</view>
+					<view class="i-cont">2018-1-10 转自：腾讯网</view>
+				</view>
+			</view>
+			</navigator>
+		</view>
+	</view>	-->
+
+
+	<navigator url="../comhome/comhome" open-type="redirect" class="bottom">
+		<!--<view class="main">武侯区簇锦街道顺和社区主办</view>-->
+		<view class="sub">成都铭阳优创科技有限公司技术支持</view>
+	</navigator>
+</view>
+</template>

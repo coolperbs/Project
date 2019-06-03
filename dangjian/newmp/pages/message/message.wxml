@@ -1,8 +1,8 @@
 <view class="list">
 	<view class="item">
-		<view class="title">停电通知</view>
+		<view class="title">企业申报未通过</view>
 		<view class="sub">2018.7.30 13:00</view>
-		<view class="main">尊敬的业主：您好！燃气公司回复物业燃气检测安全问题，计划2018年5月31日下午14:00-17:45停气，对整个小区的燃气管道设备进行检修，给大家带来不便请谅解。</view>
+		<view class="main">您提交的企业申报信息未通过，原因：上报资料不全，需补齐企业营业执照，负责人联系方式等信息，请完善信息后再次申报。</view>
 	</view>
 
 	<view class="item">

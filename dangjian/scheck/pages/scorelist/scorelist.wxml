@@ -1,0 +1,40 @@
+<!--<view class="head">
+	<view class="filter">全部</view>
+	<view class="create">创建申请</view>
+</view>-->
+<view class="head">
+<!--<view class="search">
+	<view class="box">
+		<image class="icon" src="../../asset/search.png"></image>
+		<input placeholder="搜索企业" />
+	</view>
+</view>-->
+
+ <scroll-view class="nav" scroll-x="{{true}}">
+ 	<view class="nav-list clearfix">
+ 		<view class="item current">全部</view>
+ 		<view class="item">有隐患</view>
+ 		<view class="item">待观察</view>
+ 		<view class="item">无隐患</view>
+ 	</view>
+ </scroll-view>
+ </view>
+
+<view class="list">
+	<view wx:for="{{ list }}" wx:key="index" class="item hight">
+		<navigator url="../addcom/addcom" class="title">{{ item.name }}<view class="status">-{{ item.point }}</view></navigator>
+		<view>{{ item.detail }}</view>
+		<view wx:if="{{ item.pics.length }}" class="event">
+			<view class="value">
+				<view class="pics">
+					<image src="https://img.zcool.cn/community/03169c5580d7ca2a84a0e282b003129.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					<image src="https://img.zcool.cn/community/031feca576d2d7e0000012e7eb90386.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					<image src="https://img.zcool.cn/community/031a4835a6ffa0ea80120a1230608ca.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+				</view>
+			</view>
+		</view>
+	</view>	
+</view>
+
+
+<!--<navigator url="../task/task" class="bottom"><view class="create">创建任务</view></navigator>-->

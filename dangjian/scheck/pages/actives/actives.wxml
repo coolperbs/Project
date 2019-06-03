@@ -1,0 +1,86 @@
+ <scroll-view class="nav" scroll-x="{{true}}">
+ 	<view class="list clearfix">
+ 		<view class="item current">1月</view>
+ 		<view class="item">2月</view>
+ 		<view class="item">3月</view>
+ 		<view class="item">4月</view>
+ 		<view class="item">5月</view>
+ 		<view class="item">6月</view>
+ 		<view class="item">7月</view>
+ 		<view class="item">8月</view>
+ 		<view class="item">9月</view>
+ 		<view class="item">10月</view>
+ 		<view class="item">11月</view>
+ 		<view class="item">12月</view>
+ 	</view>
+ </scroll-view>
+
+<!--<swiper class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-active-color="#fff" indicator-color="rgba( 0, 0, 0, 0.5)">
+	<swiper-item>
+		<image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532530001481&di=2d93752e143877203dc7a4fcc5259d34&imgtype=0&src=http%3A%2F%2Fwww.lanhai.cn%2FLHJD%2FoutImages%2Fhotel%2F20171011093833691_5960557.jpg"></image>
+	</swiper-item>
+	<swiper-item>
+		<image mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531414297395&di=79f11dc9f97a866b136b708885a7e0a9&imgtype=0&src=http%3A%2F%2Fpic.97uimg.com%2Fback_pic%2F20%2F15%2F11%2F03%2F25bdde72b22bf685d85171424d953c4e.jpg"></image>
+	</swiper-item>
+	<swiper-item>
+		<image mode="aspectFill" src="http://img3.imgtn.bdimg.com/it/u=1524246332,2160329713&fm=27&gp=0.jpg"></image>
+	</swiper-item>	
+</swiper>-->
+
+<view class="acts">
+	<view class="item">
+		<view class="pic">
+			<view class="tag">报名结束</view>
+			<image mode="aspectFill" src="https://img.zcool.cn/community/0195325aa0d509a801206d9685fabe.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】革命卫士纪念舞蹈活动</view>
+	</view>
+
+	<view class="item">
+		<view class="pic">
+			<image mode="aspectFill" src="https://img.zcool.cn/community/031a3b05a619dc7a80120121f0014f5.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】太极拳教学</view>
+	</view>	
+
+	<view class="item">
+		<view class="pic">
+			<image mode="aspectFill" src="https://img.zcool.cn/community/019cc75b5da5d1a801206a35680806.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】房屋装修大讲座</view>
+	</view>	
+	<view class="item">
+		<view class="pic">
+			<view class="tag green">正在报名</view>
+			<image mode="aspectFill" src="https://img.zcool.cn/community/01ba485b5ff09ca801215c8fc1c2cf.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】线下读书分享会</view>
+	</view>	
+	<view class="item">
+		<view class="pic">
+			<view class="tag green">正在报名</view>
+			<image mode="aspectFill" src="https://img.zcool.cn/community/031bbbe5566e46d000001cc2924d8fe.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】如何写好钢笔字</view>
+	</view>			
+	<view class="item">
+		<view class="pic">
+			<image mode="aspectFill" src="https://img.zcool.cn/community/017f9a5b4d8f89a8012036beabc042.jpeg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】瑜伽培训</view>
+	</view>			
+	<view class="item">
+		<view class="pic">
+			<image mode="aspectFill" src="https://img.zcool.cn/community/03135bd5628943f000001c75b45c36e.jpg@520w_390h_1c_1e_1o_100sh.jpg"></image>
+		</view>
+		<view class="name ellipsis-2">【2018年8月1日】书画练习</view>
+	</view>						
+</view>
+
+
+
+
+
+
+
+

@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 //import HelloWorld from '@/components/HelloWorld'
 import Home from '@/pages/home/home'
+import Cat from '@/pages/cat/cat'
+import Charge from '@/pages/charge/charge'
+import ChargeList from '@/pages/chargelist/list'
 import Detail from '@/pages/detail/detail'
+import MDetail from '@/pages/mdetail/detail'
 import Checkout from '@/pages/checkout/checkout'
 import OrderDetail from '@/pages/orders/detail/detail'
 import OrderList from '@/pages/orders/list/list'
@@ -33,8 +37,20 @@ export default new Router({
         path : '/',
         component : Home
     },{
+        path : '/chargelist',
+        component : ChargeList
+    },{
+        path : '/charge',
+        component : Charge
+    },{
+        path : '/cat',
+        component : Cat
+    },{
         path : '/home',
         component  : Home
+    },{
+        path : '/mdetail',
+        component : MDetail
     },{
         path : '/detail',
         component : Detail

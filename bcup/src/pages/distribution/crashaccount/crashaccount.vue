@@ -18,7 +18,7 @@
         <div class="value"><input  v-model="userPhone"/></div>
       </li>-->
     </ul>
-    <div class="photo-list">
+    <!--<div class="photo-list">
       <div class="title">本人身份证照片</div>
       <div class="photos">
         <div class="photo">
@@ -30,7 +30,7 @@
           <input type="file" ref="inputer2" @change="changePhoto2"/>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="save" @click="bindAccount">保存</div>
 
     <div class="loading" v-if="showLoading"> 正在上传请等待... </div>

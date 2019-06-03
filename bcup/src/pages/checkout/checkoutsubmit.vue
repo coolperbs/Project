@@ -97,15 +97,27 @@
         delete forminfo.type;
         lock = true;
         // 1.创建订单
-        orderServ.create(forminfo, function (orderRes) {
+        orderServ.create(forminfo, function (orderRes) {   
           if (utils.isErrorRes(orderRes) || !orderRes.data.orderId) {
-            utils.showError(orderRes.msg || '创建订单失败');
             lock = false;
+            utils.showError(orderRes.msg || '创建订单失败');
             return;
           }
           that.orderId = orderRes.data.orderId;
+          if ( forminfo.payType == 2 ) {
+            alert( '支付成功' );
+            that.orderId = orderRes.data.orderId;
+            that.showModal = true;
+            timmer = setTimeout(function () {
+              lock = false;
+            }, 500);
+            return;
+          }
           // 2.获取支付信息
           payServ.getPayInfo({orderId: orderRes.data.orderId}, function (payRes) {
+            timmer = setTimeout(function () {
+              lock = false;
+            }, 500);
             if (utils.isErrorRes(payRes)) {
               utils.showError(payRes.msg || '创建订单失败');
               Router.push({path: '/orders/detail?orderid=' + orderRes.data.orderId});

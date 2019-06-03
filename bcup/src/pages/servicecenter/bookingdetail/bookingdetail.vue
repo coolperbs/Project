@@ -78,7 +78,11 @@
       }
     },
     mounted () {
+      document.getElementsByTagName("title")[0].innerText = '整点巴适的';
       this.getBookingDetail()
+    },
+    destroyed : function() {
+      document.getElementsByTagName("title")[0].innerText = '暴客优品 · 整点巴适的';
     },
     methods: {
       hideModal () {

@@ -1,0 +1,99 @@
+<!--<view class="head">
+	<view class="filter">全部</view>
+	<view class="create">创建申请</view>
+</view>-->
+<view class="head">
+<view class="search">
+	<view class="box">
+		<image class="icon" src="../../asset/search.png"></image>
+		<input placeholder="搜索事务" />
+	</view>
+</view>
+
+ <scroll-view class="nav" scroll-x="{{true}}">
+ 	<view class="nav-list clearfix">
+ 		<view class="item current">全部</view>
+ 		<view class="item">待处理</view>
+ 		<view class="item">即将逾期</view>
+ 		<view class="item">已逾期</view>
+ 		<view class="item">已处理</view>
+ 	</view>
+ </scroll-view>
+ </view>
+
+<view class="list">
+	<view class="item">
+		<navigator url="../addcom/addcom" class="title green">秋期消防演练<view class="status">已处理</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">任务来源：</view>
+				<view class="value">安检办</view>
+			</view>
+			<view class="event">
+				<view class="key">任务描述：</view>
+				<view class="value">5月1日前，请相关企业完成消防自演任务，并提交至少3张现场照片。</view>
+			</view>
+			<view class="event">
+				<view class="key">任务对接人：</view>
+				<view class="value">周群英</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="item hight">
+		<navigator url="../addcom/addcom" class="title">消防设备统计<view class="status">即将逾期</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">任务来源：</view>
+				<view class="value">安检办</view>
+			</view>
+			<view class="event">
+				<view class="key">任务描述：</view>
+				<view class="value">请企业完成消防设施、设备上报工作，5月12日前完成相关资料提交，并提供相关现场照片。</view>
+			</view>
+			<view class="event">
+				<view class="key">任务对接人：</view>
+				<view class="value">周群英</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn">立即处理</navigator>
+			</view>
+		</view>
+	</view>
+
+	<view class="item normal">
+		<navigator url="../addcom/addcom" class="title">完善安检信息<view class="status">未处理</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">任务来源：</view>
+				<view class="value">安检办</view>
+			</view>
+			<view class="event">
+				<view class="key">任务描述：</view>
+				<view class="value">请贵单位指定以为安检事务对接人，请5月16日前提供相关信息</view>
+			</view>
+			<view class="event">
+				<view class="key">任务对接人：</view>
+				<view class="value">周群英</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn">立即处理</navigator>
+			</view>
+		</view>
+	</view>		
+</view>
+
+
+<!--<navigator url="../task/task" class="bottom"><view class="create">创建任务</view></navigator>-->

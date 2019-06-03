@@ -1,0 +1,180 @@
+<!--<view class="head">
+	<view class="filter">全部</view>
+	<view class="create">创建申请</view>
+</view>-->
+<view class="head">
+<view class="search">
+	<view class="box">
+		<image class="icon" src="../../asset/search.png"></image>
+		<input placeholder="搜索企业" />
+	</view>
+</view>
+
+ <scroll-view class="nav" scroll-x="{{true}}">
+ 	<view class="nav-list clearfix">
+ 		<view class="item current">全部</view>
+ 		<view class="item">有隐患</view>
+ 		<view class="item">待观察</view>
+ 		<view class="item">无隐患</view>
+ 	</view>
+ </scroll-view>
+ </view>
+
+<view class="list">
+	<view class="item">
+		<navigator url="../addcom/addcom" class="title green">深圳市腾讯计算机系统有限公司<view class="status">无隐患</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">深圳市南山区高新区高新南一路飞亚达大厦5-10楼</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">马先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn no">无隐患</navigator>
+				<navigator url="../adddanger/adddanger" class="btn">隐患上报</navigator>
+			</view>
+		</view>
+	</view>
+
+	<view class="item hight">
+		<navigator url="../addcom/addcom" class="title">阿里巴巴网络技术有限公司<view class="status">有隐患</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">浙江省杭州市滨江区网商路699号</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">马先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">隐患描述：</view>
+				<view class="value">
+					工程旁边施工现场有天然气管道，最近一期安全上报显示消防设施不够齐全，需重点关注。
+					<view class="pics">
+						<image src="https://img.zcool.cn/community/03169c5580d7ca2a84a0e282b003129.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031feca576d2d7e0000012e7eb90386.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031a4835a6ffa0ea80120a1230608ca.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					</view>
+				</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn no">无隐患</navigator>
+				<navigator url="../adddanger/adddanger" class="btn">隐患上报</navigator>
+			</view>
+		</view>
+	</view>	
+
+	<view class="item normal">
+		<navigator url="../addcom/addcom" class="title">网易(杭州)网络有限公司<view class="status">待观察</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">浙江省杭州市滨江区长河街道网商路599号4幢7层</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">丁先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn no">无隐患</navigator>
+				<navigator url="../adddanger/adddanger" class="btn">隐患上报</navigator>
+			</view>
+		</view>
+	</view>	
+
+	<view class="item">
+		<navigator url="../addcom/addcom" class="title green">深圳市腾讯计算机系统有限公司<view class="status">无隐患</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">深圳市南山区高新区高新南一路飞亚达大厦5-10楼</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">马先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn no">无隐患</navigator>
+				<navigator url="../adddanger/adddanger" class="btn">隐患上报</navigator>
+			</view>
+		</view>
+	</view>
+
+	<view class="item hight">
+		<navigator url="../addcom/addcom" class="title">阿里巴巴网络技术有限公司<view class="status">有隐患</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">浙江省杭州市滨江区网商路699号</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">马先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="event">
+				<view class="key">隐患描述：</view>
+				<view class="value">
+					工程旁边施工现场有天然气管道，最近一期安全上报显示消防设施不够齐全，需重点关注。
+					<view class="pics">
+						<image src="https://img.zcool.cn/community/03169c5580d7ca2a84a0e282b003129.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031feca576d2d7e0000012e7eb90386.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+						<image src="https://img.zcool.cn/community/031a4835a6ffa0ea80120a1230608ca.jpg@520w_390h_1c_1e_1o_100sh.jpg"/>
+					</view>
+				</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn no">无隐患</navigator>
+				<navigator url="../adddanger/adddanger" class="btn">隐患上报</navigator>
+			</view>
+		</view>
+	</view>	
+
+	<view class="item normal">
+		<navigator url="../addcom/addcom" class="title">网易(杭州)网络有限公司<view class="status">待观察</view></navigator>
+		<view class="events">
+			<view class="event">
+				<view class="key">地址：</view>
+				<view class="value">浙江省杭州市滨江区长河街道网商路599号4幢7层</view>
+			</view>
+			<view class="event">
+				<view class="key">联系人：</view>
+				<view class="value">丁先生</view>
+			</view>			
+			<view class="event">
+				<view class="key">联系手机：</view>
+				<view class="value">13888888888</view>
+			</view>
+			<view class="act">
+				<navigator url="../adddanger/adddanger" class="btn no">无隐患</navigator>
+				<navigator url="../adddanger/adddanger" class="btn">隐患上报</navigator>
+			</view>
+		</view>
+	</view>		
+</view>
+
+
+<!--<navigator url="../task/task" class="bottom"><view class="create">创建任务</view></navigator>-->

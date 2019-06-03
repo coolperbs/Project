@@ -1,0 +1,23 @@
+<view class="list">
+	<view class="item">
+		<view class="title">企业申报未通过</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">您提交的企业申报信息未通过，原因：上报资料不全，需补齐企业营业执照，负责人联系方式等信息，请完善信息后再次申报。</view>
+	</view>
+
+	<view class="item">
+		<view class="title">隐患检查</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">滨海路33号，振新钢管厂存在隐患，请到现场责令整改，务必在5月1日前完成工作。</view>
+		<view class="pics">
+			<image mode="aspectFill" src="http://img0.imgtn.bdimg.com/it/u=3828388530,4025039062&fm=200&gp=0.jpg"></image>
+			<image mode="aspectFill" src="http://img1.imgtn.bdimg.com/it/u=2671277624,481454111&fm=200&gp=0.jpg"></image>
+		</view>
+	</view>	
+
+	<view class="item">
+		<view class="title">系统维护通知</view>
+		<view class="sub">2018.7.30 13:00</view>
+		<view class="main">尊敬的用户你好，由于系统升级，我们将于2018年10月1日 24:00整开始对系统进行升级工作，预计将在2018年10月2日 9:00完成系统升级，期间企业上报功能将暂停使用，其他功能不受影响，为此带来的不便尽请谅解。</view>
+	</view>		
+</view>
