@@ -65,8 +65,8 @@
 
 
 <style scoped>
-  .nav { height : 80px; background-color: #fff; display: flex; align-items: center; justify-content: space-around; }
-  .nav .icon { display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+  .nav {background-color: #fff; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; padding : 5px 0;}
+  .nav .icon { display: flex; flex-direction: column; justify-content: space-between; align-items: center; width : 20%; margin : 3px 0; }
   .nav .icon img { width : 32px; height: 32px; }
   .home {
     padding: 54px 0 80px 0;

@@ -48,7 +48,7 @@
               <td style="white-space: nowrap;word-break: keep-all">{{el.stock}}</td>
               <td style="white-space: nowrap;word-break: keep-all">{{fixPrice(el.price)}}元</td>
               <td>
-                <router-link :to="{path : '/servicecenter/bookingcheckout', query : { id : wareId+'-'+bespeakId}} " v-if="el.stock>0" class="btn booking ">预约</router-link>
+                <router-link :to="{path : '/servicecenter/bookingcheckout', query : { id : el.id+'-'+bespeakId}} " v-if="el.stock>0" class="btn booking ">预约</router-link>
                 <div v-if="el.stock==0" class="btn booking disabled">预约</div>
               </td>
             </tr>

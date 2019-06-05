@@ -38,7 +38,7 @@
       <div class="cell">
         <div class="label" style="width: 60%">{{formatDateV(item.preDate)}}:{{item.wareWare?item.wareWare.title:''}}</div>
         <div class="desc" style="width: 30px">到店支付</div>
-        <div class="num" style="color:#ee8e34;">￥{{(item.plusPrice?item.plusPrice:'')}}</div>
+        <div class="num"v-if="" style="color:#ee8e34;">￥{{(item.plusPrice?item.plusPrice:'')}}</div>
       </div>
     </div>
     <div class="cell-box" style="margin-bottom: 100px">
@@ -141,7 +141,7 @@
           return
         }
         bookingCheckoutService.submit({
-          bespeakId: this.bespeakId,
+          bespeakId: this.item.id,
           ecode: this.ecode,
           username: this.username,
           userphone: this.userphone,
